@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block admin paths
+Disallow: /admin/
+Disallow: /subscribe/
+Disallow: /*.json$
+
+# Sitemaps
+Sitemap: https://nambanvillas.vn/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
