@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="530" viewBox="0 0 800 530">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B8DFF0"/><stop offset="100%" stop-color="#E8F4FB"/></linearGradient>
+    <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#52B788"/><stop offset="100%" stop-color="#2D6A4F"/></linearGradient>
+    <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#74C69D"/><stop offset="100%" stop-color="#52B788"/></linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="rgba(0,0,0,0.65)"/><stop offset="40%" stop-color="rgba(0,0,0,0.1)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></linearGradient>
+  </defs>
+  <rect width="800" height="530" fill="url(#sky)"/>
+  <!-- clouds -->
+  <ellipse cx="300" cy="80" rx="110" ry="32" fill="white" opacity=".85"/>
+  <ellipse cx="370" cy="65" rx="80" ry="26" fill="white" opacity=".9"/>
+  <ellipse cx="650" cy="90" rx="90" ry="28" fill="white" opacity=".8"/>
+  <!-- hills terrain -->
+  <path d="M0 300 Q100 200 250 230 Q400 170 550 220 Q700 180 800 210 L800 530 L0 530Z" fill="url(#h1)"/>
+  <path d="M0 400 Q200 330 400 360 Q600 320 800 350 L800 530 L0 530Z" fill="url(#h2)"/>
+  <!-- coffee rows -->
+  <g opacity=".7">
+    <path d="M80 480 Q200 440 320 460" stroke="#1B4332" stroke-width="6" fill="none"/>
+    <path d="M80 496 Q200 456 320 476" stroke="#1B4332" stroke-width="6" fill="none"/>
+    <path d="M80 512 Q200 472 320 492" stroke="#1B4332" stroke-width="6" fill="none"/>
+  </g>
+  <!-- road -->
+  <path d="M350 530 L370 360 L430 360 L450 530Z" fill="#D4C5A9" opacity=".8"/>
+  <line x1="400" y1="530" x2="400" y2="360" stroke="white" stroke-width="2" stroke-dasharray="15,12" opacity=".6"/>
+  <!-- trees -->
+  <g fill="#1B4332">
+    <ellipse cx="160" cy="380" rx="26" ry="40"/><rect x="154" y="418" width="12" height="24" fill="#8B6914"/>
+    <ellipse cx="600" cy="370" rx="24" ry="38"/><rect x="594" y="406" width="12" height="22" fill="#8B6914"/>
+    <ellipse cx="680" cy="395" rx="20" ry="32"/><ellipse cx="110" cy="410" rx="18" ry="28"/>
+  </g>
+  <rect width="800" height="530" fill="url(#ov)"/>
+  <rect x="0" y="0" width="130" height="38" fill="#1A3D2B" opacity=".9"/>
+  <text x="16" y="25" font-family="Arial" font-size="14" font-weight="700" fill="white">Đất Nền</text>
+  <text x="30" y="460" font-family="Arial" font-size="22" font-weight="800" fill="white">Lô C1 – 684 m²</text>
+  <text x="30" y="490" font-family="Arial" font-size="14" fill="rgba(255,255,255,0.85)">📍 Khu C · Nam Ban Villas</text>
+  <text x="30" y="515" font-family="Arial" font-size="13" fill="rgba(255,255,255,0.7)">View thung lũng toàn cảnh · Sổ đỏ lâu dài</text>
+</svg>

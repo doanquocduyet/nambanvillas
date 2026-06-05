@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="530" viewBox="0 0 800 530">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFECD2"/><stop offset="30%" stop-color="#FCB69F"/><stop offset="100%" stop-color="#87CEEB"/></linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B0A090"/><stop offset="100%" stop-color="#8B7D6B"/></linearGradient>
+    <linearGradient id="ov" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="rgba(0,0,0,0.65)"/><stop offset="40%" stop-color="rgba(0,0,0,0.1)"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></linearGradient>
+  </defs>
+  <rect width="800" height="530" fill="url(#sky)"/>
+  <!-- sun -->
+  <circle cx="680" cy="90" r="55" fill="#FFC947" opacity=".7"/>
+  <circle cx="680" cy="90" r="40" fill="#FFD97D" opacity=".8"/>
+  <!-- silhouette hills -->
+  <path d="M0 320 Q150 220 300 260 Q450 200 600 240 Q720 210 800 230 L800 530 L0 530Z" fill="#1B4332" opacity=".85"/>
+  <path d="M0 400 Q200 350 400 370 Q600 340 800 360 L800 530 L0 530Z" fill="#2D6A4F"/>
+  <!-- road perspective -->
+  <polygon points="320,530 360,370 440,370 480,530" fill="url(#road)"/>
+  <polygon points="395,530 398,370 402,370 405,530" fill="white" opacity=".4"/>
+  <rect x="316" y="368" width="168" height="6" fill="#C9A84C" opacity=".8"/>
+  <!-- lamp posts -->
+  <line x1="352" y1="370" x2="340" y2="500" stroke="#555" stroke-width="4"/>
+  <circle cx="340" cy="368" r="8" fill="#FFD700" opacity=".9"/>
+  <line x1="448" y1="370" x2="460" y2="500" stroke="#555" stroke-width="4"/>
+  <circle cx="460" cy="368" r="8" fill="#FFD700" opacity=".9"/>
+  <!-- trees roadside -->
+  <g fill="#1B4332">
+    <ellipse cx="120" cy="390" rx="30" ry="46"/><rect x="114" y="434" width="12" height="26" fill="#8B6914"/>
+    <ellipse cx="200" cy="410" rx="24" ry="36"/>
+    <ellipse cx="600" cy="385" rx="28" ry="44"/><rect x="594" y="427" width="12" height="24" fill="#8B6914"/>
+    <ellipse cx="680" cy="405" rx="22" ry="34"/>
+  </g>
+  <rect width="800" height="530" fill="url(#ov)"/>
+  <rect x="0" y="0" width="130" height="38" fill="#1A3D2B" opacity=".9"/>
+  <text x="16" y="25" font-family="Arial" font-size="14" font-weight="700" fill="white">Đất Nền</text>
+  <text x="30" y="460" font-family="Arial" font-size="22" font-weight="800" fill="white">Lô D1 – 628 m²</text>
+  <text x="30" y="490" font-family="Arial" font-size="14" fill="rgba(255,255,255,0.85)">📍 Khu D · Nam Ban Villas</text>
+  <text x="30" y="515" font-family="Arial" font-size="13" fill="rgba(255,255,255,0.7)">Mặt đường chính · Cạnh cổng dự án</text>
+</svg>
