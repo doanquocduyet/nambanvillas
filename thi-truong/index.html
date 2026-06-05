@@ -9,6 +9,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .news-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
+    @media(max-width:768px){.news-featured{grid-template-columns:1fr}}
+    .ncard{border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
+    .ncard:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+    .ncard-img{width:100%;height:180px;object-fit:cover;background:#EBF4EE;display:block}
+    .ncard-body{padding:16px}
+    .ncard-source{font-size:.75rem;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px}
+    .ncard-title{font-size:1rem;font-weight:700;color:#1A3D2B;line-height:1.45;margin:8px 0 6px}
+    .ncard-title a{color:inherit;text-decoration:none}
+    .ncard-title a:hover{color:#C9A84C}
+    .ncard-excerpt{font-size:.85rem;color:#6B6B6B;line-height:1.6;margin-bottom:10px}
+    .ncard-date{font-size:.75rem;color:#9B9B9B}
+    .news-secondary{border-top:2px solid #E2DBD0;padding-top:24px}
+    .news-secondary h3{font-size:.8rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .news-link-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #F0EBE3;text-decoration:none;color:inherit}
+    .news-link-item:last-child{border-bottom:none}
+    .news-link-item:hover .nlk-title{color:#C9A84C}
+    .nlk-num{font-size:1.5rem;font-weight:800;color:#E2DBD0;line-height:1;min-width:28px}
+    .nlk-title{font-size:.92rem;font-weight:600;color:#1A3D2B;line-height:1.4;display:block;margin-bottom:4px}
+    .nlk-meta{font-size:.75rem;color:#9B9B9B}
+  </style>
 </head>
 <body>
 <header class="header scrolled" id="header">
@@ -32,18 +54,97 @@
   <div class="container">
     <nav class="breadcrumb"><a href="/">Trang chủ</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2"/></svg><span>Thị Trường</span></nav>
     <h1>Thị Trường Bất Động Sản</h1>
-    <p>Tin tức, chính sách và xu hướng bất động sản Việt Nam – cập nhật hàng ngày từ các nguồn uy tín</p>
+    <p>Tin tức, chính sách và xu hướng bất động sản Việt Nam – cập nhật mới nhất</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="sec-header" style="margin-bottom:32px">
-      <div><p class="sec-label">Tự động cập nhật</p><h2 class="sec-title">Tin BĐS Mới Nhất</h2></div>
+    <div class="sec-header" style="margin-bottom:28px">
+      <div><p class="sec-label">Cập nhật tháng 6/2026</p><h2 class="sec-title">Tin BĐS Nổi Bật</h2></div>
     </div>
-    <div class="news-grid" id="news-thi-truong">
-      <div class="news-loading"><div class="spinner"></div><p>Đang tải tin tức...</p></div>
+
+    <!-- 3 bài chính -->
+    <div class="news-featured">
+
+      <article class="ncard">
+        <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#EBF4EE"/>
+          <rect x="0" y="100" width="400" height="80" fill="#1A3D2B"/>
+          <polygon points="50,100 120,40 190,100" fill="#2E5C40"/>
+          <polygon points="150,100 230,30 310,100" fill="#3A7D44"/>
+          <polygon points="270,100 340,50 400,100" fill="#2E5C40"/>
+          <rect x="20" y="115" width="200" height="16" rx="4" fill="#C9A84C"/>
+          <rect x="20" y="138" width="160" height="10" rx="3" fill="rgba(255,255,255,.4)"/>
+          <text x="120" y="127" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="700">Thị Trường BĐS Quý I/2026</text>
+        </svg>
+        <div class="ncard-body">
+          <span class="ncard-source">24HMoney · 05/2026</span>
+          <h3 class="ncard-title"><a href="https://24hmoney.vn/news/thi-truong-bat-dong-san-quy-i-2026-gia-nha-lap-dinh-nhung-thanh-khoan-cham-lai-c3a2771117.html" target="_blank" rel="noopener">Thị trường BĐS quý I/2026: Giá nhà "lập đỉnh" nhưng thanh khoản chậm lại</a></h3>
+          <p class="ncard-excerpt">Giá bất động sản tiếp tục leo thang và thiết lập đỉnh mới trong quý I/2026, tuy nhiên lượng giao dịch thực tế giảm rõ rệt do người mua thận trọng hơn trước mức giá cao. Thị trường đang trong giai đoạn phân hóa mạnh giữa các phân khúc.</p>
+          <span class="ncard-date">Nguồn: 24HMoney</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ng2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDB97D"/><stop offset="100%" stop-color="#F4A460"/></linearGradient></defs>
+          <rect width="400" height="180" fill="url(#ng2)"/>
+          <rect x="0" y="110" width="400" height="70" fill="#1A3D2B"/>
+          <circle cx="320" cy="50" r="35" fill="#FFD700" opacity="0.7"/>
+          <polygon points="0,110 100,55 200,110" fill="#2E5C40"/>
+          <polygon points="180,110 280,45 380,110" fill="#3A7D44"/>
+          <text x="200" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="700">Lâm Đồng · Bảng Giá Tăng 30-50%</text>
+        </svg>
+        <div class="ncard-body">
+          <span class="ncard-source">Khoalam Group · 2026</span>
+          <h3 class="ncard-title"><a href="https://khoalamgroup.com/chu-ky-bat-dong-san-2026-bang-gia-dat-lam-dong/" target="_blank" rel="noopener">Chu kỳ BĐS 2026 – Bảng giá đất Lâm Đồng tăng 30–50% & cơ hội cho nhà đầu tư</a></h3>
+          <p class="ncard-excerpt">Bảng giá đất Lâm Đồng 2026 được phê duyệt với mức tăng trung bình 30–50% so với giai đoạn 2020–2024. Đất nền Bảo Lộc và khu vực lân cận như Nam Ban đang là điểm nóng thu hút dòng tiền đầu tư trong chu kỳ mới.</p>
+          <span class="ncard-date">Nguồn: Khoalam Group</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="180" fill="#F7F3EE"/>
+          <rect x="30" y="30" width="340" height="120" rx="8" fill="white" stroke="#E2DBD0" stroke-width="2"/>
+          <rect x="50" y="50" width="120" height="12" rx="4" fill="#1A3D2B"/>
+          <rect x="50" y="70" width="300" height="8" rx="3" fill="#E2DBD0"/>
+          <rect x="50" y="86" width="280" height="8" rx="3" fill="#E2DBD0"/>
+          <rect x="50" y="102" width="240" height="8" rx="3" fill="#E2DBD0"/>
+          <rect x="50" y="120" width="80" height="20" rx="6" fill="#C9A84C"/>
+          <text x="90" y="134" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white" font-weight="700">Đọc thêm →</text>
+          <text x="200" y="165" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#9B9B9B">Nhadautu.vn · 2026</text>
+        </svg>
+        <div class="ncard-body">
+          <span class="ncard-source">Nhà Đầu Tư · 2026</span>
+          <h3 class="ncard-title"><a href="https://nhadautu.vn/nam-2026-thi-truong-chuyen-dich-theo-gia-tri-thuc-d104103.html" target="_blank" rel="noopener">Năm 2026: Thị trường BĐS chuyển dịch theo giá trị thực</a></h3>
+          <p class="ncard-excerpt">Chu kỳ mới bất động sản 2026 đánh dấu sự phục hồi sau giai đoạn tái cấu trúc. Dòng tiền chuyển dịch từ đầu cơ sang sản phẩm pháp lý sạch, có dòng tiền bền vững – lợi thế rõ ràng cho các dự án có sổ đỏ lâu dài như Nam Ban Villas.</p>
+          <span class="ncard-date">Nguồn: Nhadautu.vn</span>
+        </div>
+      </article>
+
     </div>
+
+    <!-- 2 link phụ -->
+    <div class="news-secondary">
+      <h3>Tin liên quan</h3>
+      <a href="https://vneconomy.vn/bat-dong-san-tang-toc-phuc-hoi-nha-o-vua-tui-tien-van-khat-nguon-cung.htm" target="_blank" rel="noopener" class="news-link-item">
+        <span class="nlk-num">01</span>
+        <div>
+          <span class="nlk-title">BĐS 2026: Phục hồi tăng tốc, nhà ở vừa túi tiền vẫn khan nguồn cung</span>
+          <span class="nlk-meta">VnEconomy · 2026</span>
+        </div>
+      </a>
+      <a href="https://baodautu.vn/thi-truong-bat-dong-san-nam-2026-se-soi-dong-trong-su-than-trong-nha-o-xa-hoi-ly-thuong-kiet-chua-nhan-ho-so-dang-ky-d538973.html" target="_blank" rel="noopener" class="news-link-item">
+        <span class="nlk-num">02</span>
+        <div>
+          <span class="nlk-title">Thị trường BĐS năm 2026 sẽ sôi động trong sự thận trọng</span>
+          <span class="nlk-meta">Báo Đầu Tư · 2026</span>
+        </div>
+      </a>
+    </div>
+
   </div>
 </section>
 
@@ -53,7 +154,6 @@
 </div>
 
 <footer class="footer"><div class="footer-bottom"><div class="container"><span>© 2025 Nam Ban Villas · Hotline: <a href="tel:0938227988" style="color:#C9A84C">0938 227 988</a></span><a href="/">← Trang chủ</a></div></div></footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="../js/main.js" defer></script>
 </body>
 </html>

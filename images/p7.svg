@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <defs>
+    <linearGradient id="sky7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#B8E4F5"/></linearGradient>
+    <linearGradient id="hill7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3A7D44"/><stop offset="100%" stop-color="#2E5C40"/></linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#sky7)"/>
+  <ellipse cx="200" cy="300" rx="320" ry="160" fill="url(#hill7)"/>
+  <ellipse cx="60" cy="260" rx="100" ry="70" fill="#2E5C40"/>
+  <ellipse cx="340" cy="270" rx="90" ry="60" fill="#3A7D44"/>
+  <!-- Trees left -->
+  <polygon points="30,160 50,100 70,160" fill="#1A4D2B"/>
+  <polygon points="70,170 90,115 110,170" fill="#225A32"/>
+  <!-- Trees right -->
+  <polygon points="300,155 320,95 340,155" fill="#1A4D2B"/>
+  <polygon points="340,165 360,110 380,165" fill="#225A32"/>
+  <!-- Land plot -->
+  <rect x="130" y="155" width="140" height="75" rx="4" fill="#E8D5A3" opacity="0.9"/>
+  <rect x="135" y="160" width="130" height="65" rx="3" fill="none" stroke="#C9A84C" stroke-width="2" stroke-dasharray="6,3"/>
+  <!-- Road -->
+  <rect x="0" y="230" width="400" height="30" fill="#D4C5A0"/>
+  <rect x="190" y="230" width="20" height="30" fill="#E8D5A3" opacity="0.5"/>
+  <!-- Labels -->
+  <rect x="120" y="178" width="160" height="28" rx="6" fill="#1A3D2B" opacity="0.88"/>
+  <text x="200" y="197" text-anchor="middle" font-family="sans-serif" font-size="13" fill="white" font-weight="700">Lô đất 399m² · 1,2 tỷ</text>
+  <rect x="148" y="215" width="104" height="20" rx="4" fill="#C9A84C"/>
+  <text x="200" y="229" text-anchor="middle" font-family="sans-serif" font-size="11" fill="white" font-weight="700">TT. Nam Ban · Thổ cư</text>
+</svg>

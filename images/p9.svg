@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <defs>
+    <linearGradient id="sky9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D4EAF5"/><stop offset="100%" stop-color="#A8D5E8"/></linearGradient>
+    <linearGradient id="g9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5CA06A"/><stop offset="100%" stop-color="#2E5C40"/></linearGradient>
+  </defs>
+  <rect width="400" height="260" fill="url(#sky9)"/>
+  <!-- Rolling hills -->
+  <ellipse cx="200" cy="320" rx="300" ry="180" fill="url(#g9)"/>
+  <ellipse cx="0" cy="280" rx="120" ry="90" fill="#3A7D44"/>
+  <ellipse cx="400" cy="290" rx="120" ry="90" fill="#4A8C5C"/>
+  <!-- Pine trees -->
+  <polygon points="30,180 45,130 60,180" fill="#1A3D2B"/>
+  <rect x="41" y="180" width="8" height="15" fill="#5C3317"/>
+  <polygon points="350,175 365,120 380,175" fill="#1A3D2B"/>
+  <rect x="356" y="175" width="8" height="15" fill="#5C3317"/>
+  <!-- Coffee garden -->
+  <rect x="100" y="175" width="200" height="60" rx="4" fill="#7AB87A" opacity="0.7"/>
+  <circle cx="130" cy="195" r="10" fill="#3A7D44"/>
+  <circle cx="160" cy="188" r="10" fill="#4A8C5C"/>
+  <circle cx="190" cy="195" r="10" fill="#3A7D44"/>
+  <circle cx="220" cy="188" r="10" fill="#4A8C5C"/>
+  <circle cx="250" cy="195" r="10" fill="#3A7D44"/>
+  <circle cx="280" cy="188" r="10" fill="#4A8C5C"/>
+  <!-- Label -->
+  <rect x="110" y="120" width="180" height="50" rx="6" fill="#1A3D2B" opacity="0.9"/>
+  <text x="200" y="140" text-anchor="middle" font-family="sans-serif" font-size="12" fill="white" font-weight="700">Vườn cà phê 2,8ha · 4,5 tỷ</text>
+  <text x="200" y="158" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C9A84C">Gần Đà Lạt · Thương lượng</text>
+</svg>
