@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đất Thổ Cư 782m² (22×35,5m) – 400m² Đất Ở Đô Thị, Sổ Hồng Riêng – Nam Ban Villas</title>
   <meta name="description" content="Bán đất 782m² (22×35,5m), 400m² đất ở đô thị + 382m² vườn. Sổ hồng riêng chính chủ, hướng Đông, hẻm 4m ô tô. TT. Nam Ban, Lâm Hà. Giá 3,9 tỷ.">
+    <meta name="geo.region" content="VN-LB">
+  <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/dat-nen/lo-782m2/">
   <meta property="og:title" content="Đất Thổ Cư 782m² (22×35,5m) – 400m² Đất Ở Đô Thị, Sổ Hồng Riêng">
   <meta property="og:description" content="782m² đất rộng với 400m² thổ cư đô thị, hướng Đông, sổ hồng chính chủ tại TT. Nam Ban. Giá 3,9 tỷ.">
@@ -14,6 +16,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/article.css">
+  <!-- Google Analytics 4 — thay G-XXXXXXXXXX bằng Measurement ID thật của chú -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
 
@@ -224,6 +229,17 @@
             <li><a href="/ve-nam-ban/xa-nam-ban-sap-nhap/">Xã Nam Ban sau sáp nhập 2025</a></li>
           </ul>
         </div>
+      
+        <div class="sidebar-card mini-contact-form" style="margin-top:16px">
+          <h4>📩 Quan tâm đến bất động sản này?</h4>
+          <form class="quick-form" onsubmit="sendZaloInquiry(this,'Đất 782m² Khu B – Lô Góc VIP');return false;">
+            <input type="text" placeholder="Họ và tên" name="name" required>
+            <input type="tel" placeholder="Số điện thoại" name="phone" required pattern="[0-9]{{9,11}}">
+            <button type="submit" class="quick-form-btn">Gửi yêu cầu tư vấn</button>
+          </form>
+          <div class="form-success" id="formSuccess">✅ Đã gửi! Chúng tôi sẽ liên hệ ngay.</div>
+          <p class="form-note">Hoặc nhắn Zalo trực tiếp: <a href="https://zalo.me/0978758788" target="_blank">0978 758 788</a></p>
+        </div>
       </aside>
 
     </div>
@@ -249,5 +265,17 @@
 </div>
 
 <script src="../../js/main.js" defer></script>
+
+<script>
+function sendZaloInquiry(form, propName) {
+  var name = form.name.value.trim();
+  var phone = form.phone.value.trim();
+  var msg = 'Xin chào! Tôi là ' + name + ' (' + phone + '), quan tâm đến: ' + propName + '. Nhờ tư vấn thêm ạ.';
+  var url = 'https://zalo.me/0978758788?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+  form.parentNode.querySelector('.quick-form').style.display='none';
+  form.parentNode.querySelector('.form-success').style.display='block';
+}
+</script>
 </body>
 </html>

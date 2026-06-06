@@ -4,11 +4,16 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Đất Mặt Tiền Đường Chùa Linh Ẩn – Trung Tâm Nam Ban | Nam Ban Villas</title>
   <meta name="description" content="Bán đất mặt tiền đường Chùa Linh Ẩn, trung tâm thị trấn Nam Ban. Kinh doanh tốt, giá 3 tỷ thương lượng.">
+    <meta name="geo.region" content="VN-LB">
+  <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/dat-nen/mat-tien-chua-linh-an/">
   <link rel="icon" href="../../images/favicon.svg?v=3" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/article.css">
+  <!-- Google Analytics 4 — thay G-XXXXXXXXXX bằng Measurement ID thật của chú -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
 <header class="header scrolled" id="header">
@@ -86,5 +91,17 @@
 </div>
 <footer class="footer"><div class="footer-bottom"><div class="container"><span>© 2025 Nam Ban Villas · Hotline: <a href="tel:0938227988" style="color:#C9A84C">0938 227 988</a></span><a href="/">← Trang chủ</a></div></div></footer>
 <script src="../../js/main.js" defer></script>
+
+<script>
+function sendZaloInquiry(form, propName) {
+  var name = form.name.value.trim();
+  var phone = form.phone.value.trim();
+  var msg = 'Xin chào! Tôi là ' + name + ' (' + phone + '), quan tâm đến: ' + propName + '. Nhờ tư vấn thêm ạ.';
+  var url = 'https://zalo.me/0978758788?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+  form.parentNode.querySelector('.quick-form').style.display='none';
+  form.parentNode.querySelector('.form-success').style.display='block';
+}
+</script>
 </body>
 </html>
