@@ -33,7 +33,7 @@
 
   <url>
     <loc>https://nambanvillas.vn/tin-tuc/</loc>
-    <lastmod>2025-06-05</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -60,6 +60,20 @@
   </url>
 
   <url>
+    <loc>https://nambanvillas.vn/tin-tuc/quy-hoach-tinh-lam-dong-dieu-chinh-2025/</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://nambanvillas.vn/tin-tuc/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025/</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://nambanvillas.vn/tin-tuc/tuyen-tranh-nam-ban-khi-nao-hoan-thanh/</loc>
     <lastmod>2025-06-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -76,6 +90,27 @@
   <url>
     <loc>https://nambanvillas.vn/tin-tuc/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban/</loc>
     <lastmod>2025-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://nambanvillas.vn/tin-tuc/khi-hau-cuoc-song-nam-ban/</loc>
+    <lastmod>2025-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://nambanvillas.vn/tin-tuc/mua-dat-nam-ban-kinh-nghiem-2025/</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://nambanvillas.vn/tin-tuc/kham-pha-vuon-thao-moc-nam-ban-villas/</loc>
+    <lastmod>2025-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
