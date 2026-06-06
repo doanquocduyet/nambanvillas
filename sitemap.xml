@@ -29,24 +29,21 @@
   <url><loc>https://nambanvillas.vn/ve-nam-ban/xa-nam-ban-sap-nhap/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nambanvillas.vn/ve-nam-ban/dau-gia-dat-nam-ban-2026/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
-  <!-- Thị trường -->
-  <url><loc>https://nambanvillas.vn/thi-truong/</loc><lastmod>2025-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <!-- Thị trường (bao gồm toàn bộ tin tức & phân tích) -->
+  <url><loc>https://nambanvillas.vn/thi-truong/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/lam-dong-quy-hoach-dieu-chinh-2026/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://nambanvillas.vn/thi-truong/bds-quy-1-2026/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/thi-truong/thi-truong-gia-tri-thuc-2026/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://nambanvillas.vn/thi-truong/bang-gia-dat-lam-dong-2026/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-
-  <!-- Tin tức -->
-  <url><loc>https://nambanvillas.vn/tin-tuc/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/lam-dong-quy-hoach-dieu-chinh-2026/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/nghi-duong-retreat-cao-nguyen-lam-dong/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/quy-hoach-tinh-lam-dong-dieu-chinh-2025/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/dat-nam-ban-tang-gia-2025/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/tuyen-tranh-nam-ban-khi-nao-hoan-thanh/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/khi-hau-cuoc-song-nam-ban/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/mua-dat-nam-ban-kinh-nghiem-2025/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://nambanvillas.vn/tin-tuc/kham-pha-vuon-thao-moc-nam-ban-villas/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/thi-truong-gia-tri-thuc-2026/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/tuyen-tranh-nam-ban-khi-nao-hoan-thanh/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/dat-nam-ban-tang-gia-2025/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/kham-pha-vuon-thao-moc-nam-ban-villas/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/khi-hau-cuoc-song-nam-ban/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-kinh-nghiem-2025/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Liên hệ -->
   <url><loc>https://nambanvillas.vn/lien-he/</loc><lastmod>2025-06-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>

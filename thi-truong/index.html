@@ -2,37 +2,38 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thị Trường Bất Động Sản – Cập nhật hàng ngày | Nam Ban Villas</title>
-  <meta name="description" content="Tin tức thị trường bất động sản Việt Nam cập nhật hàng ngày – chính sách, quy hoạch, xu hướng đầu tư. Nam Ban Villas.">
-    <meta name="geo.region" content="VN-LB">
+  <title>Thị Trường Bất Động Sản – Phân tích & Tin tức | Nam Ban Villas</title>
+  <meta name="description" content="Phân tích thị trường bất động sản, quy hoạch Lâm Đồng, tin tức BĐS Nam Ban mới nhất. Cập nhật liên tục bởi Nam Ban Villas.">
+  <meta name="geo.region" content="VN-LB">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/thi-truong/">
   <link rel="icon" href="../images/favicon.svg?v=3" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .news-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
-    @media(max-width:768px){.news-featured{grid-template-columns:1fr}}
+    .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px}
+    @media(max-width:900px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:580px){.news-grid{grid-template-columns:1fr}}
     .ncard{border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
     .ncard:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
     .ncard-img{width:100%;height:180px;object-fit:cover;background:#EBF4EE;display:block}
     .ncard-body{padding:16px}
-    .ncard-source{font-size:.75rem;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px}
-    .ncard-title{font-size:1rem;font-weight:700;color:#1A3D2B;line-height:1.45;margin:8px 0 6px}
+    .ncard-tag{display:inline-block;font-size:.7rem;font-weight:700;color:white;background:#1A3D2B;border-radius:4px;padding:2px 8px;margin-bottom:8px;letter-spacing:.4px}
+    .ncard-tag.gold{background:#C9A84C}
+    .ncard-title{font-size:.95rem;font-weight:700;color:#1A3D2B;line-height:1.45;margin:4px 0 8px}
     .ncard-title a{color:inherit;text-decoration:none}
     .ncard-title a:hover{color:#C9A84C}
-    .ncard-excerpt{font-size:.85rem;color:#6B6B6B;line-height:1.6;margin-bottom:10px}
-    .ncard-date{font-size:.75rem;color:#9B9B9B}
-    .news-secondary{border-top:2px solid #E2DBD0;padding-top:24px}
-    .news-secondary h3{font-size:.8rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-    .news-link-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #F0EBE3;text-decoration:none;color:inherit}
+    .ncard-excerpt{font-size:.82rem;color:#6B6B6B;line-height:1.6;margin-bottom:10px}
+    .ncard-date{font-size:.72rem;color:#9B9B9B}
+    .sec-divider{border:none;border-top:2px solid #E2DBD0;margin:40px 0 32px}
+    .news-link-list{display:flex;flex-direction:column;gap:0}
+    .news-link-item{display:flex;align-items:flex-start;gap:12px;padding:16px 0;border-bottom:1px solid #F0EBE3;text-decoration:none;color:inherit}
     .news-link-item:last-child{border-bottom:none}
     .news-link-item:hover .nlk-title{color:#C9A84C}
-    .nlk-num{font-size:1.5rem;font-weight:800;color:#E2DBD0;line-height:1;min-width:28px}
+    .nlk-num{font-size:1.4rem;font-weight:800;color:#E2DBD0;line-height:1;min-width:28px}
     .nlk-title{font-size:.92rem;font-weight:600;color:#1A3D2B;line-height:1.4;display:block;margin-bottom:4px}
-    .nlk-meta{font-size:.75rem;color:#9B9B9B}
+    .nlk-meta{font-size:.72rem;color:#9B9B9B}
   </style>
-  <!-- Google Analytics 4 — thay G-XXXXXXXXXX bằng Measurement ID thật của chú -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
@@ -45,7 +46,6 @@
       <a href="/nha-ban/" class="nav-link">Nhà Bán</a>
       <a href="/thi-truong/" class="nav-link active">Thị Trường</a>
       <a href="/ve-nam-ban/" class="nav-link">Về Nam Ban</a>
-      <a href="/tin-tuc/" class="nav-link">Tin Tức</a>
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
@@ -59,18 +59,58 @@
   <div class="container">
     <nav class="breadcrumb"><a href="/">Trang chủ</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2"/></svg><span>Thị Trường</span></nav>
     <h1>Thị Trường Bất Động Sản</h1>
-    <p>Tin tức, chính sách và xu hướng bất động sản Việt Nam – cập nhật mới nhất</p>
+    <p>Quy hoạch, chính sách và phân tích thị trường BĐS Lâm Đồng – cập nhật liên tục</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="sec-header" style="margin-bottom:28px">
-      <div><p class="sec-label">Cập nhật tháng 6/2026</p><h2 class="sec-title">Tin BĐS Nổi Bật</h2></div>
+
+    <div class="sec-header" style="margin-bottom:24px">
+      <div><p class="sec-label">Cập nhật tháng 6/2026</p><h2 class="sec-title">Phân Tích & Quy Hoạch</h2></div>
     </div>
 
-    <!-- 3 bài chính -->
-    <div class="news-featured">
+    <div class="news-grid">
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/lam-dong-quy-hoach-2026.svg" alt="Lâm Đồng quy hoạch điều chỉnh 2026" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag gold">Quy hoạch 2026</span>
+          <h3 class="ncard-title"><a href="/thi-truong/lam-dong-quy-hoach-dieu-chinh-2026/">Lâm Đồng ban hành Quy hoạch Điều chỉnh 2026: 7 thay đổi lớn nhà đầu tư BĐS cần biết ngay</a></h3>
+          <p class="ncard-excerpt">QĐ 2786/2026 tái định hình toàn bộ không gian phát triển tỉnh Lâm Đồng – từ đô thị loại III, cao tốc Đông–Tây đến mục tiêu GRDP 10,5%/năm.</p>
+          <span class="ncard-date">06/06/2026 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/nghi-duong-retreat-cao-nguyen.svg" alt="Nghỉ dưỡng retreat cao nguyên Lâm Đồng" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag gold">BĐS Nghỉ Dưỡng</span>
+          <h3 class="ncard-title"><a href="/thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong/">Tiềm năng BĐS nghỉ dưỡng & retreat cao nguyên Lâm Đồng: 3 phân khúc hưởng lợi nhất</a></h3>
+          <p class="ncard-excerpt">Cao nguyên Lâm Đồng đang nổi lên như điểm đến wellness hàng đầu Đông Nam Á. Phân tích 3 phân khúc BĐS có tiềm năng sinh lời cao nhất.</p>
+          <span class="ncard-date">06/06/2026 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/quy-hoach-lam-dong-2025.svg" alt="Quyết định phê duyệt Điều chỉnh Quy hoạch tỉnh Lâm Đồng" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Hạ tầng & Quy hoạch</span>
+          <h3 class="ncard-title"><a href="/thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025/">Quyết định phê duyệt Điều chỉnh Quy hoạch tỉnh Lâm Đồng 2021–2030, tầm nhìn 2050</a></h3>
+          <p class="ncard-excerpt">Phân tích chi tiết bản Điều chỉnh Quy hoạch sau hợp nhất 3 tỉnh – những thay đổi ảnh hưởng trực tiếp đến thị trường BĐS Nam Ban.</p>
+          <span class="ncard-date">Tháng 6/2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/thay-doi-quy-hoach-lam-dong.svg" alt="5 thay đổi quan trọng Quy hoạch Lâm Đồng 2025" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Quy hoạch</span>
+          <h3 class="ncard-title"><a href="/thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025/">5 thay đổi quan trọng trong Quy hoạch Lâm Đồng 2025 ảnh hưởng trực tiếp đến Nam Ban</a></h3>
+          <p class="ncard-excerpt">Từ nâng cấp đô thị loại III đến hạ tầng cao tốc – 5 thay đổi quy hoạch nào tác động rõ nhất đến giá trị bất động sản khu vực Nam Ban.</p>
+          <span class="ncard-date">Tháng 6/2025 · Nam Ban Villas</span>
+        </div>
+      </article>
 
       <article class="ncard">
         <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
@@ -79,74 +119,118 @@
           <polygon points="50,100 120,40 190,100" fill="#2E5C40"/>
           <polygon points="150,100 230,30 310,100" fill="#3A7D44"/>
           <polygon points="270,100 340,50 400,100" fill="#2E5C40"/>
-          <rect x="20" y="115" width="200" height="16" rx="4" fill="#C9A84C"/>
-          <rect x="20" y="138" width="160" height="10" rx="3" fill="rgba(255,255,255,.4)"/>
-          <text x="120" y="127" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="700">Thị Trường BĐS Quý I/2026</text>
+          <text x="200" y="127" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#C9A84C" font-weight="700">Thị Trường BĐS Quý I/2026</text>
         </svg>
         <div class="ncard-body">
-          <span class="ncard-source">24HMoney · 05/2026</span>
+          <span class="ncard-tag">Thị trường</span>
           <h3 class="ncard-title"><a href="/thi-truong/bds-quy-1-2026/">Thị trường BĐS quý I/2026: Giá nhà "lập đỉnh" nhưng thanh khoản chậm lại</a></h3>
-          <p class="ncard-excerpt">Giá bất động sản tiếp tục leo thang và thiết lập đỉnh mới trong quý I/2026, tuy nhiên lượng giao dịch thực tế giảm rõ rệt do người mua thận trọng hơn trước mức giá cao. Thị trường đang trong giai đoạn phân hóa mạnh giữa các phân khúc.</p>
-          <span class="ncard-date">Nguồn: 24HMoney</span>
+          <p class="ncard-excerpt">Giá bất động sản tiếp tục leo thang và thiết lập đỉnh mới, tuy nhiên lượng giao dịch thực tế giảm rõ rệt do người mua thận trọng.</p>
+          <span class="ncard-date">05/2026 · 24HMoney</span>
         </div>
       </article>
 
       <article class="ncard">
         <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="ng2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDB97D"/><stop offset="100%" stop-color="#F4A460"/></linearGradient></defs>
-          <rect width="400" height="180" fill="url(#ng2)"/>
+          <defs><linearGradient id="ng2b" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDB97D"/><stop offset="100%" stop-color="#F4A460"/></linearGradient></defs>
+          <rect width="400" height="180" fill="url(#ng2b)"/>
           <rect x="0" y="110" width="400" height="70" fill="#1A3D2B"/>
           <circle cx="320" cy="50" r="35" fill="#FFD700" opacity="0.7"/>
           <polygon points="0,110 100,55 200,110" fill="#2E5C40"/>
           <polygon points="180,110 280,45 380,110" fill="#3A7D44"/>
-          <text x="200" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="700">Lâm Đồng · Bảng Giá Tăng 30-50%</text>
+          <text x="200" y="140" text-anchor="middle" font-family="sans-serif" font-size="10" fill="white" font-weight="700">Bảng Giá Đất Tăng 30-50%</text>
         </svg>
         <div class="ncard-body">
-          <span class="ncard-source">Khoalam Group · 2026</span>
+          <span class="ncard-tag">Bảng giá đất</span>
           <h3 class="ncard-title"><a href="/thi-truong/bang-gia-dat-lam-dong-2026/">Chu kỳ BĐS 2026 – Bảng giá đất Lâm Đồng tăng 30–50% & cơ hội cho nhà đầu tư</a></h3>
-          <p class="ncard-excerpt">Bảng giá đất Lâm Đồng 2026 được phê duyệt với mức tăng trung bình 30–50% so với giai đoạn 2020–2024. Đất nền Bảo Lộc và khu vực lân cận như Nam Ban đang là điểm nóng thu hút dòng tiền đầu tư trong chu kỳ mới.</p>
-          <span class="ncard-date">Nguồn: Khoalam Group</span>
-        </div>
-      </article>
-
-      <article class="ncard">
-        <svg class="ncard-img" viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="180" fill="#F7F3EE"/>
-          <rect x="30" y="30" width="340" height="120" rx="8" fill="white" stroke="#E2DBD0" stroke-width="2"/>
-          <rect x="50" y="50" width="120" height="12" rx="4" fill="#1A3D2B"/>
-          <rect x="50" y="70" width="300" height="8" rx="3" fill="#E2DBD0"/>
-          <rect x="50" y="86" width="280" height="8" rx="3" fill="#E2DBD0"/>
-          <rect x="50" y="102" width="240" height="8" rx="3" fill="#E2DBD0"/>
-          <rect x="50" y="120" width="80" height="20" rx="6" fill="#C9A84C"/>
-          <text x="90" y="134" text-anchor="middle" font-family="sans-serif" font-size="9" fill="white" font-weight="700">Đọc thêm →</text>
-          <text x="200" y="165" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#9B9B9B">Nhadautu.vn · 2026</text>
-        </svg>
-        <div class="ncard-body">
-          <span class="ncard-source">Nhà Đầu Tư · 2026</span>
-          <h3 class="ncard-title"><a href="/thi-truong/thi-truong-gia-tri-thuc-2026/">Năm 2026: Thị trường BĐS chuyển dịch theo giá trị thực</a></h3>
-          <p class="ncard-excerpt">Chu kỳ mới bất động sản 2026 đánh dấu sự phục hồi sau giai đoạn tái cấu trúc. Dòng tiền chuyển dịch từ đầu cơ sang sản phẩm pháp lý sạch, có dòng tiền bền vững – lợi thế rõ ràng cho các dự án có sổ đỏ lâu dài như Nam Ban Villas.</p>
-          <span class="ncard-date">Nguồn: Nhadautu.vn</span>
+          <p class="ncard-excerpt">Bảng giá đất Lâm Đồng 2026 tăng trung bình 30–50%. Nam Ban đang là điểm nóng thu hút dòng tiền đầu tư trong chu kỳ mới.</p>
+          <span class="ncard-date">2026 · Khoalam Group</span>
         </div>
       </article>
 
     </div>
 
-    <!-- 2 link phụ -->
-    <div class="news-secondary">
-      <h3>Tin liên quan</h3>
+    <hr class="sec-divider">
+
+    <div class="sec-header" style="margin-bottom:24px">
+      <div><p class="sec-label">Nam Ban & Lâm Đồng</p><h2 class="sec-title">Tin Tức Địa Phương</h2></div>
+    </div>
+
+    <div class="news-grid">
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-main.svg" alt="Tuyến tránh Nam Ban" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Hạ tầng</span>
+          <h3 class="ncard-title"><a href="/thi-truong/tuyen-tranh-nam-ban-khi-nao-hoan-thanh/">Tuyến tránh Nam Ban: Khi nào hoàn thành và tác động đến BĐS?</a></h3>
+          <p class="ncard-excerpt">Tuyến đường tránh thị trấn Nam Ban khi hoàn thành sẽ giảm tải giao thông và nâng giá trị bất động sản toàn khu vực.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-2.svg" alt="Đất Nam Ban tăng giá 2025" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Giá đất</span>
+          <h3 class="ncard-title"><a href="/thi-truong/dat-nam-ban-tang-gia-2025/">Đất Nam Ban tăng giá 2025: Cơ hội vàng hay rủi ro?</a></h3>
+          <p class="ncard-excerpt">Phân tích làn sóng tăng giá đất Nam Ban năm 2025 – nguyên nhân thực sự và những yếu tố nền tảng tạo nên giá trị bền vững.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-4.svg" alt="Sân bay Liên Khương mở rộng" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Hạ tầng</span>
+          <h3 class="ncard-title"><a href="/thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban/">Sân bay Liên Khương mở rộng: Tác động đến BĐS Nam Ban</a></h3>
+          <p class="ncard-excerpt">Dự án mở rộng sân bay Liên Khương lên tầm quốc tế và những ảnh hưởng tích cực đến bất động sản khu vực Nam Ban.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-5.svg" alt="Kinh nghiệm mua đất Nam Ban" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Cẩm nang</span>
+          <h3 class="ncard-title"><a href="/thi-truong/mua-dat-nam-ban-kinh-nghiem-2025/">Mua đất Nam Ban 2025: Kinh nghiệm & checklist pháp lý</a></h3>
+          <p class="ncard-excerpt">Hướng dẫn đầy đủ cho người mua đất lần đầu tại Nam Ban – từ kiểm tra sổ đỏ, quy hoạch đến thương lượng giá và ký hợp đồng.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-3.svg" alt="Vườn thảo mộc Nam Ban Villas" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Khám phá</span>
+          <h3 class="ncard-title"><a href="/thi-truong/kham-pha-vuon-thao-moc-nam-ban-villas/">Khám phá vườn thảo mộc Nam Ban Villas – nơi thiên nhiên hội tụ</a></h3>
+          <p class="ncard-excerpt">Vườn thảo mộc với hàng trăm loại cây dược liệu và hoa bản địa – điểm nhấn tạo nên giá trị sống khác biệt tại Nam Ban Villas.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+      <article class="ncard">
+        <img class="ncard-img" src="../images/news/news-6.svg" alt="Khí hậu Nam Ban" loading="lazy">
+        <div class="ncard-body">
+          <span class="ncard-tag">Khám phá</span>
+          <h3 class="ncard-title"><a href="/thi-truong/khi-hau-cuoc-song-nam-ban/">Khí hậu & cuộc sống Nam Ban: Thiên đường nghỉ dưỡng cao nguyên</a></h3>
+          <p class="ncard-excerpt">Nhiệt độ mát mẻ 18–22°C quanh năm, không khí trong lành – những lý do Nam Ban trở thành lựa chọn sống và đầu tư lý tưởng.</p>
+          <span class="ncard-date">2025 · Nam Ban Villas</span>
+        </div>
+      </article>
+
+    </div>
+
+    <hr class="sec-divider">
+    <div class="sec-header" style="margin-bottom:16px">
+      <div><p class="sec-label">Từ báo chí</p><h2 class="sec-title">Tin Liên Quan</h2></div>
+    </div>
+    <div class="news-link-list">
       <a href="https://vneconomy.vn/bat-dong-san-tang-toc-phuc-hoi-nha-o-vua-tui-tien-van-khat-nguon-cung.htm" target="_blank" rel="noopener" class="news-link-item">
         <span class="nlk-num">01</span>
-        <div>
-          <span class="nlk-title">BĐS 2026: Phục hồi tăng tốc, nhà ở vừa túi tiền vẫn khan nguồn cung</span>
-          <span class="nlk-meta">VnEconomy · 2026</span>
-        </div>
+        <div><span class="nlk-title">BĐS 2026: Phục hồi tăng tốc, nhà ở vừa túi tiền vẫn khan nguồn cung</span><span class="nlk-meta">VnEconomy · 2026</span></div>
       </a>
       <a href="https://baodautu.vn/thi-truong-bat-dong-san-nam-2026-se-soi-dong-trong-su-than-trong-nha-o-xa-hoi-ly-thuong-kiet-chua-nhan-ho-so-dang-ky-d538973.html" target="_blank" rel="noopener" class="news-link-item">
         <span class="nlk-num">02</span>
-        <div>
-          <span class="nlk-title">Thị trường BĐS năm 2026 sẽ sôi động trong sự thận trọng</span>
-          <span class="nlk-meta">Báo Đầu Tư · 2026</span>
-        </div>
+        <div><span class="nlk-title">Thị trường BĐS năm 2026 sẽ sôi động trong sự thận trọng</span><span class="nlk-meta">Báo Đầu Tư · 2026</span></div>
       </a>
     </div>
 
