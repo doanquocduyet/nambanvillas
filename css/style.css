@@ -14,7 +14,7 @@
   --trans:.22s ease;
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
@@ -44,7 +44,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hero-bg::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
 .hero-content{position:relative;z-index:1;color:white;padding:60px 0 80px}
 .hero-eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:.9}
-.hero-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:18px}
+.hero-title{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.1;margin-bottom:18px;letter-spacing:-.03em}
 .hero-title em{color:var(--gold);font-style:normal}
 .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);margin-bottom:36px;max-width:520px}
 
@@ -70,7 +70,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .listings{background:var(--bg2)}
 .sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:16px;flex-wrap:wrap}
 .sec-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.sec-title{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;color:var(--green)}
+.sec-title{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;color:var(--green)}
 .sec-header.center{flex-direction:column;align-items:center;text-align:center}
 .listing-tabs{display:flex;gap:6px}
 .ltab{padding:8px 18px;border-radius:100px;border:2px solid var(--border);font-size:.85rem;font-weight:600;color:var(--muted);transition:all var(--trans)}
@@ -113,7 +113,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ===== CTA STRIP ===== */
 .cta-strip{background:linear-gradient(135deg,#0D2B1C,#1A3D2B);padding:64px 0;color:white}
 .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
-.cta-text h2{font-family:'Playfair Display',Georgia,serif;font-size:1.8rem;font-weight:800;margin-bottom:6px}
+.cta-text h2{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1.8rem;font-weight:800;margin-bottom:6px}
 .cta-text p{opacity:.8;font-size:.97rem}
 .cta-actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn-cta-primary{display:flex;align-items:center;gap:8px;background:var(--gold);color:white;padding:13px 24px;border-radius:8px;font-weight:700;font-size:.95rem;transition:all var(--trans)}
@@ -135,6 +135,25 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:20px 0}
 .footer-bottom .container{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;flex-wrap:wrap;gap:8px}
 .footer-bottom a:hover{color:var(--gold)}
+
+/* ===== SELL SECTION ===== */
+.sell-section{background:var(--green-light);border-top:1px solid var(--border)}
+.sell-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;padding:56px 0}
+.sell-text h2{font-family:'DM Sans',-apple-system,sans-serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;color:var(--green);margin-bottom:8px;letter-spacing:-.02em}
+.sell-text p{color:var(--muted);font-size:.97rem;max-width:480px}
+.sell-actions{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.btn-sell-primary{display:flex;align-items:center;gap:8px;background:var(--green);color:white;padding:13px 24px;border-radius:8px;font-weight:700;font-size:.95rem;transition:all var(--trans)}
+.btn-sell-primary:hover{background:var(--green2);transform:translateY(-1px)}
+.btn-sell-zalo{display:flex;align-items:center;gap:8px;background:#0068FF;color:white;padding:13px 24px;border-radius:8px;font-weight:700;font-size:.95rem;transition:all var(--trans)}
+.btn-sell-zalo:hover{background:#0055CC;transform:translateY(-1px)}
+@media(max-width:768px){.sell-inner{flex-direction:column;text-align:center}.sell-actions{justify-content:center}}
+
+/* ===== FOOTER TAGLINE ===== */
+.footer-tagline{border-top:1px solid rgba(255,255,255,.06);padding:20px 0;text-align:center}
+.footer-tagline .container{display:flex;flex-direction:column;align-items:center;gap:10px}
+.footer-tagline-logo{display:flex;align-items:center;gap:10px;opacity:.8}
+.footer-tagline-logo img{filter:brightness(0) invert(1);opacity:.7}
+.footer-tagline-text{font-size:.78rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase}
 
 /* ===== FLOAT BUTTONS ===== */
 .float-btns{position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:999}
@@ -160,7 +179,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .news-loading .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .page-hero{background:linear-gradient(135deg,#0D2B1C,#1A3D2B);color:white;padding:120px 0 60px}
-.page-hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:10px}
+.page-hero h1{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:10px}
 .page-hero p{opacity:.8;font-size:1rem;max-width:540px}
 .breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;margin-bottom:16px;opacity:.65}
 .breadcrumb a:hover{color:var(--gold)}
