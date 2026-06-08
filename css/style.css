@@ -114,6 +114,24 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .why-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--green)}
 .why-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
 
+/* ===== MANIFESTO ===== */
+.manifesto-wrap{display:flex;align-items:center;gap:32px;margin-top:52px;padding:0 8px}
+.manifesto-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 40%,transparent)}
+.manifesto-wrap .manifesto-line:last-child{background:linear-gradient(90deg,transparent,var(--gold) 60%,transparent)}
+.manifesto{flex:0 1 680px;text-align:center;padding:36px 40px;background:linear-gradient(135deg,rgba(26,61,43,.04) 0%,rgba(201,168,76,.06) 100%);border:1px solid rgba(201,168,76,.22);border-radius:16px;position:relative}
+.manifesto::before{content:'\201C';position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:5rem;line-height:1;color:var(--gold);opacity:.25;font-family:Georgia,serif;pointer-events:none}
+.manifesto p{margin:0;line-height:1.75}
+.manifesto-p1{font-size:1.05rem;font-weight:600;color:var(--green);letter-spacing:-.01em}
+.manifesto-p2{font-size:1.12rem;font-weight:800;color:var(--gold);margin:10px 0 !important;letter-spacing:-.02em}
+.manifesto-p3{font-size:.92rem;color:var(--muted);font-style:italic;line-height:1.8}
+@media(max-width:768px){
+  .manifesto-wrap{flex-direction:column;gap:16px}
+  .manifesto-line{width:60%;height:1px;flex:unset}
+  .manifesto{padding:28px 24px}
+  .manifesto-p1{font-size:.97rem}
+  .manifesto-p2{font-size:1rem}
+}
+
 /* ===== CTA STRIP ===== */
 .cta-strip{background:linear-gradient(135deg,#0D2B1C,#1A3D2B);padding:64px 0;color:white}
 .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
