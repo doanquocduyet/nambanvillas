@@ -1,7 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" fill="none">
-  <!-- Pine tree mark: 3 stacked triangles, gold trunk -->
-  <polygon points="22,3 30,16 14,16" fill="#1A3D2B"/>
-  <polygon points="22,11 32,26 12,26" fill="#1A3D2B"/>
-  <polygon points="22,19 34,37 10,37" fill="#1A3D2B"/>
-  <rect x="19.5" y="37" width="5" height="7" rx="0.5" fill="#C9A84C"/>
+  <!-- Abstract rolling hills — pure line art, dark green -->
+  <!-- Back hill: gentle arc -->
+  <path d="M4,32 Q14,14 22,16 Q30,18 40,32" stroke="#1A3D2B" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+  <!-- Front hill: broader arc -->
+  <path d="M0,40 Q10,24 22,26 Q34,28 44,40" stroke="#1A3D2B" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Gold accent dot — like a sun or landmark on the peak -->
+  <circle cx="22" cy="16" r="2.2" fill="#C9A84C"/>
 </svg>
