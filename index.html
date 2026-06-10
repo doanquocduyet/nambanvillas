@@ -130,12 +130,68 @@
       <div class="hstat-div"></div>
       <div class="hstat"><strong>0đ</strong><span>Check quy hoạch miễn phí</span></div>
     </div>
+
+    <!-- Mini survey -->
+    <div class="hero-survey" id="heroSurvey">
+      <p class="hero-survey-label">Bắt đầu từ đây</p>
+      <h3>Bạn đang nghĩ đến Nam Ban với mục đích gì?</h3>
+      <div class="survey-choices" id="surveyChoices">
+        <button class="survey-choice" data-ans="nghi-duong">🏡 Xây nhà nghỉ dưỡng cuối tuần</button>
+        <button class="survey-choice" data-ans="dau-tu">📈 Đầu tư — chờ tăng giá</button>
+        <button class="survey-choice" data-ans="dinh-cu">🌿 Định cư — chuyển lên sống hẳn</button>
+        <button class="survey-choice" data-ans="tim-hieu">🤔 Đang tìm hiểu — chưa rõ</button>
+      </div>
+      <div class="survey-result" id="surveyResult"></div>
+    </div>
   </div>
 </section>
+
+<script>
+(function(){
+  var answers={
+    'nghi-duong':{
+      text:'Hoàn hảo. Nam Ban cách Đà Lạt 25 phút, khí hậu mát quanh năm, đất từ 600m² – rộng đủ để xây villa vườn nghỉ dưỡng. Nhiều gia đình TP.HCM, Hà Nội đang làm đúng điều này.',
+      cta1:{label:'Xem đất phù hợp',href:'/dat-nen/'},
+      cta2:{label:'Hỏi thêm qua Zalo',href:'https://zalo.me/0978758788',ext:true}
+    },
+    'dau-tu':{
+      text:'Từ 2022 đến nay, đất khu trung tâm Nam Ban đã tăng 40–50%. Tuyến tránh đang thi công, sân bay Liên Khương mở rộng. Chúng tôi sẽ phân tích thẳng lô nào còn tiềm năng thật sự — không nói theo cảm tính.',
+      cta1:{label:'Xem phân tích thị trường',href:'/thi-truong/'},
+      cta2:{label:'Hỏi thẳng qua Zalo',href:'https://zalo.me/0978758788',ext:true}
+    },
+    'dinh-cu':{
+      text:'Nam Ban đang đổi thay nhanh: trường học, chợ mới, café, dịch vụ đang mọc lên. Khí hậu 19–22°C quanh năm. Chúng tôi sẽ giới thiệu những khu phù hợp để ở lâu dài — không chỉ để đầu tư.',
+      cta1:{label:'Khám phá cuộc sống Nam Ban',href:'/ve-nam-ban/'},
+      cta2:{label:'Hay là cafe ở Nam Ban nhé?',href:'/lien-he/'}
+    },
+    'tim-hieu':{
+      text:'Hoàn toàn bình thường — phần lớn người hỏi chúng tôi cũng bắt đầu như vậy. Không cần phải quyết định gì. Chỉ cần nói chuyện 15 phút, chúng tôi sẽ giúp bạn hiểu rõ hơn về Nam Ban.',
+      cta1:{label:'Đọc Namban Notes',href:'/namban-notes/'},
+      cta2:{label:'Hay là cafe đi?',href:'/lien-he/'}
+    }
+  };
+  document.getElementById('surveyChoices').addEventListener('click',function(e){
+    var btn=e.target.closest('.survey-choice');
+    if(!btn)return;
+    var key=btn.dataset.ans;
+    var a=answers[key];
+    if(!a)return;
+    document.querySelectorAll('.survey-choice').forEach(function(b){b.classList.remove('selected')});
+    btn.classList.add('selected');
+    var r=document.getElementById('surveyResult');
+    r.innerHTML='<p>'+a.text+'</p><div class="survey-result-actions"><a href="'+a.cta1.href+'" class="survey-result-btn survey-result-btn-primary">'+a.cta1.label+'</a><a href="'+a.cta2.href+'"'+(a.cta2.ext?' target="_blank"':'')+' class="survey-result-btn survey-result-btn-sec">'+a.cta2.label+'</a></div>';
+    r.style.display='block';
+  });
+})();
+</script>
 
 <!-- LISTINGS -->
 <section class="section listings" id="listings">
   <div class="container">
+    <div class="fomo-bar">
+      <div class="fomo-dot"></div>
+      <p class="fomo-text"><strong>23 người</strong> đang tìm hiểu đất Nam Ban tuần này — phần lớn từ TP.HCM và Hà Nội</p>
+    </div>
     <div class="sec-header">
       <div>
         <p class="sec-label">Đang mở bán</p>
@@ -170,7 +226,7 @@
             <span>Đường nhựa 10m</span>
             <span>Điện nước đầy đủ</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -194,7 +250,7 @@
             <span>View núi & đồi chè</span>
             <span>Hỗ trợ pháp lý</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -218,7 +274,7 @@
             <span>Thanh toán 24 tháng</span>
             <span>Vay NH 70%</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -242,7 +298,7 @@
             <span>Nội thất cao cấp</span>
             <span>Hồ bơi riêng</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -266,7 +322,7 @@
             <span>Vườn riêng 200m²</span>
             <span>Sổ đỏ lâu dài</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -290,7 +346,7 @@
             <span>Mặt đường chính</span>
             <span>Giá tốt nhất khu vực</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Liên hệ tư vấn</a>
+          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
 
@@ -543,22 +599,55 @@
 })();
 </script>
 
-<!-- CTA STRIP -->
-<section class="cta-strip">
-  <div class="container cta-inner">
-    <div class="cta-text">
-      <h2>Tìm mảnh đất phù hợp tại Nam Ban?</h2>
-      <p>Gọi ngay để được tư vấn miễn phí và đặt lịch khảo sát thực địa</p>
+<!-- NAMBAN NOTES -->
+<section class="section notes-section">
+  <div class="container">
+    <div class="sec-header center">
+      <p class="sec-label">Namban Notes</p>
+      <h2 class="sec-title">Những Câu Chuyện Từ Vùng Đất Này</h2>
     </div>
-    <div class="cta-actions">
-      <a href="tel:0938227988" class="btn-cta-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" stroke-width="2"/></svg>
-        0938 227 988
+    <div class="notes-intro">
+      <p>Không phải tin tức. Không phải bài PR. Chỉ là những gì chúng tôi thực sự thấy, nghe và học được trong nhiều năm đi bộ trên những con đồi, con dốc và thung lũng ở Nam Ban.</p>
+    </div>
+    <div class="notes-card">
+      <div class="notes-card-img">
+        <div class="notes-card-img-inner">
+          <p class="notes-card-img-date">Tháng 5 · 2026</p>
+          <p class="notes-card-img-title">Buổi Sáng Trên Đồi Chè</p>
+          <div class="notes-card-img-line"></div>
+          <p class="notes-card-img-tag">Namban Notes · Câu chuyện</p>
+        </div>
+      </div>
+      <div class="notes-card-body">
+        <p class="notes-label">Namban Notes</p>
+        <h3>Buổi Sáng Trên Đồi Chè — Và Người Đàn Ông Quyết Định Không Mua</h3>
+        <p class="notes-excerpt">Anh Hùng lái xe từ Bình Dương lên lúc sáng sớm. Chúng tôi đi bộ trên mảnh đất gần 2 tiếng. Anh đứng ở mép đồi nhìn ra thung lũng rất lâu. Rồi anh quay lại nói: <em>"Đất đẹp thật. Nhưng tôi không mua."</em> Đó là một trong những cuộc trò chuyện trung thực nhất tôi từng có về bất động sản...</p>
+        <a href="/namban-notes/buoi-sang-tren-doi-che/" class="notes-read-btn">
+          Đọc tiếp
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAFE CTA STRIP -->
+<section class="cafe-strip">
+  <div class="cafe-strip-inner">
+    <p class="cafe-strip-eyebrow">Gặp nhau là quan trọng nhất</p>
+    <h2>Hay Là Mình<br><em>Cafe Ở Nam Ban?</em></h2>
+    <p>Không cần chuẩn bị gì. Không cần phải quyết định gì. Chỉ cần một buổi sáng trên cao nguyên, một ly cà phê, và một cuộc trò chuyện thật.</p>
+    <div class="cafe-strip-btns">
+      <a href="/lien-he/" class="cafe-btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 2v3M16 2v3M3 9h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Hẹn cafe đi!
       </a>
-      <a href="https://zalo.me/0978758788" target="_blank" class="btn-cta-zalo">
-        Nhắn Zalo
+      <a href="https://zalo.me/0978758788" target="_blank" class="cafe-btn-sec">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
+        Nhắn Zalo trước
       </a>
     </div>
+    <p class="cafe-strip-note">Chúng tôi đọc kỹ từng tin nhắn và trả lời thật — không phải auto-reply · Mở cửa 7:00 – 21:00 mỗi ngày</p>
   </div>
 </section>
 
@@ -645,7 +734,7 @@
   <p class="sell-widget-desc">Hỏi thẳng — chúng tôi trả lời thật · Không cần phải mua · Miễn phí</p>
   <div class="sell-widget-actions">
     <a href="https://zalo.me/0978758788" target="_blank" class="sell-widget-btn sell-widget-btn-primary">Hỏi qua Zalo</a>
-    <a href="/lien-he/" class="sell-widget-btn sell-widget-btn-zalo">Để lại câu hỏi</a>
+    <a href="/lien-he/" class="sell-widget-btn sell-widget-btn-zalo">Hay là cafe nhé? ☕</a>
   </div>
 </div>
 <script>
