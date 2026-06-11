@@ -7,6 +7,7 @@
   <link rel="canonical" href="https://nambanvillas.vn/nha-ban/hill-house-village/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hill House Village – Nhà Nghỉ Dưỡng 203m² Ven Đà Lạt, 2.6 Tỷ | Nam Ban Villas">
+  <meta property="og:image" content="https://nambanvillas.vn/images/listings/hill-house-village/1.jpg">
   <meta property="og:url" content="https://nambanvillas.vn/nha-ban/hill-house-village/">
   <meta property="og:site_name" content="Nam Ban Villas">
   <link rel="icon" href="../images/favicon.svg?v=3" type="image/svg+xml">
@@ -50,9 +51,8 @@
           <span class="listing-badge">Nhà Bán</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main">
-            <img src="../images/p5.svg" alt="Hill House Village nhà nghỉ dưỡng Nam Ban 2PN 2.6 tỷ" width="700" height="320" style="width:100%;border-radius:12px;display:block">
-          </div>
+          <div class="listing-img-main"><img id="galMain" src="../images/listings/hill-house-village/1.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban" width="700" height="438" onclick="openLb(this.src)"></div>
+          <div class="listing-thumbs"><img src="../images/listings/hill-house-village/1.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 1" loading="lazy" onclick="swapMain(this)" class="active"><img src="../images/listings/hill-house-village/2.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 2" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/3.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 3" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/4.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 4" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/5.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 5" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/6.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 6" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/7.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 7" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/8.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 8" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/9.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 9" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/hill-house-village/10.jpg" alt="Hill House Village nhà nghỉ dưỡng 203m² Nam Ban - ảnh 10" loading="lazy" onclick="swapMain(this)"></div>
         </div>
         <div class="listing-specs-section">
           <h2>Thông Tin Chi Tiết</h2>
@@ -119,6 +119,11 @@ function sendZaloInquiry(form, propName) {
   form.style.display='none';
   document.getElementById('formSuccess').style.display='block';
 }
+
+function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function openLb(src){var o=document.getElementById("lb");document.getElementById("lbImg").src=src;o.classList.add("open");}
+function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>
+<div class="lb-overlay" id="lb" onclick="closeLb(event)"><span class="lb-close">&times;</span><img id="lbImg" src="" alt=""></div>
 </body>
 </html>

@@ -7,6 +7,7 @@
   <link rel="canonical" href="https://nambanvillas.vn/dat-nen/sieu-pham-3700m2/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Siêu Phẩm Đất 3.700m² Mặt Tiền 61m – Phù Hợp Phân Lô, Homestay | Nam Ban Villas">
+  <meta property="og:image" content="https://nambanvillas.vn/images/listings/sieu-pham-3700m2/1.jpg">
   <meta property="og:url" content="https://nambanvillas.vn/dat-nen/sieu-pham-3700m2/">
   <meta property="og:site_name" content="Nam Ban Villas">
   <link rel="icon" href="../../images/favicon.svg?v=3" type="image/svg+xml">
@@ -50,9 +51,8 @@
           <span class="listing-badge">Diện Tích Lớn</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main">
-            <img src="../../images/p4.svg" alt="Đất 3700m² mặt tiền 61m phân lô Nam Ban" width="700" height="320" style="width:100%;border-radius:12px;display:block">
-          </div>
+          <div class="listing-img-main"><img id="galMain" src="../../images/listings/sieu-pham-3700m2/1.jpg" alt="Đất 3.700m² mặt tiền 61m Nam Ban" width="700" height="438" onclick="openLb(this.src)"></div>
+          <div class="listing-thumbs"><img src="../../images/listings/sieu-pham-3700m2/1.jpg" alt="Đất 3.700m² mặt tiền 61m Nam Ban - ảnh 1" loading="lazy" onclick="swapMain(this)" class="active"></div>
         </div>
         <div class="listing-specs-section">
           <h2>Thông Tin Chi Tiết</h2>
@@ -117,6 +117,11 @@ function sendZaloInquiry(form, propName) {
   form.style.display='none';
   document.getElementById('formSuccess').style.display='block';
 }
+
+function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function openLb(src){var o=document.getElementById("lb");document.getElementById("lbImg").src=src;o.classList.add("open");}
+function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>
+<div class="lb-overlay" id="lb" onclick="closeLb(event)"><span class="lb-close">&times;</span><img id="lbImg" src="" alt=""></div>
 </body>
 </html>
