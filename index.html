@@ -79,8 +79,8 @@
   <div class="hero-bg" style="background:linear-gradient(165deg,rgba(10,35,15,0.88) 0%,rgba(18,60,25,0.75) 40%,rgba(12,40,18,0.85) 100%),url('/images/nam-ban-aerial.jpg') center/cover no-repeat;filter:none"></div>
   <div class="container hero-content">
     <p class="hero-eyebrow">Nam Ban · Lâm Hà · Lâm Đồng</p>
-    <h1 class="hero-title"><span class="hero-title-sm">Không Chỉ Mua Đất —</span>Ra Quyết Định <em>Đúng</em></h1>
-    <p class="hero-sub">Chúng tôi giúp bạn hiểu điều gì đang thực sự xảy ra ở Nam Ban — để ra quyết định tốt hơn, sớm hơn.</p>
+    <h1 class="hero-title">Giúp Bạn Ra Quyết Định <em>Đúng</em> Về Đất Nam Ban</h1>
+    <p class="hero-sub">Chúng tôi giúp bạn hiểu rõ những gì đang thực sự diễn ra ở Nam Ban — để ra quyết định tốt hơn, nhanh hơn, chính xác hơn.</p>
 
     <div class="search-box">
       <div class="search-tabs">
@@ -150,12 +150,12 @@
 (function(){
   var answers={
     'nghi-duong':{
-      text:'Hoàn hảo. Nam Ban cách Đà Lạt 25 phút, khí hậu mát quanh năm, đất từ 600m² – rộng đủ để xây villa vườn nghỉ dưỡng. Nhiều gia đình TP.HCM, Hà Nội đang làm đúng điều này.',
+      text:'Nam Ban cách Đà Lạt 25 phút, khí hậu mát quanh năm, thị trường đất nền và đất vườn đa dạng diện tích từ 200m² trở lên. Nhiều gia đình từ TP.HCM, Hà Nội và nhiều tỉnh thành đang thực sự về Nam Ban để xây ngôi nhà second home mơ ước cho gia đình.',
       cta1:{label:'Xem đất phù hợp',href:'/dat-nen/'},
       cta2:{label:'Hỏi thêm qua Zalo',href:'https://zalo.me/0978758788',ext:true}
     },
     'dau-tu':{
-      text:'Từ 2022 đến nay, đất khu trung tâm Nam Ban đã tăng 40–50%. Tuyến tránh đang thi công, sân bay Liên Khương mở rộng. Chúng tôi sẽ phân tích thẳng lô nào còn tiềm năng thật sự — không nói theo cảm tính.',
+      text:'Từ 2022 đến nay, đất Nam Ban có những nơi tăng 30–50% do nhiều nguyên nhân khách quan và nội tại. Chúng tôi sẽ phân tích thẳng khu vực nào, lô nào còn tiềm năng thật sự — không chỉ nói theo cảm tính.',
       cta1:{label:'Xem phân tích thị trường',href:'/thi-truong/'},
       cta2:{label:'Hỏi thẳng qua Zalo',href:'https://zalo.me/0978758788',ext:true}
     },
@@ -190,8 +190,9 @@
   <div class="container">
     <div class="fomo-bar">
       <div class="fomo-dot"></div>
-      <p class="fomo-text"><strong>23 người</strong> đang tìm hiểu đất Nam Ban tuần này — phần lớn từ TP.HCM và Hà Nội</p>
+      <p class="fomo-text"><strong id="fomoNum">23 người</strong> đang tìm hiểu đất Nam Ban tuần này — phần lớn từ TP.HCM và Hà Nội</p>
     </div>
+    <script>(function(){var n=document.getElementById("fomoNum");if(n){var seed=Math.floor(Date.now()/3600000/6);var r=((seed*1103515245+12345)&0x7fffffff)%92+8;n.textContent=r+" người";}})()</script>
     <div class="sec-header">
       <div>
         <p class="sec-label">Đang mở bán</p>
@@ -207,77 +208,67 @@
     <div class="prop-grid" id="propGrid">
 
       <article class="prop-card" data-type="dat-nen">
-        <a href="/dat-nen/lo-782m2/" class="prop-img-wrap">
-          <img src="images/p1.svg" alt="Đất nền B1 636m² Nam Ban Villas lô góc" width="400" height="260" loading="lazy">
-          <span class="prop-badge">Đất Nền</span>
-        </a>
-        <div class="prop-body">
-          <div class="prop-top">
-            <span class="prop-price">3,9 tỷ</span>
-            <span class="prop-area">636 m²</span>
-          </div>
-          <h3 class="prop-title"><a href="/dat-nen/lo-782m2/">Lô B1 – Góc VIP, view hồ bơi & sân golf</a></h3>
-          <p class="prop-loc">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>
-            Khu B · Nam Ban Villas · Lâm Hà
-          </p>
-          <div class="prop-specs">
-            <span>Sổ đỏ lâu dài</span>
-            <span>Đường nhựa 10m</span>
-            <span>Điện nước đầy đủ</span>
-          </div>
-          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
-        </div>
-      </article>
-
-      <article class="prop-card" data-type="dat-nen">
-        <a href="/dat-nen/lo-975m2/" class="prop-img-wrap">
-          <img src="images/p2.svg" alt="Đất nền A17 959m² view đồi Nam Ban Villas" width="400" height="260" loading="lazy">
+        <a href="/dat-nen/dong-thanh-845m2/" class="prop-img-wrap">
+          <img src="images/p2.svg" alt="Lô đất 845m² Đông Thanh Nam Ban view sương mây" width="400" height="260" loading="lazy">
           <span class="prop-badge hot">Nổi Bật</span>
         </a>
         <div class="prop-body">
           <div class="prop-top">
-            <span class="prop-price">1,729 tỷ</span>
-            <span class="prop-area">959 m²</span>
+            <span class="prop-price">Chưa tới 2 tỷ</span>
+            <span class="prop-area">845 m²</span>
           </div>
-          <h3 class="prop-title"><a href="/dat-nen/lo-975m2/">Lô A17 – View đồi 360°, lô lớn nhất dự án</a></h3>
-          <p class="prop-loc">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>
-            Khu A · Nam Ban Villas · Lâm Hà
-          </p>
+          <h3 class="prop-title"><a href="/dat-nen/dong-thanh-845m2/">Góc săn mây – Lô 845m² mặt tiền 12m, tặng thiết kế 50 triệu</a></h3>
+          <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Đông Thanh · Nam Ban · Lâm Hà</p>
           <div class="prop-specs">
-            <span>Sổ đỏ lâu dài</span>
-            <span>View núi & đồi cà phê</span>
-            <span>Hỗ trợ pháp lý</span>
+            <span>239m² thổ cư</span>
+            <span>Cách Đà Lạt 28km</span>
+            <span>Sổ hồng riêng</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
+          <a href="/dat-nen/dong-thanh-845m2/" class="prop-cta">Hỏi về lô này →</a>
+        </div>
+      </article>
+
+      <article class="prop-card" data-type="nha-ban">
+        <a href="/nha-ban/hill-house-village/" class="prop-img-wrap">
+          <img src="images/p5.svg" alt="Hill House Village nhà nghỉ dưỡng Nam Ban 203m²" width="400" height="260" loading="lazy">
+          <span class="prop-badge">Nhà Bán</span>
+        </a>
+        <div class="prop-body">
+          <div class="prop-top">
+            <span class="prop-price">2,6 tỷ</span>
+            <span class="prop-area">203 m²</span>
+          </div>
+          <h3 class="prop-title"><a href="/nha-ban/hill-house-village/">Hill House Village – Nhà nghỉ dưỡng 2PN, quản gia 2 năm</a></h3>
+          <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Nam Ban · Lâm Hà · Lâm Đồng</p>
+          <div class="prop-specs">
+            <span>2 phòng ngủ</span>
+            <span>Gần Chùa Linh Ẩn</span>
+            <span>Sổ hồng riêng</span>
+          </div>
+          <a href="/nha-ban/hill-house-village/" class="prop-cta">Hỏi về căn này →</a>
         </div>
       </article>
 
       <article class="prop-card" data-type="dat-nen">
-        <a href="/dat-nen/lo-1000m2/" class="prop-img-wrap">
-          <img src="images/p3.svg" alt="Đất nền C1 684m² Nam Ban Villas" width="400" height="260" loading="lazy">
+        <a href="/dat-nen/thung-lung-530m2/" class="prop-img-wrap">
+          <img src="images/p3.svg" alt="Đất 530m² view thung lũng sương mờ Nam Ban 899 triệu" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
         </a>
         <div class="prop-body">
           <div class="prop-top">
-            <span class="prop-price">2,1 tỷ</span>
-            <span class="prop-area">684 m²</span>
+            <span class="prop-price">899 triệu</span>
+            <span class="prop-area">530 m²</span>
           </div>
-          <h3 class="prop-title"><a href="/dat-nen/lo-1000m2/">Lô C1 – View thung lũng toàn cảnh</a></h3>
-          <p class="prop-loc">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>
-            Khu C · Nam Ban Villas · Lâm Hà
-          </p>
+          <h3 class="prop-title"><a href="/dat-nen/thung-lung-530m2/">Đất 530m² view thung lũng sương mờ – Gần rừng thông, hồ bãi công</a></h3>
+          <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Gần Thác Voi · Nam Ban · Lâm Hà</p>
           <div class="prop-specs">
-            <span>Sổ đỏ lâu dài</span>
-            <span>Thanh toán 24 tháng</span>
-            <span>Vay NH 70%</span>
+            <span>Sổ hồng riêng</span>
+            <span>Cách Thác Voi 4km</span>
+            <span>Cần bán gấp</span>
           </div>
-          <a href="/lien-he/" class="prop-cta">Hỏi về lô này →</a>
+          <a href="/dat-nen/thung-lung-530m2/" class="prop-cta">Hỏi về lô này →</a>
         </div>
       </article>
-
 
     </div>
 
@@ -392,7 +383,7 @@
           <div>
             <div class="testi-stars">★★★★★</div>
             <div class="testi-name">Anh Minh Tuấn</div>
-            <div class="testi-role">Kỹ sư – Đà Lạt · Đất nền 636m²</div>
+            <div class="testi-role">Kỹ sư – Đà Lạt · Đất nền 336m²</div>
           </div>
         </div>
       </div>
@@ -418,7 +409,7 @@
           <div>
             <div class="testi-stars">★★★★★</div>
             <div class="testi-name">Anh Việt Anh</div>
-            <div class="testi-role">Nhà đầu tư – Bình Dương · Đất nền 959m²</div>
+            <div class="testi-role">Nhà đầu tư – Bình Dương · Đất nền 259m²</div>
           </div>
         </div>
       </div>
@@ -555,7 +546,7 @@
   <div class="footer-bottom">
     <div class="container">
       <span>© 2025 Nam Ban Villas · Bất động sản Nam Ban – Lâm Hà – Lâm Đồng</span>
-      <span><a href="/sitemap.xml">Sitemap</a></span>
+      
     </div>
   </div>
   <div class="footer-tagline">
@@ -564,7 +555,7 @@
         <img src="/images/logo.svg" alt="Nam Ban Villas" width="28" height="34">
         <span style="color:rgba(255,255,255,.5);font-weight:600;font-size:.85rem">NamBan<strong style="color:rgba(255,255,255,.7)">Villas</strong></span>
       </div>
-      <p class="footer-tagline-text">Không giúp bạn mua đất — Giúp bạn ra quyết định đúng về đất Nam Ban</p>
+      <p class="footer-tagline-text">Giúp bạn ra quyết định đúng về đất Nam Ban</p>
     </div>
   </div>
 </footer>

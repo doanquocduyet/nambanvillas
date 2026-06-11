@@ -1,9 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" fill="none">
-  <!-- Abstract rolling hills — pure line art, dark green -->
-  <!-- Back hill: gentle arc -->
-  <path d="M4,32 Q14,14 22,16 Q30,18 40,32" stroke="#1A3D2B" stroke-width="1.6" stroke-linecap="round" fill="none"/>
-  <!-- Front hill: broader arc -->
-  <path d="M0,40 Q10,24 22,26 Q34,28 44,40" stroke="#1A3D2B" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- Gold accent dot — like a sun or landmark on the peak -->
-  <circle cx="22" cy="16" r="2.2" fill="#C9A84C"/>
+  <!-- Left pillar -->
+  <line x1="6" y1="46" x2="6" y2="22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- Right pillar -->
+  <line x1="38" y1="46" x2="38" y2="22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- M-peak crown: left up → valley down → right up → connect to right pillar -->
+  <polyline points="6,22 15,7 22,15 29,7 38,22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Inner wave 1 -->
+  <path d="M10,30 C15,27 19,33 22,30 C25,27 29,33 34,30" stroke="#1A3D2B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  <!-- Inner wave 2 -->
+  <path d="M10,38 C15,35 19,41 22,38 C25,35 29,41 34,38" stroke="#1A3D2B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
 </svg>

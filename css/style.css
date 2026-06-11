@@ -151,7 +151,7 @@ a.pain-cta:hover{text-decoration:underline}
 @media(max-width:768px){
   .manifesto-wrap{flex-direction:column;gap:16px}
   .manifesto-line{width:60%;height:1px;flex:unset}
-  .manifesto{padding:28px 24px}
+  .manifesto{padding:28px 24px;flex:none;width:100%}
   .manifesto-p1{font-size:.97rem}
   .manifesto-p2{font-size:1rem}
 }
