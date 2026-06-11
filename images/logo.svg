@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 48" fill="none">
-  <!-- Left pillar -->
-  <line x1="6" y1="46" x2="6" y2="22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round"/>
-  <!-- Right pillar -->
-  <line x1="38" y1="46" x2="38" y2="22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round"/>
-  <!-- M-peak crown: left up → valley down → right up → connect to right pillar -->
-  <polyline points="6,22 15,7 22,15 29,7 38,22" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Inner wave 1 -->
-  <path d="M10,30 C15,27 19,33 22,30 C25,27 29,33 34,30" stroke="#1A3D2B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-  <!-- Inner wave 2 -->
-  <path d="M10,38 C15,35 19,41 22,38 C25,35 29,41 34,38" stroke="#1A3D2B" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none">
+  <!-- Left pillar (taller) -->
+  <line x1="14" y1="52" x2="14" y2="18" stroke="#1A3D2B" stroke-width="3" stroke-linecap="square"/>
+  <!-- Right pillar (shorter, slightly inset) -->
+  <line x1="44" y1="50" x2="44" y2="26" stroke="#1A3D2B" stroke-width="3" stroke-linecap="square"/>
+  <!-- M crown: left pillar top → peak → right pillar top (asymmetric) -->
+  <polyline points="14,18 29,10 44,26" stroke="#1A3D2B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+  <!-- Wave 1: extends beyond both pillars -->
+  <path d="M4,34 C10,30 16,38 22,34 C28,30 36,38 44,34 C48,32 52,34 54,33" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+  <!-- Wave 2: extends beyond both pillars, lower -->
+  <path d="M2,44 C8,40 14,48 22,43 C30,38 38,47 44,43 C47,41 50,44 54,42" stroke="#1A3D2B" stroke-width="2.4" stroke-linecap="round" fill="none"/>
 </svg>
