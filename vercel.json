@@ -1,4 +1,21 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {"source": "/mua-dat-nam-ban", "destination": "/dat-nen/", "permanent": true},
+    {"source": "/dat-nam-ban", "destination": "/dat-nen/", "permanent": true},
+    {"source": "/dat-nen-nam-ban-lam-dong", "destination": "/dat-nen/", "permanent": true},
+    {"source": "/gia-dat-nam-ban", "destination": "/thi-truong/bang-gia-dat-lam-dong-2026/", "permanent": true},
+    {"source": "/bang-gia-dat-nam-ban", "destination": "/thi-truong/bang-gia-dat-lam-dong-2026/", "permanent": true},
+    {"source": "/second-home-da-lat", "destination": "/ve-nam-ban/tiem-nang-dau-tu-nam-ban/", "permanent": true},
+    {"source": "/nha-nghi-duong-nam-ban", "destination": "/nha-ban/", "permanent": true},
+    {"source": "/nam-ban-o-dau", "destination": "/ve-nam-ban/", "permanent": true},
+    {"source": "/khi-hau-nam-ban", "destination": "/thi-truong/khi-hau-cuoc-song-nam-ban/", "permanent": true},
+    {"source": "/song-cham-lam-dong", "destination": "/thi-truong/khi-hau-cuoc-song-nam-ban/", "permanent": true},
+    {"source": "/co-nen-mua-dat-nam-ban", "destination": "/ve-nam-ban/tiem-nang-dau-tu-nam-ban/", "permanent": true},
+    {"source": "/dat-nam-ban-co-tang-gia-khong", "destination": "/thi-truong/dat-nam-ban-tang-gia-2025/", "permanent": true},
+    {"source": "/quy-hoach-nam-ban", "destination": "/thi-truong/lam-dong-quy-hoach-dieu-chinh-2026/", "permanent": true},
+    {"source": "/lien-he", "destination": "/lien-he/", "permanent": true},
+    {"source": "/contact", "destination": "/lien-he/", "permanent": true}
+  ]
 }

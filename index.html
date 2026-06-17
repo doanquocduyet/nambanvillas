@@ -82,6 +82,7 @@
     <p class="hero-eyebrow">Nam Ban · Lâm Hà · Lâm Đồng</p>
     <h1 class="hero-title">Giúp Bạn Ra Quyết Định <em>Đúng</em> Về Đất Nam Ban</h1>
     <p class="hero-sub">Chúng tôi giúp bạn hiểu rõ những gì đang thực sự diễn ra ở Nam Ban — để ra quyết định tốt hơn, nhanh hơn, chính xác hơn.</p>
+    <p id="recoLine" style="font-size:.82rem;color:rgba(255,255,255,.55);margin-top:10px;font-style:italic;min-height:1.2em;transition:opacity .6s;opacity:0"></p>
 
     <div class="search-box">
       <div class="search-tabs">
@@ -613,6 +614,14 @@
   if(!w||!c)return;
   if(sessionStorage.getItem('sellWidgetClosed'))w.style.display='none';
   c.addEventListener('click',function(){w.style.display='none';sessionStorage.setItem('sellWidgetClosed','1');});
+})();
+(function(){
+  var q=["Quyết định đúng thường không cần nhiều thông tin hơn — cần thông tin tốt hơn.","Đôi khi câu hỏi đúng là: tôi có nên mua không, chứ không phải mua ở đâu.","Đất tốt không thiếu. Người hiểu đúng về nó mới thiếu.","Mua nhanh đôi khi đúng. Mua mà không hiểu thì luôn sai.","Nam Ban không dành cho tất cả mọi người — và đó là điều tốt.","Sương mờ buổi sáng ở đây không phải ẩn dụ. Nó là thật.","Giá đất không nói lên tất cả. Pháp lý mới là thứ đáng lo.","Người quyết định chậm không hẳn là thận trọng — đôi khi là chưa đủ thông tin.","Cách xa Đà Lạt 27km, nhưng cách xa sự ồn ào hơn thế nhiều."];
+  var el=document.getElementById('recoLine');if(!el)return;
+  var i=Math.floor(Math.random()*q.length);
+  function show(){el.textContent='"'+q[i]+'"';el.style.opacity='1';}
+  setTimeout(show,400);
+  setInterval(function(){el.style.opacity='0';setTimeout(function(){i=(i+1)%q.length;el.textContent='"'+q[i]+'"';el.style.opacity='1';},650);},9000);
 })();
 </script>
 </body>
