@@ -1,0 +1,68 @@
+name: IndexNow Auto-Submit
+
+# Mỗi khi đẩy thay đổi HTML lên main, tự động báo cho các công cụ tìm kiếm
+# (Bing, Yandex, Seznam, Naver — và qua đó là ChatGPT Search/Copilot)
+# rằng có trang mới hoặc trang vừa cập nhật. Hoàn toàn tự động, không cần ai bấm.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Build changed URL list and submit to IndexNow
+        env:
+          INDEXNOW_KEY: abdd063f81d049182d79e17f4239ad8f
+          HOST: nambanvillas.vn
+        run: |
+          # Đợi Vercel deploy xong (tránh submit trước khi trang live)
+          sleep 90
+
+          # Lấy danh sách file thay đổi trong lần push này
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            CHANGED=$(git ls-files '*.html')
+          else
+            CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} || git ls-files '*.html')
+          fi
+
+          # Chuyển đường dẫn file -> URL
+          URLS=""
+          for f in $CHANGED; do
+            case "$f" in
+              *.html)
+                # index.html -> thư mục; bỏ "index.html" ở cuối
+                url=$(echo "$f" | sed 's#index\.html$##; s#\.html$#/#')
+                URLS="$URLS \"https://${HOST}/${url}\","
+                ;;
+            esac
+          done
+
+          if [ -z "$URLS" ]; then
+            echo "Không có URL HTML nào thay đổi — bỏ qua."
+            exit 0
+          fi
+
+          # Bỏ dấu phẩy cuối
+          URLS=$(echo "$URLS" | sed 's/,$//')
+
+          PAYLOAD="{\"host\":\"${HOST}\",\"key\":\"${INDEXNOW_KEY}\",\"keyLocation\":\"https://${HOST}/${INDEXNOW_KEY}.txt\",\"urlList\":[${URLS}]}"
+
+          echo "Payload gửi đi:"
+          echo "$PAYLOAD"
+
+          # Gửi tới IndexNow (Bing là endpoint chính, phân phối cho các engine khác)
+          curl -sS -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD" \
+            -w "\nHTTP status: %{http_code}\n"

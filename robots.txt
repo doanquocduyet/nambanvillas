@@ -1,13 +1,52 @@
+# robots.txt — Nam Ban Villas
+# Cho phép tất cả công cụ tìm kiếm và AI engine truy cập toàn bộ nội dung
+
 User-agent: *
 Allow: /
 
-# Block admin paths
+# Chặn đường dẫn quản trị / dữ liệu nội bộ
 Disallow: /admin/
 Disallow: /subscribe/
-Disallow: /*.json$
 
-# Sitemaps
+# ===== AI / Answer Engines (cho phép rõ ràng để được trích dẫn) =====
+# Khi người dùng hỏi ChatGPT, Gemini, Perplexity, Claude... về Nam Ban,
+# các bot này được phép đọc và dùng nội dung web làm câu trả lời.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap & nguồn dữ liệu cho máy đọc
 Sitemap: https://nambanvillas.vn/sitemap.xml
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1

@@ -24,10 +24,13 @@ jobs:
       - name: Run news updater
         run: node scripts/update-news.mjs
 
+      - name: Rebuild RSS feed
+        run: node scripts/build-feed.mjs
+
       - name: Commit and push if changed
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add data/news.json
-          git diff --staged --quiet || git commit -m "chore: weekly news update $(date +'%Y-%m-%d')"
+          git add data/news.json feed.xml
+          git diff --staged --quiet || git commit -m "chore: weekly news + feed update $(date +'%Y-%m-%d') [skip ci]"
           git push
