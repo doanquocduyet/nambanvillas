@@ -347,4 +347,65 @@ a.pain-cta:hover{text-decoration:underline}
 .form-honest-note strong{color:var(--green)}
 @media(max-width:600px){.form-context-row{grid-template-columns:1fr}}
 
+/* ===== MOBILE BOTTOM NAV ===== */
+.mobile-nav{display:none}
+.mobile-sheet,.mobile-sheet-overlay{display:none}
+@media(max-width:768px){
+  /* Thanh điều hướng cố định dưới đáy — vùng ngón cái dễ thao tác nhất */
+  .mobile-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:1000;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
+    border-top:1px solid var(--border);
+    padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+    box-shadow:0 -2px 16px rgba(26,61,43,.08);
+  }
+  .mnav-item{
+    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    gap:3px;padding:6px 2px;color:var(--muted);font-size:.66rem;font-weight:600;
+    background:none;border:none;font-family:inherit;line-height:1;text-align:center;
+    -webkit-tap-highlight-color:transparent;transition:color .15s;
+  }
+  .mnav-item svg{width:22px;height:22px}
+  .mnav-item:active{color:var(--green)}
+  .mnav-item span{white-space:nowrap}
+  /* Nút Gọi nổi bật ở giữa, nhô lên */
+  .mnav-call{color:var(--green)}
+  .mnav-call-circle{
+    display:flex;align-items:center;justify-content:center;
+    width:52px;height:52px;border-radius:50%;background:var(--gold);
+    box-shadow:0 4px 14px rgba(201,168,76,.45);margin-top:-22px;margin-bottom:1px;
+    border:3px solid var(--bg);
+  }
+  .mnav-call-circle svg{width:24px;height:24px}
 
+  /* Menu sheet trượt lên từ dưới */
+  .mobile-sheet-overlay{
+    display:block;position:fixed;inset:0;z-index:1001;background:rgba(13,43,28,.5);
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .mobile-sheet-overlay.open{opacity:1;pointer-events:auto}
+  .mobile-sheet{
+    display:block;position:fixed;left:0;right:0;bottom:0;z-index:1002;
+    background:var(--bg2);border-radius:20px 20px 0 0;
+    padding:10px 20px calc(20px + env(safe-area-inset-bottom));
+    transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+    box-shadow:0 -8px 40px rgba(0,0,0,.2);
+  }
+  .mobile-sheet.open{transform:translateY(0)}
+  .mobile-sheet-handle{width:40px;height:4px;background:var(--border);border-radius:99px;margin:6px auto 14px}
+  .mobile-sheet a{
+    display:block;padding:15px 8px;font-size:1rem;font-weight:600;color:var(--text);
+    border-bottom:1px solid var(--bg);
+  }
+  .mobile-sheet a:last-child{border-bottom:none}
+  .mobile-sheet a:active{color:var(--green)}
+
+  /* Ẩn các điều khiển cũ trên mobile — bottom nav thay thế hết */
+  .menu-btn{display:none}
+  .float-btns{display:none}
+  .hotline-btn{display:none}
+  .nav{display:none}
+  /* Chừa chỗ cho bottom nav, tránh che nội dung cuối trang */
+  body{padding-bottom:64px}
+  .footer{padding-bottom:24px}
+}
