@@ -61,7 +61,7 @@
           <span class="listing-badge">Nổi Bật</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="../images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban" width="700" height="438" onclick="openLb(this.src)"></div>
+          <div class="listing-img-main"><img id="galMain" src="../images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban" width="700" height="438" fetchpriority="high" onclick="openLb(this.src)"></div>
           <div class="listing-thumbs"><img src="../images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 1" loading="lazy" onclick="swapMain(this)" class="active"><img src="../images/listings/nha-vuon-1018m2/2.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 2" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/nha-vuon-1018m2/3.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 3" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/nha-vuon-1018m2/4.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 4" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/nha-vuon-1018m2/5.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 5" loading="lazy" onclick="swapMain(this)"><img src="../images/listings/nha-vuon-1018m2/6.jpg" alt="Nhà vườn 1.018m² hồ cá Koi Nam Ban - ảnh 6" loading="lazy" onclick="swapMain(this)"></div>
         </div>
         <div class="listing-specs-section">
@@ -112,15 +112,6 @@
           <h4>Tin Đăng Liên Quan</h4>
           <ul class="sidebar-links"><li><a href="/nha-ban/hill-house-village/">Hill House Village – 2PN, 2.6 tỷ</a></li><li><a href="/nha-ban/villa-mini-me-linh/">Villa Mini Mê Linh – 3PN, 2.38 tỷ</a></li></ul>
         </div>
-        <div class="sidebar-card mini-contact-form" style="margin-top:16px">
-          <h4>Quan tâm đến bất động sản này?</h4>
-          <form class="quick-form" onsubmit="sendZaloInquiry(this,'Nhà Vườn 1.018m² Nam Ban – 3PN, Hồ Cá Koi, View Đẹp – 3,8 Tỷ');return false;">
-            <input type="text" placeholder="Họ và tên" name="name" required>
-            <input type="tel" placeholder="Số điện thoại" name="phone" required>
-            <button type="submit" class="quick-form-btn">Gửi yêu cầu tư vấn</button>
-          </form>
-          <div class="form-success" id="formSuccess" style="display:none">Đã gửi! Chúng tôi sẽ liên hệ ngay.</div>
-        </div>
       </aside>
     </div>
   </div>
@@ -141,16 +132,6 @@
 </div>
 <script src="../js/main.js" defer></script>
 <script>
-function sendZaloInquiry(form, propName) {
-  var name = form.name.value.trim();
-  var phone = form.phone.value.trim();
-  var msg = 'Xin chào! Tôi là ' + name + ' (' + phone + '), quan tâm đến: ' + propName + '. Nhờ tư vấn thêm ạ.';
-  window.open('https://zalo.me/0978758788?text=' + encodeURIComponent(msg), '_blank');
-  form.style.display='none';
-  document.getElementById('formSuccess').style.display='block';
-}
-
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src){var o=document.getElementById("lb");document.getElementById("lbImg").src=src;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

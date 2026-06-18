@@ -79,7 +79,7 @@
 
         <!-- Images -->
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="../../images/listings/dong-thanh-320m2/1.jpg" alt="Đất Đông Thanh 320m² Nam Ban" width="700" height="438" onclick="openLb(this.src)"></div>
+          <div class="listing-img-main"><img id="galMain" src="../../images/listings/dong-thanh-320m2/1.jpg" alt="Đất Đông Thanh 320m² Nam Ban" width="700" height="438" fetchpriority="high" onclick="openLb(this.src)"></div>
           <div class="listing-thumbs"><img src="../../images/listings/dong-thanh-320m2/1.jpg" alt="Đất Đông Thanh 320m² Nam Ban - ảnh 1" loading="lazy" onclick="swapMain(this)" class="active"><img src="../../images/listings/dong-thanh-320m2/2.jpg" alt="Đất Đông Thanh 320m² Nam Ban - ảnh 2" loading="lazy" onclick="swapMain(this)"><img src="../../images/listings/dong-thanh-320m2/3.jpg" alt="Đất Đông Thanh 320m² Nam Ban - ảnh 3" loading="lazy" onclick="swapMain(this)"></div>
         </div>
 
@@ -138,16 +138,6 @@
             <li><a href="/ve-nam-ban/xa-nam-ban-sap-nhap/">Xã Nam Ban sau sáp nhập 2025</a></li>
           </ul>
         </div>
-
-        <div class="sidebar-card mini-contact-form" style="margin-top:16px">
-          <h4>Quan tâm đến bất động sản này?</h4>
-          <form class="quick-form" onsubmit="sendZaloInquiry(this,'Đất Nền Đông Thanh 320-330m²');return false;">
-            <input type="text" placeholder="Họ và tên" name="name" required>
-            <input type="tel" placeholder="Số điện thoại" name="phone" required pattern="[0-9]{9,11}">
-            <button type="submit" class="quick-form-btn">Gửi yêu cầu tư vấn</button>
-          </form>
-          <div class="form-success" id="formSuccess">Đã gửi! Chúng tôi sẽ liên hệ ngay.</div>
-        </div>
       </aside>
 
     </div>
@@ -184,16 +174,6 @@
 <script src="../../js/main.js" defer></script>
 
 <script>
-function sendZaloInquiry(form, propName) {
-  var name = form.name.value.trim();
-  var phone = form.phone.value.trim();
-  var msg = 'Xin chào! Tôi là ' + name + ' (' + phone + '), quan tâm đến: ' + propName + '. Nhờ tư vấn thêm ạ.';
-  var url = 'https://zalo.me/0978758788?text=' + encodeURIComponent(msg);
-  window.open(url, '_blank');
-  form.parentNode.querySelector('.quick-form').style.display='none';
-  form.parentNode.querySelector('.form-success').style.display='block';
-}
-
 function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src){var o=document.getElementById("lb");document.getElementById("lbImg").src=src;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
