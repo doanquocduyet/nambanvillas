@@ -75,8 +75,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ===== LISTINGS ===== */
 .listings{background:var(--bg2)}
 .sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;gap:16px;flex-wrap:wrap}
-.sec-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
-.sec-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;line-height:1.15;color:var(--green)}
+.sec-label{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;opacity:.85}
+.sec-title{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;line-height:1.18;color:var(--green);letter-spacing:-.02em}
+/* Primary section (Listings) — anchor of the page, slightly larger */
+.listings .sec-title{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:800}
 .sec-header.center{flex-direction:column;align-items:center;text-align:center}
 .listing-tabs{display:flex;gap:6px}
 .ltab{padding:8px 18px;border-radius:100px;border:2px solid var(--border);font-size:.85rem;font-weight:600;color:var(--muted);transition:all var(--trans)}
@@ -309,7 +311,7 @@ a.pain-cta:hover{text-decoration:underline}
 .notes-section{background:var(--bg);padding:40px 0}
 .notes-compact{max-width:720px;margin:0 auto;background:white;border-radius:12px;border:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;gap:20px;transition:box-shadow .2s}
 .notes-compact:hover{box-shadow:0 4px 20px rgba(0,0,0,.08)}
-.notes-compact-tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.notes-compact-tag{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);opacity:.85;margin-bottom:6px}
 .notes-compact h3{font-size:.97rem;font-weight:600;color:var(--green);line-height:1.4;margin-bottom:6px}
 .notes-compact p{font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:10px}
 .notes-compact-divider{width:1px;height:64px;background:var(--border);flex-shrink:0}
