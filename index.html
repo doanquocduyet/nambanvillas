@@ -581,9 +581,25 @@
   var w=document.getElementById('sellWidget');
   var c=document.getElementById('sellWidgetClose');
   if(!w||!c)return;
-  if(sessionStorage.getItem('sellWidgetClosed'))return;
-  c.addEventListener('click',function(){w.style.display='none';sessionStorage.setItem('sellWidgetClosed','1');});
-  setTimeout(function(){w.style.display='block';},30000);
+  // Chỉ hiện 1 lần duy nhất — dùng localStorage thay sessionStorage
+  if(localStorage.getItem('nbv_popup_seen'))return;
+  var shown=false;
+  function show(){
+    if(shown)return;
+    shown=true;
+    w.style.display='block';
+    localStorage.setItem('nbv_popup_seen','1');
+  }
+  c.addEventListener('click',function(){w.style.display='none';});
+  // Trigger 1: scroll qua 60% trang
+  window.addEventListener('scroll',function(){
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    if(pct>=0.6)show();
+  },{passive:true});
+  // Trigger 2: exit intent (chuẩn bị thoát — chỉ desktop)
+  document.addEventListener('mouseleave',function(e){
+    if(e.clientY<10)show();
+  });
 })();
 </script>
 </body>
