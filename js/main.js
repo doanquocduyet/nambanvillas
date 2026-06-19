@@ -37,13 +37,6 @@ ltabs.forEach(t=>t.addEventListener('click',()=>{
   cards.forEach(c=>c.classList.toggle('hidden',f!=='all'&&c.dataset.type!==f));
 }));
 
-// Back to top
-const backTop=document.getElementById('backTop');
-window.addEventListener('scroll',()=>{
-  if(backTop) backTop.style.display=window.scrollY>400?'flex':'none';
-},{passive:true});
-backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
 // QR Code – Zalo
 function makeQR(id,url,size){
   const el=document.getElementById(id);

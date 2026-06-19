@@ -182,14 +182,6 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 @media(max-width:480px){.sell-widget{width:200px;right:12px;bottom:170px}.sell-widget-desc{display:none}}
 
 
-/* ===== FLOAT BUTTONS ===== */
-.float-btns{position:fixed;bottom:24px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:999}
-.fbtn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all var(--trans)}
-.fbtn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.fcall{background:var(--green)}
-.fzalo{background:#0068FF}
-.ftop{background:rgba(0,0,0,.45)}
-
 /* ===== MINI CONTACT FORM (listing sidebar) ===== */
 .mini-contact-form h4{color:var(--green);font-size:.95rem;font-weight:700;margin-bottom:12px}
 .quick-form{display:flex;flex-direction:column;gap:9px}
@@ -402,10 +394,18 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 
   /* Ẩn các điều khiển cũ trên mobile — bottom nav thay thế hết */
   .menu-btn{display:none}
-  .float-btns{display:none}
   .hotline-btn{display:none}
   .nav{display:none}
   /* Chừa chỗ cho bottom nav, tránh che nội dung cuối trang */
   body{padding-bottom:64px}
   .footer{padding-bottom:24px}
 }
+
+/* ===== QUY HOẠCH MAP ===== */
+.qh-map-wrap{background:white;border-radius:16px;border:2px solid #E2DBD0;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.qh-map-inner{position:relative;overflow:hidden;user-select:none}
+.qh-zoom-controls{position:absolute;top:60px;right:12px;display:flex;flex-direction:column;gap:4px}
+.qh-zoom-btn{width:32px;height:32px;background:white;border:1px solid #ccc;border-radius:6px;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.15);color:#1A3D2B;line-height:1}
+.qh-zoom-btn:hover{background:#f0f0f0}
+.qh-cta-btn{display:inline-flex;align-items:center;padding:14px 32px;background:#0068FF;color:white;border-radius:50px;font-size:1rem;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
+.qh-cta-btn:hover{background:#0055CC;transform:translateY(-2px)}
