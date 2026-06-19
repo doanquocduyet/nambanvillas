@@ -118,7 +118,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .why-card p{font-size:.88rem;color:var(--muted);line-height:1.6}
 
 /* ===== PAIN SECTION ===== */
-.pain-section{background:#0D2B1C}
+.pain-section{background:#1A3D2B}
 .pain-section .sec-label{color:rgba(201,168,76,.7)}
 .pain-section .sec-title{color:white}
 .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
