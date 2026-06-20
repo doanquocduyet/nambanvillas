@@ -460,8 +460,9 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
   .cmp-modal{border-radius:16px;margin:20px}
 }
 @media(max-width:768px){
-  /* nâng thanh so sánh lên trên bottom-nav (64px) */
-  .cmp-bar{bottom:64px;padding-bottom:12px}
+  /* nâng thanh so sánh lên trên bottom-nav — nav z-index cao hơn để không bị che */
+  .cmp-bar{bottom:0;z-index:999}
+  .mobile-nav{z-index:1004}
   .cmp-slot-title{display:none}
   .cmp-slot{max-width:none}
   .cmp-go{padding:12px 16px;font-size:.85rem}
