@@ -121,6 +121,13 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
   setTimeout(()=>{this.reset();btn.textContent='Gửi yêu cầu';btn.style.background='';},4000);
 });
 
+/* Ẩn thẻ "Có thể bạn quan tâm" nếu ảnh lỗi/thiếu */
+document.querySelectorAll('.related-card img').forEach(function(img){
+  function hide(){var c=img.closest('.related-card');if(c)c.style.display='none';}
+  if(img.complete&&img.naturalWidth===0)hide();
+  img.addEventListener('error',hide);
+});
+
 /* ===== SO SÁNH LÔ ===== */
 (function(){
   const cards=document.querySelectorAll('.prop-card');

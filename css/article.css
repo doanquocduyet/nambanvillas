@@ -41,25 +41,37 @@
 .listing-specs-table td,.specs-table td{padding:10px 14px;font-size:.9rem;border-bottom:1px solid #E2DBD0;vertical-align:top}
 .listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){font-weight:600;color:#1A3D2B;width:28%}
 .listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){width:22%}
-/* Sidebar price card */
-.listing-price-card{background:#EBF4EE;border:1.5px solid #C2DFC9;color:#1A3D2B;border-radius:16px;padding:24px;margin-bottom:16px}
-.price-tag{font-size:1.9rem;font-weight:800;color:#1A3D2B;line-height:1.1;margin-bottom:4px}
-.price-note{font-size:.85rem;color:#5a7a65;margin-bottom:18px}
-.sidebar-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
-.sidebar-specs .ss-item,.sidebar-specs div{background:rgba(26,61,43,.07);border-radius:8px;padding:8px 10px}
-.sidebar-specs .ss-item span,.sidebar-specs div span{display:block;font-size:.75rem;color:#5a7a65;margin-bottom:2px}
-.sidebar-specs .ss-item strong,.sidebar-specs div strong{font-size:.9rem;font-weight:700;color:#1A3D2B}
-.btn-listing-cta{display:block;background:#1A3D2B;color:white;text-align:center;padding:13px;border-radius:10px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:.15s}
-.btn-listing-cta:hover{background:#2E5C40}
-.btn-listing-zalo{display:block;background:#0068FF;color:white;text-align:center;padding:13px;border-radius:10px;font-weight:700;text-decoration:none;transition:.15s}
-.btn-listing-zalo:hover{background:#0055cc}
-.sidebar-note{font-size:.78rem;opacity:.7;text-align:center;margin-top:10px}
-.sidebar-card{background:white;border:2px solid #E2DBD0;border-radius:16px;padding:20px;position:sticky;top:90px}
-.sidebar-card h4{font-size:.85rem;font-weight:700;color:#1A3D2B;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
-.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-.sidebar-links a{color:#1A3D2B;font-size:.88rem;text-decoration:none;border-bottom:1px solid #E2DBD0;padding-bottom:8px;display:block;transition:.15s}
-.sidebar-links a:hover{color:#C9A84C}
+/* Sidebar price card — clean, soft, modern */
+.listing-price-card{background:#fff;border:1px solid #E8E2D9;border-radius:20px;padding:26px 24px;margin-bottom:0;box-shadow:0 6px 28px rgba(26,61,43,.07)}
+.price-tag{font-size:1.7rem;font-weight:800;color:#1A3D2B;line-height:1.15;margin-bottom:4px;letter-spacing:-.02em}
+.price-note{font-size:.82rem;color:#8a978f;margin-bottom:22px}
+.sidebar-specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.sidebar-specs .ss-item,.sidebar-specs div{background:#F2F6F3;border-radius:12px;padding:10px 13px;flex:1 1 calc(50% - 4px);min-width:0}
+.sidebar-specs div span:first-child{display:block;font-size:.72rem;color:#8a978f;margin-bottom:3px}
+.sidebar-specs div span:last-child,.sidebar-specs div strong{display:block;font-size:.92rem;font-weight:700;color:#1A3D2B}
+/* CTA row: 1 primary + compact Zalo */
+.listing-cta-row{display:flex;gap:8px}
+.btn-listing-cta{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:#1A3D2B;color:white;text-align:center;padding:14px;border-radius:13px;font-weight:700;font-size:.95rem;text-decoration:none;margin-bottom:0;transition:.18s}
+.btn-listing-cta:hover{background:#2E5C40;transform:translateY(-1px)}
+.btn-listing-zalo{flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:#fff;color:#0068FF;border:1.5px solid #cfe0ff;text-align:center;padding:14px 20px;border-radius:13px;font-weight:700;text-decoration:none;transition:.18s}
+.btn-listing-zalo:hover{background:#f0f6ff;border-color:#0068FF}
+.sidebar-note{font-size:.78rem;color:#9aa89f;text-align:center;margin-top:12px}
+.sidebar-card{background:#fff;border:1px solid #EDE7DD;border-radius:16px;padding:18px 20px;margin-top:16px}
+.sidebar-card h4{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.sidebar-links a{color:#2D2D2D;font-size:.88rem;text-decoration:none;border-bottom:1px solid #F0EBE2;padding-bottom:9px;display:block;transition:.15s;line-height:1.45}
+.sidebar-links a:hover{color:#1A3D2B}
 .sidebar-links li:last-child a{border-bottom:none;padding-bottom:0}
+/* Related listings — image cards at bottom */
+.related-section{border-top:1px solid #EAE4DA;margin-top:32px;padding:44px 0 8px}
+.related-head{font-size:1.3rem;font-weight:800;color:#1A3D2B;margin-bottom:22px;letter-spacing:-.02em}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.related-card{display:block;background:#fff;border:1px solid #EAE4DA;border-radius:16px;overflow:hidden;transition:.2s;text-decoration:none}
+.related-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(26,61,43,.13)}
+.related-card img{width:100%;aspect-ratio:16/11;object-fit:cover;display:block}
+.related-card-body{padding:14px 16px}
+.related-card-title{font-size:.92rem;font-weight:700;color:#1A3D2B;line-height:1.4;margin:0}
+.related-card-cta{font-size:.82rem;color:#8a978f;margin-top:8px;font-weight:600}
 /* Quick contact form in sidebar */
 .mini-contact-form h4{margin-bottom:12px}
 .quick-form{display:flex;flex-direction:column;gap:8px}
@@ -78,8 +90,7 @@
 /* Breadcrumb bar */
 .breadcrumb-bar{background:#F7F3EE;border-bottom:1px solid #E2DBD0;padding:12px 0}
 .bc-sep{color:#aaa;margin:0 4px}
-@media(max-width:900px){.sidebar-card{position:static}.listing-price-card{margin-bottom:0}}
-.sidebar-card{background:white;border:2px solid #E2DBD0;border-radius:16px;padding:20px}
+@media(max-width:900px){.listing-price-card{margin-bottom:0}}
 .sidebar-price{font-size:1.8rem;font-weight:800;color:#1A3D2B;margin-bottom:4px}
 .sidebar-area{font-size:.9rem;color:#6B6B6B;margin-bottom:20px}
 .sidebar-cta{display:block;background:#1A3D2B;color:white;text-align:center;padding:14px;border-radius:10px;font-weight:700;text-decoration:none;margin-bottom:12px}
