@@ -163,8 +163,8 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
-/* ===== SO SÁNH LÔ ===== */
-(function(){
+/* SO SÁNH LÔ — tạm tắt cho đến khi có trang so sánh thật */
+(function(){return;
   const cards=document.querySelectorAll('.prop-card');
   if(!cards.length)return;
   const MAX=2;

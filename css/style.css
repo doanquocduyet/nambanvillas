@@ -304,7 +304,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 :focus-visible{outline:2px solid var(--green);outline-offset:2px}
 
 /* ===== QUIZ / MỤC ĐÍCH ===== */
-.quiz-section{background:#fff}
+.quiz-section{background:var(--green-light)}
 .quiz-section .hero-survey{max-width:720px;margin:0 auto;text-align:center}
 .hero-survey-label{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:10px;opacity:.6}
 .hero-survey h3{font-size:1.35rem;font-weight:700;color:var(--green);margin-bottom:24px;line-height:1.35;letter-spacing:-.02em}
@@ -380,6 +380,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   .mnav-item svg{width:22px;height:22px}
   .mnav-item:active{color:var(--green)}
   .mnav-item span{white-space:nowrap}
+  .mnav-search{color:var(--green);font-weight:700}
   /* Nút Gọi nổi bật ở giữa, nhô lên */
   .mnav-call{color:var(--green)}
   .mnav-call-circle{
