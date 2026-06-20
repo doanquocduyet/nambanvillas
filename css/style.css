@@ -495,14 +495,14 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 }
 
 /* ===== MOBILE DETAIL PAGE IMPROVEMENTS ===== */
+/* Ẩn bảng specs trùng lặp — sidebar price card đã có rồi */
+.listing-specs-section{display:none}
+/* Ẩn "Đọc Thêm" cuối trang — trùng với "Thị Trường Liên Quan" ở sidebar */
+.detail-doc-them{display:none}
 @media(max-width:900px){
-  /* Hide duplicate specs table — sidebar price card already shows same info */
-  .listing-specs-section{display:none}
   /* Simplify sidebar contact: hide Zalo btn (mobile nav already has Zalo tab) */
   .btn-listing-zalo{display:none}
   .sidebar-note{display:none}
-  /* Merge "Thị trường" and "Đọc thêm" — hide the bottom Đọc Thêm section */
-  .detail-doc-them{display:none}
   /* Breadcrumb bar compact */
   .breadcrumb-bar{padding:8px 0}
 }
