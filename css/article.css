@@ -45,11 +45,11 @@
 .lb-overlay.open{display:flex}
 .lb-overlay img{max-width:94vw;max-height:90vh;border-radius:10px}
 .lb-close{position:absolute;top:18px;right:24px;color:#fff;font-size:2.2rem;line-height:1;cursor:pointer}
-.listing-specs-table,.specs-table{width:100%;border-collapse:collapse;margin:20px 0}
-.listing-specs-table tr:nth-child(even),.specs-table tr:nth-child(even){background:#F7F3EE}
-.listing-specs-table td,.specs-table td{padding:10px 14px;font-size:.9rem;border-bottom:1px solid #E2DBD0;vertical-align:top}
-.listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){font-weight:600;color:#1A3D2B;width:28%}
-.listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){width:22%}
+.listing-specs-table,.specs-table{width:100%;border-collapse:separate;border-spacing:0;margin:18px 0 8px;border:1px solid #EDE7DD;border-radius:14px;overflow:hidden}
+.listing-specs-table td,.specs-table td{padding:13px 16px;font-size:.92rem;border-bottom:1px solid #F0EBE2;vertical-align:top;color:#2D2D2D}
+.listing-specs-table tr:last-child td,.specs-table tr:last-child td{border-bottom:none}
+.listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){font-weight:600;color:#8a978f;width:24%;font-size:.84rem}
+.listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){font-weight:700;color:#1A3D2B;width:26%}
 /* Sidebar price card — clean, soft, modern */
 .listing-price-card{background:#fff;border:1px solid #E8E2D9;border-radius:20px;padding:26px 24px;margin-bottom:0;box-shadow:0 6px 28px rgba(26,61,43,.07)}
 .price-tag{font-size:1.7rem;font-weight:800;color:#1A3D2B;line-height:1.15;margin-bottom:4px;letter-spacing:-.02em}

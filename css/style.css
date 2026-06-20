@@ -515,15 +515,20 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   }
 }
 
-/* ===== MOBILE DETAIL PAGE IMPROVEMENTS ===== */
-/* Ẩn bảng specs trùng lặp — sidebar price card đã có rồi */
-.listing-specs-section{display:none}
+/* ===== DETAIL PAGE — SPECS & STICKY SIDEBAR ===== */
 /* Ẩn "Đọc Thêm" cuối trang — trùng với "Thị Trường Liên Quan" ở sidebar */
 .detail-doc-them{display:none}
+/* Desktop: hiện bảng thông số trong cột chính, ẩn specs nhỏ ở sidebar (tránh trùng) */
+@media(min-width:901px){
+  .listing-specs-section{display:block}
+  .sidebar-specs{display:none}
+  /* Card giá + sidebar "dính" khi cuộn */
+  .listing-sidebar{position:sticky;top:88px;align-self:start}
+}
+/* Mobile: ẩn bảng, dùng specs nhỏ gọn trong card giá */
 @media(max-width:900px){
-  /* Simplify sidebar contact: hide Zalo btn (mobile nav already has Zalo tab) */
+  .listing-specs-section{display:none}
   .btn-listing-zalo{display:none}
   .sidebar-note{display:none}
-  /* Breadcrumb bar compact */
   .breadcrumb-bar{padding:8px 0}
 }
