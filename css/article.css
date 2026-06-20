@@ -42,15 +42,15 @@
 .listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){font-weight:600;color:#1A3D2B;width:28%}
 .listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){width:22%}
 /* Sidebar price card */
-.listing-price-card{background:#1A3D2B;color:white;border-radius:16px;padding:24px;margin-bottom:16px}
-.price-tag{font-size:2rem;font-weight:800;color:#C9A84C;line-height:1.1;margin-bottom:4px}
-.price-note{font-size:.85rem;opacity:.75;margin-bottom:18px}
+.listing-price-card{background:#EBF4EE;border:1.5px solid #C2DFC9;color:#1A3D2B;border-radius:16px;padding:24px;margin-bottom:16px}
+.price-tag{font-size:1.9rem;font-weight:800;color:#1A3D2B;line-height:1.1;margin-bottom:4px}
+.price-note{font-size:.85rem;color:#5a7a65;margin-bottom:18px}
 .sidebar-specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
-.sidebar-specs .ss-item,.sidebar-specs div{background:rgba(255,255,255,.1);border-radius:8px;padding:8px 10px}
-.sidebar-specs .ss-item span,.sidebar-specs div span{display:block;font-size:.75rem;opacity:.7;margin-bottom:2px}
-.sidebar-specs .ss-item strong,.sidebar-specs div strong{font-size:.9rem;font-weight:700}
-.btn-listing-cta{display:block;background:#C9A84C;color:white;text-align:center;padding:13px;border-radius:10px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:.15s}
-.btn-listing-cta:hover{background:#b8943b}
+.sidebar-specs .ss-item,.sidebar-specs div{background:rgba(26,61,43,.07);border-radius:8px;padding:8px 10px}
+.sidebar-specs .ss-item span,.sidebar-specs div span{display:block;font-size:.75rem;color:#5a7a65;margin-bottom:2px}
+.sidebar-specs .ss-item strong,.sidebar-specs div strong{font-size:.9rem;font-weight:700;color:#1A3D2B}
+.btn-listing-cta{display:block;background:#1A3D2B;color:white;text-align:center;padding:13px;border-radius:10px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:.15s}
+.btn-listing-cta:hover{background:#2E5C40}
 .btn-listing-zalo{display:block;background:#0068FF;color:white;text-align:center;padding:13px;border-radius:10px;font-weight:700;text-decoration:none;transition:.15s}
 .btn-listing-zalo:hover{background:#0055cc}
 .sidebar-note{font-size:.78rem;opacity:.7;text-align:center;margin-top:10px}
