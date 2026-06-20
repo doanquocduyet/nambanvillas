@@ -19,11 +19,23 @@
 .article-cta-box a{background:#C9A84C;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;display:inline-block}
 /* Listing detail */
 .listing-detail-grid{display:grid;grid-template-columns:1fr 340px;gap:0;max-width:1100px;margin:40px auto;padding:0 20px}
-@media(max-width:900px){.listing-detail-grid{grid-template-columns:1fr}}
 .listing-main{padding-right:32px}
-@media(max-width:900px){.listing-main{padding-right:0}}
 .listing-sidebar{border-left:1px solid #E2DBD0;padding-left:28px;padding-top:4px}
-@media(max-width:900px){.listing-sidebar{border-left:none;padding-left:0}}
+/* ===== MOBILE: dàn lại thứ tự — giá + thông số + CTA ngay dưới ảnh ===== */
+@media(max-width:900px){
+  .listing-detail-grid{display:flex;flex-direction:column;margin:24px auto}
+  .listing-main,.listing-sidebar{display:contents}
+  .listing-main{padding-right:0}
+  .listing-sidebar{border-left:none;padding-left:0}
+  .listing-title{order:1}
+  .listing-meta-row{order:2}
+  .listing-images{order:3}
+  .listing-price-card{order:4;margin:6px 0 10px}
+  .listing-description{order:5}
+  .risk-block{order:6}
+  .sidebar-related{order:7;margin-top:8px}
+  .sidebar-card{order:8}
+}
 .sidebar-related{margin-top:20px;border-top:1px solid #E8E2D9;padding-top:16px}
 .sidebar-related-head{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 .sidebar-related-list{display:flex;flex-direction:column;gap:12px}

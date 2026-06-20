@@ -121,6 +121,41 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
   setTimeout(()=>{this.reset();btn.textContent='Gửi yêu cầu';btn.style.background='';},4000);
 });
 
+/* Vuốt ảnh trên mobile — trang chi tiết (gallery) */
+(function(){
+  var main=document.getElementById('galMain');
+  var thumbs=document.querySelectorAll('.listing-thumbs img');
+  if(!main||thumbs.length<2)return;
+  function currentIndex(){
+    for(var i=0;i<thumbs.length;i++){if(thumbs[i].classList.contains('active'))return i;}
+    return 0;
+  }
+  function show(i){
+    if(i<0)i=thumbs.length-1;
+    if(i>=thumbs.length)i=0;
+    var t=thumbs[i];
+    main.src=t.src;
+    Array.prototype.forEach.call(thumbs,function(x){x.classList.remove('active');});
+    t.classList.add('active');
+    t.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
+  }
+  var x0=null,y0=null,moved=false;
+  main.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY;moved=false;},{passive:true});
+  main.addEventListener('touchmove',function(e){
+    if(x0===null)return;
+    var dx=e.touches[0].clientX-x0,dy=e.touches[0].clientY-y0;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>10)moved=true;
+  },{passive:true});
+  main.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(moved&&Math.abs(dx)>40){show(currentIndex()+(dx<0?1:-1));}
+    x0=null;
+  });
+  // Chặn mở lightbox nếu vừa vuốt (tránh bấm nhầm)
+  main.addEventListener('click',function(e){if(moved){e.stopPropagation();e.preventDefault();moved=false;}},true);
+})();
+
 /* Ẩn thẻ "Có thể bạn quan tâm" nếu ảnh lỗi/thiếu */
 document.querySelectorAll('.related-card img').forEach(function(img){
   function hide(){var c=img.closest('.related-card');if(c)c.style.display='none';}
