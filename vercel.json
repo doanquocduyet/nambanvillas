@@ -2,9 +2,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {"source": "/mua-dat-nam-ban", "destination": "/dat-nen/", "permanent": true},
-    {"source": "/dat-nam-ban", "destination": "/dat-nen/", "permanent": true},
-    {"source": "/dat-nen-nam-ban-lam-dong", "destination": "/dat-nen/", "permanent": true},
+    {"source": "/dat-nen", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/mua-dat-nam-ban", "destination": "/dat-nen-nam-ban/", "permanent": true},
+    {"source": "/dat-nam-ban", "destination": "/dat-nen-nam-ban/", "permanent": true},
+    {"source": "/dat-nen-nam-ban-lam-dong", "destination": "/dat-nen-nam-ban/", "permanent": true},
     {"source": "/gia-dat-nam-ban", "destination": "/thi-truong/bang-gia-dat-lam-dong-2026/", "permanent": true},
     {"source": "/bang-gia-dat-nam-ban", "destination": "/thi-truong/bang-gia-dat-lam-dong-2026/", "permanent": true},
     {"source": "/second-home-da-lat", "destination": "/ve-nam-ban/tiem-nang-dau-tu-nam-ban/", "permanent": true},

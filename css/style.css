@@ -253,6 +253,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
  .contact-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
+ html{font-size:17px}
  .section{padding:44px 0}
  .nav{position:fixed;top:68px;left:0;right:0;background:var(--bg2);border-top:1px solid var(--border);flex-direction:column;align-items:stretch;padding:12px;transform:translateY(-100%);opacity:0;pointer-events:none;transition:all var(--trans);box-shadow:var(--shadow-lg)}
  .nav.open{transform:translateY(0);opacity:1;pointer-events:all}
@@ -409,3 +410,98 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .qh-zoom-btn:hover{background:#f0f0f0}
 .qh-cta-btn{display:inline-flex;align-items:center;padding:14px 32px;background:var(--green);color:white;border-radius:50px;font-size:1rem;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
 .qh-cta-btn:hover{background:var(--green2);transform:translateY(-2px)}
+
+/* ===== SO SÁNH LÔ ===== */
+.cmp-btn{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px;border:1.5px solid var(--border);border-radius:8px;background:white;color:var(--muted);font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--trans)}
+.cmp-btn:hover{border-color:var(--green);color:var(--green)}
+.cmp-btn.active{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.cmp-btn .cmp-tick{display:none}
+.cmp-btn.active .cmp-tick{display:inline}
+.cmp-btn.active .cmp-plus{display:none}
+
+/* Thanh so sánh dưới màn hình */
+.cmp-bar{position:fixed;left:0;right:0;bottom:0;z-index:1003;background:white;border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(26,61,43,.13);transform:translateY(115%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+.cmp-bar.show{transform:translateY(0)}
+.cmp-bar-inner{display:flex;align-items:center;gap:12px}
+.cmp-slots{display:flex;gap:10px;flex:1;min-width:0}
+.cmp-slot{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:6px 10px 6px 6px;flex:1;max-width:230px;min-width:0;position:relative}
+.cmp-slot img{width:46px;height:36px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.cmp-slot-info{min-width:0}
+.cmp-slot-price{font-size:.85rem;font-weight:800;color:var(--green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmp-slot-title{font-size:.74rem;color:var(--muted);white-space:nowrap}
+.cmp-slot-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:var(--green);color:white;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid white;cursor:pointer;padding:0}
+.cmp-slot-empty{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;font-style:italic;border-style:dashed;background:transparent}
+.cmp-go{background:var(--green);color:white;border:none;padding:12px 24px;border-radius:8px;font-weight:700;font-size:.9rem;font-family:inherit;cursor:pointer;flex-shrink:0;transition:background var(--trans)}
+.cmp-go:hover:not(:disabled){background:var(--green2)}
+.cmp-go:disabled{background:#B9C4BD;cursor:not-allowed}
+.cmp-clear{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;flex-shrink:0;padding:8px;line-height:1}
+.cmp-clear:hover{color:var(--text)}
+
+/* Modal so sánh */
+.cmp-modal-ov{position:fixed;inset:0;z-index:1100;background:rgba(13,43,28,.55);opacity:0;pointer-events:none;transition:opacity .25s;display:flex;align-items:flex-end;justify-content:center}
+.cmp-modal-ov.show{opacity:1;pointer-events:auto}
+.cmp-modal{background:white;width:100%;max-width:720px;border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto;padding:24px 22px calc(24px + env(safe-area-inset-bottom));position:relative;transform:translateY(40px);transition:transform .3s}
+.cmp-modal-ov.show .cmp-modal{transform:translateY(0)}
+.cmp-modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--bg);border:none;color:var(--text);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.cmp-modal-close:hover{background:var(--border)}
+.cmp-modal-title{font-size:1.2rem;font-weight:800;color:var(--green);margin-bottom:18px;letter-spacing:-.02em}
+.cmp-table{width:100%;border-collapse:collapse}
+.cmp-table th,.cmp-table td{text-align:left;vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--border)}
+.cmp-table thead td.cmp-col-head{width:42%}
+.cmp-table tbody th,.cmp-table tfoot th{width:16%;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.cmp-table tbody td{font-size:.9rem;color:var(--text);line-height:1.6}
+.cmp-col-head img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin-bottom:8px}
+.cmp-col-title{display:block;font-size:.88rem;font-weight:700;color:var(--green);line-height:1.35}
+.cmp-col-title:hover{text-decoration:underline}
+.cmp-col-cta{display:block;text-align:center;padding:10px;background:var(--green);color:white;border-radius:8px;font-weight:700;font-size:.85rem}
+.cmp-col-cta:hover{background:var(--green2)}
+@media(min-width:768px){
+  .cmp-modal-ov{align-items:center}
+  .cmp-modal{border-radius:16px;margin:20px}
+}
+@media(max-width:768px){
+  /* nâng thanh so sánh lên trên bottom-nav (64px) */
+  .cmp-bar{bottom:64px;padding-bottom:12px}
+  .cmp-slot-title{display:none}
+  .cmp-slot{max-width:none}
+  .cmp-go{padding:12px 16px;font-size:.85rem}
+  .cmp-table tbody th,.cmp-table tfoot th{width:auto;font-size:.7rem}
+}
+
+/* ===== MOBILE CARD IMPROVEMENTS ===== */
+@media(max-width:768px){
+  /* compact card body */
+  .prop-body{padding:12px 14px 14px}
+  .prop-top{margin-bottom:4px}
+  .prop-price{font-size:1rem}
+  .prop-title{font-size:.9rem;margin-bottom:4px}
+  .prop-title a{line-height:1.35}
+  .prop-loc{font-size:.78rem;margin-bottom:4px}
+  .prop-specs{font-size:.75rem;gap:4px;margin-bottom:8px}
+  /* CTA button: compact, right-aligned (ngón cái phải) */
+  .prop-cta{
+    display:block;
+    width:auto;
+    margin-left:auto;
+    padding:7px 18px;
+    font-size:.82rem;
+    text-align:center;
+    border-radius:20px;
+    background:var(--green);
+    color:white;
+    font-weight:700;
+  }
+}
+
+/* ===== MOBILE DETAIL PAGE IMPROVEMENTS ===== */
+@media(max-width:900px){
+  /* Hide duplicate specs table — sidebar price card already shows same info */
+  .listing-specs-section{display:none}
+  /* Simplify sidebar contact: hide Zalo btn (mobile nav already has Zalo tab) */
+  .btn-listing-zalo{display:none}
+  .sidebar-note{display:none}
+  /* Merge "Thị trường" and "Đọc thêm" — hide the bottom Đọc Thêm section */
+  .detail-doc-them{display:none}
+  /* Breadcrumb bar compact */
+  .breadcrumb-bar{padding:8px 0}
+}
