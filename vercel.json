@@ -16,6 +16,14 @@
     {"source": "/co-nen-mua-dat-nam-ban", "destination": "/ve-nam-ban/tiem-nang-dau-tu-nam-ban", "permanent": true},
     {"source": "/dat-nam-ban-co-tang-gia-khong", "destination": "/thi-truong/dat-nam-ban-tang-gia-2025", "permanent": true},
     {"source": "/quy-hoach-nam-ban", "destination": "/thi-truong/lam-dong-quy-hoach-dieu-chinh-2026", "permanent": true},
-    {"source": "/contact", "destination": "/lien-he", "permanent": true}
+    {"source": "/contact", "destination": "/lien-he", "permanent": true},
+    {"source": "/dat-nen/lo-399m2", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/dat-nen/lo-782m2", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/dat-nen/lo-975m2", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/dat-nen/lo-1000m2", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/dat-nen/mat-tien-chua-linh-an", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/dat-nen/vuon-ca-phe-2-8ha", "destination": "/dat-nen-nam-ban", "permanent": true},
+    {"source": "/nha-ban/nha-nghi-duong-338m2", "destination": "/nha-ban", "permanent": true},
+    {"source": "/nha-ban/villa-giao-rung-thong", "destination": "/nha-ban", "permanent": true}
   ]
 }
