@@ -45,7 +45,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ===== HERO ===== */
 .hero{position:relative;display:flex;align-items:center;padding-top:68px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(150deg,#0D2B1C 0%,#1A3D2B 45%,#2E5C40 100%)}
-.hero-content{position:relative;z-index:1;color:white;padding:60px 0 40px}
+.hero-content{position:relative;z-index:1;color:white;padding:60px 24px 40px}
 .hero-eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:.9}
 .hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.08;margin-bottom:18px;letter-spacing:-.04em}
 .hero-title-sm{font-size:.52em;font-weight:400;opacity:.75;letter-spacing:-.01em;display:block}
@@ -302,7 +302,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 }
 @media(max-width:480px){
  .hero{min-height:auto;padding-bottom:40px}
- .hero-content{padding:36px 0 32px}
+ .hero-content{padding:36px 20px 32px}
  .why-grid{grid-template-columns:1fr 1fr}
 }
 :focus-visible{outline:2px solid var(--green);outline-offset:2px}
