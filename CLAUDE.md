@@ -25,9 +25,9 @@
 
 - Với việc nhỏ (sửa chữ, đổi màu, fix bug): làm luôn không cần hỏi.
 - Với việc lớn (restructure, thêm section mới, đổi logic): đề xuất trước, chờ chú gật.
-- Sau khi làm xong: **luôn kèm link trực tiếp đến trang vừa thay đổi trên nambanvillas.vn** để chú bấm vào kiểm tra ngay.
+- Sau khi làm xong: **luôn kèm link đầy đủ có https:// để chú bấm vào thẳng trang vừa thay đổi**.
 - Nếu thay đổi nhiều trang: liệt kê từng link, 1 link / 1 dòng.
-- Format: `👉 nambanvillas.vn/ten-trang/`
+- Format bắt buộc: `👉 https://nambanvillas.vn/ten-trang/` (phải có https:// để bấm được ngay)
 
 ---
 
