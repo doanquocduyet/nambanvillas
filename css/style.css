@@ -58,14 +58,14 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .hs-tabs{display:flex;gap:6px;margin-bottom:12px}
 .hstab{padding:5px 18px;border-radius:50px;border:1.5px solid rgba(255,255,255,.28);background:transparent;color:rgba(255,255,255,.6);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
 .hstab.active{background:rgba(255,255,255,.22);border-color:white;color:white}
-.hs-card{background:white;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.22);display:flex;align-items:stretch;gap:0;overflow:hidden}
-.hs-icon{display:flex;align-items:center;padding:0 4px 0 16px;color:#aaa;flex-shrink:0}
-.hs-field{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 14px;border-right:1px solid #eee;min-width:0;cursor:pointer}
-.hs-field-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#aaa;margin-bottom:2px;white-space:nowrap}
-.hs-sel{background:transparent;border:none;color:var(--green);font-size:.88rem;font-weight:600;font-family:inherit;outline:none;cursor:pointer;padding:0;width:100%;-webkit-appearance:auto}
+.hs-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:flex;align-items:stretch;gap:0;overflow:hidden}
+.hs-icon{display:flex;align-items:center;padding:0 4px 0 16px;color:rgba(255,255,255,.5);flex-shrink:0}
+.hs-field{flex:1;display:flex;flex-direction:column;justify-content:center;padding:12px 14px;border-right:1px solid rgba(255,255,255,.15);min-width:0;cursor:pointer}
+.hs-field-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2px;white-space:nowrap}
+.hs-sel{background:transparent;border:none;color:white;font-size:.88rem;font-weight:600;font-family:inherit;outline:none;cursor:pointer;padding:0;width:100%;-webkit-appearance:auto}
 .hs-sel option{color:#1A3D2B;background:white}
-.hs-btn{background:var(--green);color:white;border:none;padding:0 22px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;transition:background .2s;display:flex;align-items:center;gap:6px}
-.hs-btn:hover{background:#254d38}
+.hs-btn{background:rgba(255,255,255,.2);color:white;border:1px solid rgba(255,255,255,.35);border-radius:10px;margin:5px;padding:0 20px;font-weight:700;font-size:.88rem;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0;transition:background .2s;display:flex;align-items:center;gap:6px}
+.hs-btn:hover{background:rgba(255,255,255,.3)}
 .hs-btn svg{flex-shrink:0}
 
 /* Hero stats */
