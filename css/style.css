@@ -66,11 +66,12 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .search-btn:hover{background:var(--green2)}
 
 /* Hero stats */
-.hero-stats{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.hstat{display:flex;align-items:baseline;gap:6px}
-.hstat strong{font-size:1.1rem;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-.01em}
-.hstat span{font-size:.78rem;color:rgba(255,255,255,.55);font-weight:400}
-.hstat-div{width:1px;height:16px;background:rgba(255,255,255,.18);flex-shrink:0}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:0;border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;max-width:420px}
+.hstat{display:flex;flex-direction:column;align-items:center;padding:12px 8px;border-right:1px solid rgba(255,255,255,.12)}
+.hstat:last-child{border-right:none}
+.hstat strong{font-size:1.25rem;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.02em}
+.hstat span{font-size:.68rem;color:rgba(255,255,255,.55);font-weight:400;margin-top:4px;text-align:center;line-height:1.3}
+.hstat-div{display:none}
 
 /* ===== LISTINGS ===== */
 .listings{background:var(--bg2)}
@@ -284,10 +285,10 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
  .search-form{flex-direction:column}
  .sf-field{border-right:none;border-bottom:1px solid var(--border)}
  .search-btn{border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:16px;justify-content:center}
- .hero-stats{gap:12px}
- .hstat strong{font-size:1rem}
- .hstat span{font-size:.72rem}
- .hstat-div{display:none}
+ .hero-stats{max-width:100%}
+ .hstat{padding:10px 6px}
+ .hstat strong{font-size:1.1rem}
+ .hstat span{font-size:.65rem}
  .prop-grid{grid-template-columns:1fr}
  .why-grid{grid-template-columns:1fr 1fr}
  .cta-inner{flex-direction:column;text-align:center}
@@ -297,9 +298,9 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 }
 @media(max-width:480px){
  .hero{min-height:auto;padding-bottom:40px}
- .hero-content{padding:44px 0 52px}
+ .hero-content{padding:36px 0 32px}
  .why-grid{grid-template-columns:1fr 1fr}
- .hero-stats{gap:10px}
+ .search-box{margin-bottom:28px}
 }
 :focus-visible{outline:2px solid var(--green);outline-offset:2px}
 
