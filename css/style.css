@@ -110,8 +110,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prop-loc{display:flex;align-items:center;gap:4px;font-size:.8rem;color:var(--muted);margin-bottom:10px}
 .prop-specs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .prop-specs span{font-size:.75rem;background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:100px;color:var(--muted)}
-.prop-cta{display:block;text-align:center;padding:10px;background:var(--green);color:white;border-radius:8px;font-weight:700;font-size:.85rem;transition:background var(--trans)}
-.prop-cta:hover{background:var(--green2)}
+.prop-cta{display:none}
+.prop-card{position:relative;cursor:pointer}
+.prop-card .prop-title a::after{content:'';position:absolute;inset:0;z-index:1}
+.prop-card .prop-img-wrap{position:relative;z-index:2}
 .view-all-wrap{text-align:center;margin-top:40px}
 .view-all-btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--green);color:var(--green);padding:12px 32px;border-radius:8px;font-weight:700;font-size:.95rem;transition:all var(--trans)}
 .view-all-btn:hover{background:var(--green);color:white}
