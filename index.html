@@ -97,9 +97,27 @@
     <h1 class="hero-title"><span class="hero-title-secondary">Giúp Bạn</span> Ra Quyết Định <em>Đúng</em> <span class="hero-title-secondary">Về Đất Nam Ban</span></h1>
     <p class="hero-sub">Đất nền & nhà bán tại Nam Ban, Lâm Hà — cách trung tâm Đà Lạt 25 phút, sân bay Liên Khương 15 phút. Chúng tôi giúp bạn hiểu đúng thị trường.</p>
 
-    <div class="hero-ctas">
-      <a href="/dat-nen-nam-ban/" class="hcta hcta-primary">Đất Nền Nam Ban</a>
-      <a href="/nha-ban-nam-ban/" class="hcta hcta-sec">Nhà Bán Nam Ban</a>
+    <div class="hero-search">
+      <div class="hs-tabs">
+        <button class="hstab active" data-act="/dat-nen-nam-ban/">Đất Nền</button>
+        <button class="hstab" data-act="/nha-ban-nam-ban/">Nhà Bán</button>
+      </div>
+      <form class="hs-form" action="/dat-nen-nam-ban/" method="get">
+        <select name="gia" class="hs-sel">
+          <option value="">Mức giá</option>
+          <option>Dưới 1 tỷ</option>
+          <option>1 – 2 tỷ</option>
+          <option>2 – 5 tỷ</option>
+          <option>Trên 5 tỷ</option>
+        </select>
+        <select name="dt" class="hs-sel">
+          <option value="">Diện tích</option>
+          <option>Dưới 500 m²</option>
+          <option>500 – 1.000 m²</option>
+          <option>Trên 1.000 m²</option>
+        </select>
+        <button type="submit" class="hs-btn">Tìm →</button>
+      </form>
     </div>
     <div class="hero-stats">
       <div class="hstat"><strong>25'</strong><span>Từ Đà Lạt</span></div>

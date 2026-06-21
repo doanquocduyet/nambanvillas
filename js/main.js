@@ -19,12 +19,12 @@ document.addEventListener('click',e=>{
   }
 });
 
-// Search tabs
-document.querySelectorAll('.stab').forEach(t=>t.addEventListener('click',()=>{
-  document.querySelectorAll('.stab').forEach(x=>x.classList.remove('active'));
+// Hero search tabs
+document.querySelectorAll('.hstab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.hstab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
-  const form=document.querySelector('.search-form');
-  if(form) form.action='/'+t.dataset.tab+'/';
+  const form=document.querySelector('.hs-form');
+  if(form) form.action=t.dataset.act;
 }));
 
 // Listing filter
