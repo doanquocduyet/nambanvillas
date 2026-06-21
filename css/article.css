@@ -77,6 +77,10 @@
 .btn-listing-zalo{flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:#fff;color:#0068FF;border:1.5px solid #cfe0ff;text-align:center;padding:14px 20px;border-radius:13px;font-weight:700;text-decoration:none;transition:.18s}
 .btn-listing-zalo:hover{background:#f0f6ff;border-color:#0068FF}
 .sidebar-note{font-size:.78rem;color:#9aa89f;text-align:center;margin-top:12px}
+.sidebar-spec-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #F0EBE2;font-size:.88rem}
+.sidebar-spec-row:last-child{border-bottom:none;padding-bottom:0}
+.sidebar-spec-row span:first-child{color:#8a978f}
+.sidebar-spec-row span:last-child{font-weight:700;color:#1A3D2B;text-align:right}
 .sidebar-card{background:#fff;border:1px solid #EDE7DD;border-radius:16px;padding:18px 20px;margin-top:16px}
 .sidebar-card h4{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 .sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
