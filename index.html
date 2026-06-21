@@ -102,21 +102,33 @@
         <button class="hstab active" data-act="/dat-nen-nam-ban/">Đất Nền</button>
         <button class="hstab" data-act="/nha-ban-nam-ban/">Nhà Bán</button>
       </div>
-      <form class="hs-form" action="/dat-nen-nam-ban/" method="get">
-        <select name="gia" class="hs-sel">
-          <option value="">Mức giá</option>
-          <option>Dưới 1 tỷ</option>
-          <option>1 – 2 tỷ</option>
-          <option>2 – 5 tỷ</option>
-          <option>Trên 5 tỷ</option>
-        </select>
-        <select name="dt" class="hs-sel">
-          <option value="">Diện tích</option>
-          <option>Dưới 500 m²</option>
-          <option>500 – 1.000 m²</option>
-          <option>Trên 1.000 m²</option>
-        </select>
-        <button type="submit" class="hs-btn">Tìm →</button>
+      <form class="hs-card" action="/dat-nen-nam-ban/" method="get">
+        <div class="hs-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7.5" stroke="#aaa" stroke-width="2"/><path d="m19.5 19.5-3.5-3.5" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <label class="hs-field">
+          <span class="hs-field-label">Mức giá</span>
+          <select name="gia" class="hs-sel">
+            <option value="">Tất cả</option>
+            <option>Dưới 1 tỷ</option>
+            <option>1 – 2 tỷ</option>
+            <option>2 – 5 tỷ</option>
+            <option>Trên 5 tỷ</option>
+          </select>
+        </label>
+        <label class="hs-field">
+          <span class="hs-field-label">Diện tích</span>
+          <select name="dt" class="hs-sel">
+            <option value="">Tất cả</option>
+            <option>Dưới 500 m²</option>
+            <option>500 – 1.000 m²</option>
+            <option>Trên 1.000 m²</option>
+          </select>
+        </label>
+        <button type="submit" class="hs-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7.5" stroke="white" stroke-width="2.2"/><path d="m19.5 19.5-3.5-3.5" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+          Tìm
+        </button>
       </form>
     </div>
     <div class="hero-stats">
