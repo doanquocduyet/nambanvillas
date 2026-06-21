@@ -163,10 +163,11 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
-/* SO SÁNH LÔ — tạm tắt cho đến khi có trang so sánh thật */
-(function(){return;
+/* SO SÁNH LÔ — chỉ bật ở trang có nút .cmp-btn trong HTML */
+(function(){
   const cards=document.querySelectorAll('.prop-card');
   if(!cards.length)return;
+  if(!document.querySelector('.cmp-btn'))return;
   const MAX=2;
   let selected=[]; // {id,img,title,href,price,area,loc,specs[]}
 
@@ -190,16 +191,11 @@ document.querySelectorAll('.related-card img').forEach(function(img){
     };
   }
 
-  // Nút "+ So sánh" gắn vào mỗi card
+  // Gắn handler vào nút có sẵn trong HTML
   cards.forEach(card=>{
-    const body=card.querySelector('.prop-body');
-    if(!body)return;
-    const btn=document.createElement('button');
-    btn.type='button';
-    btn.className='cmp-btn';
-    btn.innerHTML='<span class="cmp-plus">＋ So sánh lô này</span><span class="cmp-tick">✓ Đang so sánh</span>';
-    btn.addEventListener('click',()=>toggle(card,btn));
-    body.appendChild(btn);
+    const btn=card.querySelector('.cmp-btn');
+    if(!btn)return;
+    btn.addEventListener('click',e=>{e.stopPropagation();toggle(card,btn);});
     card._cmpBtn=btn;
   });
 
