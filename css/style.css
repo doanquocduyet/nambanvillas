@@ -445,7 +445,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 .qh-cta-btn:hover{background:var(--green2);transform:translateY(-2px)}
 
 /* ===== SO SÁNH LÔ ===== */
-.cmp-btn{margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px;border:1.5px solid var(--border);border-radius:8px;background:white;color:var(--muted);font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--trans)}
+.cmp-btn{position:relative;z-index:3;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px;border:1.5px solid var(--border);border-radius:8px;background:white;color:var(--muted);font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;transition:all var(--trans)}
 .cmp-btn:hover{border-color:var(--green);color:var(--green)}
 .cmp-btn.active{border-color:var(--green);background:var(--green-light);color:var(--green)}
 .cmp-btn .cmp-tick{display:none}

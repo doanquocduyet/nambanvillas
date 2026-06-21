@@ -163,8 +163,10 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
-/* SO SÁNH LÔ — tạm tắt cho đến khi có trang so sánh thật */
-(function(){return;
+/* SO SÁNH LÔ — chỉ bật ở trang danh sách Đất Nền & Nhà Bán */
+(function(){
+  var p=location.pathname;
+  if(p.indexOf('/dat-nen-nam-ban')<0 && p.indexOf('/nha-ban-nam-ban')<0)return;
   const cards=document.querySelectorAll('.prop-card');
   if(!cards.length)return;
   const MAX=2;
