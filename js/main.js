@@ -23,7 +23,7 @@ document.addEventListener('click',e=>{
 document.querySelectorAll('.hstab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.hstab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
-  const form=document.querySelector('.hs-form');
+  const form=document.querySelector('.hs-card');
   if(form) form.action=t.dataset.act;
 }));
 
