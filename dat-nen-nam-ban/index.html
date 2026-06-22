@@ -29,6 +29,19 @@
     .prop-card{position:relative;cursor:pointer}
     .prop-card .prop-title a::after{content:'';position:absolute;inset:0;z-index:1}
     .prop-card .prop-img-wrap{z-index:2;position:relative}
+    /* Listing ngang — desktop */
+    @media(min-width:769px){
+      .prop-grid{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+      .prop-card{display:grid;grid-template-columns:272px 1fr;border-radius:0;border:none;border-bottom:1px solid var(--border)}
+      .prop-card:last-child{border-bottom:none}
+      .prop-card:hover{transform:none;box-shadow:none;background:#F4F9F5}
+      .prop-img-wrap{height:188px;aspect-ratio:auto}
+      .prop-body{padding:14px 22px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+      .prop-top{margin-bottom:4px}
+      .prop-specs{display:flex!important;flex-wrap:wrap}
+      .prop-cta{display:inline-flex!important;align-items:center;width:auto;padding:7px 20px;align-self:flex-start;font-size:.82rem;border-radius:6px}
+      .cmp-btn{margin-top:8px;width:auto;align-self:flex-start;padding:6px 14px;font-size:.78rem}
+    }
   </style>
   <script type="application/ld+json">
 {
