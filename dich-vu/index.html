@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dịch Vụ Nhà Đất Nam Ban – Tư Vấn, Pháp Lý, Thủ Tục | Nam Ban Villas</title>
+  <meta name="description" content="Tư vấn mua đất miễn phí, check quy hoạch, hỗ trợ sang tên, công chứng, tách thửa, chuyển thổ cư tại Nam Ban, Lâm Hà. Hotline: 0978 758 788.">
+  <link rel="canonical" href="https://nambanvillas.vn/dich-vu/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dịch Vụ Nhà Đất Nam Ban | Nam Ban Villas">
+  <meta property="og:description" content="Tư vấn mua đất miễn phí, check quy hoạch, hỗ trợ sang tên, công chứng, tách thửa tại Nam Ban Lâm Hà.">
+  <meta property="og:url" content="https://nambanvillas.vn/dich-vu/">
+  <meta property="og:site_name" content="Nam Ban Villas">
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ── Page layout ── */
+    .sv-hero{background:var(--green);padding:80px 0 48px;text-align:center}
+    .sv-hero-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:10px}
+    .sv-hero h1{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;color:#fff;line-height:1.2;margin-bottom:14px}
+    .sv-hero p{font-size:.98rem;color:rgba(255,255,255,.75);max-width:520px;margin:0 auto;line-height:1.7}
+
+    /* ── Filter tabs ── */
+    .sv-filter{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:68px;z-index:10}
+    .sv-filter-inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+    .sv-filter-inner::-webkit-scrollbar{display:none}
+    .sv-tab{flex-shrink:0;padding:14px 22px;font-size:.85rem;font-weight:700;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit;white-space:nowrap;transition:color .2s,border-color .2s}
+    .sv-tab.active,.sv-tab:hover{color:var(--green);border-bottom-color:var(--green)}
+
+    /* ── Service grid ── */
+    .sv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;padding:36px 0 48px}
+    .sv-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 24px 20px;display:flex;flex-direction:column;transition:box-shadow .2s}
+    .sv-card:hover{box-shadow:0 4px 20px rgba(26,61,43,.1)}
+    .sv-card-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+    .sv-icon{width:44px;height:44px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem}
+    .sv-card-title{font-size:1rem;font-weight:800;color:var(--green);line-height:1.3;margin-bottom:4px}
+    .sv-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
+    .sv-badge-free{background:#dcfce7;color:#15803d}
+    .sv-badge-paid{background:#fef9c3;color:#854d0e}
+    .sv-badge-coord{background:#e0f2fe;color:#075985}
+    .sv-desc{font-size:.88rem;color:#5a6a60;line-height:1.7;flex:1}
+    .sv-note{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+    .sv-cta{margin-top:16px;display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--green);text-decoration:none}
+    .sv-cta:hover{text-decoration:underline}
+
+    /* ── Process strip ── */
+    .sv-process{background:var(--bg);padding:48px 0}
+    .sv-process h2{font-size:1.2rem;font-weight:800;color:var(--green);margin-bottom:28px}
+    .sv-steps{display:flex;gap:0;flex-wrap:wrap}
+    .sv-step{flex:1;min-width:160px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative}
+    .sv-step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:14px;color:var(--border);font-size:1.2rem}
+    .sv-step-num{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;font-size:.85rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .sv-step-title{font-size:.85rem;font-weight:700;color:var(--green);margin-bottom:4px}
+    .sv-step-desc{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+    /* ── CTA banner ── */
+    .sv-banner{background:var(--green);padding:48px 0;text-align:center}
+    .sv-banner h2{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:8px}
+    .sv-banner p{color:rgba(255,255,255,.75);font-size:.92rem;margin-bottom:24px}
+    .sv-banner-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .sv-banner-btns a{padding:12px 28px;border-radius:8px;font-weight:700;font-size:.9rem;text-decoration:none}
+    .sv-btn-gold{background:var(--gold);color:#1A3D2B}
+    .sv-btn-outline{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+
+    @media(max-width:600px){
+      .sv-steps{flex-direction:column;gap:16px}
+      .sv-step:not(:last-child)::after{content:'↓';right:50%;top:auto;bottom:-14px}
+      .sv-tab{padding:12px 16px;font-size:.8rem}
+    }
+  </style>
+</head>
+<body>
+<header class="header scrolled" id="header">
+  <div class="container header-inner">
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <nav class="nav" id="nav">
+      <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
+      <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
+      <a href="/ve-nam-ban/" class="nav-link">Về Nam Ban</a>
+      <a href="/thi-truong/" class="nav-link">Thị Trường</a>
+      <a href="/lien-he/" class="nav-link">Liên Hệ</a>
+    </nav>
+    <div class="header-right">
+      <a href="tel:0978758788" class="btn-call">0978 758 788</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Mở menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="sv-hero">
+  <div class="container">
+    <p class="sv-hero-label">Nam Ban Villas · Dịch vụ</p>
+    <h1>Hỗ trợ từ lúc xem đất<br>đến khi có sổ trong tay</h1>
+    <p>Tư vấn không hoa hồng ẩn. Hỗ trợ thủ tục thực tế. Không hứa những gì không làm được.</p>
+  </div>
+</section>
+
+<!-- FILTER TABS -->
+<div class="sv-filter">
+  <div class="container">
+    <div class="sv-filter-inner">
+      <button class="sv-tab active" data-cat="all">Tất cả</button>
+      <button class="sv-tab" data-cat="tu-van">Tư vấn & Môi giới</button>
+      <button class="sv-tab" data-cat="phap-ly">Pháp lý & Thủ tục</button>
+      <button class="sv-tab" data-cat="sau-mua">Sau khi mua</button>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE GRID -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="sv-grid" id="svGrid">
+
+      <!-- TƯ VẤN & MÔI GIỚI -->
+      <div class="sv-card" data-cat="tu-van">
+        <div class="sv-card-top">
+          <div class="sv-icon">🔍</div>
+          <div>
+            <div class="sv-card-title">Tư vấn chọn lô</div>
+            <span class="sv-badge sv-badge-free">Miễn phí</span>
+          </div>
+        </div>
+        <p class="sv-desc">Phân tích nhu cầu — ở ở, đầu tư ngắn hạn hay dài hạn — rồi lọc ra 2–3 lô thực sự phù hợp. Không đưa hết danh sách để bạn tự chọn.</p>
+        <p class="sv-note">Gặp trực tiếp tại Nam Ban hoặc qua Zalo/điện thoại.</p>
+        <a href="https://zalo.me/0978758788" class="sv-cta" target="_blank">Zalo tư vấn ngay →</a>
+      </div>
+
+      <div class="sv-card" data-cat="tu-van">
+        <div class="sv-card-top">
+          <div class="sv-icon">🗺️</div>
+          <div>
+            <div class="sv-card-title">Check quy hoạch</div>
+            <span class="sv-badge sv-badge-free">Miễn phí</span>
+          </div>
+        </div>
+        <p class="sv-desc">Tra quy hoạch sử dụng đất 2030, kiểm tra lô nằm trong vùng ở, vùng nông nghiệp hay hành lang bảo vệ. Có kết quả cụ thể — không chung chung.</p>
+        <p class="sv-note">Cần địa chỉ thửa đất hoặc số thửa/tờ bản đồ.</p>
+        <a href="tel:0978758788" class="sv-cta">Gọi để check ngay →</a>
+      </div>
+
+      <div class="sv-card" data-cat="tu-van">
+        <div class="sv-card-top">
+          <div class="sv-icon">📋</div>
+          <div>
+            <div class="sv-card-title">Môi giới mua/bán đất</div>
+            <span class="sv-badge sv-badge-paid">Phí môi giới</span>
+          </div>
+        </div>
+        <p class="sv-desc">Kết nối người mua và người bán thực sự tại Nam Ban. Mọi lô đăng trên site đều đã qua kiểm tra pháp lý — không đăng lô tranh chấp, quy hoạch xấu.</p>
+        <p class="sv-note">Phí môi giới theo thỏa thuận, công khai trước khi ký.</p>
+        <a href="/dat-nen-nam-ban/" class="sv-cta">Xem lô đang bán →</a>
+      </div>
+
+      <div class="sv-card" data-cat="tu-van">
+        <div class="sv-card-top">
+          <div class="sv-icon">⚖️</div>
+          <div>
+            <div class="sv-card-title">Thẩm định pháp lý lô đất</div>
+            <span class="sv-badge sv-badge-free">Miễn phí</span>
+          </div>
+        </div>
+        <p class="sv-desc">Kiểm tra sổ đỏ/sổ hồng thật/giả, xác nhận chính chủ, tra tranh chấp, xem diện tích thực đo so với sổ. Làm trước khi bạn đặt cọc — không phải sau.</p>
+        <p class="sv-note">Chỉ áp dụng cho lô trong phạm vi Nam Ban, Lâm Hà.</p>
+        <a href="tel:0978758788" class="sv-cta">Liên hệ kiểm tra →</a>
+      </div>
+
+      <!-- PHÁP LÝ & THỦ TỤC -->
+      <div class="sv-card" data-cat="phap-ly">
+        <div class="sv-card-top">
+          <div class="sv-icon">📝</div>
+          <div>
+            <div class="sv-card-title">Hỗ trợ sang tên sổ đỏ</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Hướng dẫn hồ sơ sang tên, giới thiệu văn phòng công chứng uy tín tại Lâm Hà. Thông thường hoàn thành trong 10–20 ngày làm việc.</p>
+        <p class="sv-note">Phí nhà nước: thuế thu nhập 2% + lệ phí trước bạ 0.5% giá trị giao dịch.</p>
+        <a href="tel:0978758788" class="sv-cta">Hỏi thủ tục →</a>
+      </div>
+
+      <div class="sv-card" data-cat="phap-ly">
+        <div class="sv-card-top">
+          <div class="sv-icon">🏛️</div>
+          <div>
+            <div class="sv-card-title">Hỗ trợ đăng bộ chuyển nhượng</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Hỗ trợ nộp hồ sơ đăng bộ tại Văn phòng Đăng ký đất đai huyện Lâm Hà. Theo dõi tiến độ và thông báo khi có kết quả.</p>
+        <p class="sv-note">Thường mất 15–30 ngày tùy khối lượng hồ sơ tại địa phương.</p>
+        <a href="tel:0978758788" class="sv-cta">Tìm hiểu thêm →</a>
+      </div>
+
+      <div class="sv-card" data-cat="phap-ly">
+        <div class="sv-card-top">
+          <div class="sv-icon">✍️</div>
+          <div>
+            <div class="sv-card-title">Công chứng hợp đồng mua bán</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Giới thiệu văn phòng công chứng tại Lâm Hà, hỗ trợ soạn hợp đồng đặt cọc/mua bán rõ ràng — tránh điều khoản bẫy mà người mua hay bỏ qua.</p>
+        <p class="sv-note">Phí công chứng: 0.1–0.3% giá trị hợp đồng (theo quy định nhà nước).</p>
+        <a href="tel:0978758788" class="sv-cta">Liên hệ →</a>
+      </div>
+
+      <div class="sv-card" data-cat="phap-ly">
+        <div class="sv-card-top">
+          <div class="sv-icon">✂️</div>
+          <div>
+            <div class="sv-card-title">Hỗ trợ tách thửa đất</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Tư vấn điều kiện tách thửa theo quy định tại Lâm Hà (diện tích tối thiểu, loại đất, đường vào), kết nối đơn vị đo đạc và làm hồ sơ tách.</p>
+        <p class="sv-note">Diện tích tối thiểu sau tách: 80m² thổ cư hoặc 300m² đất vườn (theo QĐUBND Lâm Đồng).</p>
+        <a href="tel:0978758788" class="sv-cta">Hỏi điều kiện tách →</a>
+      </div>
+
+      <div class="sv-card" data-cat="phap-ly">
+        <div class="sv-card-top">
+          <div class="sv-icon">🔄</div>
+          <div>
+            <div class="sv-card-title">Chuyển mục đích sử dụng đất (thổ cư)</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Tư vấn khả năng chuyển từ đất nông nghiệp/vườn sang đất ở, đánh giá vị trí có nằm trong vùng được phép chuyển đổi theo quy hoạch 2030 hay không.</p>
+        <p class="sv-note">Không phải lô nào cũng chuyển được — cháu kiểm tra trước khi bạn nộp tiền.</p>
+        <a href="tel:0978758788" class="sv-cta">Check khả năng chuyển →</a>
+      </div>
+
+      <!-- SAU KHI MUA -->
+      <div class="sv-card" data-cat="sau-mua">
+        <div class="sv-card-top">
+          <div class="sv-icon">🏗️</div>
+          <div>
+            <div class="sv-card-title">Hỗ trợ xin phép xây dựng</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Kết nối đơn vị lập hồ sơ xin phép xây dựng tại UBND huyện Lâm Hà. Tư vấn quy định mật độ xây dựng, chiều cao, khoảng lùi theo quy hoạch khu vực.</p>
+        <p class="sv-note">Áp dụng cho đất thổ cư — đất nông nghiệp chưa chuyển đổi không xin được.</p>
+        <a href="tel:0978758788" class="sv-cta">Liên hệ tư vấn →</a>
+      </div>
+
+      <div class="sv-card" data-cat="sau-mua">
+        <div class="sv-card-top">
+          <div class="sv-icon">🏠</div>
+          <div>
+            <div class="sv-card-title">Giới thiệu nhà thầu xây dựng</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Giới thiệu các nhà thầu đã xây tại Nam Ban — quen địa hình, quen vật liệu địa phương, biết cách xử lý nền đất đồi. Không bảo lãnh — giới thiệu để bạn tự chọn.</p>
+        <p class="sv-note">Bạn ký hợp đồng trực tiếp với nhà thầu, không qua trung gian.</p>
+        <a href="tel:0978758788" class="sv-cta">Hỏi danh sách nhà thầu →</a>
+      </div>
+
+      <div class="sv-card" data-cat="sau-mua">
+        <div class="sv-card-top">
+          <div class="sv-icon">📐</div>
+          <div>
+            <div class="sv-card-title">Đo đạc & vẽ sơ đồ thửa đất</div>
+            <span class="sv-badge sv-badge-coord">Hỗ trợ kết nối</span>
+          </div>
+        </div>
+        <p class="sv-desc">Kết nối đơn vị đo đạc có giấy phép tại Lâm Đồng. Cần đo trước khi xây, trước khi tách thửa, hoặc khi nghi ngờ diện tích thực khác sổ.</p>
+        <p class="sv-note">Chi phí đo: 2–5 triệu tùy diện tích và địa hình.</p>
+        <a href="tel:0978758788" class="sv-cta">Hỏi giá đo đạc →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUY TRÌNH -->
+<section class="sv-process">
+  <div class="container">
+    <h2>Quy trình làm việc thực tế</h2>
+    <div class="sv-steps">
+      <div class="sv-step">
+        <div class="sv-step-num">1</div>
+        <div class="sv-step-title">Liên hệ</div>
+        <div class="sv-step-desc">Zalo hoặc gọi điện — nói nhu cầu và ngân sách thật</div>
+      </div>
+      <div class="sv-step">
+        <div class="sv-step-num">2</div>
+        <div class="sv-step-title">Lọc lô phù hợp</div>
+        <div class="sv-step-desc">Cháu đưa ra 2–3 lô thực sự khớp — không đưa cả danh sách</div>
+      </div>
+      <div class="sv-step">
+        <div class="sv-step-num">3</div>
+        <div class="sv-step-title">Đi xem thực địa</div>
+        <div class="sv-step-desc">Xem lô, check pháp lý, hỏi hàng xóm, đo diện tích thực</div>
+      </div>
+      <div class="sv-step">
+        <div class="sv-step-num">4</div>
+        <div class="sv-step-title">Đặt cọc & công chứng</div>
+        <div class="sv-step-desc">Hợp đồng rõ ràng, công chứng ngay, không cọc miệng</div>
+      </div>
+      <div class="sv-step">
+        <div class="sv-step-num">5</div>
+        <div class="sv-step-title">Sang tên & ra sổ</div>
+        <div class="sv-step-desc">Hỗ trợ nộp hồ sơ, theo dõi đến khi có sổ trong tay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="sv-banner">
+  <div class="container">
+    <h2>Bắt đầu từ câu hỏi đơn giản nhất</h2>
+    <p>Không cần chuẩn bị gì — chỉ cần nói bạn đang tìm gì và ngân sách bao nhiêu.</p>
+    <div class="sv-banner-btns">
+      <a href="https://zalo.me/0978758788" target="_blank" class="sv-btn-gold">Nhắn Zalo ngay</a>
+      <a href="tel:0978758788" class="sv-btn-outline">Gọi 0978 758 788</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo" style="margin-bottom:12px;display:inline-flex;">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
+      </a>
+      <p><strong>Địa chỉ:</strong> TT. Nam Ban, Lâm Hà, Lâm Đồng</p>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
+        <p style="color:white;font-size:.85rem;font-weight:700;margin-bottom:8px">Kết nối</p>
+        <p><a href="tel:0978758788" style="color:#C9A84C;font-size:.88rem;">📞 0978 758 788</a> · <a href="https://zalo.me/0978758788" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Bất động sản</h4>
+      <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>
+      <a href="/nha-ban-nam-ban/">Nhà Bán Nam Ban</a>
+    </div>
+    <div class="footer-links">
+      <h4>Thông tin</h4>
+      <a href="/thi-truong/">Thị Trường BĐS</a>
+      <a href="/ve-nam-ban/">Về Nam Ban</a>
+      <a href="/dich-vu/">Dịch Vụ</a>
+      <a href="/lien-he/">Liên Hệ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>Giúp bạn ra quyết định đúng về đất Nam Ban</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+
+<!-- FILTER JS -->
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.sv-tab');
+  var cards=document.querySelectorAll('.sv-card');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active');});
+      tab.classList.add('active');
+      var cat=tab.dataset.cat;
+      cards.forEach(function(card){
+        card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
+      });
+    });
+  });
+})();
+</script>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-nav" aria-label="Điều hướng nhanh">
+  <a href="/" class="mnav-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span>Trang chủ</span>
+  </a>
+  <a href="/dat-nen-nam-ban/" class="mnav-item mnav-search">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Tìm đất</span>
+  </a>
+  <a href="tel:0978758788" class="mnav-item mnav-call" aria-label="Gọi điện">
+    <span class="mnav-call-circle">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" stroke-width="2"/></svg>
+    </span>
+    <span>Gọi ngay</span>
+  </a>
+  <a href="https://zalo.me/0978758788" target="_blank" class="mnav-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span>Zalo</span>
+  </a>
+  <button class="mnav-item" id="mnavMenuBtn" aria-label="Mở menu">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Menu</span>
+  </button>
+</nav>
+<div class="mobile-sheet-overlay" id="mobileSheetOverlay"></div>
+<div class="mobile-sheet" id="mobileSheet" role="dialog" aria-label="Menu">
+  <div class="mobile-sheet-handle"></div>
+  <a href="/dat-nen-nam-ban/">Đất Nền</a>
+  <a href="/nha-ban-nam-ban/">Nhà Bán</a>
+  <a href="/ve-nam-ban/">Về Nam Ban</a>
+  <a href="/thi-truong/">Thị Trường</a>
+  <a href="/dich-vu/">Dịch Vụ</a>
+  <a href="/lien-he/">Liên Hệ</a>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('mnavMenuBtn');
+  var sheet=document.getElementById('mobileSheet');
+  var ov=document.getElementById('mobileSheetOverlay');
+  if(!btn||!sheet||!ov)return;
+  function open(){sheet.classList.add('open');ov.classList.add('open');}
+  function close(){sheet.classList.remove('open');ov.classList.remove('open');}
+  btn.addEventListener('click',open);
+  ov.addEventListener('click',close);
+})();
+</script>
+</body>
+</html>
