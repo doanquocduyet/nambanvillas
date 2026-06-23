@@ -29,6 +29,19 @@
     .prop-card{position:relative;cursor:pointer}
     .prop-card .prop-title a::after{content:'';position:absolute;inset:0;z-index:1}
     .prop-card .prop-img-wrap{z-index:2;position:relative}
+    /* Listing ngang — desktop */
+    @media(min-width:769px){
+      .prop-grid{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+      .prop-card{display:grid;grid-template-columns:272px 1fr;border-radius:0;border:none;border-bottom:1px solid var(--border)}
+      .prop-card:last-child{border-bottom:none}
+      .prop-card:hover{transform:none;box-shadow:none;background:#F4F9F5}
+      .prop-img-wrap{height:188px;aspect-ratio:auto}
+      .prop-body{padding:14px 22px;display:flex;flex-direction:column;border-left:1px solid var(--border)}
+      .prop-top{margin-bottom:4px}
+      .prop-specs{display:flex!important;flex-wrap:wrap}
+      .prop-cta{display:inline-flex!important;align-items:center;width:auto;padding:7px 20px;align-self:flex-start;font-size:.82rem;border-radius:6px}
+      .cmp-btn{margin-top:8px;width:auto;align-self:flex-start;padding:6px 14px;font-size:.78rem}
+    }
   </style>
   <script type="application/ld+json">
 {
@@ -65,6 +78,7 @@
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
       <a href="/ve-nam-ban/" class="nav-link">Về Nam Ban</a>
       <a href="/thi-truong/" class="nav-link">Thị Trường</a>
+      <a href="/dich-vu/" class="nav-link">Dịch Vụ</a>
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
@@ -93,18 +107,59 @@
 
 <section class="section" style="background:white;padding:18px 0 16px">
   <div class="container">
-    <form style="display:flex;gap:12px;flex-wrap:wrap;background:#F7F3EE;padding:16px;border-radius:12px">
-      <select style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
-        <option>Tất cả khu vực</option><option>TT. Nam Ban</option><option>Nam Ban Villas</option><option>Đường Chùa Linh Ẩn</option>
+    <form id="filterForm" style="display:flex;gap:12px;flex-wrap:wrap;background:#F7F3EE;padding:16px;border-radius:12px">
+      <select id="f-loc" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
+        <option value="">Tất cả khu vực</option>
+        <option value="dong-thanh">Đông Thanh</option>
+        <option value="nam-ban">Nam Ban TT</option>
+        <option value="ho-bai-cong">Hồ Bãi Công</option>
+        <option value="me-linh">Mê Linh</option>
+        <option value="lam-ha">Lâm Hà</option>
       </select>
-      <select style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
-        <option>Tất cả diện tích</option><option>Dưới 500m²</option><option>500–1.000m²</option><option>Trên 1ha</option>
+      <select id="f-area" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
+        <option value="">Tất cả diện tích</option>
+        <option value="u500">Dưới 500m²</option>
+        <option value="500-1000">500–1.000m²</option>
+        <option value="o1000">Trên 1.000m²</option>
       </select>
-      <select style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
-        <option>Tất cả mức giá</option><option>Dưới 1,5 tỷ</option><option>1,5–3 tỷ</option><option>Trên 3 tỷ</option>
+      <select id="f-price" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
+        <option value="">Tất cả mức giá</option>
+        <option value="u1.5">Dưới 1,5 tỷ</option>
+        <option value="1.5-3">1,5–3 tỷ</option>
+        <option value="o3">Trên 3 tỷ</option>
       </select>
-      <button style="background:#1A3D2B;color:white;padding:9px 22px;border:none;border-radius:8px;font-weight:700;cursor:pointer">Lọc</button>
     </form>
+    <script>
+    (function(){
+      var loc=document.getElementById('f-loc');
+      var area=document.getElementById('f-area');
+      var price=document.getElementById('f-price');
+      var countEl=document.querySelector('strong[style*="color:#1A3D2B"]')||document.querySelector('.prop-grid')&&document.querySelector('.prop-grid').previousElementSibling&&document.querySelector('.prop-grid').previousElementSibling.querySelector('strong');
+      function run(){
+        var lv=loc.value,av=area.value,pv=price.value;
+        var cards=document.querySelectorAll('.prop-card[data-area]');
+        var shown=0;
+        cards.forEach(function(c){
+          var a=parseFloat(c.dataset.area);
+          var p=parseFloat(c.dataset.price);
+          var l=c.dataset.loc;
+          var ok=true;
+          if(lv&&l!==lv)ok=false;
+          if(av==='u500'&&a>=500)ok=false;
+          if(av==='500-1000'&&(a<500||a>1000))ok=false;
+          if(av==='o1000'&&a<=1000)ok=false;
+          if(pv==='u1.5'&&p>=1.5)ok=false;
+          if(pv==='1.5-3'&&(p<1.5||p>3))ok=false;
+          if(pv==='o3'&&p<=3)ok=false;
+          c.style.display=ok?'':'none';
+          if(ok)shown++;
+        });
+        var el=document.querySelector('p[style*="margin-bottom:20px"] strong');
+        if(el)el.textContent=shown;
+      }
+      [loc,area,price].forEach(function(s){s.addEventListener('change',run);});
+    })();
+    </script>
   </div>
 </section>
 
@@ -113,7 +168,7 @@
     <p style="color:#6B6B6B;margin-bottom:20px;font-size:.88rem">Hiển thị <strong style="color:#1A3D2B">11</strong> tin đăng mới nhất tháng 6/2026</p>
     <div class="prop-grid">
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="845" data-price="1.8" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-845m2/" class="prop-img-wrap">
           <img src="../images/listings/dong-thanh-845m2/1.jpg" alt="Lô đất 845m² Đông Thanh view sương mây Nam Ban" width="400" height="260" loading="lazy">
           <span class="prop-badge hot">Nổi Bật</span>
@@ -124,10 +179,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Đông Thanh · Nam Ban · Lâm Hà</p>
           <div class="prop-specs"><span>239m² thổ cư</span><span>Cách Đà Lạt 28km</span><span>Sổ hồng riêng</span></div>
           <a href="/dat-nen/dong-thanh-845m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="325" data-price="0.85" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-320m2/" class="prop-img-wrap">
           <img src="../images/listings/dong-thanh-320m2/1.jpg" alt="Đất nền Đông Thanh 320m² gần Chùa Linh Ẩn Nam Ban" width="400" height="260" loading="lazy">
           <span class="prop-badge hot">Mới Đăng</span>
@@ -138,10 +194,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Đông Thanh · Nam Ban · Lâm Hà</p>
           <div class="prop-specs"><span>Thổ cư ~95m²/lô</span><span>Khu dân cư hiện hữu</span><span>Sang tên ngay</span></div>
           <a href="/dat-nen/dong-thanh-320m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="530" data-price="0.9" data-loc="nam-ban">
         <a href="/dat-nen/thung-lung-530m2/" class="prop-img-wrap">
           <img src="../images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng sương mờ Nam Ban 899 triệu" width="400" height="260" loading="lazy">
           <span class="prop-badge">Cần Bán Gấp</span>
@@ -152,10 +209,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Gần Thác Voi · Nam Ban · Lâm Hà</p>
           <div class="prop-specs"><span>Sổ hồng riêng</span><span>Cách Thác Voi 4km</span><span>Có hàng rào sẵn</span></div>
           <a href="/dat-nen/thung-lung-530m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="3700" data-price="5.7" data-loc="nam-ban">
         <a href="/dat-nen/sieu-pham-3700m2/" class="prop-img-wrap">
           <img src="../images/listings/sieu-pham-3700m2/1.jpg" alt="Đất 3700m² mặt tiền 61m phân lô Nam Ban Lâm Đồng" width="400" height="260" loading="lazy">
           <span class="prop-badge">Diện Tích Lớn</span>
@@ -166,10 +224,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Nam Ban · Lâm Hà · Lâm Đồng</p>
           <div class="prop-specs"><span>400m² thổ cư</span><span>Mặt tiền 61m</span><span>Đường bê tông rộng</span></div>
           <a href="/dat-nen/sieu-pham-3700m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="2700" data-price="2.95" data-loc="nam-ban">
         <a href="/dat-nen/giap-suoi-2700m2/" class="prop-img-wrap">
           <img src="../images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2700m² 2 mặt giáp suối cần bán gấp Nam Ban" width="400" height="260" loading="lazy">
           <span class="prop-badge">Cần Bán Gấp</span>
@@ -180,10 +239,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Nam Ban · Lâm Hà · Cách Đà Lạt 28km</p>
           <div class="prop-specs"><span>400m² thổ cư</span><span>Giáp suối 2 mặt</span><span>Cần bán gấp</span></div>
           <a href="/dat-nen/giap-suoi-2700m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="700" data-price="1.2" data-loc="nam-ban">
         <a href="/dat-nen/ho-tu-liem-700m2/" class="prop-img-wrap">
           <img src="../images/listings/ho-tu-liem-700m2/1.jpg" alt="Đất 700m² view Hồ Từ Liêm Nam Ban 1.2 tỷ" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
@@ -194,10 +254,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Nam Ban · Lâm Hà · Lâm Đồng</p>
           <div class="prop-specs"><span>100m² thổ cư</span><span>Mặt tiền 10m</span><span>View thoáng ngắm hồ</span></div>
           <a href="/dat-nen/ho-tu-liem-700m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="700" data-price="1.95" data-loc="ho-bai-cong">
         <a href="/dat-nen/ho-bai-cong-lot1/" class="prop-img-wrap">
           <img src="../images/listings/ho-bai-cong-lot1/1.jpg" alt="Đất 700m² giáp Hồ Bãi Công Nam Ban lô 1" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
@@ -208,10 +269,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Giáp Hồ Bãi Công · Nam Ban · Lâm Hà</p>
           <div class="prop-specs"><span>200m² thổ cư</span><span>Mặt tiền 12m</span><span>Giáp hồ cực đẹp</span></div>
           <a href="/dat-nen/ho-bai-cong-lot1/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="950" data-price="3.5" data-loc="ho-bai-cong">
         <a href="/dat-nen/ho-bai-cong-lot2/" class="prop-img-wrap">
           <img src="../images/listings/ho-bai-cong-lot2/1.jpg" alt="Đất 950m² giáp Hồ Bãi Công view đồi thông Nam Ban lô 2" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
@@ -222,10 +284,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Giáp Hồ Bãi Công · Nam Ban · Lâm Hà</p>
           <div class="prop-specs"><span>Mặt tiền 15m nở hậu 22m</span><span>View đồi thông xanh mát</span><span>Phù hợp homestay</span></div>
           <a href="/dat-nen/ho-bai-cong-lot2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="650" data-price="1.25" data-loc="me-linh">
         <a href="/dat-nen/me-linh-suoi-thong-650m2/" class="prop-img-wrap">
           <img src="../images/listings/me-linh-suoi-thong-650m2/1.jpg" alt="Đất 650m² view suối thông Mê Linh ven Đà Lạt 1.25 tỷ" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
@@ -236,10 +299,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Mê Linh · Ven Đà Lạt · Lâm Đồng</p>
           <div class="prop-specs"><span>100m² thổ cư</span><span>View suối và đồi thông</span><span>Cách sân bay ~22km</span></div>
           <a href="/dat-nen/me-linh-suoi-thong-650m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="130" data-price="0.57" data-loc="lam-ha">
         <a href="/dat-nen/pho-thong-villas-130m2/" class="prop-img-wrap">
           <img src="../images/listings/pho-thong-villas-130m2/1.jpg" alt="2 lô đất 130m² sát Phố Thông Villas Nam Ban 568 triệu" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
@@ -250,10 +314,11 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Sát Phố Thông Villas · Lâm Hà · Lâm Đồng</p>
           <div class="prop-specs"><span>80m² thổ cư/lô</span><span>Hạ tầng hoàn thiện</span><span>Công chứng sang tên ngay</span></div>
           <a href="/dat-nen/pho-thong-villas-130m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
-      <article class="prop-card">
+      <article class="prop-card" data-area="345" data-price="1.15" data-loc="nam-ban">
         <a href="/dat-nen/hai-mat-tien-345m2/" class="prop-img-wrap">
           <img src="../images/listings/hai-mat-tien-345m2/1.jpg" alt="Lô đất 2 mặt tiền 345m² Nam Ban 1.15 tỷ" width="400" height="260" loading="lazy">
           <span class="prop-badge hot">Mới Đăng</span>
@@ -264,6 +329,7 @@
           <p class="prop-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/></svg>Nam Ban · Lâm Hà · Lâm Đồng</p>
           <div class="prop-specs"><span>2 mặt tiền</span><span>Khu đang phát triển</span><span>Sổ hồng riêng</span></div>
           <a href="/dat-nen/hai-mat-tien-345m2/" class="prop-cta">Hỏi →</a>
+          <button type="button" class="cmp-btn"><span class="cmp-plus">＋ So sánh</span><span class="cmp-tick">✓ Đang so sánh</span></button>
         </div>
       </article>
 
@@ -311,7 +377,7 @@
       <p><strong>Địa chỉ:</strong> TT. Nam Ban, Lâm Hà, Lâm Đồng</p>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
         <p style="color:white;font-size:.85rem;font-weight:700;margin-bottom:8px">Kết nối</p>
-        <p><a href="tel:0978758788" style="color:#C9A84C;font-size:.88rem;">📞 0978 758 788</a> · <a href="https://zalo.me/0978758788" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
+        <p><a href="tel:0978758788" style="color:#C9A84C;font-size:.88rem;">0978 758 788</a> · <a href="https://zalo.me/0978758788" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
       </div>
     </div>
     <div class="footer-links">

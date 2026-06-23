@@ -101,7 +101,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prop-card:hover .prop-img-wrap img{transform:scale(1.04)}
 .prop-badge{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:6px;font-size:.73rem;font-weight:700;background:var(--green);color:white}
 .prop-badge.hot{background:var(--gold)}
-.prop-body{padding:18px}
+.prop-body{padding:18px;display:flex;flex-direction:column}
 .prop-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .prop-price{font-size:1.1rem;font-weight:800;color:var(--green)}
 .prop-area{font-size:.82rem;font-weight:600;color:var(--muted);background:var(--green-light);padding:3px 10px;border-radius:100px}
@@ -110,10 +110,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prop-loc{display:flex;align-items:center;gap:4px;font-size:.8rem;color:var(--muted);margin-bottom:10px}
 .prop-specs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .prop-specs span{font-size:.75rem;background:var(--bg);border:1px solid var(--border);padding:3px 9px;border-radius:100px;color:var(--muted)}
-.prop-cta{display:none}
-.prop-card{position:relative;cursor:pointer}
-.prop-card .prop-title a::after{content:'';position:absolute;inset:0;z-index:1}
-.prop-card .prop-img-wrap{position:relative;z-index:2}
+.prop-cta{display:block;text-align:center;padding:10px;background:var(--green);color:white;border-radius:8px;font-weight:700;font-size:.85rem;transition:background var(--trans);margin-top:auto}
+.prop-cta:hover{background:var(--green2)}
 .view-all-wrap{text-align:center;margin-top:40px}
 .view-all-btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--green);color:var(--green);padding:12px 32px;border-radius:8px;font-weight:700;font-size:.95rem;transition:all var(--trans)}
 .view-all-btn:hover{background:var(--green);color:white}
@@ -161,7 +159,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 /* ===== FOOTER ===== */
 .footer{background:#0D2B1C;color:rgba(255,255,255,.7);padding:56px 0 0}
 .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand p{font-size:.88rem;line-height:1.7;margin-bottom:4px}
+.footer-brand p{font-size:.88rem;line-height:1.7;margin-bottom:4px}.footer .logo img{filter:brightness(0) invert(1)}
 .footer-links{display:flex;flex-direction:column;gap:4px}
 .footer-links h4{color:white;font-size:.9rem;font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
 .footer-links a{font-size:.88rem;padding:4px 0;transition:color var(--trans)}
@@ -354,7 +352,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 .cafe-strip-note{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:20px}
 
 /* ===== NAMBAN NOTES SECTION ===== */
-.notes-section{background:var(--bg);padding:40px 0}
+.notes-section{background:var(--bg);padding:28px 0}
 .notes-editorial-wrap{max-width:680px;margin:0 auto}
 .notes-editorial-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);opacity:.7;margin-bottom:12px}
 .notes-editorial{display:block;border-left:3px solid var(--gold);padding-left:20px;text-decoration:none}
