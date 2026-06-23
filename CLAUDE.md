@@ -62,6 +62,17 @@
 
 ---
 
+## NGUYÊN TẮC SỐ 6 — VERCEL & DEPLOY
+
+- **Dự án Vercel chính (DUY NHẤT được giữ):** `nambanvillas` — slug: `duyet-s-projects`
+- **Chỉ 1 project Vercel nối repo** — nếu phát hiện có 2–3 project cùng nối: báo ngay, đây là vấn đề nghiêm trọng (quota build + SEO duplicate content).
+- **Quota build Vercel free:** 100 lượt/ngày — mỗi push tốn 1 lượt. Không push thừa.
+- **Deploy production = merge PR vào `main`** — cháu dùng GitHub MCP tự merge, không cần chú vào GitHub.
+- **Xem bản demo (preview):** link preview có sẵn trong PR comment do Vercel bot đăng tự động sau mỗi push.
+- **Khi cần chú Delete project Vercel thừa:** link trực tiếp dạng `https://vercel.com/duyet-s-projects/[tên-project]/settings` → kéo xuống cuối → Delete Project → gõ tên project xác nhận.
+
+---
+
 ## FILE QUAN TRỌNG
 
 - `docs/HO-SO-TONG-NAMBAN-MAX.md` — Hồ sơ tổng toàn diện (1903 dòng)
