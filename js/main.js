@@ -23,7 +23,7 @@ document.addEventListener('click',e=>{
 document.querySelectorAll('.hstab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.hstab').forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
-  const form=document.querySelector('.hs-form');
+  const form=document.querySelector('.hs-card');
   if(form) form.action=t.dataset.act;
 }));
 
@@ -163,8 +163,10 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
-/* SO SÁNH LÔ — chỉ bật ở trang có nút .cmp-btn trong HTML */
+/* SO SÁNH LÔ — chỉ bật ở trang danh sách Đất Nền & Nhà Bán */
 (function(){
+  var p=location.pathname;
+  if(p.indexOf('/dat-nen-nam-ban')<0 && p.indexOf('/nha-ban-nam-ban')<0)return;
   const cards=document.querySelectorAll('.prop-card');
   if(!cards.length)return;
   if(!document.querySelector('.cmp-btn'))return;

@@ -20,7 +20,10 @@
 /* Listing detail */
 .listing-detail-grid{display:grid;grid-template-columns:1fr 340px;gap:0;max-width:1100px;margin:40px auto;padding:0 20px}
 .listing-main{padding-right:32px}
-.listing-sidebar{border-left:1px solid #E2DBD0;padding-left:28px;padding-top:4px}
+.listing-sidebar{border-left:1px solid #E2DBD0;padding-left:28px;padding-top:4px;display:flex;flex-direction:column}
+.listing-sidebar .sidebar-related{order:-1;border-top:none;margin-top:0;padding-top:0;border-bottom:1px solid #E8E2D9;padding-bottom:20px;margin-bottom:20px}
+.listing-sidebar .listing-price-card{order:0}
+.listing-sidebar .sidebar-card{order:1}
 /* ===== MOBILE: dàn lại thứ tự — giá + thông số + CTA ngay dưới ảnh ===== */
 @media(max-width:900px){
   .listing-detail-grid{display:flex;flex-direction:column;margin:24px auto}
