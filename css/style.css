@@ -352,15 +352,23 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 .cafe-strip-note{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:20px}
 
 /* ===== NAMBAN NOTES SECTION ===== */
-.notes-section{background:var(--bg);padding:28px 0}
+.notes-section{background:var(--bg);padding:20px 0}
 .notes-editorial-wrap{max-width:680px;margin:0 auto}
 .notes-editorial-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);opacity:.7;margin-bottom:12px}
 .notes-editorial{display:block;border-left:3px solid var(--gold);padding-left:20px;text-decoration:none}
-.notes-editorial-meta{font-size:.75rem;color:var(--muted);margin-bottom:8px;font-weight:500}
+.notes-editorial-meta{font-size:.75rem;color:var(--muted);margin-bottom:6px;font-weight:500}
 .notes-editorial-title{font-size:1.15rem;font-weight:700;color:var(--green);line-height:1.4;margin-bottom:8px;letter-spacing:-.02em}
 .notes-editorial-desc{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:12px}
 .notes-read-btn{display:inline-block;color:var(--green);font-weight:600;font-size:.82rem;border-bottom:1px solid var(--gold);padding-bottom:1px;transition:opacity .15s}
 .notes-read-btn:hover{opacity:.7}
+@media(min-width:769px){
+  .notes-section{padding:18px 0}
+  .notes-editorial-wrap{max-width:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px}
+  .notes-editorial-wrap>.notes-editorial-eyebrow,.notes-editorial-wrap>div:last-child{grid-column:1/-1}
+  .notes-editorial{margin-bottom:0!important;padding-left:14px}
+  .notes-editorial-title{font-size:.96rem}
+  .notes-editorial-meta{font-size:.7rem}
+}
 
 /* ===== CONTACT PAGE UPGRADE ===== */
 .contact-page-intro{max-width:580px;margin-bottom:4px}
