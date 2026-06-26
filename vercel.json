@@ -25,6 +25,10 @@
     {"source": "/dat-nen/mat-tien-chua-linh-an", "destination": "/dat-nen-nam-ban", "permanent": true},
     {"source": "/dat-nen/vuon-ca-phe-2-8ha", "destination": "/dat-nen-nam-ban", "permanent": true},
     {"source": "/nha-ban/nha-nghi-duong-338m2", "destination": "/nha-ban", "permanent": true},
-    {"source": "/nha-ban/villa-giao-rung-thong", "destination": "/nha-ban", "permanent": true}
+    {"source": "/nha-ban/villa-giao-rung-thong", "destination": "/nha-ban", "permanent": true},
+    {"source": "/tin-tuc/lam-dong-quy-hoach-dieu-chinh-2026", "destination": "/thi-truong/lam-dong-quy-hoach-dieu-chinh-2026", "permanent": true},
+    {"source": "/tin-tuc/quy-hoach-tinh-lam-dong-dieu-chinh-2025", "destination": "/thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025", "permanent": true},
+    {"source": "/tin-tuc/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025", "destination": "/thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025", "permanent": true},
+    {"source": "/tin-tuc/nghi-duong-retreat-cao-nguyen-lam-dong", "destination": "/thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong", "permanent": true}
   ]
 }
