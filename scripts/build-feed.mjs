@@ -45,11 +45,14 @@ for (const section of SECTIONS) {
     let title = extract(html, /<title>([^<]+)<\/title>/);
     title = title.replace(/\s*[|–-]\s*(Nam Ban Villas|Namban Notes)\s*$/i, '').trim();
     const desc = extract(html, /<meta name="description" content="([^"]+)"/);
-    const canonical = extract(html, /<link rel="canonical" href="([^"]+)"/) || `${SITE}/${section}/${slug}/`;
+    const canonical = extract(html, /<link rel="canonical" href="([^"]+)"/);
+    // Bỏ qua trang đã nhường site khác (canonical trỏ ra ngoài nambanvillas.vn) — feed chỉ liệt kê nội dung Villas sở hữu
+    if (canonical && !canonical.startsWith(SITE)) continue;
+    const url = `${SITE}/${section}/${slug}/`;
     let date = getDate(html);
     if (!date || isNaN(date)) date = statSync(file).mtime;
 
-    items.push({ title, desc, url: canonical, date, section });
+    items.push({ title, desc, url, date, section });
   }
 }
 
