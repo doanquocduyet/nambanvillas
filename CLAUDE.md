@@ -75,6 +75,7 @@
 
 ## FILE QUAN TRỌNG
 
+- `docs/HIEN-PHAP-3-WEB.md` — **HIẾN PHÁP HỆ 3 WEB** (Panorama·Villas·Greenspace). Đọc TRƯỚC khi làm bất cứ việc gì về keyword/SEO/AEO/link/canonical. Luật vàng: cùng keyword KHÁC INTENT → không cắn nhau; Villas ôm key GIAO DỊCH (lô thật, giá thật); Panorama đứng ĐỘC LẬP — Villas/Greenspace KHÔNG link sang Panorama; Villas↔Greenspace link 2 chiều thoải mái.
 - `docs/HO-SO-TONG-NAMBAN-MAX.md` — Hồ sơ tổng toàn diện (1903 dòng)
 - `docs/TU-DUY-TINH-TUE.md` — Tư duy & tinh tuý dự án (23 nguyên tắc)
 - `index.html` — Trang chủ (606 dòng)
