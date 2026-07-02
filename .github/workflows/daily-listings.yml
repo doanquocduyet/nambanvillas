@@ -1,0 +1,38 @@
+name: Daily Nam Ban Listings
+
+on:
+  schedule:
+    # 00:07 UTC = 07:07 sáng giờ Việt Nam, mỗi ngày
+    - cron: '7 0 * * *'
+  workflow_dispatch:  # cho phép bấm chạy tay từ tab Actions
+
+jobs:
+  post-listings:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Tìm & viết tin rao mới
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/daily-listings.mjs
+
+      - name: Rebuild RSS feed
+        run: node scripts/build-feed.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add thi-truong/tin-rao-dat-nam-ban-moi/index.html data/tin-rao-state.json feed.xml
+          git diff --staged --quiet || git commit -m "chore: tin rao Nam Ban $(date +'%Y-%m-%d') [skip ci]"
+          git push
