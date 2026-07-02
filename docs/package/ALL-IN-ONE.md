@@ -184,6 +184,7 @@ Phố Thông Villas 2×130m²(80m² thổ) **568tr/lô** · Thung Lũng 530m² v
 - 3 trang giao dịch đã xong nội dung; song-o-nam-ban giữ noindex (nhường Panorama).
 
 
+
 ======================================================================
 # PROJECT SETUP — NAM BAN VILLAS
 *Dán 2 phần dưới vào ô cài đặt Claude Project. Cập nhật 2/7/2026.*
