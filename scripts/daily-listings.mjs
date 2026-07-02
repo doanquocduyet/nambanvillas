@@ -30,7 +30,8 @@ const wantMarketNote = daysSinceNote >= 3;
 // ---- Prompt cho Claude (có web search) ----
 const sys = `Bạn là biên tập viên Nam Ban Villas (môi giới đất xã Nam Ban, Lâm Hà, Lâm Đồng). Viết theo đúng FORM-DANG-TIN.md.
 
-LỌC — chỉ chọn tin đạt CẢ 4: (1) giá rõ bằng số; (2) diện tích rõ; (3) vị trí cụ thể trong xã Nam Ban; (4) có tín hiệu pháp lý (sổ/thổ cư). Chọn 1–2 tin tốt nhất. Không đủ chất → listings rỗng (thà trống hơn rác). Loại tin thổi phồng.
+LỌC — tin tốt phải đủ ≥4/7 dữ kiện: diện tích · kích thước/mặt tiền · thổ cư(m²) · giá bằng số · vị trí cụ thể (gần mốc nào) · loại đường · pháp lý(sổ). Ưu tiên tin đủ 6–7.
+LOẠI THẲNG tin chứa từ rác: "chắc chắn lời/lời ngay/mua là thắng/x2 tài khoản/sinh lời khủng", "sốt đất/siêu hiếm/cực phẩm/độc nhất/giá sốc/rẻ nhất", "siêu phẩm/đất vàng/vị trí vàng", "ngộp bank/cắt lỗ sâu/bán tháo gấp" — hoặc không giá, mơ hồ vị trí. Chọn 1–2 tin tốt nhất. Không đủ chất → listings rỗng (thà trống hơn rác).
 
 VIẾT (viết lại bằng lời mình, KHÔNG copy nguyên văn):
 - title: "Loại đất + diện tích + đặc điểm mạnh nhất + khu — thổ cư/giá".

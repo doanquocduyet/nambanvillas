@@ -15,9 +15,27 @@ Chỉ đăng tin đạt **cả 4** tiêu chí (thiếu 1 → bỏ, thà ít mà 
 4. **Có tín hiệu pháp lý** (sổ hồng/sổ đỏ/thổ cư bao nhiêu m²). Ưu tiên tin có sổ.
 
 **Ưu tiên** (nếu nhiều tin đạt): có thổ cư cao · mặt tiền đường nhựa · gần tiện ích/mốc du lịch · giá hợp mặt bằng 2–9 triệu/m².
-**Loại thẳng:** tin không giá · không sổ · mơ hồ vị trí · trùng tin đã đăng · ngôn ngữ thổi phồng ("siêu hiếm", "sốt", "x2 tài khoản").
 
 Mỗi ngày chọn **1–2 tin** tốt nhất. Không đủ chất → **không đăng** (thà trống hơn rác).
+
+### 1a. LOẠI THẲNG nếu tin chứa từ ngữ "rác" (blocklist)
+Bỏ ngay nếu tiêu đề/mô tả có kiểu:
+- **Hứa hão / thổi phồng lợi nhuận:** "chắc chắn lời", "lời ngay", "mua là thắng", "x2/x3 tài khoản", "sinh lời khủng", "một vốn bốn lời", "10 năm có 1", "kèo thơm".
+- **Tạo sốt giả:** "sốt đất", "siêu hiếm", "cực phẩm", "độc nhất", "duy nhất còn lại", "giá sốc", "rẻ nhất thị trường".
+- **Bom tấn / câu view rỗng:** "siêu phẩm", "vị trí vàng", "đất vàng", "không mua là tiếc", quá nhiều dấu "!!!", emoji.
+- **Tiêu cực câu kéo quá mức:** "ngộp bank", "cắt lỗ sâu", "bán tháo gấp trong đêm", "vỡ nợ bán rẻ" (dùng để dụ, không có số thật).
+→ Những từ này = tín hiệu tin kém chất lượng. Google/AI cũng hạ tin dạng này.
+
+### 1b. CHECKLIST SỐ LIỆU (tin tốt phải đủ dữ kiện — chấm điểm)
+Đếm số dữ kiện tin có; **bắt buộc ≥ 4/7**, ưu tiên tin nhiều điểm hơn:
+1. ☐ Diện tích (m²)
+2. ☐ Kích thước cạnh / chiều ngang mặt tiền (VD 10×63m, ngang 12m)
+3. ☐ Đất thổ cư bao nhiêu m² (hoặc "full thổ")
+4. ☐ Giá cụ thể (số, không "liên hệ")
+5. ☐ Vị trí cụ thể — gần mốc nào (Đông Thanh, Mê Linh, gần Thác Voi, Hồ Bãi Công, chợ, trường…)
+6. ☐ Loại đường / mặt tiền (đường nhựa/bê tông rộng mấy mét, mấy mặt tiền)
+7. ☐ Pháp lý (sổ hồng/đỏ riêng, công chứng ngay)
+→ Tin đủ 6–7 mục = tin tốt nhất, ưu tiên đăng. Tin < 4 mục = bỏ.
 
 ---
 
