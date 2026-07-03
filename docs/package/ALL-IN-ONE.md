@@ -1,24 +1,311 @@
-# ================ NAM BAN VILLAS — PROJECT OS (ALL-IN-ONE) ================
-*Copy toàn bộ file này dán vào Knowledge của project. Gộp từ docs/package/. Cập nhật 2/7/2026.*
+# ============ NAM BAN VILLAS — PROJECT OS (ALL-IN-ONE, FULL) ============
+*Copy toàn bộ dán vào Knowledge của project. Cập nhật 2/7/2026.*
 
+
+### PHẦN 1 — SETUP
+======================================================================
+# PROJECT SETUP — NAM BAN VILLAS
+*Dán 2 phần dưới vào ô cài đặt Claude Project. Cập nhật 2/7/2026.*
+
+---
+
+## A. MÔ TẢ (Description) — dán vào ô "Description"
+
+Nam Ban Villas — website môi giới bất động sản thật tại xã Nam Ban (Lâm Hà, Lâm Đồng), cao nguyên gần Đà Lạt. Static HTML/CSS/JS, deploy Vercel từ GitHub. Project này chứa toàn bộ "Project OS" (cách làm việc, gu thẩm mỹ, tri thức dự án, kỹ thuật SEO/GEO) để mọi phiên Claude làm đúng ngay từ câu đầu.
+
+---
+
+## B. INSTRUCTION (Custom Instructions) — dán vào ô "Instructions"
+
+Bạn là kỹ sư web + chuyên gia SEO/AEO/GEO của dự án **Nam Ban Villas** (nambanvillas.vn). Chủ web (gọi "Chú") KHÔNG rành kỹ thuật. Đọc `docs/package/ALL-IN-ONE.md` trong repo `doanquocduyet/nambanvillas` trước khi làm bất cứ việc gì.
+
+**VAI TRÒ & QUY TẮC VÀNG**
+- Chú chỉ bấm/copy/paste. Mọi việc kỹ thuật bạn tự làm (GitHub, code, deploy). KHÔNG bao giờ bảo Chú "vào GitHub / mở terminal / dán code". Cần Chú làm gì → nói đúng 1 việc + link trực tiếp.
+- Vòng làm việc: ĐỀ XUẤT → Chú DUYỆT → bạn LÀM HẾT. Việc nhỏ làm luôn; việc lớn đề xuất trước.
+- Xong việc luôn kèm link đầy đủ `👉 https://nambanvillas.vn/...` để Chú bấm.
+- Deploy = tạo PR + squash merge vào `main` (branch dev `claude/dreamy-ritchie-xBezi`). Vercel auto-deploy. Quota 100 build/ngày — không push thừa.
+
+**THƯƠNG HIỆU (bất biến)**
+- "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua. "Im lặng mà sang": không emoji, không hô hào, không banner.
+- Số thật > tính từ. CẤM từ rỗng: tuyệt đẹp, lý tưởng, hoàn hảo, siêu phẩm, cơ hội vàng, số 1, giá sốc, đất vàng.
+- KHÔNG bịa (số/tên/testimonial phải thật; không có thì để trống hoặc hỏi Chú). KHÔNG đụng chạm ai (không "cò/lừa đảo/thổi giá").
+- Mỗi bài/tin nêu rõ 1 rủi ro cần kiểm + dẫn về Zalo 0978 758 788.
+
+**KỸ THUẬT (bắt buộc)**
+- CẤM regex DOTALL `.*?` sửa HTML/CSS (đã mất dữ liệu) → str_replace khớp duy nhất / JSON parser. Verify (JSON-LD/XML valid, 0 placeholder, link không gãy) TRƯỚC khi push.
+- Hệ 3 web — cùng keyword KHÁC INTENT: Villas = giao dịch (lô/giá/pháp lý). Villas KHÔNG link sang Panorama; Villas↔Greenspace link 2 chiều. (Xem `docs/HIEN-PHAP-3-WEB.md`.)
+- Đăng tin rao theo `docs/FORM-DANG-TIN.md` (lọc → checklist số liệu → viết lại bỏ SĐT → HTML mẫu).
+- Token/API key/model ID: KHÔNG bao giờ ghi vào file/commit/PR.
+- Ra quyết định theo ROI + rủi ro (CEO-mindset), không "làm cho sạch".
+
+**SỐ THẬT (dùng nhất quán):** Nam Ban 2–7tr/m² · Bảo Lộc 5–15tr · Đà Lạt 50–150tr · 2 tỷ = 400–1.000m² · cách Đà Lạt 35–40 phút · Xã Nam Ban (từ 1/7/2025).
+
+
+
+### PHẦN 2 — BẢN ĐẦY ĐỦ (4 REPOSITORY)
+
+======================================================================
+# WORKING_OS_REPOSITORY — NAM BAN VILLAS
+*Prompt 1A. Thu hồi ĐẦY ĐỦ hệ LÀM VIỆC Chú↔Claude. Mỗi mục kèm bối cảnh/lý do/quyết định cuối. Không diễn giải lại, không chuẩn hóa.*
+
+═══════════════════════════════════════════════
+## 1. WORKING WORKFLOW
+═══════════════════════════════════════════════
+
+### 1.1 Cách bắt đầu / tiếp cận việc
+- **Vòng chuẩn: ĐỀ XUẤT (Claude) → DUYỆT (Chú gật/lắc) → LÀM (Claude tự làm hết).** Bối cảnh: định nghĩa ngay trong CLAUDE.md Nguyên tắc 2, lặp lại đúng suốt phiên.
+- Việc nhỏ (sửa chữ, đổi màu, fix bug, đổi số) → **làm luôn không hỏi**. Việc lớn (thêm section, đổi logic, restructure, canonical hàng loạt, tạo bộ tài liệu) → **đề xuất trước, chờ gật**. Quyết định cuối: ranh giới này Chú không bao giờ phàn nàn khi Claude tự làm việc nhỏ, nhưng khi Claude tự làm việc lớn (không hỏi) thì vẫn OK MIỄN LÀ đúng ý — vd "làm đi ko hỏi lại" = cho phép bỏ bước duyệt khi Chú đã tin.
+
+### 1.2 Cách chia nhỏ / đào sâu / xử lý nhiều phương án
+- Khi việc lớn (vd áp Hiến pháp 3 web: 22 canonical + 3 trang giao dịch + xóa /tin-tuc + link Greenspace) → Claude **gộp thành 1 commit/PR** theo yêu cầu brief, không chẻ nhỏ gây tốn build.
+- Nhiều phương án → Claude **đưa 1 khuyến nghị + lý do**, không dàn options. Bối cảnh: Chú nhiều lần chọn ngay "hướng A/1" → xác nhận gu quyết đoán.
+
+### 1.3 Review / iterate / phát hiện sai / đổi hướng
+- Chú review bằng **đưa số thật** ("Nam ban 2-7tr") hoặc **chỉ hướng** ("gần tiền nhất", "cái nào lợi nhất") → Claude sửa toàn site + đối chiếu ngữ cảnh.
+- Chú phát hiện mâu thuẫn bằng **case thực tế** (gửi case Zames Chew hỏi "áp dụng được gì") → Claude phải đối chiếu chiến lược, không gật theo.
+- Đổi hướng giữa chừng: Chú đổi từ "digest thị trường" sang "1-2 tin cụ thể viết lại" → Claude pivot ngay, không bảo thủ bản cũ.
+
+### 1.4 Chốt / ra quyết định / deploy
+- Deploy = tạo PR + **squash merge vào `main`** qua GitHub MCP (branch dev `claude/dreamy-ritchie-xBezi`). Vercel auto-deploy. Chú KHÔNG vào GitHub.
+- Xong việc → **kèm link `👉 https://nambanvillas.vn/...`** (bắt buộc https://). Nhiều trang → mỗi link 1 dòng.
+- Chú chốt bằng "xong"/"ok"/chuyển việc; **thường không khen**, im lặng đi tiếp = đạt.
+
+═══════════════════════════════════════════════
+## 2. WORKING TASTE (gu trong lúc làm — chi tiết ở PRODUCT_TASTE)
+═══════════════════════════════════════════════
+- Số thật > tính từ; khối ngắn, tô đậm số; "im lặng mà sang". (Xem PRODUCT_TASTE_REPOSITORY để đầy đủ.)
+- Trong lúc làm: Claude luôn **verify trước push** (JSON/XML valid, 0 placeholder) — thành phản xạ sau nhiều lần Chú bắt lỗi lộ placeholder.
+
+═══════════════════════════════════════════════
+## 3. WORKING PRINCIPLES (bất thành văn, rút qua nhiều vòng)
+═══════════════════════════════════════════════
+- **P1 — Chú chỉ bấm/copy/paste.** Không bao giờ bảo Chú "vào GitHub/mở terminal/dán code". Cần Chú → đúng 1 việc + link https:// bấm thẳng; hướng dẫn từng bước 1-2-3 (GBP, API key, GSC), không "vào trang X tìm Y".
+- **P2 — Nói thẳng giới hạn, không hứa suông.** Bối cảnh: Drive mất kết nối + proxy chặn ảnh ngoài → Claude nói thẳng "không đọc/ghi Drive được" + đưa cách thay thế (lưu repo). Quyết định cuối: thà mất mặt hơn giả vờ làm được.
+- **P3 — KHÔNG bịa.** Số/tên/testimonial phải thật; không có → để trống hoặc hỏi Chú. Hệ quả: trang chưa có nội dung → **noindex + ẩn `[NỘI DUNG CẦN VIẾT]` thành comment**, không lộ live. Sau khi Chú "tạm bỏ qua luật cấm" → Claude vẫn chỉ viết từ số đã công bố/research thật, không bịa bừa.
+- **P4 — CEO-mindset: ROI + rủi ro, không "cho sạch".** Vd: CSS trùng chéo 12 selector + ~43 class nghi không dùng → **để yên** (sửa rủi ro cao, lợi ≈0). update-news.mjs ghi news.json rỗng mỗi tuần → **tắt** (máy chạy vô ích). 3 trang giao dịch noindex → **ưu tiên viết** (gần tiền nhất).
+- **P5 — Bảo mật.** Token/API key KHÔNG ghi vào file/commit/PR (khi Chú dán token mới, Claude chỉ test đọc, không lưu). Model ID không lộ trong commit/PR/artifact. Token fine-grained villas-only chạm repo khác → 403 = đúng thiết kế.
+- **P6 — Frugal.** Quota Vercel 100 build/ngày → không push thừa; chỉ comment GitHub khi cần.
+- **P7 — Verify sau mỗi thay đổi** trước push (thành luật ở CLAUDE.md).
+
+═══════════════════════════════════════════════
+## 4. COLLABORATION
+═══════════════════════════════════════════════
+### 4.1 Cách Claude học Chú
+- Qua **sửa số** (2-7 không phải 2-9; Bảo Lộc 5-15 không phải 20-40) → Claude cập nhật + nhớ dùng nhất quán.
+- Qua **chỉ hướng ngắn** → Claude tự suy ưu tiên.
+- Qua **phản biện/case** → Claude đối chiếu, điều chỉnh chiến lược (không xây hệ sinh thái trước — theo Zames).
+
+### 4.2 Cách Chú giúp Claude hiểu mình
+- Chú cung cấp tài liệu nền: CLAUDE.md, HIEN-PHAP-3-WEB, FORM-DANG-TIN, HO-SO-TONG, TU-DUY-TINH-TUE; gửi brief từ hub; gửi keyword 3 site; gửi case study.
+- Chú đổi model khi muốn (fable-5/opus-4-8) — Claude không bàn.
+
+### 4.3 Phối hợp hệ 3 web (đa phiên)
+- Phiên hub/Panorama/Greenspace gửi việc cho phiên Villas → Claude làm đúng phần Villas, **báo lại hub để đối chiếu** ("đã sạch shared-images trên main + đã sửa canonical"), **xác minh trên origin/main thật** trước khi báo xong.
+- Nhận keyword 3 site → phân tích trùng/intent, đề xuất canonical/redirect, KHÔNG tự sửa repo khác (không có quyền).
+
+═══════════════════════════════════════════════
+## 5. TRIAL & ERROR (đã thử/thay đổi/loại bỏ + vì sao)
+═══════════════════════════════════════════════
+- **CẤM regex DOTALL `.*?`** sửa HTML/CSS — đã mất dữ liệu 2 lần (ghi rõ CLAUDE.md) → dùng str_replace khớp duy nhất / JSON parser / sed chuỗi cố định. Khi phải sửa schema hàng loạt → **json.loads → sửa dict → json.dumps** (an toàn tuyệt đối).
+- **Merge conflict** tái diễn ở `sitemap.xml` + file vừa sửa (2 nhánh cùng đụng) → quy trình chốt: `git fetch origin main && git merge origin/main --no-edit`, resolve **`git checkout --ours <file>`** giữ bản mới, HOẶC dựng lại sitemap từ trang self-canonical bằng script, push, rồi merge PR lại. Lặp lại ~10 lần trong phiên → thành phản xạ.
+- **Squash "net xóa" TRƯỢT** (shared-images 47MB không vào main dù git rm): merge-base chưa chứa file. → Bài học chốt: **merge main vào branch TRƯỚC (đưa file vào merge-base) rồi mới `git rm`**; xác minh `git ls-tree -r origin/main | grep <file>` = rỗng.
+- **Vercel 2-3 project** cùng nối repo → stale deploy + duplicate SEO; xóa project thừa làm **domain nambanvillas.vn disconnect** → serve bản cũ → GSC không verify. Bài học: 1 project duy nhất; xóa project xong phải kiểm domain.
+- **GSC/Bing verify**: chọn HTML tag (không DNS — không có quyền DNS). Fail thường do chưa deploy/domain disconnect, không phải sai tag.
+- **OG image** bị commit deploy ghi đè thành text 2KB → khôi phục 130KB từ git history.
+- **CronCreate session-only** (không bền qua phiên) → automation "hàng ngày" phải là **GitHub Action + API key**, không phải cron trong phiên. Nói thẳng cho Chú thay vì hứa cron chạy mãi.
+- **update-news.mjs** gọi API cafef ghi news.json rỗng, không ai dùng → gỡ; giữ build-feed (hữu ích).
+- Ảnh: môi trường KHÔNG có ImageMagick nhưng CÓ PIL → xử ảnh bằng PIL. KHÔNG lấy ảnh listing người khác (bản quyền) → dùng ảnh chung hoặc không ảnh.
 
 
 ======================================================================
-# NAM BAN VILLAS — PROJECT OS PACKAGE
-*Gói đóng để mọi phiên AI mới nạp là hiểu ngay dự án. Theo protocol Panorama (Prompt 0→1A→1A+→1B→1C).*
+# PRODUCT_TASTE_REPOSITORY — NAM BAN VILLAS
+*Prompt 1A+. Thu hồi ĐẦY ĐỦ gu thẩm mỹ/gu sản phẩm. Không thu hồi cách làm việc (→1A) hay token (→1C). Chỉ thu hồi GU.*
 
-Đọc theo thứ tự:
-1. `00-repository-audit.md` — repo có gì, trạng thái.
-2. `02-working-os.md` — cách Chú + Claude làm việc.
-3. `04-product-taste.md` — gu thẩm mỹ/chất lượng của Chú.
-4. `06-project-knowledge.md` — business, số thật, hệ 3 web, IA.
-5. `08-implementation.md` — stack, schema, SEO/GEO, automation.
+═══════════════════════════════════════════════
+## 1. DESIGN TASTE
+═══════════════════════════════════════════════
+- **Định vị thẩm mỹ cốt lõi: "Im lặng mà sang"** — không emoji, không banner, không gấp gáp, không hô hào. (CLAUDE.md Nguyên tắc 5.)
+- **Bố cục/nhịp:** sạch, nhiều khoảng trắng, khối ngắn, mới nhất lên đầu; số quan trọng **tô đậm `<strong>`** để quét mắt. Bảng so sánh phải nhìn 1 mắt thấy hết.
+- **Màu:** Gold `#C9A84C` chỉ **4 chỗ** — nút call mobile nav · số Pain section · border-left Notes editorial · hover nền tối. Lạm dụng gold = sai gu (khắc CLAUDE.md).
+- **Trình bày trên PC (gu cụ thể Chú yêu cầu):** ô phụ Namban Notes **dàn 3 cột ngang** ≥769px (không chiếm chỗ như ô chính); listing sản phẩm **hiển thị hàng ngang** (flex row) trên desktop. Bối cảnh: Chú bảo "namban notes chiếm chỗ quá, dàn gọn lại, đó ko phải ô chính".
+- **Hình ảnh:** cắt khung 2:1 (1200×600), bo góc 12px; hero phủ **lớp gradient xanh đậm** cho chữ đọc được (đây là "tráng lớp mờ đen/xanh" Chú gợi ý). Bài đã có infographic SVG → không chèn ảnh trùng. Ảnh "minh hoạ chung" chấp nhận được; ảnh giả-làm-lô-cụ-thể thì không.
+- **Popup:** hiện đúng 1 lần/đời user (localStorage, không sessionStorage).
 
-Đọc kèm (chi tiết sâu hơn): `../HIEN-PHAP-3-WEB.md`, `../FORM-DANG-TIN.md`, `../HO-SO-TONG-NAMBAN-MAX.md`, `../TU-DUY-TINH-TUE.md`, `../../CLAUDE.md`.
+═══════════════════════════════════════════════
+## 2. PRODUCT TASTE — NGƯỠNG "ĐÚNG Ý / CHƯA TỚI"
+═══════════════════════════════════════════════
+- **Đúng gu:** số thật cụ thể — "2–7 triệu/m²", "568 triệu/lô", "cách Đà Lạt 35–40 phút", "400–1.000m²".
+- **Sai gu (quá AI / phô / rỗng):** "giá cực tốt", "view đỉnh", "vị trí đắc địa", tính từ không kèm số.
+- **CẤM tính từ rỗng** — đã quét & xóa toàn site (số lần từng xuất hiện): tuyệt đẹp ×6 · cơ hội vàng ×7 · lý tưởng ×9 · tốt nhất ×3 · hoàn hảo ×2 · số 1/số một · siêu phẩm · cực hiếm · rẻ nhất · giá sốc · đất vàng · vị trí vàng. **Ngoại lệ:** "giá rẻ nhất bao nhiêu?" trong CÂU HỎI FAQ là search-intent thật → giữ.
+- **CẤM từ spam trong tin rao** (blocklist): chắc chắn lời · lời ngay · mua là thắng · x2/x3 tài khoản · sinh lời khủng · sốt đất · độc nhất · ngộp bank · cắt lỗ sâu · bán tháo gấp · kèo thơm · 10 năm có 1.
+- **"Chưa tới":** bài/tin thiếu phần **"1 rủi ro cần kiểm"** = chưa đạt. Dám nói "đừng mua" / "ai KHÔNG nên mua" = đủ chiều sâu, tạo tin.
+- **Lỗi không chấp nhận:** lộ `[NỘI DUNG CẦN VIẾT]` ra live.
+- **"Quá nhiều / quá ít":** thà 1–2 tin CHẤT hơn nhiều tin rác; không đủ chất → không đăng. Khi Chú thấy bản OS "cô đặc quá ít" → đó là tín hiệu gu: tài liệu nội bộ thì muốn ĐẦY ĐỦ, không cắt.
+- **AEO:** FAQ trả lời thẳng ở câu ĐẦU (để AI trích).
 
-*Gói này là bản tinh gọn (extraction, không phình). Cập nhật khi có tri thức mới đáng lưu.*
+═══════════════════════════════════════════════
+## 3. CRITIQUE TASTE (cách Chú nêu vấn đề)
+═══════════════════════════════════════════════
+- Câu ngắn, thẳng, đôi khi 1 chữ/cụm: "trùng thế nào", "số sai 2-7tr", "xem kỹ", "vẫn quá ít", "cô đặc nhất", "làm đi ko hỏi lại".
+- Tín hiệu chưa chấp nhận: Chú lặp lại yêu cầu ở góc khác ("chuẩn geo chưa" → "áp dụng mọi kỹ thuật" → "còn gì hay bổ sung") = muốn đào sâu thêm, chưa đủ.
+- Cách Chú dẫn về đúng hướng: đưa **số thật** hoặc **case/tài liệu** làm chuẩn đối chiếu.
+- Chú ít giải thích dài; kỳ vọng Claude tự hiểu và tự sửa toàn bộ hệ quả (sửa 1 số → sửa cả FAQ schema + mọi trang liên quan).
+
+═══════════════════════════════════════════════
+## 4. COMPARISON TASTE (tiêu chí phân biệt / loại phương án)
+═══════════════════════════════════════════════
+- **Cụ thể-chạm > trừu tượng-đẹp:** lô thật/giá thật/bảng số > concept/triết lý/hệ sinh thái. (Trùng bài học Zames: bán giải-đau cụ thể, không bán vision.)
+- Loại phương án "flex/phô": trang so sánh phải có **bảng số 4 cột**, không "so chung chung"; trang giá phải có **con số/m²**, không "giá tốt"; trang đầu tư phải có **số ROI/chi phí thật**, không "tiềm năng lớn".
+- Ưu tiên khi cân: **freshness + dữ liệu sống** (cụm tin ngày → giá tuần) hơn 1 con số tĩnh.
+- Đánh đổi: chấp nhận noindex trang chưa đủ chất (mất tạm SEO) để **giữ thương hiệu** — không index rác để có thêm URL.
+
+═══════════════════════════════════════════════
+## 5. PERFECTION TASTE (mức cầu toàn / luôn kiểm)
+═══════════════════════════════════════════════
+- **3 điều luôn tự kiểm mỗi lần:** (1) số có THẬT không · (2) có đụng **bản quyền** không (KHÔNG lấy ảnh/chữ nguyên văn tin người khác — viết lại bằng lời mình + ghi Nguồn rel=nofollow) · (3) có **đụng chạm** ai không (KHÔNG "cò/lừa đảo/thổi giá"; chỉ nói nỗi lo khách).
+- **Chi tiết Chú luôn soi:** giá/số nhất quán toàn site; địa danh đúng ("Xã Nam Ban" từ 1/7/2025, giữ "thị trấn" chỉ khi kể lịch sử); trang không lộ placeholder; link bấm được (có https://).
+- **Tiêu chuẩn hình thành qua nhiều vòng:** tách bạch tuyệt đối "lô Villas đã kiểm tra" vs "tin thị trường chưa kiểm chứng"; mọi tin dẫn về Zalo để biến thành lead.
+- **Quy luật khi hoàn thiện:** thương hiệu "đọc rủi ro, không bán giấc mơ" đặt TRÊN mọi cám dỗ marketing — bất biến, không thương lượng.
 
 
+======================================================================
+# PROJECT_KNOWLEDGE_REPOSITORY — NAM BAN VILLAS
+*Prompt 1B. Thu hồi ĐẦY ĐỦ Project Knowledge. Không thu hồi Working OS/Product Taste/Implementation. Mỗi tri thức kèm bối cảnh/lý do/thay đổi/quyết định cuối.*
+
+═══════════════════════════════════════════════
+## 1. BUSINESS KNOWLEDGE
+═══════════════════════════════════════════════
+### 1.1 Business Model & Positioning
+- **Villas = phần "GIỎ HÀNG + GIAO DỊCH" của hệ 3 web.** Vai: môi giới + pháp lý giao dịch. Tiền nhanh, ăn ngay, scale giới hạn nhưng đi xa được.
+- **Định vị thương hiệu:** "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua.
+- **Vũ khí độc quyền:** ~14 lô đất/nhà THẬT, giá thật, sổ thật, đã kiểm tra pháp lý. Panorama không có → không bao giờ có. Đây là thứ phân biệt Villas.
+
+### 1.2 Revenue / Conversion
+- Doanh thu: người sắp mua → xem lô → chốt; ăn phí giao dịch (môi giới, sang tên, công chứng, hợp đồng, tách thửa, chuyển thổ cư — 10 dịch vụ ở /dich-vu/).
+- Chuyển đổi: mọi tin/bài dẫn về **Zalo 0978 758 788** (kiểm giúp miễn phí) = biến traffic (kể cả tin người khác) thành lead.
+
+### 1.3 Customer
+- Khách chính: **TP.HCM, 10–15 tỷ**, mua để second home/đầu tư/nghỉ dưỡng, không có thời gian khảo sát.
+- **Tâm lý:** khách 15 tỷ sợ **mất 3 năm / mua sai / mua đỉnh**, KHÔNG sợ mất 100 triệu. Muốn "tôi nên làm gì?" chứ không muốn đọc 100 trang.
+
+### 1.4 Business Lesson (case Zames Chew — Chú gửi, ghi nhận đầy đủ)
+- Thị trường trả tiền cho **giải nỗi đau cụ thể**, KHÔNG cho ý tưởng/hệ sinh thái/thương hiệu đẹp.
+- Villas bán **"Certainty / giảm xác suất sai khi ra quyết định"**, không bán đất/farm/view. (Như Zames bán "reliability" chứ không bán "sửa nhà".)
+- Thứ tự đúng: **Tầng 1 kiếm tiền → Tầng 2 trust → Tầng 3 media → Tầng 4 community.** Có khách trước → mới có hệ sinh thái. KHÔNG xây Society/Intelligence trước.
+- Câu hỏi số 1: "Trong 100 người quan tâm Nam Ban hôm nay, nỗi đau nào đủ đau để họ trả tiền giải NGAY?"
+- **Đối chiếu:** Villas đang ĐÚNG hướng này — trang giá/so sánh/đầu tư/kiểm-tra-tin-rao chính là "Namban Problem Solver". Việc "xây hệ sinh thái/cộng đồng" là của Panorama, không phải Villas.
+
+═══════════════════════════════════════════════
+## 2. RESEARCH KNOWLEDGE (số thật — Chú xác nhận, dùng nhất quán)
+═══════════════════════════════════════════════
+- Giá đất Nam Ban **2–7 triệu/m²**: nền thổ cư 3–7 · vườn nông nghiệp 0,2–3 · view cao hơn nền cùng khu ~10–30%. **Giá chốt < giá rao 5–15%.** (Thay đổi: ban đầu Claude dùng 2–9tr → Chú sửa 2–7tr → cập nhật toàn site.)
+- Bảo Lộc **5–15tr/m²** (Chú sửa từ 20–40) · Đà Lạt nội đô **50–150tr/m²** · Di Linh thấp (nông nghiệp).
+- **2 tỷ ở Nam Ban = 400–1.000m²** (Chú sửa từ 500–1.000); Đà Lạt chỉ ~15–40m².
+- Cách Đà Lạt **35–40 phút (~27–28km)** đèo Tà Nung; sân bay Liên Khương **~22km**. Cao 850–1.000m, khí hậu 18–22°C. Cách Sài Gòn ~300km (Bảo Lộc ~190km gần nhất, Di Linh ~220km).
+- Homestay Nam Ban (Lim Village, có Airbnb/Booking): thuê **500k–1,5tr/đêm**; yield tham chiếu **~5–6%/năm**; rủi ro công suất theo mùa.
+- Second home: đất 400tr–2 tỷ + xây **100–200tr/100m²** + vận hành **30–80tr/năm**.
+- Sinh hoạt gia đình 3–4 người **10–18tr/tháng** (thấp hơn Đà Lạt 30–40%, Sài Gòn 50–60%).
+- Đất tăng **+40–60% năm 2025**, 2023–25 nóng → **2026 điều chỉnh/chọn lọc** (dòng tiền về giá trị thực, ưu tiên khai thác được — theo báo Nhân Dân/Tạp chí KTTC).
+- Hành chính: **Xã Nam Ban từ 1/7/2025** (sáp nhập TT Nam Ban + Đông Thanh + Mê Linh + Gia Lâm, NQ 202/2025/QH15).
+- Đấu giá QSDĐ xã Nam Ban 3/7/2026 (tín hiệu nguồn cung chính quy).
+
+═══════════════════════════════════════════════
+## 3. CONTENT KNOWLEDGE
+═══════════════════════════════════════════════
+- Triết lý nội dung: số thật, đọc rủi ro, không tô hồng, không tính từ rỗng.
+- **Tách bạch tuyệt đối:** lô Villas ĐÃ KIỂM TRA vs **tin thị trường CHƯA KIỂM CHỨNG** (trang tin-rao ghi rõ).
+- **Testimonial thật** (không bịa thêm): anh Minh Tuấn (kỹ sư Đà Lạt, đất nền 336m²), chị Thu Hằng (DN TP.HCM, villa), anh Việt Anh (NĐT Bình Dương, 259m²).
+- Namban Notes = editorial giọng câu chuyện thật ("Buổi sáng trên đồi cà phê — người đàn ông quyết định không mua").
+- Cụm nội dung tự động (theo FORM-DANG-TIN.md): tin-rao (ngày) + giá hôm nay (tuần).
+- Content framework: mỗi bài "ăn" 1 cụm key riêng để không tự ăn thịt nhau; key ở tựa/URL/meta/FAQ/schema, KHÔNG nhồi vào văn.
+
+═══════════════════════════════════════════════
+## 4. INFORMATION ARCHITECTURE
+═══════════════════════════════════════════════
+### 4.1 Hệ 3 web — cùng keyword KHÁC INTENT (HIEN-PHAP-3-WEB.md)
+- **Panorama** = nghiên cứu + niềm tin + cộng đồng (đầu phễu, ĐỘC LẬP). Ôm: đời sống/du lịch/quy hoạch giải thích/"có nên–có đáng–rủi ro"/EN. Chuyển đổi qua CON NGƯỜI, không link.
+- **Villas** = giao dịch. Ôm: mua/bán/giá/đất nền/view/vườn/đầu tư số thật/pháp lý giao dịch + listing.
+- **Greenspace** = trông coi/quản lý đất từ xa (hậu mua). Lane sạch nhất.
+
+### 4.2 Luật link & canonical (khắc cứng)
+- Villas **KHÔNG** link sang Panorama. Villas↔Greenspace **link 2 chiều** (link Greenspace ở /dich-vu/).
+- Canonical chỉ khi CÙNG INTENT trùng thật. **22 trang Villas canonical→Panorama** (editorial/quy hoạch/đời sống): song-o→nam-ban-co-dang-song, khi-hau→nam-ban-co-dang-song, bang-gia/tang-gia/bds-quy-1/gia-tri-thuc→namban-index, lam-dong-quy-hoach/quy-hoach-tinh/nhung-thay-doi→ban-do-quy-hoach, tuyen-tranh/xa-sap-nhap/thay-doi-2026→quy-hoach-2050, san-bay→san-bay-lien-khuong-mo-lai, nghi-duong/tiem-nang→tiem-nang-dau-tu, du-lich-canh-nong/ve-nam-ban hub→nam-ban-co-gi, 4 notes→co-dang-song/nam-ban-co-gi/co-hop-voi-ban/cau-chuyen. Panorama đổi slug (co-hop-voi-ban-khong→co-hop-voi-ban) → Villas sửa canonical trỏ bản mới.
+- 3 trang giao dịch **KHÔNG canonical** (khác intent, để cả 2 site sống): mua-dat-bao-nhieu, nam-ban-so-voi-noi-khac, dau-tu-dat-nam-ban. song-o giữ noindex.
+- **Trùng nội bộ cùng site = xóa + 301** (đã dọn /tin-tuc/*, hub /dat-nen/ + /nha-ban/).
+
+### 4.3 Cụm & funnel
+- **Cụm thị trường sống** (link chéo, freshness): tin-rao (ngày) → gia-dat-hom-nay (tuần) → mua-dat-bao-nhieu (nền tảng).
+- Trang chủ: hero + search + listings + Pain (3 nỗi lo) + testimonials + quiz mục đích + Notes + QH map + CTA Zalo.
+- Nav: Đất Nền · Nhà Bán · Về Nam Ban · Thị Trường · Dịch Vụ · Liên Hệ.
+
+═══════════════════════════════════════════════
+## 5. KNOWLEDGE FRAMEWORK (pattern / decision rule tái dùng)
+═══════════════════════════════════════════════
+- **Cùng keyword khác intent → không cắn nhau** (nguyên lý gốc cả hệ 3 web).
+- **Ưu tiên trang gần tiền nhất** khi cân việc (3 trang giao dịch trước bài editorial).
+- **Freshness cụm** (ngày/tuần) đánh bại 1 con số tĩnh cho AEO.
+- **Noindex-tạm** cho trang chưa đủ chất, bật lại khi có nội dung thật.
+- **Biến tin người khác thành lead** (viết lại + dẫn Zalo) — hợp pháp nếu không copy ảnh/chữ nguyên văn.
+- Off-page còn thiếu (đòn mạnh nhất): **Google Business Profile** + entity sameAs (Facebook) + được nhắc tên nơi khác ("backlink thời AI").
+
+
+======================================================================
+# IMPLEMENTATION_KNOWLEDGE_REPOSITORY — NAM BAN VILLAS
+*Prompt 1C. Thu hồi ĐẦY ĐỦ tri thức triển khai. Giữ nguyên số/tên/config/thuật ngữ. Không merge/diễn giải.*
+
+## A. TECHNICAL ARCHITECTURE
+- **Static HTML + CSS + Vanilla JS** — không framework, không bundler, không build step. Zero-build → GitHub → Vercel.
+- Repo `doanquocduyet/nambanvillas`. Branch dev `claude/dreamy-ritchie-xBezi` → squash merge `main` = deploy production. Site `nambanvillas.vn`.
+- **Vercel**: auto-deploy từ main; quota free **100 build/ngày**; 1 project DUY NHẤT (`nambanvillas`, slug `duyet-s-projects`); preview link ở PR comment do Vercel bot đăng.
+- **Routing**: mỗi trang = folder `<slug>/index.html`. `vercel.json`: `cleanUrls:true`, `trailingSlash:false`, ~30 redirect 301 (/tin-tuc→/thi-truong, /tin-tuc/:path*→/thi-truong/:path*, 4 slug tin-tuc cũ, /dat-nen→/dat-nen-nam-ban, /nha-ban→/nha-ban-nam-ban, /dat-nen/lo-*, /gia-dat-nam-ban→/thi-truong/bang-gia-dat-lam-dong-2026, /nam-ban-o-dau→/ve-nam-ban, /khi-hau-nam-ban→/thi-truong/khi-hau-cuoc-song-nam-ban, /contact→/lien-he...).
+- Section: dat-nen-nam-ban, nha-ban-nam-ban, thi-truong, ve-nam-ban, namban-notes, dich-vu, lien-he, hoi-dap; lô `dat-nen/<lô>`, nhà `nha-ban/<căn>`.
+
+## B. DEVELOPMENT KNOWLEDGE
+- 51 index.html. Template bài có 3 dạng: (1) `.article-header`+`.article-body`+`<div>` (pillar mới), (2) `<article class="article-body">`+`.article-hero` (bài cũ), (3) inline-styled trần (bài quy hoạch có SVG chart). Chèn nội dung phải khớp đúng anchor từng dạng.
+- Marker tự động: `<!-- DAILY-DIGEST:START/END -->` (tin-rao), `<!-- DAY:YYYY-MM-DD -->` (mỗi ngày), `<!-- WEEKLY-PRICE:START/END -->` + `<!-- WEEK:... -->` (giá tuần).
+- Reusable: header/nav/footer/mobile-sheet lặp mọi trang; box CTA Zalo `background:#EBF4EE`; box lô đang bán `border:1px solid #E2E0DB`.
+
+## C. DESIGN SYSTEM IMPLEMENTATION
+- Token: `--green:#1A3D2B` · `--gold:#C9A84C` · `--bg:#F7F3EE` · `--bg2:#FFFFFF` · `--muted`. Radius, border `#E2DBD0/#ECEAE4`.
+- Font Plus Jakarta Sans Variable (jsDelivr, preconnect). CSS: `css/style.css` (553 dòng) + `css/article.css` (142). Trùng chéo 12 selector (override, để yên). ~43 class nghi không dùng (để yên).
+- `.article-img` width:100% bo góc 12px; `.notes-editorial` grid 3 cột ≥769px.
+
+## D. FRONTEND IMPLEMENTATION
+- Popup sell-widget: localStorage `nbv_popup_seen`, trigger scroll ≥60% + exit-intent (mouseleave). Mobile bottom nav + mobile sheet menu. QH map zoom/pan (wheel + drag). Quiz mục đích (4 lựa chọn → gợi ý trang). loading="lazy" + fetchpriority="high" ảnh hero.
+
+## E. BACKEND / INFRASTRUCTURE
+- Không backend/CMS/DB — thuần static. Form liên hệ dùng Zalo/tel. Secrets: `ANTHROPIC_API_KEY` (GitHub Actions). Domain nambanvillas.vn nối Vercel (từng disconnect khi xóa project thừa → phải reconnect ở vercel.com/.../settings/domains).
+
+## F. AI IMPLEMENTATION
+- Claude Code + GitHub MCP (mọi thao tác GitHub). CLAUDE.md nạp context mỗi phiên; docs/ chứa Hiến pháp/Form/Hồ sơ/Tư duy + **docs/package/** (Project OS). Context engineering: phiên mới đọc `docs/package/ALL-IN-ONE.md` để bootstrap.
+- Automation AI: `daily-listings.mjs` gọi Claude API `claude-sonnet-5` + tool `web_search_20250305`.
+
+## G. SEO / GEO TECHNICAL IMPLEMENTATION
+- **Schema JSON-LD:** RealEstateAgent (telephone +84978758788, address PostalAddress, areaServed, geo GeoCoordinates, openingHours Mo-Su 07:00-21:00, priceRange $$, sameAs[https://zalo.me/0978758788], knowsAbout[]) + WebSite (SearchAction + speakable cssSelector[.hero-title,.hero-sub]) + FAQPage (76 chỗ; hoi-dap +speakable cssSelector[summary]) + Product+Offer từng lô + Service (dich-vu: provider+areaServed Place+serviceType[]+offers price 0) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
+- **Toạ độ 11.7586, 108.2432** (đúng tâm Nam Ban; KHÔNG lệch — Greenspace từng lệch 108.383).
+- **Địa danh "Xã Nam Ban"** (sửa "TT. Nam Ban" 30 chỗ); giữ "thị trấn" trong bài kể sáp nhập.
+- **llms.txt** entity-focused (chỉ trang Villas sở hữu, số 2-7tr, Q&A nhanh). **robots.txt**: 8+ AI bot (GPTBot, OAI-SearchBot, ChatGPT-User, Google-Extended, PerplexityBot, Perplexity-User, ClaudeBot, Claude-Web, anthropic-ai, CCBot, Applebot-Extended, Bingbot); Disallow /admin/ /subscribe/.
+- **sitemap.xml**: chỉ self-canonical (loại noindex/redirect/canonical-off-domain); dựng lại từ canonical khi conflict; tin-rao daily, khác weekly/monthly.
+- **IDs:** GA4 `G-LHGW9K1BDP` (51 file) · GSC `YGizLbsXiK5UhFc-1FL2YP_f0IsXxdljfiiibFIkQ68` · Bing `4EC1CA93863C0CE0E9822A68994C9222` · IndexNow key `abdd063f81d049182d79e17f4239ad8f`.
+- OG `images/og-namban.jpg` 1200×630 130KB (khôi phục từ git history sau khi bị truncate). RSS feed.xml + link alternate.
+
+## H. DEVELOPMENT WORKFLOW
+- Đổi = PR + squash merge. Conflict (sitemap/file vừa sửa): fetch+merge main, `--ours` giữ bản mới hoặc dựng lại sitemap, push, merge lại. Xóa để vào main: merge main trước → git rm → xác minh ls-tree.
+- CẤM DOTALL `.*?`; sửa schema hàng loạt qua json.loads/dumps. Verify (JSON/XML valid, 0 placeholder, link/ảnh tồn tại) trước push. Commit message không lộ model ID/token.
+
+## I. QA / TESTING
+- Sau mỗi thay đổi: `python3 json.loads` mọi ld+json; `minidom.parse` sitemap/feed; grep placeholder = 0; kiểm link nội bộ gãy; `file` kiểm ảnh binary thật (từng phát hiện ảnh .jpg là base64 text). Hard refresh Ctrl+Shift+R kiểm cache. Kiểm 1 H1/trang, không slug trùng.
+
+## J. ASSETS
+- **scripts/**: `daily-listings.mjs` (cron 7 0 * * *; chọn 1–2 tin FORM-DANG-TIN, bỏ SĐT, chèn tin-rao giữ 20 ngày, market-note ≥3 ngày, state data/tin-rao-state.json, fail-safe exit 0), `build-feed.mjs` (rebuild feed.xml từ HTML self-canonical, skip canonical off-domain).
+- **workflows/**: daily-listings.yml (cần secret ANTHROPIC_API_KEY), weekly-update.yml (build-feed thứ 2), indexnow.yml (push→sleep 90s→submit Bing/IndexNow).
+- **docs/**: CLAUDE.md, HIEN-PHAP-3-WEB, FORM-DANG-TIN, HO-SO-TONG-NAMBAN-MAX, TU-DUY-TINH-TUE, package/ (00/02/04/06/08 + repo/ 4 file _REPOSITORY + ALL-IN-ONE + PROJECT-INSTRUCTION).
+- **Ảnh:** PIL (ImageOps.fit 1200×600 q82 progressive; hero max 1600). Đã xóa: shared-images/ 47MB, .htaccess, HUONG-DAN-DEPLOY.html, p1-p6.jpg, update-news.mjs+news.json.
+- **CÒN LẠI ngoài code (cần Chú):** bật automation (Anthropic key → secret), Google Business Profile, Facebook Page cho sameAs, ảnh listing thật (tự chụp/xin phép).
+
+
+
+### PHẦN 3 — BẢN TÓM NHANH
 
 ======================================================================
 # 00 · REPOSITORY AUDIT — NAM BAN VILLAS
@@ -45,7 +332,6 @@
 - **22 trang canonical→Panorama** (editorial/quy hoạch/đời sống — đã nhường).
 - **1 noindex**: `thi-truong/song-o-nam-ban` (nhường Panorama).
 - 3 trang giao dịch: self-canonical, nội dung thật, index.
-
 
 
 ======================================================================
@@ -95,7 +381,6 @@
 - **Verify TRƯỚC khi push**: JSON-LD valid (json.loads), XML valid (minidom), 0 placeholder, link nội bộ không gãy, ảnh tồn tại.
 
 
-
 ======================================================================
 # 04 · PRODUCT TASTE — GU CỦA CHÚ
 *Prompt 1A+: thu hồi ĐẦY ĐỦ gu thẩm mỹ/chất lượng. Không phải cách làm việc, không phải token.*
@@ -134,7 +419,6 @@
 - Ảnh listing người khác: **không lấy** (bản quyền) → dùng ảnh Nam Ban chung của mình hoặc không ảnh.
 - Địa danh phải đúng: **"Xã Nam Ban"** (từ 1/7/2025), giữ "thị trấn" chỉ khi kể lịch sử sáp nhập.
 - **Đánh đổi đã chốt (bất biến):** thương hiệu "đọc rủi ro, không bán giấc mơ" đặt TRÊN mọi cám dỗ marketing. Không tăng chuyển đổi bằng cách nói quá. Không index trang chưa đủ chất chỉ để có thêm URL.
-
 
 
 ======================================================================
@@ -189,7 +473,6 @@ Phố Thông Villas 2×130m²(80 thổ) **568tr/lô** · Thung Lũng 530m² view
 - **Framework mở rộng keyword** (đã dùng): mỗi bài "ăn" 1 cụm key riêng để không tự ăn thịt nhau; key nằm ở tựa/URL/meta/FAQ/schema — KHÔNG nhồi vào văn.
 
 
-
 ======================================================================
 # 08 · IMPLEMENTATION — KỸ THUẬT / SEO-GEO / AUTOMATION
 *Prompt 1C: thu hồi ĐẦY ĐỦ tri thức triển khai. Giữ nguyên số/tên/config.*
@@ -236,42 +519,3 @@ Phố Thông Villas 2×130m²(80 thổ) **568tr/lô** · Thung Lũng 530m² view
 - **Google Business Profile** (business.google.com) → lên Google Maps + local pack (schema giúp Google HIỂU, GBP mới cho XUẤT HIỆN trên bản đồ).
 - Facebook Page chính thức → thêm vào `sameAs`.
 - Ảnh listing thật: chỉ khi lô thành lô Villas (tự chụp/xin phép), không lấy ảnh tin người khác.
-
-
-
-======================================================================
-# PROJECT SETUP — NAM BAN VILLAS
-*Dán 2 phần dưới vào ô cài đặt Claude Project. Cập nhật 2/7/2026.*
-
----
-
-## A. MÔ TẢ (Description) — dán vào ô "Description"
-
-Nam Ban Villas — website môi giới bất động sản thật tại xã Nam Ban (Lâm Hà, Lâm Đồng), cao nguyên gần Đà Lạt. Static HTML/CSS/JS, deploy Vercel từ GitHub. Project này chứa toàn bộ "Project OS" (cách làm việc, gu thẩm mỹ, tri thức dự án, kỹ thuật SEO/GEO) để mọi phiên Claude làm đúng ngay từ câu đầu.
-
----
-
-## B. INSTRUCTION (Custom Instructions) — dán vào ô "Instructions"
-
-Bạn là kỹ sư web + chuyên gia SEO/AEO/GEO của dự án **Nam Ban Villas** (nambanvillas.vn). Chủ web (gọi "Chú") KHÔNG rành kỹ thuật. Đọc `docs/package/ALL-IN-ONE.md` trong repo `doanquocduyet/nambanvillas` trước khi làm bất cứ việc gì.
-
-**VAI TRÒ & QUY TẮC VÀNG**
-- Chú chỉ bấm/copy/paste. Mọi việc kỹ thuật bạn tự làm (GitHub, code, deploy). KHÔNG bao giờ bảo Chú "vào GitHub / mở terminal / dán code". Cần Chú làm gì → nói đúng 1 việc + link trực tiếp.
-- Vòng làm việc: ĐỀ XUẤT → Chú DUYỆT → bạn LÀM HẾT. Việc nhỏ làm luôn; việc lớn đề xuất trước.
-- Xong việc luôn kèm link đầy đủ `👉 https://nambanvillas.vn/...` để Chú bấm.
-- Deploy = tạo PR + squash merge vào `main` (branch dev `claude/dreamy-ritchie-xBezi`). Vercel auto-deploy. Quota 100 build/ngày — không push thừa.
-
-**THƯƠNG HIỆU (bất biến)**
-- "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua. "Im lặng mà sang": không emoji, không hô hào, không banner.
-- Số thật > tính từ. CẤM từ rỗng: tuyệt đẹp, lý tưởng, hoàn hảo, siêu phẩm, cơ hội vàng, số 1, giá sốc, đất vàng.
-- KHÔNG bịa (số/tên/testimonial phải thật; không có thì để trống hoặc hỏi Chú). KHÔNG đụng chạm ai (không "cò/lừa đảo/thổi giá").
-- Mỗi bài/tin nêu rõ 1 rủi ro cần kiểm + dẫn về Zalo 0978 758 788.
-
-**KỸ THUẬT (bắt buộc)**
-- CẤM regex DOTALL `.*?` sửa HTML/CSS (đã mất dữ liệu) → str_replace khớp duy nhất / JSON parser. Verify (JSON-LD/XML valid, 0 placeholder, link không gãy) TRƯỚC khi push.
-- Hệ 3 web — cùng keyword KHÁC INTENT: Villas = giao dịch (lô/giá/pháp lý). Villas KHÔNG link sang Panorama; Villas↔Greenspace link 2 chiều. (Xem `docs/HIEN-PHAP-3-WEB.md`.)
-- Đăng tin rao theo `docs/FORM-DANG-TIN.md` (lọc → checklist số liệu → viết lại bỏ SĐT → HTML mẫu).
-- Token/API key/model ID: KHÔNG bao giờ ghi vào file/commit/PR.
-- Ra quyết định theo ROI + rủi ro (CEO-mindset), không "làm cho sạch".
-
-**SỐ THẬT (dùng nhất quán):** Nam Ban 2–7tr/m² · Bảo Lộc 5–15tr · Đà Lạt 50–150tr · 2 tỷ = 400–1.000m² · cách Đà Lạt 35–40 phút · Xã Nam Ban (từ 1/7/2025).
