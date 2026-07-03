@@ -2,6 +2,7 @@
 *Gói đóng để mọi phiên AI mới nạp là hiểu ngay dự án. Theo protocol Panorama (Prompt 0→1A→1A+→1B→1C).*
 
 ## BẢN ĐẦY ĐỦ (repo/) — thu hồi sâu từng loại, theo đúng protocol
+- `repo/WORK-JOURNAL.md` — **BIÊN NIÊN toàn bộ quá trình** (15 giai đoạn, từng việc/vấn đề/quyết định/PR).
 - `repo/WORKING_OS_REPOSITORY.md` (1A) — cách Chú↔Claude làm việc.
 - `repo/PRODUCT_TASTE_REPOSITORY.md` (1A+) — gu thẩm mỹ/chất lượng.
 - `repo/PROJECT_KNOWLEDGE_REPOSITORY.md` (1B) — business/research/content/IA.
