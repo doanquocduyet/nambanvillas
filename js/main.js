@@ -115,10 +115,19 @@ if(veNamBanEl){
 // Contact form
 document.getElementById('contactForm')?.addEventListener('submit',function(e){
   e.preventDefault();
-  const btn=this.querySelector('.form-submit');
-  btn.textContent='✓ Đã gửi! Chúng tôi sẽ liên hệ sớm.';
+  const f=this, d=new FormData(f);
+  const g=k=>((d.get(k)||'')+'').trim();
+  let msg='Xin chào Nam Ban Villas, tôi muốn được tư vấn.';
+  if(g('name'))    msg+='\nTên: '+g('name');
+  if(g('phone'))   msg+='\nSĐT: '+g('phone');
+  if(g('purpose')) msg+='\nNhu cầu: '+g('purpose');
+  if(g('note'))    msg+='\nCâu hỏi: '+g('note');
+  try{ navigator.clipboard && navigator.clipboard.writeText(msg); }catch(_){}
+  window.open('https://zalo.me/0978758788','_blank');
+  const btn=f.querySelector('.form-submit');
+  btn.textContent='✓ Đã mở Zalo — chỉ cần DÁN (Paste) và bấm gửi';
   btn.style.background='#16a34a';
-  setTimeout(()=>{this.reset();btn.textContent='Gửi yêu cầu';btn.style.background='';},4000);
+  setTimeout(()=>{btn.textContent='Gửi lời nhắn qua Zalo';btn.style.background='';},7000);
 });
 
 /* Vuốt ảnh trên mobile — trang chi tiết (gallery) */
