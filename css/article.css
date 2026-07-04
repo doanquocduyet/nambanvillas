@@ -140,3 +140,14 @@
 .risk-col ul li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%}
 .risk-col.strengths ul li::before{background:#1A3D2B}
 .risk-col.risks ul li::before{background:#C9A84C}
+
+/* ===== TIN RAO — thẻ tối ưu AEO/UX ===== */
+.tin-list{list-style:none;padding:0;margin:0 0 8px}
+.tin-item{border-top:1px solid #ECEAE4;padding:14px 0}
+.tin-item:first-child{border-top:none}
+.tin-title{font-size:1rem;font-weight:700;color:#1A3D2B;margin:0 0 7px;line-height:1.4}
+.tin-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 7px}
+.tin-specs span{background:#F2F6F3;border-radius:6px;padding:3px 10px;font-size:.8rem;color:#1A3D2B;font-weight:600}
+.tin-desc{font-size:.92rem;color:#3D3D3D;line-height:1.65;margin:0 0 6px}
+.tin-meta{font-size:.8rem;color:#8a8a8a;margin:0}
+.tin-meta a{color:#1A3D2B;font-weight:600}
