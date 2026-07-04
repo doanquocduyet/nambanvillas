@@ -31,6 +31,11 @@
 - Báo cáo = việc đã xong + link bấm. Bỏ đoạn giải thích dài, bỏ liệt kê phương án không làm.
 - Việc nhỏ + rõ → làm luôn, không hỏi. Chỉ hỏi khi thật sự cần chú quyết.
 
+### CHUẨN CAO NHẤT — AEO/SEO/GEO/UX/UI + CÔNG NGHỆ MỚI NHẤT
+- Mọi thứ làm ra phải đạt **chuẩn AEO/SEO/GEO/UX/UI tốt nhất hiện có** — không làm cho xong, làm là phải đỉnh.
+- Luôn **cập nhật công nghệ, thuật toán, best-practice mới nhất & xịn nhất** (schema.org mới, Core Web Vitals, cách AI/Google index & trích dẫn hiện hành…) rồi áp dụng.
+- Khi có cách mới tốt hơn → chủ động đề xuất/nâng cấp, không bám cái cũ chỉ vì quen.
+
 ### GIAO DIỆN — LUÔN CHECK CẢ 2 (DESKTOP + MOBILE)
 - Mỗi lần làm/sửa giao diện: **tự kiểm KỸ cả bản máy tính VÀ bản điện thoại** — đẹp, sang, gọn, tối ưu nhất ở CẢ HAI. 2 màn hình khác nhau, không được chỉ ngắm 1 cái.
 - Chú KHÔNG muốn phải xem chi tiết rồi nhắc từng chút — cháu tự lo mobile lẫn desktop trước khi push.
