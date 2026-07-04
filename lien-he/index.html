@@ -52,6 +52,14 @@
   </div>
 </div>
 
+<style>
+.oneTap{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 2px 8px rgba(26,61,43,.08)}
+.oneTap:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(26,61,43,.32)}
+.oneTap svg{flex:0 0 auto}
+.oneTap span{display:flex;flex-direction:column;line-height:1.25}
+.oneTap strong{font-size:1.05rem}
+.oneTap small{opacity:.88;font-size:.8rem;font-weight:400;margin-top:3px}
+</style>
 <section class="section" style="padding-top:36px">
   <div class="container">
     <div class="contact-head">
@@ -89,34 +97,22 @@
         </div>
       </div>
 
-      <div class="form-card">
-        <h3 style="margin-bottom:20px">Để lại lời nhắn</h3>
-        <form id="contactForm">
-          <div class="form-field">
-            <label>Bạn tên gì? *</label>
-            <input type="text" name="name" required placeholder="Nguyễn Văn A">
-          </div>
-          <div class="form-field">
-            <label>Số điện thoại *</label>
-            <input type="tel" name="phone" required placeholder="0xxx xxx xxx">
-          </div>
-          <div class="form-field">
-            <label>Bạn đang nghĩ đến điều gì?</label>
-            <select name="purpose">
-              <option value="">Mục đích chính</option>
-              <option>Xây nhà nghỉ dưỡng</option>
-              <option>Đầu tư tăng giá</option>
-              <option>Định cư lâu dài</option>
-              <option>Đang tìm hiểu</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Câu hỏi của bạn (nếu có)</label>
-            <textarea name="note" placeholder="Hỏi thẳng bất cứ điều gì — quy hoạch, giá, pháp lý, khu vực..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">Gửi lời nhắn qua Zalo</button>
-          <p class="form-honest-note">Bấm gửi sẽ mở thẳng Zalo 0978 758 788 với nội dung đã soạn sẵn — chỉ cần dán và gửi. Chúng tôi đọc từng tin và trả lời trong ngày.</p>
-        </form>
+      <div class="form-card" style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+        <h3 style="margin-bottom:4px">Bấm 1 phát — gặp ngay chủ đất</h3>
+        <p style="color:#6B6B6B;font-size:.9rem;margin-bottom:8px">Không cần điền form, không qua trung gian. Chọn cách chú tiện:</p>
+        <a href="tel:0978758788" class="oneTap" style="background:#1A3D2B;color:#fff">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg>
+          <span><strong>Gọi ngay 0978 758 788</strong><small>Bấm là máy gọi liền</small></span>
+        </a>
+        <a href="https://zalo.me/0978758788" target="_blank" class="oneTap" style="background:#0068FF;color:#fff">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
+          <span><strong>Nhắn Zalo</strong><small>Mở thẳng khung chat với chủ đất</small></span>
+        </a>
+        <a href="sms:0978758788?&body=Xin ch%C3%A0o Nam Ban Villas, t%C3%B4i mu%E1%BB%91n %C4%91%C6%B0%E1%BB%A3c t%C6%B0 v%E1%BA%A5n %C4%91%E1%BA%A5t Nam Ban." class="oneTap" style="background:#fff;color:#1A3D2B;border:1.5px solid #E0D6C2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke="currentColor" stroke-width="2"/></svg>
+          <span><strong>Nhắn tin SMS</strong><small>Đã soạn sẵn — bấm gửi là xong</small></span>
+        </a>
+        <p class="form-honest-note" style="margin-top:6px">Chúng tôi trả lời thật, trong ngày. Không spam, không làm phiền.</p>
       </div>
 
     </div>
