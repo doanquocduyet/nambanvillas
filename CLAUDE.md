@@ -15,6 +15,11 @@
 
 **Tiêu chuẩn: Chú chỉ cần bấm 1 cái, copy 1 đoạn, hoặc share 1 file — cháu lo phần còn lại.**
 
+### CÁCH LÀM VIỆC (bất biến)
+- **Tập trung làm ra kết quả** rồi báo cáo NGẮN GỌN. KHÔNG phân tích lan man, KHÔNG nói nhiều.
+- Báo cáo = việc đã xong + link bấm. Bỏ đoạn giải thích dài, bỏ liệt kê phương án không làm.
+- Việc nhỏ + rõ → làm luôn, không hỏi. Chỉ hỏi khi thật sự cần chú quyết.
+
 ---
 
 ## NGUYÊN TẮC SỐ 2 — WORKFLOW BẮT BUỘC
