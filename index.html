@@ -175,11 +175,23 @@
 .sp-sang .sp-area{font-size:.74rem;color:#6B6B6B;margin-top:2px}
 .sp-sang .sp-go{margin-top:11px;display:inline-block;font-size:.7rem;font-weight:700;color:var(--green,#1A3D2B);border:1px solid #E0D6C2;padding:5px 13px;border-radius:20px;transition:background .25s,color .25s,border-color .25s}
 .sp-sang .sp-row:hover .sp-go{background:var(--gold,#C9A84C);color:#fff;border-color:var(--gold,#C9A84C)}
+.sp-sang .sp-feat{grid-template-columns:212px 1fr auto!important;border:1.5px solid var(--gold,#C9A84C);background:linear-gradient(180deg,#FFFDF6,#fff);box-shadow:0 6px 22px -10px rgba(201,168,76,.4)}
+.sp-sang .sp-feat .sp-title{font-size:1.15rem}
+.sp-sang .sp-feat .sp-price{font-size:1.5rem}
+.sp-sang .sp-feat .sp-right{min-width:140px}
+.sp-sang .sp-feat .sp-badge{font-size:.68rem;padding:4px 12px}
+.sp-cta2{display:flex;gap:6px;margin-top:10px;justify-content:flex-end;flex-wrap:wrap}
+.sp-cta2 a{font-size:.74rem;font-weight:700;padding:7px 13px;border-radius:20px;text-decoration:none;white-space:nowrap}
+.sp-cta2 .sp-call{background:var(--green,#1A3D2B);color:#fff}
+.sp-cta2 .sp-zalo{background:#EAF3EC;color:var(--green,#1A3D2B);border:1px solid #cfe3d4}
 @media(max-width:720px){
+ .sp-sang .sp-feat{grid-template-columns:132px 1fr!important}
+ .sp-sang .sp-feat .sp-price{font-size:1.24rem}
+ .sp-cta2{justify-content:flex-start;width:100%;margin-top:8px}
  .sp-sang .sp-row{grid-template-columns:116px 1fr!important;padding:11px;gap:13px}
  .sp-sang .sp-price{font-size:1.14rem}
  .sp-sang .sp-price::before{display:inline;margin-right:6px}
- .sp-sang .sp-right{grid-column:2;text-align:left;border-left:none;padding-left:0;border-top:1px solid #ECE5D8;padding-top:9px;margin-top:3px;display:flex;align-items:baseline;gap:12px;min-width:0}
+ .sp-sang .sp-right{grid-column:2;text-align:left;border-left:none;padding-left:0;border-top:1px solid #ECE5D8;padding-top:9px;margin-top:3px;display:flex;align-items:baseline;gap:12px;min-width:0;flex-wrap:wrap}
  .sp-sang .sp-go{display:none}
 }
 </style>
@@ -199,16 +211,16 @@
 
     <div class="prop-grid sp-sang" id="propGrid">
 
-      <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/nam-ban-138m2-view/" class="sp-thumb"><img src="images/listings/nam-ban-138m2-view/1.jpg" alt="Đất 138m² thế cao view thung lũng, 75m² thổ cư" width="300" height="200" fetchpriority="high"><span class="sp-badge">⭐ Nổi bật</span></a>
+      <article class="prop-card sp-row sp-feat" data-type="dat-nen">
+        <a href="/dat-nen/nam-ban-138m2-view/" class="sp-thumb"><img src="images/listings/nam-ban-138m2-view/1.jpg" alt="Đất 138m² thế cao view thung lũng, 75m² thổ cư" width="360" height="240" fetchpriority="high"><span class="sp-badge">⭐ Lô nổi bật</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-138m2-view/">Đất 138m² thế cao view thung lũng, 75m² thổ cư</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>75m² thổ cư</span><span>Sổ hồng riêng</span></div>
+          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>75m² thổ cư</span><span>Sổ hồng riêng</span><span>Luôn còn hàng</span></div>
         </div>
         <div class="sp-right">
           <div class="sp-price">549tr</div>
           <div class="sp-area">138m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
+          <div class="sp-cta2"><a href="tel:0978758788" class="sp-call">📞 Gọi ngay</a><a href="https://zalo.me/0978758788" target="_blank" class="sp-zalo">Zalo</a></div>
         </div>
       </article>
 
