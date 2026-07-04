@@ -33,7 +33,8 @@ const wantMarketNote = daysSinceNote >= 3;
 async function fetchYouTube() {
   if (!YT_KEY) return '';
   const since = new Date(today.getTime() - 3 * 86400000).toISOString(); // 3 ngày gần nhất
-  const queries = ['bán đất Nam Ban', 'đất Nam Ban Lâm Hà', 'đất vườn Nam Ban', 'bán đất Lâm Hà Lâm Đồng'];
+  const queries = ['bán đất Nam Ban', 'đất Nam Ban Lâm Hà', 'đất vườn Nam Ban', 'bán đất Lâm Hà Lâm Đồng',
+                   'đất Đông Thanh Lâm Hà', 'đất Mê Linh Nam Ban', 'đất Nam Ban view Đà Lạt', 'đất nền Nam Ban sổ đỏ'];
   const seen = new Set(); const ids = [];
   try {
     for (const q of queries) {
