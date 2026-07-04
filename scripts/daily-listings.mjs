@@ -114,12 +114,10 @@ if (listings.length) {
   block += `        <ul class="tin-list">\n`;
   for (const l of listings) {
     const chips = Array.isArray(l.specs) ? l.specs.map(c => `<span>${esc(c)}</span>`).join('') : '';
-    const src = l.source ? `<a href="${esc(l.source)}" target="_blank" rel="nofollow noopener">Nguồn</a> · ` : '';
     block += `          <li class="tin-item">\n`;
     block += `            <p class="tin-title">${esc(l.title)}</p>\n`;
     if (chips) block += `            <p class="tin-specs">${chips}</p>\n`;
     block += `            <p class="tin-desc">${esc(l.desc)}</p>\n`;
-    block += `            <p class="tin-meta">Tin thị trường, chưa kiểm chứng · ${src}<a href="https://zalo.me/0978758788" target="_blank">Nhờ kiểm lô này →</a></p>\n`;
     block += `          </li>\n`;
   }
   block += `        </ul>\n`;

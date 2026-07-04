@@ -89,7 +89,6 @@ Mỗi tin = 1 dòng `<li>`, gồm 3 phần theo đúng thứ tự:
     <p class="tin-title">TIÊU ĐỀ (loại + diện tích + đặc điểm + khu — thổ/giá)</p>
     <p class="tin-specs"><span>DIỆN TÍCH</span><span>THỔ CƯ</span><span>GIÁ</span><span>VỊ TRÍ</span></p>
     <p class="tin-desc">MÔ TẢ 1–2 câu kèm 1 rủi ro cần kiểm.</p>
-    <p class="tin-meta">Tin thị trường, chưa kiểm chứng · <a href="URL" target="_blank" rel="nofollow noopener">Nguồn</a> · <a href="https://zalo.me/0978758788" target="_blank">Nhờ kiểm lô này →</a></p>
   </li>
   <!-- tối đa 2 li/ngày -->
 </ul>
