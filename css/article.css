@@ -149,5 +149,3 @@
 .tin-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 7px}
 .tin-specs span{background:#F2F6F3;border-radius:6px;padding:3px 10px;font-size:.8rem;color:#1A3D2B;font-weight:600}
 .tin-desc{font-size:.92rem;color:#3D3D3D;line-height:1.65;margin:0 0 6px}
-.tin-meta{font-size:.8rem;color:#8a8a8a;margin:0}
-.tin-meta a{color:#1A3D2B;font-weight:600}
