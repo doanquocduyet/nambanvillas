@@ -10,6 +10,7 @@ const ROOT = process.cwd();
 const PAGE = path.join(ROOT, 'thi-truong', 'tin-rao-dat-nam-ban-moi', 'index.html');
 const STATE = path.join(ROOT, 'data', 'tin-rao-state.json');
 const KEY = process.env.ANTHROPIC_API_KEY;
+const YT_KEY = process.env.YOUTUBE_API_KEY;   // tùy chọn — có thì quét thêm YouTube
 const MODEL = process.env.CLAUDE_MODEL || 'claude-sonnet-5';
 const MAX_DAYS = 20; // giữ tối đa 20 mục ngày gần nhất
 
@@ -27,16 +28,47 @@ const daysSinceNote = state.lastMarketNote
   : 99;
 const wantMarketNote = daysSinceNote >= 3;
 
+// ---- Quét YouTube (tùy chọn, fail-safe) ----
+// Lấy video môi giới/chủ đất đăng gần đây; mô tả video thường có giá/diện tích/vị trí.
+async function fetchYouTube() {
+  if (!YT_KEY) return '';
+  const since = new Date(today.getTime() - 3 * 86400000).toISOString(); // 3 ngày gần nhất
+  const queries = ['bán đất Nam Ban', 'đất Nam Ban Lâm Hà', 'đất vườn Nam Ban', 'bán đất Lâm Hà Lâm Đồng'];
+  const seen = new Set(); const ids = [];
+  try {
+    for (const q of queries) {
+      const u = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&order=date&maxResults=8&publishedAfter=${encodeURIComponent(since)}&q=${encodeURIComponent(q)}&key=${YT_KEY}`;
+      const r = await fetch(u); if (!r.ok) continue;
+      const j = await r.json();
+      for (const it of (j.items || [])) { const id = it.id?.videoId; if (id && !seen.has(id)) { seen.add(id); ids.push(id); } }
+    }
+    if (!ids.length) return '';
+    // Lấy mô tả đầy đủ
+    const vu = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${ids.slice(0, 25).join(',')}&key=${YT_KEY}`;
+    const vr = await fetch(vu); if (!vr.ok) return '';
+    const vj = await vr.json();
+    const lines = (vj.items || []).map(v => {
+      const s = v.snippet || {};
+      const desc = (s.description || '').replace(/\s+/g, ' ').slice(0, 400);
+      return `- [${s.channelTitle}] ${s.title} | ${desc} | https://www.youtube.com/watch?v=${v.id}`;
+    });
+    return lines.length ? `\n\nNGUỒN VIDEO YOUTUBE (mới, môi giới/chủ đất đăng — bóc giá/diện tích/vị trí từ mô tả; source phải là link video, ghi kênh):\n${lines.join('\n')}` : '';
+  } catch (e) { console.error('YouTube lỗi (bỏ qua):', e.message); return ''; }
+}
+const ytBlock = await fetchYouTube();
+
 // ---- Prompt cho Claude (có web search) ----
 const sys = `Bạn là biên tập viên Nam Ban Villas (môi giới đất xã Nam Ban, Lâm Hà, Lâm Đồng). Viết theo đúng FORM-DANG-TIN.md.
 
 LỌC — tin tốt phải đủ ≥4/7 dữ kiện: diện tích · kích thước/mặt tiền · thổ cư(m²) · giá bằng số · vị trí cụ thể (gần mốc nào) · loại đường · pháp lý(sổ). Ưu tiên tin đủ 6–7.
 LOẠI THẲNG tin chứa từ rác: "chắc chắn lời/lời ngay/mua là thắng/x2 tài khoản/sinh lời khủng", "sốt đất/siêu hiếm/cực phẩm/độc nhất/giá sốc/rẻ nhất", "siêu phẩm/đất vàng/vị trí vàng", "ngộp bank/cắt lỗ sâu/bán tháo gấp" — hoặc không giá, mơ hồ vị trí. Chọn 1–2 tin tốt nhất. Không đủ chất → listings rỗng (thà trống hơn rác).
 
+NGUỒN: dùng cả (a) web search tin rao chữ, (b) VIDEO YouTube/TikTok. Với web search, thử thêm truy vấn "đất Nam Ban site:youtube.com" và "đất Nam Ban site:tiktok.com". Nếu có khối NGUỒN VIDEO YOUTUBE bên dưới, ưu tiên bóc từ mô tả video. Với tin từ video: source = LINK VIDEO, và desc ghi rõ "Nguồn: video kênh [tên kênh]".
+
 VIẾT (viết lại bằng lời mình, KHÔNG copy nguyên văn):
 - title: "Loại đất + diện tích + đặc điểm mạnh nhất + khu — thổ cư/giá".
 - desc: 2–3 câu — đặc điểm nổi bật + hợp ai + BẮT BUỘC 1 rủi ro cần kiểm; kết bằng "Tin thị trường, chưa kiểm chứng."
-- Số thật từ kết quả tìm kiếm, KHÔNG bịa. TUYỆT ĐỐI KHÔNG lấy số điện thoại/tên người bán/ảnh.
+- Số thật từ kết quả tìm kiếm/mô tả video, KHÔNG bịa. TUYỆT ĐỐI KHÔNG lấy số điện thoại/tên người bán/ảnh/video.
 
 GIỌNG: trầm, thật, đọc rủi ro, KHÔNG hô hào. CẤM tính từ rỗng (tuyệt đẹp, lý tưởng, hoàn hảo, siêu phẩm, cực hiếm, số 1, giá sốc). Không đụng chạm ai.
 
@@ -50,7 +82,7 @@ const body = {
   max_tokens: 1500,
   tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 5 }],
   system: sys,
-  messages: [{ role: 'user', content: `Hôm nay ${dmy}. Tìm tin rao đất Nam Ban mới và trả JSON theo yêu cầu.` }],
+  messages: [{ role: 'user', content: `Hôm nay ${dmy}. Tìm tin rao đất Nam Ban mới (web + video YouTube/TikTok) và trả JSON theo yêu cầu.${ytBlock}` }],
 };
 
 let data;

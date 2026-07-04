@@ -37,6 +37,13 @@ Bỏ ngay nếu tiêu đề/mô tả có kiểu:
 7. ☐ Pháp lý (sổ hồng/đỏ riêng, công chứng ngay)
 → Tin đủ 6–7 mục = tin tốt nhất, ưu tiên đăng. Tin < 4 mục = bỏ.
 
+### 1c. NGUỒN VIDEO (YouTube/TikTok) — môi giới/chủ đất đăng nhiều
+- Bóc thông tin từ **tiêu đề + mô tả + caption** video (giá/diện tích/vị trí thường ghi sẵn ở mô tả). YouTube auto: qua YouTube Data API (secret `YOUTUBE_API_KEY`). TikTok: qua web search `site:tiktok.com` hoặc người gửi link cho bot.
+- **KHÔNG tải/đăng lại video, ảnh, thumbnail của họ** (bản quyền). Chỉ bóc DỮ KIỆN + viết lại bằng lời mình.
+- `source` = **link video**; desc ghi "Nguồn: video kênh [tên kênh]".
+- Vẫn áp checklist 1b (≥4/7 dữ kiện) + blocklist 1a. Video hô hào/không số → bỏ.
+
+
 ---
 
 ## BƯỚC 2 — THÔNG SỐ CẦN BẮT (từ tin gốc)
