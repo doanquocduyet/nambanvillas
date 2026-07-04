@@ -31,6 +31,11 @@
 - Báo cáo = việc đã xong + link bấm. Bỏ đoạn giải thích dài, bỏ liệt kê phương án không làm.
 - Việc nhỏ + rõ → làm luôn, không hỏi. Chỉ hỏi khi thật sự cần chú quyết.
 
+### GIAO DIỆN — LUÔN CHECK CẢ 2 (DESKTOP + MOBILE)
+- Mỗi lần làm/sửa giao diện: **tự kiểm KỸ cả bản máy tính VÀ bản điện thoại** — đẹp, sang, gọn, tối ưu nhất ở CẢ HAI. 2 màn hình khác nhau, không được chỉ ngắm 1 cái.
+- Chú KHÔNG muốn phải xem chi tiết rồi nhắc từng chút — cháu tự lo mobile lẫn desktop trước khi push.
+- Bắt buộc: responsive @media, ảnh không tràn ngang, chữ không bể, nút Gọi/Zalo luôn dễ bấm trên điện thoại.
+
 ---
 
 ## NGUYÊN TẮC SỐ 2 — WORKFLOW BẮT BUỘC
