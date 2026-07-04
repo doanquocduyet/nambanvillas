@@ -155,44 +155,46 @@
 
 <!-- LISTINGS -->
 <style>
-#propGrid.sp-sang{display:flex!important;flex-direction:column;gap:12px;border:none!important;background:none!important}
-.sp-sang .sp-row{position:relative;display:grid!important;grid-template-columns:162px 1fr auto!important;gap:18px;align-items:center;background:#fff;border:1px solid #ECE5D8;border-radius:16px;padding:11px 20px 11px 11px;text-decoration:none;box-shadow:0 1px 2px rgba(26,61,43,.04);transition:box-shadow .3s ease,transform .3s ease,border-color .3s ease;overflow:hidden;cursor:pointer}
-.sp-sang .sp-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(180deg,var(--gold,#C9A84C),#b7963f);transition:width .3s ease}
+.sp-sang{display:flex!important;flex-direction:column;gap:14px;border:none!important;background:none!important}
+.sp-sang .sp-row{position:relative;display:grid!important;grid-template-columns:240px 1fr auto!important;grid-template-areas:"thumb mid right";gap:20px;align-items:center;background:#fff;border:1px solid #ECE5D8;border-radius:16px;padding:12px 22px 12px 12px;text-decoration:none;box-shadow:0 1px 2px rgba(26,61,43,.04);transition:box-shadow .3s ease,transform .3s ease,border-color .3s ease;overflow:hidden;cursor:pointer}
+.sp-sang .sp-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(180deg,var(--gold,#C9A84C),#b7963f);transition:width .3s ease;z-index:1}
 .sp-sang .sp-row:hover{box-shadow:0 16px 40px -16px rgba(26,61,43,.32);transform:translateY(-3px);border-color:#E4D9C4}
 .sp-sang .sp-row:hover::before{width:4px}
-.sp-sang .sp-thumb{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/2;display:block}
+.sp-sang .sp-thumb{grid-area:thumb;position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/2;display:block}
 .sp-sang .sp-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .sp-sang .sp-row:hover .sp-thumb img{transform:scale(1.07)}
-.sp-sang .sp-badge{position:absolute;top:8px;left:8px;background:var(--gold,#C9A84C);color:#fff;font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-.sp-sang .sp-title{font-size:1rem;font-weight:700;line-height:1.38;color:var(--green,#1A3D2B);margin:0;letter-spacing:-.005em}
+.sp-sang .sp-badge{position:absolute;top:8px;left:8px;background:var(--gold,#C9A84C);color:#fff;font-size:.64rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.sp-sang .sp-mid{grid-area:mid;min-width:0}
+.sp-sang .sp-title{font-size:1.05rem;font-weight:700;line-height:1.38;color:var(--green,#1A3D2B);margin:0;letter-spacing:-.005em}
 .sp-sang .sp-title a{color:inherit;text-decoration:none}
-.sp-sang .sp-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.sp-sang .sp-chips span{font-size:.74rem;color:#5a5a5a;background:var(--bg,#F7F3EE);padding:3px 10px;border-radius:20px}
+.sp-sang .sp-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.sp-sang .sp-chips span{font-size:.76rem;color:#5a5a5a;background:var(--bg,#F7F3EE);padding:3px 10px;border-radius:20px}
 .sp-sang .sp-chips .sp-loc{background:#EDF3EE;color:var(--green,#1A3D2B);font-weight:600}
-.sp-sang .sp-right{text-align:right;padding-left:18px;border-left:1px solid #ECE5D8;min-width:118px}
-.sp-sang .sp-price{font-weight:800;font-size:1.28rem;color:var(--green,#1A3D2B);letter-spacing:-.02em;line-height:1.1}
+.sp-sang .sp-right{grid-area:right;text-align:right;padding-left:20px;border-left:1px solid #ECE5D8;min-width:126px}
+.sp-sang .sp-price{font-weight:800;font-size:1.34rem;color:var(--green,#1A3D2B);letter-spacing:-.02em;line-height:1.1}
 .sp-sang .sp-price::before{content:"GIÁ BÁN";display:block;font-size:.58rem;font-weight:700;letter-spacing:.09em;color:var(--gold,#C9A84C);margin-bottom:3px}
-.sp-sang .sp-area{font-size:.74rem;color:#6B6B6B;margin-top:2px}
+.sp-sang .sp-area{font-size:.76rem;color:#6B6B6B;margin-top:2px}
 .sp-sang .sp-go{margin-top:11px;display:inline-block;font-size:.7rem;font-weight:700;color:var(--green,#1A3D2B);border:1px solid #E0D6C2;padding:5px 13px;border-radius:20px;transition:background .25s,color .25s,border-color .25s}
 .sp-sang .sp-row:hover .sp-go{background:var(--gold,#C9A84C);color:#fff;border-color:var(--gold,#C9A84C)}
-.sp-sang .sp-feat{grid-template-columns:212px 1fr auto!important;border:1.5px solid var(--gold,#C9A84C);background:linear-gradient(180deg,#FFFDF6,#fff);box-shadow:0 6px 22px -10px rgba(201,168,76,.4)}
-.sp-sang .sp-feat .sp-title{font-size:1.15rem}
-.sp-sang .sp-feat .sp-price{font-size:1.5rem}
-.sp-sang .sp-feat .sp-right{min-width:140px}
-.sp-sang .sp-feat .sp-badge{font-size:.68rem;padding:4px 12px}
-.sp-cta2{display:flex;gap:6px;margin-top:10px;justify-content:flex-end;flex-wrap:wrap}
-.sp-cta2 a{font-size:.74rem;font-weight:700;padding:7px 13px;border-radius:20px;text-decoration:none;white-space:nowrap}
+.sp-sang .sp-feat{grid-template-columns:288px 1fr auto!important;border:1.5px solid var(--gold,#C9A84C);background:linear-gradient(180deg,#FFFDF6,#fff);box-shadow:0 6px 22px -10px rgba(201,168,76,.4)}
+.sp-sang .sp-feat .sp-title{font-size:1.18rem}
+.sp-sang .sp-feat .sp-price{font-size:1.55rem}
+.sp-sang .sp-feat .sp-right{min-width:150px}
+.sp-cta2{display:flex;gap:6px;margin-top:11px;justify-content:flex-end;flex-wrap:wrap}
+.sp-cta2 a{font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:20px;text-decoration:none;white-space:nowrap}
 .sp-cta2 .sp-call{background:var(--green,#1A3D2B);color:#fff}
 .sp-cta2 .sp-zalo{background:#EAF3EC;color:var(--green,#1A3D2B);border:1px solid #cfe3d4}
 @media(max-width:720px){
- .sp-sang .sp-feat{grid-template-columns:132px 1fr!important}
- .sp-sang .sp-feat .sp-price{font-size:1.24rem}
- .sp-cta2{justify-content:flex-start;width:100%;margin-top:8px}
- .sp-sang .sp-row{grid-template-columns:116px 1fr!important;padding:11px;gap:13px}
- .sp-sang .sp-price{font-size:1.14rem}
- .sp-sang .sp-price::before{display:inline;margin-right:6px}
- .sp-sang .sp-right{grid-column:2;text-align:left;border-left:none;padding-left:0;border-top:1px solid #ECE5D8;padding-top:9px;margin-top:3px;display:flex;align-items:baseline;gap:12px;min-width:0;flex-wrap:wrap}
- .sp-sang .sp-go{display:none}
+ .sp-sang .sp-row,.sp-sang .sp-feat{grid-template-columns:34% 1fr!important;grid-template-areas:"thumb mid" "thumb right"!important;gap:6px 14px;align-items:start;padding:10px}
+ .sp-sang .sp-thumb{aspect-ratio:4/5}
+ .sp-sang .sp-title{font-size:.95rem}
+ .sp-sang .sp-feat .sp-title{font-size:1rem}
+ .sp-sang .sp-right{text-align:left;border-left:none;padding-left:0;min-width:0;align-self:end}
+ .sp-sang .sp-price,.sp-sang .sp-feat .sp-price{font-size:1.2rem}
+ .sp-sang .sp-price::before{margin-bottom:1px}
+ .sp-sang .sp-go{margin-top:8px}
+ .sp-cta2{justify-content:flex-start;margin-top:9px}
+ .sp-cta2 a{padding:7px 12px}
 }
 </style>
 <section class="section listings" id="listings">
@@ -212,107 +214,48 @@
     <div class="prop-grid sp-sang" id="propGrid">
 
       <article class="prop-card sp-row sp-feat" data-type="dat-nen">
-        <a href="/dat-nen/nam-ban-138m2-view/" class="sp-thumb"><img src="images/listings/nam-ban-138m2-view/1.jpg" alt="Đất 138m² thế cao view thung lũng, 75m² thổ cư" width="360" height="240" fetchpriority="high"><span class="sp-badge">⭐ Lô nổi bật</span></a>
+        <a href="/dat-nen/nam-ban-138m2-view/" class="sp-thumb"><img src="images/listings/nam-ban-138m2-view/1.jpg" alt="Đất 138m² thế cao view thung lũng, 75m² thổ cư" width="400" height="300" fetchpriority="high"><span class="sp-badge">⭐ Lô nổi bật</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-138m2-view/">Đất 138m² thế cao view thung lũng, 75m² thổ cư</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>75m² thổ cư</span><span>Sổ hồng riêng</span><span>Luôn còn hàng</span></div>
         </div>
-        <div class="sp-right">
-          <div class="sp-price">549tr</div>
-          <div class="sp-area">138m²</div>
-          <div class="sp-cta2"><a href="tel:0978758788" class="sp-call">📞 Gọi ngay</a><a href="https://zalo.me/0978758788" target="_blank" class="sp-zalo">Zalo</a></div>
-        </div>
+        <div class="sp-right"><div class="sp-price">549tr</div><div class="sp-area">138m²</div><div class="sp-cta2"><a href="tel:0978758788" class="sp-call">📞 Gọi ngay</a><a href="https://zalo.me/0978758788" target="_blank" class="sp-zalo">Zalo</a></div></div>
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/pho-thong-villas-130m2/" class="sp-thumb"><img src="images/listings/pho-thong-villas-130m2/1.jpg" alt="Phố Thông Villas – lô 130m², 80m² thổ cư" width="300" height="200" loading="lazy"></a>
+        <a href="/dat-nen/thung-lung-530m2/" class="sp-thumb"><img src="images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng, gần rừng thông & Hồ Bãi Công" width="400" height="300" loading="lazy"><span class="sp-badge">Đất nền</span></a>
         <div class="sp-mid">
-          <h3 class="sp-title"><a href="/dat-nen/pho-thong-villas-130m2/">Phố Thông Villas – lô 130m², 80m² thổ cư</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>80m² thổ cư</span><span>Sang tên ngay</span></div>
-        </div>
-        <div class="sp-right">
-          <div class="sp-price">568tr</div>
-          <div class="sp-area">130m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
-      </article>
-
-      <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/thung-lung-530m2/" class="sp-thumb"><img src="images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng, gần Hồ Bãi Công" width="300" height="200" loading="lazy"></a>
-        <div class="sp-mid">
-          <h3 class="sp-title"><a href="/dat-nen/thung-lung-530m2/">Đất 530m² view thung lũng, gần Hồ Bãi Công</a></h3>
+          <h3 class="sp-title"><a href="/dat-nen/thung-lung-530m2/">Đất 530m² view thung lũng, gần rừng thông & Hồ Bãi Công</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>Sổ hồng riêng</span><span>Cách Thác Voi 4km</span></div>
         </div>
-        <div class="sp-right">
-          <div class="sp-price">899tr</div>
-          <div class="sp-area">530m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
+        <div class="sp-right"><div class="sp-price">899tr</div><div class="sp-area">530m²</div><span class="sp-go">Xem chi tiết →</span></div>
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/hai-mat-tien-345m2/" class="sp-thumb"><img src="images/listings/hai-mat-tien-345m2/1.jpg" alt="Đất 345m² hai mặt tiền, khu đang phát triển" width="300" height="200" loading="lazy"></a>
-        <div class="sp-mid">
-          <h3 class="sp-title"><a href="/dat-nen/hai-mat-tien-345m2/">Đất 345m² hai mặt tiền, khu đang phát triển</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>2 mặt tiền</span><span>Sổ hồng riêng</span></div>
-        </div>
-        <div class="sp-right">
-          <div class="sp-price">1,15 tỷ</div>
-          <div class="sp-area">345m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
-      </article>
-
-      <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/ho-tu-liem-700m2/" class="sp-thumb"><img src="images/listings/ho-tu-liem-700m2/1.jpg" alt="Đất 700m² view Hồ Từ Liêm, mặt tiền 10m" width="300" height="200" loading="lazy"></a>
-        <div class="sp-mid">
-          <h3 class="sp-title"><a href="/dat-nen/ho-tu-liem-700m2/">Đất 700m² view Hồ Từ Liêm, mặt tiền 10m</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>100m² thổ cư</span><span>View hồ</span></div>
-        </div>
-        <div class="sp-right">
-          <div class="sp-price">1,2 tỷ</div>
-          <div class="sp-area">700m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
-      </article>
-
-      <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/dong-thanh-845m2/" class="sp-thumb"><img src="images/listings/dong-thanh-845m2/1.jpg" alt="Lô 845m² Đông Thanh, view sương mây, mặt tiền 12m" width="300" height="200" loading="lazy"></a>
-        <div class="sp-mid">
-          <h3 class="sp-title"><a href="/dat-nen/dong-thanh-845m2/">Lô 845m² Đông Thanh, view sương mây, mặt tiền 12m</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>239m² thổ cư</span><span>Mặt tiền 12m</span></div>
-        </div>
-        <div class="sp-right">
-          <div class="sp-price">~2 tỷ</div>
-          <div class="sp-area">845m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
-      </article>
-
-      <article class="prop-card sp-row" data-type="nha-ban">
-        <a href="/nha-ban/hill-house-village/" class="sp-thumb"><img src="images/listings/hill-house-village/1.jpg" alt="Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm" width="300" height="200" loading="lazy"><span class="sp-badge">Nhà bán</span></a>
-        <div class="sp-mid">
-          <h3 class="sp-title"><a href="/nha-ban/hill-house-village/">Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm</a></h3>
-          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>2 phòng ngủ</span><span>Gần chùa Linh Ẩn</span></div>
-        </div>
-        <div class="sp-right">
-          <div class="sp-price">2,6 tỷ</div>
-          <div class="sp-area">203m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
-        </div>
-      </article>
-
-      <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/giap-suoi-2700m2/" class="sp-thumb"><img src="images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư" width="300" height="200" loading="lazy"></a>
+        <a href="/dat-nen/giap-suoi-2700m2/" class="sp-thumb"><img src="images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư" width="400" height="300" loading="lazy"><span class="sp-badge">Đất nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/giap-suoi-2700m2/">Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>400m² thổ cư</span><span>Giáp suối 2 mặt</span></div>
         </div>
-        <div class="sp-right">
-          <div class="sp-price">2,95 tỷ</div>
-          <div class="sp-area">2.700m²</div>
-          <span class="sp-go">Xem chi tiết →</span>
+        <div class="sp-right"><div class="sp-price">2,95 tỷ</div><div class="sp-area">2.700m²</div><span class="sp-go">Xem chi tiết →</span></div>
+      </article>
+
+      <article class="prop-card sp-row" data-type="nha-ban">
+        <a href="/nha-ban/hill-house-village/" class="sp-thumb"><img src="images/listings/hill-house-village/1.jpg" alt="Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán</span></a>
+        <div class="sp-mid">
+          <h3 class="sp-title"><a href="/nha-ban/hill-house-village/">Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm</a></h3>
+          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>2 phòng ngủ</span><span>Gần chùa Linh Ẩn</span></div>
         </div>
+        <div class="sp-right"><div class="sp-price">2,6 tỷ</div><div class="sp-area">203m²</div><span class="sp-go">Xem chi tiết →</span></div>
+      </article>
+
+      <article class="prop-card sp-row" data-type="nha-ban">
+        <a href="/nha-ban/nha-vuon-1018m2/" class="sp-thumb"><img src="images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn, 2 mặt tiền" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán</span></a>
+        <div class="sp-mid">
+          <h3 class="sp-title"><a href="/nha-ban/nha-vuon-1018m2/">Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn, 2 mặt tiền</a></h3>
+          <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>3 phòng ngủ</span><span>Hồ cá Koi</span></div>
+        </div>
+        <div class="sp-right"><div class="sp-price">3,8 tỷ</div><div class="sp-area">1.018m²</div><span class="sp-go">Xem chi tiết →</span></div>
       </article>
 
     </div>
