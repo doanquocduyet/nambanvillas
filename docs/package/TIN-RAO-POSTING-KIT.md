@@ -36,6 +36,24 @@
 - **Ô có GitHub (MCP/commit):** đọc file `thi-truong/tin-rao-dat-nam-ban-moi/index.html` trên branch `claude/dreamy-ritchie-xBezi`, chèn khối mới sau marker, commit + tạo PR + squash merge main. Verify HTML hợp lệ trước khi push. KHÔNG dùng regex DOTALL để sửa — chèn bằng str_replace tại marker.
 - **Ô KHÔNG có GitHub:** chỉ **xuất khối HTML** theo mẫu trên rồi đưa cho người có quyền (hoặc phiên Villas có GitHub) dán vào file + đăng.
 
+## ẢNH — CẮT GỌT TỰ ĐỘNG (chỉ ảnh chủ web tự chụp / có bản quyền)
+> **CẤM** tải/đăng lại ảnh của tin gốc / môi giới khác (bản quyền). Chỉ xử ảnh chú tự chụp hoặc chú xác nhận có quyền đăng.
+
+Script: **`scripts/prep-anh.py`** — tự động cho ra ảnh web đẹp, chuẩn SEO:
+1. Auto-xoay theo EXIF → **xoá sạch EXIF** (bay cả GPS toạ độ, không lộ vị trí thật).
+2. **Smart-crop** theo tỉ lệ đích — giữ vùng nhiều chi tiết nhất (gradient-energy), không cắt cụt chủ thể như center-crop.
+3. Resize cạnh dài (mặc định 1280px) + sharpen nhẹ cho nét.
+4. Nén JPEG dò chất lượng chạm ~mục tiêu KB (mặc định 150; ảnh nhiều lá cây có thể ~200KB — chấp nhận, bằng ảnh hero site đang có).
+5. Đặt tên chuẩn: `images/listings/<slug>/1.jpg 2.jpg 3.jpg …` (mới nhất/đẹp nhất để `1.jpg` làm hero + og:image).
+
+Cách chạy (ảnh **hero** ép 16:9 như listing site; ảnh **phòng/dọc** để `keep` khỏi mất trần-sàn):
+```
+python3 scripts/prep-anh.py <slug> --ratio 16:9 --start 1 hero.jpg
+python3 scripts/prep-anh.py <slug> --ratio keep --start 2 phong1.jpg phong2.jpg …
+```
+Tham số: `--ratio 16:9|4:3|3:2|1:1|keep` · `--kb 150` · `--long 1280` · `--out images/listings` · `--start N`.
+Alt ảnh: mô tả đúng cảnh + địa danh (vd `Villa mini Mê Linh Nam Ban — mặt tiền sân vườn`). KHÔNG nhồi key.
+
 ## LƯU Ý HỆ 3 WEB
 - Đây là **tin thị trường CHƯA kiểm chứng** — khác lô Villas đã kiểm tra ở `/dat-nen-nam-ban/`. Không lẫn.
 - Villas KHÔNG link sang Panorama. Mọi tin dẫn về Zalo 0978 758 788.

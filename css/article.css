@@ -33,11 +33,12 @@
   .listing-title{order:1}
   .listing-meta-row{order:2}
   .listing-images{order:3}
-  .listing-price-card{order:4;margin:6px 0 10px}
-  .listing-description{order:5}
-  .risk-block{order:6}
-  .sidebar-related{order:7;margin-top:8px}
-  .sidebar-card{order:8}
+  .listing-sidebar .listing-price-card{order:4;margin:6px 0 10px}
+  .listing-specs-section{order:5}
+  .listing-description{order:6}
+  .risk-block{order:7}
+  .listing-sidebar .sidebar-related{order:8;margin-top:8px}
+  .listing-sidebar .sidebar-card{order:9}
 }
 .sidebar-related{margin-top:20px;border-top:1px solid #E8E2D9;padding-top:16px}
 .sidebar-related-head{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
