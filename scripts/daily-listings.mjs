@@ -75,8 +75,10 @@ GIỌNG: trầm, thật, đọc rủi ro, KHÔNG hô hào. CẤM tính từ rỗ
 
 ${wantMarketNote ? 'Thêm 1 đoạn "quan sát thị trường" 2–3 câu về xu hướng đất Nam Ban tuần này (dựa trên tin/tín hiệu thật).' : 'Hôm nay KHÔNG cần quan sát thị trường.'}
 
+VIẾT thêm: specs = mảng 3–5 chip NGẮN dữ kiện rời (≤18 ký tự mỗi chip), vd ["409m²","208m² thổ cư","750 triệu","Nam Ban"]. desc chỉ 1–2 câu + 1 rủi ro (KHÔNG lặp "chưa kiểm chứng").
+
 TRẢ VỀ DUY NHẤT một JSON (không markdown, không lời dẫn):
-{"listings":[{"title":"...","desc":"...","source":"URL"}],"marketNote":${wantMarketNote ? '"..."' : 'null'}}`;
+{"listings":[{"title":"...","specs":["...","..."],"desc":"...","source":"URL"}],"marketNote":${wantMarketNote ? '"..."' : 'null'}}`;
 
 const body = {
   model: MODEL,
@@ -109,10 +111,16 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 // ---- Dựng khối HTML ngày mới ----
 let block = `        <!-- DAY:${iso} -->\n        <h2>Ngày ${dmy}</h2>\n`;
 if (listings.length) {
-  block += `        <ul style="line-height:1.9;color:#3D3D3D;font-size:.95rem">\n`;
+  block += `        <ul class="tin-list">\n`;
   for (const l of listings) {
-    const src = l.source ? ` <a href="${esc(l.source)}" target="_blank" rel="nofollow noopener">Nguồn</a>` : '';
-    block += `          <li><strong>${esc(l.title)}</strong> — ${esc(l.desc)}${src}</li>\n`;
+    const chips = Array.isArray(l.specs) ? l.specs.map(c => `<span>${esc(c)}</span>`).join('') : '';
+    const src = l.source ? `<a href="${esc(l.source)}" target="_blank" rel="nofollow noopener">Nguồn</a> · ` : '';
+    block += `          <li class="tin-item">\n`;
+    block += `            <p class="tin-title">${esc(l.title)}</p>\n`;
+    if (chips) block += `            <p class="tin-specs">${chips}</p>\n`;
+    block += `            <p class="tin-desc">${esc(l.desc)}</p>\n`;
+    block += `            <p class="tin-meta">Tin thị trường, chưa kiểm chứng · ${src}<a href="https://zalo.me/0978758788" target="_blank">Nhờ kiểm lô này →</a></p>\n`;
+    block += `          </li>\n`;
   }
   block += `        </ul>\n`;
 }
