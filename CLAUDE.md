@@ -3,6 +3,17 @@
 
 ---
 
+## 🎯 MỤC TIÊU TỐI THƯỢNG (ĐỨNG TRÊN MỌI THỨ)
+
+**Đích cuối cùng của web = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0978 758 788.**
+
+- SEO/AEO/GEO/thiết kế/nội dung — tất cả chỉ là phương tiện dẫn tới hành động này.
+- Mọi trang, mọi lô, mọi bài: luôn có đường dẫn rõ ràng, dễ bấm tới **Gọi / Zalo**.
+- Khi phân vân "làm cái gì": chọn cái làm khách bấm gọi/Zalo nhiều hơn.
+- Không hy sinh nút liên hệ để lấy thẩm mỹ. Đẹp mà không ai gọi = thất bại.
+
+---
+
 ## NGUYÊN TẮC SỐ 1 — CHỦ WEB CHỈ BẤM, COPY, PASTE
 
 **Chú (chủ web) không rành kỹ thuật. Mọi việc khó cháu tự làm hết.**

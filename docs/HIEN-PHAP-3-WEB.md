@@ -3,6 +3,12 @@
 *Tài liệu nền tảng — mọi phiên Claude (hub + Villas + Greenspace) đọc và bám theo. Soạn 26/6/2026, từ hub điều phối (anh Duyệt + Claude).*
 
 ═══════════════════════════════════════════════════════════════
+# PHẦN 0 — MỤC TIÊU TỐI THƯỢNG (đứng trên mọi luật SEO/keyword)
+═══════════════════════════════════════════════════════════════
+**Đích cuối cùng của Villas = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0978 758 788.**
+Mọi keyword, canonical, thiết kế, nội dung chỉ là phương tiện dẫn khách tới nút Gọi/Zalo. Trang đẹp, top Google mà không ai gọi = thất bại. Ưu tiên mọi quyết định theo hướng tăng lượt gọi/nhắn Zalo.
+
+═══════════════════════════════════════════════════════════════
 # PHẦN 1 — TƯ TƯỞNG TỪNG WEB (linh hồn, không được lẫn)
 ═══════════════════════════════════════════════════════════════
 
