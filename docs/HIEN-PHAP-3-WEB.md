@@ -142,3 +142,22 @@ trông coi đất ở xa · giữ đất an toàn từ xa · quản lý đất N
 - Key nằm ở TỰA / URL / META / FAQ / SCHEMA — KHÔNG nhồi vào văn. (Keywords meta Google gần như bỏ qua khi xếp hạng; tín hiệu thật ở tựa/H1/nội dung/FAQ.)
 - FAQ: câu đầu trả lời thẳng (để AI trích).
 - Mỗi phiên KIỂM repo thật trước khi nói/sửa. Không nói theo trí nhớ.
+
+═══════════════════════════════════════════════════════════════
+# PHẦN 7 — B3 MỞ RỘNG: 3 NHÓM KHÁCH CẤP BÁCH (GỌI NGAY)
+═══════════════════════════════════════════════════════════════
+*Tài liệu chung 3 ô. "Cấp bách gọi ngay" = người có deadline thật + sợ mất tiền (khác người tìm hiểu chung). Mỗi nhóm có 1 web CHỦ LỰC, các web khác phụ — 3 ô không tranh vì phục vụ khoảnh khắc khác nhau của cùng khách.*
+
+| Nhóm | Khoảnh khắc | Nỗi sợ | Web chủ lực |
+|---|---|---|---|
+| 1. Giữ đất, hoảng vì luật | Nghe tin thuế/sáp nhập | Mất tiền đang có | PANORAMA → Chú |
+| 2. Sắp xuống tiền, ở xa | Ngay trước khi cọc | Dính bẫy khi mua | VILLAS (giấy) + GS (hiện trạng) |
+| 3. Mua rồi bị bỏ rơi | Sau mua, đất để đó | Mất cái đã mua | GREENSPACERS |
+
+**NHÓM 1 — GIỮ ĐẤT, HOẢNG VÌ LUẬT:** Panorama (chủ lực) gỡ nhiễu tin đồn: `thuế bán đất 20% có thật không`, `sáp nhập có phải đổi sổ`, `ôm đất giờ có nên bán`. Villas (phụ): `bán đất Nam Ban nhanh`, `sang tên sổ đỏ Lâm Hà`, `cập nhật sổ sau sáp nhập`. GS (phụ, nhỏ): `thuế đất hàng năm`, `trích lục thửa từ xa`. → Villas nhấn "xử lý nhanh, pháp lý gọn", KHÔNG nhấn "có nên".
+
+**NHÓM 2 — SẮP XUỐNG TIỀN, Ở XA:** Panorama (mở đầu): `có nên mua lúc này`, `mua cần kiểm gì`, `giá rẻ có bẫy không`. Villas (chủ lực – GIẤY): `pháp lý đầy đủ`, `kiểm tra pháp lý lô trước mua`, `thổ cư đã lên sổ`, `chính chủ`. GS (chủ lực – HIỆN TRẠNG): `khảo sát hiện trạng từ xa`, `xem đất giúp người ở xa`, `đất có ngập/đường vào`. → Lane sạch nhất hệ thống: **Villas kiểm GIẤY** (miễn phí, lô Villas) vs **GS kiểm ĐẤT** (trả phí, lô bất kỳ nguồn). Một khách dùng cả hai, không giẫm chân.
+
+**NHÓM 3 — MUA RỒI BỊ BỎ RƠI (ruột của GS):** GS chủ lực: `đất mua rồi để không có sao không`, `trông coi đất từ xa`, `đất bỏ hoang bị lấn`, `mua đất xong cần làm gì`, `chưa cắm mốc`, `lập hồ sơ hiện trạng`. Panorama (cửa phụ): `mua xong nên làm gì`, `giữ đất ở xa thế nào`. Villas (rất phụ, CHỈ khi bán lại): `bán lại đất`, `ký gửi đất`. → Nhóm gọi cao nhất (đã bỏ tiền thật + chưa ai phục vụ hậu-mua). **Villas nhường sạch nhóm 3 cho GS**, trừ bán lại.
+
+**LUẬT DÙNG:** (1) mỗi ô chỉ viết phần web mình; (2) cùng nhóm khác khoảnh khắc → khác nội dung, không duplicate; (3) van Panorama luôn về Chú (`/trao-doi`), không link thẳng Villas/GS; (4) số thật + entity "xã Nam Ban"; (5) nhóm nào sóng nóng nhất viết trước (hiện: nhóm 1 thuế/sáp nhập).
