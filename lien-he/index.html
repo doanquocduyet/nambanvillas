@@ -92,10 +92,10 @@
     <div class="ct-wrap">
       <div class="ct-head">
         <h1>Liên hệ Nam Ban Villas</h1>
-        <p>Bấm 1 phát là gặp chủ đất — trả lời thật, trong ngày.</p>
+        <p>Bấm 1 phát — hỏi chi tiết hoặc hẹn đi xem đất ngay. Trả lời thật, trong ngày.</p>
       </div>
 
-      <div id="sentBanner" class="ct-sent" style="display:none">✓ Đã gửi! Chủ đất sẽ gọi lại bạn sớm nhất.</div>
+      <div id="sentBanner" class="ct-sent" style="display:none">✓ Đã gửi! Chúng tôi sẽ gọi lại bạn sớm nhất.</div>
 
       <div class="ct-actions">
         <a href="tel:0978758788" class="ct-btn ct-call">
@@ -104,14 +104,14 @@
         </a>
         <a href="https://zalo.me/0978758788" target="_blank" class="ct-btn ct-zalo">
           <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
-          <span class="lbl">Nhắn Zalo</span><span class="sub">Chat với chủ đất</span>
+          <span class="lbl">Nhắn Zalo</span><span class="sub">Hỏi chi tiết ngay</span>
         </a>
       </div>
 
       <p class="ct-or">Hoặc để lại số</p>
       <div class="ct-card">
-        <h2>Chủ đất gọi lại cho bạn</h2>
-        <p class="hint">Điền tên + số, bấm gửi. Tin về thẳng máy chủ đất — không qua trung gian.</p>
+        <h2>Để lại số, gọi lại ngay</h2>
+        <p class="hint">Điền tên + số, bấm gửi. Tin về máy chúng tôi ngay — gọi lại tư vấn, không qua trung gian.</p>
         <form action="https://formsubmit.co/doanquocduyet@gmail.com" method="POST" class="ct-form">
           <input type="hidden" name="_subject" value="Lead moi tu nambanvillas.vn">
           <input type="hidden" name="_template" value="table">
@@ -121,7 +121,7 @@
           <input type="text" name="Tên" required placeholder="Tên của bạn">
           <input type="tel" name="Số điện thoại" required placeholder="Số điện thoại">
           <textarea name="Nhu cầu" rows="2" placeholder="Bạn đang tìm gì? (không bắt buộc)"></textarea>
-          <button type="submit">Gửi — chủ đất gọi lại</button>
+          <button type="submit">Gửi — gọi lại cho tôi</button>
         </form>
       </div>
 
@@ -135,18 +135,16 @@
 <script src="../js/main.js" defer></script>
 <!-- MOBILE BOTTOM NAV (chỉ hiện trên điện thoại) -->
 <nav class="mobile-nav" aria-label="Điều hướng nhanh">
-  <a href="https://zalo.me/0978758788" target="_blank" class="mnav-item">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+  <a href="https://zalo.me/0978758788" target="_blank" class="mnav-item mnav-zalo">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
     <span>Zalo</span>
   </a>
   <a href="tel:0978758788" class="mnav-item mnav-call" aria-label="Gọi điện">
-    <span class="mnav-call-circle">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" stroke-width="2"/></svg>
-    </span>
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg></span>
     <span>Gọi ngay</span>
   </a>
-  <button class="mnav-item" id="mnavMenuBtn" aria-label="Mở menu">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <button class="mnav-item mnav-menu" id="mnavMenuBtn" aria-label="Mở menu">
+    <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
     <span>Menu</span>
   </button>
 </nav>
