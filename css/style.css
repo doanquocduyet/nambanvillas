@@ -382,41 +382,35 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
 .mobile-nav{display:none}
 .mobile-sheet,.mobile-sheet-overlay{display:none}
 @media(max-width:768px){
-  /* Thanh điều hướng cố định dưới đáy — vùng ngón cái dễ thao tác nhất */
-  body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-  /* Thanh nổi bo tròn, trong mờ — nhẹ, chừa khoảng trống đọc bài */
+  /* Cụm nút NỔI trong suốt, xếp DỌC góc phải — Zalo & Gọi ở trên nút Menu */
+  body{padding-bottom:32px}
   .mobile-nav{
-    display:flex;position:fixed;left:16px;right:16px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:1000;
-    align-items:center;gap:4px;
-    background:rgba(255,255,255,.66);backdrop-filter:blur(22px) saturate(1.7);-webkit-backdrop-filter:blur(22px) saturate(1.7);
-    border:1px solid rgba(255,255,255,.6);border-radius:24px;
-    padding:7px 8px;box-shadow:0 14px 40px -12px rgba(13,43,28,.35),inset 0 1px 0 rgba(255,255,255,.6);
+    display:flex;flex-direction:column;gap:12px;
+    position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:1000;
+    background:none;border:none;box-shadow:none;padding:0;
   }
   .mnav-item{
-    flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:4px;padding:5px 2px;color:#5a6b60;font-size:.66rem;font-weight:600;
-    background:none;border:none;font-family:inherit;line-height:1;text-align:center;
-    -webkit-tap-highlight-color:transparent;
+    position:relative;width:50px;height:50px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.55);backdrop-filter:blur(16px) saturate(1.7);-webkit-backdrop-filter:blur(16px) saturate(1.7);
+    border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 24px -6px rgba(13,43,28,.32);
+    color:var(--green);font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .15s;
   }
-  .mnav-item span{white-space:nowrap}
-  .mnav-item .ic{position:relative;display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;transition:transform .15s}
-  .mnav-item:active .ic{transform:scale(.9)}
-  .mnav-item .ic svg{width:19px;height:19px}
-  /* Zalo — badge xanh sang */
-  .mnav-zalo{color:#2a6b8f}
-  .mnav-zalo .ic{background:linear-gradient(150deg,#3d97ff,#0068FF);box-shadow:0 4px 12px -2px rgba(0,104,255,.5),inset 0 1px 1px rgba(255,255,255,.4)}
-  .mnav-zalo .ic svg{stroke:#fff}
-  /* Gọi — badge vàng, nổi nhất nhưng gọn */
-  .mnav-call{color:#9a7b26}
-  .mnav-call .ic{width:40px;height:40px;background:radial-gradient(circle at 35% 30%,#E6CB79,#C9A84C 60%,#b7963f);box-shadow:0 5px 15px -2px rgba(201,168,76,.6),inset 0 1px 2px rgba(255,255,255,.55)}
-  .mnav-call .ic svg{stroke:#fff;width:21px;height:21px}
-  .mnav-call .ic::before{content:'';position:absolute;inset:0;border-radius:50%;animation:mnavPulse 2.6s ease-out infinite}
-  @keyframes mnavPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,.5)}70%{box-shadow:0 0 0 10px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
-  @media(prefers-reduced-motion:reduce){.mnav-call .ic::before{animation:none}}
-  /* Menu — nhạt */
-  .mnav-menu{color:#5a6b60}
-  .mnav-menu .ic{background:rgba(26,61,43,.07)}
-  .mnav-menu .ic svg{stroke:var(--green)}
+  .mnav-item:active{transform:scale(.9)}
+  .mnav-item>span:not(.ic){display:none}
+  .mnav-item .ic{display:flex;align-items:center;justify-content:center}
+  .mnav-item .ic svg{width:23px;height:23px}
+  .mnav-zalo{color:#0068FF}
+  .mnav-menu{color:var(--green)}
+  /* Gọi ngay — nút chính: vàng đặc, to hơn, đập nhẹ */
+  .mnav-call{width:58px;height:58px;color:#fff;border:none;
+    background:radial-gradient(circle at 35% 30%,#E6CB79,#C9A84C 60%,#b7963f);
+    box-shadow:0 10px 28px -6px rgba(201,168,76,.7),inset 0 1px 2px rgba(255,255,255,.55);
+  }
+  .mnav-call .ic svg{width:26px;height:26px;stroke:#fff}
+  .mnav-call::before{content:'';position:absolute;inset:0;border-radius:50%;animation:mnavPulse 2.6s ease-out infinite}
+  @keyframes mnavPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,.5)}70%{box-shadow:0 0 0 12px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
+  @media(prefers-reduced-motion:reduce){.mnav-call::before{animation:none}}
 
   /* Menu sheet trượt lên từ dưới */
   .mobile-sheet-overlay{
