@@ -53,38 +53,61 @@
   </script>
 
   <style>
-    .dv-intro{padding:80px 0 56px;border-bottom:1px solid var(--border)}
-    .dv-intro h1{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:800;color:var(--green);line-height:1.25;max-width:560px;margin-bottom:16px}
-    .dv-intro p{font-size:.98rem;color:#5a6a60;line-height:1.8;max-width:520px}
-
-    .dv-filter{display:flex;gap:8px;flex-wrap:wrap;margin:36px 0 0}
-    .dv-tab{padding:8px 18px;border-radius:20px;border:1.5px solid var(--border);background:white;color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s}
-    .dv-tab.active{background:var(--green);color:white;border-color:var(--green)}
-
-    .dv-body{padding:48px 0 80px}
-    .dv-group{margin-bottom:56px}
-    .dv-group-title{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-
-    .dv-item{display:grid;grid-template-columns:1fr 2fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--border)}
-    .dv-item:last-child{border-bottom:none}
-    .dv-item-name{font-size:.92rem;font-weight:700;color:var(--green);padding-top:2px}
-    .dv-item-free{display:block;font-size:.72rem;font-weight:600;color:#5a876a;margin-top:4px}
-    .dv-item-desc{font-size:.88rem;color:#5a6a60;line-height:1.75}
-    .dv-item-note{margin-top:8px;font-size:.8rem;color:var(--muted);font-style:italic}
-
-    .dv-cta{background:var(--green);padding:52px 0;margin-top:0}
-    .dv-cta-inner{max-width:520px}
-    .dv-cta h2{font-size:1.3rem;font-weight:800;color:white;margin-bottom:8px;line-height:1.3}
-    .dv-cta p{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.7;margin-bottom:28px}
-    .dv-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
-    .dv-cta-btns a{padding:12px 26px;border-radius:8px;font-weight:700;font-size:.88rem;text-decoration:none;display:inline-block}
-    .dv-btn-gold{background:var(--gold);color:#1A3D2B}
-    .dv-btn-line{border:1.5px solid rgba(255,255,255,.45);color:white}
-
-    @media(max-width:640px){
-      .dv-item{grid-template-columns:1fr;gap:6px}
-      .dv-item-name{padding-top:0}
-    }
+    .dv-hero{background:linear-gradient(170deg,#20492F,#1A3D2B 70%);color:#fff;padding:96px 0 46px}
+    .dv-hero .eyebrow{color:#E4CE88;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+    .dv-hero h1{font-size:clamp(1.7rem,4.4vw,2.4rem);font-weight:800;line-height:1.22;max-width:600px;margin:0 0 14px;letter-spacing:-.01em}
+    .dv-hero p{font-size:1rem;color:rgba(255,255,255,.82);line-height:1.75;max-width:560px;margin:0}
+    .dv-hero p strong{color:#fff}
+    .dv-trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .dv-trust span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:30px;backdrop-filter:blur(6px)}
+    .dv-trust span::before{content:'';width:15px;height:15px;flex:0 0 auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M5 12l5 5L20 6' stroke='%23E4CE88' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+    .dv-filter{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:26px 0 8px;position:sticky;top:60px;background:var(--bg);z-index:20}
+    .dv-tab{padding:9px 20px;border-radius:30px;border:1.5px solid var(--border);background:#fff;color:var(--muted);font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .18s}
+    .dv-tab.active{background:var(--green);color:#fff;border-color:var(--green);box-shadow:0 6px 16px -6px rgba(26,61,43,.5)}
+    .dv-body{padding:20px 0 70px}
+    .dv-group{margin-top:44px}
+    .dv-g-head{margin-bottom:20px}
+    .dv-g-head h2{font-size:1.3rem;font-weight:800;color:var(--green);margin:0 0 5px;letter-spacing:-.01em}
+    .dv-g-head p{font-size:.92rem;color:#6a7a6f;line-height:1.6;margin:0;max-width:600px}
+    .dv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .dv-card{display:flex;gap:16px;background:#fff;border:1px solid #ECE5D8;border-radius:18px;padding:20px 22px;box-shadow:0 2px 10px rgba(26,61,43,.04);transition:transform .2s,box-shadow .25s,border-color .2s}
+    .dv-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px -14px rgba(26,61,43,.26);border-color:#E0D6C2}
+    .dv-ic{flex:0 0 auto;width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#EAF3EC,#dcebe0);color:var(--green)}
+    .dv-ic svg{width:23px;height:23px}
+    .dv-c-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:7px}
+    .dv-c-head h3{font-size:1.02rem;font-weight:700;color:var(--green);margin:0;line-height:1.3}
+    .dv-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+    .pb-free{background:#E7F4EC;color:#1c7a45}
+    .pb-deal{background:#FBF2D9;color:#98781f}
+    .pb-state{background:#EEF1F4;color:#516074}
+    .pb-ref{background:#F3EEE6;color:#8a6d3f}
+    .dv-desc{font-size:.9rem;color:#5a6a60;line-height:1.68;margin:0}
+    .dv-note{font-size:.8rem;color:#9a8f7d;line-height:1.55;margin:8px 0 0;padding-left:11px;border-left:2px solid #E4D9C4}
+    .dv-gs{background:#F0F4F1;padding:30px 0}
+    .dv-gs-in{max-width:680px;margin:0 auto;text-align:center}
+    .dv-gs-in p.t{color:#1A3D2B;font-weight:700;margin:0 0 6px;font-size:1.02rem}
+    .dv-gs-in p.s{color:#5a5a5a;font-size:.9rem;margin:0 0 16px}
+    .dv-gs-in a{display:inline-block;border:1.5px solid #1A3D2B;color:#1A3D2B;padding:10px 24px;border-radius:30px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
+    .dv-gs-in a:hover{background:#1A3D2B;color:#fff}
+    .dv-cta{background:linear-gradient(160deg,#20492F,#152f20);padding:54px 0;text-align:center}
+    .dv-cta h2{font-size:clamp(1.4rem,3.6vw,1.9rem);font-weight:800;color:#fff;margin:0 0 10px}
+    .dv-cta p{color:rgba(255,255,255,.8);font-size:.98rem;line-height:1.7;margin:0 auto 26px;max-width:520px}
+    .dv-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .dv-cta-btns a{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:30px;font-weight:800;font-size:1.02rem;text-decoration:none}
+    .dv-cg{background:linear-gradient(160deg,#2b6047,#1A3D2B);color:#fff;box-shadow:0 10px 26px -8px rgba(0,0,0,.4)}
+    .dv-cz{background:#0068FF;color:#fff}
+    @media(max-width:720px){.dv-grid{grid-template-columns:1fr}.dv-filter{top:56px}.dv-card{padding:17px 18px;gap:13px}.dv-ic{width:42px;height:42px}}
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Dịch vụ ở Nam Ban Villas có mất phí không?", "acceptedAnswer": {"@type": "Answer", "text": "Tư vấn chọn lô, check quy hoạch và kiểm tra pháp lý lô đất đều miễn phí. Việc có phí như sang tên, tách thửa, đo đạc là phí nhà nước theo quy định hoặc phí thỏa thuận rõ trước — không phát sinh thêm sau."}}, {"@type": "Question", "name": "Kiểm tra pháp lý lô đất Nam Ban tốn bao nhiêu?", "acceptedAnswer": {"@type": "Answer", "text": "Miễn phí, áp dụng cho lô trong phạm vi Nam Ban, Lâm Hà. Chúng tôi xác minh sổ, chính chủ, tranh chấp và diện tích thực đo — làm trước khi bạn đặt cọc."}}, {"@type": "Question", "name": "Sang tên sổ đỏ ở Lâm Hà mất phí gì, bao lâu?", "acceptedAnswer": {"@type": "Answer", "text": "Phí nhà nước gồm thuế thu nhập 2% và lệ phí trước bạ 0,5% giá trị giao dịch. Thời gian 15–20 ngày làm việc. Villas hỗ trợ chuẩn bị hồ sơ và theo dõi đến khi có kết quả."}}, {"@type": "Question", "name": "Gọi hỏi có bị chào mua hay báo giá cao không?", "acceptedAnswer": {"@type": "Answer", "text": "Không. Cứ gọi hỏi cho rõ — lô đó có nên mua không, pháp lý sạch không, phí thật bao nhiêu. Trả lời thẳng, không mua cũng không sao."}}]}</script>
+  <style>
+    .dv-faqwrap{padding:48px 0 8px}
+    .dv-faqwrap h2{font-size:1.3rem;font-weight:800;color:var(--green);text-align:center;margin:0 0 22px}
+    .dv-faq{background:#fff;border:1px solid #ECE5D8;border-radius:14px;margin:0 auto 10px;max-width:680px;overflow:hidden}
+    .dv-faq summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:700;color:var(--green);font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .dv-faq summary::-webkit-details-marker{display:none}
+    .dv-faq summary::after{content:'+';color:#C9A84C;font-size:1.3rem;font-weight:400;flex:0 0 auto}
+    .dv-faq[open] summary::after{content:'–'}
+    .dv-faq p{padding:0 20px 18px;color:#5a6a60;font-size:.9rem;line-height:1.7;margin:0}
   </style>
 </head>
 <body>
@@ -96,6 +119,7 @@
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
       <a href="/ve-nam-ban/" class="nav-link">Về Nam Ban</a>
       <a href="/thi-truong/" class="nav-link">Thị Trường</a>
+      <a href="/dich-vu/" class="nav-link active">Dịch Vụ</a>
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
@@ -105,168 +129,161 @@
   </div>
 </header>
 
-<section class="dv-intro">
+<section class="dv-hero">
   <div class="container">
-    <p class="sec-label" style="margin-bottom:10px">Dịch vụ</p>
+    <p class="eyebrow">Dịch vụ · Pháp lý</p>
     <h1>Hỗ trợ từ lúc xem đất đến khi có sổ trong tay</h1>
-    <p>Chúng tôi không làm tất cả mọi thứ. Những gì làm được — làm thật, nói rõ chi phí trước, không phát sinh sau.</p>
-
-    <div class="dv-filter">
-      <button class="dv-tab active" data-cat="all">Tất cả</button>
-      <button class="dv-tab" data-cat="truoc">Trước khi mua</button>
-      <button class="dv-tab" data-cat="thu-tuc">Thủ tục & Pháp lý</button>
-      <button class="dv-tab" data-cat="sau">Sau khi có đất</button>
+    <p>Những việc quan trọng nhất — <strong>kiểm pháp lý, check quy hoạch, tư vấn chọn lô</strong> — đều miễn phí. Việc có phí thì báo giá rõ trước, đúng phí nhà nước, không phát sinh.</p>
+    <div class="dv-trust">
+      <span>Kiểm pháp lý miễn phí</span>
+      <span>Báo giá rõ trước</span>
+      <span>Không phát sinh sau</span>
+      <span>Cứ hỏi, không phải mua</span>
     </div>
   </div>
 </section>
+
+<div class="dv-filter">
+  <button class="dv-tab active" data-cat="all">Tất cả</button>
+  <button class="dv-tab" data-cat="truoc">Trước khi mua</button>
+  <button class="dv-tab" data-cat="thu-tuc">Thủ tục & Pháp lý</button>
+  <button class="dv-tab" data-cat="sau">Sau khi có đất</button>
+</div>
 
 <section class="dv-body">
   <div class="container">
-
     <div class="dv-group" data-cat="truoc">
-      <div class="dv-group-title">Trước khi mua</div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Tư vấn chọn lô</div>
-          <span class="dv-item-free">Miễn phí</span>
+      <div class="dv-g-head"><h2>Trước khi mua</h2><p>Giai đoạn quan trọng nhất — và cũng là lúc chúng tôi hỗ trợ miễn phí nhiều nhất.</p></div>
+      <div class="dv-grid">
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Tư vấn chọn lô</h3><span class="dv-badge pb-free">Miễn phí</span></div>
+          <p class="dv-desc">Phân tích nhu cầu thật — ở lâu dài, đầu tư hay xây homestay — rồi lọc ra 2–3 lô hợp. Không quăng cả danh sách để bạn tự bơi.</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Phân tích nhu cầu thật — ở lâu dài, đầu tư ngắn hạn hay xây homestay — rồi lọc ra 2–3 lô phù hợp. Không đưa cả danh sách để khách tự chọn.</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Check quy hoạch</h3><span class="dv-badge pb-free">Miễn phí</span></div>
+          <p class="dv-desc">Tra quy hoạch sử dụng đất 2030: lô nằm vùng ở, nông nghiệp hay hành lang bảo vệ. Trả lời cụ thể, không chung chung.</p><p class="dv-note">Cần số thửa/số tờ bản đồ hoặc địa chỉ chính xác.</p>
         </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Check quy hoạch</div>
-          <span class="dv-item-free">Miễn phí</span>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9.5 12 1.8 1.8L15 10"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Kiểm tra pháp lý lô</h3><span class="dv-badge pb-free">Miễn phí</span></div>
+          <p class="dv-desc">Xác minh sổ thật/giả, chính chủ, tra tranh chấp, đối chiếu diện tích thực đo với sổ — làm TRƯỚC khi đặt cọc.</p><p class="dv-note">Áp dụng cho lô trong Nam Ban, Lâm Hà.</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Tra quy hoạch sử dụng đất 2030, xác định lô nằm trong vùng ở, nông nghiệp hay hành lang bảo vệ. Trả lời cụ thể — không chung chung "có thể được".</div>
-          <div class="dv-item-note">Cần số thửa, số tờ bản đồ hoặc địa chỉ chính xác của lô.</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5"/><path d="M16 6a3 3 0 010 6M21 20c0-2-1.4-3.6-3.5-4.3"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Môi giới mua / bán</h3><span class="dv-badge pb-deal">Phí thỏa thuận rõ trước</span></div>
+          <p class="dv-desc">Kết nối người mua và người bán thật tại Nam Ban. Phí ghi rõ vào hợp đồng trước — không thu phụ phí sau.</p>
         </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Kiểm tra pháp lý lô đất</div>
-          <span class="dv-item-free">Miễn phí</span>
-        </div>
-        <div>
-          <div class="dv-item-desc">Xác minh sổ đỏ/sổ hồng thật hay giả, kiểm tra chính chủ, tra tranh chấp, đối chiếu diện tích thực đo với sổ. Làm trước khi đặt cọc — không phải sau khi ký.</div>
-          <div class="dv-item-note">Chỉ áp dụng cho lô trong phạm vi Nam Ban, Lâm Hà.</div>
-        </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Môi giới mua / bán</div>
-          <span class="dv-item-free">Phí môi giới</span>
-        </div>
-        <div>
-          <div class="dv-item-desc">Kết nối người mua và người bán thực sự tại Nam Ban. Phí môi giới được thỏa thuận rõ và ghi vào hợp đồng trước — không thu phụ phí sau.</div>
-        </div>
+      </article>
       </div>
     </div>
-
     <div class="dv-group" data-cat="thu-tuc">
-      <div class="dv-group-title">Thủ tục & Pháp lý</div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Hỗ trợ công chứng hợp đồng</div>
+      <div class="dv-g-head"><h2>Thủ tục & Pháp lý</h2><p>Việc có phí thì đều là phí nhà nước theo quy định — chúng tôi báo rõ con số trước, không ăn chênh.</p></div>
+      <div class="dv-grid">
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Rà soát &amp; công chứng hợp đồng</h3><span class="dv-badge pb-state">Phí công chứng theo quy định</span></div>
+          <p class="dv-desc">Rà hợp đồng đặt cọc &amp; mua bán, chỉ ra điều khoản bẫy người mua hay bỏ qua. Giới thiệu văn phòng công chứng tại Lâm Hà.</p><p class="dv-note">Phí công chứng 0,1–0,3% giá trị hợp đồng (nhà nước).</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Giới thiệu văn phòng công chứng tại Lâm Hà, hỗ trợ rà hợp đồng đặt cọc và mua bán — chú ý các điều khoản bẫy mà người mua hay bỏ qua.</div>
-          <div class="dv-item-note">Phí công chứng: 0,1–0,3% giá trị hợp đồng theo quy định nhà nước.</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Hỗ trợ sang tên sổ đỏ</h3><span class="dv-badge pb-state">Hỗ trợ miễn phí · phí nhà nước rõ</span></div>
+          <p class="dv-desc">Chuẩn bị hồ sơ, nộp tại Văn phòng Đăng ký đất đai Lâm Hà, theo dõi đến khi có kết quả.</p><p class="dv-note">Thuế TNCN 2% + trước bạ 0,5%. Thời gian 15–20 ngày làm việc.</p>
         </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Hỗ trợ sang tên sổ đỏ</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Hỗ trợ tách thửa</h3><span class="dv-badge pb-deal">Báo giá rõ trước</span></div>
+          <p class="dv-desc">Tư vấn điều kiện tách thửa tại Lâm Hà, kết nối đơn vị đo đạc, nộp hồ sơ tại cơ quan thẩm quyền.</p><p class="dv-note">Tối thiểu sau tách: 80m² thổ cư hoặc 300m² đất vườn.</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Hướng dẫn chuẩn bị hồ sơ sang tên, kết nối nộp tại Văn phòng Đăng ký đất đai huyện Lâm Hà. Theo dõi tiến độ đến khi có kết quả.</div>
-          <div class="dv-item-note">Phí nhà nước: thuế thu nhập 2% + lệ phí trước bạ 0,5% giá trị giao dịch. Thời gian: 15–20 ngày làm việc.</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Chuyển mục đích sử dụng đất</h3><span class="dv-badge pb-free">Kiểm tra miễn phí</span></div>
+          <p class="dv-desc">Kiểm tra khả năng chuyển từ nông nghiệp sang đất ở theo quy hoạch 2030. Không phải lô nào cũng chuyển được — kiểm trước khi bạn xuống tiền.</p>
         </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Hỗ trợ tách thửa</div>
-        </div>
-        <div>
-          <div class="dv-item-desc">Tư vấn điều kiện tách thửa theo quy định tại Lâm Hà, kết nối đơn vị đo đạc và nộp hồ sơ tách thửa tại cơ quan có thẩm quyền.</div>
-          <div class="dv-item-note">Diện tích tối thiểu sau tách: 80m² thổ cư hoặc 300m² đất vườn.</div>
-        </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Chuyển mục đích sử dụng đất</div>
-        </div>
-        <div>
-          <div class="dv-item-desc">Kiểm tra khả năng chuyển từ đất nông nghiệp sang đất ở theo quy hoạch 2030. Không phải lô nào cũng chuyển được — cháu kiểm tra trước khi bạn nộp tiền.</div>
-        </div>
+      </article>
       </div>
     </div>
-
     <div class="dv-group" data-cat="sau">
-      <div class="dv-group-title">Sau khi có đất</div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Hỗ trợ xin phép xây dựng</div>
+      <div class="dv-g-head"><h2>Sau khi có đất</h2><p>Bàn giao xong không phải là hết — vẫn đồng hành tới lúc bạn xây được nhà.</p></div>
+      <div class="dv-grid">
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-5 8 5v11"/><path d="M9 21v-6h6v6"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Hỗ trợ xin phép xây dựng</h3><span class="dv-badge pb-free">Miễn phí kết nối</span></div>
+          <p class="dv-desc">Kết nối đơn vị lập hồ sơ tại UBND Lâm Hà; tư vấn mật độ, chiều cao, khoảng lùi theo quy hoạch khu vực.</p><p class="dv-note">Áp dụng với đất thổ cư đã sang tên.</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Kết nối đơn vị lập hồ sơ xin phép xây dựng tại UBND huyện Lâm Hà. Tư vấn mật độ, chiều cao, khoảng lùi theo quy hoạch khu vực.</div>
-          <div class="dv-item-note">Chỉ áp dụng với đất thổ cư đã sang tên.</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Đo đạc &amp; vẽ sơ đồ thửa</h3><span class="dv-badge pb-ref">Phí tham khảo 2–5tr</span></div>
+          <p class="dv-desc">Kết nối đơn vị đo đạc có giấy phép tại Lâm Đồng. Cần đo trước khi xây, tách thửa, hoặc khi nghi diện tích lệch sổ.</p>
         </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Đo đạc & vẽ sơ đồ thửa đất</div>
+      </article>
+      <article class="dv-card">
+        <span class="dv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7a4 4 0 01-5 5l-5 5 2 2 5-5a4 4 0 005-5z"/><path d="m14 7 3-3 3 3-3 3"/></svg></span>
+        <div class="dv-c-body">
+          <div class="dv-c-head"><h3>Giới thiệu nhà thầu xây dựng</h3><span class="dv-badge pb-free">Miễn phí kết nối</span></div>
+          <p class="dv-desc">Nhà thầu đã xây tại Nam Ban — quen địa hình đồi. Bạn ký trực tiếp với nhà thầu, không qua trung gian.</p>
         </div>
-        <div>
-          <div class="dv-item-desc">Kết nối đơn vị đo đạc có giấy phép tại Lâm Đồng. Cần đo trước khi xây, trước khi tách thửa, hoặc khi nghi ngờ diện tích thực khác sổ.</div>
-          <div class="dv-item-note">Chi phí tham khảo: 2–5 triệu tùy diện tích và địa hình.</div>
-        </div>
-      </div>
-
-      <div class="dv-item">
-        <div>
-          <div class="dv-item-name">Giới thiệu nhà thầu xây dựng</div>
-        </div>
-        <div>
-          <div class="dv-item-desc">Giới thiệu nhà thầu đã xây tại Nam Ban — quen địa hình, biết xử lý nền đất đồi. Bạn ký hợp đồng trực tiếp với nhà thầu, không qua trung gian.</div>
-        </div>
+      </article>
       </div>
     </div>
-
   </div>
 </section>
 
-<section style="background:#F0F4F1;padding:28px 0">
+<section class="dv-gs">
+  <div class="container"><div class="dv-gs-in">
+    <p class="t">Mua xong, ở xa không tiện trông nom?</p>
+    <p class="s">Có dịch vụ trông coi, giữ ranh mốc, kiểm tra đất định kỳ từ xa.</p>
+    <a href="https://greenspacers.vn" target="_blank" rel="noopener">Dịch vụ trông coi đất từ xa →</a>
+  </div></div>
+</section>
+
+<section class="dv-faqwrap">
   <div class="container">
-    <div style="max-width:680px;margin:0 auto;text-align:center">
-      <p style="color:#1A3D2B;font-weight:700;margin-bottom:6px">Mua xong, ở xa không tiện trông nom?</p>
-      <p style="color:#5a5a5a;font-size:.9rem;margin-bottom:14px">Có dịch vụ trông coi, giữ ranh mốc, kiểm tra đất định kỳ từ xa.</p>
-      <a href="https://greenspacers.vn" target="_blank" rel="noopener" style="display:inline-block;border:1px solid #1A3D2B;color:#1A3D2B;padding:9px 22px;border-radius:8px;font-weight:600;font-size:.88rem;text-decoration:none">Dịch vụ trông coi đất từ xa →</a>
-    </div>
+    <h2>Câu hỏi thường gặp</h2>
+      <details class="dv-faq">
+        <summary>Dịch vụ ở Nam Ban Villas có mất phí không?</summary>
+        <p>Tư vấn chọn lô, check quy hoạch và kiểm tra pháp lý lô đất đều miễn phí. Việc có phí như sang tên, tách thửa, đo đạc là phí nhà nước theo quy định hoặc phí thỏa thuận rõ trước — không phát sinh thêm sau.</p>
+      </details>
+      <details class="dv-faq">
+        <summary>Kiểm tra pháp lý lô đất Nam Ban tốn bao nhiêu?</summary>
+        <p>Miễn phí, áp dụng cho lô trong phạm vi Nam Ban, Lâm Hà. Chúng tôi xác minh sổ, chính chủ, tranh chấp và diện tích thực đo — làm trước khi bạn đặt cọc.</p>
+      </details>
+      <details class="dv-faq">
+        <summary>Sang tên sổ đỏ ở Lâm Hà mất phí gì, bao lâu?</summary>
+        <p>Phí nhà nước gồm thuế thu nhập 2% và lệ phí trước bạ 0,5% giá trị giao dịch. Thời gian 15–20 ngày làm việc. Villas hỗ trợ chuẩn bị hồ sơ và theo dõi đến khi có kết quả.</p>
+      </details>
+      <details class="dv-faq">
+        <summary>Gọi hỏi có bị chào mua hay báo giá cao không?</summary>
+        <p>Không. Cứ gọi hỏi cho rõ — lô đó có nên mua không, pháp lý sạch không, phí thật bao nhiêu. Trả lời thẳng, không mua cũng không sao.</p>
+      </details>
   </div>
 </section>
 
 <section class="dv-cta">
   <div class="container">
-    <div class="dv-cta-inner">
-      <h2>Bắt đầu bằng câu hỏi đơn giản nhất</h2>
-      <p>Không cần chuẩn bị gì. Cứ nói bạn đang tìm gì và ngân sách bao nhiêu — cháu sẽ cho biết có lô nào phù hợp không.</p>
-      <div class="dv-cta-btns">
-        <a href="https://zalo.me/0978758788" target="_blank" class="dv-btn-gold">Nhắn Zalo</a>
-        <a href="tel:0978758788" class="dv-btn-line">0978 758 788</a>
-      </div>
+    <h2>Cứ gọi hỏi cho rõ — miễn phí, không phải mua gì</h2>
+    <p>Nói bạn đang tìm gì và ngân sách bao nhiêu. Cháu trả lời thẳng: có lô nào hợp không, pháp lý sạch không, phí thật là bao nhiêu.</p>
+    <div class="dv-cta-btns">
+      <a href="tel:0978758788" class="dv-cg">📞 Gọi 0978 758 788</a>
+      <a href="https://zalo.me/0978758788" target="_blank" class="dv-cz">Nhắn Zalo</a>
     </div>
   </div>
 </section>
