@@ -385,7 +385,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   /* Cụm nút NỔI trong suốt, xếp DỌC góc phải — Zalo & Gọi ở trên nút Menu */
   body{padding-bottom:32px}
   .mobile-nav{
-    display:flex;flex-direction:column;gap:12px;
+    display:flex;flex-direction:column;gap:18px;
     position:fixed;right:14px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:1000;
     background:none;border:none;box-shadow:none;padding:0;
   }
@@ -402,6 +402,7 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   .mnav-item .ic svg{width:23px;height:23px}
   .mnav-zalo{color:#0068FF}
   .mnav-menu{color:var(--green)}
+  .mnav-menu .ic svg{width:27px;height:27px}
   /* Gọi ngay — nút chính: vàng đặc, to hơn, đập nhẹ */
   .mnav-call{width:58px;height:58px;color:#fff;border:none;
     background:radial-gradient(circle at 35% 30%,#E6CB79,#C9A84C 60%,#b7963f);
@@ -420,29 +421,31 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   .mobile-sheet-overlay.open{opacity:1;pointer-events:auto}
   .mobile-sheet{
     display:block;position:fixed;left:0;right:0;bottom:0;z-index:1006;
-    background:#fff;border-radius:26px 26px 0 0;
-    padding:8px 14px calc(16px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg,#fff,#FBF7F0);border-radius:30px 30px 0 0;
+    padding:8px 16px calc(22px + env(safe-area-inset-bottom));
     transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);
-    box-shadow:0 -10px 44px rgba(13,43,28,.22);
+    box-shadow:0 -12px 50px rgba(13,43,28,.24);
   }
   .mobile-sheet.open{transform:translateY(0)}
-  .mobile-sheet-handle{width:44px;height:5px;background:#E6DFD2;border-radius:99px;margin:8px auto 12px}
+  .mobile-sheet-handle{width:38px;height:5px;background:#E2D9C8;border-radius:99px;margin:9px auto 6px}
+  .mobile-sheet-title{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B7AD98;margin:0 0 12px}
   .mobile-sheet a{
     display:flex;align-items:center;justify-content:space-between;
-    padding:15px 16px;font-size:1.02rem;font-weight:600;color:var(--green);
-    border-radius:13px;transition:background .15s;
+    padding:15px 16px;font-size:1.04rem;font-weight:600;color:var(--green);
+    border-radius:14px;transition:background .18s,transform .12s;
   }
+  .mobile-sheet a:not(:last-child){background:rgba(255,255,255,.7);border:1px solid #F0EADF;margin-bottom:8px;box-shadow:0 1px 3px rgba(26,61,43,.03)}
   .mobile-sheet a::after{
-    content:'';width:7px;height:7px;border-top:2px solid #C9A84C;border-right:2px solid #C9A84C;
-    transform:rotate(45deg);opacity:.65;
+    content:'';width:8px;height:8px;border-top:2px solid #C9A84C;border-right:2px solid #C9A84C;
+    transform:rotate(45deg);opacity:.7;
   }
-  .mobile-sheet a:active{background:var(--bg)}
+  .mobile-sheet a:active{transform:scale(.985);background:var(--green-light)}
   /* Liên Hệ (mục cuối) = nút CTA xanh, to hơn, dễ bấm */
   .mobile-sheet a:last-child{
-    margin-top:10px;justify-content:center;gap:9px;
-    background:linear-gradient(160deg,#22503a,#1A3D2B);color:#fff;
-    padding:17px;font-size:1.1rem;font-weight:800;border-radius:15px;
-    box-shadow:0 8px 22px -7px rgba(26,61,43,.5);
+    margin-top:12px;justify-content:center;gap:9px;
+    background:linear-gradient(160deg,#2b6047,#1A3D2B 75%);color:#fff;
+    padding:18px;font-size:1.12rem;font-weight:800;border-radius:16px;
+    box-shadow:0 10px 26px -8px rgba(26,61,43,.55),inset 0 1px 0 rgba(255,255,255,.12);
   }
   .mobile-sheet a:last-child::after{
     border:none;width:19px;height:19px;transform:none;opacity:1;
