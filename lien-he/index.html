@@ -53,91 +53,73 @@
 </div>
 
 <style>
-.oneTap{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:14px;text-decoration:none;transition:transform .15s,box-shadow .2s;box-shadow:0 2px 8px rgba(26,61,43,.08)}
-.oneTap:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(26,61,43,.32)}
-.oneTap svg{flex:0 0 auto}
-.oneTap span{display:flex;flex-direction:column;line-height:1.25}
-.oneTap strong{font-size:1.05rem}
-.oneTap small{opacity:.88;font-size:.8rem;font-weight:400;margin-top:3px}
-.lead-form{display:flex;flex-direction:column;gap:10px}
-.lead-form input,.lead-form textarea{width:100%;padding:12px 14px;border:1px solid #E0D6C2;border-radius:10px;font:inherit;font-size:.95rem;background:#fff;color:#1A3D2B}
-.lead-form input:focus,.lead-form textarea:focus{outline:none;border-color:#C9A84C}
-.lead-form textarea{resize:vertical}
-.lead-form .form-submit{background:#1A3D2B;color:#fff;border:none;padding:13px;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;transition:background .2s}
-.lead-form .form-submit:hover{background:#15321f}
-.sent-banner{background:#EAF7EE;border:1px solid #b7e0c2;color:#166534;padding:12px 16px;border-radius:10px;margin-bottom:6px;font-weight:600}
+.ct-wrap{max-width:600px;margin:0 auto;padding:0 4px}
+.ct-head{text-align:center;margin-bottom:26px}
+.ct-head h1{font-size:clamp(1.6rem,5vw,2.1rem);color:#1A3D2B;margin:0 0 8px;letter-spacing:-.01em}
+.ct-head p{color:#6B6B6B;font-size:1rem;line-height:1.55;margin:0}
+.ct-sent{background:#EAF7EE;border:1px solid #b7e0c2;color:#166534;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-weight:600;text-align:center}
+.ct-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px}
+.ct-btn{display:flex;flex-direction:column;align-items:center;gap:7px;padding:24px 14px;border-radius:16px;text-decoration:none;text-align:center;transition:transform .18s,box-shadow .25s;box-shadow:0 4px 16px -6px rgba(26,61,43,.25)}
+.ct-btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px rgba(26,61,43,.4)}
+.ct-btn svg{width:26px;height:26px}
+.ct-btn .lbl{font-size:1.06rem;font-weight:800;line-height:1.2}
+.ct-btn .sub{font-size:.78rem;font-weight:500;opacity:.9}
+.ct-call{background:linear-gradient(160deg,#22503a,#1A3D2B);color:#fff}
+.ct-zalo{background:linear-gradient(160deg,#1a7bff,#0068FF);color:#fff}
+.ct-or{display:flex;align-items:center;gap:14px;color:#b0a894;font-size:.82rem;margin:0 0 18px;text-transform:uppercase;letter-spacing:.1em}
+.ct-or::before,.ct-or::after{content:'';flex:1;height:1px;background:#E6DFD2}
+.ct-card{background:#fff;border:1px solid #ECE5D8;border-radius:18px;padding:24px 22px;box-shadow:0 2px 12px rgba(26,61,43,.05)}
+.ct-card h2{font-size:1.12rem;color:#1A3D2B;margin:0 0 4px}
+.ct-card .hint{color:#6B6B6B;font-size:.88rem;margin:0 0 16px}
+.ct-form{display:flex;flex-direction:column;gap:11px}
+.ct-form input,.ct-form textarea{width:100%;padding:13px 15px;border:1px solid #E0D6C2;border-radius:11px;font:inherit;font-size:.96rem;background:#FCFAF6;color:#1A3D2B}
+.ct-form input:focus,.ct-form textarea:focus{outline:none;border-color:#C9A84C;background:#fff}
+.ct-form textarea{resize:vertical;min-height:52px}
+.ct-form button{background:#1A3D2B;color:#fff;border:none;padding:15px;border-radius:11px;font-weight:800;font-size:1.02rem;cursor:pointer;transition:background .2s}
+.ct-form button:hover{background:#15321f}
+.ct-foot{text-align:center;color:#9a9384;font-size:.83rem;line-height:1.7;margin-top:24px}
+.ct-foot a{color:#6B6B6B;text-decoration:underline}
+@media(max-width:520px){.ct-actions{grid-template-columns:1fr}.ct-btn{flex-direction:row;justify-content:center;gap:12px;padding:18px}}
 </style>
-<section class="section" style="padding-top:36px">
+<section class="section" style="padding-top:36px;padding-bottom:56px">
   <div class="container">
-    <div class="contact-head">
-      <h1>Liên hệ Nam Ban Villas</h1>
-      <p>Gọi hoặc nhắn Zalo — bấm 1 phát là gặp chủ đất, trả lời thật trong ngày.</p>
-    </div>
-
-    <div class="contact-grid">
-
-      <div class="contact-methods">
-        <a href="https://zalo.me/0978758788" target="_blank" class="contact-method cm-zalo">
-          <span class="contact-icon" style="background:#E7F1FF;color:#0068FF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg></span>
-          <span class="cm-body">
-            <span class="cm-label">Nhắn Zalo</span>
-            <span class="cm-value">0978 758 788</span>
-            <span class="cm-sub">Trả lời trong ngày</span>
-          </span>
-        </a>
-
-        <div class="contact-method" style="cursor:default">
-          <span class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2"/></svg></span>
-          <span class="cm-body">
-            <span class="cm-label">Địa chỉ</span>
-            <span class="cm-value" style="font-size:.98rem">Xã Nam Ban, Lâm Hà, Lâm Đồng</span>
-            <span class="cm-sub">35–40 phút từ Đà Lạt · khoảng 30 phút từ sân bay Liên Khương</span>
-          </span>
-        </div>
-
-        <div class="contact-qr">
-          <div id="qrcodeLarge"></div>
-          <div class="contact-qr-text">
-            <h4>Quét QR để nhắn Zalo</h4>
-            <p>Mở camera điện thoại, quét mã — nhắn tin ngay không cần lưu số.</p>
-          </div>
-        </div>
+    <div class="ct-wrap">
+      <div class="ct-head">
+        <h1>Liên hệ Nam Ban Villas</h1>
+        <p>Bấm 1 phát là gặp chủ đất — trả lời thật, trong ngày.</p>
       </div>
 
-      <div class="form-card" style="display:flex;flex-direction:column;gap:12px;justify-content:center">
-        <div id="sentBanner" class="sent-banner" style="display:none">✓ Đã gửi! Chủ đất sẽ gọi lại bạn sớm nhất.</div>
-        <h3 style="margin-bottom:4px">Bấm 1 phát — gặp ngay chủ đất</h3>
-        <p style="color:#6B6B6B;font-size:.9rem;margin-bottom:8px">Không cần điền form, không qua trung gian. Chọn cách chú tiện:</p>
-        <a href="tel:0978758788" class="oneTap" style="background:#1A3D2B;color:#fff">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg>
-          <span><strong>Gọi ngay 0978 758 788</strong><small>Bấm là máy gọi liền</small></span>
+      <div id="sentBanner" class="ct-sent" style="display:none">✓ Đã gửi! Chủ đất sẽ gọi lại bạn sớm nhất.</div>
+
+      <div class="ct-actions">
+        <a href="tel:0978758788" class="ct-btn ct-call">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="lbl">Gọi ngay</span><span class="sub">0978 758 788</span>
         </a>
-        <a href="https://zalo.me/0978758788" target="_blank" class="oneTap" style="background:#0068FF;color:#fff">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
-          <span><strong>Nhắn Zalo</strong><small>Mở thẳng khung chat với chủ đất</small></span>
+        <a href="https://zalo.me/0978758788" target="_blank" class="ct-btn ct-zalo">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="lbl">Nhắn Zalo</span><span class="sub">Chat với chủ đất</span>
         </a>
-        <a href="sms:0978758788?&body=Xin ch%C3%A0o Nam Ban Villas, t%C3%B4i mu%E1%BB%91n %C4%91%C6%B0%E1%BB%A3c t%C6%B0 v%E1%BA%A5n %C4%91%E1%BA%A5t Nam Ban." class="oneTap" style="background:#fff;color:#1A3D2B;border:1.5px solid #E0D6C2">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H5.17L4 17.17V4z" stroke="currentColor" stroke-width="2"/></svg>
-          <span><strong>Nhắn tin SMS</strong><small>Đã soạn sẵn — bấm gửi là xong</small></span>
-        </a>
-        <p class="form-honest-note" style="margin-top:6px">Chúng tôi trả lời thật, trong ngày. Không spam, không làm phiền.</p>
-        <div style="border-top:1px solid #ECE5D8;margin:10px 0 0;padding-top:16px">
-          <p style="font-weight:700;color:#1A3D2B;margin-bottom:3px">Hoặc để lại số — chủ đất gọi lại</p>
-          <p style="color:#6B6B6B;font-size:.85rem;margin-bottom:12px">Điền xong bấm gửi, tin về máy chủ đất ngay.</p>
-          <form action="https://formsubmit.co/doanquocduyet@gmail.com" method="POST" class="lead-form">
-            <input type="hidden" name="_subject" value="🔔 Lead mới từ nambanvillas.vn">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://nambanvillas.vn/lien-he/?sent=1">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-            <input type="text" name="Tên" required placeholder="Tên của bạn *">
-            <input type="tel" name="Số điện thoại" required placeholder="Số điện thoại *">
-            <textarea name="Nhu cầu" rows="2" placeholder="Bạn đang tìm gì? (không bắt buộc)"></textarea>
-            <button type="submit" class="form-submit">Gửi — chủ đất gọi lại</button>
-          </form>
-        </div>
       </div>
 
+      <p class="ct-or">Hoặc để lại số</p>
+      <div class="ct-card">
+        <h2>Chủ đất gọi lại cho bạn</h2>
+        <p class="hint">Điền tên + số, bấm gửi. Tin về thẳng máy chủ đất — không qua trung gian.</p>
+        <form action="https://formsubmit.co/doanquocduyet@gmail.com" method="POST" class="ct-form">
+          <input type="hidden" name="_subject" value="Lead moi tu nambanvillas.vn">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://nambanvillas.vn/lien-he/?sent=1">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="text" name="Tên" required placeholder="Tên của bạn">
+          <input type="tel" name="Số điện thoại" required placeholder="Số điện thoại">
+          <textarea name="Nhu cầu" rows="2" placeholder="Bạn đang tìm gì? (không bắt buộc)"></textarea>
+          <button type="submit">Gửi — chủ đất gọi lại</button>
+        </form>
+      </div>
+
+      <p class="ct-foot">Xã Nam Ban, Lâm Hà, Lâm Đồng · cách Đà Lạt ~25km<br>Đọc từng tin, trả lời trong ngày — không spam. <a href="sms:0978758788?&body=Xin ch%C3%A0o Nam Ban Villas">Hoặc nhắn SMS</a></p>
     </div>
   </div>
 </section>
