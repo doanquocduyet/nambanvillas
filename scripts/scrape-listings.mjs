@@ -15,10 +15,12 @@ const iso = today.toISOString().slice(0, 10);
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
 const HDRS = { 'User-Agent': UA, 'Accept': 'text/html,application/json', 'Accept-Language': 'vi,en;q=0.9' };
 
-const KEYWORDS = ['nam ban', 'nam bàn', 'lâm hà', 'đông thanh', 'mê linh'];
 function relevant(txt) {
   const t = (txt || '').toLowerCase();
-  return KEYWORDS.some(k => t.includes(k));
+  if (t.includes('hà nội') || t.includes('bình thuận') || t.includes('huyện gia lâm')) return false; // loại trùng tên khác tỉnh
+  if (t.includes('nam ban') || t.includes('nam bàn')) return true;
+  const near = ['đông thanh', 'mê linh', 'nam hà', 'gia lâm'].some(k => t.includes(k));
+  return near && (t.includes('lâm hà') || t.includes('lâm đồng'));
 }
 function num(s){ const m=(s||'').replace(/[.,]/g,'').match(/\d+/); return m?+m[0]:null; }
 
