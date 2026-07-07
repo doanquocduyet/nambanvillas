@@ -228,7 +228,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .news-loading{text-align:center;padding:48px;color:var(--muted);grid-column:1/-1}
 .news-loading .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.page-hero{background:linear-gradient(135deg,#0D2B1C,#1A3D2B);color:white;padding:120px 0 60px}
+.page-hero{background:linear-gradient(158deg,rgba(11,34,20,.9),rgba(20,55,33,.8) 55%,rgba(11,34,20,.92)),url('/images/nam-ban-aerial.jpg') center/cover no-repeat;color:white;padding:120px 0 60px}
 .page-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:10px}
 .page-hero p{opacity:.8;font-size:1rem;max-width:540px}
 .breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;margin-bottom:16px;opacity:.65}
