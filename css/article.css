@@ -18,10 +18,26 @@
 .article-body blockquote{border-left:4px solid #C9A84C;padding:16px 20px;background:#F7F3EE;border-radius:0 8px 8px 0;margin:24px 0;font-style:italic;color:#5C5C5C}
 .article-img{width:100%;border-radius:12px;margin:24px 0;display:block}
 .article-source{font-size:.78rem;color:#9B9B9B;border-top:1px solid #E2DBD0;padding-top:14px;margin-top:32px}
-.article-cta-box{background:linear-gradient(135deg,#1A3D2B,#2E5C40);border-radius:16px;padding:28px;text-align:center;color:white;margin:40px 0}
-.article-cta-box h3{font-size:1.2rem;margin-bottom:8px}
-.article-cta-box p{font-size:.88rem;opacity:.85;margin-bottom:18px}
-.article-cta-box a{background:#C9A84C;color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;display:inline-block}
+.article-cta-box{background:linear-gradient(135deg,#1A3D2B,#2E5C40);border-radius:16px;padding:30px 28px;text-align:center;color:#fff;margin:40px 0}
+.article-cta-icon{display:flex;justify-content:center;margin-bottom:14px}
+.article-cta-box h3{font-size:1.25rem;color:#fff;margin:0 0 8px}
+.article-cta-box p{font-size:.9rem;color:rgba(255,255,255,.86);line-height:1.65;margin:0 auto 20px;max-width:520px}
+.article-cta-box a,.article-cta-box .btn-cta{background:#C9A84C;color:#1A3D2B;padding:13px 30px;border-radius:10px;text-decoration:none;font-weight:800;display:inline-block;transition:.18s}
+.article-cta-box a:hover,.article-cta-box .btn-cta:hover{background:#d8b95e;transform:translateY(-1px)}
+/* Sidebar tư vấn card */
+.sidebar-card.sidebar-cta{background:linear-gradient(135deg,#1A3D2B,#2E5C40);border-color:transparent}
+.sidebar-cta h4{color:rgba(255,255,255,.7)}
+.sidebar-cta p{font-size:.86rem;color:rgba(255,255,255,.85);line-height:1.6;margin:0 0 14px}
+.sidebar-cta .btn-cta-sm,.sidebar-cta .btn-zalo-sm{display:block;text-align:center;padding:11px;border-radius:10px;font-weight:700;text-decoration:none;font-size:.9rem}
+.sidebar-cta .btn-cta-sm{background:#C9A84C;color:#1A3D2B;margin-bottom:9px}
+.sidebar-cta .btn-zalo-sm{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)}
+.sidebar-cta .btn-cta-sm:hover{background:#d8b95e}
+.sidebar-cta .btn-zalo-sm:hover{background:rgba(255,255,255,.2)}
+/* Số liệu card */
+.stat-item{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid #F0EBE2;font-size:.88rem}
+.stat-item:last-child{border-bottom:none;padding-bottom:0}
+.stat-label{color:#8a978f}
+.stat-val{font-weight:700;color:#1A3D2B}
 /* Listing detail */
 .listing-detail-grid{display:grid;grid-template-columns:1fr 340px;gap:0;max-width:1100px;margin:40px auto;padding:0 20px}
 .listing-main{padding-right:32px}
