@@ -8,3 +8,12 @@
 - homedy: HTTP 200
   → 1 tin khớp
 ### TỔNG: 32 tin thô (đã gộp trùng)
+
+## 2026-07-07
+- Chotot OK: 30 tin, 15 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 200
+  → 15 tin khớp
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 28 tin thô (đã gộp trùng)
