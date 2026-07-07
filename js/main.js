@@ -130,6 +130,16 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
   setTimeout(()=>{btn.textContent='Gửi lời nhắn qua Zalo';btn.style.background='';},7000);
 });
 
+/* Bấm thumbnail → đổi ảnh chính (trang lô/nhà). Gắn window vì file bọc IIFE. */
+window.swapMain=function(t){
+  var m=document.getElementById('galMain');
+  if(!m||!t)return;
+  m.src=t.src;
+  var wrap=t.parentNode;
+  if(wrap){var ims=wrap.querySelectorAll('img');for(var i=0;i<ims.length;i++)ims[i].classList.remove('active');}
+  t.classList.add('active');
+};
+
 /* Vuốt ảnh trên mobile — trang chi tiết (gallery) */
 (function(){
   var main=document.getElementById('galMain');
