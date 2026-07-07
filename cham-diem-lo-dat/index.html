@@ -56,7 +56,7 @@
   .cd-score-label.good{background:#3a5a44;color:#fff}
   .cd-score-label.warn{background:#b06a4f;color:#fff}
   .cd-score-label.bad{background:#a23b34;color:#fff}
-  .cd-score-msg{font-size:.98rem;line-height:1.65;color:rgba(255,255,255,.86);max-width:420px;margin:0 auto}
+  .cd-score-msg{font-size:1.02rem;line-height:1.65;color:rgba(255,255,255,.9);max-width:430px;margin:16px auto 0}
   /* CTA — phần to nhất */
   .cd-cta{margin-top:16px;background:#fff;border:1.5px solid #E3E0D8;border-radius:20px;padding:30px 24px;text-align:center;box-shadow:0 10px 30px rgba(26,61,43,.06)}
   .cd-cta h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:#1A2420;margin:0 0 10px}
@@ -107,12 +107,10 @@
 
     <div class="cd-modes">
       <button class="cd-mode" data-mode="mua" aria-pressed="false">
-        <span class="cd-mode-ic">🌱</span>
         <span class="cd-mode-t">Tôi sắp MUA</span>
         <span class="cd-mode-s">Chấm lô trước khi xuống tiền</span>
       </button>
       <button class="cd-mode" data-mode="ban" aria-pressed="false">
-        <span class="cd-mode-ic">🏷️</span>
         <span class="cd-mode-t">Tôi sắp BÁN</span>
         <span class="cd-mode-s">Chấm đất trước khi rao</span>
       </button>
@@ -123,7 +121,6 @@
       <div id="cdQuestions"></div>
       <div id="cdScore" class="cd-score cd-hidden">
         <p class="cd-score-num"><span id="cdNum">0</span><small>/8</small></p>
-        <span id="cdLabel" class="cd-score-label"></span>
         <p id="cdMsg" class="cd-score-msg"></p>
       </div>
     </div>
@@ -233,7 +230,6 @@
   var qWrap=document.getElementById('cdQuestions');
   var scoreEl=document.getElementById('cdScore');
   var numEl=document.getElementById('cdNum');
-  var labelEl=document.getElementById('cdLabel');
   var msgEl=document.getElementById('cdMsg');
   var cur=null;
 
@@ -258,7 +254,7 @@
     var n=qWrap.querySelectorAll('.cd-q.on').length;
     numEl.textContent=n;
     var r=cur? Q[cur].res[n<=3?0:(n<=6?1:2)] : null;
-    if(r){labelEl.textContent=r.t;labelEl.className='cd-score-label '+r.c;msgEl.textContent=r.m;}
+    if(r){msgEl.textContent=r.m;}
     scoreEl.classList.remove('cd-hidden');
   }
   modes.forEach(function(b){
