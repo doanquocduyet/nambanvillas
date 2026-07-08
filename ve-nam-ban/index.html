@@ -18,28 +18,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
   <link rel="stylesheet" href="../css/style.css">
   <style>
-    .news-featured{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px}
-    @media(max-width:768px){.news-featured{grid-template-columns:1fr}}
-    .ncard{border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
-    .ncard:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
-    .ncard-img{width:100%;height:180px;object-fit:cover;background:#EBF4EE;display:block}
-    .ncard-body{padding:16px}
-    .ncard-source{font-size:.75rem;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.5px}
-    .ncard-title{font-size:1rem;font-weight:700;color:#1A3D2B;line-height:1.45;margin:8px 0 6px}
+    /* Danh sách gọn — dễ đọc, nghiên cứu */
+    .news-featured{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+    @media(max-width:760px){.news-featured{grid-template-columns:1fr}}
+    .ncard{display:flex;background:#fff;border:1px solid #E8E2D9;border-radius:12px;overflow:hidden;transition:.18s}
+    .ncard:hover{border-color:#d8cdb8;box-shadow:0 8px 22px -12px rgba(26,61,43,.25);transform:translateY(-2px)}
+    .ncard-img{flex:0 0 120px;width:120px;object-fit:cover;background:#EBF4EE;display:block}
+    .ncard-body{padding:13px 15px;min-width:0}
+    .ncard-source{font-size:.68rem;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:.05em}
+    .ncard-title{font-size:.94rem;font-weight:700;color:#1A3D2B;line-height:1.4;margin:6px 0 5px}
     .ncard-title a{color:inherit;text-decoration:none}
     .ncard-title a:hover{color:#C9A84C}
-    .ncard-excerpt{font-size:.85rem;color:#6B6B6B;line-height:1.6;margin-bottom:10px}
-    .ncard-date{font-size:.75rem;color:#9B9B9B}
-    .news-secondary{border-top:2px solid #E2DBD0;padding-top:24px}
-    .news-secondary h3{font-size:.8rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .ncard-excerpt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:.82rem;color:#6B6B6B;line-height:1.55;margin:0 0 7px}
+    .ncard-date{font-size:.72rem;color:#9B9B9B}
+    @media(max-width:400px){.ncard-img{flex-basis:100px;width:100px}}
+    .ptitle{font-size:.78rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin:0 0 14px;border-top:2px solid #E2DBD0;padding-top:22px}
+    .news-secondary{border-top:2px solid #E2DBD0;padding-top:22px;margin-top:8px}
+    .news-secondary h3{font-size:.78rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
     .news-link-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid #F0EBE3;text-decoration:none;color:inherit}
     .news-link-item:last-child{border-bottom:none}
     .news-link-item:hover .nlk-title{color:#C9A84C}
-    .nlk-num{font-size:1.5rem;font-weight:800;color:#E2DBD0;line-height:1;min-width:28px}
-    .nlk-title{font-size:.92rem;font-weight:600;color:#1A3D2B;line-height:1.4;display:block;margin-bottom:4px}
-    .nlk-meta{font-size:.75rem;color:#9B9B9B}
-    .ncard-excerpt{display:none}
-    .ncard-img{height:148px}
+    .nlk-num{font-size:1.4rem;font-weight:800;color:#E2DBD0;line-height:1;min-width:26px}
+    .nlk-title{font-size:.9rem;font-weight:600;color:#1A3D2B;line-height:1.4;display:block;margin-bottom:3px}
+    .nlk-meta{font-size:.72rem;color:#9B9B9B}
   </style>
   <!-- Google Analytics 4 — thay G-LHGW9K1BDP bằng Measurement ID thật của chú -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -53,9 +54,9 @@
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
-      <a href="/thi-truong/" class="nav-link">Thị Trường</a>
       <a href="/dich-vu/" class="nav-link">Dịch Vụ</a>
       <a href="/ve-nam-ban/" class="nav-link active">Về Nam Ban</a>
+      <a href="/thi-truong/" class="nav-link">Thị Trường</a>
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
@@ -117,24 +118,24 @@
     <!-- 2 link phụ -->
     <!-- 2 bài phân tích mới từ QĐ 2786/2026 -->
     <div style="margin:32px 0 0">
-      <h3 style="font-size:.8rem;font-weight:700;color:#9B9B9B;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;border-top:2px solid #E2DBD0;padding-top:24px">Phân Tích Chuyên Sâu</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px">
-        <a href="/ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026/" style="display:block;border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none">
-          <img src="../images/news/nam-ban-thay-doi-2026.svg" alt="Nam Ban thay đổi 2026" style="width:100%;height:150px;object-fit:cover;display:block">
-          <div style="padding:14px">
-            <span style="font-size:.72rem;font-weight:700;color:#C9A84C;text-transform:uppercase">Phân Tích · 06/2026</span>
-            <p style="font-size:.9rem;font-weight:700;color:#1A3D2B;line-height:1.4;margin:6px 0 6px">Nam Ban 2026–2030: Những thay đổi sẽ định hình lại giá trị BĐS</p>
-            <p style="font-size:.8rem;color:#6B6B6B;margin:0;line-height:1.5">Đô thị loại III, cao tốc Đông–Tây, sáp nhập hành chính — 5 thay đổi lớn nhất cho Nam Ban.</p>
+      <h3 class="ptitle">Phân Tích Chuyên Sâu</h3>
+      <div class="news-featured">
+        <article class="ncard">
+          <img class="ncard-img" src="../images/news/nam-ban-thay-doi-2026.svg" alt="Nam Ban thay đổi 2026" loading="lazy">
+          <div class="ncard-body">
+            <span class="ncard-source">Phân tích · 06/2026</span>
+            <h3 class="ncard-title"><a href="/ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026/">Nam Ban 2026–2030: Những thay đổi sẽ định hình lại giá trị BĐS</a></h3>
+            <p class="ncard-excerpt">Đô thị loại III, cao tốc Đông–Tây, sáp nhập hành chính — 5 thay đổi lớn nhất cho Nam Ban.</p>
           </div>
-        </a>
-        <a href="/ve-nam-ban/tiem-nang-dau-tu-nam-ban/" style="display:block;border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 12px rgba(0,0,0,.07);text-decoration:none">
-          <img src="../images/news/tiem-nang-nam-ban.svg" alt="Tiềm năng đầu tư Nam Ban" style="width:100%;height:150px;object-fit:cover;display:block">
-          <div style="padding:14px">
-            <span style="font-size:.72rem;font-weight:700;color:#C9A84C;text-transform:uppercase">Phân Tích · 06/2026</span>
-            <p style="font-size:.9rem;font-weight:700;color:#1A3D2B;line-height:1.4;margin:6px 0 6px">Phân tích tổng quan tiềm năng đầu tư Nam Ban — Viên ngọc ẩn cao nguyên Lâm Hà</p>
-            <p style="font-size:.8rem;color:#6B6B6B;margin:0;line-height:1.5">So sánh với Đà Lạt, Bảo Lộc. Ai đang mua? Phân khúc nào tiềm năng nhất?</p>
+        </article>
+        <article class="ncard">
+          <img class="ncard-img" src="../images/news/tiem-nang-nam-ban.svg" alt="Tiềm năng đầu tư Nam Ban" loading="lazy">
+          <div class="ncard-body">
+            <span class="ncard-source">Phân tích · 06/2026</span>
+            <h3 class="ncard-title"><a href="/ve-nam-ban/tiem-nang-dau-tu-nam-ban/">Phân tích tổng quan tiềm năng đầu tư Nam Ban — Viên ngọc ẩn cao nguyên Lâm Hà</a></h3>
+            <p class="ncard-excerpt">So sánh với Đà Lạt, Bảo Lộc. Ai đang mua? Phân khúc nào tiềm năng nhất?</p>
           </div>
-        </a>
+        </article>
       </div>
     </div>
 
