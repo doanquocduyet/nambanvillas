@@ -44,9 +44,10 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - `scripts/prep-anh.py`: auto-xoay → xoá EXIF/GPS → smart-crop giữ chủ thể → resize + nét → nén ~150KB → đặt tên `images/listings/<slug>/N.jpg`.
 - Ảnh **hero** (toàn cảnh/aerial) ép `--ratio 4:3` cho khớp gallery (CSS ép 16:10 cover — ảnh dọc bị cắt xấu). Chi tiết trong `TIN-RAO-POSTING-KIT.md`.
 
-## NÉN ẢNH TOÀN SITE (chú dặn — bất biến)
-- Sau khi thêm/đổi ảnh, chạy `python3 scripts/optimize-images.py` — nén mọi ảnh nặng (>165KB) hoặc quá lớn (>1600px) về ~150KB, xoá EXIF, giữ nguyên ảnh đã nhẹ. Web tải nhanh hơn.
-- Ảnh mới đưa qua `prep-anh.py` đã nén sẵn ~150KB nên thường không cần nén lại; nhưng vẫn nên chạy optimize-images sau mỗi lần thêm ảnh để chắc.
+## NÉN ẢNH (chú dặn — bất biến)
+- Ảnh mới TRƯỚC khi commit: `python3 scripts/nen-anh.py images/listings/<slug>/` (cap 1600px, JPEG q82, xoá EXIF, chỉ ghi nếu nhỏ hơn).
+- Nén TOÀN BỘ site cho nhẹ: `python3 scripts/nen-anh.py images` — chạy sau mỗi đợt thêm ảnh.
+- `prep-anh.py` (cắt gọt) đã nén sẵn ~150KB; `nen-anh.py` là script nén chuẩn duy nhất (theo `docs/DANG-CUM-MOI.md` + CLAUDE.md).
 
 ## LUÔN KIỂM 2 GIAO DIỆN WEB + MOBILE (chú dặn — bất biến)
 - Sau mỗi thay đổi giao diện, **tự chụp + soi cả desktop (1280px) lẫn mobile (390px)** cho đẹp/sang/tối ưu — 2 cái khác nhau, chú KHÔNG muốn phải nhắc.
