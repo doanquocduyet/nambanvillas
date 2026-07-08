@@ -41,6 +41,12 @@
 - Chú KHÔNG muốn phải xem chi tiết rồi nhắc từng chút — cháu tự lo mobile lẫn desktop trước khi push.
 - Bắt buộc: responsive @media, ảnh không tràn ngang, chữ không bể, nút Gọi/Zalo luôn dễ bấm trên điện thoại.
 
+### [CẤM] KHÔNG TỰ CHỤP ẢNH / RENDER PREVIEW ĐỂ KIỂM — TỐN TIME + TOKEN
+- **KHÔNG** dùng Playwright/screenshot để "vẽ" xem thử. Kiểm giao diện bằng **đọc code + logic responsive** (breakpoint, flex/grid, đơn vị relative) — cháu đủ giỏi để tự tin không cần ảnh.
+- "Check cả 2 màn hình" = rà @media + cấu trúc trong đầu, KHÔNG phải chụp hình.
+- Muốn xem thật → dùng **link preview Vercel** trong PR comment (miễn phí, không tốn token của cháu).
+- Chỉ chụp ảnh khi CHÚ YÊU CẦU rõ, hoặc khi nghi có bug hiển thị không thể suy ra từ code.
+
 ---
 
 ## NGUYÊN TẮC SỐ 2 — WORKFLOW BẮT BUỘC
