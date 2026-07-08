@@ -76,6 +76,7 @@
 - Verify kết quả sau mỗi thay đổi trước khi push.
 - Gold (#C9A84C) chỉ dùng ở: mobile nav call button, Pain section numbers, Notes editorial border-left, hover on dark bg.
 - Popup: localStorage (không phải sessionStorage) — hiện đúng 1 lần trong đời user.
+- **[NÉN ẢNH BẮT BUỘC]** Mọi ảnh MỚI trước khi commit phải chạy `python3 scripts/nen-anh.py <file/thư-mục>` (max 1600px, JPEG q82, chỉ ghi đè nếu nhỏ hơn thật). Ảnh từ điện thoại thường 3–5MB — không được đưa thẳng lên site. Ảnh cũ đã tối ưu sẵn, nén lại không lợi → chỉ nén ảnh mới.
 
 ---
 
