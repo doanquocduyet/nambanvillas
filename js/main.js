@@ -52,20 +52,20 @@ window.addEventListener('load',()=>{
 if('IntersectionObserver' in window){
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){e.target.style.animation='fadeUp .5s ease forwards';obs.unobserve(e.target);}
+      if(e.isIntersecting){e.target.style.animation='fadeUp .9s cubic-bezier(.16,1,.3,1) forwards';obs.unobserve(e.target);}
     });
-  },{threshold:.1,rootMargin:'0px 0px -30px 0px'});
-  const animEls=document.querySelectorAll('.prop-card,.why-card,.news-card');
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  const animEls=document.querySelectorAll('.prop-card,.why-card,.news-card,.ncard,.sec-header,.dv-card,.related-card');
   animEls.forEach((el,i)=>{
-    el.style.opacity='0';
-    el.style.animationDelay=`${(i%4)*.07}s`;
+    el.style.opacity='0';el.style.willChange='opacity,transform';
+    el.style.animationDelay=`${(i%3)*.09}s`;
     obs.observe(el);
   });
   // Fallback: nếu element không vào viewport sau 2.5s thì show hết
   setTimeout(()=>animEls.forEach(el=>{if(el.style.opacity==='0')el.style.opacity='1';}),2500);
 }
 const s=document.createElement('style');
-s.textContent='@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}';
+s.textContent='@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}';
 document.head.appendChild(s);
 
 // ===== RSS NEWS LOADER =====
