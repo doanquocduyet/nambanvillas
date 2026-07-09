@@ -29,7 +29,7 @@
     .notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:28px;margin-top:16px}
     .note-card{background:white;border-radius:18px;overflow:hidden;border:1px solid var(--border);transition:all .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
     .note-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(26,61,43,.12);border-color:transparent}
-    .note-card-cover{background:linear-gradient(135deg,#0D2B1C,#1A5C3A);min-height:200px;display:flex;align-items:center;justify-content:center;padding:36px;position:relative;overflow:hidden}
+    .note-card-cover{background:linear-gradient(150deg,rgba(9,28,17,.72),rgba(13,43,28,.5) 55%,rgba(9,28,17,.82)),var(--nc-img,linear-gradient(135deg,#0D2B1C,#1A5C3A));background-size:cover;background-position:center;background-repeat:no-repeat;min-height:200px;display:flex;align-items:center;justify-content:center;padding:36px;position:relative;overflow:hidden}
     .note-card-cover::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='2' fill='rgba(201,168,76,0.06)'/%3E%3C/svg%3E")}
     .note-cover-text{position:relative;z-index:1;text-align:center}
     .note-cover-date{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:10px}
@@ -82,7 +82,7 @@
     <div class="notes-grid">
 
       <a href="/namban-notes/nam-ban-co-gi/" class="note-card">
-        <div class="note-card-cover">
+        <div class="note-card-cover" style="--nc-img:url('/images/articles/nam-ban-co-gi.jpg')">
           <div class="note-cover-text">
             <p class="note-cover-date">Tầng 1 · Tò Mò</p>
             <p class="note-cover-title">Nam Ban<br>Có Gì?</p>
@@ -98,7 +98,7 @@
       </a>
 
       <a href="/namban-notes/co-dang-song-o-nam-ban/" class="note-card">
-        <div class="note-card-cover">
+        <div class="note-card-cover" style="--nc-img:url('/images/articles/co-dang-song-o-nam-ban.jpg')">
           <div class="note-cover-text">
             <p class="note-cover-date">Tầng 2 · Đánh Giá</p>
             <p class="note-cover-title">Có Đáng<br>Sống Không?</p>
@@ -114,7 +114,7 @@
       </a>
 
       <a href="/namban-notes/khong-phai-ai-cung-hop/" class="note-card">
-        <div class="note-card-cover">
+        <div class="note-card-cover" style="--nc-img:url('/images/articles/khong-phai-ai-cung-hop.jpg')">
           <div class="note-cover-text">
             <p class="note-cover-date">Tầng 3 · Tự Soi</p>
             <p class="note-cover-title">Không Phải<br>Ai Cũng Hợp</p>
@@ -130,7 +130,7 @@
       </a>
 
       <a href="/namban-notes/buoi-sang-tren-doi-ca-phe/" class="note-card">
-        <div class="note-card-cover">
+        <div class="note-card-cover" style="--nc-img:url('/images/articles/buoi-sang-tren-doi-ca-phe.jpg')">
           <div class="note-cover-text">
             <p class="note-cover-date">Tầng 4 · Người Thật</p>
             <p class="note-cover-title">Buổi Sáng<br>Trên Đồi Cà Phê</p>
