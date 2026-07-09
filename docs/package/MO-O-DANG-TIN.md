@@ -49,6 +49,30 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - Nén TOÀN BỘ site cho nhẹ: `python3 scripts/nen-anh.py images` — chạy sau mỗi đợt thêm ảnh.
 - `prep-anh.py` (cắt gọt) đã nén sẵn ~150KB; `nen-anh.py` là script nén chuẩn duy nhất (theo `docs/DANG-CUM-MOI.md` + CLAUDE.md).
 
+## CHUẨN AEO/SEO/GEO/UX/UI — BẮT BUỘC MỖI BÀI (chú dặn — bất biến)
+> Mỗi trang tin/lô/nhà/cụm PHẢI đạt cả 5. Không đạt = chưa xong, chưa push.
+
+**SEO (Google index & xếp hạng):**
+- Title duy nhất: `Loại + diện tích + đặc điểm mạnh + địa danh + giá` (đủ key ở TỰA, không nhồi vào văn).
+- Meta description 140–160 ký tự có key + số + địa danh. `canonical` đúng URL. `og:*` + `twitter:*` đủ (ảnh 1.jpg).
+- H1 DUY NHẤT khớp tựa. Breadcrumb + `BreadcrumbList` schema. Nội dung ≥2 đoạn thật, không copy.
+- Thêm URL vào `sitemap.xml` (lastmod hôm nay). Internal link: sidebar "Có thể bạn quan tâm" trỏ 2 lô/nhà cùng loại.
+
+**AEO (để AI ChatGPT/Gemini trích):**
+- `FAQPage` schema 3–4 câu, **câu đầu trả lời thẳng** (giá? pháp lý? cách Đà Lạt? rủi ro?).
+- `Product` (1 giá) hoặc `AggregateOffer` (cụm/nhiều giá) + `additionalProperty` liệt kê dữ kiện gọn (diện tích, thổ cư, giá, pháp lý).
+- Dữ kiện dạng bảng/gọn để AI bóc thẳng.
+
+**GEO (địa phương):**
+- `geo.region=VN-LB`, `geo.placename`. Luôn ghi Nam Ban · Lâm Hà · Lâm Đồng + khoảng cách Đà Lạt/sân bay Liên Khương + mốc gần (chùa Linh Ẩn, Thác Voi, ĐT725…).
+
+**UX/UI (đích tối thượng = khách bấm Gọi/Zalo):**
+- Nút **Gọi + Zalo** luôn dễ bấm: price card sidebar + mobile bottom nav. Không hy sinh nút liên hệ lấy thẩm mỹ.
+- Khối **ĐỌC RỦI RO** (điểm mạnh / điều cần kiểm) mỗi bài — tạo niềm tin, đúng thương hiệu.
+- Ảnh nén nhẹ (nen-anh.py) + alt mô tả đúng cảnh; bảng specs rõ; **đẹp CẢ desktop + mobile**.
+
+**Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
+
 ## LUÔN KIỂM 2 GIAO DIỆN WEB + MOBILE (chú dặn — bất biến)
 - Sau mỗi thay đổi giao diện, **tự chụp + soi cả desktop (1280px) lẫn mobile (390px)** cho đẹp/sang/tối ưu — 2 cái khác nhau, chú KHÔNG muốn phải nhắc.
 - Chụp: `/opt/pw-browsers/chromium-*/chrome-linux/chrome --headless --no-sandbox --screenshot --window-size=W,H URL`.
