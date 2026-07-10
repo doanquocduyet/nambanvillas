@@ -588,3 +588,10 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
   .sidebar-note{display:none}
   .breadcrumb-bar{padding:8px 0}
 }
+
+/* ===== Bấm cả thẻ để vào bài (stretched link) ===== */
+.ncard{position:relative}
+.ncard-title a::after{content:'';position:absolute;inset:0;z-index:1}
+.sp-sang .sp-row{position:relative}
+.sp-sang .sp-title a::after{content:'';position:absolute;inset:0;z-index:1}
+.sp-sang .sp-thumb,.sp-sang .sp-cta2,.sp-sang .sp-cta2 a,.sp-sang .sp-right a{position:relative;z-index:2}
