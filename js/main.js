@@ -6,12 +6,20 @@
 const header=document.getElementById('header');
 window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>10),{passive:true});
 
-// Mobile menu
+// Mobile menu — hamburger ở thanh trên mở bottom-sheet (nav trên, nút Gọi/Zalo dưới)
 const menuBtn=document.getElementById('menuBtn');
 const nav=document.getElementById('nav');
+const _sheet=document.getElementById('mobileSheet');
+const _sheetOv=document.getElementById('mobileSheetOverlay');
 menuBtn?.addEventListener('click',()=>{
-  const o=menuBtn.classList.toggle('open');
-  nav.classList.toggle('open',o);
+  if(_sheet){
+    const open=!_sheet.classList.contains('open');
+    _sheet.classList.toggle('open',open);
+    _sheetOv?.classList.toggle('open',open);
+  }else{
+    const o=menuBtn.classList.toggle('open');
+    nav?.classList.toggle('open',o);
+  }
 });
 document.addEventListener('click',e=>{
   if(nav?.classList.contains('open')&&!nav.contains(e.target)&&!menuBtn.contains(e.target)){
