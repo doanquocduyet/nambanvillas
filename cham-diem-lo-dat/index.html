@@ -20,7 +20,9 @@
   <link rel="stylesheet" href="/css/style.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LHGW9K1BDP');</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Chấm điểm lô đất trước khi mua/bán","url":"https://nambanvillas.vn/cham-diem-lo-dat","description":"Công cụ chấm điểm nhanh lô đất Nam Ban trước khi mua hoặc bán.","inLanguage":"vi","isPartOf":{"@type":"WebSite","name":"Nam Ban Villas","url":"https://nambanvillas.vn"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Chấm điểm lô đất Nam Ban trước khi mua/bán","url":"https://nambanvillas.vn/cham-diem-lo-dat","description":"Công cụ miễn phí chấm điểm nhanh một lô đất Nam Ban (Lâm Hà, Lâm Đồng) trước khi mua hoặc bán — tick vài tiêu chí, 30 giây ra điểm.","inLanguage":"vi","isPartOf":{"@type":"WebSite","name":"Nam Ban Villas","url":"https://nambanvillas.vn"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"Cách chấm điểm lô đất Nam Ban trước khi mua/bán","description":"3 bước tự đánh giá nhanh một lô đất Nam Ban trước khi xuống tiền hoặc rao bán.","totalTime":"PT30S","step":[{"@type":"HowToStep","position":1,"name":"Chọn mục đích","text":"Chọn 'Tôi sắp MUA' hoặc 'Tôi sắp BÁN'."},{"@type":"HowToStep","position":2,"name":"Tick tiêu chí","text":"Tick những tiêu chí lô đất đã đạt: sổ hồng riêng, không dính quy hoạch, có đường vào, ranh rõ, giá hợp lý..."},{"@type":"HowToStep","position":3,"name":"Xem điểm & hỏi","text":"Xem điểm trên 8 và gọi Villas 0978 758 788 để được đọc giúp lô cụ thể, miễn phí."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Công cụ chấm điểm lô đất Nam Ban là gì?","acceptedAnswer":{"@type":"Answer","text":"Là bảng chấm nhanh giúp bạn tự đánh giá một lô đất Nam Ban trước khi mua hoặc bán. Bạn tick vài tiêu chí (sổ, quy hoạch, đường vào, ranh, giá...) và ra ngay điểm trên 8, kèm gợi ý nên xuống tiền hay khoan lại."}},{"@type":"Question","name":"Chấm điểm lô đất có mất phí không?","acceptedAnswer":{"@type":"Answer","text":"Miễn phí hoàn toàn, không cần để lại thông tin. Nếu muốn Villas đọc giúp một lô cụ thể, gọi 0978 758 788 — cũng miễn phí, không dụ mua."}},{"@type":"Question","name":"Nên chấm điểm trước khi mua hay trước khi bán?","acceptedAnswer":{"@type":"Answer","text":"Cả hai. Người mua chấm để biết lô có đáng xuống tiền; người bán chấm để biết đất đã sẵn sàng rao và bán được giá chưa."}}]}</script>
   <style>
   .cd-wrap{background:#F5F3EE;min-height:100vh;padding:0 0 80px}
   .cd-inner{max-width:620px;margin:0 auto;padding:0 20px}
@@ -73,6 +75,13 @@
   .cd-restart{display:inline-block;margin-top:22px;font-size:.86rem;color:#8a978f;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit}
   .cd-foot{text-align:center;margin-top:44px;font-size:.84rem;color:#9aa89f;line-height:1.7}
   .cd-foot .sig{display:block;margin-top:6px;font-size:.8rem;letter-spacing:.03em;color:#8a978f}
+  .cd-faq{max-width:560px;margin:42px auto 0;border-top:1px solid #E6DECF;padding-top:28px}
+  .cd-faq h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:800;color:#1A2420;text-align:center;margin:0 0 16px}
+  .cd-faq details{background:#fff;border:1px solid #E3E0D8;border-radius:12px;padding:14px 18px;margin-bottom:10px}
+  .cd-faq summary{font-weight:700;color:#1A3D2B;cursor:pointer;font-size:.94rem;list-style:none}
+  .cd-faq summary::-webkit-details-marker{display:none}
+  .cd-faq details[open] summary{margin-bottom:8px}
+  .cd-faq p{font-size:.9rem;color:#5a6660;line-height:1.65;margin:0}
   .cd-hidden{display:none}
   @media(prefers-reduced-motion:reduce){.cd-panel,.cd-score,.cd-mode,.cd-call{animation:none;transition:none}}
   .cd-call:focus-visible,.cd-zalo:focus-visible,.cd-mode:focus-visible,.cd-q:focus-visible{outline:3px solid #1A3D2B;outline-offset:2px}
@@ -136,8 +145,15 @@
       </a>
       <p class="cd-call-note">Bấm là gọi được luôn</p>
       <div><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="cd-zalo">Hoặc nhắn Zalo cho Villas</a></div>
-      <p class="cd-reassure">Người ta gọi Chú không phải để bị chào bán — mà để hỏi cho chắc trước khi quyết.</p>
+      <p class="cd-reassure">Gọi hỏi cho chắc trước khi quyết — không phải để bị chào bán.</p>
       <button type="button" class="cd-restart" id="cdRestart">Chấm lại từ đầu</button>
+    </section>
+
+    <section class="cd-faq" aria-label="Câu hỏi thường gặp">
+      <h2>Câu hỏi thường gặp</h2>
+      <details><summary>Công cụ chấm điểm lô đất Nam Ban là gì?</summary><p>Là bảng chấm nhanh giúp bạn tự đánh giá một lô đất Nam Ban trước khi mua hoặc bán. Tick vài tiêu chí (sổ, quy hoạch, đường vào, ranh, giá...) và ra ngay điểm trên 8, kèm gợi ý nên xuống tiền hay khoan lại.</p></details>
+      <details><summary>Chấm điểm có mất phí không?</summary><p>Miễn phí hoàn toàn, không cần để lại thông tin. Nếu muốn Villas đọc giúp một lô cụ thể, gọi 0978 758 788 — cũng miễn phí, không dụ mua.</p></details>
+      <details><summary>Nên chấm điểm trước khi mua hay trước khi bán?</summary><p>Cả hai. Người mua chấm để biết lô có đáng xuống tiền; người bán chấm để biết đất đã sẵn sàng rao và bán được giá chưa.</p></details>
     </section>
 
     <p class="cd-foot">
