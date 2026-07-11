@@ -73,6 +73,17 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 **Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
 
+## ẢNH SỔ / BẢN VẼ CHÚ THẢ = ĐĂNG THẲNG, KHÔNG HỎI (chú dặn — bất biến)
+- Chú thả ảnh **sổ hồng / sổ đỏ / bản vẽ tách thửa / sơ đồ phân lô** → **ĐĂNG LUÔN**, KHÔNG che số thửa, KHÔNG che toạ độ, KHÔNG hỏi lại. Số thửa hiện ra = **TRUST** (chứng minh đồ thật, chính chủ).
+- Đây là ảnh CỦA CHÚ (chú tự thả) → toàn quyền đăng, kể cả tên/số thửa trên sổ. Chỉ vẫn KHÔNG đăng ảnh/sổ **copy từ tin/môi giới khác** (không phải của chú).
+- (Trước đây box tự giấu sổ để "bảo vệ khách" — BỎ quy tắc đó. Chú đã quyết: minh bạch = trust.)
+
+## CỤM = BẢN VẼ PHÂN LÔ LÀM HÌNH CHÍNH (chú dặn — bất biến)
+- Mỗi bài **CỤM**: **sơ đồ/bản vẽ phân lô** (số lô + kích thước cạnh + đường + HLAT) làm **ẢNH CHÍNH** (`galMain` + thumb đầu, `class="active"`); ảnh flycam/thực tế thành thumb phụ. Cụm KHÁC nền lẻ — khách cần thấy **bố cục cả cụm** trước.
+- Ảnh chính dạng bản vẽ: thêm `style="object-fit:contain;background:#fff"` cho `galMain` để thấy **trọn bản vẽ** (không bị khung 16:10 cắt trên/dưới).
+- Card danh sách + `og:image` vẫn để ảnh flycam/thực tế cho đẹp khi chia sẻ.
+- Cắt viền app (Zalo/status bar) khỏi ảnh chụp màn hình bản vẽ trước khi đăng.
+
 ## LUÔN KIỂM 2 GIAO DIỆN WEB + MOBILE (chú dặn — bất biến)
 - Sau mỗi thay đổi giao diện, **tự chụp + soi cả desktop (1280px) lẫn mobile (390px)** cho đẹp/sang/tối ưu — 2 cái khác nhau, chú KHÔNG muốn phải nhắc.
 - Chụp: `/opt/pw-browsers/chromium-*/chrome-linux/chrome --headless --no-sandbox --screenshot --window-size=W,H URL`.
