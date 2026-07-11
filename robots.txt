@@ -50,3 +50,4 @@ Allow: /
 
 # Sitemap & nguồn dữ liệu cho máy đọc
 Sitemap: https://nambanvillas.vn/sitemap.xml
+Sitemap: https://nambanvillas.vn/sitemap_index.xml
