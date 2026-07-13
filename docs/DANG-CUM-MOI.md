@@ -65,6 +65,31 @@ Chèn 1 dòng (đặt cạnh các URL /dat-nen/):
 
 ---
 
+## KEYWORD + AEO/SEO/GEO CHUẨN CHO CỤM (chú dặn — bất biến)
+> Mục tiêu: trang **hub `/cum-moi-nam-ban/`** đứng TOP cho nhóm key "đất phân lô Nam Ban". Mỗi cụm mới phải BƠM lực cho hub.
+
+**Keyword mục tiêu (giao dịch — Villas ôm):**
+- Head/mid: `đất phân lô Nam Ban` · `cụm đất nền Nam Ban` · `đất nền phân lô Nam Ban` · `cụm mới Nam Ban` · `phân lô Nam Ban Lâm Hà`
+- Long-tail: `đất nền Nam Ban sổ riêng` · `đất nền Nam Ban thổ cư` · `đất nền F0 Nam Ban` · `đất phân lô Nam Ban giá rẻ`
+- Địa danh khu: Đông Thanh · Từ Liêm · Mê Linh · Tầm Xá · Nam Ban trung tâm.
+
+**HUB `/cum-moi-nam-ban/` — cập nhật MỖI lần có cụm mới/bán hết:**
+- **ItemList schema** phải liệt kê ĐÚNG các cụm đang mở (tên có số nền + khu + đặc điểm + giá). Đừng để cũ.
+- Card "Cụm đang mở" khớp ItemList (tối đa 4). Cụm mới lên đầu.
+- Title/H1/meta có `đất phân lô Nam Ban` + giá gốc + sổ riêng/thổ cư. FAQPage có câu "giá đất phân lô Nam Ban bao nhiêu?" + "có sổ riêng/thổ cư không?" (trả lời thẳng — AEO).
+- Đoạn "Giá đất phân lô Nam Ban đang mở" phải cập nhật dải giá thật theo cụm hiện có.
+
+**MỖI TRANG CỤM (spoke) — bắt buộc:**
+- Title pattern: `Cụm <N> nền <Khu> Nam Ban – <đặc điểm: sổ riêng/thổ cư/F0>, <giá>`. Có đủ: cụm · nền · Nam Ban · khu.
+- Schema: `Product`/`AggregateOffer` + `FAQPage` (giá? pháp lý? ở đâu?) + `BreadcrumbList`.
+- **Link NGƯỢC về hub**: trong sidebar "Thị Trường Liên Quan" thêm
+  `<li><a href="/cum-moi-nam-ban">Tất cả cụm phân lô Nam Ban đang mở</a></li>` (anchor có keyword).
+- Bản vẽ phân lô làm hình chính (luật trên); alt ảnh có keyword khu + "phân lô".
+
+**GEO:** luôn `geo.region=VN-LB` + `geo.placename` + ghi Nam Ban · Lâm Hà · Lâm Đồng + khoảng cách Đà Lạt/Liên Khương + mốc (chùa Linh Ẩn, núi Voi, ĐT725…).
+
+---
+
 ## TÓM TẮT 1 DÒNG
-Có cụm mới → (1) trang `/dat-nen/cum-<slug>/` + (2) nén ảnh + (3) chèn card vào
-`cum-moi-nam-ban/index.html` dưới chữ "Cụm đang mở" + (4) thêm vào sitemap. Tối đa 4 card.
+Có cụm mới → (1) trang `/dat-nen/cum-<slug>/` (title+schema+link ngược hub) + (2) nén ảnh + (3) chèn card vào
+`cum-moi-nam-ban/index.html` dưới "Cụm đang mở" + **cập nhật ItemList + dải giá của hub** + (4) thêm sitemap. Tối đa 4 card.
