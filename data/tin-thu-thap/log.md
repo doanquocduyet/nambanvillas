@@ -87,3 +87,11 @@
 - homedy: HTTP 200
   → 1 tin khớp
 ### TỔNG: 19 tin thô (đã gộp trùng)
+
+## 2026-07-16
+- Chotot OK: 30 tin, 17 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland lỗi: fetch failed
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 17 tin thô (đã gộp trùng)
