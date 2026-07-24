@@ -142,6 +142,7 @@
         <option value="nam-ban">Nam Ban TT</option>
         <option value="ho-bai-cong">Hồ Bãi Công</option>
         <option value="me-linh">Mê Linh</option>
+        <option value="gia-lam">Gia Lâm</option>
         <option value="lam-ha">Lâm Hà</option>
       </select>
       <select id="f-area" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
@@ -186,6 +187,8 @@
         if(el)el.textContent=shown;
       }
       [loc,area,price].forEach(function(s){s.addEventListener('change',run);});
+      var qloc=new URLSearchParams(location.search).get('loc');
+      if(qloc){var opt=loc.querySelector('option[value="'+qloc+'"]');if(opt){loc.value=qloc;run();var g=document.querySelector('.prop-grid');if(g)g.scrollIntoView({behavior:'smooth',block:'start'});}}
     })();
     </script>
   </div>
@@ -321,7 +324,7 @@
         </div>
       </article>
 
-      <article class="prop-card" data-area="653" data-price="1.69" data-loc="nam-ban">
+      <article class="prop-card" data-area="653" data-price="1.69" data-loc="gia-lam">
         <a href="/dat-nen/nam-ban-653m2/" class="prop-img-wrap">
           <img src="../images/listings/nam-ban-653m2/1.jpg" alt="Lô đất 653m² thôn 5 Nam Ban (Gia Lâm), view đồi thông, khu dân cư hiện hữu" width="400" height="260" loading="lazy">
           <span class="prop-badge hot">Mới</span>
@@ -741,7 +744,7 @@
         </div>
       </article>
 
-      <article class="prop-card" data-area="130" data-price="0.57" data-loc="lam-ha">
+      <article class="prop-card" data-area="130" data-price="0.57" data-loc="gia-lam">
         <a href="/dat-nen/pho-thong-villas-130m2/" class="prop-img-wrap">
           <img src="../images/listings/pho-thong-villas-130m2/1.jpg" alt="2 lô đất 130m² sát Phố Thông Villas Nam Ban 568 triệu" width="400" height="260" loading="lazy">
           <span class="prop-badge">Đất Nền</span>
