@@ -139,5 +139,50 @@
   <div class="footer-bottom"><div class="container"><span>Giúp bạn ra quyết định đúng về đất Nam Ban</span></div></div>
 </footer>
 <script src="../../js/main.js" defer></script>
+<nav class="mobile-nav" aria-label="Điều hướng nhanh">
+  <a href="/" class="mnav-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span>Trang chủ</span>
+  </a>
+  <a href="/dat-nen-nam-ban/" class="mnav-item">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Tìm đất</span>
+  </a>
+  <a href="tel:0978758788" class="mnav-item mnav-call" aria-label="Gọi điện">
+    <span class="mnav-call-circle">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" stroke-width="2"/></svg>
+    </span>
+    <span>Gọi ngay</span>
+  </a>
+  <a href="https://zalo.me/0978758788" target="_blank" class="mnav-item">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    <span>Zalo</span>
+  </a>
+  <button class="mnav-item" id="mnavMenuBtn" aria-label="Mở menu">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <span>Menu</span>
+  </button>
+</nav>
+<div class="mobile-sheet-overlay" id="mobileSheetOverlay"></div>
+<div class="mobile-sheet" id="mobileSheet" role="dialog" aria-label="Menu">
+  <div class="mobile-sheet-handle"></div>
+  <a href="/dat-nen-nam-ban/">Đất Nền</a>
+  <a href="/nha-ban-nam-ban/">Nhà Bán</a>
+  <a href="/ve-nam-ban/">Về Nam Ban</a>
+  <a href="/thi-truong/">Thị Trường</a>
+  <a href="/lien-he/">Liên Hệ</a>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('mnavMenuBtn');
+  var sheet=document.getElementById('mobileSheet');
+  var ov=document.getElementById('mobileSheetOverlay');
+  if(!btn||!sheet||!ov)return;
+  function open(){sheet.classList.add('open');ov.classList.add('open');}
+  function close(){sheet.classList.remove('open');ov.classList.remove('open');}
+  btn.addEventListener('click',open);
+  ov.addEventListener('click',close);
+})();
+</script>
 </body>
 </html>
