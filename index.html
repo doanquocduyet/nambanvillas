@@ -255,15 +255,26 @@
     {u:"/nha-ban/moc-home-nam-ban/",n:"Mộc Home, nhà vườn 265m², 208m² thổ, 2PN",img:"moc-home-nam-ban",pr:"3,266 tỷ",v:3266,b:"2000-4000",p:["o"]},
     {u:"/dat-nen/me-linh-2650m2/",n:"Lô 2.650m² Mê Linh, 400m² đất ở, hợp phân lô",img:"me-linh-2650m2",pr:"4,2 tỷ",v:4200,b:"o4000",p:["dt"]},
     {u:"/dat-nen/sieu-pham-3700m2/",n:"Siêu phẩm 3.700m² MT 61m, hợp phân lô/homestay",img:"sieu-pham-3700m2",pr:"5,7 tỷ",v:5700,b:"o4000",p:["dt"]},
-    {u:"/dat-nen/nam-ban-1-7ha/",n:"Đất lớn 1,7ha ven Đà Lạt, MT 140m, QH thổ cư",img:"nam-ban-1-7ha",pr:"17 tỷ",v:17000,b:"o4000",p:["dt"]}
+    {u:"/dat-nen/nam-ban-1-7ha/",n:"Đất lớn 1,7ha ven Đà Lạt, MT 140m, QH thổ cư",img:"nam-ban-1-7ha",pr:"17 tỷ",v:17000,b:"o4000",p:["dt"]},
+    {u:"/dat-nen/cum-me-linh-439tr/",n:"Cụm 9 nền Mê Linh, ngang 5m, full thổ cư, sổ riêng",img:"cum-me-linh-439tr",pr:"Từ 439tr",v:439,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-nam-ban-529tr/",n:"Cụm 9 lô trung tâm Nam Ban, 100m² thổ cư, sổ riêng",img:"cum-nam-ban-529tr",pr:"Từ 529tr",v:529,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-24-nen-rung-thong/",n:"Cụm 24 nền dưới tán rừng thông Mê Linh, sổ riêng",img:"cum-24-nen-rung-thong",im:"cum-24-nen-rung-thong/2.jpg",pr:"Từ 550tr",v:550,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-19-lo-nam-ban/",n:"Cụm 19 lô thị trấn Nam Ban, 112m² thổ, cách ĐT725 200m",img:"cum-19-lo-nam-ban",pr:"675tr",v:675,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-dong-thanh-7-lo/",n:"Cụm 7 lô Đông Thanh, view hồ, cổng chào, sẵn thổ cư",img:"cum-dong-thanh-7-lo",pr:"720–750tr",v:720,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-me-linh-15-lo/",n:"Cụm 15 lô Mê Linh ven Đà Lạt, 300m², 100m² thổ cư",img:"cum-me-linh-15-lo",pr:"Từ 779tr",v:779,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/me-linh-300m2/",n:"Lô 300m² Mê Linh, sẵn thổ cư, MT 15m, view đồi thông",img:"me-linh-300m2",pr:"1,2 tỷ",v:1200,b:"1000-2000",p:["o","dt"]},
+    {u:"/dat-nen/cum-ht86-14-nen/",n:"Cụm 14 nền F0 khu biệt thự HT86, 200m² thổ cư/nền",img:"cum-ht86-14-nen",im:"cum-ht86-14-nen/3.jpg",pr:"~1,2 tỷ/nền",v:1200,b:"1000-2000",p:["o","dt"]},
+    {u:"/dat-nen/cum-ts-retreat/",n:"Khu nghỉ dưỡng TS Retreat, đất nền + nhà xây sẵn",img:"cum-ts-retreat",pr:"Từ 1,167 tỷ",v:1167,b:"1000-2000",p:["dt","o"]},
+    {u:"/dat-nen/nam-ban-653m2/",n:"Lô 653m² Nam Ban (Gia Lâm), 300m² thổ cư, MT 19m",img:"nam-ban-653m2",pr:"1,69 tỷ",v:1690,b:"1000-2000",p:["o","dt"]},
+    {u:"/nha-ban/nha-me-linh-252m2/",n:"Nhà mới Mê Linh 252m², 2PN full nội thất, 80m² thổ",img:"nha-me-linh-252m2",pr:"2,1 tỷ",v:2100,b:"2000-4000",p:["o"]}
   ];
   var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
   function card(l){
-    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+l.img+'/1.jpg" alt="'+l.n+'" loading="lazy" width="92" height="92"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
+    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" loading="lazy" width="92" height="92"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
   }
   var box=document.getElementById('dealMatcher'); if(!box) return;
   // Featured mặc định (chọn lọc hôm nay)
-  var feat=["nam-ban-138m2-view","nam-ban-504m2","nha-dong-thanh-146m2"].map(function(id){return LOTS.filter(function(l){return l.img===id})[0];}).filter(Boolean);
+  var feat=["cum-me-linh-439tr","cum-nam-ban-529tr","cum-me-linh-15-lo"].map(function(id){return LOTS.filter(function(l){return l.img===id})[0];}).filter(Boolean);
   document.getElementById('dmFeatured').innerHTML=feat.map(card).join('');
   var ans={};
   box.querySelectorAll('.dm-q').forEach(function(q){
