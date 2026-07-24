@@ -114,12 +114,12 @@
     },
     {
       "source": "/nha-ban/nha-nghi-duong-338m2",
-      "destination": "/nha-ban",
+      "destination": "/nha-ban-nam-ban",
       "permanent": true
     },
     {
       "source": "/nha-ban/villa-giao-rung-thong",
-      "destination": "/nha-ban",
+      "destination": "/nha-ban-nam-ban",
       "permanent": true
     },
     {
