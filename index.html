@@ -171,8 +171,8 @@
         <div id="dmCards" class="dm-cards"></div>
         <p id="dmMsg" title="Bấm để copy" style="margin:14px 0 0;background:rgba(255,255,255,.1);border:1px dashed rgba(255,255,255,.3);border-radius:10px;padding:10px 14px;color:rgba(255,255,255,.9);font-size:.84rem;line-height:1.5;cursor:copy"></p>
         <div style="margin-top:14px;text-align:center">
-          <a id="dmZalo" href="https://zalo.me/0978758788" target="_blank" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:13px 28px;border-radius:10px;font-weight:800;text-decoration:none;margin:4px">💬 Để em chọn giúp anh/chị — nhắn Zalo</a>
-          <a href="tel:0978758788" style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;margin:4px">📞 Gọi 0978 758 788</a>
+          <a id="dmZalo" href="https://zalo.me/0978758788" target="_blank" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:13px 28px;border-radius:10px;font-weight:800;text-decoration:none;margin:4px">Để em chọn giúp anh/chị — nhắn Zalo</a>
+          <a href="tel:0978758788" style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;margin:4px">Gọi 0978 758 788</a>
           <p style="margin-top:12px"><button type="button" id="dmReset" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:.82rem;text-decoration:underline;cursor:pointer">↺ Chọn lại</button></p>
         </div>
       </div>
@@ -266,8 +266,8 @@
     var whenTxt=ans.when==='now'?'Mình tính mua trong 1 tháng. ':ans.when==='soon'?'Mình tính mua trong 1–3 tháng. ':'';
     var msg='Chào anh/chị, em xem web thấy tầm '+budgetTxt+' '+goalTxt+'. '+whenTxt+'Nhờ anh/chị chọn giúp lô hợp nhất.';
     var mEl=document.getElementById('dmMsg');
-    mEl.textContent='💬 '+msg+'  (bấm để copy)';
-    mEl.onclick=function(){ if(navigator.clipboard){navigator.clipboard.writeText(msg);mEl.textContent='✓ Đã copy — mở Zalo dán vào là xong';} };
+    mEl.textContent=msg+'  — bấm để copy';
+    mEl.onclick=function(){ if(navigator.clipboard){navigator.clipboard.writeText(msg);mEl.textContent='Đã copy — mở Zalo dán vào là xong';} };
     document.getElementById('dmDefault').hidden=true;
     document.getElementById('dmQuiz').hidden=true;
     document.getElementById('dmResult').hidden=false;
@@ -289,19 +289,19 @@
     <p style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a978f;margin:0 0 12px">Bạn thích khu nào?</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="/dat-nen-nam-ban/" style="flex:1 1 150px;min-width:140px;display:block;background:#fff;border:1.5px solid #E6DEC9;border-radius:14px;padding:15px 18px;text-decoration:none">
-        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">📍 Nam Ban</strong>
+        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">Nam Ban</strong>
         <span style="display:block;color:#8a8a8a;font-size:.8rem;margin-top:3px">Trung tâm, đủ loại lô</span>
       </a>
       <a href="/dat-dong-thanh-nam-ban/" style="flex:1 1 150px;min-width:140px;display:block;background:#fff;border:1.5px solid #E6DEC9;border-radius:14px;padding:15px 18px;text-decoration:none">
-        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">📍 Đông Thanh</strong>
+        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">Đông Thanh</strong>
         <span style="display:block;color:#8a8a8a;font-size:.8rem;margin-top:3px">Gần trung tâm, có sổ</span>
       </a>
       <a href="/dat-me-linh-nam-ban/" style="flex:1 1 150px;min-width:140px;display:block;background:#fff;border:1.5px solid #E6DEC9;border-radius:14px;padding:15px 18px;text-decoration:none">
-        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">📍 Mê Linh</strong>
+        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">Mê Linh</strong>
         <span style="display:block;color:#8a8a8a;font-size:.8rem;margin-top:3px">Ven Đà Lạt, mát</span>
       </a>
       <a href="/dat-nen-nam-ban/?loc=gia-lam" style="flex:1 1 150px;min-width:140px;display:block;background:#fff;border:1.5px solid #E6DEC9;border-radius:14px;padding:15px 18px;text-decoration:none">
-        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">📍 Gia Lâm</strong>
+        <strong style="display:block;color:#1A3D2B;font-size:1rem;letter-spacing:-.01em">Gia Lâm</strong>
         <span style="display:block;color:#8a8a8a;font-size:.8rem;margin-top:3px">Gần chợ, dân cư đông</span>
       </a>
     </div>
