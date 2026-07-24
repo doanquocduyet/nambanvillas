@@ -156,6 +156,159 @@
   </div>
 </section>
 
+<!-- DEAL MATCHER: 3 câu → 5 lô hợp nhất → Zalo/Gọi -->
+<section class="section" id="dealMatcher" style="padding:30px 0 6px" aria-label="Chọn lô giúp bạn">
+  <div class="container">
+    <div style="background:linear-gradient(160deg,#12331d,#1f4a2e);border-radius:20px;padding:26px 24px;box-shadow:0 18px 40px -20px rgba(26,61,43,.55)">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;margin:0 0 6px">Đừng lục 37 lô · để cháu lọc giúp</p>
+      <h2 style="color:#fff;font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.25;letter-spacing:-.01em;margin:0 0 4px">Trả lời 3 câu — cháu chọn 5 lô hợp bạn nhất</h2>
+      <p style="color:rgba(255,255,255,.72);font-size:.9rem;margin:0 0 18px">Miễn phí · 10 giây · không cần để lại số ngay</p>
+
+      <div id="dmQuiz">
+        <div class="dm-q" data-q="budget">
+          <p class="dm-label">1 · Ngân sách của bạn?</p>
+          <div class="dm-opts">
+            <button type="button" data-v="u1000">Dưới 1 tỷ</button>
+            <button type="button" data-v="1000-2000">1 – 2 tỷ</button>
+            <button type="button" data-v="2000-4000">2 – 4 tỷ</button>
+            <button type="button" data-v="o4000">Trên 4 tỷ</button>
+          </div>
+        </div>
+        <div class="dm-q" data-q="goal">
+          <p class="dm-label">2 · Bạn mua để?</p>
+          <div class="dm-opts">
+            <button type="button" data-v="o">Ở / nghỉ dưỡng</button>
+            <button type="button" data-v="dt">Đầu tư / phân lô</button>
+            <button type="button" data-v="both">Chưa chắc, xem cả hai</button>
+          </div>
+        </div>
+        <div class="dm-q" data-q="when">
+          <p class="dm-label">3 · Khi nào bạn tính mua?</p>
+          <div class="dm-opts">
+            <button type="button" data-v="now">Trong 1 tháng</button>
+            <button type="button" data-v="soon">1 – 3 tháng</button>
+            <button type="button" data-v="look">Còn tìm hiểu</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="dmResult" hidden>
+        <p id="dmResultLead" style="color:#fff;font-weight:700;font-size:1.02rem;margin:2px 0 14px"></p>
+        <div id="dmCards" class="dm-cards"></div>
+        <p id="dmMsg" title="Bấm để copy" style="margin:14px 0 0;background:rgba(255,255,255,.1);border:1px dashed rgba(255,255,255,.3);border-radius:10px;padding:10px 14px;color:rgba(255,255,255,.9);font-size:.84rem;line-height:1.5;cursor:copy"></p>
+        <div style="margin-top:14px;text-align:center">
+          <a id="dmZalo" href="https://zalo.me/0978758788" target="_blank" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:13px 28px;border-radius:10px;font-weight:800;text-decoration:none;margin:4px">💬 Để cháu chọn giúp bạn — nhắn Zalo</a>
+          <a href="tel:0978758788" style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;margin:4px">📞 Gọi 0978 758 788</a>
+          <p style="margin-top:12px"><button type="button" id="dmReset" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:.82rem;text-decoration:underline;cursor:pointer">↺ Chọn lại</button></p>
+        </div>
+      </div>
+
+      <div id="dmDefault">
+        <p class="dm-label" style="margin-top:6px">Hoặc xem nhanh — 3 lô đáng chú ý:</p>
+        <div id="dmFeatured" class="dm-cards"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  #dealMatcher .dm-q{margin-bottom:16px}
+  #dealMatcher .dm-label{color:#fff;font-weight:700;font-size:.92rem;margin:0 0 8px}
+  #dealMatcher .dm-opts{display:flex;gap:8px;flex-wrap:wrap}
+  #dealMatcher .dm-opts button{flex:1 1 auto;min-width:120px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.22);color:#fff;padding:11px 14px;border-radius:10px;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:.15s}
+  #dealMatcher .dm-opts button:hover{background:rgba(255,255,255,.16);border-color:#C9A84C}
+  #dealMatcher .dm-opts button.on{background:#C9A84C;border-color:#C9A84C;color:#1A3D2B}
+  #dealMatcher .dm-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:640px){#dealMatcher .dm-cards{grid-template-columns:1fr}}
+  #dealMatcher .dm-card{display:flex;gap:12px;background:rgba(255,255,255,.96);border-radius:12px;overflow:hidden;text-decoration:none;align-items:stretch}
+  #dealMatcher .dm-card img{flex:0 0 92px;width:92px;height:100%;object-fit:cover;background:#EBF4EE}
+  #dealMatcher .dm-card .dm-cbody{padding:10px 12px 10px 0;min-width:0;display:flex;flex-direction:column;justify-content:center}
+  #dealMatcher .dm-card .dm-cname{color:#1A3D2B;font-weight:700;font-size:.86rem;line-height:1.35;margin:0 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  #dealMatcher .dm-card .dm-cmeta{color:#7a7a7a;font-size:.76rem}
+  #dealMatcher .dm-card .dm-cprice{color:#C9A84C;font-weight:800;font-size:.92rem}
+</style>
+<script>
+(function(){
+  var LOTS=[
+    {u:"/dat-nen/tu-liem-lo-130-98m2/",n:"2 lô nhỏ Từ Liêm, sẵn thổ cư, công chứng ngay",img:"tu-liem-lo-130-98m2",pr:"390–420tr",v:405,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-dong-thanh-15-nen/",n:"Cụm 15 nền Đông Thanh, sẵn thổ cư",img:"cum-dong-thanh-15-nen",pr:"Từ 5xxtr",v:550,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/nam-ban-138m2-view/",n:"Đất 138m² view thung lũng, 75m² thổ cư",img:"nam-ban-138m2-view",pr:"549tr",v:549,b:"u1000",p:["o"]},
+    {u:"/dat-nen/nam-ban-232m2/",n:"Lô 232m² view đồi thông, 77m² thổ, sổ riêng",img:"nam-ban-232m2",pr:"570tr",v:570,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/cum-tu-liem-13-nen/",n:"Cụm 13 nền Từ Liêm, ngang 5m, sẵn thổ",img:"cum-tu-liem-13-nen",pr:"Từ 650tr",v:650,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/dong-thanh-320m2/",n:"Đất 320m² Đông Thanh, gần Chùa Linh Ẩn (Thiền Viện Linh Ẩn)",img:"dong-thanh-320m2",pr:"Từ 8xxtr",v:850,b:"u1000",p:["o"]},
+    {u:"/dat-nen/thung-lung-530m2/",n:"Đất 530m² view thung lũng sương mờ",img:"thung-lung-530m2",pr:"899tr",v:899,b:"u1000",p:["o"]},
+    {u:"/dat-nen/tu-liem-255m2/",n:"Lô 255m² Từ Liêm, 100m² thổ cư",img:"tu-liem-255m2",pr:"950tr",v:950,b:"u1000",p:["o","dt"]},
+    {u:"/dat-nen/nam-ban-511m2/",n:"Lô 511m² Nam Ban, 100m² thổ, sổ riêng",img:"nam-ban-511m2",pr:"1,09 tỷ",v:1090,b:"1000-2000",p:["o","dt"]},
+    {u:"/dat-nen/hai-mat-tien-345m2/",n:"Lô 2 mặt tiền 345m² Nam Ban",img:"hai-mat-tien-345m2",pr:"1,15 tỷ",v:1150,b:"1000-2000",p:["dt"]},
+    {u:"/dat-nen/cum-tam-xa-5-nen/",n:"Cụm 5 nền F0 Tầm Xá, sổ sẵn, có đất ở",img:"cum-tam-xa-5-nen",pr:"Từ 1,15 tỷ",v:1150,b:"1000-2000",p:["dt"]},
+    {u:"/dat-nen/dong-thanh-535m2/",n:"Lô 535m² Đông Thanh, 100m² thổ, MT 11m",img:"dong-thanh-535m2",pr:"1,2 tỷ",v:1200,b:"1000-2000",p:["o","dt"]},
+    {u:"/dat-nen/ho-tu-liem-700m2/",n:"Đất hơn 700m² view Hồ Từ Liêm",img:"ho-tu-liem-700m2",pr:"1,2 tỷ",v:1200,b:"1000-2000",p:["o"]},
+    {u:"/dat-nen/me-linh-suoi-thong-650m2/",n:"Đất 650m² view suối thông Mê Linh, ven Đà Lạt",img:"me-linh-suoi-thong-650m2",pr:"1,25 tỷ",v:1250,b:"1000-2000",p:["o"]},
+    {u:"/dat-nen/nam-ban-380m2/",n:"Lô 380m² Nam Ban, 311m² đất ở, cách Đà Lạt 8km",img:"nam-ban-380m2",pr:"1,6 tỷ",v:1600,b:"1000-2000",p:["o"]},
+    {u:"/dat-nen/nam-ban-504m2/",n:"Lô 504m² view núi, 100m² thổ, hướng Đông",img:"nam-ban-504m2",pr:"1,6 tỷ",v:1600,b:"1000-2000",p:["o","dt"]},
+    {u:"/nha-ban/nha-cap-4-nam-ban/",n:"Nhà cấp 4 mới xây Nam Ban, 3PN, đất 160m²",img:"nha-cap-4-nam-ban",pr:"1,75 tỷ",v:1750,b:"1000-2000",p:["o"]},
+    {u:"/nha-ban/nha-moi-san-vuon-nam-ban/",n:"Nhà mới Nam Ban, 2PN, sân vườn, 100m² thổ",img:"nha-moi-san-vuon-nam-ban",pr:"1,8 tỷ",v:1800,b:"1000-2000",p:["o"]},
+    {u:"/dat-nen/ho-bai-cong-lot1/",n:"Đất hơn 700m² giáp Hồ Bãi Công",img:"ho-bai-cong-lot1",pr:"1,95 tỷ",v:1950,b:"1000-2000",p:["o","dt"]},
+    {u:"/nha-ban/villa-mini-me-linh/",n:"Villa Mini Mê Linh 239m², 3PN, sân BBQ",img:"villa-mini-me-linh",pr:"2,38 tỷ",v:2380,b:"2000-4000",p:["o"]},
+    {u:"/nha-ban/hill-house-village/",n:"Hill House Village, nhà nghỉ dưỡng 2PN",img:"hill-house-village",pr:"2,6 tỷ",v:2600,b:"2000-4000",p:["o"]},
+    {u:"/dat-nen/giap-suoi-2700m2/",n:"Lô 2.700m² 2 mặt giáp suối, 400m² thổ, hợp homestay",img:"giap-suoi-2700m2",pr:"2,95 tỷ",v:2950,b:"2000-4000",p:["o","dt"]},
+    {u:"/nha-ban/nha-dong-thanh-146m2/",n:"DREAMER III, nhà 2 tầng Đông Thanh, 140m² full thổ, 4PN",img:"nha-dong-thanh-146m2",pr:"2,95 tỷ",v:2950,b:"2000-4000",p:["o"]},
+    {u:"/nha-ban/moc-home-nam-ban/",n:"Mộc Home, nhà vườn 265m², 208m² thổ, 2PN",img:"moc-home-nam-ban",pr:"3,266 tỷ",v:3266,b:"2000-4000",p:["o"]},
+    {u:"/dat-nen/me-linh-2650m2/",n:"Lô 2.650m² Mê Linh, 400m² đất ở, hợp phân lô",img:"me-linh-2650m2",pr:"4,2 tỷ",v:4200,b:"o4000",p:["dt"]},
+    {u:"/dat-nen/sieu-pham-3700m2/",n:"Siêu phẩm 3.700m² MT 61m, hợp phân lô/homestay",img:"sieu-pham-3700m2",pr:"5,7 tỷ",v:5700,b:"o4000",p:["dt"]},
+    {u:"/dat-nen/nam-ban-1-7ha/",n:"Đất lớn 1,7ha ven Đà Lạt, MT 140m, QH thổ cư",img:"nam-ban-1-7ha",pr:"17 tỷ",v:17000,b:"o4000",p:["dt"]}
+  ];
+  var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
+  function card(l){
+    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+l.img+'/1.jpg" alt="'+l.n+'" loading="lazy" width="92" height="92"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
+  }
+  var box=document.getElementById('dealMatcher'); if(!box) return;
+  // Featured mặc định (chọn lọc hôm nay)
+  var feat=["nam-ban-138m2-view","nam-ban-504m2","nha-dong-thanh-146m2"].map(function(id){return LOTS.filter(function(l){return l.img===id})[0];}).filter(Boolean);
+  document.getElementById('dmFeatured').innerHTML=feat.map(card).join('');
+  var ans={};
+  box.querySelectorAll('.dm-q').forEach(function(q){
+    q.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){
+        q.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on'); ans[q.dataset.q]=b.dataset.v;
+        if(ans.budget&&ans.goal&&ans.when) render();
+      });
+    });
+  });
+  function render(){
+    var bi=ORDER[ans.budget];
+    var scored=LOTS.map(function(l){
+      var s=0;
+      var d=Math.abs(ORDER[l.b]-bi);
+      if(d===0)s+=3; else if(d===1)s+=1;
+      if(ans.goal==='both'||l.p.indexOf(ans.goal)>=0||l.p.length>1)s+=2;
+      return {l:l,s:s};
+    }).filter(function(x){return x.s>0;}).sort(function(a,b){return b.s-a.s||a.l.v-b.l.v;});
+    var top=scored.slice(0,5).map(function(x){return x.l;});
+    var goalTxt=ans.goal==='o'?'để ở / nghỉ dưỡng':ans.goal==='dt'?'để đầu tư / phân lô':'xem cả hai hướng';
+    var budgetTxt={"u1000":"dưới 1 tỷ","1000-2000":"1–2 tỷ","2000-4000":"2–4 tỷ","o4000":"trên 4 tỷ"}[ans.budget];
+    document.getElementById('dmResultLead').textContent='Với '+budgetTxt+', '+goalTxt+' — đây là '+top.length+' lô cháu thấy hợp bạn nhất:';
+    document.getElementById('dmCards').innerHTML=top.map(card).join('');
+    var whenTxt=ans.when==='now'?'Mình tính mua trong 1 tháng. ':ans.when==='soon'?'Mình tính mua trong 1–3 tháng. ':'';
+    var msg='Chào anh/chị, em xem web thấy tầm '+budgetTxt+' '+goalTxt+'. '+whenTxt+'Nhờ anh/chị chọn giúp lô hợp nhất.';
+    var mEl=document.getElementById('dmMsg');
+    mEl.textContent='💬 '+msg+'  (bấm để copy)';
+    mEl.onclick=function(){ if(navigator.clipboard){navigator.clipboard.writeText(msg);mEl.textContent='✓ Đã copy — mở Zalo dán vào là xong';} };
+    document.getElementById('dmDefault').hidden=true;
+    document.getElementById('dmQuiz').hidden=true;
+    document.getElementById('dmResult').hidden=false;
+    if(window.gtag)gtag('event','deal_matcher_complete',{budget:ans.budget,goal:ans.goal,when:ans.when});
+    document.getElementById('dmResult').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  document.getElementById('dmReset').addEventListener('click',function(){
+    ans={}; box.querySelectorAll('.dm-opts button').forEach(function(x){x.classList.remove('on');});
+    document.getElementById('dmResult').hidden=true;
+    document.getElementById('dmQuiz').hidden=false;
+    document.getElementById('dmDefault').hidden=false;
+  });
+})();
+</script>
+
 <!-- CỬA VÀO: tự tìm đúng ngăn trong 3 giây -->
 <section class="section" style="padding:24px 0 4px" aria-label="Tìm nhanh theo nhu cầu">
   <div class="container">
