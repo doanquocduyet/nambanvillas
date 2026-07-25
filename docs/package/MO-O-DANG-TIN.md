@@ -68,7 +68,8 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 **UX/UI (đích tối thượng = khách bấm Gọi/Zalo):**
 - Nút **Gọi + Zalo** luôn dễ bấm: price card sidebar + mobile bottom nav. Không hy sinh nút liên hệ lấy thẩm mỹ.
-- Khối **ĐỌC RỦI RO** (điểm mạnh / điều cần kiểm) mỗi bài — tạo niềm tin, đúng thương hiệu.
+- Khối **ĐỌC RỦI RO** (điểm mạnh / điều cần quan tâm) mỗi bài — tạo niềm tin, đúng thương hiệu.
+  - **[BẮT BUỘC] "Điều cần quan tâm" TỐI ĐA 3 gạch đầu dòng — thường chỉ 1–2.** Lô Chú đăng đã chọn lọc kỹ; KHÔNG cố viết cho nhiều, không bịa rủi ro để lấp chỗ. Thà 1 điều thật đáng kiểm còn hơn 4 điều gượng ép. Nêu đúng điều quan trọng nhất (thổ cư thật bao nhiêu / ranh mốc / đường vào / quy hoạch), hết là dừng.
 - Ảnh nén nhẹ (nen-anh.py) + alt mô tả đúng cảnh; bảng specs rõ; **đẹp CẢ desktop + mobile**.
 
 **Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
