@@ -151,6 +151,11 @@
       "source": "/tin-tuc/:path*",
       "destination": "/thi-truong/:path*",
       "permanent": true
+    },
+    {
+      "source": "/dat-nen/cum-me-linh-439tr",
+      "destination": "/dat-nen/cum-nam-ban-439tr/",
+      "permanent": true
     }
   ]
 }
