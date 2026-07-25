@@ -74,6 +74,19 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 **Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
 
+## ✅ CHECKLIST CHỐNG LỖI LẶP (những lỗi đã sửa nhiều lần — TỰ KIỂM, đừng để lặp)
+1. **Ảnh chia sẻ phải là ẢNH CỦA CHÍNH BÀI/LÔ.** `og:image` + `twitter:image` + `image` trong schema = ảnh của lô/bài này, KHÔNG trỏ nhầm ảnh lô khác hay `og-namban.jpg` chung. (Đã dính 10 bài.)
+2. **Slug + tiêu đề + nội dung + geo + breadcrumb CÙNG MỘT KHU.** Lô ở Nam Ban thì slug `cum-nam-ban-...`, title/geo/placename/data-loc đều Nam Ban — KHÔNG gắn nhầm Mê Linh/khu khác. Đặt sai khu = phải rename + redirect (tốn công). Xác nhận khu THẬT trước khi đặt slug.
+3. **"Điều cần quan tâm" ≤ 3 gạch** (thường 1–2). Không cố viết nhiều.
+4. **KHÔNG emoji** trong nút/chip/badge/tiêu đề (luật "im lặng mà sang").
+5. **Canonical + og:url + sitemap CÓ dấu `/` cuối** (site đang `trailingSlash: true`). Thiếu `/` → Google báo "chuyển hướng/chưa index".
+6. **Breadcrumb schema** item trỏ HUB thật: `/dat-nen-nam-ban/`, `/nha-ban-nam-ban/` — KHÔNG phải `/dat-nen/`, `/nha-ban/` (404).
+7. **geo.region = "VN-35"** (mã ISO Lâm Đồng, KHÔNG "VN-LB") + `geo.placename` đúng khu.
+8. **data-loc** thẻ trên trang danh sách khớp khu thật (dong-thanh/nam-ban/me-linh/gia-lam/ho-bai-cong…).
+9. **Offer có `priceValidUntil`** (ví dụ năm nay-12-31) để Google không báo "giá hết hạn".
+10. **Gallery**: nếu thumb dùng `onclick="swapMain(this)"` thì trang PHẢI có hàm `swapMain` (inline cuối trang), nếu không bấm ảnh không đổi.
+11. **Lô đã bán/cọc**: KHÔNG xóa bài — thêm banner "Đã đặt cọc/đã bán" + badge + Offer `SoldOut`, dẫn khách sang lô tương tự.
+
 ## ẢNH SỔ / BẢN VẼ CHÚ THẢ = ĐĂNG THẲNG, KHÔNG HỎI (chú dặn — bất biến)
 - Chú thả ảnh **sổ hồng / sổ đỏ / bản vẽ tách thửa / sơ đồ phân lô** → **ĐĂNG LUÔN**, KHÔNG che số thửa, KHÔNG che toạ độ, KHÔNG hỏi lại. Số thửa hiện ra = **TRUST** (chứng minh đồ thật, chính chủ).
 - Đây là ảnh CỦA CHÚ (chú tự thả) → toàn quyền đăng, kể cả tên/số thửa trên sổ. Chỉ vẫn KHÔNG đăng ảnh/sổ **copy từ tin/môi giới khác** (không phải của chú).
@@ -88,7 +101,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 ## LUÔN KIỂM 2 GIAO DIỆN WEB + MOBILE (chú dặn — bất biến)
 - Sau mỗi thay đổi giao diện, **tự chụp + soi cả desktop (1280px) lẫn mobile (390px)** cho đẹp/sang/tối ưu — 2 cái khác nhau, chú KHÔNG muốn phải nhắc.
 - Chụp: `/opt/pw-browsers/chromium-*/chrome-linux/chrome --headless --no-sandbox --screenshot --window-size=W,H URL`.
-- **Test đúng như production:** site dùng Vercel `cleanUrls:true` + `trailingSlash:false` → URL KHÔNG có `/` cuối, `../css` ở trang con resolve thành `/css`. `python3 -m http.server` thêm `/` cuối làm hỏng CSS → dùng server mô phỏng cleanUrls (không redirect thêm `/`) để soi trang `/nha-ban/`.
+- **Test đúng như production:** site dùng Vercel `cleanUrls:true` + `trailingSlash:true` → URL trang con CÓ `/` cuối (ví dụ `/nha-ban/moc-home-nam-ban/`). Canonical + og:url + sitemap phải khớp: đều có `/` cuối.
 - Bug đã gặp + đã sửa: trang listing thừa `</div>` đẩy `<aside>` ra ngoài grid → desktop rớt sidebar, mobile sai thứ tự. Luôn cân bằng thẻ theo template `dat-nen/dong-thanh-845m2`.
 
 Giờ cháu đọc 4 file ở BƯỚC 0, xác nhận đã nạp xong, rồi chờ chú thả tin đầu tiên.
