@@ -1,0 +1,42 @@
+name: Báo cáo index Google Search Console
+
+# Mỗi tuần (thứ Hai) tự đọc trạng thái index từ Google Search Console
+# và ghi báo cáo vào docs/gsc-status.md. Cần secret GSC_SA_JSON (1 lần, xem
+# docs/gsc-auto-setup.md). Chưa có secret thì workflow vẫn chạy êm, không lỗi.
+
+on:
+  schedule:
+    - cron: '0 1 * * 1'   # 01:00 UTC = 08:00 giờ VN, thứ Hai hằng tuần
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cài Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cài thư viện Google
+        run: pip install --quiet google-auth google-api-python-client
+
+      - name: Chạy báo cáo index
+        env:
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          GSC_SITE_URL: ${{ vars.GSC_SITE_URL }}
+        run: python scripts/gsc-report.py
+
+      - name: Commit báo cáo nếu có thay đổi
+        run: |
+          git config user.name "gsc-report-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add docs/gsc-status.md
+          git diff --cached --quiet || git commit -m "Cập nhật báo cáo index GSC $(date -u +%F)"
+          git push
