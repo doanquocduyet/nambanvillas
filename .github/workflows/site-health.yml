@@ -1,0 +1,31 @@
+name: Tự kiểm sức khỏe web (0 bước cấu hình)
+
+# Mỗi tuần tự kiểm mọi URL trong sitemap: 200 / redirect / 404 / canonical lệch
+# — bắt đúng lỗi làm Google không index. KHÔNG cần chìa khoá Google, chạy được ngay.
+# Ghi báo cáo vào docs/site-health.md.
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'   # 02:00 UTC = 09:00 giờ VN, thứ Hai hằng tuần
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Chạy tự kiểm
+        run: python scripts/site-health.py
+      - name: Commit báo cáo nếu có thay đổi
+        run: |
+          git config user.name "site-health-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add docs/site-health.md
+          git diff --cached --quiet || git commit -m "Cập nhật tự kiểm sức khỏe web $(date -u +%F)"
+          git push
