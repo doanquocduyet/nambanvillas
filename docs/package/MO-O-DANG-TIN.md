@@ -64,12 +64,12 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - Dữ kiện dạng bảng/gọn để AI bóc thẳng.
 
 **GEO (địa phương):**
-- `geo.region=VN-LB`, `geo.placename`. Luôn ghi Nam Ban · Lâm Hà · Lâm Đồng + khoảng cách Đà Lạt/sân bay Liên Khương + mốc gần (chùa Linh Ẩn, Thác Voi, ĐT725…).
+- `geo.region=VN-35` (mã ISO Lâm Đồng — KHÔNG dùng "VN-LB" tự chế), `geo.placename`. Luôn ghi Nam Ban · Lâm Hà · Lâm Đồng + khoảng cách Đà Lạt/sân bay Liên Khương + mốc gần (chùa Linh Ẩn, Thác Voi, ĐT725…).
 
 **UX/UI (đích tối thượng = khách bấm Gọi/Zalo):**
 - Nút **Gọi + Zalo** luôn dễ bấm: price card sidebar + mobile bottom nav. Không hy sinh nút liên hệ lấy thẩm mỹ.
 - Khối **ĐỌC RỦI RO** (điểm mạnh / điều cần quan tâm) mỗi bài — tạo niềm tin, đúng thương hiệu.
-  - **[BẮT BUỘC] "Điều cần quan tâm" TỐI ĐA 3 gạch đầu dòng — thường chỉ 1–2.** Lô Chú đăng đã chọn lọc kỹ; KHÔNG cố viết cho nhiều, không bịa rủi ro để lấp chỗ. Thà 1 điều thật đáng kiểm còn hơn 4 điều gượng ép. Nêu đúng điều quan trọng nhất (thổ cư thật bao nhiêu / ranh mốc / đường vào / quy hoạch), hết là dừng.
+  - **[BẮT BUỘC — áp dụng CẢ lô lẻ LẪN cụm] "Điều cần quan tâm" TỐI ĐA 3 gạch đầu dòng — thường chỉ 1–2.** Mọi SP Chú đăng ĐÃ CHỌN LỌC KỸ; liệt kê nhiều rủi ro = làm khách ngại + mâu thuẫn với "đã lọc". KHÔNG cố viết cho nhiều, không bịa rủi ro để lấp chỗ. Thà 1 điều thật đáng kiểm còn hơn 4 điều gượng ép. Nêu đúng điều quan trọng nhất (thổ cư thật bao nhiêu / ranh mốc / đường vào / quy hoạch), hết là dừng. **Khi brief cho ô phụ: ghi "1–2 ý, tối đa 3" — TUYỆT ĐỐI không ghi "ít nhất 1".**
 - Ảnh nén nhẹ (nen-anh.py) + alt mô tả đúng cảnh; bảng specs rõ; **đẹp CẢ desktop + mobile**.
 
 **Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
