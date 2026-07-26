@@ -72,6 +72,11 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
   - **[BẮT BUỘC — áp dụng CẢ lô lẻ LẪN cụm] "Điều cần quan tâm" TỐI ĐA 3 gạch đầu dòng — thường chỉ 1–2.** Mọi SP Chú đăng ĐÃ CHỌN LỌC KỸ; liệt kê nhiều rủi ro = làm khách ngại + mâu thuẫn với "đã lọc". KHÔNG cố viết cho nhiều, không bịa rủi ro để lấp chỗ. Thà 1 điều thật đáng kiểm còn hơn 4 điều gượng ép. Nêu đúng điều quan trọng nhất (thổ cư thật bao nhiêu / ranh mốc / đường vào / quy hoạch), hết là dừng. **Khi brief cho ô phụ: ghi "1–2 ý, tối đa 3" — TUYỆT ĐỐI không ghi "ít nhất 1".**
 - Ảnh nén nhẹ (nen-anh.py) + alt mô tả đúng cảnh; bảng specs rõ; **đẹp CẢ desktop + mobile**.
 
+**[TIN TRÙNG — CHÚ GỬI LẠI CỤM/LÔ ĐÃ ĐĂNG]** KHÔNG tạo trang mới (Google phạt trùng nội dung). Mở đúng trang cũ và:
+- Đem đồ MỚI & ĐẸP vào: sơ đồ phân lô render sạch/"hoạt hình" đẹp, ảnh flycam nét, ảnh chứng minh hạ tầng (điện/đèn đường/giếng)… (thay hero nếu ảnh mới đẹp hơn; thêm thumb; bổ sung specs/mô tả/điểm mạnh).
+- **GHI NGÀY CẬP NHẬT MỚI NHẤT** (freshness cho AEO/SEO/GEO): thêm dòng hiển thị `Cập nhật: DD/MM/YYYY · <sửa gì>` dưới meta-row, VÀ 1 block JSON-LD `WebPage` có `datePublished` (ngày đăng gốc) + `dateModified` (hôm nay). Mỗi lần enrich lại → bump `dateModified` + đổi ngày hiển thị. Đây là tín hiệu "trang còn tươi" cho Google/AI trích dẫn.
+- Không đụng card danh sách/hub/sitemap nếu cụm/lô đã có sẵn ở đó (chỉ sửa trang chi tiết + ảnh).
+
 **Verify trước push:** JSON-LD hợp lệ · 0 placeholder · link không hỏng · soi desktop 1280 + mobile 390.
 
 ## ✅ CHECKLIST CHỐNG LỖI LẶP (những lỗi đã sửa nhiều lần — TỰ KIỂM, đừng để lặp)
