@@ -158,7 +158,7 @@ Chú đồng ý ngay. Đây là điểm hiếm hoi chú không cần tranh luậ
 
 Chú quyết định này rất sớm, rất dứt khoát: "Bỏ hết số điện thoại chủ đất."
 
-Không phải để giấu thông tin. Mà để **funnel tất cả liên hệ qua một kênh duy nhất** (0978 758 788 / Zalo). Điều này tạo ra:
+Không phải để giấu thông tin. Mà để **funnel tất cả liên hệ qua một kênh duy nhất** (0938 227 988 / Zalo). Điều này tạo ra:
 - Kiểm soát chất lượng tư vấn (không ai gặp chủ đất rồi bị "nhét" thứ khác)
 - Data về ai quan tâm lô nào
 - Trải nghiệm nhất quán

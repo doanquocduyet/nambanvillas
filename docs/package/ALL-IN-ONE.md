@@ -29,7 +29,7 @@ Bạn là kỹ sư web + chuyên gia SEO/AEO/GEO của dự án **Nam Ban Villas
 - "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua. "Im lặng mà sang": không emoji, không hô hào, không banner.
 - Số thật > tính từ. CẤM từ rỗng: tuyệt đẹp, lý tưởng, hoàn hảo, siêu phẩm, cơ hội vàng, số 1, giá sốc, đất vàng.
 - KHÔNG bịa (số/tên/testimonial phải thật; không có thì để trống hoặc hỏi Chú). KHÔNG đụng chạm ai (không "cò/lừa đảo/thổi giá").
-- Mỗi bài/tin nêu rõ 1 rủi ro cần kiểm + dẫn về Zalo 0978 758 788.
+- Mỗi bài/tin nêu rõ 1 rủi ro cần kiểm + dẫn về Zalo 0938 227 988.
 - **Khi tư vấn mua/đầu tư/so sánh: LUÔN nêu 1–2 LÔ THẬT cụ thể** (tên + giá + phù hợp gì) từ danh sách lô trong Knowledge — vd "Giáp Suối 2.700m² 2,95 tỷ hợp homestay", "Phố Thông 130m² 568tr/lô". Không nói chung chung. Đây là vũ khí độc quyền của Villas.
 
 **KỸ THUẬT (bắt buộc)**
@@ -352,7 +352,7 @@ Bạn là kỹ sư web + chuyên gia SEO/AEO/GEO của dự án **Nam Ban Villas
 
 ### 1.2 Revenue / Conversion
 - Doanh thu: người sắp mua → xem lô → chốt; ăn phí giao dịch (môi giới, sang tên, công chứng, hợp đồng, tách thửa, chuyển thổ cư — 10 dịch vụ ở /dich-vu/).
-- Chuyển đổi: mọi tin/bài dẫn về **Zalo 0978 758 788** (kiểm giúp miễn phí) = biến traffic (kể cả tin người khác) thành lead.
+- Chuyển đổi: mọi tin/bài dẫn về **Zalo 0938 227 988** (kiểm giúp miễn phí) = biến traffic (kể cả tin người khác) thành lead.
 
 ### 1.3 Customer
 - Khách chính: **TP.HCM, 10–15 tỷ**, mua để second home/đầu tư/nghỉ dưỡng, không có thời gian khảo sát.
@@ -451,7 +451,7 @@ Bạn là kỹ sư web + chuyên gia SEO/AEO/GEO của dự án **Nam Ban Villas
 - Automation AI: `daily-listings.mjs` gọi Claude API `claude-sonnet-5` + tool `web_search_20250305`.
 
 ## G. SEO / GEO TECHNICAL IMPLEMENTATION
-- **Schema JSON-LD:** RealEstateAgent (telephone +84978758788, address PostalAddress, areaServed, geo GeoCoordinates, openingHours Mo-Su 07:00-21:00, priceRange $$, sameAs[https://zalo.me/0978758788], knowsAbout[]) + WebSite (SearchAction + speakable cssSelector[.hero-title,.hero-sub]) + FAQPage (76 chỗ; hoi-dap +speakable cssSelector[summary]) + Product+Offer từng lô + Service (dich-vu: provider+areaServed Place+serviceType[]+offers price 0) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
+- **Schema JSON-LD:** RealEstateAgent (telephone +84938227988, address PostalAddress, areaServed, geo GeoCoordinates, openingHours Mo-Su 07:00-21:00, priceRange $$, sameAs[https://zalo.me/0938227988], knowsAbout[]) + WebSite (SearchAction + speakable cssSelector[.hero-title,.hero-sub]) + FAQPage (76 chỗ; hoi-dap +speakable cssSelector[summary]) + Product+Offer từng lô + Service (dich-vu: provider+areaServed Place+serviceType[]+offers price 0) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
 - **Toạ độ 11.7586, 108.2432** (đúng tâm Nam Ban; KHÔNG lệch — Greenspace từng lệch 108.383).
 - **Địa danh "Xã Nam Ban"** (sửa "TT. Nam Ban" 30 chỗ); giữ "thị trấn" trong bài kể sáp nhập.
 - **llms.txt** entity-focused (chỉ trang Villas sở hữu, số 2-7tr, Q&A nhanh). **robots.txt**: 8+ AI bot (GPTBot, OAI-SearchBot, ChatGPT-User, Google-Extended, PerplexityBot, Perplexity-User, ClaudeBot, Claude-Web, anthropic-ai, CCBot, Applebot-Extended, Bingbot); Disallow /admin/ /subscribe/.
@@ -625,7 +625,7 @@ Phố Thông Villas 2×130m²(80 thổ) **568tr/lô** · Thung Lũng 530m² view
 ## 4. CONTENT KNOWLEDGE
 - Triết lý: **"Đọc rủi ro, không bán giấc mơ"** — dám nói đừng mua, số thật không tô hồng.
 - **Tách bạch tuyệt đối**: lô Villas ĐÃ KIỂM TRA (sổ/quy hoạch/tranh chấp) vs **tin thị trường CHƯA KIỂM CHỨNG** (trang tin-rao — ghi rõ, không lẫn).
-- Mọi tin/bài dẫn về **Zalo 0978 758 788** để Villas kiểm giúp miễn phí = biến traffic (kể cả tin người khác) thành lead của mình.
+- Mọi tin/bài dẫn về **Zalo 0938 227 988** để Villas kiểm giúp miễn phí = biến traffic (kể cả tin người khác) thành lead của mình.
 - **Testimonial thật** (trang chủ): anh Minh Tuấn (kỹ sư Đà Lạt), chị Thu Hằng (DN TP.HCM), anh Việt Anh (NĐT Bình Dương) — không bịa thêm.
 - Namban Notes = editorial, giọng câu chuyện thật ("người đàn ông quyết định không mua").
 - Cụm nội dung tự động: **tin-rao (hàng ngày)** + **giá hôm nay (hàng tuần)** — theo `FORM-DANG-TIN.md`.
@@ -661,7 +661,7 @@ Phố Thông Villas 2×130m²(80 thổ) **568tr/lô** · Thung Lũng 530m² view
 - Ảnh: xử bằng **PIL** (KHÔNG có ImageMagick/cv2). `ImageOps.exif_transpose` + `ImageOps.fit` cover-crop **1200×600 q82 progressive**; hero resize max 1600 wide. `.article-img` bo góc 12px. `Date.now/Math.random` KHÔNG dùng trong script sandbox (workflow node thì dùng bình thường).
 
 ## 3. SEO / GEO TECHNICAL (kịch trần on-page)
-- **Schema (JSON-LD):** RealEstateAgent (trang chủ: telephone +84978758788, address, areaServed, geo, openingHours Mo-Su 07:00-21:00, priceRange $$, **sameAs**[zalo], **knowsAbout**) + WebSite (SearchAction + **speakable** [.hero-title/.hero-sub]) + **FAQPage** (76 chỗ, +speakable ở hoi-dap) + **Product/Offer từng lô** + **Service** (dich-vu: provider RealEstateAgent + areaServed Place + serviceType[] + offers) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
+- **Schema (JSON-LD):** RealEstateAgent (trang chủ: telephone +84938227988, address, areaServed, geo, openingHours Mo-Su 07:00-21:00, priceRange $$, **sameAs**[zalo], **knowsAbout**) + WebSite (SearchAction + **speakable** [.hero-title/.hero-sub]) + **FAQPage** (76 chỗ, +speakable ở hoi-dap) + **Product/Offer từng lô** + **Service** (dich-vu: provider RealEstateAgent + areaServed Place + serviceType[] + offers) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
 - **Toạ độ 11.7586, 108.2432** (ĐÚNG tâm Nam Ban — KHÔNG lệch; Greenspace từng lệch 108.383 ~10km, Villas không dính).
 - Địa danh **"Xã Nam Ban"** (sửa "TT. Nam Ban" 30 chỗ); giữ "thị trấn" chỉ trong bài kể sáp nhập (đúng lịch sử).
 - **`llms.txt`** entity-focused (chỉ trang Villas sở hữu: lô/giá/pháp lý/FAQ; bỏ trang nhường Panorama; số thật 2-7tr; Q&A trả lời nhanh).
