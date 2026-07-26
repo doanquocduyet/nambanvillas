@@ -177,18 +177,13 @@ def build_frames(listing, tmp):
 
 
 def encode(paths, out):
-    # mỗi ảnh SEC_PER giây, có zoom nhẹ (Ken Burns) + fade nối
+    # mỗi ảnh SEC_PER giây, nối bằng fade. (Không zoompan — tránh lỗi nhân khung.)
     n = len(paths)
     inputs = []
     for p in paths:
         inputs += ["-loop", "1", "-t", str(SEC_PER), "-i", str(p)]
-    # zoompan cho từng ảnh
-    parts = []
-    for i in range(n):
-        z = f"[{i}:v]scale={W}:{H},zoompan=z='min(zoom+0.0009,1.12)':d={int(SEC_PER*FPS)}:s={W}x{H}:fps={FPS},setsar=1[v{i}]"
-        parts.append(z)
-    # nối bằng xfade
-    fade = 0.5
+    parts = [f"[{i}:v]scale={W}:{H},fps={FPS},format=yuv420p,setsar=1[v{i}]" for i in range(n)]
+    fade = 0.4
     cur = "v0"
     xf = []
     off = SEC_PER - fade
@@ -197,10 +192,11 @@ def encode(paths, out):
         xf.append(f"[{cur}][v{i}]xfade=transition=fade:duration={fade}:offset={off:.2f}[{o}]")
         cur = o
         off += SEC_PER - fade
-    filt = ";".join(parts + xf)
-    last = cur
+    filt = ";".join(parts + (xf if n > 1 else []))
+    last = cur if n > 1 else "v0"
     cmd = [ff(), "-y", *inputs, "-filter_complex", filt, "-map", f"[{last}]",
-           "-c:v", "libx264", "-pix_fmt", "yuv420p", "-r", str(FPS),
+           "-c:v", "libx264", "-profile:v", "high", "-level", "4.0",
+           "-pix_fmt", "yuv420p", "-r", str(FPS), "-crf", "23",
            "-movflags", "+faststart", str(out)]
     subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
 
