@@ -127,6 +127,21 @@ def main():
         # Không phải lỗi cứng: thoát êm để Action không báo đỏ trước khi chú cài token.
         return 0
 
+    # Đèn chẩn đoán: cho biết token đang là loại gì (KHÔNG lộ token).
+    try:
+        q = urllib.parse.urlencode({"fields": "id,name,category", "access_token": token})
+        req = urllib.request.Request(GRAPH + "/me?" + q, headers=UA)
+        with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
+            me = json.loads(r.read().decode("utf-8", "ignore"))
+        if me.get("category"):
+            print(f"CHẨN ĐOÁN: token của PAGE '{me.get('name')}' (category={me.get('category')}) — đúng loại.")
+        else:
+            print(f"CHẨN ĐOÁN: token đang là NGƯỜI DÙNG '{me.get('name')}' — SAI loại. Cần token của Page (từ /me/accounts).")
+    except urllib.error.HTTPError as e:
+        print("CHẨN ĐOÁN /me lỗi: HTTP", e.code, e.read().decode("utf-8", "ignore")[:200])
+    except Exception as e:
+        print("CHẨN ĐOÁN /me lỗi:", str(e)[:150])
+
     if not todo:
         print("Không có tin mới. Bỏ qua.")
         return 0
