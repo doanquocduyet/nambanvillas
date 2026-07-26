@@ -1,0 +1,43 @@
+name: Tự đăng tin mới lên Facebook Page
+
+# Mỗi khi có tin mới lên web (push vào main) là tự đăng lên Page Nam Ban Villas.
+# Thêm 1 lần chạy mỗi ngày để chắc chắn không sót. Chỉ đăng tin CHƯA đăng.
+# Cần secret FB_PAGE_TOKEN (chìa khoá Page). Xem docs/fb-auto-setup.md.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dat-nen/**/index.html'
+      - 'nha-ban/**/index.html'
+      - 'sitemap.xml'
+  schedule:
+    - cron: '0 3 * * *'   # 03:00 UTC = 10:00 giờ VN mỗi ngày (lưới an toàn)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fb-auto-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Đăng tin mới lên Page
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python scripts/fb-auto-post.py
+      - name: Ghi lại tin đã đăng
+        run: |
+          git config user.name "fb-poster-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add data/fb-posted.json
+          git diff --cached --quiet || git commit -m "Cập nhật danh sách tin đã đăng Facebook"
+          git push
