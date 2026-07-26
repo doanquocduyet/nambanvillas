@@ -314,3 +314,29 @@ document.querySelectorAll('.related-card img').forEach(function(img){
 })();
 
 })();
+
+/* ===== Meta Pixel + đo chuyển đổi Gọi/Zalo =====
+   Khi có mã Pixel, thay "" bên dưới bằng mã (dạng số, ví dụ "1234567890").
+   Để trống = tắt, không nạp gì. */
+(function(){
+  'use strict';
+  var PIXEL_ID = ""; // <-- DÁN MÃ PIXEL VÀO ĐÂY
+  if(!PIXEL_ID) return;
+
+  // Mã nền Meta Pixel (chuẩn Facebook)
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,
+    'script','https://connect.facebook.net/en_US/fbevents.js');
+  window.fbq('init', PIXEL_ID);
+  window.fbq('track', 'PageView');
+
+  // Bấm Gọi hoặc Zalo = 1 "Liên hệ" (Contact) — mục tiêu tối thượng của web
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest('a'); if(!a) return;
+    var href = (a.getAttribute('href')||'').toLowerCase();
+    if(href.indexOf('tel:')===0){ window.fbq('track','Contact',{method:'call'}); }
+    else if(href.indexOf('zalo.me')>-1){ window.fbq('track','Contact',{method:'zalo'}); }
+  }, true);
+})();
