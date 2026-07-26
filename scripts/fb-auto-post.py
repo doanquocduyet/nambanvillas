@@ -127,20 +127,27 @@ def main():
         # Không phải lỗi cứng: thoát êm để Action không báo đỏ trước khi chú cài token.
         return 0
 
-    # Đèn chẩn đoán: cho biết token đang là loại gì (KHÔNG lộ token).
-    try:
-        q = urllib.parse.urlencode({"fields": "id,name,category", "access_token": token})
-        req = urllib.request.Request(GRAPH + "/me?" + q, headers=UA)
+    # Đèn chẩn đoán: token là của Page hay Người dùng? (KHÔNG lộ token)
+    def _get(path):
+        req = urllib.request.Request(
+            GRAPH + path + ("&" if "?" in path else "?") +
+            urllib.parse.urlencode({"access_token": token}), headers=UA)
         with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
-            me = json.loads(r.read().decode("utf-8", "ignore"))
-        if me.get("category"):
-            print(f"CHẨN ĐOÁN: token của PAGE '{me.get('name')}' (category={me.get('category')}) — đúng loại.")
-        else:
-            print(f"CHẨN ĐOÁN: token đang là NGƯỜI DÙNG '{me.get('name')}' — SAI loại. Cần token của Page (từ /me/accounts).")
-    except urllib.error.HTTPError as e:
-        print("CHẨN ĐOÁN /me lỗi: HTTP", e.code, e.read().decode("utf-8", "ignore")[:200])
+            return json.loads(r.read().decode("utf-8", "ignore"))
+
+    try:
+        me = _get("/me?fields=id,name")
+        print(f"CHẨN ĐOÁN /me: id={me.get('id')} name={me.get('name')}")
     except Exception as e:
-        print("CHẨN ĐOÁN /me lỗi:", str(e)[:150])
+        print("CHẨN ĐOÁN /me lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:200])
+    try:
+        perms = _get("/me/permissions")
+        granted = [p["permission"] for p in perms.get("data", []) if p.get("status") == "granted"]
+        print("CHẨN ĐOÁN: đây là TOKEN NGƯỜI DÙNG. Quyền đã cấp:", ", ".join(granted) or "(không có)")
+        print("  -> Cần dùng TOKEN CỦA PAGE (lấy từ /me/accounts), không phải token này.")
+    except urllib.error.HTTPError as e:
+        # /me/permissions chỉ chạy với token người dùng; lỗi = có thể là token Page.
+        print("CHẨN ĐOÁN: /me/permissions không đọc được -> nhiều khả năng token của PAGE. HTTP", e.code)
 
     if not todo:
         print("Không có tin mới. Bỏ qua.")
