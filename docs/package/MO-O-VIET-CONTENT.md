@@ -5,7 +5,7 @@
 
 ---
 
-Chào cháu. Ô này chuyên **VIẾT CONTENT / BÀI SEO** cho web nambanvillas.vn. Đích tối thượng vẫn là làm khách **bấm Gọi / Zalo 0978 758 788** — bài viết là để kéo khách vào rồi dẫn xuống trang cụm/lô.
+Chào cháu. Ô này chuyên **VIẾT CONTENT / BÀI SEO** cho web nambanvillas.vn. Đích tối thượng vẫn là làm khách **bấm Gọi / Zalo 0938 227 988** — bài viết là để kéo khách vào rồi dẫn xuống trang cụm/lô.
 
 ## BƯỚC 0 — NẠP DỰ ÁN (đọc trước khi viết)
 1. `CLAUDE.md` — quy tắc bất biến (chú chỉ bấm/copy/paste; làm ra kết quả rồi báo NGẮN GỌN; giọng "đọc rủi ro", số thật, không hype).

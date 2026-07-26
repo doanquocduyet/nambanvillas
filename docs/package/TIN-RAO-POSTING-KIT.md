@@ -56,4 +56,4 @@ Alt ảnh: mô tả đúng cảnh + địa danh (vd `Villa mini Mê Linh Nam Ban
 
 ## LƯU Ý HỆ 3 WEB
 - Đây là **tin thị trường CHƯA kiểm chứng** — khác lô Villas đã kiểm tra ở `/dat-nen-nam-ban/`. Không lẫn.
-- Villas KHÔNG link sang Panorama. Mọi tin dẫn về Zalo 0978 758 788.
+- Villas KHÔNG link sang Panorama. Mọi tin dẫn về Zalo 0938 227 988.

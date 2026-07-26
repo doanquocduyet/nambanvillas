@@ -178,7 +178,7 @@ const page = `<!DOCTYPE html>
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
-      <a href="tel:0978758788" class="hotline-btn">0978 758 788</a>
+      <a href="tel:0938227988" class="hotline-btn">0938 227 988</a>
       <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -219,8 +219,8 @@ ${faqVisible}
         <div style="background:#EBF4EE;border-radius:12px;padding:24px;margin-top:40px">
           <p style="font-weight:700;color:#1A3D2B;margin-bottom:8px">Gửi lô bạn đang xem, cháu rà pháp lý giúp trước khi cọc</p>
           <p style="color:#4a4a4a;font-size:.92rem;margin-bottom:16px">Kiểm sổ, thổ cư, quy hoạch, đường vào — nói thẳng lô nào nên mua, lô nào nên tránh. Miễn phí.</p>
-          <a href="tel:0978758788" style="display:inline-block;background:#1A3D2B;color:white;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.9rem;margin-right:8px">Gọi 0978 758 788</a>
-          <a href="https://zalo.me/0978758788" target="_blank" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:10px 24px;border-radius:8px;font-weight:700;font-size:.9rem">Nhắn Zalo →</a>
+          <a href="tel:0938227988" style="display:inline-block;background:#1A3D2B;color:white;padding:10px 24px;border-radius:8px;font-weight:600;font-size:.9rem;margin-right:8px">Gọi 0938 227 988</a>
+          <a href="https://zalo.me/0938227988" target="_blank" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:10px 24px;border-radius:8px;font-weight:700;font-size:.9rem">Nhắn Zalo →</a>
         </div>
 
       </div>
@@ -237,7 +237,7 @@ ${faqVisible}
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
-        <p><a href="tel:0978758788" style="color:#C9A84C;font-size:.88rem;">0978 758 788</a> · <a href="https://zalo.me/0978758788" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
+        <p><a href="tel:0938227988" style="color:#C9A84C;font-size:.88rem;">0938 227 988</a> · <a href="https://zalo.me/0938227988" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
       </div>
     </div>
     <div class="footer-links">

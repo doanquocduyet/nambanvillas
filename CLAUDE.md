@@ -5,7 +5,7 @@
 
 ## 🎯 MỤC TIÊU TỐI THƯỢNG (ĐỨNG TRÊN MỌI THỨ)
 
-**Đích cuối cùng của web = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0978 758 788.**
+**Đích cuối cùng của web = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0938 227 988.**
 
 - SEO/AEO/GEO/thiết kế/nội dung — tất cả chỉ là phương tiện dẫn tới hành động này.
 - Mọi trang, mọi lô, mọi bài: luôn có đường dẫn rõ ràng, dễ bấm tới **Gọi / Zalo**.
@@ -68,7 +68,7 @@
 - **Repo:** `doanquocduyet/nambanvillas` (GitHub)
 - **Branch dev:** `claude/dreamy-ritchie-xBezi` → merge vào `main` = deploy production
 - **Site live:** nambanvillas.vn (Vercel, auto-deploy từ main)
-- **Hotline:** 0978 758 788
+- **Hotline:** 0938 227 988
 - **Stack:** Static HTML + CSS + Vanilla JS (không framework, không bundler)
 - **Font:** Plus Jakarta Sans Variable (jsDelivr CDN)
 - **Design tokens:** --green:#1A3D2B · --gold:#C9A84C · --bg:#F7F3EE · --bg2:#FFFFFF

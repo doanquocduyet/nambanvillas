@@ -11,7 +11,7 @@
 
 ### 1.2 Revenue / Conversion
 - Doanh thu: người sắp mua → xem lô → chốt; ăn phí giao dịch (môi giới, sang tên, công chứng, hợp đồng, tách thửa, chuyển thổ cư — 10 dịch vụ ở /dich-vu/).
-- Chuyển đổi: mọi tin/bài dẫn về **Zalo 0978 758 788** (kiểm giúp miễn phí) = biến traffic (kể cả tin người khác) thành lead.
+- Chuyển đổi: mọi tin/bài dẫn về **Zalo 0938 227 988** (kiểm giúp miễn phí) = biến traffic (kể cả tin người khác) thành lead.
 
 ### 1.3 Customer
 - Khách chính: **TP.HCM, 10–15 tỷ**, mua để second home/đầu tư/nghỉ dưỡng, không có thời gian khảo sát.

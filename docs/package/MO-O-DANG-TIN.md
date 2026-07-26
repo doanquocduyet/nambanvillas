@@ -25,7 +25,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - Giọng: trầm, thật, ĐỌC RỦI RO (mỗi tin nêu 1 điểm cần kiểm). CẤM tính từ rỗng: tuyệt đẹp, lý tưởng, hoàn hảo, cực hiếm, số 1.
 - KHÔNG bịa số. KHÔNG lấy SĐT/tên người bán. KHÔNG tải/đăng lại ảnh/video/thumbnail của người khác (bản quyền) — chỉ bóc DỮ KIỆN + viết lại; ảnh chỉ dùng ảnh chủ web tự chụp/có bản quyền.
 - Ảnh: nén ~100KB, strip EXIF, đặt tên chuẩn SEO, alt mô tả đúng cảnh.
-- Số liệu chuẩn toàn site: Nam Ban cách Đà Lạt ~25km, sân bay Liên Khương ~22km, hotline 0978 758 788.
+- Số liệu chuẩn toàn site: Nam Ban cách Đà Lạt ~25km, sân bay Liên Khương ~22km, hotline 0938 227 988.
 
 **KỸ THUẬT (khắc cứng):**
 - CẤM regex DOTALL `.*?` để xoá/sửa khối HTML. Dùng str_replace khớp CHÍNH XÁC, DUY NHẤT.
