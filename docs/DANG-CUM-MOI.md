@@ -79,6 +79,8 @@ Chèn 1 dòng (đặt cạnh các URL /dat-nen/):
 - Title/H1/meta có `đất phân lô Nam Ban` + giá gốc + sổ riêng/thổ cư. FAQPage có câu "giá đất phân lô Nam Ban bao nhiêu?" + "có sổ riêng/thổ cư không?" (trả lời thẳng — AEO).
 - Đoạn "Giá đất phân lô Nam Ban đang mở" phải cập nhật dải giá thật theo cụm hiện có.
 
+**"ĐIỀU CẦN KIỂM" — TỐI ĐA 3 Ý, THƯỜNG 1–2 (áp dụng cả cụm):** Cụm đã chọn lọc rồi — đừng liệt kê nhiều rủi ro làm khách ngại. Nêu đúng điều quan trọng nhất (thổ cư thật/nền, ranh mốc, đường vào, quy hoạch), hết là dừng. KHÔNG bịa rủi ro lấp chỗ.
+
 **MỖI TRANG CỤM (spoke) — bắt buộc:**
 - Title pattern: `Cụm <N> nền <Khu> Nam Ban – <đặc điểm: sổ riêng/thổ cư/F0>, <giá>`. Có đủ: cụm · nền · Nam Ban · khu.
 - Schema: `Product`/`AggregateOffer` + `FAQPage` (giá? pháp lý? ở đâu?) + `BreadcrumbList`.
