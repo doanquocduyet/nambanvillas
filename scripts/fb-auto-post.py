@@ -22,7 +22,7 @@ import urllib.request, urllib.parse, urllib.error
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "data" / "fb-posted.json"
 SITEMAP = ROOT / "sitemap.xml"
-HOTLINE = "0978 758 788"
+HOTLINE = "0938 227 988"   # Số dùng RIÊNG cho bài đăng Facebook (khác hotline web)
 GRAPH = "https://graph.facebook.com/v21.0"
 MAX_PER_RUN = 3            # tối đa 3 tin/lần chạy — đăng đều, không dồn
 CTX = ssl.create_default_context()
