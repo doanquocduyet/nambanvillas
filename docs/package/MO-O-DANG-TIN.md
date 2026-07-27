@@ -108,6 +108,17 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 9. **Offer có `priceValidUntil`** (ví dụ năm nay-12-31) để Google không báo "giá hết hạn".
 10. **Gallery**: nếu thumb dùng `onclick="swapMain(this)"` thì trang PHẢI có hàm `swapMain` (inline cuối trang), nếu không bấm ảnh không đổi.
 11. **Lô đã bán/cọc**: KHÔNG xóa bài — thêm banner "Đã đặt cọc/đã bán" + badge + Offer `SoldOut`, dẫn khách sang lô tương tự.
+12. **KHÔNG chèn lại ô CTA "Muốn chắc trước khi xuống tiền?" (class `risk-cta`).** Ô này đã bị gỡ khỏi toàn site theo yêu cầu chú — đừng thêm lại vào tin mới. Liên hệ đã có ở price card + mobile nav.
+13. **Số điện thoại DUY NHẤT toàn site = 0938 227 988.** Không dùng số cũ 0978 758 788 ở bất cứ đâu (tel:, zalo.me/, schema `+84938227988`, chữ hiển thị).
+14. **Đủ 5 thứ cho robot FB tự đăng** (xem mục ⭐ FACEBOOK đầu phiếu): trang có og:title+og:image, ảnh gallery, bảng specs-table, đoạn Mô Tả, và ĐÃ thêm vào sitemap.xml.
+
+## 📋 MẪU BÁO CÁO (sau khi xong — NGẮN GỌN)
+```
+Đã đăng: <tên lô/cụm>
+👉 https://nambanvillas.vn/<đường-dẫn>/
+(FB tự lên Page trong vài phút — không cần làm gì thêm)
+```
+Không giải thích dài. Không liệt kê phương án không làm. Nhiều trang → mỗi link 1 dòng.
 
 ## ẢNH SỔ / BẢN VẼ CHÚ THẢ = ĐĂNG THẲNG, KHÔNG HỎI (chú dặn — bất biến)
 - Chú thả ảnh **sổ hồng / sổ đỏ / bản vẽ tách thửa / sơ đồ phân lô** → **ĐĂNG LUÔN**, KHÔNG che số thửa, KHÔNG che toạ độ, KHÔNG hỏi lại. Số thửa hiện ra = **TRUST** (chứng minh đồ thật, chính chủ).
