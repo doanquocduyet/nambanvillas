@@ -1,4 +1,5 @@
 # Báo cáo index Google Search Console — Nam Ban Villas
 
-> ⚠️ **Chưa cấu hình.** File này sẽ được cập nhật tự động mỗi tuần khi chú thêm
-> "chìa khoá" service account. Xem hướng dẫn 7 bước: `docs/gsc-auto-setup.md`.
+> Cập nhật: 27/07/2026 11:36
+
+⚠️ **Chưa cấu hình.** Cần thêm secret `GSC_SA_JSON` và cấp quyền service account đọc Search Console. Xem hướng dẫn: `docs/gsc-auto-setup.md`.
