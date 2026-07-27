@@ -10,7 +10,8 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - **Ô NÀY (đăng tin):** chỉ dựng/ cập nhật **trang tin – lô – nhà – cụm** + ảnh + card danh sách + sitemap. Hết.
 - **Ô KIA (web & kỹ thuật):** lo toàn bộ hệ thống — giao diện, CSS/JS, schema toàn site, marketing, **máy tự đăng Facebook**, máy dựng video, workflow GitHub Actions, Pixel, redirect, vercel.json.
 - Khách cần việc kỹ thuật/marketing (đổi giao diện, quảng cáo, video, tự đăng mạng xã hội…) → **nói chú mở ô kia**, ô này không tự sửa mấy file đó.
-- **TUYỆT ĐỐI KHÔNG động vào:** `js/main.js`, `css/`, `scripts/fb-auto-post.py`, `scripts/lam-video.py`, `.github/workflows/*`, `data/fb-posted.json`, các `docs/*quang-cao*`, `docs/*pixel*`, `docs/nhom-facebook-*`. Đụng vào = hỏng hệ thống ô kia.
+- **TUYỆT ĐỐI KHÔNG động vào:** `js/main.js`, `css/`, `scripts/fb-auto-post.py`, `scripts/lam-video.py`, `.github/workflows/*`, các `docs/*quang-cao*`, `docs/*pixel*`, `docs/nhom-facebook-*`. Đụng vào = hỏng hệ thống ô kia.
+- **Ngoại lệ được phép (để tự lo FB):** ô đăng tin ĐƯỢC gỡ 1 dòng trong `data/fb-posted.json` + chạy lại Action `fb-auto-post.yml` để **đăng lại 1 tin cũ** (xem mục ⭐ FACEBOOK). Chỉ xoá ĐÚNG 1 URL của tin đó — **TUYỆT ĐỐI KHÔNG xoá cả file / nhiều dòng** (sẽ khiến robot đăng lại hàng loạt = spam khoá nick).
 
 ## ⭐ FACEBOOK ĐÃ TỰ ĐỘNG — ĐỪNG SOẠN BÀI COPY TAY NỮA
 - Web ĐÃ CÓ **robot tự đăng Facebook** (GitHub Action `fb-auto-post.yml`). Mỗi tin MỚI khi lên `main` + có trong `sitemap.xml` là **tự đăng lên Page facebook.com/nambanvillas** trong vài phút: **đủ ảnh (album) + thông số + mô tả + hotline 0938 227 988 + link web**.
@@ -21,7 +22,13 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
   3. Có bảng `<table class="specs-table">` + đoạn "Mô Tả" (robot rút làm caption đầy đủ).
   4. **Đã thêm URL vào `sitemap.xml`** (BẮT BUỘC — robot đọc sitemap mới thấy tin).
   5. Đã merge lên `main`.
-  → Xong 5 cái này là FB tự có bài. Nếu muốn đăng lại 1 tin cũ, báo chú mở ô kia (ô kia gỡ tin khỏi `data/fb-posted.json`).
+  → Xong 5 cái này là **TIN MỚI tự có bài FB trong vài phút — KHÔNG cần làm gì thêm, KHÔNG cần ô kia.**
+
+**Đăng lại 1 tin CŨ lên FB (khi enrich/cập nhật tin đã đăng, muốn nó lên Page lại):** ô đăng tin TỰ làm được, không cần ô kia:
+  1. Mở `data/fb-posted.json`, tìm dòng đúng URL tin đó (ví dụ `"https://nambanvillas.vn/dat-nen/<slug>/": {...}`) → **xoá đúng 1 dòng entry đó** (giữ nguyên mọi dòng khác). Commit + merge `main`.
+  2. Chạy lại Action: qua GitHub MCP gọi `run_workflow` với `workflow_id: fb-auto-post.yml`, `ref: main` (hoặc mở https://github.com/doanquocduyet/nambanvillas/actions → "Tự đăng tin mới lên Facebook Page" → Run workflow).
+  3. Robot đăng lại tin đó (đủ album + thông số + số 0938 227 988), tự ghi lại vào `fb-posted.json`.
+  ⚠️ CHỈ xoá đúng 1 URL. Xoá nhiều/cả file = robot đăng lại hàng loạt → FB gắn cờ spam → khoá nick.
 
 **BƯỚC 0 — NẠP DỰ ÁN (đọc trước khi làm gì):**
 1. `CLAUDE.md` — quy tắc bất biến (chú chỉ bấm/copy/paste; làm ra kết quả rồi báo NGẮN GỌN; không lan man).
