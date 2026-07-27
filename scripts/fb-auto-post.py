@@ -215,6 +215,21 @@ def main():
     except urllib.error.HTTPError as e:
         # /me/permissions chỉ chạy với token người dùng; lỗi = có thể là token Page.
         print("CHẨN ĐOÁN: /me/permissions không đọc được -> nhiều khả năng token của PAGE. HTTP", e.code)
+    # Kiểm HẠN token (0 = vĩnh viễn)
+    try:
+        dbg = _get(f"/debug_token?input_token={urllib.parse.quote(token)}")
+        d = dbg.get("data", {})
+        exp = d.get("expires_at", None)
+        if exp == 0:
+            print("CHẨN ĐOÁN HẠN TOKEN: VĨNH VIỄN (không hết hạn). ✅")
+        elif exp:
+            import datetime as _dt
+            print("CHẨN ĐOÁN HẠN TOKEN: sẽ HẾT HẠN lúc",
+                  _dt.datetime.utcfromtimestamp(exp).strftime("%d/%m/%Y %H:%M UTC"), "-> chưa vĩnh viễn.")
+        else:
+            print("CHẨN ĐOÁN HẠN TOKEN: không đọc được ngày hết hạn (có thể vẫn ổn).")
+    except Exception as e:
+        print("CHẨN ĐOÁN HẠN TOKEN lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:150])
 
     if not todo:
         print("Không có tin mới. Bỏ qua.")
