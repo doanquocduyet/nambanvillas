@@ -9,6 +9,8 @@ Ví dụ: python3 scripts/lam-video.py nha-ban/moc-home-nam-ban video-moc-home.m
 """
 import os, re, sys, subprocess, tempfile, pathlib
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import listing_common as lc
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 W, H = 1080, 1920
@@ -37,29 +39,9 @@ def font(sz, bold=True):
 def read_listing(folder):
     f = ROOT / folder / "index.html"
     html = f.read_text(encoding="utf-8", errors="ignore")
-
-    def og(p):
-        m = re.search(r'property=["\']' + p + r'["\'][^>]+content=["\']([^"\']+)', html)
-        return m.group(1).strip() if m else ""
-
-    title = og("og:title")
     slug = folder.rstrip("/").split("/")[-1]
-    imgs = []
-    for rel in re.findall(r'images/listings/' + re.escape(slug) + r'/[^"\')\s]+\.(?:jpg|jpeg|png)', html, re.I):
-        p = ROOT / rel
-        if p.exists() and str(p) not in [str(x) for x in imgs]:
-            imgs.append(p)
-    # thông số từ specs-table
-    specs = []
-    m = re.search(r'<table class="specs-table">(.*?)</table>', html, re.S)
-    if m:
-        for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", m.group(1), re.S):
-            cells = [re.sub(r"<[^>]+>", "", c).replace("&amp;", "&").strip()
-                     for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
-            cells = [c for c in cells if c]
-            for i in range(0, len(cells) - 1, 2):
-                specs.append((cells[i], cells[i + 1]))
-    return {"title": title, "images": imgs, "specs": specs}
+    imgs = [ROOT / rel for rel in lc.gallery_rels(html, slug) if (ROOT / rel).exists()]
+    return {"title": lc.og(html, "og:title"), "images": imgs, "specs": lc.extract_specs(html)}
 
 
 def wrap(draw, text, fnt, maxw):

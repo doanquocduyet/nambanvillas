@@ -18,6 +18,8 @@ Chế độ seed (chạy 1 lần khi cài đặt):  python scripts/fb-auto-post.
 """
 import os, re, sys, json, time, ssl, pathlib
 import urllib.request, urllib.parse, urllib.error
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import listing_common as lc
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "data" / "fb-posted.json"
@@ -50,73 +52,25 @@ def url_to_path(u):
     return ROOT / p / "index.html"
 
 
-SITE = "https://nambanvillas.vn"
-
-
-def _clean(t):
-    t = re.sub(r"<[^>]+>", "", t)
-    t = t.replace("&amp;", "&").replace("&nbsp;", " ").replace("&#8211;", "–")
-    return re.sub(r"\s+", " ", t).strip()
-
-
-def extract_specs(html):
-    """Rút bảng thông số <table class="specs-table"> -> [(nhãn, giá trị), ...]."""
-    m = re.search(r'<table class="specs-table">(.*?)</table>', html, re.S)
-    if not m:
-        return []
-    pairs = []
-    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", m.group(1), re.S):
-        cells = [_clean(c) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
-        cells = [c for c in cells if c != ""]
-        # ghép cặp nhãn:giá trị (hàng 4 ô = 2 cặp, hàng 2 ô = 1 cặp)
-        for i in range(0, len(cells) - 1, 2):
-            pairs.append((cells[i], cells[i + 1]))
-    return pairs
-
-
-def extract_desc(html):
-    """Rút đoạn Mô Tả (các <p> giữa 'Mô Tả' và mục kế)."""
-    i = html.find("Mô Tả")
-    if i == -1:
-        return ""
-    j = re.search(r"<h[23]", html[i + 5:])
-    seg = html[i:i + 5 + (j.start() if j else 4000)]
-    ps = [_clean(p) for p in re.findall(r"<p[^>]*>(.*?)</p>", seg, re.S)]
-    ps = [p for p in ps if len(p) > 20]
-    return "\n\n".join(ps)
-
-
 def meta_of(u):
     """Bóc tiêu đề, mô tả, thông số, và TẤT CẢ ảnh gallery từ file HTML local."""
     f = url_to_path(u)
     if not f.exists():
         return None
     html = f.read_text(encoding="utf-8", errors="ignore")
-
-    def grab(prop):
-        m = re.search(
-            r'<meta[^>]+property=["\']' + re.escape(prop) + r'["\'][^>]+content=["\']([^"\']+)["\']',
-            html)
-        return (m.group(1).strip() if m else "")
-
-    title = grab("og:title")
-    og_image = grab("og:image")
+    title = lc.og(html, "og:title")
+    og_image = lc.og(html, "og:image")
     slug = urllib.parse.urlparse(u).path.strip("/").split("/")[-1]
-    # tất cả ảnh gallery của tin này (theo đúng thứ tự xuất hiện, bỏ trùng)
-    imgs, seen = [], set()
-    for rel in re.findall(r'images/listings/' + re.escape(slug) + r'/[^"\')\s]+\.(?:jpg|jpeg|png|webp)', html, re.I):
-        full = SITE + "/" + rel
-        if full not in seen:
-            seen.add(full); imgs.append(full)
+    imgs = [lc.SITE + "/" + rel for rel in lc.gallery_rels(html, slug)]
     if not imgs and og_image:
         imgs = [og_image]
     if not (title and imgs):
         return None
     return {
         "title": title,
-        "desc": grab("og:description"),
-        "specs": extract_specs(html),
-        "longdesc": extract_desc(html),
+        "desc": lc.og(html, "og:description"),
+        "specs": lc.extract_specs(html),
+        "longdesc": lc.extract_desc(html),
         "images": imgs[:10],   # FB album tối đa 10 ảnh
     }
 
