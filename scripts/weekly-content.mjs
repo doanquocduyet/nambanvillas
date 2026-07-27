@@ -142,7 +142,7 @@ const page = `<!DOCTYPE html>
   <title>${esc(pick.title)}</title>
   <meta name="description" content="${esc(data.metaDesc)}">
   <link rel="canonical" href="${url}">
-  <meta name="geo.region" content="VN-LB">
+  <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <meta name="geo.position" content="11.7586;108.2432">
   <meta name="ICBM" content="11.7586, 108.2432">
