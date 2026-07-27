@@ -194,42 +194,33 @@ def main():
         # Không phải lỗi cứng: thoát êm để Action không báo đỏ trước khi chú cài token.
         return 0
 
-    # Đèn chẩn đoán: token là của Page hay Người dùng? (KHÔNG lộ token)
-    def _get(path):
-        req = urllib.request.Request(
-            GRAPH + path + ("&" if "?" in path else "?") +
-            urllib.parse.urlencode({"access_token": token}), headers=UA)
-        with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
-            return json.loads(r.read().decode("utf-8", "ignore"))
-
-    try:
-        me = _get("/me?fields=id,name")
-        print(f"CHẨN ĐOÁN /me: id={me.get('id')} name={me.get('name')}")
-    except Exception as e:
-        print("CHẨN ĐOÁN /me lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:200])
-    try:
-        perms = _get("/me/permissions")
-        granted = [p["permission"] for p in perms.get("data", []) if p.get("status") == "granted"]
-        print("CHẨN ĐOÁN: đây là TOKEN NGƯỜI DÙNG. Quyền đã cấp:", ", ".join(granted) or "(không có)")
-        print("  -> Cần dùng TOKEN CỦA PAGE (lấy từ /me/accounts), không phải token này.")
-    except urllib.error.HTTPError as e:
-        # /me/permissions chỉ chạy với token người dùng; lỗi = có thể là token Page.
-        print("CHẨN ĐOÁN: /me/permissions không đọc được -> nhiều khả năng token của PAGE. HTTP", e.code)
-    # Kiểm HẠN token (0 = vĩnh viễn)
-    try:
-        dbg = _get(f"/debug_token?input_token={urllib.parse.quote(token)}")
-        d = dbg.get("data", {})
-        exp = d.get("expires_at", None)
-        if exp == 0:
-            print("CHẨN ĐOÁN HẠN TOKEN: VĨNH VIỄN (không hết hạn). ✅")
-        elif exp:
-            import datetime as _dt
-            print("CHẨN ĐOÁN HẠN TOKEN: sẽ HẾT HẠN lúc",
-                  _dt.datetime.utcfromtimestamp(exp).strftime("%d/%m/%Y %H:%M UTC"), "-> chưa vĩnh viễn.")
-        else:
-            print("CHẨN ĐOÁN HẠN TOKEN: không đọc được ngày hết hạn (có thể vẫn ổn).")
-    except Exception as e:
-        print("CHẨN ĐOÁN HẠN TOKEN lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:150])
+    # Đèn chẩn đoán — CHỈ chạy khi cần debug (đặt biến FB_DIAG=1). Ngày thường im lặng,
+    # không gọi API thừa. Nếu đăng lỗi thì post_listing đã in rõ nguyên nhân.
+    if os.environ.get("FB_DIAG"):
+        def _get(path):
+            req = urllib.request.Request(
+                GRAPH + path + ("&" if "?" in path else "?") +
+                urllib.parse.urlencode({"access_token": token}), headers=UA)
+            with urllib.request.urlopen(req, timeout=20, context=CTX) as r:
+                return json.loads(r.read().decode("utf-8", "ignore"))
+        try:
+            me = _get("/me?fields=id,name")
+            print(f"CHẨN ĐOÁN /me: id={me.get('id')} name={me.get('name')}")
+        except Exception as e:
+            print("CHẨN ĐOÁN /me lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:200])
+        try:
+            dbg = _get(f"/debug_token?input_token={urllib.parse.quote(token)}")
+            exp = dbg.get("data", {}).get("expires_at", None)
+            if exp == 0:
+                print("CHẨN ĐOÁN HẠN TOKEN: VĨNH VIỄN (không hết hạn).")
+            elif exp:
+                import datetime as _dt
+                print("CHẨN ĐOÁN HẠN TOKEN: HẾT HẠN lúc",
+                      _dt.datetime.utcfromtimestamp(exp).strftime("%d/%m/%Y %H:%M UTC"))
+            else:
+                print("CHẨN ĐOÁN HẠN TOKEN: không đọc được ngày hết hạn.")
+        except Exception as e:
+            print("CHẨN ĐOÁN HẠN TOKEN lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:150])
 
     if not todo:
         print("Không có tin mới. Bỏ qua.")
