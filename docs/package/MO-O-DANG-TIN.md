@@ -6,6 +6,23 @@
 
 Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.vn. Làm đúng như sau, KHÔNG hỏi lại những gì đã có trong repo:
 
+## ⭐ PHÂN VAI 2 Ô (đọc kỹ — đừng lấn sân)
+- **Ô NÀY (đăng tin):** chỉ dựng/ cập nhật **trang tin – lô – nhà – cụm** + ảnh + card danh sách + sitemap. Hết.
+- **Ô KIA (web & kỹ thuật):** lo toàn bộ hệ thống — giao diện, CSS/JS, schema toàn site, marketing, **máy tự đăng Facebook**, máy dựng video, workflow GitHub Actions, Pixel, redirect, vercel.json.
+- Khách cần việc kỹ thuật/marketing (đổi giao diện, quảng cáo, video, tự đăng mạng xã hội…) → **nói chú mở ô kia**, ô này không tự sửa mấy file đó.
+- **TUYỆT ĐỐI KHÔNG động vào:** `js/main.js`, `css/`, `scripts/fb-auto-post.py`, `scripts/lam-video.py`, `.github/workflows/*`, `data/fb-posted.json`, các `docs/*quang-cao*`, `docs/*pixel*`, `docs/nhom-facebook-*`. Đụng vào = hỏng hệ thống ô kia.
+
+## ⭐ FACEBOOK ĐÃ TỰ ĐỘNG — ĐỪNG SOẠN BÀI COPY TAY NỮA
+- Web ĐÃ CÓ **robot tự đăng Facebook** (GitHub Action `fb-auto-post.yml`). Mỗi tin MỚI khi lên `main` + có trong `sitemap.xml` là **tự đăng lên Page facebook.com/nambanvillas** trong vài phút: **đủ ảnh (album) + thông số + mô tả + hotline 0938 227 988 + link web**.
+- ⛔ **KHÔNG được nói "cháu chưa nối được Facebook".** KHÔNG soạn caption copy-paste tay cho chú. KHÔNG tự bịa số điện thoại cũ. Việc đăng FB là TỰ ĐỘNG, ô này không cần làm gì thêm.
+- Để robot đăng đúng, mỗi tin mới ô này CHỈ cần đảm bảo (vốn đã là quy trình chuẩn):
+  1. Có trang `/(dat-nen|nha-ban)/<slug>/index.html` với `og:title` + `og:image` (1.jpg).
+  2. Có ảnh gallery `images/listings/<slug>/N.jpg` (robot tự gom cả album).
+  3. Có bảng `<table class="specs-table">` + đoạn "Mô Tả" (robot rút làm caption đầy đủ).
+  4. **Đã thêm URL vào `sitemap.xml`** (BẮT BUỘC — robot đọc sitemap mới thấy tin).
+  5. Đã merge lên `main`.
+  → Xong 5 cái này là FB tự có bài. Nếu muốn đăng lại 1 tin cũ, báo chú mở ô kia (ô kia gỡ tin khỏi `data/fb-posted.json`).
+
 **BƯỚC 0 — NẠP DỰ ÁN (đọc trước khi làm gì):**
 1. `CLAUDE.md` — quy tắc bất biến (chú chỉ bấm/copy/paste; làm ra kết quả rồi báo NGẮN GỌN; không lan man).
 2. `docs/FORM-DANG-TIN.md` — form chuẩn để viết mỗi tin (lọc ≥4/7 dữ kiện + blocklist từ rác + HTML mẫu).
