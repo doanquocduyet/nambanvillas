@@ -1,0 +1,49 @@
+name: Bài SEO tuần (nháp chờ duyệt)
+
+# Mỗi tuần: AI research 1 keyword còn trống → viết 1 bài SEO/AEO đầy đủ (dạng NHÁP, noindex)
+# → KHÔNG đăng thẳng lên main. Thay vào đó mở 1 Pull Request để chú xem + duyệt.
+# Chú DUYỆT = merge PR (bài lên web). Không ưng = đóng PR (không có gì công khai).
+# Cần secret ANTHROPIC_API_KEY. Thiếu key thì script thoát êm, không tạo gì.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # 06:00 UTC = 13:00 giờ VN, thứ Hai hằng tuần
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Viết bài nháp
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/weekly-content.mjs
+
+      - name: Mở PR nếu có bài nháp mới
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Không có bài nháp mới — bỏ qua."
+            exit 0
+          fi
+          DATE=$(date -u +'%Y-%m-%d')
+          BRANCH="content/bai-tuan-$DATE"
+          # Tên bài mới nhất (thư mục index.html vừa tạo trong thi-truong/ hoặc ve-nam-ban/)
+          NEWPAGE=$(git status --porcelain | grep -oE '(thi-truong|ve-nam-ban)/[^/]+/index.html' | head -1)
+          git config user.name "content-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "Bài SEO tuần (nháp chờ duyệt) $DATE"
+          git push -u origin "$BRANCH"
+          BODY="Bài mới do máy viết (bản NHÁP, đang noindex). Xem thử qua link preview Vercel ở comment PR này. Trang: \`$NEWPAGE\`. DUYỆT: ưng thì nhắn Claude 'publish bài này' (bỏ noindex + thêm sitemap) rồi merge. KHÔNG ƯNG: đóng PR — không gì lên web."
+          gh pr create --base main --head "$BRANCH" --title "Bai SEO tuan cho duyet - $DATE" --body "$BODY"
