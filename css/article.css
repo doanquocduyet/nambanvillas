@@ -172,3 +172,9 @@
 .tin-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 7px}
 .tin-specs span{background:#F2F6F3;border-radius:6px;padding:3px 10px;font-size:.8rem;color:#1A3D2B;font-weight:600}
 .tin-desc{font-size:.92rem;color:#3D3D3D;line-height:1.65;margin:0 0 6px}
+
+/* Badge xác minh lô đất */
+.verify-row{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 2px}
+.verify{display:inline-flex;align-items:center;gap:7px;background:#eef4ef;color:#1A3D2B;font-weight:600;font-size:.84rem;padding:8px 12px;border-radius:999px}
+.verify svg{width:15px;height:15px;color:#2f7d4f;flex:0 0 auto}
+@media(max-width:600px){.verify{font-size:.8rem;padding:7px 10px}}
