@@ -123,7 +123,7 @@
       <h1 class="hero-title"><span class="hero-title-secondary">Giúp Bạn</span> Ra Quyết Định <em>Đúng</em> <span class="hero-title-secondary">Về Đất Nam Ban</span></h1>
       <p class="hero-sub">Đất nền & nhà bán tại Nam Ban, Lâm Hà — cách trung tâm <strong>Đà Lạt 35–40 phút</strong>, sân bay Liên Khương khoảng 30 phút, <strong>100% có sổ hồng</strong>. Chúng tôi giúp bạn hiểu đúng thị trường.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
-        <a href="#dealMatcher" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:14px 26px;border-radius:11px;font-weight:800;font-size:.98rem;text-decoration:none">Để em chọn lô hợp bạn →</a>
+        <a href="#dealMatcher" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:14px 26px;border-radius:11px;font-weight:800;font-size:.98rem;text-decoration:none">Lọc nhanh →</a>
         <a href="/dat-nen-nam-ban/" style="display:inline-block;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.4);padding:14px 26px;border-radius:11px;font-weight:700;font-size:.98rem;text-decoration:none">Xem tất cả đất nền</a>
       </div>
     </div>
@@ -136,7 +136,6 @@
     <div style="background:linear-gradient(160deg,#12331d,#1f4a2e);border-radius:20px;padding:26px 24px;box-shadow:0 18px 40px -20px rgba(26,61,43,.55)">
       <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;margin:0 0 6px">Đừng lục 37 lô · để em lọc giúp</p>
       <h2 style="color:#fff;font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.25;letter-spacing:-.01em;margin:0 0 4px">Trả lời 3 câu — em chọn 5 lô hợp anh/chị nhất</h2>
-      <p style="color:rgba(255,255,255,.72);font-size:.9rem;margin:0 0 18px">Miễn phí · 10 giây · không cần để lại số ngay</p>
 
       <div id="dmQuiz">
         <div class="dm-q" data-q="budget">
@@ -279,8 +278,8 @@
     var budgetTxt={"u1000":"dưới 1 tỷ","1000-2000":"1–2 tỷ","2000-4000":"2–4 tỷ","o4000":"trên 4 tỷ"}[ans.budget];
     document.getElementById('dmResultLead').textContent='Với '+budgetTxt+', '+goalTxt+' — đây là '+top.length+' lô em thấy hợp anh/chị nhất:';
     document.getElementById('dmCards').innerHTML=top.map(card).join('');
-    var whenTxt=ans.when==='now'?'Mình tính mua trong 1 tháng. ':ans.when==='soon'?'Mình tính mua trong 1–3 tháng. ':'';
-    var msg='Chào anh/chị, em xem web thấy tầm '+budgetTxt+' '+goalTxt+'. '+whenTxt+'Nhờ anh/chị chọn giúp lô hợp nhất.';
+    var whenTxt=ans.when==='now'?' Tôi tính mua trong 1 tháng.':ans.when==='soon'?' Tôi tính mua trong 1–3 tháng.':'';
+    var msg='Gửi tôi các lô đất Nam Ban tầm '+budgetTxt+' '+goalTxt+'.'+whenTxt;
     var mEl=document.getElementById('dmMsg');
     mEl.textContent=msg+'  — bấm để copy';
     mEl.onclick=function(){ if(navigator.clipboard){navigator.clipboard.writeText(msg);mEl.textContent='Đã copy — mở Zalo dán vào là xong';} };
@@ -332,7 +331,7 @@
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 21V9l9-6 9 6v12M3 21h18M3 21v-6h4v6M17 21v-6h4v6M10 13h4v8h-4z" stroke="#C9A84C" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
       <span style="flex:1;min-width:0">
-        <span style="display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;margin-bottom:5px">Đặc sản Nam Ban · cập nhật liên tục</span>
+        <span style="display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;margin-bottom:5px">Đặc sản đất nền Nam Ban · cập nhật liên tục</span>
         <strong style="display:block;color:#fff;font-size:1.16rem;line-height:1.3;letter-spacing:-.01em">Cụm Mới — đất vừa phân lô, bán rất nhanh</strong>
         <span style="display:block;color:rgba(255,255,255,.72);font-size:.86rem;margin-top:4px">Xem cụm đang có, hoặc nhận cụm vừa mở trước khi lên web</span>
       </span>
