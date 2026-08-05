@@ -42,7 +42,7 @@ ltabs.forEach(t=>t.addEventListener('click',()=>{
   ltabs.forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
   const f=t.dataset.type;
-  cards.forEach(c=>c.classList.toggle('hidden',f!=='all'&&c.dataset.type!==f));
+  cards.forEach(c=>c.classList.toggle('hidden',f==='deal'?c.dataset.deal!=='1':(f!=='all'&&c.dataset.type!==f)));
 }));
 
 // QR Code – Zalo
