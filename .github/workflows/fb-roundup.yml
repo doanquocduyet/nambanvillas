@@ -1,0 +1,27 @@
+name: Bài tổng hợp tuần lên Facebook
+
+# Mỗi Chủ nhật: đăng 1 BÀI TỔNG HỢP "hàng mới tuần qua" lên Page (1 post, không spam từng tin).
+# Cần secret FB_PAGE_TOKEN. Thiếu token -> thoát êm.
+
+on:
+  schedule:
+    - cron: '0 11 * * 0'   # 11:00 UTC CN = 18:00 giờ VN Chủ nhật
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  roundup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # cần lịch sử đầy đủ để đếm tin thêm mới trong 7 ngày
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Đăng bài tổng hợp tuần
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python scripts/fb-roundup.py 7
