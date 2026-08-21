@@ -376,3 +376,39 @@
 - homedy: HTTP 200
   → 1 tin khớp
 ### TỔNG: 26 tin thô (đã gộp trùng)
+
+## 2026-08-18
+- Chotot OK: 30 tin, 16 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 200
+  → 15 tin khớp
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 28 tin thô (đã gộp trùng)
+
+## 2026-08-19
+- Chotot OK: 30 tin, 15 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 200
+  → 15 tin khớp
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 27 tin thô (đã gộp trùng)
+
+## 2026-08-20
+- Chotot OK: 30 tin, 13 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 200
+  → 15 tin khớp
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 25 tin thô (đã gộp trùng)
+
+## 2026-08-21
+- Chotot OK: 30 tin, 14 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 200
+  → 15 tin khớp
+- homedy: HTTP 200
+  → 1 tin khớp
+### TỔNG: 26 tin thô (đã gộp trùng)
