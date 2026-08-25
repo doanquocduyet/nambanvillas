@@ -283,7 +283,7 @@ xanh rừng, KHÔNG phải xanh dương off-brand như bản lỗi cũ).
 # PHẦN 3 — INVENTORY ĐẦY ĐỦ (14 TIN ĐĂNG THẬT)
 
 > Tất cả là tin thật, ảnh thực tế (`/images/listings/<slug>/`), **đã bỏ hết số
-> điện thoại chủ đất** — mọi liên hệ funnel qua 0938 227 988 / Zalo.
+> điện thoại chủ đất** — mọi liên hệ funnel qua 0978 758 788 / Zalo.
 
 ## 3.1. Đất nền (11 lô) — `/dat-nen/<slug>/`
 | Slug | Tiêu đề | Giá | Diện tích | Ảnh |
@@ -332,7 +332,7 @@ xa-nam-ban-sap-nhap.
 - Đặc sản: cà phê Yellow Bourbon, dâu tằm tơ lụa.
 - Khí hậu: 19–22°C quanh năm.
 - Schema geo: lat 11.7586, long 108.2432; openingHours Mo-Su 07:00-21:00.
-- Hotline: 0938 227 988 (+84938227988). Zalo: zalo.me/0938227988.
+- Hotline: 0978 758 788 (+84978758788). Zalo: zalo.me/0978758788.
 
 ---
 
@@ -516,7 +516,7 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
   "name": "Nam Ban Villas",
   "description": "Mua bán đất nền Nam Ban, nhà đất Nam Ban Lâm Đồng. Phân lô sổ đỏ, biệt thự nghỉ dưỡng cao nguyên.",
   "url": "https://nambanvillas.vn",
-  "telephone": "+84938227988",
+  "telephone": "+84978758788",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Nam Ban",
@@ -554,8 +554,8 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
       <a href="/lien-he/" class="nav-link">Liên Hệ</a>
     </nav>
     <div class="header-right">
-      <a href="tel:0938227988" class="hotline-btn">
-        0938 227 988
+      <a href="tel:0978758788" class="hotline-btn">
+        0978 758 788
       </a>
       <button class="menu-btn" id="menuBtn" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -768,7 +768,7 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
       <p style="text-align:center;font-size:.78rem;color:#9B9B9B;margin-top:10px">Sử dụng nút +/− hoặc cuộn chuột để zoom · Kéo để di chuyển bản đồ</p>
     </div>
     <div style="text-align:center;margin-top:24px">
-      <a href="https://zalo.me/0938227988" target="_blank" class="qh-cta-btn">
+      <a href="https://zalo.me/0978758788" target="_blank" class="qh-cta-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="2"/></svg>
         Check Quy Hoạch Miễn Phí
       </a>
@@ -818,7 +818,7 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
         <div class="pain-num">02</div>
         <h3 class="pain-q">Không có thời gian đi khảo sát — ở tận TP.HCM</h3>
         <p class="pain-a">Chúng tôi có thể khảo sát thay bạn: ảnh thực tế, video, check quy hoạch, đo đạc, phỏng vấn hàng xóm, kiểm tra lũ lụt, mất điện nước. Bạn ra quyết định dựa trên dữ liệu đầy đủ mà không cần phải đi.</p>
-        <a href="https://zalo.me/0938227988" target="_blank" class="pain-cta">Nhờ khảo sát thay qua Zalo →</a>
+        <a href="https://zalo.me/0978758788" target="_blank" class="pain-cta">Nhờ khảo sát thay qua Zalo →</a>
       </div>
 
       <div class="pain-card">
@@ -907,12 +907,12 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
     'nghi-duong':{
       text:'Nam Ban cách Đà Lạt 25 phút, khí hậu mát quanh năm, thị trường đất nền và đất vườn đa dạng diện tích từ 200m² trở lên. Nhiều gia đình từ TP.HCM, Hà Nội và nhiều tỉnh thành đang thực sự về Nam Ban để xây ngôi nhà second home mơ ước cho gia đình.',
       cta1:{label:'Xem đất phù hợp',href:'/dat-nen/'},
-      cta2:{label:'Hỏi thêm qua Zalo',href:'https://zalo.me/0938227988',ext:true}
+      cta2:{label:'Hỏi thêm qua Zalo',href:'https://zalo.me/0978758788',ext:true}
     },
     'dau-tu':{
       text:'Từ 2022 đến nay, đất Nam Ban có những nơi tăng 30–50% do nhiều nguyên nhân khách quan và nội tại. Chúng tôi sẽ phân tích thẳng khu vực nào, lô nào còn tiềm năng thật sự — không chỉ nói theo cảm tính.',
       cta1:{label:'Xem phân tích thị trường',href:'/thi-truong/'},
-      cta2:{label:'Hỏi thẳng qua Zalo',href:'https://zalo.me/0938227988',ext:true}
+      cta2:{label:'Hỏi thẳng qua Zalo',href:'https://zalo.me/0978758788',ext:true}
     },
     'dinh-cu':{
       text:'Nam Ban đang đổi thay nhanh: trường học, chợ mới, café, dịch vụ đang mọc lên. Khí hậu 19–22°C quanh năm. Chúng tôi sẽ giới thiệu những khu phù hợp để ở lâu dài — không chỉ để đầu tư.',
@@ -968,7 +968,7 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
       <p><strong>Địa chỉ:</strong> TT. Nam Ban, Lâm Hà, Lâm Đồng</p>
       <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
         <p style="color:white;font-size:.85rem;font-weight:700;margin-bottom:8px">Kết nối</p>
-        <p><a href="tel:0938227988" style="color:#C9A84C;font-size:.88rem;">📞 0938 227 988</a> · <a href="https://zalo.me/0938227988" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
+        <p><a href="tel:0978758788" style="color:#C9A84C;font-size:.88rem;">📞 0978 758 788</a> · <a href="https://zalo.me/0978758788" target="_blank" style="color:#C9A84C;font-size:.88rem;">Zalo</a></p>
       </div>
     </div>
     <div class="footer-links">
@@ -1000,13 +1000,13 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
     <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     <span>Tìm đất</span>
   </a>
-  <a href="tel:0938227988" class="mnav-item mnav-call" aria-label="Gọi điện">
+  <a href="tel:0978758788" class="mnav-item mnav-call" aria-label="Gọi điện">
     <span class="mnav-call-circle">
       <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.4 1.13 2 2 0 012.38.93h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.77a16 16 0 006.29 6.29l1.16-1.16a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="white" stroke-width="2"/></svg>
     </span>
     <span>Gọi ngay</span>
   </a>
-  <a href="https://zalo.me/0938227988" target="_blank" class="mnav-item">
+  <a href="https://zalo.me/0978758788" target="_blank" class="mnav-item">
     <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><text x="12" y="16.5" text-anchor="middle" font-size="11" font-weight="800" font-family="Arial,sans-serif" fill="currentColor">Z</text></svg>
     <span>Zalo</span>
   </a>
@@ -1048,7 +1048,7 @@ nambanvillas.vn xuất hiện top 3. "Một người tin thật > 1000 người 
   <h3 class="sell-widget-title">Bạn có câu hỏi về<br>mua/bán đất Nam Ban?</h3>
   <p class="sell-widget-desc">Hỏi thẳng · Trả lời thật</p>
   <div class="sell-widget-actions">
-    <a href="https://zalo.me/0938227988" target="_blank" class="sell-widget-btn sell-widget-btn-primary">Nhắn Zalo</a>
+    <a href="https://zalo.me/0978758788" target="_blank" class="sell-widget-btn sell-widget-btn-primary">Nhắn Zalo</a>
   </div>
 </div>
 <script>
@@ -1546,8 +1546,8 @@ function makeQR(id,url,size){
   new QRCode(el,{text:url,width:size||120,height:size||120,colorDark:'#1A3D2B',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
 }
 window.addEventListener('load',()=>{
-  makeQR('qrcode','https://zalo.me/0938227988',110);
-  makeQR('qrcodeLarge','https://zalo.me/0938227988',180);
+  makeQR('qrcode','https://zalo.me/0978758788',110);
+  makeQR('qrcodeLarge','https://zalo.me/0978758788',180);
 });
 
 // Animate on scroll
@@ -1655,7 +1655,7 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
 ```
 # Nam Ban Villas
 
-> Nam Ban Villas là đơn vị môi giới bất động sản chuyên sâu về vùng Nam Ban, huyện Lâm Hà, tỉnh Lâm Đồng — khu vực cao nguyên gần Đà Lạt. Website cung cấp thông tin đất nền, nhà bán, phân tích thị trường, quy hoạch và đời sống tại Nam Ban. Mọi bất động sản giới thiệu đều đã kiểm tra pháp lý. Hotline/Zalo: 0938 227 988.
+> Nam Ban Villas là đơn vị môi giới bất động sản chuyên sâu về vùng Nam Ban, huyện Lâm Hà, tỉnh Lâm Đồng — khu vực cao nguyên gần Đà Lạt. Website cung cấp thông tin đất nền, nhà bán, phân tích thị trường, quy hoạch và đời sống tại Nam Ban. Mọi bất động sản giới thiệu đều đã kiểm tra pháp lý. Hotline/Zalo: 0978 758 788.
 
 ## Thông tin nền tảng về Nam Ban (dữ kiện chính xác)
 
@@ -1672,7 +1672,7 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Hỏi Đáp Mua Đất Nam Ban](https://nambanvillas.vn/hoi-dap/): 29 câu hỏi thường gặp về pháp lý, giá cả, quy hoạch, thủ tục, cuộc sống tại Nam Ban — nguồn trả lời nhanh và chính xác nhất.
-- [Liên hệ](https://nambanvillas.vn/lien-he/): Hotline và Zalo 0938 227 988.
+- [Liên hệ](https://nambanvillas.vn/lien-he/): Hotline và Zalo 0978 758 788.
 
 ## Đất nền đang bán
 

@@ -14,7 +14,7 @@ import listing_common as lc
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 GRAPH = "https://graph.facebook.com/v21.0"
-HOTLINE = "0938 227 988"
+HOTLINE = "0978 758 788"
 CTX = ssl.create_default_context()
 UA = {"User-Agent": "NamBanVillas-Roundup/1.0"}
 DAYS = int(sys.argv[1]) if len(sys.argv) > 1 else 7

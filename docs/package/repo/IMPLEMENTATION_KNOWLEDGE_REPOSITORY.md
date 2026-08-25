@@ -29,7 +29,7 @@
 - Automation AI: `daily-listings.mjs` gọi Claude API `claude-sonnet-5` + tool `web_search_20250305`.
 
 ## G. SEO / GEO TECHNICAL IMPLEMENTATION
-- **Schema JSON-LD:** RealEstateAgent (telephone +84938227988, address PostalAddress, areaServed, geo GeoCoordinates, openingHours Mo-Su 07:00-21:00, priceRange $$, sameAs[https://zalo.me/0938227988], knowsAbout[]) + WebSite (SearchAction + speakable cssSelector[.hero-title,.hero-sub]) + FAQPage (76 chỗ; hoi-dap +speakable cssSelector[summary]) + Product+Offer từng lô + Service (dich-vu: provider+areaServed Place+serviceType[]+offers price 0) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
+- **Schema JSON-LD:** RealEstateAgent (telephone +84978758788, address PostalAddress, areaServed, geo GeoCoordinates, openingHours Mo-Su 07:00-21:00, priceRange $$, sameAs[https://zalo.me/0978758788], knowsAbout[]) + WebSite (SearchAction + speakable cssSelector[.hero-title,.hero-sub]) + FAQPage (76 chỗ; hoi-dap +speakable cssSelector[summary]) + Product+Offer từng lô + Service (dich-vu: provider+areaServed Place+serviceType[]+offers price 0) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
 - **Toạ độ 11.7586, 108.2432** (đúng tâm Nam Ban; KHÔNG lệch — Greenspace từng lệch 108.383).
 - **Địa danh "Xã Nam Ban"** (sửa "TT. Nam Ban" 30 chỗ); giữ "thị trấn" trong bài kể sáp nhập.
 - **llms.txt** entity-focused (chỉ trang Villas sở hữu, số 2-7tr, Q&A nhanh). **robots.txt**: 8+ AI bot (GPTBot, OAI-SearchBot, ChatGPT-User, Google-Extended, PerplexityBot, Perplexity-User, ClaudeBot, Claude-Web, anthropic-ai, CCBot, Applebot-Extended, Bingbot); Disallow /admin/ /subscribe/.

@@ -38,7 +38,7 @@ Lâm Hà, Lâm Đồng
 
 **Số điện thoại:**
 ```
-0938 227 988
+0978 758 788
 ```
 
 **Website:**
@@ -53,7 +53,7 @@ https://nambanvillas.vn
 ## BƯỚC 2 — MÔ TẢ (dán vào ô "Mô tả doanh nghiệp", tối đa 750 ký tự)
 
 ```
-Nam Ban Villas chuyên đất nền, đất vườn và nhà bán tại Nam Ban (xã Nam Ban, huyện Lâm Hà, tỉnh Lâm Đồng) — cao nguyên gần Đà Lạt 35–40 phút. Chúng tôi làm việc theo tinh thần "đọc rủi ro, không bán giấc mơ": mỗi lô đều được kiểm tra sổ, quy hoạch, ranh mốc và hiện trạng thực tế trước khi giới thiệu — lô nào không sạch, chúng tôi không đưa lên. Có lô từ 390 triệu đến vài tỷ, nhiều lô sẵn thổ cư và sổ hồng riêng. Hỗ trợ kiểm pháp lý lô giúp khách miễn phí, công chứng và sang tên. Gọi hoặc Zalo 0938 227 988 để được tư vấn thẳng thắn, đúng nhu cầu và ngân sách.
+Nam Ban Villas chuyên đất nền, đất vườn và nhà bán tại Nam Ban (xã Nam Ban, huyện Lâm Hà, tỉnh Lâm Đồng) — cao nguyên gần Đà Lạt 35–40 phút. Chúng tôi làm việc theo tinh thần "đọc rủi ro, không bán giấc mơ": mỗi lô đều được kiểm tra sổ, quy hoạch, ranh mốc và hiện trạng thực tế trước khi giới thiệu — lô nào không sạch, chúng tôi không đưa lên. Có lô từ 390 triệu đến vài tỷ, nhiều lô sẵn thổ cư và sổ hồng riêng. Hỗ trợ kiểm pháp lý lô giúp khách miễn phí, công chứng và sang tên. Gọi hoặc Zalo 0978 758 788 để được tư vấn thẳng thắn, đúng nhu cầu và ngân sách.
 ```
 
 ---
@@ -67,7 +67,7 @@ Nam Ban Villas chuyên đất nền, đất vườn và nhà bán tại Nam Ban 
 ---
 
 ## BƯỚC 4 — XÁC MINH
-Google sẽ xác minh qua **điện thoại/tin nhắn** (nhập số 0938 227 988 → nhận mã → gõ vào), hoặc video/thư tùy trường hợp. Làm theo hướng dẫn trên màn hình. Xong là hồ sơ "live".
+Google sẽ xác minh qua **điện thoại/tin nhắn** (nhập số 0978 758 788 → nhận mã → gõ vào), hoặc video/thư tùy trường hợp. Làm theo hướng dẫn trên màn hình. Xong là hồ sơ "live".
 
 ---
 
@@ -80,7 +80,7 @@ Google sẽ xác minh qua **điện thoại/tin nhắn** (nhập số 0938 227 9
 
 ## MẸO QUAN TRỌNG
 - **Tên–Địa chỉ–SĐT (NAP) phải KHỚP y hệt** với website và mọi nơi khác → Google mới gộp thành 1 thực thể tin cậy.
-- SĐT dùng đúng **0938 227 988** ở mọi chỗ.
+- SĐT dùng đúng **0978 758 788** ở mọi chỗ.
 - Đừng nhồi từ khoá vào tên ("Nam Ban Villas - Đất Nền Giá Rẻ...") → Google phạt. Giữ đúng "Nam Ban Villas".
 
 ---

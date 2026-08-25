@@ -1,7 +1,7 @@
 # Quảng cáo (Boost) bài đăng trên Page — cấu hình tối ưu cho đất Nam Ban
 
 > Bài đã tự đăng sẵn ảnh + nội dung đầy đủ. Boost = trả ít tiền để Facebook đẩy bài tới
-> đúng người có khả năng mua. Mục tiêu: **khách bấm Gọi / nhắn Zalo 0938 227 988.**
+> đúng người có khả năng mua. Mục tiêu: **khách bấm Gọi / nhắn Zalo 0978 758 788.**
 
 ## Cách boost (mỗi bài ~1 phút)
 
@@ -27,7 +27,7 @@
 - **Mỗi tuần chỉ boost 1–2 bài mạnh nhất** (lô đẹp, giá tốt) — đừng boost dàn trải.
 - Chạy 2 ngày, xem bài nào **nhiều tin nhắn/bình luận hỏi giá** → dồn tiền vào bài đó.
 - Bài nào 2 ngày không ai hỏi → tắt, khỏi tiếc.
-- **Luôn để số 0938 227 988 trong bài** + trả lời tin nhắn trong 5–10 phút (Facebook ưu tiên Page trả lời nhanh).
+- **Luôn để số 0978 758 788 trong bài** + trả lời tin nhắn trong 5–10 phút (Facebook ưu tiên Page trả lời nhanh).
 
 ## Đo hiệu quả
 

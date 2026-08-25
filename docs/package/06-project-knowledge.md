@@ -31,7 +31,7 @@ Phố Thông Villas 2×130m²(80 thổ) **568tr/lô** · Thung Lũng 530m² view
 ## 4. CONTENT KNOWLEDGE
 - Triết lý: **"Đọc rủi ro, không bán giấc mơ"** — dám nói đừng mua, số thật không tô hồng.
 - **Tách bạch tuyệt đối**: lô Villas ĐÃ KIỂM TRA (sổ/quy hoạch/tranh chấp) vs **tin thị trường CHƯA KIỂM CHỨNG** (trang tin-rao — ghi rõ, không lẫn).
-- Mọi tin/bài dẫn về **Zalo 0938 227 988** để Villas kiểm giúp miễn phí = biến traffic (kể cả tin người khác) thành lead của mình.
+- Mọi tin/bài dẫn về **Zalo 0978 758 788** để Villas kiểm giúp miễn phí = biến traffic (kể cả tin người khác) thành lead của mình.
 - **Testimonial thật** (trang chủ): anh Minh Tuấn (kỹ sư Đà Lạt), chị Thu Hằng (DN TP.HCM), anh Việt Anh (NĐT Bình Dương) — không bịa thêm.
 - Namban Notes = editorial, giọng câu chuyện thật ("người đàn ông quyết định không mua").
 - Cụm nội dung tự động: **tin-rao (hàng ngày)** + **giá hôm nay (hàng tuần)** — theo `FORM-DANG-TIN.md`.

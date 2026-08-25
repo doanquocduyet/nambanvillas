@@ -15,7 +15,7 @@
 - Ảnh: xử bằng **PIL** (KHÔNG có ImageMagick/cv2). `ImageOps.exif_transpose` + `ImageOps.fit` cover-crop **1200×600 q82 progressive**; hero resize max 1600 wide. `.article-img` bo góc 12px. `Date.now/Math.random` KHÔNG dùng trong script sandbox (workflow node thì dùng bình thường).
 
 ## 3. SEO / GEO TECHNICAL (kịch trần on-page)
-- **Schema (JSON-LD):** RealEstateAgent (trang chủ: telephone +84938227988, address, areaServed, geo, openingHours Mo-Su 07:00-21:00, priceRange $$, **sameAs**[zalo], **knowsAbout**) + WebSite (SearchAction + **speakable** [.hero-title/.hero-sub]) + **FAQPage** (76 chỗ, +speakable ở hoi-dap) + **Product/Offer từng lô** + **Service** (dich-vu: provider RealEstateAgent + areaServed Place + serviceType[] + offers) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
+- **Schema (JSON-LD):** RealEstateAgent (trang chủ: telephone +84978758788, address, areaServed, geo, openingHours Mo-Su 07:00-21:00, priceRange $$, **sameAs**[zalo], **knowsAbout**) + WebSite (SearchAction + **speakable** [.hero-title/.hero-sub]) + **FAQPage** (76 chỗ, +speakable ở hoi-dap) + **Product/Offer từng lô** + **Service** (dich-vu: provider RealEstateAgent + areaServed Place + serviceType[] + offers) + BreadcrumbList + Article/NewsArticle + **spatialCoverage** (Place Nam Ban/Lâm Hà/Lâm Đồng, 26 bài).
 - **Toạ độ 11.7586, 108.2432** (ĐÚNG tâm Nam Ban — KHÔNG lệch; Greenspace từng lệch 108.383 ~10km, Villas không dính).
 - Địa danh **"Xã Nam Ban"** (sửa "TT. Nam Ban" 30 chỗ); giữ "thị trấn" chỉ trong bài kể sáp nhập (đúng lịch sử).
 - **`llms.txt`** entity-focused (chỉ trang Villas sở hữu: lô/giá/pháp lý/FAQ; bỏ trang nhường Panorama; số thật 2-7tr; Q&A trả lời nhanh).
