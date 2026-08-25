@@ -20,7 +20,7 @@ GREEN = (26, 61, 43)
 GOLD = (201, 168, 76)
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONTB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-HOTLINE = "0938 227 988"
+HOTLINE = "0978 758 788"
 WEB = "nambanvillas.vn"
 
 

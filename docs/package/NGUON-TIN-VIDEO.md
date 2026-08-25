@@ -22,7 +22,7 @@
 
 ## LUẬT (mọi nguồn)
 - Chỉ bóc **DỮ KIỆN** (giá/diện tích/thổ cư/vị trí/sổ) + viết lại bằng lời mình. **KHÔNG tải/đăng lại video/ảnh/thumbnail** (bản quyền). `source` = link gốc, ghi "Nguồn: video kênh [tên]".
-- Tin thị trường **CHƯA kiểm chứng** — khác lô Villas đã kiểm tra. Dẫn về Zalo 0938 227 988.
+- Tin thị trường **CHƯA kiểm chứng** — khác lô Villas đã kiểm tra. Dẫn về Zalo 0978 758 788.
 
 ## BẬT / VẬN HÀNH
 - **Tự động YouTube:** tạo YouTube Data API key → GitHub Secrets `YOUTUBE_API_KEY`. (Web đã chạy nếu có ANTHROPIC_API_KEY.)

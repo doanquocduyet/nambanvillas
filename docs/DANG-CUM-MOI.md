@@ -1,7 +1,7 @@
 # HƯỚNG DẪN ĐĂNG "CỤM MỚI" — cho box Claude Code đăng tin
 
 > Mục tiêu: mỗi khi có 1 CỤM đất mới (nhiều nền phân lô cùng khu), đăng ĐÚNG 3 nơi
-> để nó tự hiện lên trang Cụm Mới và dẫn khách về Gọi/Zalo 0938 227 988.
+> để nó tự hiện lên trang Cụm Mới và dẫn khách về Gọi/Zalo 0978 758 788.
 > KHÔNG bịa số liệu. Chỉ đăng cụm THẬT (tên khu, số nền, diện tích, giá thật).
 
 Phân biệt: **CỤM** = nhiều nền cùng 1 khu vừa phân lô (đăng theo hướng dẫn này).

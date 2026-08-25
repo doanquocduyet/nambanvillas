@@ -14,7 +14,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - **Ngoại lệ được phép (để tự lo FB):** ô đăng tin ĐƯỢC gỡ 1 dòng trong `data/fb-posted.json` + chạy lại Action `fb-auto-post.yml` để **đăng lại 1 tin cũ** (xem mục ⭐ FACEBOOK). Chỉ xoá ĐÚNG 1 URL của tin đó — **TUYỆT ĐỐI KHÔNG xoá cả file / nhiều dòng** (sẽ khiến robot đăng lại hàng loạt = spam khoá nick).
 
 ## ⭐ FACEBOOK ĐÃ TỰ ĐỘNG — ĐỪNG SOẠN BÀI COPY TAY NỮA
-- Web ĐÃ CÓ **robot tự đăng Facebook** (GitHub Action `fb-auto-post.yml`). Mỗi tin MỚI khi lên `main` + có trong `sitemap.xml` là **tự đăng lên Page facebook.com/nambanvillas** trong vài phút: **đủ ảnh (album) + thông số + mô tả + hotline 0938 227 988 + link web**.
+- Web ĐÃ CÓ **robot tự đăng Facebook** (GitHub Action `fb-auto-post.yml`). Mỗi tin MỚI khi lên `main` + có trong `sitemap.xml` là **tự đăng lên Page facebook.com/nambanvillas** trong vài phút: **đủ ảnh (album) + thông số + mô tả + hotline 0978 758 788 + link web**.
 - ⛔ **KHÔNG được nói "cháu chưa nối được Facebook".** KHÔNG soạn caption copy-paste tay cho chú. KHÔNG tự bịa số điện thoại cũ. Việc đăng FB là TỰ ĐỘNG, ô này không cần làm gì thêm.
 - Để robot đăng đúng, mỗi tin mới ô này CHỈ cần đảm bảo (vốn đã là quy trình chuẩn):
   1. Có trang `/(dat-nen|nha-ban)/<slug>/index.html` với `og:title` + `og:image` (1.jpg).
@@ -27,7 +27,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 **Đăng lại 1 tin CŨ lên FB (khi enrich/cập nhật tin đã đăng, muốn nó lên Page lại):** ô đăng tin TỰ làm được, không cần ô kia:
   1. Mở `data/fb-posted.json`, tìm dòng đúng URL tin đó (ví dụ `"https://nambanvillas.vn/dat-nen/<slug>/": {...}`) → **xoá đúng 1 dòng entry đó** (giữ nguyên mọi dòng khác). Commit + merge `main`.
   2. Chạy lại Action: qua GitHub MCP gọi `run_workflow` với `workflow_id: fb-auto-post.yml`, `ref: main` (hoặc mở https://github.com/doanquocduyet/nambanvillas/actions → "Tự đăng tin mới lên Facebook Page" → Run workflow).
-  3. Robot đăng lại tin đó (đủ album + thông số + số 0938 227 988), tự ghi lại vào `fb-posted.json`.
+  3. Robot đăng lại tin đó (đủ album + thông số + số 0978 758 788), tự ghi lại vào `fb-posted.json`.
   ⚠️ CHỈ xoá đúng 1 URL. Xoá nhiều/cả file = robot đăng lại hàng loạt → FB gắn cờ spam → khoá nick.
 
 **BƯỚC 0 — NẠP DỰ ÁN (đọc trước khi làm gì):**
@@ -49,7 +49,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 - Giọng: trầm, thật, ĐỌC RỦI RO (mỗi tin nêu 1 điểm cần kiểm). CẤM tính từ rỗng: tuyệt đẹp, lý tưởng, hoàn hảo, cực hiếm, số 1.
 - KHÔNG bịa số. KHÔNG lấy SĐT/tên người bán. KHÔNG tải/đăng lại ảnh/video/thumbnail của người khác (bản quyền) — chỉ bóc DỮ KIỆN + viết lại; ảnh chỉ dùng ảnh chủ web tự chụp/có bản quyền.
 - Ảnh: nén ~100KB, strip EXIF, đặt tên chuẩn SEO, alt mô tả đúng cảnh.
-- Số liệu chuẩn toàn site: Nam Ban cách Đà Lạt ~25km, sân bay Liên Khương ~22km, hotline 0938 227 988.
+- Số liệu chuẩn toàn site: Nam Ban cách Đà Lạt ~25km, sân bay Liên Khương ~22km, hotline 0978 758 788.
 
 **KỸ THUẬT (khắc cứng):**
 - CẤM regex DOTALL `.*?` để xoá/sửa khối HTML. Dùng str_replace khớp CHÍNH XÁC, DUY NHẤT.
@@ -116,7 +116,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 10. **Gallery**: nếu thumb dùng `onclick="swapMain(this)"` thì trang PHẢI có hàm `swapMain` (inline cuối trang), nếu không bấm ảnh không đổi.
 11. **Lô đã bán/cọc**: KHÔNG xóa bài — thêm banner "Đã đặt cọc/đã bán" + badge + Offer `SoldOut`, dẫn khách sang lô tương tự.
 12. **KHÔNG chèn lại ô CTA "Muốn chắc trước khi xuống tiền?" (class `risk-cta`).** Ô này đã bị gỡ khỏi toàn site theo yêu cầu chú — đừng thêm lại vào tin mới. Liên hệ đã có ở price card + mobile nav.
-13. **Số điện thoại DUY NHẤT toàn site = 0938 227 988.** Không dùng số cũ 0978 758 788 ở bất cứ đâu (tel:, zalo.me/, schema `+84938227988`, chữ hiển thị).
+13. **Số điện thoại DUY NHẤT toàn site = 0978 758 788.** Không dùng số cũ 0978 758 788 ở bất cứ đâu (tel:, zalo.me/, schema `+84978758788`, chữ hiển thị).
 14. **Đủ 5 thứ cho robot FB tự đăng** (xem mục ⭐ FACEBOOK đầu phiếu): trang có og:title+og:image, ảnh gallery, bảng specs-table, đoạn Mô Tả, và ĐÃ thêm vào sitemap.xml.
 
 ## 📋 MẪU BÁO CÁO (sau khi xong — NGẮN GỌN)

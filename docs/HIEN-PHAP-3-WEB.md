@@ -5,7 +5,7 @@
 ═══════════════════════════════════════════════════════════════
 # PHẦN 0 — MỤC TIÊU TỐI THƯỢNG (đứng trên mọi luật SEO/keyword)
 ═══════════════════════════════════════════════════════════════
-**Đích cuối cùng của Villas = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0938 227 988.**
+**Đích cuối cùng của Villas = làm cho khách LIÊN HỆ: nhắn Zalo hoặc GỌI ĐIỆN 0978 758 788.**
 Mọi keyword, canonical, thiết kế, nội dung chỉ là phương tiện dẫn khách tới nút Gọi/Zalo. Trang đẹp, top Google mà không ai gọi = thất bại. Ưu tiên mọi quyết định theo hướng tăng lượt gọi/nhắn Zalo.
 
 **Chuẩn thực thi (bất biến):** mọi thứ làm ra phải đạt **chuẩn AEO/SEO/GEO/UX/UI cao nhất hiện có**, và **luôn cập nhật công nghệ + thuật toán + best-practice mới nhất, xịn nhất** (schema mới, Core Web Vitals, cách AI/Google index & trích dẫn hiện hành). Có cách mới tốt hơn → nâng cấp ngay, không bám cái cũ.

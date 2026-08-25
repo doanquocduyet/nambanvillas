@@ -52,8 +52,8 @@ function makeQR(id,url,size){
   new QRCode(el,{text:url,width:size||120,height:size||120,colorDark:'#1A3D2B',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
 }
 window.addEventListener('load',()=>{
-  makeQR('qrcode','https://zalo.me/0938227988',110);
-  makeQR('qrcodeLarge','https://zalo.me/0938227988',180);
+  makeQR('qrcode','https://zalo.me/0978758788',110);
+  makeQR('qrcodeLarge','https://zalo.me/0978758788',180);
 });
 
 // Animate on scroll
@@ -131,7 +131,7 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
   if(g('purpose')) msg+='\nNhu cầu: '+g('purpose');
   if(g('note'))    msg+='\nCâu hỏi: '+g('note');
   try{ navigator.clipboard && navigator.clipboard.writeText(msg); }catch(_){}
-  window.open('https://zalo.me/0938227988','_blank');
+  window.open('https://zalo.me/0978758788','_blank');
   const btn=f.querySelector('.form-submit');
   btn.textContent='✓ Đã mở Zalo — chỉ cần DÁN (Paste) và bấm gửi';
   btn.style.background='#16a34a';
