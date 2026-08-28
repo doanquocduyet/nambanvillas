@@ -1,0 +1,28 @@
+name: Cập nhật tháng Hub Cụm Mới
+
+on:
+  schedule:
+    # 00:00 UTC ngày mùng 1 hằng tháng = 07:00 giờ Việt Nam
+    - cron: '0 0 1 * *'
+  workflow_dispatch:  # cho phép chạy tay từ tab Actions
+
+jobs:
+  cap-nhat-thang:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Cập nhật tháng trong tiêu đề hub
+        run: python3 scripts/cap-nhat-thang-hub.py
+
+      - name: Commit và push nếu có thay đổi
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add cum-moi-nam-ban/index.html
+          git diff --staged --quiet || git commit -m "chore: tự cập nhật tháng hub Cụm Mới $(date +'%Y-%m') [skip ci]"
+          git push
