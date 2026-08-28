@@ -29,6 +29,7 @@
 ### CÁCH LÀM VIỆC (bất biến)
 - **Tập trung làm ra kết quả** rồi báo cáo NGẮN GỌN. KHÔNG phân tích lan man, KHÔNG nói nhiều.
 - Báo cáo = việc đã xong + link bấm. Bỏ đoạn giải thích dài, bỏ liệt kê phương án không làm.
+- **Việc hiển nhiên/auto KHÔNG báo cáo** (đổi sđt môi giới → hotline site, làm mờ PII trên sổ/ảnh, nén ảnh, che tên/CCCD…) — đó là mặc định, làm ngầm. Chỉ báo việc cần chú biết hoặc cần chú quyết.
 - Việc nhỏ + rõ → làm luôn, không hỏi. Chỉ hỏi khi thật sự cần chú quyết.
 
 ### CHUẨN CAO NHẤT — AEO/SEO/GEO/UX/UI + CÔNG NGHỆ MỚI NHẤT
