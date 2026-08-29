@@ -87,11 +87,17 @@
 
 ---
 
-## NGUYÊN TẮC SỐ 5 — TINH THẦN THƯƠNG HIỆU
+## NGUYÊN TẮC SỐ 5 — TINH THẦN THƯƠNG HIỆU (FRIENDLY LUXURY)
+
+**Định hướng tối cao: FRIENDLY LUXURY — sang trọng nhưng dễ gần. Ưu tiên số 1 là TRẢI NGHIỆM NGƯỜI DÙNG và việc khách BẤM LIÊN HỆ. Đẹp mà dễ chịu, dễ gần, đơn giản — không xa cách, không phô trương.**
 
 - Định vị: "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua.
-- Giọng văn: thẳng, số thật, không tính từ rỗng ("tuyệt đẹp", "lý tưởng").
-- Thẩm mỹ: "Im lặng mà sang" — không emoji, không banner, không gấp gáp.
+- **Giọng văn:** thẳng, số thật, không tính từ rỗng ("tuyệt đẹp", "lý tưởng"). Thân thiện qua sự RÕ RÀNG & CHÂN THÀNH, KHÔNG qua chữ sến/trẻ con ("chào bạn", "nhắn mình", "xem thử" → CẤM).
+  - **[CẤM] Hạn chế tối đa xưng hô ngôi thứ nhất** (mình / tôi / em / chúng tôi / chúng mình). Cần nhắc chủ thể → viết **"Nam Ban Villas"** (ngôi thứ ba).
+  - Vẫn giữ chất đẳng cấp, người lớn, đáng tin — thân thiện chứ không xuề xòa.
+- **Thẩm mỹ FRIENDLY LUXURY:** giữ xanh (#1A3D2B) + gold (#C9A84C) làm nhận diện, nhưng LÀM MỀM: bo góc tròn hơn (radius lớn), nền ấm, bóng đổ mềm, nhiều khoảng thở. Dễ chịu, dễ nhìn, không cứng/lạnh.
+  - **Icon:** dùng ICON TUYẾN MẢNH (line SVG, stroke ~1.7) cho ấm & thân thiện. **VẪN KHÔNG DÙNG EMOJI** (emoji màu = kém sang). Icon mảnh THAY cho emoji.
+  - **Liên hệ là chính:** nút Gọi/Zalo to, bo tròn, dễ bấm, hiện ở mọi nơi; mobile có thanh Gọi/Zalo dán đáy. Mọi thiết kế ưu tiên đưa khách tới hành động gọi/Zalo.
 - Không bịa bất cứ điều gì — số liệu, testimonial, tên người đều phải thật.
 
 ---
