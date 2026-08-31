@@ -1,9 +1,9 @@
 # Tự kiểm sức khỏe web — Nam Ban Villas
 
-> Cập nhật tự động: **24/08/2026 09:54** · (không cần Google Search Console)
+> Cập nhật tự động: **31/08/2026 14:50** · (không cần Google Search Console)
 
-- Tổng URL: **125**
-- ✅ Khỏe (200, không redirect, canonical khớp): **103**
+- Tổng URL: **147**
+- ✅ Khỏe (200, không redirect, canonical khớp): **125**
 - ↪️ Bị chuyển hướng: **0**
 - 🔀 Canonical lệch: **22**
 - ❌ Lỗi (404/không tải được): **0**
