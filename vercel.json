@@ -3,6 +3,11 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/dat-nen/cum-nam-ban-lake-view",
+      "destination": "/dat-nen/cum-nam-ban-bai-cong-lake-view/",
+      "permanent": true
+    },
+    {
       "source": "/dat-nen",
       "destination": "/dat-nen-nam-ban/",
       "permanent": true
