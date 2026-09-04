@@ -3,6 +3,11 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/thi-truong/du-an-nam-ban-sala",
+      "destination": "/thi-truong/",
+      "permanent": true
+    },
+    {
       "source": "/dat-nen/cum-nam-ban-topview",
       "destination": "/dat-nen/cum-nam-ban-dong-da-topview/",
       "permanent": true
