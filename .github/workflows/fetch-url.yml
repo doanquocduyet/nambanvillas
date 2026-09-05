@@ -1,0 +1,55 @@
+name: fetch-url (tạm — nghiên cứu SEO đối thủ)
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: URL cần tải & bóc cấu trúc
+        required: true
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tải trang & bóc cấu trúc SEO (in ra log, không lưu vào repo)
+        env:
+          URL: ${{ inputs.url }}
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
+          curl -sL --max-time 45 -A "$UA" -H 'Accept-Language: vi,en;q=0.9' "$URL" -o page.html || true
+          echo "BYTES=$(wc -c < page.html)"
+          echo "=====STRUCT====="
+          python3 - <<'PY'
+          import re
+          from collections import Counter
+          s=open('page.html',encoding='utf-8',errors='ignore').read()
+          g=lambda p:re.findall(p,s,re.S|re.I)
+          st=lambda h:re.sub(r'\s+',' ',re.sub(r'<[^>]+>','',h)).strip()
+          print("TITLE:",[st(x) for x in g(r'<title[^>]*>(.*?)</title>')])
+          print("DESC:",g(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)'))
+          print("CANON:",g(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']*)'))
+          print("ROBOTS:",g(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\']([^"\']*)'))
+          print("OG:",g(r'<meta[^>]+property=["\']og:(?:title|description|type|image)["\'][^>]+content=["\']([^"\']*)'))
+          for lvl in (1,2,3,4):
+              hs=[st(h) for h in g(r'<h%d[^>]*>(.*?)</h%d>'%(lvl,lvl))]
+              print("H%d(%d):"%(lvl,len(hs)),hs)
+          ld=g(r'<script[^>]+ld\+json[^>]*>(.*?)</script>')
+          print("LDJSON blocks:",len(ld))
+          for b in ld: print("LD>>",re.sub(r'\s+',' ',b)[:2500])
+          print("GENERATOR:",g(r'<meta[^>]+name=["\']generator["\'][^>]+content=["\']([^"\']*)'))
+          low=s.lower()
+          print("CMS hints: wp=",'wp-content' in low,"| yoast=",'yoast' in low,"| rankmath=",('rank-math' in low or 'rankmath' in low),"| elementor=",'elementor' in low,"| toc=",('ez-toc' in low or 'table-of-contents' in low or 'toc' in low))
+          print("FAQ hints:",('faq' in low), "| schema faq:",'FAQPage' in s)
+          print("IMG total:",len(g(r'<img\b')),"| lazy:",len(g(r'loading=["\']lazy')),"| alt:",len(g(r'<img[^>]+\balt=')),"| width:",len(g(r'<img[^>]+\bwidth=')))
+          print("TEL links:",len(g(r'href=["\']tel:')),"| ZALO:",len(g(r'zalo\.me')),"| phones:",sorted(set(g(r'0\d{2}[\s.]?\d{3}[\s.]?\d{3,4}')))[:8])
+          links=g(r'<a[^>]+href=["\'](https?://(?:www\.)?datnenlamdong\.com\.vn/[^"\'#?]*)')
+          print("INTERNAL links:",len(links),"| unique:",len(set(links)))
+          for u,c in Counter(links).most_common(45): print("  ",c,u)
+          txt=re.sub(r'<script.*?</script>|<style.*?</style>','',s,flags=re.S); txt=re.sub(r'<[^>]+>',' ',txt); txt=re.sub(r'\s+',' ',txt)
+          print("WORDS:",len(txt.split()))
+          print("=====TEXT(12k)=====")
+          print(txt[:12000])
+          PY
+          echo "=====HTML-HEAD(60k)====="
+          head -c 60000 page.html
