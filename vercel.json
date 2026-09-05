@@ -171,6 +171,21 @@
       "source": "/dat-nen/cum-5-lo-nam-ban-dong-thanh",
       "destination": "/dat-nen/cum-nam-ban-ecohill/",
       "permanent": true
+    },
+    {
+      "source": "/mua-ban-dat-nam-ban",
+      "destination": "/dat-nen-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/ban-dat-thi-tran-nam-ban",
+      "destination": "/dat-nen-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/ban-dat-nam-ban",
+      "destination": "/dat-nen-nam-ban/",
+      "permanent": true
     }
   ]
 }

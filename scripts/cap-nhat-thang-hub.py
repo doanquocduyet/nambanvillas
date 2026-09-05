@@ -12,6 +12,7 @@ import sys
 from datetime import datetime, timezone, timedelta
 
 HUBS = [
+    "dat-nen-nam-ban/index.html",
     "cum-moi-nam-ban/index.html",
     "nha-ban-nam-ban/index.html",
 ]
