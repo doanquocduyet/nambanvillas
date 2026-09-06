@@ -6,6 +6,22 @@
 
 Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.vn. Làm đúng như sau, KHÔNG hỏi lại những gì đã có trong repo:
 
+
+## 🚦 BẮT BUỘC ĐỌC & CHẠY TRƯỚC KHI PUSH
+
+**Đọc:** `docs/package/DANG-TIN-KHONG-LOI.md` — quy trình chống lặp lỗi (mỗi mục là 1 lỗi đã xảy ra thật).
+
+**Chạy:**
+```bash
+python3 scripts/kiem-tra-truoc-khi-dang.py
+```
+Thoát 0 = sạch, được push. Thoát 1 = còn lỗi, sửa rồi chạy lại.
+CI cũng chạy script này mỗi lần push/PR vào `main` — bỏ qua ở máy thì CI vẫn bắt.
+
+**4 thứ hay quên nhất khi thêm 1 tin:** sitemap · ItemList của hub · ít nhất 1 link trỏ tới (không mồ côi) · trang khu/facet hợp.
+
+---
+
 ## ⭐ PHÂN VAI 2 Ô (đọc kỹ — đừng lấn sân)
 - **Ô NÀY (đăng tin):** chỉ dựng/ cập nhật **trang tin – lô – nhà – cụm** + ảnh + card danh sách + sitemap. Hết.
 - **Ô KIA (web & kỹ thuật):** lo toàn bộ hệ thống — giao diện, CSS/JS, schema toàn site, marketing, **máy tự đăng Facebook**, máy dựng video, workflow GitHub Actions, Pixel, redirect, vercel.json.

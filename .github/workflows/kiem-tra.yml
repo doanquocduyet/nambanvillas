@@ -1,0 +1,22 @@
+name: Kiểm tra trước khi đăng (chặn lỗi)
+
+# Chạy TỰ ĐỘNG mỗi lần push hoặc mở PR vào main.
+# Có lỗi -> workflow đỏ -> biết ngay, không để lỗi lên web.
+on:
+  push:
+    branches: [main, 'claude/**']
+    paths: ['**.html', 'sitemap.xml', 'vercel.json']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Kiểm tra toàn site
+        run: python3 scripts/kiem-tra-truoc-khi-dang.py
