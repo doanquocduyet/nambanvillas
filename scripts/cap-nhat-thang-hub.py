@@ -15,6 +15,7 @@ HUBS = [
     "dat-nen-nam-ban/index.html",
     "cum-moi-nam-ban/index.html",
     "nha-ban-nam-ban/index.html",
+    "thi-truong/index.html",
 ]
 VN = timezone(timedelta(hours=7))  # Asia/Ho_Chi_Minh (không DST)
 
@@ -25,18 +26,17 @@ def update_file(path: str, want: str, today: str) -> int:
         print(f"Không thấy {path} — bỏ qua.", file=sys.stderr)
         return 0
     orig = html
-
-    # 1) Đổi token tháng T<n>/<năm> trong <title>
-    m = re.search(r"<title>.*?</title>", html, re.S)
-    if m:
-        new_title, n = re.subn(r"T\d{1,2}/\d{4}", want, m.group(0), count=1)
-        if n:
-            html = html[: m.start()] + new_title + html[m.end() :]
-
+    # 1) Đổi mốc tháng ('Tháng 9/2026' hoặc kiểu cũ 'T9/2026') trong <title>, og:title, twitter:title, <h1>
+    pat = r"(?i)(?:tháng\s*|T)\d{1,2}/\d{4}"
+    def rep(m):
+        s = m.group(0)
+        return want.replace("Tháng", "tháng", 1) if s[:1] == "t" else want  # giữ hoa/thường như cũ
+    for tag in (r"<title>.*?</title>", r'<meta property="og:title"[^>]*>', r'<meta name="twitter:title"[^>]*>', r"<h1[^>]*>.*?</h1>"):
+        html = re.sub(tag, lambda m: re.sub(pat, rep, m.group(0)), html, count=1, flags=re.S)
+    # 1b) Nhãn tươi mới "Cập nhật tháng N/YYYY" ở bất kỳ đâu
+    html = re.sub(r"(?i)(Cập nhật )tháng\s*\d{1,2}/\d{4}", lambda m: m.group(1) + want.replace("Tháng", "tháng", 1), html)
     # 2) Cập nhật dateModified trong schema
-    html = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"',
-                  f'"dateModified":"{today}"', html)
-
+    html = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"', f'"dateModified":"{today}"', html)
     if html == orig:
         print(f"{path}: đã đúng ({want} · {today}) — không đổi.")
         return 0
@@ -46,7 +46,7 @@ def update_file(path: str, want: str, today: str) -> int:
 
 def main() -> int:
     now = datetime.now(VN)
-    want = f"T{now.month}/{now.year}"
+    want = f"Tháng {now.month}/{now.year}"
     today = now.strftime("%Y-%m-%d")
     for f in HUBS:
         update_file(f, want, today)
