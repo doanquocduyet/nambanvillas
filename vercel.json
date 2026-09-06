@@ -366,6 +366,16 @@
       "source": "/ban-dat-nam-ban/",
       "destination": "/dat-nen-nam-ban/",
       "permanent": true
+    },
+    {
+      "source": "/dat-nen/nam-ban-ecohill-350m2",
+      "destination": "/dat-nen/cum-nam-ban-ecohill/",
+      "permanent": true
+    },
+    {
+      "source": "/dat-nen/nam-ban-ecohill-350m2/",
+      "destination": "/dat-nen/cum-nam-ban-ecohill/",
+      "permanent": true
     }
   ]
 }
