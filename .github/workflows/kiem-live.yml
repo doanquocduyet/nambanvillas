@@ -1,0 +1,20 @@
+name: kiểm bản live đã cập nhật chưa
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tải trang live và tìm dấu hiệu bản mới
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
+          for u in https://nambanvillas.vn/ https://nambanvillas.vn/dat-nen-nam-ban/ https://nambanvillas.vn/css/style.css; do
+            f=$(echo "$u" | md5sum | cut -c1-8).txt
+            code=$(curl -sL --max-time 45 -A "$UA" -w '%{http_code}' -o "$f" "$u")
+            echo "=== $u  HTTP=$code  BYTES=$(wc -c < "$f")"
+            for m in hub-rows 'id="f-q"' soLo dmCount 'data-q="when"' cum-dong-thanh-golden-view; do
+              printf '   %-28s %s\n' "$m" "$(grep -c -- "$m" "$f" || true)"
+            done
+          done
