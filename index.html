@@ -244,7 +244,11 @@
   }
   var box=document.getElementById('dealMatcher'); if(!box) return;
   // Featured mặc định (chọn lọc hôm nay)
-  var feat=["cum-nam-ban-439tr","cum-nam-ban-529tr","cum-me-linh-15-lo"].map(function(id){return LOTS.filter(function(l){return l.img===id})[0];}).filter(Boolean);
+  var feat=[
+    {u:"/dat-nen/cum-nam-ban-dong-da-topview/",n:"Cụm Đống Đa Topview – 31 nền view đồi núi, sổ riêng",img:"cum-nam-ban-dong-da-topview",pr:"Từ 550tr/lô"},
+    {u:"/dat-nen/cum-dong-thanh-golden-view/",n:"Đông Thanh Golden View – khu ~7.000m² đang tách thửa, có nhà",img:"cum-dong-thanh-golden-view",pr:"Lô 900m² – 1,5 tỷ"},
+    {u:"/dat-nen/dong-thanh-668m2-lo-goc/",n:"Lô góc 2 mặt tiền Đông Thanh 668m², 315m² thổ cư",img:"dong-thanh-668m2-lo-goc",pr:"1,49 tỷ"}
+  ];
   document.getElementById('dmFeatured').innerHTML=feat.map(card).join('');
   var ans={};
   box.querySelectorAll('.dm-q').forEach(function(q){
@@ -444,6 +448,15 @@
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>Sổ hồng riêng</span><span>Cách Thác Voi 4km</span></div>
         </div>
         <div class="sp-right"><div class="sp-price">899tr</div><div class="sp-area">530m²</div><span class="sp-go">Xem chi tiết →</span></div>
+      </article>
+
+      <article class="prop-card sp-row" data-type="dat-nen" data-deal="1">
+        <a href="/dat-nen/cum-dong-thanh-golden-view/" class="sp-thumb"><img src="images/listings/cum-dong-thanh-golden-view/1.jpg" alt="Nam Ban – Đông Thanh Golden View, khu 7.000m² đang tách thửa, có nhà, lô 900m² giá 1,5 tỷ" width="400" height="300" loading="lazy"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Giá tốt</span></a>
+        <div class="sp-mid">
+          <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-golden-view/">Đông Thanh Golden View – khu ~7.000m² đang tách thửa, có nhà sẵn</a></h3>
+          <div class="sp-chips"><span class="sp-loc">Đông Thanh · Nam Ban</span><span>Lô 900m²</span><span>Đang tách thửa</span><span>Gần khu Nhà Trắng</span></div>
+        </div>
+        <div class="sp-right"><div class="sp-price">1,5 tỷ</div><div class="sp-area">900m²</div><span class="sp-go">Xem chi tiết →</span></div>
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen">
