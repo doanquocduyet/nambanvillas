@@ -130,12 +130,12 @@
   </div>
 </section>
 
-<!-- DEAL MATCHER: 3 câu → 5 lô hợp nhất → Zalo/Gọi -->
+<!-- DEAL MATCHER: 2 câu → 5 lô hợp nhất → Zalo/Gọi -->
 <section class="section" id="dealMatcher" style="padding:30px 0 6px" aria-label="Chọn lô giúp bạn">
   <div class="container">
     <div style="background:#fff;border:1px solid #EAE3D6;border-radius:22px;padding:26px 24px;box-shadow:0 14px 34px -26px rgba(26,61,43,.22)">
-      <h2 style="color:#1A3D2B;font-size:clamp(1.12rem,2.2vw,1.42rem);font-weight:800;line-height:1.3;letter-spacing:-.01em;margin:0 0 5px">Trả lời 3 câu — Nam Ban Villas chọn 5 lô hợp nhất</h2>
-      <p style="color:#6E7B70;font-size:.9rem;line-height:1.55;margin:0 0 18px">Thay vì lục hết <strong id="dmCount" style="color:#1A3D2B">40</strong> lô chọn lọc — 3 câu ngắn là xong.</p>
+      <h2 style="color:#1A3D2B;font-size:clamp(1.12rem,2.2vw,1.42rem);font-weight:800;line-height:1.3;letter-spacing:-.01em;margin:0 0 5px">Trả lời 2 câu — Nam Ban Villas chọn 5 lô hợp nhất</h2>
+      <p style="color:#6E7B70;font-size:.9rem;line-height:1.55;margin:0 0 18px">Thay vì lục hết <strong id="dmCount" style="color:#1A3D2B">40</strong> lô chọn lọc — 2 câu ngắn là xong.</p>
 
       <div id="dmQuiz">
         <div class="dm-q" data-q="budget">
@@ -153,14 +153,6 @@
             <button type="button" data-v="o">Ở / nghỉ dưỡng</button>
             <button type="button" data-v="dt">Đầu tư / phân lô</button>
             <button type="button" data-v="both">Chưa chắc, xem cả hai</button>
-          </div>
-        </div>
-        <div class="dm-q" data-q="when">
-          <p class="dm-label">3 · Khi nào bạn tính mua?</p>
-          <div class="dm-opts">
-            <button type="button" data-v="now">Trong 1 tháng</button>
-            <button type="button" data-v="soon">1 – 3 tháng</button>
-            <button type="button" data-v="look">Còn tìm hiểu</button>
           </div>
         </div>
       </div>
@@ -260,7 +252,7 @@
       b.addEventListener('click',function(){
         q.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
         b.classList.add('on'); ans[q.dataset.q]=b.dataset.v;
-        if(ans.budget&&ans.goal&&ans.when) render();
+        if(ans.budget&&ans.goal) render();
       });
     });
   });
@@ -278,15 +270,14 @@
     var budgetTxt={"u1000":"dưới 1 tỷ","1000-2000":"1–2 tỷ","2000-4000":"2–4 tỷ","o4000":"trên 4 tỷ"}[ans.budget];
     document.getElementById('dmResultLead').textContent='Với '+budgetTxt+', '+goalTxt+' — đây là '+top.length+' lô em thấy hợp anh/chị nhất:';
     document.getElementById('dmCards').innerHTML=top.map(card).join('');
-    var whenTxt=ans.when==='now'?' Tôi tính mua trong 1 tháng.':ans.when==='soon'?' Tôi tính mua trong 1–3 tháng.':'';
-    var msg='Gửi tôi các lô đất Nam Ban tầm '+budgetTxt+' '+goalTxt+'.'+whenTxt;
+    var msg='Gửi tôi các lô đất Nam Ban tầm '+budgetTxt+' '+goalTxt+'.';
     var mEl=document.getElementById('dmMsg');
     mEl.textContent=msg+'  — bấm để copy';
     mEl.onclick=function(){ if(navigator.clipboard){navigator.clipboard.writeText(msg);mEl.textContent='Đã copy — mở Zalo dán vào là xong';} };
     document.getElementById('dmDefault').hidden=true;
     document.getElementById('dmQuiz').hidden=true;
     document.getElementById('dmResult').hidden=false;
-    if(window.gtag)gtag('event','deal_matcher_complete',{budget:ans.budget,goal:ans.goal,when:ans.when});
+    if(window.gtag)gtag('event','deal_matcher_complete',{budget:ans.budget,goal:ans.goal});
     document.getElementById('dmResult').scrollIntoView({behavior:'smooth',block:'nearest'});
   }
   document.getElementById('dmReset').addEventListener('click',function(){
