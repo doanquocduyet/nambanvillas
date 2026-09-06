@@ -115,6 +115,28 @@ for f, s in data.items():
         if h2 not in tap_trang and h2 not in nguon_redirect:
             L(f"[Link nội bộ gãy] {f} → {h}")
 
+# ── 4b. Link TƯƠNG ĐỐI phải resolve đúng file trên đĩa ────────────────────
+# ĐÃ TỪNG DÍNH: 3 trang nhà dùng src="../images/..." ở trang chi tiết (sâu 2 cấp)
+# → thực tế trỏ /nha-ban/images/... KHÔNG tồn tại, ảnh/CSS/JS chết. Check 4 chỉ
+# soi link tuyệt đối (bắt đầu bằng /) nên mù với link tương đối → thêm lớp này.
+# (../../images/ ở related-card sang tin khác vẫn ĐÚNG vì về đúng gốc — không báo.)
+BO_QUA_REL = ("http://", "https://", "//", "mailto:", "tel:", "sms:", "#", "data:", "javascript:")
+for f, s in data.items():
+    thu_muc = os.path.dirname(f)
+    s_hien = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", s, flags=re.S)  # bỏ JS dựng chuỗi
+    for val in set(re.findall(r'(?:src|href)="([^"]+)"', s_hien)):
+        if val.startswith("/") or val.lower().startswith(BO_QUA_REL) or "zalo.me" in val.lower():
+            continue
+        clean = val.split("#")[0].split("?")[0]
+        if not clean:
+            continue
+        dich = os.path.normpath(os.path.join(thu_muc, clean))
+        if os.path.isfile(dich):
+            continue
+        if "." not in clean.split("/")[-1] and os.path.isfile(os.path.join(dich, "index.html")):
+            continue
+        L(f"[Link tương đối gãy — trỏ file không tồn tại] {f} → {val}")
+
 # ── 5. Không trang nào được mồ côi ────────────────────────────────────────
 # ĐÃ TỪNG DÍNH: /hoi-dap/ (tài sản AEO tốt nhất) 0 inbound; sau đó 2 trang thi-truong.
 inbound = Counter()
