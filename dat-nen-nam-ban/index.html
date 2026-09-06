@@ -178,7 +178,39 @@
       <span style="color:#C9A84C;font-weight:800">→</span>
     </a>
     <p style="color:#6B6B6B;margin-bottom:20px;font-size:.88rem">Hiển thị <strong style="color:#1A3D2B">96</strong> tin đăng mới nhất tháng 9/2026</p>
-    <div class="prop-grid">
+<style>
+/* Danh sách dạng hàng gọn — cùng cỡ với trang Nhà Bán */
+.hub-rows{display:flex!important;flex-direction:column;gap:12px}
+.hub-rows .prop-card{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:12px 22px 12px 12px;border:1px solid #ECE5D8;border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(26,61,43,.04)}
+.hub-rows .prop-card:hover{transform:translateY(-3px);box-shadow:0 16px 40px -16px rgba(26,61,43,.32);border-color:#E4D9C4}
+.hub-rows .prop-img-wrap{border-radius:12px;aspect-ratio:3/2}
+.hub-rows .prop-badge{top:8px;left:8px;padding:3px 11px;font-size:.64rem;border-radius:20px}
+.hub-rows .prop-body{padding:0;display:grid;grid-template-columns:1fr 150px;column-gap:20px;align-items:center;
+  grid-template-areas:"title price" "loc price" "specs price" "cta cta"}
+.hub-rows .prop-title{grid-area:title;font-size:1.02rem;margin:0}
+.hub-rows .prop-loc{grid-area:loc;margin:5px 0 0}
+.hub-rows .prop-specs{grid-area:specs;margin:8px 0 0}
+.hub-rows .prop-top{grid-area:price;flex-direction:column;align-items:flex-end;justify-content:center;gap:3px;margin:0;align-self:stretch;padding-left:20px;border-left:1px solid #ECE5D8}
+.hub-rows .prop-price{font-size:1.28rem;letter-spacing:-.02em;line-height:1.15;text-align:right}
+.hub-rows .prop-price::before{content:"GIÁ BÁN";display:block;font-size:.58rem;font-weight:700;letter-spacing:.09em;color:var(--gold);margin-bottom:2px}
+.hub-rows .prop-area{background:none;padding:0;font-weight:500;font-size:.76rem}
+.hub-rows .prop-cta{grid-area:cta;justify-self:start;margin:12px 0 0;padding:7px 20px;border-radius:20px;font-size:.8rem}
+.hub-rows .cmp-btn{grid-area:cta;justify-self:end;width:auto;margin:12px 0 0;padding:7px 16px;border-radius:20px;font-size:.78rem}
+@media(max-width:768px){
+  .hub-rows .prop-card{display:grid;grid-template-columns:132px 1fr;gap:13px;padding:10px;align-items:start}
+  .hub-rows .prop-img-wrap{width:auto;flex:none;aspect-ratio:3/4}
+  .hub-rows .prop-body{grid-template-columns:1fr;column-gap:0;align-items:start;
+    grid-template-areas:"title" "loc" "specs" "price" "cta"}
+  .hub-rows .prop-top{flex-direction:row;align-items:baseline;gap:10px;padding:8px 0 0;margin-top:6px;border-left:none;border-top:1px solid #ECE5D8;align-self:auto}
+  .hub-rows .prop-price{font-size:1.1rem;text-align:left}
+  .hub-rows .prop-price::before{display:inline;margin:0 6px 0 0}
+  .hub-rows .prop-title{font-size:.9rem}
+  .hub-rows .prop-specs span:nth-child(n+3){display:none}
+  .hub-rows .prop-cta{display:none}
+  .hub-rows .cmp-btn{justify-self:start;margin-top:9px}
+}
+</style>
+    <div class="prop-grid hub-rows">
 
       <article class="prop-card" data-area="555" data-price="1.25" data-loc="nam-ban">
         <a href="/dat-nen/cum-suoi-may-garden/" class="prop-img-wrap">
