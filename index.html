@@ -248,7 +248,7 @@
   ];
   var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
   function card(l){
-    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" loading="lazy" width="92" height="92"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
+    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" fetchpriority="high"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
   }
   var box=document.getElementById('dealMatcher'); if(!box) return;
   // Featured mặc định (chọn lọc hôm nay)
@@ -575,7 +575,7 @@
     <div class="qh-map-wrap" id="qhMapWrap">
       <div class="qh-map-inner" id="qhMapInner">
         <div id="qhMapImgWrap" style="position:relative">
-          <img id="qhMapImg" src="/images/quy-hoach-nam-ban-2030.svg" alt="Bản đồ quy hoạch sử dụng đất Nam Ban 2030" width="900" height="560" style="width:100%;height:auto;display:block;aspect-ratio:900/560">
+          <img id="qhMapImg" src="/images/quy-hoach-nam-ban-2030.svg" alt="Bản đồ quy hoạch sử dụng đất Nam Ban 2030" width="900" height="560" style="width:100%;height:auto;display:block;aspect-ratio:900/560" loading="lazy">
         </div>
       </div>
     </div>
