@@ -1,0 +1,51 @@
+name: Kiểm chuỗi chuyển hướng & 404 (live)
+
+# Chạy tay: curl thật từng URL trên site live, in chuỗi chuyển hướng + mã trạng thái.
+# Dùng để tìm "Lỗi chuyển hướng" / "404" mà Google Search Console báo.
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Kiểm redirect sources + sitemap URLs
+        run: |
+          python3 - <<'PY'
+          import json,re,subprocess
+          HOST="https://nambanvillas.vn"
+          vj=json.load(open('vercel.json',encoding='utf-8'))
+          srcs=[r['source'] for r in vj['redirects'] if ':' not in r['source']]
+          sm=re.findall(r'<loc>([^<]+)</loc>',open('sitemap.xml',encoding='utf-8').read())
+          def chain(u,maxhop=6):
+              hops=[]
+              for _ in range(maxhop):
+                  out=subprocess.run(['curl','-s','-o','/dev/null','--max-time','20',
+                                      '-w','%{http_code} %{redirect_url}','-A','Mozilla/5.0',u],
+                                     capture_output=True,text=True).stdout.strip().split(' ',1)
+                  code=out[0]; nxt=out[1].strip() if len(out)>1 else ''
+                  hops.append((code,u))
+                  if code.startswith('3') and nxt: u=nxt
+                  else: break
+              return hops
+          print("### A. REDIRECT SOURCES (%d)"%len(srcs))
+          bad=[]
+          for s in srcs:
+              h=chain(HOST+s)
+              final=h[-1][0]; nhop=len(h)-1
+              flag="" if (final=="200" and nhop<=1) else "  <== XEM LẠI"
+              if flag: bad.append((s,[c for c,_ in h]))
+              print(f"{final} hop={nhop} {s}{flag}")
+              if flag:
+                  for c,u in h: print("      ",c,u)
+          print("\n### B. SITEMAP URLS (%d) — chỉ in cái KHÔNG phải 200"%len(sm))
+          nb=0
+          for u in sm:
+              h=chain(u,maxhop=4)
+              if h[-1][0]!="200" or len(h)>1:
+                  nb+=1
+                  print("  ",[f"{c}" for c,_ in h], u)
+          print("Sitemap URL không sạch:",nb,"/",len(sm))
+          print("\n### TỔNG: redirect source cần xem lại:",len(bad))
+          PY
