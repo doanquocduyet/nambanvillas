@@ -34,7 +34,7 @@ jobs:
           for s in srcs:
               h=chain(HOST+s)
               final=h[-1][0]; nhop=len(h)-1
-              flag="" if (final=="200" and nhop<=1) else "  <== XEM LẠI"
+              flag="" if (final=="200" and nhop<=2) else "  <== XEM LẠI"   # trailingSlash:true => URL thiếu / cuối luôn tốn 2 hop, đó là bình thường
               if flag: bad.append((s,[c for c,_ in h]))
               print(f"{final} hop={nhop} {s}{flag}")
               if flag:
