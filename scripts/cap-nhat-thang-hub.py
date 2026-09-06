@@ -34,7 +34,8 @@ def update_file(path: str, want: str, today: str) -> int:
     for tag in (r"<title>.*?</title>", r'<meta property="og:title"[^>]*>', r'<meta name="twitter:title"[^>]*>', r"<h1[^>]*>.*?</h1>"):
         html = re.sub(tag, lambda m: re.sub(pat, rep, m.group(0)), html, count=1, flags=re.S)
     # 1b) Nhãn tươi mới "Cập nhật tháng N/YYYY" ở bất kỳ đâu
-    html = re.sub(r"(?i)(Cập nhật )tháng\s*\d{1,2}/\d{4}", lambda m: m.group(1) + want.replace("Tháng", "tháng", 1), html)
+    html = re.sub(r"(?i)(Cập nhật )(tháng)\s*\d{1,2}/\d{4}",
+                  lambda m: m.group(1) + (want if m.group(2)[:1] == "T" else want.replace("Tháng", "tháng", 1)), html)
     # 2) Cập nhật dateModified trong schema
     html = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"', f'"dateModified":"{today}"', html)
     if html == orig:
