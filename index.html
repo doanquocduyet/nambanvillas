@@ -133,9 +133,9 @@
 <!-- DEAL MATCHER: 3 câu → 5 lô hợp nhất → Zalo/Gọi -->
 <section class="section" id="dealMatcher" style="padding:30px 0 6px" aria-label="Chọn lô giúp bạn">
   <div class="container">
-    <div style="background:#EEF3EC;border:1px solid #d9e6da;border-radius:20px;padding:26px 24px;box-shadow:0 14px 34px -22px rgba(26,61,43,.35)">
-      <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1A3D2B;margin:0 0 6px">Đừng lục 37 lô · để Nam Ban Villas lọc giúp</p>
-      <h2 style="color:#1A3D2B;font-size:clamp(1.35rem,3vw,1.9rem);line-height:1.25;letter-spacing:-.01em;margin:0 0 4px">Trả lời 3 câu — Nam Ban Villas chọn 5 lô hợp anh/chị nhất</h2>
+    <div style="background:#fff;border:1px solid #EAE3D6;border-radius:22px;padding:26px 24px;box-shadow:0 14px 34px -26px rgba(26,61,43,.22)">
+      <h2 style="color:#1A3D2B;font-size:clamp(1.12rem,2.2vw,1.42rem);font-weight:800;line-height:1.3;letter-spacing:-.01em;margin:0 0 5px">Trả lời 3 câu — Nam Ban Villas chọn 5 lô hợp nhất</h2>
+      <p style="color:#6E7B70;font-size:.9rem;line-height:1.55;margin:0 0 18px">Thay vì lục hết <strong id="dmCount" style="color:#1A3D2B">40</strong> lô chọn lọc — 3 câu ngắn là xong.</p>
 
       <div id="dmQuiz">
         <div class="dm-q" data-q="budget">
@@ -168,7 +168,7 @@
       <div id="dmResult" hidden>
         <p id="dmResultLead" style="color:#1A3D2B;font-weight:700;font-size:1.02rem;margin:2px 0 14px"></p>
         <div id="dmCards" class="dm-cards"></div>
-        <p id="dmMsg" title="Bấm để copy" style="margin:14px 0 0;background:#fff;border:1px dashed #c3d4c6;border-radius:10px;padding:10px 14px;color:#3a4a3f;font-size:.84rem;line-height:1.5;cursor:copy"></p>
+        <p id="dmMsg" title="Bấm để copy" style="margin:14px 0 0;background:#fff;border:1px dashed #E0D9CB;border-radius:12px;padding:10px 14px;color:#3a4a3f;font-size:.84rem;line-height:1.5;cursor:copy"></p>
         <div style="margin-top:14px;text-align:center">
           <a id="dmZalo" href="https://zalo.me/0978758788" target="_blank" rel="noopener" style="display:inline-block;background:#C9A84C;color:#1A3D2B;padding:13px 28px;border-radius:10px;font-weight:800;text-decoration:none;margin:4px">Để Nam Ban Villas chọn giúp anh/chị — nhắn Zalo</a>
           <a href="tel:0978758788" style="display:inline-block;background:#1A3D2B;color:#fff;border:1px solid #1A3D2B;padding:13px 28px;border-radius:10px;font-weight:700;text-decoration:none;margin:4px">Gọi 0978 758 788</a>
@@ -186,14 +186,14 @@
 </section>
 <style>
   #dealMatcher .dm-q{margin-bottom:16px}
-  #dealMatcher .dm-label{color:#1A3D2B;font-weight:700;font-size:.92rem;margin:0 0 8px}
+  #dealMatcher .dm-label{color:#5F6F63;font-weight:700;font-size:.88rem;margin:0 0 8px}
   #dealMatcher .dm-opts{display:flex;gap:8px;flex-wrap:wrap}
-  #dealMatcher .dm-opts button{flex:1 1 auto;min-width:120px;background:#fff;border:1.5px solid #d3e0d5;color:#1A3D2B;padding:11px 14px;border-radius:10px;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:.15s}
+  #dealMatcher .dm-opts button{flex:1 1 auto;min-width:120px;background:#fff;border:1.5px solid #E7E0D4;color:#1A3D2B;padding:11px 14px;border-radius:12px;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;transition:.15s}
   #dealMatcher .dm-opts button:hover{background:#fff;border-color:#1A3D2B}
   #dealMatcher .dm-opts button.on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
   #dealMatcher .dm-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   @media(max-width:640px){#dealMatcher .dm-cards{grid-template-columns:1fr}}
-  #dealMatcher .dm-card{display:flex;gap:12px;background:#fff;border:1px solid #e3ebe4;border-radius:12px;overflow:hidden;text-decoration:none;align-items:stretch}
+  #dealMatcher .dm-card{display:flex;gap:12px;background:#FBF8F3;border:1px solid #EAE3D6;border-radius:14px;overflow:hidden;text-decoration:none;align-items:stretch}
   #dealMatcher .dm-card img{flex:0 0 92px;width:92px;height:100%;object-fit:cover;background:#EBF4EE}
   #dealMatcher .dm-card .dm-cbody{padding:10px 12px 10px 0;min-width:0;display:flex;flex-direction:column;justify-content:center}
   #dealMatcher .dm-card .dm-cname{color:#1A3D2B;font-weight:700;font-size:.86rem;line-height:1.35;margin:0 0 4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -202,6 +202,7 @@
 </style>
 <script>
 (function(){
+  var dmCountEl=document.getElementById('dmCount');
   var LOTS=[
     {u:"/dat-nen/tu-liem-lo-130-98m2/",n:"2 lô nhỏ Từ Liêm, sẵn thổ cư, công chứng ngay",img:"tu-liem-lo-130-98m2",pr:"390–420tr",v:405,b:"u1000",p:["o","dt"]},
     {u:"/dat-nen/nam-ban-138m2-view/",n:"Đất 138m² view thung lũng, 75m² thổ cư",img:"nam-ban-138m2-view",pr:"549tr",v:549,b:"u1000",p:["o"]},
@@ -244,6 +245,7 @@
     {u:"/dat-nen/nam-ban-653m2/",n:"Lô 653m² Nam Ban (Gia Lâm), 300m² thổ cư, MT 19m",img:"nam-ban-653m2",pr:"1,69 tỷ",v:1690,b:"1000-2000",p:["o","dt"]},
     {u:"/nha-ban/nha-me-linh-252m2/",n:"Nhà mới Mê Linh 252m², 2PN full nội thất, 80m² thổ",img:"nha-me-linh-252m2",pr:"2,1 tỷ",v:2100,b:"2000-4000",p:["o"]}
   ];
+  if(dmCountEl)dmCountEl.textContent=LOTS.length;
   var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
   function card(l){
     return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" fetchpriority="high"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
