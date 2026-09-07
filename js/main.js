@@ -201,12 +201,12 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   let selected=[]; // {id,img,title,href,price,area,loc,specs[]}
 
   function readCard(card){
-    const img=card.querySelector('.prop-img-wrap img');
-    const tA=card.querySelector('.prop-title a');
-    const price=card.querySelector('.prop-price');
-    const area=card.querySelector('.prop-area');
-    const loc=card.querySelector('.prop-loc');
-    const specs=card.querySelectorAll('.prop-specs span');
+    const img=card.querySelector('.prop-img-wrap img, .sp-thumb img');
+    const tA=card.querySelector('.prop-title a, .sp-title a');
+    const price=card.querySelector('.prop-price, .sp-price');
+    const area=card.querySelector('.prop-area, .sp-area');
+    const loc=card.querySelector('.prop-loc, .sp-chips .sp-loc');
+    const specs=card.querySelectorAll('.prop-specs span, .sp-chips span:not(.sp-loc)');
     const href=tA?tA.getAttribute('href'):'#';
     return {
       id:href+'|'+(price?price.textContent:''),
