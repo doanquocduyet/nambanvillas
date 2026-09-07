@@ -7,6 +7,24 @@
 Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.vn. Làm đúng như sau, KHÔNG hỏi lại những gì đã có trong repo:
 
 
+## ✅ CHECKLIST KHÔNG BỎ SÓT (đọc trước tiên, mỗi lần đăng)
+
+> Đủ 8 dòng này là 1 tin đăng không lỗi. Thiếu dòng nào = mất khách hoặc CI chặn.
+
+1. **Ảnh — nén + xoá EXIF/GPS bằng script có thật:**
+   - Ảnh lô/nhà (cần cắt khung): `python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …` (mặc định 3:2, ~110KB, tự xoá GPS). Ảnh dọc (phòng ốc): thêm `--ratio keep`.
+   - Ảnh đã đúng khung, chỉ cần nén: `python3 scripts/nen-anh.py images/listings/<slug>/`
+   - **Repo KHÔNG có** `tao-webp.py` hay `sitemap-anh.py` — ảnh site dùng `.jpg`, đừng gọi lệnh không tồn tại.
+2. **Thẻ ảnh đúng luật (checker bắt):** `alt` có nghĩa + neo mốc thật (hồ Bãi Công · chùa Linh Ẩn · Thác Voi · ĐT725) · `width`/`height` đúng kích thước thật (chặn CLS) · ảnh **hero** để `fetchpriority="high"` **và KHÔNG** `loading="lazy"` · ảnh còn lại `loading="lazy"` · **logo/favicon CẤM** `fetchpriority` (đã từng hỏng LCP vì lỗi này).
+3. **Riêng tư — làm ngầm, không hỏi:** che số sổ · tên chủ · CCCD · chữ ký · số môi giới lạ (đổi hết về **0978 758 788**). Không lấy/hotlink ảnh web khác. Không nhúng GPS thật vào trang (lộ toạ độ lô đất).
+4. **Đủ schema mỗi trang:** `Product` (kèm `Offer`/`AggregateOffer` + `availability`; đã bán → `SoldOut`) · `FAQPage` (≥3 câu) · `BreadcrumbList` · `WebPage` (có `geo`). `Product.image` nên trỏ ảnh của chính lô.
+5. **Nối vào hệ thống (4 thứ hay quên):** thêm card vào **catalog** (`dat-nen-nam-ban/` hoặc `nha-ban-nam-ban/`) + **hub** hợp (cụm mới…) · cập nhật **ItemList** (`numberOfItems` + item mới) · thêm URL vào **`sitemap.xml`** (có dấu `/` cuối) · đảm bảo ≥1 link trỏ tới trang (không mồ côi).
+6. **GEO:** mô tả + alt neo mốc kiểm được — đó là thứ AI trích khi khách hỏi "đất gần hồ Bãi Công / chùa Linh Ẩn".
+7. **Giọng văn:** không xưng ngôi thứ nhất (mình/tôi/chúng tôi) — cần chủ thể ghi "Nam Ban Villas". Không emoji trong trang.
+8. **Chạy checker = 0 lỗi rồi mới push:** `python3 scripts/kiem-tra-truoc-khi-dang.py` (chi tiết ở mục 🚦 ngay dưới).
+
+---
+
 ## 🚦 BẮT BUỘC ĐỌC & CHẠY TRƯỚC KHI PUSH
 
 **Đọc:** `docs/package/DANG-TIN-KHONG-LOI.md` — quy trình chống lặp lỗi (mỗi mục là 1 lỗi đã xảy ra thật).
