@@ -79,6 +79,18 @@ def main():
         s = s.replace(k, moi, 1)
 
     open(sm, "w", encoding="utf-8").write(s)
+
+    # sitemap_index.xml phải đổi lastmod, không Google tưởng sitemap chưa thay đổi
+    import datetime
+    idx = os.path.join(GOC, "sitemap_index.xml")
+    if os.path.exists(idx):
+        t = open(idx, encoding="utf-8").read()
+        hom_nay = datetime.date.today().isoformat()
+        t2 = re.sub(r"<lastmod>\d{4}-\d{2}-\d{2}</lastmod>", "<lastmod>%s</lastmod>" % hom_nay, t)
+        if t2 != t:
+            open(idx, "w", encoding="utf-8").write(t2)
+            print("Đã cập nhật lastmod sitemap_index.xml →", hom_nay)
+
     print("Đã ghi sitemap: %d trang có ảnh, %d ảnh." % (trang_co_anh, tong_anh))
 
 
