@@ -155,6 +155,39 @@ for p in sorted(sm_paths - tap_trang): L(f"[Sitemap trỏ trang không tồn t�
 for u in sm_urls:
     if not u.endswith("/"): L(f"[URL sitemap thiếu dấu / cuối] {u}")
 
+# ── 6b. Ảnh: phải có trong sitemap ảnh + khai báo đủ trong schema ─────────
+# ĐÃ TỪNG DÍNH: sitemap.xml không hề có <image:image> → Google Images không
+# biết 1.000+ ảnh của site; và 77 tin chỉ khai 1 ảnh trong Product schema.
+sm_imgs = set(re.findall(r"<image:loc>([^<]+)</image:loc>", sitemap))
+for f in pages:
+    s_ = open(f, encoding="utf-8").read()
+    slug = os.path.basename(os.path.dirname(f))
+    thu_muc = os.path.join("images/listings", slug)
+    if not os.path.isdir(thu_muc):
+        continue
+    trong_trang = []
+    for src in re.findall(r'<img[^>]+src="([^"]+)"', s_):
+        ten = src.split("/")[-1]
+        if f"/images/listings/{slug}/" in src and os.path.exists(os.path.join(thu_muc, ten)):
+            u = f"{HOST}/images/listings/{slug}/{ten}"
+            if u not in trong_trang:
+                trong_trang.append(u)
+    for u in trong_trang:
+        if u not in sm_imgs:
+            L(f"[Ảnh thiếu trong sitemap] {u} — chạy python3 scripts/sitemap-anh.py")
+            break
+    for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s_, re.S):
+        try:
+            obj = json.loads(b)
+        except Exception:
+            continue
+        for x in (obj if isinstance(obj, list) else [obj]):
+            if x.get("@type") == "Product":
+                im = x.get("image")
+                im = [im] if isinstance(im, str) else (im or [])
+                if len(im) < len(trong_trang):
+                    L(f"[Product schema thiếu ảnh] {duong_dan(f)} — có {len(trong_trang)} ảnh, khai {len(im)}")
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
