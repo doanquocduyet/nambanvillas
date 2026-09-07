@@ -20,6 +20,11 @@ CI cũng chạy script này mỗi lần push/PR vào `main` — bỏ qua ở má
 
 **4 thứ hay quên nhất khi thêm 1 tin:** sitemap · ItemList của hub · ít nhất 1 link trỏ tới (không mồ côi) · trang khu/facet hợp.
 
+**ẢNH CŨNG PHẢI TỐI ƯU, KHÔNG CHỈ BÀI VIẾT.** Mỗi lần chú gửi bài + ảnh: chạy đủ
+`prep-anh.py` → `nen-anh.py` → `tao-webp.py` → `sitemap-anh.py`, và khai đủ ảnh
+trong `Product.image`. Xem mục **"ẢNH CŨNG PHẢI CHUẨN AEO/SEO/GEO"** bên dưới —
+đó là luật cứng, không phải gợi ý.
+
 ---
 
 ## ⭐ PHÂN VAI 2 Ô (đọc kỹ — đừng lấn sân)
@@ -88,6 +93,81 @@ CI cũng chạy script này mỗi lần push/PR vào `main` — bỏ qua ở má
 - Ảnh mới TRƯỚC khi commit: `python3 scripts/nen-anh.py images/listings/<slug>/` (cap 1600px, JPEG q82, xoá EXIF, chỉ ghi nếu nhỏ hơn).
 - Nén TOÀN BỘ site cho nhẹ: `python3 scripts/nen-anh.py images` — chạy sau mỗi đợt thêm ảnh.
 - `prep-anh.py` (cắt gọt) đã nén sẵn ~150KB; `nen-anh.py` là script nén chuẩn duy nhất (theo `docs/DANG-CUM-MOI.md` + CLAUDE.md).
+
+## ẢNH CŨNG PHẢI CHUẨN AEO/SEO/GEO — KHÔNG CHỈ BÀI VIẾT (chú dặn — bất biến)
+
+> **Hiểu cho đúng:** mỗi khi chú đính kèm bài + ảnh để đăng, ô đăng tin phải tối ưu
+> **cả hai**. Ảnh không phải minh hoạ cho đẹp — ảnh là một kênh vào riêng:
+> Google Images, Google Lens, và các AI (ChatGPT/Gemini/Perplexity) đều đọc ảnh
+> qua alt + schema + sitemap. Bài viết chuẩn mà ảnh bỏ trống = mất nguyên một
+> cửa khách vào. Đăng xong mà chưa làm đủ mục dưới đây = **chưa xong, chưa push**.
+
+### 1. Quy trình ảnh mỗi lần đăng — chạy đủ 4 lệnh, theo đúng thứ tự
+
+```bash
+python3 scripts/prep-anh.py  images/listings/<slug>/   # xoay, xoá EXIF/GPS, cắt, đặt tên N.jpg
+python3 scripts/nen-anh.py   images/listings/<slug>/   # cap 1600px, JPEG q82
+python3 scripts/tao-webp.py                            # tạo .webp cho ảnh nào webp nhẹ hơn
+python3 scripts/sitemap-anh.py                         # bơm ảnh vào sitemap.xml
+python3 scripts/kiem-tra-truoc-khi-dang.py             # bẫy chặn — phải SẠCH mới push
+```
+
+Bỏ qua `tao-webp.py` hoặc `sitemap-anh.py` là **lỗi**, script kiểm tra sẽ chặn.
+
+### 2. Thẻ `<img>` — luật cứng cho từng ảnh
+
+| Việc | Luật |
+|---|---|
+| `alt` | Bắt buộc, **viết như mô tả cho người mù**: loại đất + diện tích + thổ cư + khu + điểm nhận dạng. Không nhồi từ khoá, không lặp y hệt giữa các ảnh cùng tin. |
+| `width` + `height` | Bắt buộc, đúng kích thước thật → chặn layout shift (CLS), điểm Core Web Vitals. |
+| Ảnh **đầu tiên** (hero) | `fetchpriority="high"`, **KHÔNG** `loading="lazy"` — đây là LCP của trang. |
+| Mọi ảnh còn lại | `loading="lazy"` |
+| Logo | **KHÔNG** gắn `fetchpriority` (đã từng làm hỏng LCP vì ưu tiên nhầm logo hơn ảnh hero) |
+| Định dạng | Trỏ `.webp` nếu file `.webp` tồn tại; không có thì `.jpg`. Giữ nguyên file `.jpg` cũ trên đĩa — link ảnh Google đã lập chỉ mục không được chết. |
+
+**Viết alt — mẫu đúng/sai:**
+- ✅ `Lô góc 2 mặt tiền 500m² gần hồ Bãi Công Nam Ban, 200m² thổ cư ODT, đường bê tông 2 mặt`
+- ❌ `đất nam ban, đất lâm hà, mua đất nam ban giá rẻ` (nhồi từ khoá — Google phạt)
+- ❌ `1.jpg`, `hình 1`, `ảnh lô đất` (vô nghĩa)
+
+### 3. Schema — ảnh phải nằm trong `Product`
+
+- `Product.image` khai **TẤT CẢ** ảnh thật của tin, đường dẫn tuyệt đối `https://nambanvillas.vn/...`, đúng thứ tự xuất hiện trong trang. Khai 1 ảnh khi có 8 ảnh = lỗi, script chặn.
+- Google dùng mảng ảnh này cho rich result bất động sản; AI dùng nó để biết tin có ảnh thật hay không.
+
+### 4. Sitemap ảnh
+
+- Mỗi ảnh nội dung phải có `<image:image><image:loc>` trong `sitemap.xml`. **Chỉ** `image:loc` — `image:title`/`image:caption`/`image:license` Google đã bỏ đọc từ 2022, ghi thêm là rác.
+- Ảnh giao diện (logo, icon, og-*.jpg, .svg) **không** đưa vào sitemap.
+- Chạy `sitemap-anh.py` là xong, đừng sửa tay.
+
+### 5. og:image / twitter:image — cố ý KHÁC luật trên
+
+- **Luôn để JPEG**, không đổi sang WebP: Zalo và Facebook còn kén WebP, mất ảnh xem trước = mất khách bấm. Mục tiêu tối thượng là khách gọi/Zalo, không phải điểm kỹ thuật.
+- Bắt buộc kèm `og:image:width` + `og:image:height` **đúng số thật** đọc từ file.
+
+### 6. GEO — ảnh phải neo được vào địa điểm
+
+- Ảnh flycam/toàn cảnh: alt nêu **mốc thật** ai cũng kiểm được (hồ Bãi Công, chùa Linh Ẩn, Thác Voi, ĐT725, khu Nhà Trắng Đông Thanh, đồi chè Mê Linh…). Đây là thứ AI trích khi khách hỏi "đất gần hồ Bãi Công".
+- Trang phải có `GeoCoordinates` (VN-35) — ảnh + toạ độ đi cùng nhau thì Google mới hiểu ảnh này chụp ở đâu.
+- **Không** nhúng GPS thật vào file ảnh: `prep-anh.py` xoá sạch EXIF/GPS. Lộ toạ độ lô đất của chủ đất là chuyện riêng tư, không đánh đổi lấy SEO.
+
+### 7. Riêng tư & pháp lý ảnh — làm ngầm, không hỏi
+
+- Sổ đỏ/sổ hồng: **che số sổ, số thửa nhạy cảm, tên chủ, CCCD, chữ ký, số điện thoại môi giới khác** trước khi đăng. Không hỏi, đây là mặc định.
+- Số điện thoại xuất hiện trên ảnh (biển bảng, tờ rơi): thay bằng hotline 0978 758 788 hoặc xoá.
+- **Cấm tuyệt đối** lấy ảnh của web khác hoặc hotlink ảnh web khác. Chỉ dùng ảnh của Nam Ban Villas.
+
+### 8. Tự kiểm trước khi push — 6 câu
+
+1. Ảnh hero có `fetchpriority="high"` và **không** lazy chưa?
+2. Mọi ảnh có `alt` riêng, có nghĩa, không trùng nhau chưa?
+3. Mọi ảnh có `width`+`height` đúng thật chưa?
+4. `Product.image` khai **đủ** số ảnh chưa?
+5. `sitemap.xml` đã có đủ ảnh của tin mới chưa?
+6. `kiem-tra-truoc-khi-dang.py` báo **SẠCH** chưa?
+
+Chỉ cần 1 câu trả lời "chưa" → **không push**.
 
 ## CHUẨN AEO/SEO/GEO/UX/UI — BẮT BUỘC MỖI BÀI (chú dặn — bất biến)
 > Mỗi trang tin/lô/nhà/cụm PHẢI đạt cả 5. Không đạt = chưa xong, chưa push.

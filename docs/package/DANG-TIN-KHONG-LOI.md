@@ -1,5 +1,10 @@
 # ĐĂNG TIN KHÔNG LỖI — quy trình bất biến cho ô đăng tin
 
+> **Ảnh cũng là bài đăng.** Toàn bộ luật ảnh (alt, width/height, LCP, WebP,
+> `Product.image`, sitemap ảnh, og:image, GEO, che PII trên sổ) nằm ở
+> `docs/package/MO-O-DANG-TIN.md` — mục "ẢNH CŨNG PHẢI CHUẨN AEO/SEO/GEO".
+> Bài chuẩn mà ảnh bỏ trống = mất nguyên kênh Google Images + Google Lens + AI.
+
 > Đọc file này TRƯỚC khi đăng bất kỳ tin nào. Mọi mục dưới đây đều xuất phát từ
 > **lỗi đã xảy ra thật** trên nambanvillas.vn và đã phải mất công truy + sửa.
 > Mục tiêu: mỗi lần đăng đều suôn, không lặp lại lỗi cũ, chuẩn AEO/SEO/GEO.
