@@ -201,7 +201,7 @@
 <script src="/js/main.js" defer></script>
 <script>
 function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
-function openLb(src){var o=document.getElementById("lb");document.getElementById("lbImg").src=src;o.classList.add("open");}
+function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>
 <div class="lb-overlay" id="lb" onclick="closeLb(event)"><span class="lb-close">&times;</span><img id="lbImg" src="" alt="" loading="lazy"></div>
