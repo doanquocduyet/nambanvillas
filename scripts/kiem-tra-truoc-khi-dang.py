@@ -196,6 +196,35 @@ for f in pages:
         if os.path.exists(rel) and os.path.exists(rel[:-4] + ".webp"):
             W(f"[Còn dùng .jpg dù đã có .webp nhẹ hơn] {src} — {duong_dan(f)}")
 
+# ── 6d. Số đếm hiển thị & ItemList phải khớp số thẻ thật ──────────────────
+# ĐÃ TỪNG DÍNH: hub ghi "96 tin" khi có 96 thẻ nhưng ItemList khai 99 — 3 lô có
+# trang sống mà không có thẻ nào trên hub, khách duyệt không bao giờ thấy.
+# Trang Nhà Bán thì ghi 25 trong khi có 26 thẻ.
+for hub in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
+    if not os.path.exists(hub):
+        continue
+    s_ = open(hub, encoding="utf-8").read()
+    the = re.findall(r'<h3 class="sp-title"><a href="([^"]+)"', s_)
+    m = re.search(r"Hiển thị <strong[^>]*>(\d+)</strong>", s_)
+    if m and int(m.group(1)) != len(the):
+        L(f"[Số đếm sai] {hub} ghi {m.group(1)} tin nhưng có {len(the)} thẻ")
+    for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s_, re.S):
+        try:
+            d = json.loads(b)
+        except Exception:
+            continue
+        if d.get("@type") != "ItemList":
+            continue
+        u = [x["url"].replace(HOST, "") for x in d.get("itemListElement", [])]
+        for x in u:
+            if x not in the:
+                L(f"[ItemList thừa] {hub} khai {x} nhưng hub không có thẻ nào")
+        for x in the:
+            if x not in u:
+                L(f"[ItemList thiếu] {hub} có thẻ {x} nhưng ItemList không khai")
+        if d.get("numberOfItems") != len(u):
+            L(f"[numberOfItems sai] {hub}: khai {d.get('numberOfItems')}, thật {len(u)}")
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
