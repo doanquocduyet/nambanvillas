@@ -11,13 +11,14 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 > Đủ 8 dòng này là 1 tin đăng không lỗi. Thiếu dòng nào = mất khách hoặc CI chặn.
 
-1. **Ảnh — nén + xoá EXIF/GPS bằng script có thật:**
-   - Ảnh lô/nhà (cần cắt khung): `python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …` (mặc định 3:2, ~110KB, tự xoá GPS). Ảnh dọc (phòng ốc): thêm `--ratio keep`.
-   - Ảnh đã đúng khung, chỉ cần nén: `python3 scripts/nen-anh.py images/listings/<slug>/`
-   - **Repo KHÔNG có** `tao-webp.py` hay `sitemap-anh.py` — ảnh site dùng `.jpg`, đừng gọi lệnh không tồn tại.
-2. **Thẻ ảnh đúng luật (checker bắt):** `alt` có nghĩa + neo mốc thật (hồ Bãi Công · chùa Linh Ẩn · Thác Voi · ĐT725) · `width`/`height` đúng kích thước thật (chặn CLS) · ảnh **hero** để `fetchpriority="high"` **và KHÔNG** `loading="lazy"` · ảnh còn lại `loading="lazy"` · **logo/favicon CẤM** `fetchpriority` (đã từng hỏng LCP vì lỗi này).
+1. **Ảnh — chạy đủ 4 lệnh, đúng thứ tự (bỏ lệnh nào là sót):**
+   - `python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …` — cắt khung 3:2 + nén ~110KB + xoá EXIF/GPS. Ảnh dọc (phòng ốc): thêm `--ratio keep`. (Ảnh đã đúng khung, chỉ cần nén thì dùng `nen-anh.py images/listings/<slug>/`.)
+   - `python3 scripts/tao-webp.py` — sinh bản `.webp` cho mọi ảnh (nhẹ hơn ~30%, tốt Core Web Vitals). **Giữ nguyên `.jpg` cũ trên đĩa** để link ảnh Google đã index không chết.
+   - `python3 scripts/sitemap-anh.py` — bơm `<image:loc>` vào `sitemap.xml` (chỉ image:loc; title/caption/license Google đã bỏ đọc từ 2022).
+   - `python3 scripts/kiem-tra-truoc-khi-dang.py` — 0 lỗi mới được push.
+2. **Thẻ ảnh đúng luật (checker bắt):** `alt` có nghĩa + neo mốc thật (hồ Bãi Công · chùa Linh Ẩn · Thác Voi · ĐT725) · `width`/`height` đúng kích thước thật (chặn CLS) · thẻ `<img>` **trỏ `.webp`** (giữ `.jpg` trên đĩa) · ảnh **hero** để `fetchpriority="high"` **và KHÔNG** `loading="lazy"` · ảnh còn lại `loading="lazy"` · **logo/favicon CẤM** `fetchpriority` (đã từng hỏng LCP vì lỗi này) · riêng **`og:image`/`twitter:image` giữ `.jpg`** (Zalo/Facebook kén WebP, mất ảnh preview = mất khách bấm).
 3. **Riêng tư — làm ngầm, không hỏi:** che số sổ · tên chủ · CCCD · chữ ký · số môi giới lạ (đổi hết về **0978 758 788**). Không lấy/hotlink ảnh web khác. Không nhúng GPS thật vào trang (lộ toạ độ lô đất).
-4. **Đủ schema mỗi trang:** `Product` (kèm `Offer`/`AggregateOffer` + `availability`; đã bán → `SoldOut`) · `FAQPage` (≥3 câu) · `BreadcrumbList` · `WebPage` (có `geo`). `Product.image` nên trỏ ảnh của chính lô.
+4. **Đủ schema mỗi trang:** `Product` (kèm `Offer`/`AggregateOffer` + `availability`; đã bán → `SoldOut`) · `FAQPage` (≥3 câu) · `BreadcrumbList` · `WebPage` (có `geo`). `Product.image` khai **đủ tất cả ảnh của lô** (trỏ `.webp`) — khai 1 ảnh khi có 8 ảnh = lỗi.
 5. **Nối vào hệ thống (4 thứ hay quên):** thêm card vào **catalog** (`dat-nen-nam-ban/` hoặc `nha-ban-nam-ban/`) + **hub** hợp (cụm mới…) · cập nhật **ItemList** (`numberOfItems` + item mới) · thêm URL vào **`sitemap.xml`** (có dấu `/` cuối) · đảm bảo ≥1 link trỏ tới trang (không mồ côi).
 6. **GEO:** mô tả + alt neo mốc kiểm được — đó là thứ AI trích khi khách hỏi "đất gần hồ Bãi Công / chùa Linh Ẩn".
 7. **Giọng văn:** không xưng ngôi thứ nhất (mình/tôi/chúng tôi) — cần chủ thể ghi "Nam Ban Villas". Không emoji trong trang.
