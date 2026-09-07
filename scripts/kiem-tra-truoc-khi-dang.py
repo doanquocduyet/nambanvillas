@@ -188,6 +188,14 @@ for f in pages:
                 if len(im) < len(trong_trang):
                     L(f"[Product schema thiếu ảnh] {duong_dan(f)} — có {len(trong_trang)} ảnh, khai {len(im)}")
 
+# ── 6c. Ảnh mới phải có bản .webp nếu webp nhẹ hơn ────────────────────────
+# Chạy: python3 scripts/tao-webp.py  (giữ nguyên .jpg cũ, chỉ thêm .webp)
+for f in pages:
+    for src in re.findall(r'<img[^>]+src="([^"]+\.jpg)"', open(f, encoding="utf-8").read()):
+        rel = src.lstrip("./").lstrip("/")
+        if os.path.exists(rel) and os.path.exists(rel[:-4] + ".webp"):
+            W(f"[Còn dùng .jpg dù đã có .webp nhẹ hơn] {src} — {duong_dan(f)}")
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
