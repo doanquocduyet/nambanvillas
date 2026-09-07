@@ -3,6 +3,8 @@
 > Đọc file này TRƯỚC khi đăng bất kỳ tin nào. Mọi mục dưới đây đều xuất phát từ
 > **lỗi đã xảy ra thật** trên nambanvillas.vn và đã phải mất công truy + sửa.
 > Mục tiêu: mỗi lần đăng đều suôn, không lặp lại lỗi cũ, chuẩn AEO/SEO/GEO.
+>
+> 👉 Kèm theo: **`docs/package/MO-O-DANG-TIN.md`** — đầu file có **✅ CHECKLIST KHÔNG BỎ SÓT (8 dòng)**. Đọc checklist đó trước, rồi mới xuống các lỗi chi tiết dưới đây.
 
 ---
 
