@@ -73,6 +73,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-538m2-550tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/quy-2-lo-6700m2-nam-ban/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-8ha-buon-chuoi-ha-bac/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-2-lo-view-ho-950tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-495m2-no-hau-850tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/lo-goc-474m2-nam-ban/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-393m2/1.webp</image:loc></image:image>
@@ -1425,13 +1426,13 @@
   <url><loc>https://nambanvillas.vn/dat-nen/quy-2-lo-6700m2-nam-ban/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/quy-2-lo-6700m2-nam-ban/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/quy-2-lo-6700m2-nam-ban/2.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-770m2-3-mat-tien/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/sieu-pham-3700m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-770m2-3-mat-tien/1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/sieu-pham-3700m2/1.webp</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen/dat-8ha-buon-chuoi-ha-bac/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-8ha-buon-chuoi-ha-bac/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-1-7ha/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/sieu-pham-3700m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-1-7ha/1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/sieu-pham-3700m2/1.webp</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/nha-ban/nha-2pn-169m2-nam-ban/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-2pn-169m2-nam-ban/1.webp</image:loc></image:image>
@@ -1441,5 +1442,10 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-2pn-169m2-nam-ban/5.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-1018m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/hill-house-village/1.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/tu-liem-2-lo-view-ho-950tr/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-2-lo-view-ho-950tr/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-tu-liem-13-nen/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-511m2/1.jpg</image:loc></image:image>
   </url>
 </urlset>
