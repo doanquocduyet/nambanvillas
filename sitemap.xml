@@ -64,6 +64,8 @@
   <url><loc>https://nambanvillas.vn/cham-diem-lo-dat/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/dat-nen-nam-ban/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-suoi-may-garden/1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-trac-bach-diep-dong-thanh/so-do.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-495m2-no-hau-850tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/lo-goc-474m2-nam-ban/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-393m2/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-15-nen/1.jpg</image:loc></image:image>
@@ -88,7 +90,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-lake-view/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-cloudy-hill/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-skyview/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/nam-ban-aerial.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-14-nen-nam-ban-ho-bai-cong/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-golden-view/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-top-view/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-lakeview-retreat/1.jpg</image:loc></image:image>
@@ -271,6 +273,11 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-cloudy-hill/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-top-view/1.jpg</image:loc></image:image>
   </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/cum-trac-bach-diep-dong-thanh/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-trac-bach-diep-dong-thanh/so-do.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-cloudy-hill/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-ecolodge/1.webp</image:loc></image:image>
+  </url>
   <url><loc>https://nambanvillas.vn/dat-nen/cum-suoi-may-garden/</loc><lastmod>2026-09-06</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-suoi-may-garden/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-suoi-may-garden/so-do.jpg</image:loc></image:image>
@@ -407,7 +414,10 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-ecolodge/1.webp</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen/cum-14-nen-nam-ban-ho-bai-cong/</loc><lastmod>2026-09-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
-    <image:image><image:loc>https://nambanvillas.vn/images/nam-ban-aerial.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-14-nen-nam-ban-ho-bai-cong/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-14-nen-nam-ban-ho-bai-cong/2.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-14-nen-nam-ban-ho-bai-cong/3.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-14-nen-nam-ban-ho-bai-cong/so-do.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-dong-thanh-golden-view/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-ecolodge/1.webp</image:loc></image:image>
   </url>
@@ -662,6 +672,12 @@
   <url><loc>https://nambanvillas.vn/dat-nen/nam-ban-653m2/</loc><lastmod>2026-07-22</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-653m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-653m2/so-do.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-511m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-380m2/1.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/nam-ban-495m2-no-hau-850tr/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-495m2-no-hau-850tr/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-495m2-no-hau-850tr/so-do.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-511m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-380m2/1.jpg</image:loc></image:image>
   </url>
