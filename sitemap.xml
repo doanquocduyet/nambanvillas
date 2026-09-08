@@ -74,6 +74,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/quy-2-lo-6700m2-nam-ban/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-8ha-buon-chuoi-ha-bac/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-2-lo-view-ho-950tr/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-8-lo-ha-bac-hang-hot/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-495m2-no-hau-850tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/lo-goc-474m2-nam-ban/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-393m2/1.webp</image:loc></image:image>
@@ -1447,5 +1448,10 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-2-lo-view-ho-950tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-tu-liem-13-nen/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-511m2/1.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/cum-8-lo-ha-bac-hang-hot/</loc><lastmod>2026-09-08</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-8-lo-ha-bac-hang-hot/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-me-linh-15-lo/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-me-linh-14-nen/1.jpg</image:loc></image:image>
   </url>
 </urlset>
