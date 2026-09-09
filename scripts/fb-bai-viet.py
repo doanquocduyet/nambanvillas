@@ -166,6 +166,34 @@ def ghi_state(st):
     STATE.write_text(json.dumps(st, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def gan_link(token, post_id, url):
+    """Gắn link về web. Thử comment trước; token thiếu quyền bình luận (403) thì
+    chèn thẳng link vào cuối bài. Không bao giờ để bài trôi mà không có đường về web."""
+    try:
+        api("/%s/comments" % post_id, {"message": "Đọc bài đầy đủ: " + url,
+                                       "access_token": token})
+        return "comment"
+    except Exception as e:
+        print("Không comment được (%s) — chèn link vào bài." % e)
+    try:
+        cur = get("/%s" % post_id, {"fields": "message", "access_token": token})
+        msg = (cur.get("message") or "").replace(
+            "Bài đầy đủ ở link dưới phần bình luận.", "").rstrip()
+        api("/%s" % post_id, {"message": msg + "\n\nĐọc bài đầy đủ: " + url,
+                              "access_token": token})
+        return "trong-bai"
+    except Exception as e:
+        print("Cũng không sửa được bài:", e)
+    return None
+
+
+def get(path, params):
+    url = GRAPH + path + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=60, context=CTX) as r:
+        return json.loads(r.read().decode("utf-8", "ignore"))
+
+
 def api(path, params):
     data = urllib.parse.urlencode(params).encode()
     req = urllib.request.Request(GRAPH + path, data=data, headers=UA)
@@ -188,6 +216,17 @@ def main():
     thu = "--thu" in sys.argv
     st = doc_state()
     da = st.setdefault("da_dang", {})
+
+    # Vá bài cũ đăng rồi mà chưa gắn được link (ví dụ hôm token còn thiếu quyền)
+    token_va = os.environ.get("FB_PAGE_TOKEN", "").strip()
+    if token_va and not thu:
+        for dd, info in da.items():
+            if info.get("post_id") and not info.get("link"):
+                cach = gan_link(token_va, info["post_id"], SITE + dd)
+                if cach:
+                    info["link"] = cach
+                    ghi_state(st)
+                    print("Đã vá link cho bài cũ:", dd, "->", cach)
 
     con_lai = [u for u in bai_viet() if u not in da]
     if not con_lai:
@@ -227,14 +266,9 @@ def main():
         print("Đăng hỏng:", res)
         return 1
 
-    # Link vào comment đầu tiên — không nằm trong bài để khỏi bị bóp hiển thị
-    try:
-        api("/%s/comments" % post_id,
-            {"message": "Đọc bài đầy đủ: " + b["url"], "access_token": token})
-    except Exception as e:
-        print("Đăng được bài nhưng chưa gắn được link vào comment:", e)
-
-    da[duong_dan] = {"post_id": post_id, "ngay": datetime.date.today().isoformat()}
+    cach = gan_link(token, post_id, b["url"])
+    da[duong_dan] = {"post_id": post_id, "ngay": datetime.date.today().isoformat(),
+                     "link": cach}
     st["lan_cuoi"] = datetime.date.today().isoformat()
     ghi_state(st)
     print("Đã đăng:", b["url"], "->", post_id)
