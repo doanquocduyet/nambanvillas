@@ -1,0 +1,42 @@
+name: Đăng bài viết lên Facebook Page (vài ngày 1 bài)
+
+# Đưa dần các BÀI VIẾT sẵn có trên web lên Page — khác với fb-auto-post.yml (đăng tin rao).
+# Chạy mỗi ngày nhưng script tự giãn 3 ngày mới đăng 1 bài, nên không dồn.
+# Link bài đặt ở comment đầu tiên để Facebook không bóp hiển thị.
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # 01:00 UTC = 08:00 giờ VN (lệch giờ với fb-auto-post 10:00)
+  workflow_dispatch:
+    inputs:
+      ep:
+        description: Ép đăng ngay, bỏ qua giãn cách 3 ngày
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fb-bai-viet
+  cancel-in-progress: false
+
+jobs:
+  dang:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Đăng 1 bài viết
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python3 scripts/fb-bai-viet.py ${{ inputs.ep && '--ep' || '' }}
+      - name: Ghi lại bài đã đăng
+        run: |
+          git config user.name "fb-poster-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add data/fb-baiviet-posted.json
+          git diff --cached --quiet || git commit -m "Cập nhật danh sách bài viết đã đăng Facebook [skip ci]"
+          git push
