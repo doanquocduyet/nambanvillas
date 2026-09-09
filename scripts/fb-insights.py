@@ -97,7 +97,23 @@ def main():
     try:
         bai = lay_bai(token, SO_BAI)
     except urllib.error.HTTPError as e:
-        print("Không đọc được danh sách bài:", e.read().decode("utf-8", "ignore")[:400])
+        loi = e.read().decode("utf-8", "ignore")
+        thieu = "pages_read_engagement" in loi
+        print("Không đọc được danh sách bài:", loi[:400])
+        if thieu:
+            # Thiếu quyền là chuyện của token, không phải lỗi code — ghi lại rõ ràng
+            # rồi thoát êm, để lịch chạy hàng tuần không báo đỏ vô nghĩa.
+            OUT_MD.parent.mkdir(parents=True, exist_ok=True)
+            OUT_MD.write_text(
+                "# Số liệu Facebook Page — chưa đọc được\n\n"
+                "Thử đọc ngày %s nhưng token thiếu quyền `pages_read_engagement`.\n\n"
+                "Cách mở: vào https://developers.facebook.com/tools/explorer/ → chọn Page "
+                "Nam Ban Villas → Permissions → tick `pages_read_engagement` và "
+                "`pages_manage_engagement` → Generate Access Token → dán token mới vào "
+                "secret `FB_PAGE_TOKEN`.\n\n"
+                "Cùng một token đó cũng mở luôn việc tự động comment link dưới bài.\n"
+                % datetime.date.today().isoformat(), encoding="utf-8")
+            return 0
         return 1
     if not bai:
         print("Page chưa có bài nào.")
