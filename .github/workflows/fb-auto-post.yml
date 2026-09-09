@@ -1,16 +1,11 @@
 name: Tự đăng tin mới lên Facebook Page
 
-# Mỗi khi có tin mới lên web (push vào main) là tự đăng lên Page Nam Ban Villas.
-# Thêm 1 lần chạy mỗi ngày để chắc chắn không sót. Chỉ đăng tin CHƯA đăng.
+# Mỗi ngày đăng tối đa 1 tin rao CHƯA đăng lên Page Nam Ban Villas.
 # Cần secret FB_PAGE_TOKEN (chìa khoá Page). Xem docs/fb-auto-setup.md.
 
+# Bỏ trigger 'push': trước đây đăng cả khi push lẫn theo giờ, dồn nhiều tin một lúc
+# nên Facebook đọc là spam. Nay chỉ đăng đúng 1 tin/ngày theo lịch.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'dat-nen/**/index.html'
-      - 'nha-ban/**/index.html'
-      - 'sitemap.xml'
   schedule:
     - cron: '0 3 * * *'   # 03:00 UTC = 10:00 giờ VN mỗi ngày (lưới an toàn)
   workflow_dispatch:

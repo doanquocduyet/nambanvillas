@@ -30,7 +30,6 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATE = ROOT / "data" / "fb-baiviet-posted.json"
 SITE = "https://nambanvillas.vn"
 GRAPH = "https://graph.facebook.com/v21.0"
-HOTLINE = "0978 758 788"
 NGAY_GIAN = 3                      # vài ngày 1 bài
 CTX = ssl.create_default_context()
 UA = {"User-Agent": "NamBanVillas-BaiViet/1.0"}
@@ -144,11 +143,12 @@ def viet_caption(b):
     than = "\n\n".join(b["doan"][:3])
     if len(than) > 1500:
         than = than[:1500].rsplit(" ", 1)[0] + "…"
+    # Bài viết KHÔNG kèm số điện thoại — đây là bài đọc, không phải bài rao.
+    # Ai muốn liên hệ đã có nút trên Page và link web ở comment.
     return (
         f"{b['tieu_de']}\n\n"
         f"{than}\n\n"
-        f"Bài đầy đủ ở link dưới phần bình luận.\n"
-        f"Cần hỏi lô cụ thể hay xem sổ, nhắn Zalo {HOTLINE}."
+        f"Bài đầy đủ ở link dưới phần bình luận."
     )
 
 
