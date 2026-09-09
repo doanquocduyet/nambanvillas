@@ -36,4 +36,6 @@ jobs:
           git config user.email "actions@github.com"
           git add thi-truong/tin-rao-dat-nam-ban-moi/index.html data/tin-rao-state.json feed.xml
           git diff --staged --quiet || git commit -m "chore: tin rao Nam Ban $(date +'%Y-%m-%d') [skip ci]"
+          # Máy khác có thể vừa đẩy — kéo về rồi đẩy, tránh bị chặn
+          git pull --rebase --autostash -q origin main || true
           git push
