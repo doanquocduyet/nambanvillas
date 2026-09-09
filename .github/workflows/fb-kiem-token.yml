@@ -1,0 +1,23 @@
+name: Kiểm mã token Facebook
+
+# Chạy tay khi nghi mã token sai loại hoặc thiếu quyền.
+# KHÔNG in mã ra log, chỉ cho biết mã là loại gì và làm được việc gì.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kiem:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Kiểm mã
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python3 scripts/fb-kiem-token.py

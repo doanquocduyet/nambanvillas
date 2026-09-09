@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name "fb-insights-bot"
           git config user.email "bot@nambanvillas.vn"
-          git add data/fb-insights.json data/fb-insights.md
+          git add -A data/ 2>/dev/null || true
           git diff --cached --quiet || git commit -m "Cập nhật số liệu Facebook Page [skip ci]"
           git push
