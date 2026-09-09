@@ -26,7 +26,7 @@ STATE = ROOT / "data" / "fb-posted.json"
 SITEMAP = ROOT / "sitemap.xml"
 HOTLINE = "0978 758 788"   # Số dùng RIÊNG cho bài đăng Facebook (khác hotline web)
 GRAPH = "https://graph.facebook.com/v21.0"
-MAX_PER_RUN = 3            # tối đa 3 tin/lần chạy — đăng đều, không dồn
+MAX_PER_RUN = 1            # 1 tin/lần chạy. Đăng 3 tin liền Facebook đọc là spam và bóp hiển thị cả Page.
 CTX = ssl.create_default_context()
 UA = {"User-Agent": "NamBanVillas-FBposter/1.0"}
 

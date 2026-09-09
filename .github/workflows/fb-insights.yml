@@ -1,0 +1,36 @@
+name: Đọc số liệu Facebook Page (hàng tuần)
+
+# Kéo like/comment/share/reach của các bài đã đăng về repo, tự rút ra bài nào ăn.
+# Kết quả đọc được ở data/fb-insights.md
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'   # 02:00 UTC thứ Hai = 09:00 giờ VN
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fb-insights
+  cancel-in-progress: false
+
+jobs:
+  doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Đọc số liệu Page
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+        run: python3 scripts/fb-insights.py 100
+      - name: Lưu kết quả
+        run: |
+          git config user.name "fb-insights-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add data/fb-insights.json data/fb-insights.md
+          git diff --cached --quiet || git commit -m "Cập nhật số liệu Facebook Page [skip ci]"
+          git push
