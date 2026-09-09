@@ -37,6 +37,7 @@ def get(path, params):
 FIELDS_DU = ("id,created_time,message,permalink_url,shares,"
              "likes.summary(true).limit(0),comments.summary(true).limit(0)")
 FIELDS_GON = "id,created_time,message,permalink_url,shares"
+FIELDS_TOI_THIEU = "id,created_time"
 
 
 def lay_bai(token, gioi_han, fields=FIELDS_DU):
@@ -105,13 +106,16 @@ def main():
         # Thiếu quyền đọc tương tác thì vẫn lấy được danh sách bài + lượt chia sẻ.
         # Có ít số liệu còn hơn không có gì.
         if thieu:
-            try:
-                bai = lay_bai(token, SO_BAI, FIELDS_GON)
-                day_du = False
-                print("Thiếu pages_read_engagement — chỉ đọc được bài và lượt chia sẻ.")
-            except urllib.error.HTTPError as e2:
-                loi = e2.read().decode("utf-8", "ignore")
-                bai = None
+            bai = None
+            for fs, ghi in ((FIELDS_GON, "bài và lượt chia sẻ"),
+                            (FIELDS_TOI_THIEU, "ngày đăng")):
+                try:
+                    bai = lay_bai(token, SO_BAI, fs)
+                    day_du = False
+                    print("Thiếu pages_read_engagement — chỉ đọc được %s." % ghi)
+                    break
+                except urllib.error.HTTPError as e2:
+                    loi = e2.read().decode("utf-8", "ignore")
         else:
             bai = None
         if bai is None:
