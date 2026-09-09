@@ -39,4 +39,6 @@ jobs:
           git config user.email "bot@nambanvillas.vn"
           git add docs/gsc-status.md
           git diff --cached --quiet || git commit -m "Cập nhật báo cáo index GSC $(date -u +%F)"
+          # Máy khác có thể vừa đẩy — kéo về rồi đẩy, tránh bị chặn
+          git pull --rebase --autostash -q origin main || true
           git push

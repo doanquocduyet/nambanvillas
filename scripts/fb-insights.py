@@ -33,13 +33,15 @@ def get(path, params):
         return json.loads(r.read().decode("utf-8", "ignore"))
 
 
-def lay_bai(token, gioi_han):
+# Bộ trường đầy đủ cần pages_read_engagement; bộ rút gọn thì không.
+FIELDS_DU = ("id,created_time,message,permalink_url,shares,"
+             "likes.summary(true).limit(0),comments.summary(true).limit(0)")
+FIELDS_GON = "id,created_time,message,permalink_url,shares"
+
+
+def lay_bai(token, gioi_han, fields=FIELDS_DU):
     """Lấy bài đã đăng kèm số tương tác. Phân trang tới khi đủ."""
     bai, sau = [], None
-    fields = ("id,created_time,message,permalink_url,"
-              "shares,"
-              "likes.summary(true).limit(0),"
-              "comments.summary(true).limit(0)")
     while len(bai) < gioi_han:
         p = {"fields": fields, "limit": 25, "access_token": token}
         if sau:
@@ -94,13 +96,26 @@ def main():
         print("Thiếu FB_PAGE_TOKEN — thoát êm.")
         return 0
 
+    day_du = True
     try:
         bai = lay_bai(token, SO_BAI)
     except urllib.error.HTTPError as e:
         loi = e.read().decode("utf-8", "ignore")
         thieu = "pages_read_engagement" in loi
-        print("Không đọc được danh sách bài:", loi[:400])
+        # Thiếu quyền đọc tương tác thì vẫn lấy được danh sách bài + lượt chia sẻ.
+        # Có ít số liệu còn hơn không có gì.
         if thieu:
+            try:
+                bai = lay_bai(token, SO_BAI, FIELDS_GON)
+                day_du = False
+                print("Thiếu pages_read_engagement — chỉ đọc được bài và lượt chia sẻ.")
+            except urllib.error.HTTPError as e2:
+                loi = e2.read().decode("utf-8", "ignore")
+                bai = None
+        else:
+            bai = None
+        if bai is None:
+            print("Không đọc được danh sách bài:", loi[:400])
             # Thiếu quyền là chuyện của token, không phải lỗi code — ghi lại rõ ràng
             # rồi thoát êm, để lịch chạy hàng tuần không báo đỏ vô nghĩa.
             OUT_MD.parent.mkdir(parents=True, exist_ok=True)
@@ -126,7 +141,7 @@ def main():
         like = ((x.get("likes") or {}).get("summary") or {}).get("total_count", 0)
         cmt = ((x.get("comments") or {}).get("summary") or {}).get("total_count", 0)
         shr = ((x.get("shares") or {}).get("count", 0)) if x.get("shares") else 0
-        reach = lay_reach(token, pid)
+        reach = lay_reach(token, pid) if day_du else None
         if reach is None:
             thieu_quyen += 1
         rows.append(dict(
@@ -152,7 +167,12 @@ def main():
     md = ["# Số liệu Facebook Page — đọc ngày %s" % datetime.date.today().isoformat(), ""]
     md.append("Đọc %d bài. %d bài có tương tác, %d bài im lặng hoàn toàn."
               % (len(rows), len(co_tuong_tac), len(rows) - len(co_tuong_tac)))
-    if thieu_quyen == len(rows):
+    if not day_du:
+        md.append("")
+        md.append("> Token thiếu quyền `pages_read_engagement` nên **chưa đọc được "
+                  "like, bình luận và lượt tiếp cận**. Bảng dưới chỉ có lượt chia sẻ. "
+                  "Mở quyền đó ở Graph API Explorer là có đủ số.")
+    elif thieu_quyen == len(rows):
         md.append("")
         md.append("> Chưa đọc được số người tiếp cận (reach): token thiếu quyền "
                   "`pages_read_engagement`. Các số like/comment/share bên dưới vẫn đúng.")
@@ -199,8 +219,15 @@ def main():
             md.append("- (%d điểm) %s — %s" % (r["diem"], r["ngay"], r["cau_dau"][:80]))
         md.append("")
     else:
-        md.append("Chưa bài nào có tương tác. Chưa đủ dữ liệu để rút công thức — "
-                  "chạy lại sau khi Page có thêm bài và người theo dõi.")
+        md.append("Chưa đo được tương tác nào. %s"
+                  % ("Do token thiếu quyền đọc like/bình luận."
+                     if not day_du else
+                     "Page có bài nhưng chưa ai like/bình luận/chia sẻ."))
+        md.append("")
+        md.append("## 10 bài gần nhất")
+        md.append("")
+        for r in sorted(rows, key=lambda x: x["ngay"], reverse=True)[:10]:
+            md.append("- %s (%s, %d chữ) — %s" % (r["ngay"], r["kieu"], r["tu"], r["cau_dau"][:80]))
         md.append("")
 
     md.append("Số liệu thô từng bài: `data/fb-insights.json`.")
