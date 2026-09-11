@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://nambanvillas.vn/</loc><lastmod>2026-07-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-138m2-view/1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-trung-tam-nam-ban-599tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-2pn-full-noi-that-127m2/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-225m2-mat-tien-12m/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/thung-lung-530m2/1.jpg</image:loc></image:image>
@@ -500,6 +500,7 @@
   <url><loc>https://nambanvillas.vn/lien-he/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/namban-notes/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/nha-ban-nam-ban/</loc><lastmod>2026-07-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-go-farm-stay-me-linh/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nghi-duong-700m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-view-416m2/1.jpg</image:loc></image:image>
@@ -1469,5 +1470,13 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-887m2-san-may/so-do.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-538m2-550tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-845m2/1.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/nha-ban/nha-nghi-duong-cam-ly-279m2/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/2.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/3.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/4.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-go-farm-stay-me-linh/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-396m2-rung-thong/1.jpg</image:loc></image:image>
   </url>
 </urlset>
