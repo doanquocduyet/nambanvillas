@@ -48,6 +48,24 @@
   .cm-zone{background:#EEF3EC;border:1px solid #DCE6D8;border-radius:12px;padding:11px 16px;font-size:.92rem;font-weight:700;color:#1A3D2B;text-decoration:none;transition:.15s}
   .cm-zone:hover{background:#e2ebe0;transform:translateY(-1px)}
   .cm-zone span{display:block;font-size:.76rem;font-weight:500;color:#8a978f;margin-top:2px}
+  /* Ô lọc khu — bấm là lọc cụm ngay trong trang */
+  .cm-zone{cursor:pointer;font-family:inherit;text-align:left;line-height:1.35}
+  .cm-zone b{font-weight:800;color:#8a978f;font-size:.82rem;margin-left:2px}
+  .cm-zone:focus-visible{outline:2.5px solid #1A3D2B;outline-offset:2px}
+  .cm-zone-on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
+  .cm-zone-on b,.cm-zone-on span{color:rgba(255,255,255,.72)}
+  .cm-zone-on:hover{background:#24513a}
+  .cm-cluster.cm-an{display:none!important}
+  #cm-trong{background:#F6F1E9;border:1px solid #EAE3D6;border-radius:14px;padding:14px 18px;
+            font-size:.92rem;color:#4b5a50;line-height:1.6;margin:14px 0 0}
+  #cm-trong a{color:#1A3D2B;font-weight:700}
+  .cm-xem-het{background:none;border:none;padding:0;font:inherit;color:#1A3D2B;font-weight:700;
+              text-decoration:underline;cursor:pointer}
+  @media(max-width:600px){
+    .cm-zones{gap:8px}
+    .cm-zone{flex:1 1 calc(50% - 4px);padding:10px 12px;font-size:.86rem}
+    .cm-zone span{font-size:.7rem}
+  }
   /* Hook: gọi nhận cụm mới */
   .cm-hook{background:#1A3D2B;background:linear-gradient(150deg,#12301d,#1f4a2e);border-radius:20px;padding:40px 30px;text-align:center;color:#fff;margin:12px auto 0;max-width:760px}
   .cm-hook h2{font-family:'Plus Jakarta Sans Variable',system-ui,sans-serif;font-size:1.55rem;color:#fff;margin:0 0 12px}
@@ -138,13 +156,17 @@
     <p><strong>Giá đất phân lô Nam Ban đang mở:</strong> từ <strong>439 triệu/nền</strong> (cụm Mê Linh ngang 5m full thổ cư) và <strong>quanh 500–675 triệu/nền</strong> (cụm 529tr trung tâm, cụm 19 lô thị trấn, cụm 24 nền rừng thông, Đông Thanh, Từ Liêm – lô 98–320m² sổ riêng, có thổ cư) đến <strong>từ 1,15 tỷ/lô</strong> (cụm Tầm Xá – lô lớn 352–973m², sổ sẵn công chứng trong ngày). Tất cả đều là đất đã tách thửa, đường bê tông ô tô tới nơi, cách trung tâm Đà Lạt khoảng 22–25km.</p>
     <div class="cm-note">Nói thật: cụm mới là cơ hội, nhưng cũng là chỗ dễ vướng nhất — quy hoạch, đường pháp lý, ranh thửa, hạ tầng chưa xong. Nam Ban Villas xem đất tận nơi, đọc giúp rủi ro từng cụm trước khi bạn xuống tiền. Không hô "lời to", chỉ nói đúng cái đang có.</div>
     <p style="font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a978f;margin:26px 0 12px">Các khu thường ra cụm mới</p>
-    <div class="cm-zones">
-      <div class="cm-zone">Đông Thanh<span>view rừng thông, núi Voi</span></div>
-      <div class="cm-zone">Từ Liêm<span>gần trung tâm, lô nhỏ dễ vào</span></div>
-      <div class="cm-zone">Mê Linh<span>sát Đà Lạt, sổ riêng thổ cư</span></div>
-      <div class="cm-zone">Tầm Xá<span>lô lớn, sổ sẵn công chứng ngay</span></div>
-      <div class="cm-zone">Nam Ban trung tâm<span>gần chợ, chùa Linh Ẩn (Thiền Viện Linh Ẩn)</span></div>
+    <div class="cm-zones" role="group" aria-label="Lọc cụm theo khu">
+      <button type="button" class="cm-zone cm-zone-on" data-khu="">Tất cả <b>33</b><span>33 cụm đang mở</span></button>
+      <button type="button" class="cm-zone" data-khu="nam-ban">Nam Ban trung tâm <b>14</b><span>gần chợ, chùa Linh Ẩn</span></button>
+      <button type="button" class="cm-zone" data-khu="dong-thanh">Đông Thanh <b>10</b><span>view rừng thông, núi Voi</span></button>
+      <button type="button" class="cm-zone" data-khu="gia-lam">Gia Lâm <b>5</b><span>dân cư đông, gần chợ</span></button>
+      <button type="button" class="cm-zone" data-khu="me-linh">Mê Linh <b>4</b><span>sát Đà Lạt, mát quanh năm</span></button>
+      <button type="button" class="cm-zone" data-khu="ho-bai-cong">Hồ Bãi Công <b>4</b><span>lô gần hồ, view mặt nước</span></button>
+      <button type="button" class="cm-zone" data-khu="tam-xa">Tầm Xá <b>1</b><span>lô lớn, sổ sẵn công chứng ngay</span></button>
+      <button type="button" class="cm-zone" data-khu="tu-liem">Từ Liêm <b>1</b><span>yên tĩnh, có lô view hồ</span></button>
     </div>
+    <p id="cm-trong" hidden>Khu này chưa có cụm nào đang mở. <button type="button" class="cm-xem-het">Xem tất cả cụm</button> hoặc gọi <a href="tel:0978758788">0978 758 788</a> để Nam Ban Villas báo khi có cụm mới.</p>
   </div>
 </section>
 
@@ -161,7 +183,7 @@
 
         <p style="font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a978f;margin:0 0 16px">Cụm đang mở</p>
     <p style="font-size:.92rem;color:#5a6660;line-height:1.6;margin:0 0 20px">Muốn xem <a href="/thi-truong/dat-phan-lo-nam-ban/" style="color:#1A3D2B;font-weight:700;text-decoration:underline">giá đất phân lô Nam Ban theo từng khu &amp; 5 điều pháp lý cần kiểm trước khi cọc</a>? Xem hướng dẫn chi tiết, rồi quay lại chọn cụm bên dưới.</p>
-    <a href="/dat-nen/cum-suoi-may-garden/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-suoi-may-garden/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-suoi-may-garden/1.webp" alt="Khu Suối Mây Garden Nam Ban – 9 nền biệt thự, 200m² thổ cư/nền, từ 1,25 tỷ" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">9 nền · 200m² thổ cư/nền</span>
@@ -171,7 +193,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-dong-da-topview/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-dong-da-topview/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-nam-ban-dong-da-topview/1.jpg" alt="Khu Nam Ban – Đống Đa Topview – 31 nền view đồi núi xã Nam Ban, đường bê tông 2 mặt, 550 triệu/lô" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">31 nền · sổ tách thửa riêng</span>
@@ -181,7 +203,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-6-lo-nam-ban-giap-da-lat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-6-lo-nam-ban-giap-da-lat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-6-lo-nam-ban-giap-da-lat/1.jpg" alt="Cụm 6 lô đất thị trấn Nam Ban ven Đà Lạt, 91m² thổ cư/lô, triền dương view thoáng, từ 690 triệu" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">6 lô · sổ riêng</span>
@@ -191,7 +213,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-5-lo-mat-ho-dong-thanh/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-5-lo-mat-ho-dong-thanh/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-5-lo-mat-ho-dong-thanh/1.jpg" alt="Cụm 5 lô đất mặt hồ Đông Thanh Nam Ban, lô lớn có thổ cư, view hồ" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">5 lô mặt hồ · sổ riêng</span>
@@ -201,7 +223,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-gan-the-nest-village-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-gan-the-nest-village-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-gan-the-nest-village-nam-ban/2.jpg" alt="Đất nền gần khu biệt thự The Nest Village Nam Ban, có thổ cư, từ 550 triệu" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Từ 550tr · có thổ cư</span>
@@ -211,7 +233,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-ht86-gia-lam/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-ht86-gia-lam/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="gia-lam">
       <img src="/images/listings/cum-ht86-gia-lam/1.jpg" alt="Khu nghỉ dưỡng HT86 Gia Lâm Nam Ban – đất nền, đường bê tông, biệt thự hiện hữu cạnh rừng thông" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Còn ~8 nền · sổ riêng</span>
@@ -221,7 +243,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-me-linh-nam-ban-22-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-me-linh-nam-ban-22-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="me-linh">
       <img src="/images/listings/cum-me-linh-nam-ban-22-lo/1.webp" alt="Cụm 22 lô đất nền Nam Ban – Mê Linh, sổ ONT riêng, nhìn từ flycam" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">22 lô · sổ ONT riêng</span>
@@ -231,7 +253,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-bai-cong-lake-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-bai-cong-lake-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban ho-bai-cong">
       <img src="/images/listings/cum-nam-ban-lake-view/1.jpg" alt="Khu Nam Ban – Bãi Công Lake View – 37 nền ngay hồ Bãi Công, 2 nền mặt hồ" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">37 nền · 2 mặt hồ</span>
@@ -241,7 +263,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-cloudy-hill/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-cloudy-hill/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-nam-ban-cloudy-hill/1.webp" alt="Nam Ban Cloudy Hill – 39 nền đất sổ riêng Đông Thanh, sẵn thổ cư, từ 368tr" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">39 nền · sổ riêng</span>
@@ -251,7 +273,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-skyview/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-skyview/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-nam-ban-skyview/1.jpg" alt="Bán sỉ khu Nam Ban Đông Thanh Skyview – 15 lô, view thung lũng, 8,8 tỷ" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Bán sỉ 15 lô · 8,8 tỷ</span>
@@ -261,7 +283,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-14-nen-nam-ban-ho-bai-cong/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-14-nen-nam-ban-ho-bai-cong/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban ho-bai-cong">
       <img src="/images/nam-ban-aerial.jpg" alt="Cụm 14 nền Nam Ban gần hồ Bãi Công, yên tĩnh" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">14 nền · gần hồ</span>
@@ -271,7 +293,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-dong-thanh-golden-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-dong-thanh-golden-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-dong-thanh-golden-view/1.jpg" alt="Nam Ban – Đông Thanh Golden View ~7.000m², có nhà, lô 900m² 1,3 tỷ, gần khu nhà trắng Đông Thanh" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">~7.000m² · có nhà</span>
@@ -281,7 +303,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem chi tiết →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-dong-thanh-top-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-dong-thanh-top-view/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-dong-thanh-top-view/1.jpg" alt="Bán sỉ khu Đông Thanh Top View 39 nền, hạ tầng đường nước xong, view siêu cao" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Bán sỉ · 39 nền</span>
@@ -291,7 +313,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-dong-thanh-lakeview-retreat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-dong-thanh-lakeview-retreat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-dong-thanh-lakeview-retreat/1.jpg" alt="Khu Đông Thanh LakeView Retreat – 25 nền view hồ Đông Thanh" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">25 nền · view hồ</span>
@@ -301,7 +323,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-<a href="/dat-nen/cum-nam-ban-ecolodge/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+<a href="/dat-nen/cum-nam-ban-ecolodge/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-nam-ban-ecolodge/1.webp" alt="Khu Nam Ban Ecolodge" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">26 nền · view cao</span>
@@ -311,7 +333,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-7-nen-giap-rung-thong-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-7-nen-giap-rung-thong-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-7-nen-giap-rung-thong-nam-ban/1.jpg" alt="Cụm 7 nền giáp rừng thông nguyên sinh ven Đà Lạt, đường bê tông 7m, hơn 360m² thổ cư/lô" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">7 nền · giáp rừng thông</span>
@@ -321,7 +343,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-little-creek-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-little-creek-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-little-creek-nam-ban/1.jpg" alt="Cụm 58 nền Little Creek Nam Ban ven suối Cam Ly – đường nhựa, cây xanh, view đồi thông" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">60 nền · vừa mở</span>
@@ -331,7 +353,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-dong-thanh-5-lo-450tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-dong-thanh-5-lo-450tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-dong-thanh-5-lo-450tr/1.jpg" alt="Cụm 5 lô F0 Đông Thanh Nam Ban – flycam vị trí bám đường bê tông, khu dân cư bao quanh" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">5 lô F0 · vừa mở</span>
@@ -341,7 +363,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-bai-cong-13-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-bai-cong-13-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban ho-bai-cong">
       <img src="/images/listings/cum-bai-cong-13-nen/4.jpg" alt="Cụm 13 nền F0 gần hồ Bãi Công Nam Ban – đất bằng phẳng đã dọn, đường bê tông, khu dân cư" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">13 nền F0 · vừa mở</span>
@@ -351,7 +373,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-gia-lam-12-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-gia-lam-12-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="gia-lam">
       <img src="/images/listings/cum-gia-lam-12-lo/1.jpg" alt="Cụm 12 lô F0 Gia Lâm Nam Ban ven đường DT725 – khu dân cư và rừng thông, view thung lũng" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">12 lô F0 · vừa mở</span>
@@ -361,7 +383,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-gia-lam-3-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-gia-lam-3-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="gia-lam">
       <img src="/images/listings/cum-gia-lam-3-lo/1.jpg" alt="Cụm 3 lô F0 Gia Lâm 3 Nam Ban – thổ cư lớn, đường bê tông, khu dân cư hiện hữu, view thung lũng" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">3 lô F0 · vừa mở</span>
@@ -371,7 +393,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-chi-lang-18-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-chi-lang-18-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-chi-lang-18-lo/1.jpg" alt="Cụm 18 lô F0 Chi Lăng Nam Ban – cọc mốc bê tông, đèn đường năng lượng mặt trời, view núi và thị trấn" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Còn 10 nền F0</span>
@@ -381,7 +403,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-ht86-14-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-ht86-14-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="gia-lam">
       <img src="/images/listings/cum-ht86-14-nen/3.webp" alt="Cụm 13 nền F0 khu biệt thự HT86 Nam Ban, đã hạ mốc ranh, dưới chân đồi thông, khu biệt thự hiện hữu" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">13 nền F0 · đã hạ mốc ranh</span>
@@ -391,7 +413,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-me-linh-15-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-me-linh-15-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="me-linh">
       <img src="/images/listings/cum-me-linh-15-lo/1.jpg" alt="Cụm 12 lô đất F0 Mê Linh ven Đà Lạt nhìn từ flycam, đất bằng phẳng, vườn cây ăn trái, đường bê tông" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">12 lô F0 · sổ riêng</span>
@@ -401,7 +423,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-dong-thanh-7-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-dong-thanh-7-lo/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh">
       <img src="/images/listings/cum-dong-thanh-7-lo/1.jpg" alt="Cụm 7 lô đất Đông Thanh Nam Ban view hồ, nhìn từ flycam, gần cổng chào và đường lớn" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">7 lô · vừa mở</span>
@@ -411,7 +433,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-439tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-439tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban ho-bai-cong">
       <img src="/images/listings/cum-nam-ban-439tr/1.jpg" alt="Cụm 9 nền phân lô Nam Ban gần Hồ Bãi Công, ngang 5m full thổ cư, đường bê tông chia lô" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Còn 7 nền · vừa mở</span>
@@ -421,7 +443,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-nam-ban-529tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-nam-ban-529tr/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-nam-ban-529tr/1.webp" alt="Cụm 9 lô đất phân lô trung tâm Nam Ban nhìn từ flycam, các nền đã san, đường vào tận đất" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">9 lô · vừa mở</span>
@@ -431,7 +453,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-19-lo-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-19-lo-nam-ban/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="nam-ban">
       <img src="/images/listings/cum-19-lo-nam-ban/1.jpg" alt="Cụm 19 lô đất phân lô thị trấn Nam Ban, cách ĐT725 200m, mỗi lô 132m² 112m² thổ cư" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">Còn 11 lô · vừa mở</span>
@@ -441,7 +463,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-24-nen-rung-thong/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-24-nen-rung-thong/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="me-linh">
       <img src="/images/listings/cum-24-nen-rung-thong/2.webp" alt="Cụm 24 nền đất dưới tán rừng thông Mê Linh Nam Ban nhìn từ flycam, rừng thông và villa" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">24 nền · vừa mở</span>
@@ -451,7 +473,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-ts-retreat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-ts-retreat/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="gia-lam">
       <img src="/images/listings/cum-ts-retreat/1.jpg" alt="Khu nghỉ dưỡng TS Retreat Nam Ban – Mê Linh nhìn từ flycam, các nền phân lô, đường bê tông, nhà xây sẵn ven Đà Lạt" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">~37 sản phẩm · nghỉ dưỡng</span>
@@ -461,7 +483,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-tam-xa-5-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-tam-xa-5-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="dong-thanh tam-xa">
       <img src="/images/listings/cum-tam-xa-5-nen/1.webp" alt="Cụm 5 nền F0 Tầm Xá Nam Ban, sổ sẵn, có đất ở, view núi" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">5 nền F0 · vừa mở</span>
@@ -471,7 +493,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-me-linh-14-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster">
+    <a href="/dat-nen/cum-me-linh-14-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s;margin-bottom:18px" class="cm-cluster" data-khu="me-linh">
       <img src="/images/listings/cum-me-linh-14-nen/1.jpg" alt="Cụm 14 nền đất Mê Linh sát Đà Lạt, sổ riêng, sẵn thổ cư, view đẹp" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">14 nền · vừa mở</span>
@@ -481,7 +503,7 @@
         <span style="display:block;margin-top:10px;color:#C9A84C;font-weight:800;font-size:.9rem">Xem cả cụm →</span>
       </div>
     </a>
-    <a href="/dat-nen/cum-tu-liem-13-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s" class="cm-cluster">
+    <a href="/dat-nen/cum-tu-liem-13-nen/" style="display:flex;gap:20px;background:#fff;border:1px solid #E3E0D8;border-radius:18px;overflow:hidden;text-decoration:none;box-shadow:0 8px 26px -14px rgba(26,61,43,.25);transition:.18s" class="cm-cluster" data-khu="nam-ban tu-liem">
       <img src="/images/listings/cum-tu-liem-13-nen/1.jpg" alt="Cụm 13 nền đất Từ Liêm Nam Ban, ngang 5m, sẵn thổ cư" width="300" height="220" loading="lazy" style="width:44%;max-width:300px;object-fit:cover;display:block;flex:0 0 auto">
       <div style="padding:20px 22px 20px 0;min-width:0">
         <span style="display:inline-block;background:#EEF3EC;color:#1A3D2B;font-size:.72rem;font-weight:700;padding:3px 11px;border-radius:20px;margin-bottom:9px">13 nền · vừa mở</span>
@@ -590,6 +612,47 @@
     function c(){sheet.classList.remove('open');ov.classList.remove('open');}
     btn.addEventListener('click',o);ov.addEventListener('click',c);
   }
+})();
+</script>
+<script>
+// Lọc cụm theo khu. Ẩn bằng class nên số thứ tự (CSS counter) tự đánh lại từ 1.
+(function(){
+  var nut=document.querySelectorAll('.cm-zone');
+  var cum=document.querySelectorAll('.cm-cluster');
+  var trong=document.getElementById('cm-trong');
+  if(!nut.length||!cum.length) return;
+
+  function loc(khu,cuon){
+    var hien=0;
+    cum.forEach(function(c){
+      var ds=(c.getAttribute('data-khu')||'').split(/\s+/);
+      var ok=!khu||ds.indexOf(khu)>-1;
+      c.classList.toggle('cm-an',!ok);
+      if(ok)hien++;
+    });
+    nut.forEach(function(n){n.classList.toggle('cm-zone-on',(n.getAttribute('data-khu')||'')===khu);});
+    if(trong)trong.hidden=hien>0;
+    // giữ khu đang chọn trên địa chỉ để chia sẻ / bấm Back được
+    try{
+      var u=new URL(location.href);
+      if(khu)u.searchParams.set('khu',khu); else u.searchParams.delete('khu');
+      history.replaceState(null,'',u);
+    }catch(e){}
+    if(cuon){
+      var dau=document.querySelector('.cm-cluster:not(.cm-an)');
+      if(dau)dau.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    if(window.gtag)gtag('event','loc_cum_theo_khu',{khu:khu||'tat-ca',so_cum:hien});
+  }
+
+  nut.forEach(function(n){
+    n.addEventListener('click',function(){loc(n.getAttribute('data-khu')||'',true);});
+  });
+  var het=document.querySelector('.cm-xem-het');
+  if(het)het.addEventListener('click',function(){loc('',false);});
+
+  var q=new URLSearchParams(location.search).get('khu');
+  if(q&&document.querySelector('.cm-zone[data-khu="'+q.replace(/"/g,'')+'"]'))loc(q,true);
 })();
 </script>
 </body>
