@@ -68,6 +68,7 @@
   </url>
   <url><loc>https://nambanvillas.vn/cham-diem-lo-dat/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/dat-nen-nam-ban/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-gan-ba-dinh-899tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-887m2-san-may/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-suoi-may-garden/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-trac-bach-diep-dong-thanh/so-do.webp</image:loc></image:image>
@@ -1477,6 +1478,12 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/3.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-nghi-duong-cam-ly-279m2/4.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-go-farm-stay-me-linh/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-396m2-rung-thong/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-396m2-rung-thong/1.webp</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/dat-600m2-gan-ba-dinh-899tr/</loc><lastmod>2026-09-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-gan-ba-dinh-899tr/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-gan-ba-dinh-899tr/2.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-mt-ba-dinh-nam-ban-550m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-trung-tam-nam-ban-599tr/1.jpg</image:loc></image:image>
   </url>
 </urlset>
