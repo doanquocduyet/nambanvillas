@@ -105,10 +105,29 @@
 </style>
 <section class="section" style="padding-top:8px">
   <div class="container">
-    <p style="color:#6B6B6B;margin-bottom:24px;font-size:.9rem">Hiển thị <strong style="color:#1A3D2B">30</strong> tin đăng mới nhất tháng 9/2026</p>
+<style>
+/* Lọc nhà theo khu */
+.nb-khus{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.nb-khu{background:#fff;border:1px solid #EAE3D6;border-radius:100px;padding:8px 16px;font-family:inherit;
+        font-size:.87rem;font-weight:600;color:#1A3D2B;cursor:pointer;transition:.15s;line-height:1.2}
+.nb-khu b{font-weight:800;color:#8a978f;font-size:.8rem;margin-left:3px}
+.nb-khu:hover{border-color:#1A3D2B;background:#EBF4EE}
+.nb-khu:focus-visible{outline:2.5px solid #1A3D2B;outline-offset:2px}
+.nb-on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
+.nb-on b{color:rgba(255,255,255,.7)}
+.nb-on:hover{background:#24513a;color:#fff}
+.sp-sang .sp-row.nb-an{display:none!important}
+#nb-trong{background:#F6F1E9;border:1px solid #EAE3D6;border-radius:14px;padding:14px 18px;
+          font-size:.92rem;color:#4b5a50;line-height:1.6;margin:0 0 18px}
+#nb-trong a{color:#1A3D2B;font-weight:700}
+@media(max-width:600px){.nb-khu{font-size:.82rem;padding:7px 13px}}
+</style>
+    <div class="nb-khus" role="group" aria-label="Lọc nhà theo khu"><button type="button" class="nb-khu nb-on" data-loc="">Tất cả <b>30</b></button><button type="button" class="nb-khu" data-loc="nam-ban">Nam Ban <b>22</b></button><button type="button" class="nb-khu" data-loc="me-linh">Mê Linh <b>3</b></button><button type="button" class="nb-khu" data-loc="gia-lam">Gia Lâm <b>2</b></button><button type="button" class="nb-khu" data-loc="dong-thanh">Đông Thanh <b>1</b></button><button type="button" class="nb-khu" data-loc="ho-bai-cong">Hồ Bãi Công <b>1</b></button><button type="button" class="nb-khu" data-loc="nam-ha">Nam Hà <b>1</b></button><button type="button" class="nb-khu" data-loc="cam-ly">Giáp Cam Ly <b>1</b></button></div>
+    <p id="nb-trong" hidden>Khu này chưa có nhà nào đang bán. Gọi <a href="tel:0978758788">0978 758 788</a> để Nam Ban Villas tìm giúp — nhiều căn chưa kịp lên web.</p>
+    <p style="color:#6B6B6B;margin-bottom:24px;font-size:.9rem">Hiển thị <strong id="nb-dem" style="color:#1A3D2B">30</strong> tin đăng mới nhất tháng 9/2026</p>
     <div class="prop-grid sp-sang sp-nhaban">
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="cam-ly">
         <a href="/nha-ban/nha-nghi-duong-cam-ly-279m2/" class="sp-thumb"><img src="../images/listings/nha-nghi-duong-cam-ly-279m2/1.jpg" alt="Nhà nghỉ dưỡng giáp phường Cam Ly ven Đà Lạt – 279m², 124m² thổ cư, full nội thất, view săn mây, sổ hồng riêng" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 2,15 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nghi-duong-cam-ly-279m2/">Nhà nghỉ dưỡng giáp Cam Ly (ven Đà Lạt) 279m² – 124m² thổ cư, full nội thất</a></h3>
@@ -121,7 +140,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="me-linh">
         <a href="/nha-ban/nha-go-farm-stay-me-linh/" class="sp-thumb"><img src="../images/listings/nha-go-farm-stay-me-linh/1.jpg" alt="Nhà gỗ kiểu Đà Lạt xưa, farm stay Mê Linh Lâm Hà – 1.319m², 200m² thổ cư, sổ riêng" width="360" height="240" loading="lazy"><span class="sp-badge">Mới · 3,85 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-go-farm-stay-me-linh/">Nhà gỗ second home – farm stay Mê Linh 1.319m² (200m² thổ cư)</a></h3>
@@ -134,7 +153,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-nghi-duong-700m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-nghi-duong-700m2/1.jpg" alt="Nhà vườn nghỉ dưỡng 700m² gần Đà Lạt – 300m² thổ cư, 4PN, hồ bơi, full nội thất" width="360" height="240" loading="lazy"><span class="sp-badge">Mới · 3,699 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-nghi-duong-700m2/">Nhà vườn nghỉ dưỡng 700m² gần Đà Lạt – 300m² thổ cư, 4PN, hồ bơi, full nội thất</a></h3>
@@ -147,7 +166,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-view-416m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-view-416m2/1.jpg" alt="Nhà sân vườn view đẹp ven Đà Lạt – đất 416m², 100m² thổ cư, 3PN, tặng nội thất" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 4,2 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-view-416m2/">Nhà sân vườn view đẹp ven Đà Lạt – đất 416m², 100m² thổ cư, 3PN, tặng nội thất</a></h3>
@@ -160,7 +179,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-nghi-duong-250m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-nghi-duong-250m2/1.jpg" alt="Nhà vườn nghỉ dưỡng ven Đà Lạt – đất 250m², 100m² thổ cư, 3PN, sân vườn rộng" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 1,75 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-nghi-duong-250m2/">Nhà vườn nghỉ dưỡng ven Đà Lạt – đất 250m², 100m² thổ cư, 3PN, sân vườn rộng</a></h3>
@@ -173,7 +192,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ha">
         <a href="/nha-ban/nha-nam-ha-3pn-view-nui/" class="sp-thumb"><img src="../images/listings/nha-nam-ha-3pn-view-nui/1.jpg" alt="Nhà đẹp Nam Hà ven Đà Lạt – nhà mái thái, sân vườn hoa, view đồi núi" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 3,5 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nam-ha-3pn-view-nui/">Nhà đẹp Nam Hà ven Đà Lạt – 3PN 2WC, view đồi núi, sân vườn, về ở ngay</a></h3>
@@ -186,7 +205,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-pho-ngoai-o-nam-ban-222m2/" class="sp-thumb"><img src="../images/listings/nha-pho-ngoai-o-nam-ban-222m2/1.jpg" alt="Nhà phố ngoại ô Đà Lạt Nam Ban 222m² – nhà mới mái thái, sân đậu ô tô, đồi thông" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 2,499 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-pho-ngoai-o-nam-ban-222m2/">Nhà phố ngoại ô Đà Lạt (Nam Ban) 222m² – 2PN full nội thất, dọn vào ở ngay</a></h3>
@@ -199,7 +218,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-nho-1pn-nam-ban-850tr/" class="sp-thumb"><img src="../images/listings/nha-nho-1pn-nam-ban-850tr/1.webp" alt="Nhà nhỏ 1PN trên lô đất nở hậu ven Đà Lạt Nam Ban – vườn rau, ô tô tận nhà, view đồi núi" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · 850tr</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nho-1pn-nam-ban-850tr/">Nhà nhỏ 1PN + đất sổ riêng ven Đà Lạt (Nam Ban) – view săn mây, ô tô tận nhà</a></h3>
@@ -212,7 +231,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-go-giap-suoi-603m2/" class="sp-thumb"><img src="../images/listings/nha-go-giap-suoi-603m2/1.jpg" alt="Nhà gỗ nghỉ dưỡng giáp suối Nam Ban 603m² – tường gỗ, mái tôn, sân cỏ và lối đá dạo" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · Nhà gỗ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-go-giap-suoi-603m2/">Nhà gỗ 2 mặt giáp suối đá Nam Ban – đất 603m², 160m² thổ cư, khu vila nghỉ dưỡng</a></h3>
@@ -225,7 +244,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/villa-nghi-duong-nam-ban-436m2/" class="sp-thumb"><img src="../images/listings/villa-nghi-duong-nam-ban-436m2/1.jpg" alt="Villa nghỉ dưỡng Nam Ban 436m² – kiến trúc ốp gỗ và đá, sân vườn hoa, view rừng thông" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · Villa</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/villa-nghi-duong-nam-ban-436m2/">Villa nghỉ dưỡng Nam Ban 436m² – 3PN 2WC full nội thất, 120m² thổ cư, sổ riêng</a></h3>
@@ -238,7 +257,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="gia-lam">
         <a href="/nha-ban/nha-lo-goc-gia-lam-726m2/" class="sp-thumb"><img src="../images/listings/nha-lo-goc-gia-lam-726m2/1.webp" alt="Biệt thự lô góc 2 mặt tiền giữa rừng thông Nam Ban 726m² – nhà mái Thái trắng, sân gạch đỏ rộng" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · Biệt thự</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-lo-goc-gia-lam-726m2/">Biệt thự lô góc 2 mặt tiền giữa rừng thông Nam Ban – đất 726m², 430m² thổ cư, 4PN</a></h3>
@@ -251,7 +270,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="gia-lam">
         <a href="/nha-ban/villa-doi-thong-ht86-nam-ban/" class="sp-thumb"><img src="../images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" alt="Villa nghỉ dưỡng đá ốp giữa đồi thông HT86 Nam Ban – 1 trệt 1 lầu, kính lớn, sân vườn" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới · Villa</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/villa-doi-thong-ht86-nam-ban/">Villa nghỉ dưỡng giữa đồi thông HT86 Nam Ban – 500m² (300m² thổ cư), 1 trệt 1 lầu, 4PN 4WC</a></h3>
@@ -264,7 +283,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-nghi-duong-nam-ban-390m2/" class="sp-thumb"><img src="../images/listings/nha-nghi-duong-nam-ban-390m2/1.jpg" alt="Nhà nghỉ dưỡng Nam Ban 390m² – kiến trúc trắng có tháp cối xay gió, sân lát đá, ô tô trong sân, vườn hoa" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nghi-duong-nam-ban-390m2/">Nhà nghỉ dưỡng Nam Ban 390m² – 2PN full nội thất, suối sau nhà, sẵn sổ</a></h3>
@@ -277,7 +296,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-nam-ban-548m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-nam-ban-548m2/1.webp" alt="Nhà vườn cây ăn trái Nam Ban 548m², nhà 1 trệt 3PN, sân rộng, 250m² thổ cư" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-nam-ban-548m2/">Nhà vườn cây ăn trái Nam Ban 548m² – nhà 3PN dọn vào ở ngay, 250m² thổ cư</a></h3>
@@ -290,7 +309,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-nam-ban-261m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-nam-ban-261m2/1.webp" alt="Nhà vườn mới 2 tầng Nam Ban 261m², 3PN full nội thất, sân vườn BBQ, view đồi" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-nam-ban-261m2/">Nhà vườn mới Nam Ban 261m² – 1 trệt 1 lầu, 3PN full nội thất, sân vườn BBQ</a></h3>
@@ -303,7 +322,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/villa-nam-ban-385m2/" class="sp-thumb"><img src="../images/listings/villa-nam-ban-385m2/1.webp" alt="Villa nghỉ dưỡng Nam Ban 385m² góc 2 mặt tiền, lên đèn buổi tối, mặt đá và gỗ đỏ, sân vườn" width="360" height="240" loading="lazy"><span class="sp-badge">Cho thuê 12tr/th</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/villa-nam-ban-385m2/">Villa nghỉ dưỡng 385m² góc 2 MT – 3PN full nội thất, đang cho thuê 12tr/tháng</a></h3>
@@ -316,7 +335,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-nghi-duong-nam-ban-2pn/" class="sp-thumb"><img src="../images/listings/nha-nghi-duong-nam-ban-2pn/1.jpg" alt="Nhà nghỉ dưỡng 2PN Nam Ban, sân vườn nhiều hoa, cổng vòm trắng, nhà mới full nội thất" width="360" height="240" loading="lazy"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nghi-duong-nam-ban-2pn/">Nhà nghỉ dưỡng 2PN Nam Ban – nhà mới full nội thất, sân vườn trước sau</a></h3>
@@ -329,7 +348,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-nam-ban-160m2/" class="sp-thumb"><img src="../images/listings/nha-nam-ban-160m2/1.webp" alt="Nhà 3PN Nam Ban 160m² full nội thất, phòng khách rộng, sofa xanh, đèn chùm" width="360" height="240" loading="lazy"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-nam-ban-160m2/">Nhà 3PN Nam Ban 160m² – 128m² thổ cư, full nội thất, view thoáng</a></h3>
@@ -342,7 +361,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="me-linh">
         <a href="/nha-ban/nha-me-linh-252m2/" class="sp-thumb"><img src="../images/listings/nha-me-linh-252m2/1.webp" alt="Nhà mới Mê Linh 252m² ven Đà Lạt, 2 phòng ngủ full nội thất, 80m² thổ cư" width="360" height="240" loading="lazy"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-me-linh-252m2/">Nhà mới Mê Linh 252m² – 2PN full nội thất, 80m² thổ cư, ven Đà Lạt</a></h3>
@@ -355,7 +374,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/lo-goc-nha-cap-4-nam-ban/" class="sp-thumb"><img src="../images/listings/lo-goc-nha-cap-4-nam-ban/1.webp" alt="Lô góc 352m² mặt tiền TT Nam Ban, có nhà cấp 4, 117m² thổ cư, 2 mặt đường bê tông" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/lo-goc-nha-cap-4-nam-ban/">Lô góc 352m² mặt tiền TT Nam Ban – có nhà cấp 4, 117m² thổ cư</a></h3>
@@ -368,7 +387,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/moc-home-nam-ban/" class="sp-thumb"><img src="../images/listings/moc-home-nam-ban/1.jpg" alt="Mộc Home – nhà vườn Nam Ban, đất 265m² 208m² thổ cư, 2PN, sân vườn BBQ, view đồi thông" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/moc-home-nam-ban/">Mộc Home – Nhà vườn Nam Ban, 265m² đất (208m² thổ cư), 2PN, sân vườn BBQ</a></h3>
@@ -381,7 +400,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="dong-thanh">
         <a href="/nha-ban/nha-dong-thanh-146m2/" class="sp-thumb"><img src="../images/listings/nha-dong-thanh-146m2/1.webp" alt="DREAMER III – biệt thự 2 tầng Địa Trung Hải Đông Thanh Nam Ban, đất 140m² full thổ cư, đang cho thuê 13 triệu/tháng" width="360" height="240" fetchpriority="high"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-dong-thanh-146m2/">DREAMER III – Biệt thự 2 tầng Địa Trung Hải Đông Thanh, 140m² full thổ cư, cho thuê 13tr/th</a></h3>
@@ -394,7 +413,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/hill-house-village/" class="sp-thumb"><img src="../images/listings/hill-house-village/1.jpg" alt="Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm, gần Chùa Linh Ẩn (Thiền Viện Linh Ẩn)" width="360" height="240" fetchpriority="high"><span class="sp-badge"> Nổi bật</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/hill-house-village/">Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm, gần Chùa Linh Ẩn (Thiền Viện Linh Ẩn)</a></h3>
@@ -407,7 +426,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-moi-san-vuon-nam-ban/" class="sp-thumb"><img src="../images/listings/nha-moi-san-vuon-nam-ban/1.jpg" alt="Nhà mới Nam Ban 160m² – 2PN, sân vườn chill, 100m² thổ cư" width="360" height="240" loading="lazy"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-moi-san-vuon-nam-ban/">Nhà mới Nam Ban – 2PN, sân vườn chill, 100m² thổ cư, 160m² đất</a></h3>
@@ -420,7 +439,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-cap-4-nam-ban/" class="sp-thumb"><img src="../images/listings/nha-cap-4-nam-ban/1.webp" alt="Nhà cấp 4 mới xây Nam Ban 160m² – 3PN, cách đường nhựa 70m" width="360" height="240" loading="lazy"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-cap-4-nam-ban/">Nhà cấp 4 mới xây Nam Ban – 3PN, đất 160m², cách đường nhựa 70m</a></h3>
@@ -433,7 +452,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/hill-house-retreat/" class="sp-thumb"><img src="../images/listings/hill-house-retreat/1.webp" alt="Hill House Retreat – biệt thự Bắc Âu 528m², 3PN, ven Đà Lạt — đã bán" width="360" height="240" loading="lazy"><span class="sp-badge" style="background:#8a2b2b;color:#fff">Đã bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/hill-house-retreat/">Hill House Retreat – biệt thự Bắc Âu 528m², 3PN, mặt tiền 35m</a></h3>
@@ -446,7 +465,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban ho-bai-cong">
         <a href="/nha-ban/nha-2pn-169m2-nam-ban/" class="sp-thumb"><img src="../images/listings/nha-2pn-169m2-nam-ban/1.webp" alt="Nhà 2PN 169m² full nội thất gần hồ Bãi Công Nam Ban — đã bán" width="360" height="240" loading="lazy"><span class="sp-badge" style="background:#8a2b2b;color:#fff">Đã bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-2pn-169m2-nam-ban/">Nhà 2PN full nội thất 169m² gần hồ Bãi Công Nam Ban</a></h3>
@@ -459,7 +478,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="me-linh">
         <a href="/nha-ban/villa-mini-me-linh/" class="sp-thumb"><img src="../images/listings/villa-mini-me-linh/1.jpg" alt="Villa Mini Mê Linh – 3PN, thiết kế KTS, sân BBQ, hiên view — đã bán" width="360" height="240" loading="lazy"><span class="sp-badge" style="background:#8a2b2b;color:#fff">Đã bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/villa-mini-me-linh/">Villa Mini Mê Linh – 3PN, thiết kế KTS, sân BBQ, hiên view</a></h3>
@@ -472,7 +491,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-vuon-1018m2/" class="sp-thumb"><img src="../images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn rau, 2 mặt tiền" width="360" height="240" loading="lazy"><span class="sp-badge">Đặc sắc</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-1018m2/">Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn rau, 2 mặt tiền</a></h3>
@@ -485,7 +504,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row">
+      <article class="prop-card sp-row" data-loc="nam-ban">
         <a href="/nha-ban/nha-2pn-full-noi-that-127m2/" class="sp-thumb"><img src="../images/listings/nha-2pn-full-noi-that-127m2/1.webp" alt="Nhà 2PN full nội thất Nam Ban, đất 127m² thổ cư, sổ hồng riêng — đã bán" width="360" height="240" loading="lazy"><span class="sp-badge" style="background:#8a2b2b">Đã bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-2pn-full-noi-that-127m2/">Nhà 2PN full nội thất Nam Ban – đất 127m² thổ cư, sổ hồng riêng</a></h3>
@@ -594,6 +613,35 @@
   function close(){sheet.classList.remove('open');ov.classList.remove('open');}
   btn.addEventListener('click',open);
   ov.addEventListener('click',close);
+})();
+</script>
+<script>
+// Lọc nhà theo khu. Ẩn bằng class để số thứ tự (CSS counter) tự đánh lại từ 1.
+(function(){
+  var nut=document.querySelectorAll('.nb-khu'), the=document.querySelectorAll('.prop-card.sp-row[data-loc]');
+  var dem=document.getElementById('nb-dem'), trong=document.getElementById('nb-trong');
+  if(!nut.length||!the.length) return;
+  function loc(k,cuon){
+    var hien=0;
+    the.forEach(function(c){
+      var ds=(c.getAttribute('data-loc')||'').split(/\s+/);
+      var ok=!k||ds.indexOf(k)>-1;
+      c.classList.toggle('nb-an',!ok);
+      if(ok)hien++;
+    });
+    nut.forEach(function(n){n.classList.toggle('nb-on',(n.getAttribute('data-loc')||'')===k);});
+    if(dem)dem.textContent=hien;
+    if(trong)trong.hidden=hien>0;
+    try{var u=new URL(location.href);
+      if(k)u.searchParams.set('loc',k); else u.searchParams.delete('loc');
+      history.replaceState(null,'',u);}catch(e){}
+    if(cuon){var d=document.querySelector('.prop-card.sp-row:not(.nb-an)');
+      if(d)d.scrollIntoView({behavior:'smooth',block:'center'});}
+    if(window.gtag)gtag('event','loc_nha_theo_khu',{khu:k||'tat-ca',so_tin:hien});
+  }
+  nut.forEach(function(n){n.addEventListener('click',function(){loc(n.getAttribute('data-loc')||'',true);});});
+  var q=new URLSearchParams(location.search).get('loc');
+  if(q&&document.querySelector('.nb-khu[data-loc="'+q.replace(/"/g,'')+'"]'))loc(q,true);
 })();
 </script>
 </body>
