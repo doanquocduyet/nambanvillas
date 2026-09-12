@@ -85,6 +85,27 @@
 .listing-specs-table,.specs-table{width:100%;table-layout:fixed;border-collapse:separate;border-spacing:0;margin:18px 0 8px;border:1px solid #EDE7DD;border-radius:14px;overflow:hidden}
 .listing-specs-table td,.specs-table td{padding:13px 16px;font-size:.92rem;border-bottom:1px solid #F0EBE2;vertical-align:top;color:#2D2D2D;overflow-wrap:anywhere;word-break:break-word}
 .listing-specs-table tr:last-child td,.specs-table tr:last-child td{border-bottom:none}
+/* Mobile: bảng 4 cột 24%/26% chỉ còn ~47px chữ mỗi ô trên máy 360px — chữ bị cắt
+   giữa từ, vỡ 5-6 dòng. Xếp lại thành từng cặp nhãn | giá trị cho đọc được. */
+@media(max-width:600px){
+  .listing-specs-table,.specs-table,
+  .listing-specs-table tbody,.specs-table tbody{display:block}
+  .listing-specs-table tr,.specs-table tr{
+    display:grid;grid-template-columns:38% 62%;align-items:baseline;
+    border-bottom:1px solid #F0EBE2}
+  .listing-specs-table tr:last-child,.specs-table tr:last-child{border-bottom:none}
+  .listing-specs-table td,.specs-table td{
+    display:block;width:auto!important;border-bottom:none;
+    padding:9px 14px;word-break:normal;hyphens:none}
+  .listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){
+    padding-right:6px;font-size:.8rem;line-height:1.45}
+  .listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){
+    padding-left:0;font-size:.9rem;line-height:1.45}
+  /* cặp thứ hai trong cùng hàng cần vạch ngăn nhẹ cho khỏi dính nhau */
+  .listing-specs-table td:nth-child(3),.specs-table td:nth-child(3),
+  .listing-specs-table td:nth-child(4),.specs-table td:nth-child(4){
+    border-top:1px solid #F7F3EC}
+}
 .listing-specs-table td:nth-child(odd),.specs-table td:nth-child(odd){font-weight:600;color:#8a978f;width:24%;font-size:.84rem}
 .listing-specs-table td:nth-child(even),.specs-table td:nth-child(even){font-weight:700;color:#1A3D2B;width:26%}
 /* Sidebar price card — clean, soft, modern */
