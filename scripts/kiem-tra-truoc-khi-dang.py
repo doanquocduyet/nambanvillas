@@ -25,6 +25,21 @@ def W(msg):  canh_bao.append(msg)
 pages = [f for f in glob.glob("**/index.html", recursive=True)
          if not f.startswith(("node_modules", "docs"))]
 data = {f: open(f, encoding="utf-8").read() for f in pages}
+def cac_node(obj):
+    """Trả mọi node schema, kể cả khi gói trong @graph.
+    ĐÃ TỪNG SUÝT DÍNH: gộp schema vào @graph thì mọi luật đọc @type ở tầng ngoài
+    lặng lẽ ngừng chạy — script vẫn báo SẠCH trong khi không còn kiểm gì."""
+    ra = []
+    for x in (obj if isinstance(obj, list) else [obj]):
+        if not isinstance(x, dict):
+            continue
+        if isinstance(x.get("@graph"), list):
+            ra.extend(n for n in x["@graph"] if isinstance(n, dict))
+        else:
+            ra.append(x)
+    return ra
+
+
 def duong_dan(f):
     d = os.path.dirname(f)
     return f"/{d}/" if d else "/"
@@ -181,7 +196,7 @@ for f in pages:
             obj = json.loads(b)
         except Exception:
             continue
-        for x in (obj if isinstance(obj, list) else [obj]):
+        for x in cac_node(obj):
             if x.get("@type") == "Product":
                 im = x.get("image")
                 im = [im] if isinstance(im, str) else (im or [])
@@ -213,8 +228,10 @@ for hub in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
             d = json.loads(b)
         except Exception:
             continue
-        if d.get("@type") != "ItemList":
+        il = [x for x in cac_node(d) if x.get("@type") == "ItemList"]
+        if not il:
             continue
+        d = il[0]
         u = [x["url"].replace(HOST, "") for x in d.get("itemListElement", [])]
         for x in u:
             if x not in the:
@@ -224,6 +241,30 @@ for hub in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
                 L(f"[ItemList thiếu] {hub} có thẻ {x} nhưng ItemList không khai")
         if d.get("numberOfItems") != len(u):
             L(f"[numberOfItems sai] {hub}: khai {d.get('numberOfItems')}, thật {len(u)}")
+
+# ── 6e. Trọng lượng trang lúc mở: chỉ 1 ảnh ưu tiên, phần còn lại phải lazy ──
+# ĐÃ TỪNG DÍNH NẶNG: hub Nhà Bán gắn fetchpriority="high" cho 17 ảnh -> trình duyệt
+# kéo 3MB TRƯỚC khi hiện chữ. Đo mới ra, nhìn code không thấy.
+for f in pages:
+    s_ = open(f, encoding="utf-8").read()
+    the = re.findall(r"<img\b[^>]*>", s_)
+    uu_tien = [t for t in the if "fetchpriority" in t and "logo" not in t]
+    if len(uu_tien) > 1:
+        L(f"[{len(uu_tien)} ảnh cùng fetchpriority — chỉ được 1] {duong_dan(f)}")
+    nang = 0
+    for t in the:
+        if 'loading="lazy"' in t or "logo" in t:
+            continue
+        m = re.search(r'src="([^"]+)"', t)
+        if not m:
+            continue
+        rel = m.group(1).lstrip("./").lstrip("/")
+        if os.path.exists(rel):
+            nang += os.path.getsize(rel)
+    if nang > 900 * 1024:
+        L(f"[Trang nặng {nang//1024}KB ảnh lúc mở — thêm loading=lazy] {duong_dan(f)}")
+    elif nang > 500 * 1024:
+        W(f"[Trang tải ngay {nang//1024}KB ảnh — nên bớt] {duong_dan(f)}")
 
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
@@ -271,7 +312,15 @@ for f, s in data.items():
     if kind not in HUB:
         continue
     url = duong_dan(f)
-    if '"@type":"Product"' not in s:
+    co_product = False
+    for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
+        try:
+            if any(x.get("@type") == "Product" for x in cac_node(json.loads(b))):
+                co_product = True
+                break
+        except Exception:
+            pass
+    if not co_product:
         L(f"[Tin rao thiếu schema Product] {f}")
     # Lô "giá đang cập nhật" không có Offer là ĐÚNG; chỉ bắt khi có Offer mà thiếu đơn vị tiền
     if '"offers"' in s and '"priceCurrency":"VND"' not in s:
