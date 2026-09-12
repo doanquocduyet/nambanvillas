@@ -6,6 +6,8 @@
   <meta name="description" content="Tổng hợp tin rao đất Nam Ban, Lâm Hà mới mỗi ngày từ các nguồn công khai: đất nền, đất vườn, nhà bán. Kèm link nguồn — để bạn tự quan sát mặt bằng giá thị trường.">
   <meta name="keywords" content="tin rao đất nam ban, đất nam ban mới rao bán, tin đăng đất nam ban, mua bán đất nam ban hôm nay, đất lâm hà rao bán, giá đất nam ban hôm nay">
   <link rel="canonical" href="https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:title" content="Tin Rao Đất Nam Ban Mới — Cập Nhật Hàng Ngày">
   <meta property="og:description" content="Tin rao đất Nam Ban mới mỗi ngày, tổng hợp từ nguồn công khai kèm link gốc.">
   <meta property="og:type" content="article">
@@ -29,7 +31,7 @@
 <body>
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -502,7 +504,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px;display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -570,6 +572,23 @@
   btn.addEventListener('click',open);
   ov.addEventListener('click',close);
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>

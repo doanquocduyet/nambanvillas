@@ -111,6 +111,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .prop-card:hover .prop-img-wrap img{transform:scale(1.04)}
 .prop-badge{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:6px;font-size:.73rem;font-weight:700;background:var(--green);color:white}
 .prop-badge.hot{background:var(--gold)}
+/* Bỏ qua việc dựng hình các thẻ ngoài màn hình — trang 99 lô đỡ giật khi cuộn.
+   contain-intrinsic-size giữ chỗ sẵn nên thanh cuộn không nhảy. */
+.prop-grid .prop-card{content-visibility:auto;contain-intrinsic-size:auto 220px}
+@media(max-width:768px){.prop-grid .prop-card{contain-intrinsic-size:auto 150px}}
+
 /* Số thứ tự lô — tự đếm lại khi lọc (card ẩn không tính) */
 .prop-grid{counter-reset:soLo}
 .prop-grid .prop-card{counter-increment:soLo}

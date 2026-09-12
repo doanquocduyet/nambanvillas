@@ -87,4 +87,6 @@ Allow: /
 
 # Sitemap & nguồn dữ liệu cho máy đọc
 Sitemap: https://nambanvillas.vn/sitemap.xml
+# Nguồn tin mới cho bot & AI đọc nhanh
+Sitemap: https://nambanvillas.vn/feed.xml
 Sitemap: https://nambanvillas.vn/sitemap_index.xml

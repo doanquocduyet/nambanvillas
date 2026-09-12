@@ -8,6 +8,8 @@
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/cham-diem-lo-dat/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:title" content="Lô đất bạn đang nhắm — nên hay không nên?">
   <meta property="og:description" content="Chấm điểm nhanh lô đất Nam Ban trước khi mua/bán. 30 giây, ra ngay điểm.">
   <meta property="og:type" content="website">
@@ -91,7 +93,7 @@
 
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -168,7 +170,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px; display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -316,6 +318,23 @@
     window.scrollTo({top:0,behavior:'smooth'});
   });
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>

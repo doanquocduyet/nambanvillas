@@ -8,6 +8,8 @@
     <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanpanorama.com/namban-index">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:image" content="https://nambanvillas.vn/images/og-namban.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -22,6 +24,7 @@
   <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
+  <link rel="preload" as="image" href="/images/articles/bang-gia-dat-lam-dong-2026.webp" fetchpriority="high">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/article.css">
   <!-- Google Analytics 4 — thay G-LHGW9K1BDP bằng Measurement ID thật của chú -->
@@ -34,7 +37,7 @@
 
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -78,7 +81,7 @@
 
   <div class="container article-layout">
     <article class="article-body">
-      <img class="article-img" src="/images/articles/bang-gia-dat-lam-dong-2026.webp" alt="Bảng Giá Đất Lâm Đồng 2026: Tăng 30–50%" width="1200" height="600" fetchpriority="high">
+      <img class="article-img" src="/images/articles/bang-gia-dat-lam-dong-2026.webp" alt="Bảng Giá Đất Lâm Đồng 2026: Tăng 30–50%" width="1200" height="600" fetchpriority="high" decoding="async">
 
 
       <h2>Nghị Quyết 82/2025/NQ-HĐND: Nền Tảng Pháp Lý Mới Cho Giá Đất Lâm Đồng</h2>
@@ -206,7 +209,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px; display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -276,6 +279,23 @@
   btn.addEventListener('click',open);
   ov.addEventListener('click',close);
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>
