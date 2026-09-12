@@ -8,6 +8,8 @@
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/lien-he/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hẹn Cafe Ở Nam Ban – Nam Ban Villas">
   <meta property="og:description" content="Không cần chuẩn bị gì. Chỉ cần một buổi sáng trên cao nguyên và một cuộc trò chuyện thật về Nam Ban.">
@@ -31,7 +33,7 @@
 <body>
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -134,7 +136,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px; display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -207,5 +209,22 @@
 })();
 </script>
 <script>if(location.search.indexOf("sent=1")>-1){var b=document.getElementById("sentBanner");if(b){b.style.display="block";b.scrollIntoView({behavior:"smooth",block:"center"});}}</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
+</script>
 </body>
 </html>

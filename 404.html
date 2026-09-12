@@ -52,5 +52,22 @@
       </div>
     </div>
   </div>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
+</script>
 </body>
 </html>

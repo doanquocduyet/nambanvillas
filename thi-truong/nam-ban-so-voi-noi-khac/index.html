@@ -6,6 +6,8 @@
   <meta name="description" content="So sánh thực tế: mua đất Nam Ban hay Bảo Lộc, Di Linh, Đà Lạt? Giá, tiềm năng, rủi ro từng nơi. Cùng ngân sách 1–2 tỷ mua được gì ở mỗi vùng?">
   <meta name="keywords" content="nam ban vs bảo lộc, nam ban vs đà lạt, nam ban vs di linh, mua đất lâm đồng ở đâu tốt, so sánh đất lâm đồng, đất nam ban hay bảo lộc">
   <link rel="canonical" href="https://nambanvillas.vn/thi-truong/nam-ban-so-voi-noi-khac/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:title" content="Nam Ban vs Bảo Lộc vs Đà Lạt: Mua Đất Ở Đâu Tốt Hơn 2026?">
   <meta property="og:description" content="So sánh thực tế giá đất, tiềm năng và rủi ro giữa Nam Ban, Bảo Lộc, Di Linh và Đà Lạt.">
   <meta property="og:type" content="article">
@@ -19,6 +21,7 @@
   <link rel="icon" href="/images/favicon.png" type="image/png">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
+  <link rel="preload" as="image" href="/images/articles/nam-ban-so-voi-noi-khac.webp" fetchpriority="high">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -30,7 +33,7 @@
 <body>
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -66,7 +69,7 @@
       </div>
 
       <div class="article-body">
-        <img class="article-img" src="/images/articles/nam-ban-so-voi-noi-khac.webp" alt="Nam Ban vs Bảo Lộc vs Di Linh vs Đà Lạt: Mua Đất Ở Đâu Tốt Hơn 2026?" width="1200" height="600" fetchpriority="high">
+        <img class="article-img" src="/images/articles/nam-ban-so-voi-noi-khac.webp" alt="Nam Ban vs Bảo Lộc vs Di Linh vs Đà Lạt: Mua Đất Ở Đâu Tốt Hơn 2026?" width="1200" height="600" fetchpriority="high" decoding="async">
 
         <div class="so-lieu-that" style="background:#FBF8F3;border:1px solid #EAE3D6;border-left:3px solid #C9A84C;border-radius:14px;padding:18px 20px;margin:0 0 26px">
           <p style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8a978f;margin:0 0 10px">Số liệu thật · tháng 9/2026</p>
@@ -159,7 +162,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px;display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -227,6 +230,23 @@
   btn.addEventListener('click',open);
   ov.addEventListener('click',close);
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>

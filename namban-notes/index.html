@@ -6,6 +6,8 @@
   <meta name="description" content="Không phải tin tức. Không phải bài PR. Những câu chuyện thật từ những người đang sống, làm việc và ra quyết định ở Nam Ban — Lâm Hà, Lâm Đồng.">
   <meta name="keywords" content="namban notes, câu chuyện nam ban, đất nam ban, cuộc sống nam ban lâm đồng">
   <link rel="canonical" href="https://nambanvillas.vn/namban-notes/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta property="og:image" content="https://nambanvillas.vn/images/og-namban.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -52,7 +54,7 @@
 
 <header class="header scrolled" id="header">
   <div class="container header-inner">
-    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
     <nav class="nav" id="nav">
       <a href="/dat-nen-nam-ban/" class="nav-link">Đất Nền</a>
       <a href="/nha-ban-nam-ban/" class="nav-link">Nhà Bán</a>
@@ -153,7 +155,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px; display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -223,6 +225,23 @@
   btn.addEventListener('click',open);
   ov.addEventListener('click',close);
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>

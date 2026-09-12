@@ -9,6 +9,8 @@
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
   <link rel="canonical" href="https://nambanvillas.vn/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#1A3D2B">
   <meta name="google-site-verification" content="YGizLbsXiK5UhFc-1FL2YP_f0IsXxdljfiiibFIkQ68">
   <meta name="msvalidate.01" content="4EC1CA93863C0CE0E9822A68994C9222">
   <!-- ===== XÁC MINH BING WEBMASTER (cho ChatGPT/Copilot) =====
@@ -30,6 +32,7 @@
   <link rel="alternate" type="application/rss+xml" title="Nam Ban Villas — Tin mới" href="https://nambanvillas.vn/feed.xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
+  <link rel="preload" as="image" href="/images/listings/'+(l.im||l.img+'/1.jpg')+'" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
   <script type="application/ld+json">
 {
@@ -92,7 +95,7 @@
 <header class="header" id="header">
   <div class="container header-inner">
     <a href="/" class="logo">
-      <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+      <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
       <span class="logo-text">NamBan<strong>Villas</strong></span>
     </a>
     <nav class="nav" id="nav">
@@ -240,7 +243,7 @@
   if(dmCountEl)dmCountEl.textContent=LOTS.length;
   var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
   function card(l){
-    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" fetchpriority="high"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
+    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" fetchpriority="high" decoding="async"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
   }
   var box=document.getElementById('dealMatcher'); if(!box) return;
   // Featured mặc định (chọn lọc hôm nay)
@@ -418,7 +421,7 @@
     <div class="prop-grid sp-sang" id="propGrid">
 
       <article class="prop-card sp-row sp-feat" data-type="dat-nen">
-        <a href="/dat-nen/dat-trung-tam-nam-ban-599tr/" class="sp-thumb"><img src="images/listings/dat-trung-tam-nam-ban-599tr/1.jpg" alt="Đất 146m² trung tâm Nam Ban, 100m² thổ cư, gần chùa Linh Ẩn, đường bê tông, sổ riêng" width="400" height="300" fetchpriority="high"><span class="sp-badge">Villas chọn</span></a>
+        <a href="/dat-nen/dat-trung-tam-nam-ban-599tr/" class="sp-thumb"><img src="images/listings/dat-trung-tam-nam-ban-599tr/1.jpg" alt="Đất 146m² trung tâm Nam Ban, 100m² thổ cư, gần chùa Linh Ẩn, đường bê tông, sổ riêng" width="400" height="300" fetchpriority="high" decoding="async"><span class="sp-badge">Villas chọn</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-trung-tam-nam-ban-599tr/">Đất 146m² trung tâm Nam Ban, 100m² thổ cư, gần chùa Linh Ẩn</a></h3>
           <div class="sp-chips"><span class="sp-loc">Trung tâm xã Nam Ban · Lâm Hà</span><span>100m² thổ cư</span><span>Sổ riêng</span><span>Đường bê tông, cách nhựa 100m</span></div>
@@ -428,7 +431,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="nha-ban" data-deal="1">
-        <a href="/nha-ban/nha-2pn-full-noi-that-127m2/" class="sp-thumb"><img src="images/listings/nha-2pn-full-noi-that-127m2/1.webp" alt="Nhà 2PN full nội thất Nam Ban 127m² thổ cư, sổ hồng riêng, 998 triệu — đã bán" width="400" height="300" loading="lazy"><span class="sp-badge" style="background:#8a2b2b;color:#fff">Đã bán</span></a>
+        <a href="/nha-ban/nha-2pn-full-noi-that-127m2/" class="sp-thumb"><img src="images/listings/nha-2pn-full-noi-that-127m2/1.webp" alt="Nhà 2PN full nội thất Nam Ban 127m² thổ cư, sổ hồng riêng, 998 triệu — đã bán" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge" style="background:#8a2b2b;color:#fff">Đã bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-2pn-full-noi-that-127m2/">Nhà 2PN full nội thất Nam Ban 127m², sổ hồng riêng</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>127m² thổ cư</span><span>Full nội thất</span></div>
@@ -437,7 +440,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen" data-deal="1">
-        <a href="/dat-nen/nam-ban-225m2-mat-tien-12m/" class="sp-thumb"><img src="images/listings/nam-ban-225m2-mat-tien-12m/1.jpg" alt="Đất Nam Ban 225m² mặt tiền 12m, 95m² thổ cư, sổ hồng riêng, chủ cần bán 890 triệu" width="400" height="300" loading="lazy"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Chủ cần bán</span></a>
+        <a href="/dat-nen/nam-ban-225m2-mat-tien-12m/" class="sp-thumb"><img src="images/listings/nam-ban-225m2-mat-tien-12m/1.jpg" alt="Đất Nam Ban 225m² mặt tiền 12m, 95m² thổ cư, sổ hồng riêng, chủ cần bán 890 triệu" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Chủ cần bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-225m2-mat-tien-12m/">Đất Nam Ban 225m² MT 12m, 95m² thổ cư, sổ hồng riêng</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>95m² thổ cư</span><span>Trục đường liên xã</span></div>
@@ -446,7 +449,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen" data-deal="1">
-        <a href="/dat-nen/thung-lung-530m2/" class="sp-thumb"><img src="images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng, gần rừng thông & Hồ Bãi Công" width="400" height="300" loading="lazy"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Giá tốt</span></a>
+        <a href="/dat-nen/thung-lung-530m2/" class="sp-thumb"><img src="images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng, gần rừng thông & Hồ Bãi Công" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Giá tốt</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/thung-lung-530m2/">Đất 530m² view thung lũng, gần rừng thông & Hồ Bãi Công</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>Sổ hồng riêng</span><span>Cách Thác Voi 4km</span></div>
@@ -455,7 +458,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen" data-deal="1">
-        <a href="/dat-nen/cum-dong-thanh-golden-view/" class="sp-thumb"><img src="images/listings/cum-dong-thanh-golden-view/1.jpg" alt="Nam Ban – Đông Thanh Golden View, khu 7.000m² đang tách thửa, có nhà, lô 900m² giá 1,5 tỷ" width="400" height="300" loading="lazy"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Giá tốt</span></a>
+        <a href="/dat-nen/cum-dong-thanh-golden-view/" class="sp-thumb"><img src="images/listings/cum-dong-thanh-golden-view/1.jpg" alt="Nam Ban – Đông Thanh Golden View, khu 7.000m² đang tách thửa, có nhà, lô 900m² giá 1,5 tỷ" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge" style="background:#C9A84C;color:#1A3D2B">Giá tốt</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-golden-view/">Đông Thanh Golden View – khu ~7.000m² đang tách thửa, có nhà sẵn</a></h3>
           <div class="sp-chips"><span class="sp-loc">Đông Thanh · Nam Ban</span><span>Lô 900m²</span><span>Đang tách thửa</span><span>Gần khu Nhà Trắng</span></div>
@@ -464,7 +467,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="dat-nen">
-        <a href="/dat-nen/giap-suoi-2700m2/" class="sp-thumb"><img src="images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư" width="400" height="300" loading="lazy"><span class="sp-badge">Đất nền</span></a>
+        <a href="/dat-nen/giap-suoi-2700m2/" class="sp-thumb"><img src="images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge">Đất nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/giap-suoi-2700m2/">Đất 2.700m² giáp suối 2 mặt, 400m² thổ cư</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>400m² thổ cư</span><span>Giáp suối 2 mặt</span></div>
@@ -473,7 +476,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="nha-ban">
-        <a href="/nha-ban/moc-home-nam-ban/" class="sp-thumb"><img src="images/listings/moc-home-nam-ban/1.jpg" alt="Mộc Home – nhà vườn Nam Ban, đất 265m², 208m² thổ cư, 2PN, sân vườn BBQ" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán · Mới</span></a>
+        <a href="/nha-ban/moc-home-nam-ban/" class="sp-thumb"><img src="images/listings/moc-home-nam-ban/1.jpg" alt="Mộc Home – nhà vườn Nam Ban, đất 265m², 208m² thổ cư, 2PN, sân vườn BBQ" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge">Nhà bán · Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/moc-home-nam-ban/">Mộc Home – Nhà vườn 265m² (208m² thổ cư), 2PN, sân vườn BBQ</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>2 phòng ngủ</span><span>208m² thổ cư</span><span>Đủ nội thất</span></div>
@@ -482,7 +485,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="nha-ban">
-        <a href="/nha-ban/nha-dong-thanh-146m2/" class="sp-thumb"><img src="images/listings/nha-dong-thanh-146m2/1.webp" alt="DREAMER III – nhà 2 tầng Địa Trung Hải Đông Thanh, đất 140m² full thổ cư, 4PN" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán · Mới</span></a>
+        <a href="/nha-ban/nha-dong-thanh-146m2/" class="sp-thumb"><img src="images/listings/nha-dong-thanh-146m2/1.webp" alt="DREAMER III – nhà 2 tầng Địa Trung Hải Đông Thanh, đất 140m² full thổ cư, 4PN" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge">Nhà bán · Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-dong-thanh-146m2/">DREAMER III – Nhà 2 tầng Địa Trung Hải Đông Thanh, 140m² full thổ cư, 4PN</a></h3>
           <div class="sp-chips"><span class="sp-loc">Đông Thanh · Nam Ban</span><span>4 phòng ngủ · 3WC</span><span>140m² full thổ cư</span><span>Đủ nội thất</span></div>
@@ -491,7 +494,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="nha-ban">
-        <a href="/nha-ban/hill-house-village/" class="sp-thumb"><img src="images/listings/hill-house-village/1.jpg" alt="Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán</span></a>
+        <a href="/nha-ban/hill-house-village/" class="sp-thumb"><img src="images/listings/hill-house-village/1.jpg" alt="Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge">Nhà bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/hill-house-village/">Hill House Village – nhà nghỉ dưỡng 2PN, quản gia 2 năm</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>2 phòng ngủ</span><span>Gần chùa Linh Ẩn (Thiền Viện Linh Ẩn)</span></div>
@@ -500,7 +503,7 @@
       </article>
 
       <article class="prop-card sp-row" data-type="nha-ban">
-        <a href="/nha-ban/nha-vuon-1018m2/" class="sp-thumb"><img src="images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn, 2 mặt tiền" width="400" height="300" loading="lazy"><span class="sp-badge">Nhà bán</span></a>
+        <a href="/nha-ban/nha-vuon-1018m2/" class="sp-thumb"><img src="images/listings/nha-vuon-1018m2/1.jpg" alt="Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn, 2 mặt tiền" width="400" height="300" loading="lazy" decoding="async"><span class="sp-badge">Nhà bán</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/nha-ban/nha-vuon-1018m2/">Nhà vườn 1.018m² – 3PN, hồ cá Koi, sân vườn, 2 mặt tiền</a></h3>
           <div class="sp-chips"><span class="sp-loc">Nam Ban · Lâm Hà</span><span>3 phòng ngủ</span><span>Hồ cá Koi</span></div>
@@ -583,7 +586,7 @@
     <div class="qh-map-wrap" id="qhMapWrap">
       <div class="qh-map-inner" id="qhMapInner">
         <div id="qhMapImgWrap" style="position:relative">
-          <img id="qhMapImg" src="/images/quy-hoach-nam-ban-2030.svg" alt="Bản đồ quy hoạch sử dụng đất Nam Ban 2030" width="900" height="560" style="width:100%;height:auto;display:block;aspect-ratio:900/560" loading="lazy">
+          <img id="qhMapImg" src="/images/quy-hoach-nam-ban-2030.svg" alt="Bản đồ quy hoạch sử dụng đất Nam Ban 2030" width="900" height="560" style="width:100%;height:auto;display:block;aspect-ratio:900/560" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -703,7 +706,7 @@
   <div class="container footer-inner">
     <div class="footer-brand">
       <a href="/" class="logo" style="margin-bottom:12px; display:inline-flex;">
-        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52">
+        <img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" decoding="async">
         <span class="logo-text" style="color:white;">NamBan<strong>Villas</strong></span>
       </a>
       <p><strong>Địa chỉ:</strong> Xã Nam Ban, Lâm Hà, Lâm Đồng</p>
@@ -802,6 +805,23 @@
     if(e.clientY<10)show();
   });
 })();
+</script>
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": { "and": [
+      { "href_matches": "/*" },
+      { "not": { "href_matches": "/*\\?*" } },
+      { "not": { "selector_matches": "[rel~=nofollow]" } },
+      { "not": { "selector_matches": ".mnav-item" } }
+    ]},
+    "eagerness": "moderate"
+  }],
+  "prefetch": [{
+    "where": { "href_matches": "/*" },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 </body>
 </html>
