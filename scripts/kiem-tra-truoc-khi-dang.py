@@ -266,6 +266,14 @@ for f in pages:
     elif nang > 500 * 1024:
         W(f"[Trang tải ngay {nang//1024}KB ảnh — nên bớt] {duong_dan(f)}")
 
+# ── 6f. Hiến pháp 3 web: Villas KHÔNG được link sang Panorama ───────────────
+# docs/HIEN-PHAP-3-WEB.md điều 1: Panorama đứng độc lập, Villas/Greenspace không
+# link sang. Canonical thì ĐƯỢC (điều 3, khi cùng intent) — chỉ cấm thẻ <a>.
+for f in pages:
+    s_ = open(f, encoding="utf-8").read()
+    if re.search(r'<a [^>]*href="https?://[^"]*nambanpanorama', s_):
+        L(f"[Link sang Panorama — hiến pháp 3 web cấm] {duong_dan(f)}")
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
