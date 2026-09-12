@@ -274,6 +274,22 @@ for f in pages:
     if re.search(r'<a [^>]*href="https?://[^"]*nambanpanorama', s_):
         L(f"[Link sang Panorama — hiến pháp 3 web cấm] {duong_dan(f)}")
 
+# ── 6g. Giao diện điện thoại: những thứ đã từng sai ────────────────────────
+for f in pages:
+    s_ = open(f, encoding="utf-8").read()
+    if 'name="viewport"' not in s_:
+        L(f"[Thiếu thẻ viewport — vỡ hoàn toàn trên điện thoại] {duong_dan(f)}")
+    if "user-scalable=no" in s_ or "maximum-scale=1" in s_:
+        L(f"[Chặn phóng to — hại người mắt kém, Google trừ điểm] {duong_dan(f)}")
+    if 'class="mobile-nav"' not in s_:
+        L(f"[Thiếu nút Gọi/Zalo nổi trên điện thoại] {duong_dan(f)}")
+    # Ảnh thiếu width/height gây nhảy layout (CLS) — trừ ảnh lightbox do JS đổ vào
+    for t in re.findall(r"<img\b[^>]*>", s_):
+        if "lbImg" in t or "width=" in t:
+            continue
+        L(f"[Ảnh thiếu width/height — gây nhảy layout] {duong_dan(f)}")
+        break
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
