@@ -116,7 +116,14 @@ for f, s in data.items():
             L(f"[Logo không được fetchpriority=high] {f}")
     noi_dung = [t for t in tags if "logo.png" not in t and "favicon" not in t]
     if noi_dung and 'loading="lazy"' in noi_dung[0]:
-        L(f"[Ảnh hero KHÔNG được loading=lazy — hại LCP] {f}")
+        # Chỉ là ẢNH HERO khi nó nằm trên màn hình đầu. Trang chữ nhiều (ví dụ
+        # /cho-thue/) có ảnh đầu tiên nằm sau cả nghìn chữ — ảnh đó KHÔNG phải LCP,
+        # ép nó tải sớm mới là hại. Đo bằng lượng chữ thật đứng trước ảnh.
+        than = s.split("<body", 1)[-1]
+        truoc = than.split(noi_dung[0], 1)[0]
+        chu = len(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", truoc)).strip())
+        if chu < 900:
+            L(f"[Ảnh hero KHÔNG được loading=lazy — hại LCP] {f}")
 
 # ── 4. Liên kết nội bộ không được gãy ─────────────────────────────────────
 # ĐÃ TỪNG DÍNH: 2 trang trỏ tới /dat-nam-ban-tren-2-ty/ khi trang chưa tồn tại.

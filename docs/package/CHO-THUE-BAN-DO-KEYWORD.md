@@ -12,7 +12,10 @@ Cắn key (cannibalization) là cách chắc chắn nhất để tự thua: hai 
 | Ý định khách | URL đại diện | Trạng thái |
 |---|---|---|
 | Tổng quát "cho thuê Nam Ban" | `/cho-thue/` | **ĐÃ MỞ** |
-| Thuê ở dài hạn (nhà nguyên căn, phòng) | `/cho-thue/` mục `#o-dai-han` | neo trong hub |
+| Thuê ở dài hạn | `/cho-thue/` mục `#o-dai-han` | neo trong hub |
+| Thuê nhà nguyên căn | `/cho-thue/` mục `#nguyen-can` | neo trong hub |
+| Thuê phòng trọ, nhà trọ | `/cho-thue/` mục `#phong-tro` | neo trong hub |
+| Thuê để ở thử trước khi mua đất | `/cho-thue/` mục `#o-thu` | neo trong hub |
 | Thuê nghỉ ngắn ngày (homestay, villa theo đêm) | `/cho-thue/` mục `#nghi-ngan` | neo trong hub |
 | Thuê mặt bằng kinh doanh | `/cho-thue/` mục `#kinh-doanh` | neo trong hub |
 | Chủ nhà muốn cho thuê (ký gửi) | `/cho-thue/` mục `#gui-tai-san` | neo trong hub |
@@ -21,6 +24,37 @@ Cắn key (cannibalization) là cách chắc chắn nhất để tự thua: hai 
 **Vì sao neo (`#`) chứ chưa tách URL:** Villas hiện có **0 tin cho thuê** trong kho. Mở `/cho-thue-villa-nam-ban/` khi chưa có villa nào cho thuê = trang rỗng — Google xếp là thin content, và khách vào thấy trống thì không gọi. Đúng lỗi đã mắc với chip "Nam Hà" hiện 0 sản phẩm.
 
 **Điều kiện tách URL riêng:** một nhánh có **từ 3 tin thật trở lên** trong `data/tin-thue/` thì mới cắt mục đó ra thành URL riêng, và mục trong hub đổi thành đoạn tóm tắt + link sang.
+
+---
+
+## HAI CẶP KEY DỄ TƯỞNG GIỐNG MÀ KHÁC HẲN Ý ĐỊNH
+
+Đây là chỗ dễ tự đánh nhau nhất khi tách URL sau này.
+
+| Keyword | Người gõ là ai | URL tương lai |
+|---|---|---|
+| `homestay nam ban` | **khách du lịch** tìm chỗ nghỉ — muốn ảnh, giá/đêm, vị trí | `/homestay-nam-ban/` |
+| `cho thuê homestay nam ban` | **chủ cơ sở** muốn cho thuê, hoặc người muốn thuê lại cả homestay để kinh doanh | `/cho-thue-homestay-nam-ban/` |
+| `villa nam ban` | người tìm **chỗ nghỉ** hoặc tìm hiểu villa ở Nam Ban | `/villa-nam-ban/` |
+| `villa nam ban cho thuê` | người muốn **thuê villa** | `/cho-thue/biet-thu-nam-ban/` |
+
+Gộp hai vế vào một trang là cách chắc chắn để cả hai đều không lên.
+
+## VÙNG 7 · Ở THỬ TRƯỚC KHI MUA — vùng nối thẳng vào phễu đất
+
+`thuê nhà ở thử nam ban` · `ở thử nam ban trước khi mua đất` · `thuê nhà nam ban vài tháng` · `sống thử ở nam ban`
+
+Đây là nhóm giá trị nhất: người đã tính mua đất Nam Ban, chỉ chưa chắc có hợp không. Thuê vài tháng rồi mua là quyết định tốt hơn cho khách, và vẫn dẫn về đúng nghiệp vụ chính của Villas. Hiện ở `#o-thu`.
+
+## SỐ THAM CHIẾU THỊ TRƯỜNG (ghi nhận trên tin rao, chưa xác minh từng căn)
+
+| Loại | Mức ghi nhận | Ghi chú |
+|---|---|---|
+| Nhà nguyên căn | 4 – 8 triệu/tháng | đầu thấp: nhà nhỏ vài chục m²; đầu cao: mới xây đủ nội thất |
+| Phòng trọ | ~800 nghìn – hơn 1 triệu/tháng | điện nước tính riêng theo số |
+| Nhà đủ nội thất (xác minh thật) | 5 · 12 · 13 triệu/tháng | ba căn của chính Villas, đang có khách thuê |
+
+**Luật:** số "ghi nhận trên tin rao" phải luôn ghi rõ là chưa xác minh. Số "xác minh thật" mới được dùng làm mốc.
 
 ---
 
