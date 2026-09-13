@@ -95,6 +95,26 @@
 
 <section class="section" style="background:white;padding:18px 0 16px">
   <div class="container">
+<style>
+/* Nhãn nhanh — thứ khách hay hỏi trước cả khu vực: "có lô nào view đẹp không",
+   "dưới 700 có gì". Nhãn gắn cố định vào từng lô, không đoán bằng từ khoá. */
+.nh-hang{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;align-items:center}
+.nh-nhan{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a978f;margin-right:2px}
+.nh-chip{background:#fff;border:1px solid #E2DBD0;border-radius:100px;padding:8px 16px;font-family:inherit;
+         font-size:.87rem;font-weight:600;color:#1A3D2B;cursor:pointer;transition:.15s;line-height:1.2}
+.nh-chip b{font-weight:800;color:#8a978f;font-size:.8rem;margin-left:3px}
+.nh-chip:hover{border-color:#1A3D2B;background:#EBF4EE}
+.nh-chip:focus-visible{outline:2.5px solid #1A3D2B;outline-offset:2px}
+.nh-on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
+.nh-on b{color:rgba(255,255,255,.7)}
+.nh-on:hover{background:#24513a;color:#fff}
+@media(max-width:600px){
+  .nh-hang{gap:7px}
+  .nh-nhan{flex:1 1 100%;margin-bottom:2px}
+  .nh-chip{font-size:.82rem;padding:7px 13px}
+}
+</style>
+    <div class="nh-hang" role="group" aria-label="Lọc nhanh theo đặc điểm"><span class="nh-nhan">Đang tìm gì?</span><button type="button" class="nh-chip nh-on" data-nhan="">Tất cả</button><button type="button" class="nh-chip" data-nhan="view-dep" title="hồ, săn mây, thung lũng">View đẹp <b>30</b></button><button type="button" class="nh-chip" data-nhan="duoi-700" title="vốn nhẹ, vào được ngay">Dưới 700 triệu <b>28</b></button><button type="button" class="nh-chip" data-nhan="rung-thong" title="sát tán thông, mát quanh năm">Giáp rừng thông <b>13</b></button><button type="button" class="nh-chip" data-nhan="lo-goc" title="thoáng 2 hướng, dễ xây">Lô góc, 2 mặt tiền <b>9</b></button><button type="button" class="nh-chip" data-nhan="giap-suoi" title="có mặt nước chảy quanh năm">Giáp suối <b>5</b></button></div>
     <form id="filterForm" onsubmit="return false" style="display:flex;gap:12px;flex-wrap:wrap;background:#F7F3EE;padding:16px;border-radius:12px">
       <label for="f-q" style="flex:1 1 100%;display:flex;align-items:center;gap:9px;background:#fff;border:2px solid #E2DBD0;border-radius:10px;padding:0 12px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A3D2B" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" style="flex:0 0 18px"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
@@ -129,6 +149,8 @@
       var area=document.getElementById('f-area');
       var price=document.getElementById('f-price');
       var q=document.getElementById('f-q');
+      var nhanChon='';
+      var chip=document.querySelectorAll('.nh-chip');
       function bochu(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();}
       var countEl=document.querySelector('strong[style*="color:#1A3D2B"]')||document.querySelector('.prop-grid')&&document.querySelector('.prop-grid').previousElementSibling&&document.querySelector('.prop-grid').previousElementSibling.querySelector('strong');
       function run(){
@@ -151,6 +173,7 @@
           if(pv==='1.5-3'&&(p<1.5||p>3))ok=false;
           if(pv==='o3'&&p<=3)ok=false;
           if(ok&&qw.length){for(var i=0;i<qw.length;i++){if(c._txt.indexOf(qw[i])===-1){ok=false;break;}}}
+          if(ok&&nhanChon){var nd=(c.getAttribute('data-nhan')||'').split(/\s+/);if(nd.indexOf(nhanChon)===-1)ok=false;}
           c.classList.toggle('an-di',!ok);
           if(ok)shown++;
         });
@@ -162,10 +185,22 @@
       }
       [loc,area,price].forEach(function(s){s.addEventListener('change',run);});
       if(q){var t;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,180);});}
+      chip.forEach(function(n){
+        n.addEventListener('click',function(){
+          nhanChon=n.getAttribute('data-nhan')||'';
+          chip.forEach(function(m){m.classList.toggle('nh-on',m===n);});
+          run();
+          var d=document.querySelector('.prop-card[data-area]:not(.an-di)');
+          if(d)d.scrollIntoView({behavior:'smooth',block:'center'});
+          if(window.gtag)gtag('event','loc_theo_nhan',{nhan:nhanChon||'tat-ca'});
+        });
+      });
       // Chạy sau khi danh sách lô đã có trong DOM
       function khoiDong(){
         var sp=new URLSearchParams(location.search);
-        var qq=sp.get('q'), qloc=sp.get('loc'), can=false;
+        var qq=sp.get('q'), qloc=sp.get('loc'), qnhan=sp.get('nhan'), can=false;
+        if(qnhan){var cn=document.querySelector('.nh-chip[data-nhan="'+qnhan.replace(/"/g,'')+'"]');
+          if(cn){nhanChon=qnhan;chip.forEach(function(m){m.classList.toggle('nh-on',m===cn);});can=true;}}
         if(qq&&q){q.value=qq;can=true;}
         if(qloc){var opt=loc.querySelector('option[value="'+qloc+'"]');if(opt){loc.value=qloc;can=true;}}
         if(!can)return;
@@ -248,7 +283,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1000" data-price="1.85" data-loc="me-linh cam-ly">
+      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="1000" data-price="1.85" data-loc="me-linh cam-ly">
         <a href="/dat-nen/me-linh-1000m2-giap-rung-thong/" class="sp-thumb"><img src="../images/listings/me-linh-1000m2-giap-rung-thong/1.jpg" alt="Đất 1.000m² giáp rừng thông Mê Linh giáp Cam Ly ven Đà Lạt – mặt tiền 22m, thế dương, có cà phê, 1,85 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 1,85 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/me-linh-1000m2-giap-rung-thong/">Đất 1.000m² giáp rừng thông Mê Linh (giáp Cam Ly) – MT 22m, có cà phê</a></h3>
@@ -261,7 +296,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="3700" data-price="7.5" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="3700" data-price="7.5" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/dat-2mt-dong-thanh-3700m2/" class="sp-thumb"><img src="../images/listings/dat-2mt-dong-thanh-3700m2/1.jpg" alt="Đất đồi 2 mặt tiền Đông Thanh Nam Ban 3.700m² – 800m² thổ cư, bằng phẳng, view trọn Nam Ban, có cà phê, 7,5 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 2 MT · 7,5 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-2mt-dong-thanh-3700m2/">Đất đồi 2 mặt tiền Đông Thanh Nam Ban 3.700m² – 800m² thổ cư, view trọn Nam Ban</a></h3>
@@ -274,7 +309,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="240" data-price="0.55" data-loc="nam-ha">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="240" data-price="0.55" data-loc="nam-ha">
         <a href="/dat-nen/dat-nam-ha-240m2-550tr/" class="sp-thumb"><img src="../images/listings/dat-nam-ha-240m2-550tr/1.jpg" alt="Đất Nam Hà ven Đà Lạt 240m²/lô – 100m² thổ cư, sổ riêng, 550 triệu/lô, khu có homestay và dân cư hiện hữu" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 550tr/lô</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-nam-ha-240m2-550tr/">Đất Nam Hà ven Đà Lạt 240m²/lô – 100m² thổ cư, sổ riêng</a></h3>
@@ -300,7 +335,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="887" data-price="1.35" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="887" data-price="1.35" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/dong-thanh-887m2-san-may/" class="sp-thumb"><img src="../images/listings/dong-thanh-887m2-san-may/1.webp" alt="Đất Đông Thanh Nam Ban 887m² – 150m² thổ cư, thế đất cao view săn mây, mặt tiền đường bê tông, sổ riêng, 1,35 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 150m² thổ cư</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-887m2-san-may/">Đất Đông Thanh Nam Ban 887m² – 150m² thổ cư, view săn mây, sổ riêng</a></h3>
@@ -326,7 +361,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="655" data-price="0.602" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="giap-suoi duoi-700" data-area="655" data-price="0.602" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/cum-trac-bach-diep-dong-thanh/" class="sp-thumb"><img src="../images/listings/cum-trac-bach-diep-dong-thanh/so-do.webp" alt="Khu Trắc Bách Diệp Đông Thanh Nam Ban – 25 nền view tượng Phật, ven suối Cam Ly, sổ riêng, giá từ 602 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Cụm mới · 25 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-trac-bach-diep-dong-thanh/">Khu Trắc Bách Diệp Đông Thanh Nam Ban – 25 nền view tượng Phật, sổ riêng</a></h3>
@@ -339,7 +374,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="0.55" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="200" data-price="0.55" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/dong-thanh-538m2-550tr/" class="sp-thumb"><img src="../images/listings/dong-thanh-538m2-550tr/1.jpg" alt="Đất Đông Thanh Nam Ban 538m² – 200m² thổ cư, mặt tiền ~18,7m, 550 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 550tr · 200m² thổ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-538m2-550tr/">Đất Đông Thanh 538m² – 200m² thổ cư, mặt tiền ~18,7m, sổ riêng</a></h3>
@@ -378,7 +413,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="274" data-price="0.95" data-loc="nam-ban tu-liem">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="274" data-price="0.95" data-loc="nam-ban tu-liem">
         <a href="/dat-nen/tu-liem-2-lo-view-ho-950tr/" class="sp-thumb"><img src="../images/listings/tu-liem-2-lo-view-ho-950tr/1.jpg" alt="2 lô đất view hồ Từ Liêm Nam Ban – 255 & 274m², ngang 7m, 950 triệu/lô" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 2 lô · view hồ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/tu-liem-2-lo-view-ho-950tr/">2 lô đất view hồ Từ Liêm Nam Ban – 255 &amp; 274m², 950 triệu/lô</a></h3>
@@ -417,7 +452,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="474" data-price="1.3" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="474" data-price="1.3" data-loc="nam-ban">
         <a href="/dat-nen/lo-goc-474m2-nam-ban/" class="sp-thumb"><img src="../images/listings/lo-goc-474m2-nam-ban/1.webp" alt="Lô góc 474m² mặt tiền đường nhựa 8m tại Nam Ban, 111m² thổ cư, sổ hồng riêng, view cao thoáng" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Lô góc</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/lo-goc-474m2-nam-ban/">Lô góc 474m² mặt tiền đường nhựa 8m Nam Ban – 111m² thổ cư</a></h3>
@@ -430,7 +465,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="393" data-price="0.69" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong duoi-700" data-area="393" data-price="0.69" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-393m2/" class="sp-thumb"><img src="../images/listings/nam-ban-393m2/1.webp" alt="Đất thị trấn Nam Ban 393m², 200m² đất ở đô thị, ngang 10m, cạnh đồi thông, view thung lũng" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Chủ cắt lỗ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-393m2/">Đất thị trấn Nam Ban 393m² – 200m² thổ cư, ngang 10m, cạnh đồi thông</a></h3>
@@ -456,7 +491,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="500" data-price="1.4" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="500" data-price="1.4" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/lo-goc-500m2-bai-cong-nam-ban/" class="sp-thumb"><img src="../images/listings/lo-goc-500m2-bai-cong-nam-ban/1.jpg" alt="Lô góc 2 mặt tiền 500m² gần hồ Bãi Công Nam Ban, 200m² thổ cư, 1,4 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · Lô góc · hạ giá</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/lo-goc-500m2-bai-cong-nam-ban/">Lô Góc 2 Mặt Tiền 500m² Gần Hồ Bãi Công – 200m² Thổ Cư</a></h3>
@@ -469,7 +504,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1161" data-price="2.2" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="1161" data-price="2.2" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-nha-trang-1161m2/" class="sp-thumb"><img src="../images/listings/dong-thanh-nha-trang-1161m2/1.jpg" alt="Đất đồi Nhà Trắng Đông Thanh Nam Ban 1.161m², 400m² thổ cư, view 360°, 2,2 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 400m² thổ cư</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-nha-trang-1161m2/">Đất Đồi Nhà Trắng Đông Thanh 1.161m² – 400m² Thổ Cư, View 360°</a></h3>
@@ -482,7 +517,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="146" data-price="0.599" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="146" data-price="0.599" data-loc="nam-ban">
         <a href="/dat-nen/dat-trung-tam-nam-ban-599tr/" class="sp-thumb"><img src="../images/listings/dat-trung-tam-nam-ban-599tr/1.jpg" alt="Đất trung tâm Nam Ban 146m², 100m² thổ cư, gần chùa Linh Ẩn, 599 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 100m² thổ cư</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-trung-tam-nam-ban-599tr/">Đất Trung Tâm Nam Ban 146m² – 100m² Thổ Cư, Gần Chùa Linh Ẩn</a></h3>
@@ -495,7 +530,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="150" data-price="0.55" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep duoi-700" data-area="150" data-price="0.55" data-loc="nam-ban">
         <a href="/dat-nen/cum-nam-ban-dong-da-topview/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-dong-da-topview/1.jpg" alt="Khu Nam Ban – Đống Đa Topview – 31 nền view đồi núi xã Nam Ban, đường bê tông 2 mặt, 550 triệu/lô" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Cụm mới · 31 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-dong-da-topview/">Khu Nam Ban – Đống Đa Topview – 31 Nền View Đồi Núi, Sổ Tách Thửa Riêng</a></h3>
@@ -534,7 +569,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="277" data-price="0.69" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="277" data-price="0.69" data-loc="nam-ban">
         <a href="/dat-nen/cum-6-lo-nam-ban-giap-da-lat/" class="sp-thumb"><img src="../images/listings/cum-6-lo-nam-ban-giap-da-lat/1.jpg" alt="Cụm 6 lô đất TT Nam Ban ven Đà Lạt, 91m² thổ cư/lô, triền dương view thoáng, từ 690 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · cụm 6 lô · từ 690tr</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-6-lo-nam-ban-giap-da-lat/">Cụm 6 lô đất TT Nam Ban ven Đà Lạt – 91m² thổ cư/lô, triền dương</a></h3>
@@ -547,7 +582,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="386" data-price="0.77" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="386" data-price="0.77" data-loc="nam-ban">
         <a href="/dat-nen/dat-2-lo-tt-nam-ban-giap-da-lat/" class="sp-thumb"><img src="../images/listings/dat-2-lo-tt-nam-ban-giap-da-lat/1.jpg" alt="2 lô đất thị trấn Nam Ban ven Đà Lạt, 100m² thổ cư/lô, view thung lũng, từ 770 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 2 lô · từ 770tr</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-2-lo-tt-nam-ban-giap-da-lat/">2 lô đất TT Nam Ban ven Đà Lạt – 100m² thổ cư/lô, view thung lũng</a></h3>
@@ -560,7 +595,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="950" data-price="3" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="950" data-price="3" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/dat-mat-ho-bai-cong-950m2/" class="sp-thumb"><img src="../images/listings/dat-mat-ho-bai-cong-950m2/1.jpg" alt="Đất 950m² mặt hồ Bãi Công Nam Ban, 250m² thổ cư, view hồ trực diện" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · view hồ · 1 lô duy nhất</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-mat-ho-bai-cong-950m2/">Đất mặt hồ Bãi Công – 950m², 250m² thổ cư, view hồ trực diện</a></h3>
@@ -573,7 +608,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="579" data-price="1.35" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="579" data-price="1.35" data-loc="nam-ban">
         <a href="/dat-nen/dat-579m2-trung-tam-nam-ban/" class="sp-thumb"><img src="../images/listings/dat-579m2-trung-tam-nam-ban/1.jpg" alt="Đất 579m² trung tâm Nam Ban, 150m² thổ cư, view đồi, gần hồ Bãi Công" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 150m² thổ cư</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-579m2-trung-tam-nam-ban/">Đất 579m² trung tâm Nam Ban – 150m² thổ cư, view đồi</a></h3>
@@ -586,7 +621,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="272" data-price="0.68" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="lo-goc duoi-700" data-area="272" data-price="0.68" data-loc="dong-thanh">
         <a href="/dat-nen/dat-goc-dong-thanh-272m2/" class="sp-thumb"><img src="../images/listings/dat-goc-dong-thanh-272m2/1.jpg" alt="Đất lô góc 272m² 2 mặt tiền Đông Thanh Nam Ban, sẵn thổ cư, flycam gần khu biệt thự nhà trắng" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · lô góc 2 MT</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-goc-dong-thanh-272m2/">Đất lô góc 2 mặt tiền Đông Thanh – 272m² thổ cư, chỉ 680 triệu</a></h3>
@@ -638,7 +673,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1021" data-price="1.55" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="1021" data-price="1.55" data-loc="dong-thanh">
         <a href="/dat-nen/cum-5-lo-mat-ho-dong-thanh/" class="sp-thumb"><img src="../images/listings/cum-5-lo-mat-ho-dong-thanh/1.jpg" alt="Cụm 5 lô đất mặt hồ Đông Thanh Nam Ban, lô lớn có thổ cư, view hồ" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 5 lô mặt hồ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-5-lo-mat-ho-dong-thanh/">Cụm 5 lô đất mặt hồ Đông Thanh Nam Ban – lô lớn, sổ riêng, có thổ cư</a></h3>
@@ -651,7 +686,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="120" data-price="0.55" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="120" data-price="0.55" data-loc="nam-ban">
         <a href="/dat-nen/cum-gan-the-nest-village-nam-ban/" class="sp-thumb"><img src="../images/listings/cum-gan-the-nest-village-nam-ban/2.jpg" alt="Đất nền gần khu biệt thự The Nest Village Nam Ban, có thổ cư, từ 550 triệu" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · Từ 550tr</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-gan-the-nest-village-nam-ban/">Đất nền gần The Nest Village Nam Ban – 120m² có 100m² thổ cư, 550tr</a></h3>
@@ -664,7 +699,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="0.65" data-loc="gia-lam">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="200" data-price="0.65" data-loc="gia-lam">
         <a href="/dat-nen/cum-ht86-gia-lam/" class="sp-thumb"><img src="../images/listings/cum-ht86-gia-lam/1.jpg" alt="Khu nghỉ dưỡng HT86 Gia Lâm Nam Ban – đất nền, đường bê tông, biệt thự hiện hữu cạnh rừng thông" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · Còn ~8 nền F0</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-ht86-gia-lam/">HT86 Gia Lâm Nam Ban – đất nghỉ dưỡng sổ riêng, khu biệt thự hiện hữu</a></h3>
@@ -677,7 +712,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="150" data-price="0.439" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="150" data-price="0.439" data-loc="me-linh">
         <a href="/dat-nen/cum-me-linh-nam-ban-22-lo/" class="sp-thumb"><img src="../images/listings/cum-me-linh-nam-ban-22-lo/1.webp" alt="Cụm 22 lô đất nền Nam Ban – Mê Linh, sổ ONT riêng, flycam các nền phân ranh" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 22 lô sổ ONT</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-me-linh-nam-ban-22-lo/">Cụm 22 lô Nam Ban – Mê Linh, sổ ONT riêng, dãy A 5,3tr &amp; dãy B 4,4tr/m²</a></h3>
@@ -690,7 +725,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="360" data-price="0.84" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="360" data-price="0.84" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/cum-nam-ban-bai-cong-lake-view/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-lake-view/1.jpg" alt="Khu Nam Ban – Bãi Công Lake View – 37 nền ngay hồ Bãi Công, 2 nền mặt hồ" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 37 nền · 2 mặt hồ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-bai-cong-lake-view/">Khu Nam Ban – Bãi Công Lake View – 37 nền ngay hồ Bãi Công, 2 nền mặt hồ</a></h3>
@@ -703,7 +738,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="265" data-price="0.368" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="265" data-price="0.368" data-loc="dong-thanh">
         <a href="/dat-nen/cum-nam-ban-cloudy-hill/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-cloudy-hill/1.webp" alt="Nam Ban Cloudy Hill – 39 nền đất sổ riêng Đông Thanh, sẵn thổ cư, từ 368tr" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · 39 nền sổ riêng</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-cloudy-hill/">Nam Ban Cloudy Hill – 39 nền đất sổ riêng Đông Thanh, sẵn thổ cư, từ 368tr</a></h3>
@@ -716,7 +751,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="8.8" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="200" data-price="8.8" data-loc="dong-thanh">
         <a href="/dat-nen/cum-nam-ban-skyview/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-skyview/1.jpg" alt="Bán sỉ khu Nam Ban Đông Thanh Skyview – 15 lô, view thung lũng, 8,8 tỷ" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Bán sỉ 15 lô · 8,8 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-skyview/">Bán sỉ Nam Ban Đông Thanh Skyview – 15 lô, 225–282m², view thung lũng đẹp</a></h3>
@@ -755,7 +790,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="19" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="200" data-price="19" data-loc="dong-thanh">
         <a href="/dat-nen/cum-dong-thanh-top-view/" class="sp-thumb"><img src="../images/listings/cum-dong-thanh-top-view/1.jpg" alt="Bán sỉ khu Đông Thanh Top View 39 nền, hạ tầng đường nước xong, view siêu cao" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Bán sỉ 39 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-top-view/">Bán sỉ khu Đông Thanh Top View – 39 nền, hạ tầng đường & nước xong, view siêu cao</a></h3>
@@ -768,7 +803,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="0.95" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="200" data-price="0.95" data-loc="dong-thanh">
         <a href="/dat-nen/cum-dong-thanh-lakeview-retreat/" class="sp-thumb"><img src="../images/listings/cum-dong-thanh-lakeview-retreat/1.jpg" alt="Khu Đông Thanh LakeView Retreat – 25 nền view hồ Đông Thanh, gần thác 7 tầng" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · View hồ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-lakeview-retreat/">Khu Đông Thanh LakeView Retreat – 25 nền view trọn vẹn hồ Đông Thanh, gần thác 7 tầng</a></h3>
@@ -781,7 +816,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="0.7" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="200" data-price="0.7" data-loc="dong-thanh">
         <a href="/dat-nen/cum-nam-ban-ecolodge/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-ecolodge/1.webp" alt="Khu Nam Ban Ecolodge – 26 nền khu nhà trắng Đông Thanh, view cao thoáng, thổ cư riêng, đường bê tông 2 mặt" width="400" height="260" loading="lazy" style="object-fit:cover" decoding="async"><span class="sp-badge">Mới · Cụm 26 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-ecolodge/">Khu Nam Ban Ecolodge – 26 nền khu nhà trắng Đông Thanh, view cao thoáng, thổ cư riêng, đường bê tông 2 mặt</a></h3>
@@ -833,7 +868,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1000" data-price="2.8" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="1000" data-price="2.8" data-loc="nam-ban">
         <a href="/dat-nen/dat-1000m2-doi-thong-nam-ban/" class="sp-thumb"><img src="../images/listings/dat-1000m2-doi-thong-nam-ban/1.webp" alt="Đất 1.000m² tựa đồi thông ven Đà Lạt – mặt tiền 20m, đường bê tông ô tô tới đất" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Tựa đồi thông</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-1000m2-doi-thong-nam-ban/">Đất 1.000m² tựa đồi thông ven Đà Lạt – mặt tiền 20m, đường bê tông ô tô tới đất</a></h3>
@@ -846,7 +881,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="360" data-price="1.5" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="360" data-price="1.5" data-loc="nam-ban">
         <a href="/dat-nen/cum-7-nen-giap-rung-thong-nam-ban/" class="sp-thumb"><img src="../images/listings/cum-7-nen-giap-rung-thong-nam-ban/1.jpg" alt="Cụm 7 nền giáp rừng thông ven Đà Lạt – hơn 360m² thổ cư/lô, đường bê tông 7m" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Cụm 7 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-7-nen-giap-rung-thong-nam-ban/">Cụm 7 nền giáp rừng thông ven Đà Lạt – hơn 360m² thổ cư/lô, đường bê tông 7m</a></h3>
@@ -859,7 +894,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="4352" data-price="9" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="4352" data-price="9" data-loc="nam-ban">
         <a href="/dat-nen/dat-4352m2-trung-tam-nam-ban/" class="sp-thumb"><img src="../images/listings/dat-4352m2-trung-tam-nam-ban/1.jpg" alt="Đất 4.352m² trung tâm Nam Ban – cách chùa Linh Ẩn 2km, view săn mây, hợp biệt thự/homestay" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Đất lớn</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-4352m2-trung-tam-nam-ban/">Đất 4.352m² trung tâm Nam Ban – cách chùa Linh Ẩn 2km, view săn mây, hợp biệt thự/homestay</a></h3>
@@ -872,7 +907,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="166" data-price="0.48" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="166" data-price="0.48" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-166m2-480tr/" class="sp-thumb"><img src="../images/listings/nam-ban-166m2-480tr/1.webp" alt="Đất 166m² thị trấn Nam Ban – 80m² thổ cư, sổ hồng riêng, cách Đà Lạt 26km" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Giá mềm</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-166m2-480tr/">Đất 166m² thị trấn Nam Ban – 80m² thổ cư, sổ hồng riêng, cách Đà Lạt 26km</a></h3>
@@ -885,7 +920,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="130" data-price="0.45" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong view-dep giap-suoi duoi-700" data-area="130" data-price="0.45" data-loc="nam-ban">
         <a href="/dat-nen/cum-little-creek-nam-ban/" class="sp-thumb"><img src="../images/listings/cum-little-creek-nam-ban/1.jpg" alt="Cụm 58 nền Little Creek Nam Ban ven suối Cam Ly – đường nhựa, cây xanh, view đồi thông" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Cụm 60 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-little-creek-nam-ban/">Cụm 58 nền Little Creek Nam Ban ven suối Cam Ly – sổ hồng riêng, đường nhựa, đèn năng lượng</a></h3>
@@ -898,7 +933,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="2810" data-price="5.1" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="2810" data-price="5.1" data-loc="nam-ban">
         <a href="/dat-nen/lo-2mt-trung-tam-nam-ban-2810m2/" class="sp-thumb"><img src="../images/listings/lo-2mt-trung-tam-nam-ban-2810m2/1.jpg" alt="Đất 2.810m² 2 mặt tiền đường bê tông trung tâm Nam Ban – 200m² thổ cư, vườn cà phê" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · 2 mặt tiền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/lo-2mt-trung-tam-nam-ban-2810m2/">Đất 2.810m² 2 mặt tiền trung tâm Nam Ban – 200m² thổ cư, vườn cà phê, cách chợ 1,5km</a></h3>
@@ -950,7 +985,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="110" data-price="0.45" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="110" data-price="0.45" data-loc="dong-thanh">
         <a href="/dat-nen/cum-dong-thanh-5-lo-450tr/" class="sp-thumb"><img src="../images/listings/cum-dong-thanh-5-lo-450tr/1.jpg" alt="Cụm 5 lô F0 Đông Thanh Nam Ban – flycam vị trí bám đường bê tông, khu dân cư và vườn bao quanh" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 5 lô F0</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-5-lo-450tr/">Cụm 5 lô F0 Đông Thanh Nam Ban – 110m²/lô, 78m² thổ cư, MT 5m, đường bê tông</a></h3>
@@ -963,7 +998,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="3223" data-price="5.6" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="3223" data-price="5.6" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-3223m2-view-ho/" class="sp-thumb"><img src="../images/listings/nam-ban-3223m2-view-ho/1.webp" alt="Sơ đồ lô đất 3.223m² thửa 647 Nam Ban – 200m² thổ cư, mặt tiền 54m, view hồ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Lô lớn MT 54m</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-3223m2-view-ho/">Lô đất 3.223m² mặt tiền 54m view hồ Nam Ban – 200m² thổ cư, cách ĐT725 150m, sổ riêng</a></h3>
@@ -976,7 +1011,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="950" data-price="3" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="950" data-price="3" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/ho-bai-cong-mat-ho-950m2/" class="sp-thumb"><img src="../images/listings/ho-bai-cong-mat-ho-950m2/1.webp" alt="Lô đất 950m² bám mặt hồ Bãi Công Nam Ban – khoanh ranh sát hồ, view 360°, khu dân cư và vườn cà phê" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Bám mặt hồ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/ho-bai-cong-mat-ho-950m2/">Lô đất bám mặt hồ Bãi Công Nam Ban 950m² – 250m² thổ cư, MT 14,6m, view hồ 360°</a></h3>
@@ -989,7 +1024,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="318" data-price="0.397" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="318" data-price="0.397" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/cum-bai-cong-13-nen/" class="sp-thumb"><img src="../images/listings/cum-bai-cong-13-nen/4.jpg" alt="Cụm 13 nền F0 gần hồ Bãi Công Nam Ban – đất bằng phẳng đã dọn, đường bê tông, khu dân cư, view đồi núi" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 13 nền F0</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-bai-cong-13-nen/">Cụm 13 nền F0 gần hồ Bãi Công Nam Ban – thổ cư 82–123m²/nền, sổ riêng, 3,2tr/m²</a></h3>
@@ -1002,7 +1037,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="361" data-price="0.599" data-loc="gia-lam">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="361" data-price="0.599" data-loc="gia-lam">
         <a href="/dat-nen/cum-gia-lam-12-lo/" class="sp-thumb"><img src="../images/listings/cum-gia-lam-12-lo/1.jpg" alt="Cụm 12 lô F0 Gia Lâm Nam Ban ven đường DT725, khu dân cư và rừng thông, view thung lũng" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 12 lô F0</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-gia-lam-12-lo/">Cụm 12 lô F0 Gia Lâm Nam Ban – thổ cư 75–96m²/nền, đường bê tông, cách DT725 100m</a></h3>
@@ -1015,7 +1050,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="668" data-price="1.49" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="668" data-price="1.49" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-668m2-lo-goc/" class="sp-thumb"><img src="../images/listings/dong-thanh-668m2-lo-goc/1.webp" alt="Lô góc 668m² Đông Thanh Nam Ban, 2 mặt tiền đường bê tông, 315m² thổ cư, view đồi núi" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · Lô góc</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-668m2-lo-goc/">Đất lô góc 2 mặt tiền 668m² Đông Thanh Nam Ban – 315m² thổ cư, đường bê tông, sổ riêng</a></h3>
@@ -1041,7 +1076,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="5900" data-price="8.8" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="5900" data-price="8.8" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-5900m2/" class="sp-thumb"><img src="../images/listings/nam-ban-5900m2/1.jpg" alt="Khu đất ~5.900m² Chi Lăng Nam Ban – 100m² thổ cư, vườn cà phê và bơ, view đồi núi, chính chủ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Chính chủ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-5900m2/">Đất ~5.900m² Chi Lăng Nam Ban – 100m² thổ cư, cà phê bơ, view đồi núi</a></h3>
@@ -1080,7 +1115,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="770" data-price="1.5" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="770" data-price="1.5" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-770m2-3-mat-tien/" class="sp-thumb"><img src="../images/listings/nam-ban-770m2-3-mat-tien/1.webp" alt="Lô góc 770m² 3 mặt tiền Nam Ban nhìn từ flycam, thung lũng và hồ nước, khu dân cư hiện hữu" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-770m2-3-mat-tien/">Đất 770m² lô góc 3 mặt tiền Nam Ban – 200m² thổ cư, ngay đường nhựa</a></h3>
@@ -1132,7 +1167,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="396" data-price="0.849" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="396" data-price="0.849" data-loc="me-linh">
         <a href="/dat-nen/me-linh-396m2-rung-thong/" class="sp-thumb"><img src="../images/listings/me-linh-396m2-rung-thong/1.webp" alt="Lô 396m² Mê Linh giáp rừng thông, ngang 8m, sẵn 80m² thổ cư – sơ đồ 7 nền Pine Village" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/me-linh-396m2-rung-thong/">Đất 396m² Mê Linh giáp rừng thông – ngang 8m, sẵn 80m² thổ cư, sổ riêng</a></h3>
@@ -1145,7 +1180,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1000" data-price="0.99" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="1000" data-price="0.99" data-loc="nam-ban">
         <a href="/dat-nen/cum-nam-ban-5-lo-view-may/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-5-lo-view-may/1.webp" alt="Cụm 5 lô đất view săn mây Nam Ban, ven Đà Lạt – ruộng mía và thung lũng mây trắng" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-5-lo-view-may/">Cụm 5 lô view mây Nam Ban – trên 1.000m²/lô, sẵn 80–100m² thổ cư</a></h3>
@@ -1158,7 +1193,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="243" data-price="0.999" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="243" data-price="0.999" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-243m2/" class="sp-thumb"><img src="../images/listings/nam-ban-243m2/1.webp" alt="Lô 243m² thị trấn Nam Ban, view săn mây phủ núi, khu dân cư hiện hữu" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-243m2/">Lô 243m² thị trấn Nam Ban – 80m² đất ở đô thị, view săn mây, sổ riêng</a></h3>
@@ -1171,7 +1206,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="277" data-price="0.65" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="277" data-price="0.65" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-277m2/" class="sp-thumb"><img src="../images/listings/nam-ban-277m2/1.webp" alt="Lô 277m² thị trấn Nam Ban bên đường bê tông mới, thế triền cao view thung lũng" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-277m2/">Lô 277m² thị trấn Nam Ban – 91m² thổ cư, ngang 7,5m, gần trung tâm</a></h3>
@@ -1184,7 +1219,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="770" data-price="1.5" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="770" data-price="1.5" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-770m2/" class="sp-thumb"><img src="../images/listings/dong-thanh-770m2/1.jpg" alt="Lô 2 mặt tiền 770m² Đông Thanh Nam Ban, sát hồ Thanh Trì, nhìn từ flycam, view thung lũng" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-770m2/">Lô 2 mặt tiền 770m² Đông Thanh – 200m² thổ cư, sát hồ Thanh Trì</a></h3>
@@ -1197,7 +1232,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="1006" data-price="2.5" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep giap-suoi" data-area="1006" data-price="2.5" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-1006m2/" class="sp-thumb"><img src="../images/listings/nam-ban-1006m2/1.webp" alt="Lô 1006m² Nam Ban view săn mây, biển mây buổi sáng phủ thung lũng, giáp suối" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-1006m2/">Lô 1006m² Nam Ban view săn mây &amp; suối – 200m² thổ cư, sổ đỏ</a></h3>
@@ -1249,7 +1284,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="313" data-price="0.72" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="313" data-price="0.72" data-loc="dong-thanh">
         <a href="/dat-nen/cum-dong-thanh-7-lo/" class="sp-thumb"><img src="../images/listings/cum-dong-thanh-7-lo/1.jpg" alt="Cụm 7 lô đất Đông Thanh Nam Ban view hồ, nhìn từ flycam, gần cổng chào và đường lớn" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 7 lô F0</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-dong-thanh-7-lo/">Cụm 7 lô Đông Thanh – view hồ, ngay cổng chào, sẵn thổ cư</a></h3>
@@ -1262,7 +1297,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="98" data-price="0.439" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="98" data-price="0.439" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/cum-nam-ban-439tr/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-439tr/1.jpg" alt="Cụm phân lô Nam Ban gần Hồ Bãi Công nhìn từ flycam, đường bê tông chia lô, ngang 5m full thổ cư" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · còn 7 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-439tr/">Cụm 9 nền Nam Ban gần Hồ Bãi Công – ngang 5m, full thổ cư, sổ riêng từng thửa</a></h3>
@@ -1275,7 +1310,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="190" data-price="0.529" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="190" data-price="0.529" data-loc="nam-ban">
         <a href="/dat-nen/cum-nam-ban-529tr/" class="sp-thumb"><img src="../images/listings/cum-nam-ban-529tr/1.webp" alt="Cụm 9 lô đất phân lô trung tâm Nam Ban nhìn từ flycam, các nền đã san, đường vào tận đất" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 9 lô</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-nam-ban-529tr/">Cụm 9 lô trung tâm Nam Ban – 100m² thổ cư, sổ riêng</a></h3>
@@ -1288,7 +1323,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="132" data-price="0.675" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="132" data-price="0.675" data-loc="nam-ban">
         <a href="/dat-nen/cum-19-lo-nam-ban/" class="sp-thumb"><img src="../images/listings/cum-19-lo-nam-ban/1.jpg" alt="Cụm 19 lô đất phân lô thị trấn Nam Ban, cách ĐT725 200m, mỗi lô 132m² 112m² thổ cư" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · còn 11 lô</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-19-lo-nam-ban/">Cụm 19 lô thị trấn Nam Ban – 112m² thổ cư/lô, cách ĐT725 200m</a></h3>
@@ -1301,7 +1336,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="130" data-price="0.55" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="rung-thong duoi-700" data-area="130" data-price="0.55" data-loc="me-linh">
         <a href="/dat-nen/cum-24-nen-rung-thong/" class="sp-thumb"><img src="../images/listings/cum-24-nen-rung-thong/2.webp" alt="Cụm 24 nền đất dưới tán rừng thông Mê Linh Nam Ban nhìn từ flycam, rừng thông và villa" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 24 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-24-nen-rung-thong/">Cụm 24 nền dưới tán rừng thông Mê Linh – sổ riêng, có thổ cư</a></h3>
@@ -1327,7 +1362,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="300" data-price="1.2" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="rung-thong view-dep" data-area="300" data-price="1.2" data-loc="me-linh">
         <a href="/dat-nen/me-linh-300m2/" class="sp-thumb"><img src="../images/listings/me-linh-300m2/1.webp" alt="Lô đất 300m² Mê Linh Nam Ban view đồi thông, thung lũng cà phê, sẵn thổ cư" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/me-linh-300m2/">Lô 300m² Mê Linh – sẵn thổ cư, mặt tiền 15m nở hậu 16m, view đồi thông</a></h3>
@@ -1366,7 +1401,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="504" data-price="1.6" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="504" data-price="1.6" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-504m2/" class="sp-thumb"><img src="../images/listings/nam-ban-504m2/1.jpg" alt="Lô đất 504m² view núi đối diện Nam Ban Villas, 100m² thổ cư, hướng đông" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-504m2/">Lô 504m² view núi đối diện Nam Ban Villas – 100m² thổ cư, hướng đông</a></h3>
@@ -1379,7 +1414,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="101" data-price="0.6" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="view-dep duoi-700" data-area="101" data-price="0.6" data-loc="me-linh">
         <a href="/dat-nen/cum-me-linh-14-nen/" class="sp-thumb"><img src="../images/listings/cum-me-linh-14-nen/1.jpg" alt="Cụm 14 nền đất Mê Linh sát Đà Lạt, sổ riêng, sẵn thổ cư, view đẹp" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cụm mới · 14 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-me-linh-14-nen/">Cụm 14 nền Mê Linh sát Đà Lạt – sổ riêng, sẵn thổ cư, view đẹp</a></h3>
@@ -1444,7 +1479,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="232" data-price="0.57" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong view-dep duoi-700" data-area="232" data-price="0.57" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-232m2/" class="sp-thumb"><img src="../images/listings/nam-ban-232m2/1.jpg" alt="Lô đất 232m² Nam Ban, view đồi thông và núi Voi, 77m² thổ cư, sổ hồng riêng" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-232m2/">Lô 232m² Nam Ban – 77m² thổ cư, view đồi thông núi Voi, sổ hồng riêng</a></h3>
@@ -1457,7 +1492,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="200" data-price="0.65" data-loc="nam-ban tu-liem">
+      <article class="prop-card sp-row" data-nhan="view-dep duoi-700" data-area="200" data-price="0.65" data-loc="nam-ban tu-liem">
         <a href="/dat-nen/cum-tu-liem-13-nen/" class="sp-thumb"><img src="../images/listings/cum-tu-liem-13-nen/1.jpg" alt="Cụm 18 nền view hồ Từ Liêm Nam Ban, đất view đẹp, sẵn thổ cư, đường bê tông" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Còn 6/18 nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/cum-tu-liem-13-nen/">Cụm 18 nền view hồ Từ Liêm – Nam Ban, đất view đẹp, sẵn thổ cư</a></h3>
@@ -1483,7 +1518,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="535" data-price="1.2" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="535" data-price="1.2" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-535m2/" class="sp-thumb"><img src="../images/listings/dong-thanh-535m2/1.jpg" alt="Lô đất 535m² Đông Thanh Nam Ban, view rừng thông và núi Voi, 100m² thổ cư" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-535m2/">Lô 535m² Đông Thanh – 100m² thổ cư, mặt tiền 11m, view rừng thông núi Voi</a></h3>
@@ -1496,7 +1531,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="130" data-price="0.42" data-loc="nam-ban tu-liem">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="130" data-price="0.42" data-loc="nam-ban tu-liem">
         <a href="/dat-nen/tu-liem-lo-130-98m2/" class="sp-thumb"><img src="../images/listings/tu-liem-lo-130-98m2/1.jpg" alt="2 lô đất nhỏ Từ Liêm Nam Ban dọc đường bê tông, sẵn thổ cư" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/tu-liem-lo-130-98m2/">2 lô nhỏ Từ Liêm – sẵn thổ cư, sổ riêng, công chứng ngay (390–420tr)</a></h3>
@@ -1548,7 +1583,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="845" data-price="1.8" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="845" data-price="1.8" data-loc="dong-thanh">
         <a href="/dat-nen/dong-thanh-845m2/" class="sp-thumb"><img src="../images/listings/dong-thanh-845m2/1.jpg" alt="Lô đất 845m² Đông Thanh view sương mây Nam Ban" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Nổi Bật</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dong-thanh-845m2/">Lô 845m² Đông Thanh – View sương mây, mặt tiền 12m, tặng thiết kế 50tr</a></h3>
@@ -1574,7 +1609,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="530" data-price="0.9" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="rung-thong view-dep" data-area="530" data-price="0.9" data-loc="nam-ban">
         <a href="/dat-nen/thung-lung-530m2/" class="sp-thumb"><img src="../images/listings/thung-lung-530m2/1.jpg" alt="Đất 530m² view thung lũng sương mờ Nam Ban 899 triệu" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cần Bán Gấp</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/thung-lung-530m2/">Đất 530m² view thung lũng sương mờ – Gần rừng thông, hồ bãi công</a></h3>
@@ -1600,7 +1635,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="2700" data-price="2.95" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="giap-suoi" data-area="2700" data-price="2.95" data-loc="nam-ban">
         <a href="/dat-nen/giap-suoi-2700m2/" class="sp-thumb"><img src="../images/listings/giap-suoi-2700m2/1.jpg" alt="Đất 2700m² 2 mặt giáp suối cần bán gấp Nam Ban" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Cần Bán Gấp</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/giap-suoi-2700m2/">Đất 2.700m² 2 mặt giáp suối – Bằng phẳng, full thổ cư, gần trung tâm</a></h3>
@@ -1613,7 +1648,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="700" data-price="1.2" data-loc="nam-ban tu-liem">
+      <article class="prop-card sp-row" data-nhan="view-dep" data-area="700" data-price="1.2" data-loc="nam-ban tu-liem">
         <a href="/dat-nen/ho-tu-liem-700m2/" class="sp-thumb"><img src="../images/listings/ho-tu-liem-700m2/1.webp" alt="Đất 700m² view Hồ Từ Liêm Nam Ban 1.2 tỷ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Đất Nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/ho-tu-liem-700m2/">Đất 700m² view Hồ Từ Liêm – Cách hồ 300m, mặt tiền 10m</a></h3>
@@ -1639,7 +1674,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="950" data-price="3.5" data-loc="nam-ban ho-bai-cong">
+      <article class="prop-card sp-row" data-nhan="rung-thong view-dep" data-area="950" data-price="3.5" data-loc="nam-ban ho-bai-cong">
         <a href="/dat-nen/ho-bai-cong-lot2/" class="sp-thumb"><img src="../images/listings/ho-bai-cong-lot2/1.jpg" alt="Đất 950m² giáp Hồ Bãi Công view đồi thông Nam Ban lô 2" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Đất Nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/ho-bai-cong-lot2/">Lô 2 – Đất 950m² giáp Hồ Bãi Công, mặt tiền 15m nở hậu 22m, view đồi thông</a></h3>
@@ -1652,7 +1687,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="650" data-price="1.25" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="rung-thong giap-suoi" data-area="650" data-price="1.25" data-loc="me-linh">
         <a href="/dat-nen/me-linh-suoi-thong-650m2/" class="sp-thumb"><img src="../images/listings/me-linh-suoi-thong-650m2/1.webp" alt="Đất 650m² view suối thông Mê Linh ven Đà Lạt 1.25 tỷ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Đất Nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/me-linh-suoi-thong-650m2/">Đất 650m² view suối thông Mê Linh – Bao quanh đồi thông, cách Đà Lạt ~25km</a></h3>
@@ -1665,7 +1700,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="130" data-price="0.57" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="duoi-700" data-area="130" data-price="0.57" data-loc="nam-ban">
         <a href="/dat-nen/pho-thong-villas-130m2/" class="sp-thumb"><img src="../images/listings/pho-thong-villas-130m2/1.jpg" alt="2 lô đất 130m² sát Phố Thông Villas Nam Ban 568 triệu" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Đất Nền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/pho-thong-villas-130m2/">2 lô 130m² sát Phố Thông Villas – Cách chợ Gia Lâm 1.5km, công chứng ngay</a></h3>
@@ -1678,7 +1713,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="345" data-price="1.15" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="345" data-price="1.15" data-loc="nam-ban">
         <a href="/dat-nen/hai-mat-tien-345m2/" class="sp-thumb"><img src="../images/listings/hai-mat-tien-345m2/1.webp" alt="Lô đất 2 mặt tiền 345m² Nam Ban 1.15 tỷ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới Đăng</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/hai-mat-tien-345m2/">Lô 2 mặt tiền 345m² – Khu đang phát triển, nhiều nhà đầu tư quan tâm</a></h3>

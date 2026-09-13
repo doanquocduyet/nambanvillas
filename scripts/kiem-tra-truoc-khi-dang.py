@@ -290,6 +290,23 @@ for f in pages:
         L(f"[Ảnh thiếu width/height — gây nhảy layout] {duong_dan(f)}")
         break
 
+# ── 6h. Nhãn nhanh ở hub: số trên nút phải khớp số lô thật ─────────────────
+hub_nhan = "dat-nen-nam-ban/index.html"
+if os.path.exists(hub_nhan):
+    s_ = open(hub_nhan, encoding="utf-8").read()
+    dem = Counter()
+    for v in re.findall(r'<article class="prop-card sp-row" data-nhan="([^"]*)"', s_):
+        for x in v.split():
+            dem[x] += 1
+    for val, so in re.findall(r'class="nh-chip[^"]*" data-nhan="([^"]*)"[^>]*>[^<]*<b>(\d+)</b>', s_):
+        if int(so) != dem[val]:
+            L(f"[Nhãn '{val}' ghi {so} lô nhưng thật {dem[val]}] /dat-nen-nam-ban/")
+    # lô đã bán không được mang nhãn — khách bấm vào thấy hàng chết
+    for blk in re.findall(r'<article class="prop-card sp-row" data-nhan[^>]*>[\s\S]*?</article>', s_):
+        if "Đã bán" in blk:
+            L("[Lô đã bán vẫn mang nhãn nhanh] /dat-nen-nam-ban/")
+            break
+
 # ── 7. vercel.json: redirect PHẢI có biến thể dấu / cuối ──────────────────
 # ĐÃ TỪNG DÍNH NẶNG: trailingSlash:true chuẩn hoá thêm '/' TRƯỚC khi khớp redirect,
 # mà mọi source đều thiếu '/' → toàn bộ 36 redirect trả 404, mất sạch link cũ.
