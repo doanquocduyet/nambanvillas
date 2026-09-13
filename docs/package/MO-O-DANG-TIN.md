@@ -30,6 +30,14 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 **Đọc:** `docs/package/DANG-TIN-KHONG-LOI.md` — quy trình chống lặp lỗi (mỗi mục là 1 lỗi đã xảy ra thật).
 
+**Khi chú đưa tin CHO THUÊ / THUÊ NHÀ:** đọc `docs/package/DANG-TIN-CHO-THUE.md` TRƯỚC.
+Web đã có hub cho thuê ở `/cho-thue/` (7 mục theo ý định khách + 3 thẻ mốc giá thật).
+Tin thuê khác tin bán ở 4 chỗ, sai chỗ nào cũng hỏng: giá theo **tháng/đêm** nên
+`Offer` phải có `businessFunction: LeaseOut` + `UnitPriceSpecification` (không khai
+giá một cục như tin bán) · có **4 trạng thái**, hết hàng thì đổi nhãn chứ **không bao
+giờ xoá trang / để 404** · ảnh **không được lộ vị trí chính xác** vì có người đang ở
+trong nhà · **chưa đủ 3 tin cùng nhánh thì không mở URL nhánh**.
+
 **Chạy:**
 ```bash
 python3 scripts/kiem-tra-truoc-khi-dang.py
