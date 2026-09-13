@@ -96,40 +96,43 @@
 <section class="section" style="background:white;padding:18px 0 16px">
   <div class="container">
 <style>
-/* Nhãn nhanh — thứ khách hay hỏi trước cả khu vực: "có lô nào view đẹp không",
-   "dưới 700 có gì". Nhãn gắn cố định vào từng lô, không đoán bằng từ khoá. */
-.nh-hang{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;align-items:center}
-.nh-nhan{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a978f;margin-right:2px}
-.nh-chip{background:#fff;border:1px solid #E2DBD0;border-radius:100px;padding:8px 16px;font-family:inherit;
-         font-size:.87rem;font-weight:600;color:#1A3D2B;cursor:pointer;transition:.15s;line-height:1.2}
-.nh-chip b{font-weight:800;color:#8a978f;font-size:.8rem;margin-left:3px}
-.nh-chip:hover{border-color:#1A3D2B;background:#EBF4EE}
-.nh-chip:focus-visible{outline:2.5px solid #1A3D2B;outline-offset:2px}
-.nh-on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
-.nh-on b{color:rgba(255,255,255,.7)}
-.nh-on:hover{background:#24513a;color:#fff}
+/* HAI CỤM LỌC — khách chỉ cần hỏi mình 2 câu: "khu nào?" và "cần gì?".
+   Trước đây rải rác 2 select + 2 khối link trùng nhau ở cuối trang mà không ai cuộn tới. */
+.lc-khoi{background:#fff;border:1px solid #EAE3D6;border-radius:18px;padding:18px 20px;margin:0 0 12px}
+.lc-tieu{display:block;font-size:.74rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#8a978f;margin:0 0 11px}
+.lc-hang{display:flex;flex-wrap:wrap;gap:8px}
+.lc-chip{background:#F9F6F1;border:1px solid #E2DBD0;border-radius:100px;padding:9px 17px;font-family:inherit;
+         font-size:.89rem;font-weight:600;color:#1A3D2B;cursor:pointer;transition:.15s;line-height:1.2}
+.lc-chip b{font-weight:800;color:#8a978f;font-size:.79rem;margin-left:3px}
+.lc-chip:hover{border-color:#1A3D2B;background:#EBF4EE}
+.lc-chip:focus-visible{outline:2.5px solid #1A3D2B;outline-offset:2px}
+.lc-on{background:#1A3D2B;border-color:#1A3D2B;color:#fff}
+.lc-on b{color:rgba(255,255,255,.7)}
+.lc-on:hover{background:#24513a;color:#fff}
+.lc-rieng{margin:11px 0 0;font-size:.87rem}
+.lc-rieng a{color:#1A3D2B;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.lc-them{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 4px}
+.lc-them .lc-tieu{flex:1 1 100%;margin-bottom:2px}
 @media(max-width:600px){
-  .nh-hang{gap:7px}
-  .nh-nhan{flex:1 1 100%;margin-bottom:2px}
-  .nh-chip{font-size:.82rem;padding:7px 13px}
+  .lc-khoi{padding:15px 15px;border-radius:16px}
+  .lc-chip{font-size:.83rem;padding:8px 14px}
 }
 </style>
-    <div class="nh-hang" role="group" aria-label="Lọc nhanh theo đặc điểm"><span class="nh-nhan">Đang tìm gì?</span><button type="button" class="nh-chip nh-on" data-nhan="">Tất cả</button><button type="button" class="nh-chip" data-nhan="view-dep" title="hồ, săn mây, thung lũng">View đẹp <b>30</b></button><button type="button" class="nh-chip" data-nhan="duoi-700" title="vốn nhẹ, vào được ngay">Dưới 700 triệu <b>28</b></button><button type="button" class="nh-chip" data-nhan="rung-thong" title="sát tán thông, mát quanh năm">Giáp rừng thông <b>13</b></button><button type="button" class="nh-chip" data-nhan="lo-goc" title="thoáng 2 hướng, dễ xây">Lô góc, 2 mặt tiền <b>9</b></button><button type="button" class="nh-chip" data-nhan="giap-suoi" title="có mặt nước chảy quanh năm">Giáp suối <b>5</b></button></div>
+    <div class="lc-khoi">
+      <span class="lc-tieu">1 &middot; Bạn muốn xem khu nào?</span>
+      <div class="lc-hang" role="group" aria-label="Lọc theo khu vực"><button type="button" class="lc-chip lc-on" data-loc="">Tất cả <b>110</b></button><button type="button" class="lc-chip" data-loc="nam-ban" data-trang="/dat-trung-tam-thi-tran-nam-ban/">Nam Ban trung tâm <b>68</b></button><button type="button" class="lc-chip" data-loc="dong-thanh" data-trang="/dat-dong-thanh-nam-ban/">Đông Thanh <b>26</b></button><button type="button" class="lc-chip" data-loc="me-linh" data-trang="/dat-me-linh-nam-ban/">Mê Linh <b>14</b></button><button type="button" class="lc-chip" data-loc="ho-bai-cong" data-trang="/dat-ho-bai-cong-nam-ban/">Hồ Bãi Công <b>10</b></button><button type="button" class="lc-chip" data-loc="gia-lam" data-trang="/dat-gia-lam-nam-ban/">Gia Lâm <b>9</b></button><button type="button" class="lc-chip" data-loc="tu-liem" data-trang="/dat-tu-liem-nam-ban/">Từ Liêm <b>5</b></button><button type="button" class="lc-chip" data-loc="nam-ha">Nam Hà <b>1</b></button></div>
+      <p class="lc-rieng" id="lc-rieng-khu" hidden></p>
+    </div>
+    <div class="lc-khoi">
+      <span class="lc-tieu">2 &middot; Bạn đang cần gì?</span>
+      <div class="lc-hang" role="group" aria-label="Lọc theo nhu cầu"><button type="button" class="lc-chip lc-on" data-nhan="">Tất cả <b>110</b></button><button type="button" class="lc-chip" data-nhan="duoi-700" data-trang="/dat-nam-ban-duoi-1-ty/">Dưới 700 triệu <b>28</b></button><button type="button" class="lc-chip" data-nhan="view-dep" data-trang="/dat-view-ho-nam-ban/">View đẹp <b>30</b></button><button type="button" class="lc-chip" data-nhan="rung-thong">Giáp rừng thông <b>13</b></button><button type="button" class="lc-chip" data-nhan="vuon" data-trang="/dat-vuon-nam-ban/">Đất vườn cà phê, bơ <b>7</b></button><button type="button" class="lc-chip" data-nhan="lo-goc">Lô góc, 2 mặt tiền <b>9</b></button><button type="button" class="lc-chip" data-nhan="giap-suoi">Giáp suối <b>5</b></button></div>
+      <p class="lc-rieng" id="lc-rieng-nhu" hidden></p>
+    </div>
     <form id="filterForm" onsubmit="return false" style="display:flex;gap:12px;flex-wrap:wrap;background:#F7F3EE;padding:16px;border-radius:12px">
       <label for="f-q" style="flex:1 1 100%;display:flex;align-items:center;gap:9px;background:#fff;border:2px solid #E2DBD0;border-radius:10px;padding:0 12px">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A3D2B" stroke-width="1.7" stroke-linecap="round" aria-hidden="true" style="flex:0 0 18px"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
         <input id="f-q" type="search" enterkeyhint="search" placeholder="Tìm nhanh: thổ cư, view hồ, lô góc, Đông Thanh…" aria-label="Tìm lô đất theo từ khoá" style="flex:1;min-width:0;border:0;outline:none;background:transparent;font-family:inherit;font-size:.92rem;padding:11px 0;color:#1A3D2B">
       </label>
-      <select id="f-loc" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
-        <option value="">Tất cả khu vực</option>
-        <option value="dong-thanh">Đông Thanh</option>
-        <option value="nam-ban">Nam Ban TT</option>
-        <option value="ho-bai-cong">Hồ Bãi Công</option>
-        <option value="me-linh">Mê Linh</option>
-        <option value="gia-lam">Gia Lâm</option>
-        <option value="tu-liem">Từ Liêm</option>
-        <option value="nam-ha">Nam Hà</option>
-      </select>
       <select id="f-area" style="flex:1;min-width:130px;padding:9px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none">
         <option value="">Tất cả diện tích</option>
         <option value="u500">Dưới 500m²</option>
@@ -145,16 +148,17 @@
     </form>
     <script>
     (function(){
-      var loc=document.getElementById('f-loc');
+      var locChon='';
       var area=document.getElementById('f-area');
       var price=document.getElementById('f-price');
       var q=document.getElementById('f-q');
       var nhanChon='';
-      var chip=document.querySelectorAll('.nh-chip');
+      var chipKhu=document.querySelectorAll('.lc-chip[data-loc]');
+      var chipNhu=document.querySelectorAll('.lc-chip[data-nhan]');
       function bochu(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();}
       var countEl=document.querySelector('strong[style*="color:#1A3D2B"]')||document.querySelector('.prop-grid')&&document.querySelector('.prop-grid').previousElementSibling&&document.querySelector('.prop-grid').previousElementSibling.querySelector('strong');
       function run(){
-        var lv=loc.value,av=area.value,pv=price.value;
+        var lv=locChon,av=area.value,pv=price.value;
         var qv=q?bochu(q.value.trim()):'';
         var qw=qv?qv.split(/\s+/):[];
         var cards=document.querySelectorAll('.prop-card[data-area]');
@@ -183,26 +187,42 @@
         if(!empty){empty=document.createElement('p');empty.id='loc-empty';empty.style.cssText='display:none;padding:18px;background:#F0F4F1;border-radius:12px;color:#3D4A40;font-size:.95rem';empty.innerHTML='Chưa có lô nào khớp bộ lọc này. <a href="/dat-nen-nam-ban/" style="color:#1A3D2B;font-weight:700">Xem tất cả lô</a> hoặc gọi <a href="tel:0978758788" style="color:#1A3D2B;font-weight:700">0978 758 788</a> để Nam Ban Villas tìm giúp.';var g0=document.querySelector('.prop-grid');if(g0)g0.parentNode.insertBefore(empty,g0);}
         empty.style.display=shown?'none':'block';
       }
-      [loc,area,price].forEach(function(s){s.addEventListener('change',run);});
+      [area,price].forEach(function(s){s.addEventListener('change',run);});
       if(q){var t;q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,180);});}
-      chip.forEach(function(n){
-        n.addEventListener('click',function(){
-          nhanChon=n.getAttribute('data-nhan')||'';
-          chip.forEach(function(m){m.classList.toggle('nh-on',m===n);});
-          run();
-          var d=document.querySelector('.prop-card[data-area]:not(.an-di)');
-          if(d)d.scrollIntoView({behavior:'smooth',block:'center'});
-          if(window.gtag)gtag('event','loc_theo_nhan',{nhan:nhanChon||'tat-ca'});
+      function hienTrangRieng(nut,oid){
+        var o=document.getElementById(oid); if(!o) return;
+        var tr=nut&&nut.getAttribute('data-trang');
+        if(tr){o.hidden=false;o.innerHTML='<a href="'+tr+'">Xem trang riêng: '+
+          nut.textContent.replace(/\s*\d+\s*$/,'').trim()+' \u2192</a>';}
+        else o.hidden=true;
+      }
+      function batChip(ds,dat,oid,dat_ten){
+        ds.forEach(function(n){
+          n.addEventListener('click',function(){
+            var v=n.getAttribute(dat)||'';
+            if(dat_ten==='khu')locChon=v; else nhanChon=v;
+            ds.forEach(function(m){m.classList.toggle('lc-on',m===n);});
+            hienTrangRieng(v?n:null,oid);
+            run();
+            var d=document.querySelector('.prop-card[data-area]:not(.an-di)');
+            if(d)d.scrollIntoView({behavior:'smooth',block:'center'});
+            if(window.gtag)gtag('event','loc_'+dat_ten,{gia_tri:v||'tat-ca'});
+          });
         });
-      });
+      }
+      batChip(chipKhu,'data-loc','lc-rieng-khu','khu');
+      batChip(chipNhu,'data-nhan','lc-rieng-nhu','nhu-cau');
       // Chạy sau khi danh sách lô đã có trong DOM
       function khoiDong(){
         var sp=new URLSearchParams(location.search);
         var qq=sp.get('q'), qloc=sp.get('loc'), qnhan=sp.get('nhan'), can=false;
-        if(qnhan){var cn=document.querySelector('.nh-chip[data-nhan="'+qnhan.replace(/"/g,'')+'"]');
-          if(cn){nhanChon=qnhan;chip.forEach(function(m){m.classList.toggle('nh-on',m===cn);});can=true;}}
         if(qq&&q){q.value=qq;can=true;}
-        if(qloc){var opt=loc.querySelector('option[value="'+qloc+'"]');if(opt){loc.value=qloc;can=true;}}
+        if(qloc){var ck=document.querySelector('.lc-chip[data-loc="'+qloc.replace(/"/g,'')+'"]');
+          if(ck){locChon=qloc;chipKhu.forEach(function(m){m.classList.toggle('lc-on',m===ck);});
+            hienTrangRieng(ck,'lc-rieng-khu');can=true;}}
+        if(qnhan){var cn=document.querySelector('.lc-chip[data-nhan="'+qnhan.replace(/"/g,'')+'"]');
+          if(cn){nhanChon=qnhan;chipNhu.forEach(function(m){m.classList.toggle('lc-on',m===cn);});
+            hienTrangRieng(cn,'lc-rieng-nhu');can=true;}}
         if(!can)return;
         run();
         var g=document.querySelector('.prop-grid');
@@ -257,7 +277,7 @@
 </style>
     <div class="prop-grid sp-sang sp-datnen">
 
-      <article class="prop-card sp-row" data-area="5100" data-price="5.8" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="vuon" data-area="5100" data-price="5.8" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/dat-dong-thanh-5100m2-58ty/" class="sp-thumb"><img src="../images/listings/dat-dong-thanh-5100m2-58ty/1.jpg" alt="Đất Đông Thanh Nam Ban 5.100m² – 400m² thổ cư, sẵn nhà cấp 4, ao, cây ăn trái, view đồi thông, 5,8 tỷ" width="400" height="260" style="object-fit:cover" fetchpriority="high" decoding="async"><span class="sp-badge">Mới · có nhà · 5,8 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-dong-thanh-5100m2-58ty/">Đất Đông Thanh Nam Ban 5.100m² – 400m² thổ cư, sẵn nhà cấp 4, ao & cây ăn trái</a></h3>
@@ -270,7 +290,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="3865" data-price="2.6" data-loc="me-linh">
+      <article class="prop-card sp-row" data-nhan="vuon" data-area="3865" data-price="2.6" data-loc="me-linh">
         <a href="/dat-nen/dat-me-linh-thon-3-3865m2-26ty/" class="sp-thumb"><img src="../images/listings/dat-me-linh-thon-3-3865m2-26ty/1.jpg" alt="Đất Mê Linh Thôn 3 3.865m² – vườn cà phê, mặt tiền đường bê tông, sổ riêng, giá ngộp 2,6 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · ngộp · 2,6 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-me-linh-thon-3-3865m2-26ty/">Đất Mê Linh Thôn 3 – 3.865m² vườn cà phê, MT đường bê tông, sổ riêng</a></h3>
@@ -296,7 +316,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-nhan="rung-thong" data-area="1000" data-price="1.85" data-loc="me-linh cam-ly">
+      <article class="prop-card sp-row" data-nhan="rung-thong vuon" data-area="1000" data-price="1.85" data-loc="me-linh cam-ly">
         <a href="/dat-nen/me-linh-1000m2-giap-rung-thong/" class="sp-thumb"><img src="../images/listings/me-linh-1000m2-giap-rung-thong/1.jpg" alt="Đất 1.000m² giáp rừng thông Mê Linh giáp Cam Ly ven Đà Lạt – mặt tiền 22m, thế dương, có cà phê, 1,85 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 1,85 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/me-linh-1000m2-giap-rung-thong/">Đất 1.000m² giáp rừng thông Mê Linh (giáp Cam Ly) – MT 22m, có cà phê</a></h3>
@@ -309,7 +329,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="3700" data-price="7.5" data-loc="nam-ban dong-thanh">
+      <article class="prop-card sp-row" data-nhan="lo-goc vuon" data-area="3700" data-price="7.5" data-loc="nam-ban dong-thanh">
         <a href="/dat-nen/dat-2mt-dong-thanh-3700m2/" class="sp-thumb"><img src="../images/listings/dat-2mt-dong-thanh-3700m2/1.jpg" alt="Đất đồi 2 mặt tiền Đông Thanh Nam Ban 3.700m² – 800m² thổ cư, bằng phẳng, view trọn Nam Ban, có cà phê, 7,5 tỷ" width="400" height="260" style="object-fit:cover" loading="lazy" decoding="async"><span class="sp-badge">Mới · 2 MT · 7,5 tỷ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/dat-2mt-dong-thanh-3700m2/">Đất đồi 2 mặt tiền Đông Thanh Nam Ban 3.700m² – 800m² thổ cư, view trọn Nam Ban</a></h3>
@@ -946,7 +966,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-nhan="lo-goc" data-area="2810" data-price="5.1" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="lo-goc vuon" data-area="2810" data-price="5.1" data-loc="nam-ban">
         <a href="/dat-nen/lo-2mt-trung-tam-nam-ban-2810m2/" class="sp-thumb"><img src="../images/listings/lo-2mt-trung-tam-nam-ban-2810m2/1.jpg" alt="Đất 2.810m² 2 mặt tiền đường bê tông trung tâm Nam Ban – 200m² thổ cư, vườn cà phê" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới · 2 mặt tiền</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/lo-2mt-trung-tam-nam-ban-2810m2/">Đất 2.810m² 2 mặt tiền trung tâm Nam Ban – 200m² thổ cư, vườn cà phê, cách chợ 1,5km</a></h3>
@@ -1089,7 +1109,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-nhan="view-dep" data-area="5900" data-price="8.8" data-loc="nam-ban">
+      <article class="prop-card sp-row" data-nhan="view-dep vuon" data-area="5900" data-price="8.8" data-loc="nam-ban">
         <a href="/dat-nen/nam-ban-5900m2/" class="sp-thumb"><img src="../images/listings/nam-ban-5900m2/1.jpg" alt="Khu đất ~5.900m² Chi Lăng Nam Ban – 100m² thổ cư, vườn cà phê và bơ, view đồi núi, chính chủ" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Chính chủ</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/nam-ban-5900m2/">Đất ~5.900m² Chi Lăng Nam Ban – 100m² thổ cư, cà phê bơ, view đồi núi</a></h3>
@@ -1479,7 +1499,7 @@
         </div>
       </article>
 
-      <article class="prop-card sp-row" data-area="3583" data-price="5.5" data-loc="dong-thanh">
+      <article class="prop-card sp-row" data-nhan="vuon" data-area="3583" data-price="5.5" data-loc="dong-thanh">
         <a href="/dat-nen/trung-ha-3583m2/" class="sp-thumb"><img src="../images/listings/trung-ha-3583m2/1.jpg" alt="Lô đất 3.583m² Trung Hà Nam Ban, mặt tiền 87m, hướng Đông Nam, đang trồng cà phê" width="400" height="260" loading="lazy" decoding="async"><span class="sp-badge">Mới</span></a>
         <div class="sp-mid">
           <h3 class="sp-title"><a href="/dat-nen/trung-ha-3583m2/">Đất 3.583m² Trung Hà – mặt tiền 87m, hướng Đông Nam, cách nhựa 1,2km</a></h3>
@@ -1790,31 +1810,7 @@
       <p style="font-size:.95rem;line-height:1.7;margin:0 0 8px">Hồ sơ đăng ký biến động (sang tên) đất tại Nam Ban nộp tại <strong>Chi nhánh Văn phòng Đăng ký đất đai khu vực Lâm Hà</strong> — đường Võ Thị Sáu nối dài, xã Đinh Văn, tỉnh Lâm Đồng (theo Cổng dịch vụ công quốc gia), làm việc giờ hành chính. Thời gian thường 15–30 ngày làm việc kể từ khi hồ sơ hợp lệ.</p>
       <p style="font-size:.95rem;line-height:1.7;margin:0">Chi phí gồm lệ phí trước bạ 0,5% và thuế thu nhập cá nhân 2% (bên nào chịu do thỏa thuận), tính trên giá hợp đồng nhưng không thấp hơn bảng giá đất Lâm Đồng 2026. Nam Ban Villas hỗ trợ chuẩn bị hồ sơ và đi cùng khi công chứng. Xem thêm <a href="/phap-ly-mua-dat-nam-ban/" style="color:#1A3D2B;font-weight:700">kiểm pháp lý &amp; sang tên</a>.</p>
     </div>
-    <p style="font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8a978f;margin:0 0 10px">Khu vực Nam Ban</p>
-    <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px">
-      <a href="/dat-dong-thanh-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Khu Đông Thanh</a>
-        <a href="/dat-me-linh-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Khu Mê Linh</a>
-        <a href="/dat-gia-lam-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Khu Gia Lâm</a>
-        <a href="/dat-trung-tam-thi-tran-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Trung tâm thị trấn</a>
-        <a href="/dat-ho-bai-cong-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Hồ Bãi Công</a>
-        <a href="/dat-tu-liem-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Từ Liêm</a>
-        <a href="/dat-view-ho-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Đất view hồ &amp; mây</a>
-        <a href="/dat-vuon-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Đất vườn cà phê, bơ</a>
-        <a href="/dat-nam-ban-duoi-1-ty/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">Dưới 1 tỷ</a>
-        <a href="/dat-nam-ban-1-2-ty/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;font-size:.88rem;padding:8px 16px;border-radius:20px;text-decoration:none;border:1px solid #DCE6D8">1–2 tỷ</a>
-    </div>
-    <p style="font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8a978f;margin:0 0 6px">Lọc nhanh</p>
-    <h2 style="color:#1A3D2B;font-size:1.3rem;font-weight:800;margin:0 0 16px">Xem đất Nam Ban theo giá &amp; theo khu</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:10px">
-      <a href="/dat-nam-ban-duoi-1-ty/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Đất dưới 1 tỷ →</a>
-      <a href="/dat-nam-ban-1-2-ty/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Đất 1–2 tỷ →</a>
-      <a href="/dat-dong-thanh-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Khu Đông Thanh →</a>
-      <a href="/dat-me-linh-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Khu Mê Linh (ven Đà Lạt) →</a>
-      <a href="/dat-gia-lam-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Khu Gia Lâm →</a>
-      <a href="/dat-view-ho-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Đất view hồ &amp; săn mây →</a>
-      <a href="/dat-vuon-nam-ban/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">Đất vườn cà phê, bơ →</a>
-      <a href="/thi-truong/nam-ban-so-voi-noi-khac/" style="background:#EBF4EE;color:#1A3D2B;font-weight:700;padding:9px 18px;border-radius:22px;text-decoration:none;border:1px solid #DCE6D8">So sánh Nam Ban vs nơi khác →</a>
-    </div>
+            <p style="margin:14px 0 0;font-size:.9rem"><a href="/thi-truong/nam-ban-so-voi-noi-khac/" style="color:#1A3D2B;font-weight:700;text-decoration:underline;text-underline-offset:3px">So sánh Nam Ban với nơi khác quanh Đà Lạt →</a></p>
   </div>
 </section>
 <footer class="footer">

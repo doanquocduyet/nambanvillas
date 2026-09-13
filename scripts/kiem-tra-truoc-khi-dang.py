@@ -295,12 +295,29 @@ hub_nhan = "dat-nen-nam-ban/index.html"
 if os.path.exists(hub_nhan):
     s_ = open(hub_nhan, encoding="utf-8").read()
     dem = Counter()
-    for v in re.findall(r'<article class="prop-card sp-row" data-nhan="([^"]*)"', s_):
-        for x in v.split():
+    for at, bd in re.findall(r'<article class="prop-card sp-row"([^>]*)>([\s\S]*?)</article>', s_):
+        if "Đã bán" in bd:
+            continue
+        m = re.search(r'data-nhan="([^"]*)"', at)
+        for x in (m.group(1).split() if m else []):
             dem[x] += 1
-    for val, so in re.findall(r'class="nh-chip[^"]*" data-nhan="([^"]*)"[^>]*>[^<]*<b>(\d+)</b>', s_):
-        if int(so) != dem[val]:
-            L(f"[Nhãn '{val}' ghi {so} lô nhưng thật {dem[val]}] /dat-nen-nam-ban/")
+    dem_loc = Counter()
+    dang_ban = 0
+    for blk in re.findall(r'<article class="prop-card sp-row"([^>]*)>([\s\S]*?)</article>', s_):
+        if "Đã bán" in blk[1]:
+            continue
+        dang_ban += 1
+        m = re.search(r'data-loc="([^"]*)"', blk[0])
+        for x in (m.group(1).split() if m else []):
+            dem_loc[x] += 1
+    for val, so in re.findall(r'class="lc-chip[^"]*" data-nhan="([^"]*)"[^>]*>[^<]*<b>(\d+)</b>', s_):
+        that = dang_ban if val == "" else dem[val]
+        if int(so) != that:
+            L(f"[Nút nhu cầu '{val or 'tất cả'}' ghi {so} lô nhưng thật {that}] /dat-nen-nam-ban/")
+    for val, so in re.findall(r'class="lc-chip[^"]*" data-loc="([^"]*)"[^>]*>[^<]*<b>(\d+)</b>', s_):
+        that = dang_ban if val == "" else dem_loc[val]
+        if int(so) != that:
+            L(f"[Nút khu '{val or 'tất cả'}' ghi {so} lô nhưng thật {that}] /dat-nen-nam-ban/")
     # lô đã bán không được mang nhãn — khách bấm vào thấy hàng chết
     for blk in re.findall(r'<article class="prop-card sp-row" data-nhan[^>]*>[\s\S]*?</article>', s_):
         if "Đã bán" in blk:
