@@ -86,6 +86,58 @@ Gộp hai vế vào một trang là cách chắc chắn để cả hai đều kh
 
 ---
 
+## VÙNG 8 · THỜI HẠN & MỤC ĐÍCH THUÊ — khoảng trống thật, chưa phủ
+
+Rà lại hub ngày 13/09/2026: cụm này **chưa có mặt ở đâu trên site**. Người thuê hay gõ kèm thời hạn chứ không gõ trống không.
+
+`thuê nhà nam ban dài hạn` · `thuê nhà nam ban ngắn hạn` · `thuê nhà nam ban theo tháng` · `thuê nhà nam ban cuối tuần` · `thuê villa nam ban cuối tuần` · `thuê homestay nam ban cuối tuần` · `thuê nhà nam ban 1 tháng` · `thuê nhà nam ban 3 tháng` · `thuê nhà nam ban để ở` · `thuê nhà nam ban để làm việc`
+
+Hiện site mới phủ hai đầu: **theo ngày** (`#nghi-ngan`) và **dài hạn** (`#o-dai-han`). Khúc giữa — **1 đến 3 tháng, và cuối tuần** — đang trống, dù `#o-thu` chạm được một phần ("thuê vài tháng ở thử").
+
+**Chưa mở URL cho cụm này.** Khi có hàng thật cho thuê theo tháng hoặc theo cuối tuần thì mới thêm, và thêm bằng cách mở rộng mục sẵn có trước, tách URL sau.
+
+## VÙNG 4b · KINH DOANH — phần còn thiếu của vùng 4
+
+Vùng 4 mới ghi mặt bằng/kho. Bổ sung cho đủ, để sau này có hàng là bật được ngay:
+
+`thuê nhà kinh doanh nam ban` · `cho thuê nhà làm cafe nam ban` · `cho thuê nhà làm homestay nam ban` · `thuê khách sạn nam ban` · `cho thuê khách sạn nam ban` · `cho thuê cơ sở lưu trú nam ban`
+
+Lưu ý ý định: `cho thuê nhà làm homestay nam ban` là **người đi thuê để mở homestay**, khác hẳn `cho thuê homestay nam ban` (chủ cơ sở muốn cho thuê lại). Hai cái này nếu tách URL mà gộp chung là tự cắn.
+
+---
+
+## BA CẤP CỦA MỘT KEYWORD — ĐỪNG TỰ TUYÊN BỐ THẮNG SỚM
+
+Đây là kỷ luật quan trọng nhất của cả file này. Keyword xuất hiện trên trang **không** có nghĩa là đã chiếm được nó.
+
+| Cấp | Nghĩa là gì | Đo bằng gì |
+|---|---|---|
+| **1 · PHỦ (Covered)** | site đã hiểu và bao phủ ý định đó | đọc trang là thấy |
+| **2 · ĐÃ INDEX (Indexed)** | Google đã đưa URL vào chỉ mục | GSC — Kiểm tra URL |
+| **3 · SỞ HỮU (Owned)** | URL thật sự ra SERP và cạnh tranh được | GSC — Hiệu suất: có impression + vị trí |
+
+Mảng cho thuê hiện đang ở **Cấp 1**. Chưa được nói là "đã chiếm sóng" — nói vậy là tự lừa mình.
+
+**Đừng báo cáo "đã chiếm keyword X" nếu chưa mở GSC xem cấp 2 và cấp 3.**
+
+---
+
+## VÒNG SEO THỨ HAI — MỞ KHI NÀO, MỞ BẰNG GÌ
+
+Không mở vòng hai bằng cách đoán keyword. Mở bằng dữ liệu thật, khi đã có **10–20 tài sản cho thuê thật**.
+
+Lúc đó vào GSC → Hiệu suất → lọc query chứa "thuê", và hỏi đúng một câu:
+
+> **Google đang cho Nam Ban Villas impression ở query nào mà site chưa có URL tốt nhất cho query đó?**
+
+- Query có impression + vị trí 8–30 nhưng chỉ trỏ về hub → đó là nhánh đáng cắt URL riêng (nếu đã đủ 3 tin thật).
+- Query có impression mà site không có mục nào phủ → đó là vùng key còn sót, thêm vào file này.
+- Query có vị trí tốt mà CTR thấp → không phải thiếu trang, mà là title/description chưa đúng ý người tìm.
+
+Đây mới là cách chiếm sóng thật, thay vì phủ keyword trên giấy.
+
+---
+
 ## BỐN TRẠNG THÁI CỦA MỘT TIN THUÊ — KHÔNG BAO GIỜ 404
 
 Tin thuê quay vòng nhanh hơn tin bán rất nhiều. Xoá trang khi hết hàng = đốt hết điểm SEO đã tích, và khách bấm từ Google vào gặp 404 thì mất luôn.
@@ -121,6 +173,10 @@ Search thuê là search "còn trống không". Trang đứng im 3 tháng sẽ t�
 
 ## VIỆC TIẾP THEO, THEO THỨ TỰ
 
-1. Để bot chạy, tích `data/tin-thue/` — xem nhánh nào có hàng thật trước.
-2. Đánh mạnh vùng 6 (phía chủ nhà) ngay: nội dung ký gửi, vì không cần kho hàng.
-3. Nhánh nào đủ 3 tin thật → cắt URL riêng theo bảng trên, không mở trước.
+1. **Gom 10–20 tài sản cho thuê thật.** Đây là việc duy nhất đáng làm lúc này — không viết thêm bài, không thêm FAQ, không mở thêm URL, không kéo hub dài ra.
+2. Đường lấy hàng: ô gửi tài sản ở `#gui-tai-san` (bấm chip → sao chép → dán Zalo) + vùng 6 phía chủ nhà. Không cần kho hàng mà chính nó tạo ra kho hàng.
+3. Mỗi tài sản thật = một trang riêng ngay từ tin đầu tiên (xem `DANG-TIN-CHO-THUE.md`). Đó mới là thứ bắt long-tail.
+4. Nhánh nào đủ 3 tin thật → cắt URL riêng theo bảng trên, không mở trước.
+5. Đủ 10–20 tin rồi mới mở **vòng SEO thứ hai** bằng dữ liệu GSC, không bằng đoán.
+
+**Điều KHÔNG được làm với `/cho-thue/`:** nhồi villa + biệt thự + nguyên căn + phòng + farmstay + mặt bằng + khách sạn + thuê tháng + thuê ngày + giá rẻ vào một trang 5.000 chữ. Hub là **trang điều hướng + hàng thật + câu trả lời nhanh**, không phải bách khoa toàn thư.
