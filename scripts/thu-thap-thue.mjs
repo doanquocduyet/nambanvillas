@@ -18,10 +18,16 @@ const OUT = 'data/tin-thue';
 // Đúng vùng Nam Ban, loại trùng tên nơi khác (Gia Lâm Hà Nội, Mê Linh Hà Nội…)
 function dungVung(t) {
   t = (t || '').toLowerCase();
+  // Trùng tên nơi khác: Gia Lâm/Mê Linh ở Hà Nội, và ĐƯỜNG Mê Linh ở Đà Lạt
   if (t.includes('hà nội') || t.includes('bình thuận') || t.includes('huyện gia lâm')) return false;
+  if (/(đường|phố|hẻm)\s*(mê linh|gia lâm|nam hà|đông thanh)/.test(t)) return false;
+  // Huyện/thành khác trong Lâm Đồng — chỉ bỏ khi không hề nhắc Lâm Hà / Nam Ban
+  const noiKhac = ['đà lạt', 'bảo lộc', 'đức trọng', 'di linh', 'đơn dương', 'lạc dương', 'đam rông', 'bảo lâm', 'cát tiên', 'đạ huoai', 'đạ tẻh'];
+  if (noiKhac.some(k => t.includes(k)) && !t.includes('lâm hà') && !t.includes('nam ban')) return false;
   if (t.includes('nam ban') || t.includes('nam bàn')) return true;
+  // "Lâm Đồng" một mình quá rộng — phải đúng huyện Lâm Hà
   const gan = ['đông thanh', 'mê linh', 'nam hà', 'gia lâm'].some(k => t.includes(k));
-  return gan && (t.includes('lâm hà') || t.includes('lâm đồng'));
+  return gan && t.includes('lâm hà');
 }
 
 // Phải thật sự là tin CHO THUÊ, không phải tin bán có nhắc chữ thuê
