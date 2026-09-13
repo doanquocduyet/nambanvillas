@@ -298,6 +298,11 @@ a.contact-method:hover{border-color:var(--green);transform:translateY(-2px);box-
  .footer-inner{grid-template-columns:2fr 1fr 1fr}
  .contact-grid{grid-template-columns:1fr}
 }
+/* 7 mục nav: bóp nhẹ padding ở màn hình vừa để không tràn hàng */
+@media(min-width:769px) and (max-width:1080px){
+ .nav{gap:2px}
+ .nav-link{padding:7px 9px;font-size:.84rem}
+}
 @media(max-width:768px){
  html{font-size:17px}
  .section{padding:56px 0}
