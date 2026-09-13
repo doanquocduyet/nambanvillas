@@ -1,0 +1,36 @@
+name: Thu thập tin cho thuê Nam Ban
+
+# Gom tin CHO THUÊ từ nguồn công khai về data/tin-thue/.
+# Tách khỏi máy thu tin BÁN vì giá thuê tính theo tháng/đêm, lọc khác hẳn.
+
+on:
+  schedule:
+    - cron: '20 0 * * *'   # 00:20 UTC = 07:20 giờ VN mỗi ngày
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: thu-thap-thue
+  cancel-in-progress: false
+
+jobs:
+  thu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Thu thập tin cho thuê
+        run: node scripts/thu-thap-thue.mjs
+      - name: Lưu kết quả
+        run: |
+          git config user.name "thu-thap-bot"
+          git config user.email "bot@nambanvillas.vn"
+          git add -A data/tin-thue/ 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "Thu thập tin cho thuê Nam Ban [skip ci]"
+          # Máy khác có thể vừa đẩy — kéo về rồi đẩy, tránh bị chặn
+          git pull --rebase --autostash -q origin main || true
+          git push
