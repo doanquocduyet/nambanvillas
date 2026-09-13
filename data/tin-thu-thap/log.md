@@ -629,3 +629,11 @@
 - guland: HTTP 403
 - homedy: HTTP 403
 ### TỔNG: 6 tin thô (đã gộp trùng)
+
+## 2026-09-13
+- Chotot 403 https://gateway.chotot.com/v1/public/ad-listing?q=%C4%91%E1%
+- Chotot 403 https://gateway.chotot.com/v1/public/ad-listing?q=%C4%91%E1%
+- batdongsan: HTTP 403
+- guland: HTTP 403
+- homedy: HTTP 403
+### TỔNG: 0 tin thô (đã gộp trùng)
