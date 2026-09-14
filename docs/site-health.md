@@ -1,16 +1,12 @@
 # Tự kiểm sức khỏe web — Nam Ban Villas
 
-> Cập nhật tự động: **07/09/2026 13:45** · (không cần Google Search Console)
+> Cập nhật tự động: **14/09/2026 14:18** · (không cần Google Search Console)
 
-- Tổng URL: **180**
-- ✅ Khỏe (200, không redirect, canonical khớp): **157**
+- Tổng URL: **201**
+- ✅ Khỏe (200, không redirect, canonical khớp): **179**
 - ↪️ Bị chuyển hướng: **0**
 - 🔀 Canonical lệch: **22**
-- ❌ Lỗi (404/không tải được): **1**
-
-## ❌ Lỗi — SỬA NGAY (Google không index được)
-
-- `https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/` — không kết nối: <urlopen error timed out>
+- ❌ Lỗi (404/không tải được): **0**
 
 ## 🔀 Canonical lệch (dễ làm Google bối rối)
 
