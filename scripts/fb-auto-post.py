@@ -135,13 +135,41 @@ def post_listing(token, images, caption):
     return _api("/me/feed", params)
 
 
+def _url_yeu_cau():
+    """--url <URL>: đăng ĐÚNG tin này, kể cả nó đã đăng rồi.
+
+    Dùng khi chủ web muốn đẩy lại một tin cụ thể lên Page (ví dụ tin cũ nhưng
+    đang có khách hỏi). Không đụng lịch đăng tự động.
+    """
+    if "--url" not in sys.argv:
+        return None
+    i = sys.argv.index("--url")
+    if i + 1 >= len(sys.argv):
+        return None
+    u = sys.argv[i + 1].strip()
+    if not u:
+        return None
+    if not u.startswith("http"):
+        u = "https://nambanvillas.vn/" + u.lstrip("/")
+    return u.rstrip("/") + "/"
+
+
 def main():
     seed = "--seed" in sys.argv
     st = load_state()
     posted = st.setdefault("posted", {})
     urls = listing_urls()
 
-    todo = [u for u in urls if u not in posted]
+    xin = _url_yeu_cau()
+    if xin:
+        if xin not in urls:
+            print("KHÔNG THẤY tin này trong sitemap:", xin)
+            print("Kiểm lại đường dẫn — phải là /dat-nen/<slug>/ hoặc /nha-ban/<slug>/")
+            return 1
+        todo = [xin]
+        print("Đăng theo yêu cầu:", xin)
+    else:
+        todo = [u for u in urls if u not in posted]
 
     if seed:
         for u in todo:

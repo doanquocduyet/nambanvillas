@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '0 3 * * *'   # 03:00 UTC = 10:00 giờ VN mỗi ngày (lưới an toàn)
   workflow_dispatch:
+    inputs:
+      url:
+        description: 'Đăng ĐÚNG 1 tin này (dán link đầy đủ). Để trống = đăng tin mới nhất chưa đăng.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -28,7 +33,7 @@ jobs:
       - name: Đăng tin mới lên Page
         env:
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-        run: python scripts/fb-auto-post.py
+        run: python scripts/fb-auto-post.py ${{ inputs.url && format('--url {0}', inputs.url) || '' }}
       - name: Ghi lại tin đã đăng
         run: |
           git config user.name "fb-poster-bot"
