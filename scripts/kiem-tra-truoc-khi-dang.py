@@ -128,10 +128,18 @@ for f, s in data.items():
 # ── 4. Liên kết nội bộ không được gãy ─────────────────────────────────────
 # ĐÃ TỪNG DÍNH: 2 trang trỏ tới /dat-nam-ban-tren-2-ty/ khi trang chưa tồn tại.
 BO_QUA = ("/images/", "/css/", "/js/")
-DUOI_FILE = (".xml", ".txt", ".png", ".jpg", ".jpeg", ".svg", ".ico", ".webp", ".pdf")
+DUOI_FILE = (".xml", ".txt", ".png", ".jpg", ".jpeg", ".svg", ".ico", ".webp", ".pdf",
+             ".webmanifest", ".json")
 for f, s in data.items():
     for h in set(re.findall(r'href="(/[^"#?]*)"', s)):
-        if h.startswith(BO_QUA) or h.endswith(DUOI_FILE):
+        if h.startswith(BO_QUA):
+            continue
+        if h.endswith(DUOI_FILE):
+            # Trỏ tới một FILE thật (favicon, manifest, sitemap…) — kiểm luôn
+            # file đó có trên đĩa không, thay vì bỏ qua. Gõ sai tên file thì
+            # trình duyệt im lặng bỏ icon, không ai biết.
+            if not os.path.exists(h.lstrip("/")):
+                L(f"[File không tồn tại] {f} → {h}")
             continue
         h2 = h if h.endswith("/") else h + "/"
         if h2 not in tap_trang and h2 not in nguon_redirect:
