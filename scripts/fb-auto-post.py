@@ -82,10 +82,13 @@ def caption_for(m, url):
         parts.append("\n".join(f"• {k}: {v}" for k, v in m["specs"]))
     body = m["longdesc"] or m["desc"]
     if body:
-        parts.append(body)
+        # Cắt mô tả dài thành khối 1–3 dòng. Một đoạn 6 câu liền nhau trên điện
+        # thoại là khối chữ đặc, người ta lướt qua mất.
+        parts.extend(fb_chung.ngat_khoi(body))
     parts.append(f"Liên hệ xem đất / gửi ảnh sổ qua Zalo: {HOTLINE}")
     # Link web KHÔNG nằm trong bài — nó đi xuống comment đầu tiên (xem fb_chung.gan_link).
     # Facebook bóp tầm với bài có link ra ngoài, và chủ web không thích link trên bài.
+    parts.append("———")
     parts.append("Thông số đầy đủ và hình ảnh ở link dưới phần bình luận.")
     return "\n\n".join(parts)
 
