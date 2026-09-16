@@ -138,6 +138,9 @@ def doc_bai(duong_dan):
     return dict(url=SITE + duong_dan, tieu_de=tieu_de, mo_ta=mo_ta, anh=anh, doan=doan)
 
 
+import fb_chung
+
+
 def viet_caption(b):
     """Bài đọc trọn vẹn trên Facebook. Link nằm ở comment, không ở đây."""
     than = "\n\n".join(b["doan"][:3])
@@ -167,24 +170,13 @@ def ghi_state(st):
 
 
 def gan_link(token, post_id, url):
-    """Gắn link về web. Thử comment trước; token thiếu quyền bình luận (403) thì
-    chèn thẳng link vào cuối bài. Không bao giờ để bài trôi mà không có đường về web."""
-    try:
-        api("/%s/comments" % post_id, {"message": "Đọc bài đầy đủ: " + url,
-                                       "access_token": token})
-        return "comment"
-    except Exception as e:
-        print("Không comment được (%s) — chèn link vào bài." % e)
-    try:
-        cur = get("/%s" % post_id, {"fields": "message", "access_token": token})
-        msg = (cur.get("message") or "").replace(
-            "Bài đầy đủ ở link dưới phần bình luận.", "").rstrip()
-        api("/%s" % post_id, {"message": msg + "\n\nĐọc bài đầy đủ: " + url,
-                              "access_token": token})
-        return "trong-bai"
-    except Exception as e:
-        print("Cũng không sửa được bài:", e)
-    return None
+    """Gắn link về web vào COMMENT đầu tiên.
+
+    TRƯỚC ĐÂY: comment hỏng thì chèn thẳng link vào thân bài. Bỏ cách đó — chủ
+    web không muốn link nằm trên bài, và Facebook cũng bóp tầm với bài có link
+    ra ngoài. Nay comment hỏng thì ghi vào hàng chờ, lần chạy sau thử lại.
+    """
+    return "comment" if fb_chung.gan_link(token, post_id, url, "Đọc bài đầy đủ: ") else None
 
 
 def get(path, params):
@@ -220,6 +212,7 @@ def main():
     # Vá bài cũ đăng rồi mà chưa gắn được link (ví dụ hôm token còn thiếu quyền)
     token_va = os.environ.get("FB_PAGE_TOKEN", "").strip()
     if token_va and not thu:
+        fb_chung.kiem_token(token_va)
         for dd, info in da.items():
             if info.get("post_id") and not info.get("link"):
                 cach = gan_link(token_va, info["post_id"], SITE + dd)
@@ -260,6 +253,7 @@ def main():
         print("Thiếu FB_PAGE_TOKEN — thoát êm, không đăng gì.")
         return 0
 
+    fb_chung.khong_duoc_co_link(caption)
     res = api("/me/photos", {"url": b["anh"], "caption": caption, "access_token": token})
     post_id = res.get("post_id") or res.get("id")
     if not post_id:
