@@ -143,16 +143,12 @@ import fb_chung
 
 def viet_caption(b):
     """Bài đọc trọn vẹn trên Facebook. Link nằm ở comment, không ở đây."""
-    than = "\n\n".join(b["doan"][:3])
-    if len(than) > 1500:
-        than = than[:1500].rsplit(" ", 1)[0] + "…"
     # Bài viết KHÔNG kèm số điện thoại — đây là bài đọc, không phải bài rao.
     # Ai muốn liên hệ đã có nút trên Page và link web ở comment.
-    return (
-        f"{b['tieu_de']}\n\n"
-        f"{than}\n\n"
-        f"Bài đầy đủ ở link dưới phần bình luận."
-    )
+    # dan_bai() cắt đoạn dài thành khối 1–3 dòng: Facebook không có cỡ chữ hay
+    # thụt đầu dòng, ngắt dòng là cách duy nhất tạo nhịp cho người đọc trên điện thoại.
+    return fb_chung.dan_bai(b["tieu_de"], b["doan"][:4],
+                            "Bài đầy đủ ở link dưới phần bình luận.")
 
 
 def doc_state():

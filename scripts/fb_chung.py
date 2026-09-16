@@ -10,6 +10,7 @@ cần đúng hai việc này. Viết hai lần là hai lần lệch nhau.
 """
 import datetime
 import json
+import re as _re
 import ssl
 import urllib.error
 import urllib.parse
@@ -112,3 +113,53 @@ def khong_duoc_co_link(caption):
         if dau in thap:
             raise RuntimeError(
                 "Caption chứa link (%s) — link chỉ được nằm ở comment. Dừng, không đăng." % dau)
+
+
+# ── 4. Ngắt dòng cho dễ đọc trên Facebook ───────────────────────────────────
+# Facebook không có thụt đầu dòng, không có cỡ chữ. Một đoạn 5–6 câu liền nhau
+# trên điện thoại là một khối chữ đặc — người ta lướt qua. Cách duy nhất tạo
+# nhịp là NGẮT DÒNG: mỗi khối 1–3 dòng, cách nhau một dòng trống.
+_HET_CAU = _re.compile(r'(?<=[.!?…])\s+(?=[A-ZĐÀÁẢÃẠÂẦẤẨẪẬĂẰẮẲẴẶÈÉẺẼẸÊỀẾỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ0-9"“])')
+
+
+def ngat_khoi(doan, dai_toi_da=190):
+    """Cắt một đoạn dài thành các khối ngắn, mỗi khối tối đa ~190 ký tự.
+
+    Cắt ở RANH GIỚI CÂU, không cắt giữa câu. Câu đơn lẻ dài hơn mức đó thì để
+    nguyên — thà một khối hơi dài còn hơn câu bị chặt làm đôi.
+    """
+    cau = _HET_CAU.split(doan.strip())
+    khoi, hien = [], ""
+    for c in cau:
+        c = c.strip()
+        if not c:
+            continue
+        if hien and len(hien) + 1 + len(c) > dai_toi_da:
+            khoi.append(hien)
+            hien = c
+        else:
+            hien = (hien + " " + c).strip()
+    if hien:
+        khoi.append(hien)
+    return khoi
+
+
+def dan_bai(tieu_de, doan_list, ket, gioi_han=1800):
+    """Ghép thành caption Facebook có nhịp thở.
+
+    Bố cục: TIÊU ĐỀ · câu mở đứng riêng · các khối ngắn · vạch ngăn · câu kết.
+    """
+    khoi = []
+    for d in doan_list:
+        khoi.extend(ngat_khoi(d))
+
+    than, dem = [], 0
+    for k in khoi:
+        if dem + len(k) > gioi_han:
+            if than:
+                than[-1] = than[-1].rstrip(" .…") + "…"
+            break
+        than.append(k)
+        dem += len(k)
+
+    return "\n\n".join([tieu_de.strip()] + than + ["———", ket.strip()])
