@@ -1,5 +1,8 @@
 # Bật TỰ ĐỘNG đăng tin lên Facebook Page — Nam Ban Villas
 
+> **Token hiện tại thiếu quyền comment?** Không phải làm lại từ đầu —
+> xem `docs/fb-lam-lai-token.md` (6 phút, chỉ cấp thêm 1 quyền).
+
 > Làm **1 lần**. Xong là mỗi khi có lô/cụm mới lên web, hệ thống **tự đăng lên Page
 > facebook.com/nambanvillas** — chú không phải đụng tay. Hợp lệ 100% (API chính thức
 > của Facebook), **không đụng nick cá nhân, không đụng group**, không sợ khoá nick.
@@ -28,9 +31,12 @@
 
 5. Mở https://developers.facebook.com/tools/explorer
 6. Góc phải trên, ô **Meta App**: chọn đúng app `namban-poster` vừa tạo.
-7. Bấm nút **Add a Permission / Permissions** (Quyền), tick 2 quyền này:
-   - `pages_manage_posts`
-   - `pages_read_engagement`
+7. Bấm nút **Add a Permission / Permissions** (Quyền), tick đủ **4 quyền** này:
+   - `pages_show_list` — thấy danh sách Trang
+   - `pages_manage_posts` — đăng bài
+   - `pages_manage_engagement` — **comment** (thiếu cái này thì link KHÔNG xuống được
+     comment; đã dính đúng lỗi này một lần, bài lên Page mà không có đường về web)
+   - `pages_read_engagement` — đọc số liệu bài
 8. Bấm **Generate Access Token** (Tạo token) → cửa sổ FB hiện lên → chọn **đúng Page
    Nam Ban Villas** khi được hỏi → **Continue / Đồng ý** hết.
 9. Ô **Access Token** giờ có một đoạn chữ dài → **copy toàn bộ đoạn này** (gọi là **TOKEN-TẠM**).
