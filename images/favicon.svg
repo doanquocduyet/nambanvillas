@@ -1,12 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <!-- Left pillar (taller) -->
-  <line x1="10" y1="38" x2="10" y2="13" stroke="#1A3D2B" stroke-width="2.5" stroke-linecap="square"/>
-  <!-- Right pillar (shorter) -->
-  <line x1="32" y1="37" x2="32" y2="19" stroke="#1A3D2B" stroke-width="2.5" stroke-linecap="square"/>
-  <!-- M crown: asymmetric peak -->
-  <polyline points="10,13 21,7 32,19" stroke="#1A3D2B" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
-  <!-- Wave 1 -->
-  <path d="M3,24 C7,21 11,27 16,24 C21,21 27,27 32,24 C35,22 38,24 40,23" stroke="#1A3D2B" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <!-- Wave 2 -->
-  <path d="M2,32 C6,29 10,35 16,31 C22,27 28,34 32,31 C35,29 37,32 40,30" stroke="#1A3D2B" stroke-width="2" stroke-linecap="round" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 1250" role="img" aria-label="Nam Ban Villas">
+  <title>Nam Ban Villas</title>
+  <g fill="none" stroke="#2A4733" stroke-width="44" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Khung chữ M: trụ trái + nhịp xuống -->
+    <path d="M232 972 V368 a42 42 0 0 1 62-36 L588 462"/>
+    <!-- Khung chữ M: trụ phải + nhịp lên -->
+    <path d="M1022 982 V252 a42 42 0 0 0-62-36 L640 352"/>
+    <!-- Đường chân đồi, nối hai trụ -->
+    <path d="M243 721 C420 704 570 698 706 703 C838 708 936 700 1014 695"/>
+    <!-- Sườn đồi trái, chạy khuất sau mặt trời -->
+    <path d="M249 731 C368 636 466 586 580 590 C684 594 766 634 842 674"/>
+    <!-- Sườn đồi phải -->
+    <path d="M610 782 C700 730 800 699 890 689 C950 682 992 690 1013 696"/>
+  </g>
+  <!-- Mặt trời -->
+  <circle cx="825" cy="590" r="93" fill="#2A4733"/>
+  <!-- Suối uốn, dải bản to lượn xuống rồi móc ở đáy -->
+  <path d="M600 742 C566 800 500 806 514 852 C528 898 654 888 676 926
+           C698 964 606 978 572 1004 C536 1032 542 1052 586 1050"
+        fill="none" stroke="#2A4733" stroke-width="64" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
