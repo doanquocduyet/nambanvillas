@@ -84,7 +84,9 @@ def caption_for(m, url):
     if body:
         parts.append(body)
     parts.append(f"Liên hệ xem đất / gửi ảnh sổ qua Zalo: {HOTLINE}")
-    parts.append(f"Chi tiết + hình ảnh đầy đủ: {url}")
+    # Link web KHÔNG nằm trong bài — nó đi xuống comment đầu tiên (xem fb_chung.gan_link).
+    # Facebook bóp tầm với bài có link ra ngoài, và chủ web không thích link trên bài.
+    parts.append("Thông số đầy đủ và hình ảnh ở link dưới phần bình luận.")
     return "\n\n".join(parts)
 
 
@@ -100,6 +102,9 @@ def load_state():
 def save_state(st):
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(json.dumps(st, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+import fb_chung
 
 
 def _api(path, params):
@@ -176,6 +181,14 @@ def main():
         except Exception as e:
             print("CHẨN ĐOÁN HẠN TOKEN lỗi:", str(getattr(e, 'read', lambda: b'')() or e)[:150])
 
+    fb_chung.kiem_token(token)
+
+    # Bài lần trước đăng được nhưng chưa gắn được link -> thử lại trước tiên.
+    cho_cmt = st.setdefault("cho_comment", {})
+    for pid in fb_chung.thu_lai_comment(token, cho_cmt):
+        cho_cmt.pop(pid, None)
+    save_state(st)
+
     if not todo:
         print("Không có tin mới. Bỏ qua.")
         return 0
@@ -189,10 +202,16 @@ def main():
             continue
         cap = caption_for(m, u)
         try:
+            fb_chung.khong_duoc_co_link(cap)
             res = post_listing(token, m["images"], cap)
-            posted[u] = {"post_id": res.get("post_id") or res.get("id", "")}
+            # Với /me/photos, post_id là BÀI TRÊN TƯỜNG; id là node ẢNH.
+            # Comment phải gắn vào post_id, gắn vào node ảnh thì nó không nằm dưới bài.
+            pid = res.get("post_id") or res.get("id", "")
+            posted[u] = {"post_id": pid}
             done += 1
-            print(f"ĐĂNG OK ({len(m['images'])} ảnh): {u} -> {posted[u]['post_id']}")
+            print(f"ĐĂNG OK ({len(m['images'])} ảnh): {u} -> {pid}")
+            if pid and not fb_chung.gan_link(token, pid, u):
+                cho_cmt[pid] = u
             time.sleep(3)
         except urllib.error.HTTPError as e:
             body = e.read().decode("utf-8", "ignore")

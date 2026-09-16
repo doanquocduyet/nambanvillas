@@ -89,3 +89,50 @@ Mở https://github.com/doanquocduyet/nambanvillas/actions → chọn
 - Nếu lần chạy đầu báo lỗi, chú **copy dòng lỗi trong tab Actions gửi cháu**, cháu sửa ngay.
 - **Group**: Facebook cấm bot đăng group (đăng là khoá nick) → phần group cháu KHÔNG auto.
   Chỉ **Page** mới được tự đăng hợp lệ.
+
+---
+
+## LUẬT ĐĂNG — ĐỌC TRƯỚC KHI SỬA BẤT KỲ MÁY ĐĂNG NÀO
+
+### 1 · Link web CHỈ nằm ở comment đầu tiên, không bao giờ ở thân bài
+Hai lý do, cả hai đều thật:
+- Facebook bóp tầm với bài có link ra ngoài.
+- Chủ web không muốn nhìn link nằm trên bài.
+
+`scripts/fb_chung.py` có chốt chặn `khong_duoc_co_link()` — caption chứa `http://`, `https://`, `nambanvillas.vn` hay `www.` là script **dừng, không đăng**. Đừng gỡ chốt này.
+
+**Comment hỏng thì làm gì:** ghi vào hàng chờ, lần chạy sau thử lại. **KHÔNG** "chữa cháy" bằng cách nhét link lên bài — trước đây `fb-bai-viet.py` làm vậy, đã bỏ.
+
+### 2 · Comment phải gắn vào `post_id`, không phải `id`
+Gọi `POST /me/photos` trả về **hai** thứ:
+- `id` → node **ẢNH**
+- `post_id` → **BÀI TRÊN TƯỜNG**
+
+Gắn comment vào `id` thì comment không nằm dưới bài. Luôn dùng `post_id`, chỉ lấy `id` khi không có `post_id`.
+
+### 3 · Token: mỗi lần chạy phải in ra loại gì, còn hạn bao lâu
+`fb_chung.kiem_token()` in ngay dòng đầu log:
+
+```
+Token: loại PAGE · KHÔNG HẾT HẠN
+```
+
+Thấy đúng hai thứ đó là yên tâm.
+
+**Vì sao bắt buộc in mỗi lần:** token **NGƯỜI DÙNG** dài hạn sống đúng **60 ngày**. Token **TRANG** dẫn xuất từ nó mới không hết hạn. Lấy nhầm một bậc thì **hai tháng sau máy đăng chết lặng lẽ** — mà Action vẫn báo xanh, vì ngày nào không có tin mới thì nó thoát sạch. Tới lúc phát hiện đã trễ cả tuần.
+
+Kiểm tay 30 giây: https://developers.facebook.com/tools/debug/accesstoken/ → dán token → Debug → nhìn đúng hai dòng:
+
+| Dòng | Đúng | Sai |
+|---|---|---|
+| Hết hạn / Expires | **Không bao giờ / Never** | một ngày cụ thể |
+| Loại / Type | **Trang / Page** | Người dùng / User |
+
+Phải đúng **cả hai**. Type ghi User thì dù Expires ghi Never cũng không đăng lên Trang được.
+
+### 4 · Quyền cần có
+`pages_manage_posts` (đăng bài) + `pages_manage_engagement` (**comment** — thiếu cái này là link không xuống comment được) + `pages_read_engagement` (đọc số liệu). `kiem_token()` sẽ cảnh báo nếu thiếu.
+
+### 5 · Lỡ lộ token thì làm gì
+Facebook → Cài đặt → Ứng dụng và trang web → gỡ app, rồi cấp lại từ đầu. Token cũ chết ngay.
+Đừng chụp màn hình lúc thấy trọn chuỗi token gửi cho ai — ai có chuỗi đó là đăng được lên Trang.
