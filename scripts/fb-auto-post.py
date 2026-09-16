@@ -85,7 +85,10 @@ def caption_for(m, url):
         # Cắt mô tả dài thành khối 1–3 dòng. Một đoạn 6 câu liền nhau trên điện
         # thoại là khối chữ đặc, người ta lướt qua mất.
         parts.extend(fb_chung.ngat_khoi(body))
-    parts.append(f"Liên hệ xem đất / gửi ảnh sổ qua Zalo: {HOTLINE}")
+    # ĐÚNG MỘT dòng liên hệ. Mô tả trên web thường đã có sẵn câu "Gọi 0978 758 788…"
+    # — thêm dòng nữa là hai câu liên hệ dính nhau, đọc rối.
+    if HOTLINE not in " ".join(parts) and HOTLINE.replace(" ", "") not in " ".join(parts):
+        parts.append(f"Gọi hoặc nhắn Zalo {HOTLINE} để xem sổ và đi xem tận nơi.")
     # Link web KHÔNG nằm trong bài — nó đi xuống comment đầu tiên (xem fb_chung.gan_link).
     # Facebook bóp tầm với bài có link ra ngoài, và chủ web không thích link trên bài.
     parts.append("———")
@@ -154,6 +157,33 @@ def _url_yeu_cau():
     return u.rstrip("/") + "/"
 
 
+def sua_caption(token, st, url):
+    """--sua <URL>: viết lại caption của bài ĐÃ ĐĂNG, giữ nguyên bài và comment.
+
+    Dùng khi sửa cách trình bày rồi muốn bài cũ trên Page cũng theo mẫu mới —
+    không phải xoá bài rồi đăng lại (mất like, mất comment, và ra bài trùng).
+    """
+    info = st.get("posted", {}).get(url) or {}
+    pid = info.get("post_id")
+    if not pid:
+        print("Chưa có bài nào trên Page cho tin này:", url)
+        return 1
+    m = meta_of(url)
+    if not m:
+        print("Không đọc được nội dung trang:", url)
+        return 1
+    cap = caption_for(m, url)
+    fb_chung.khong_duoc_co_link(cap)
+    try:
+        _api("/%s" % pid, {"message": cap, "access_token": token})
+        print("ĐÃ SỬA caption bài %s" % pid)
+        print("   %s" % url)
+        return 0
+    except urllib.error.HTTPError as e:
+        print("Sửa hỏng: HTTP %s %s" % (e.code, e.read().decode("utf-8", "ignore")[:250]))
+        return 1
+
+
 def main():
     seed = "--seed" in sys.argv
     st = load_state()
@@ -161,6 +191,18 @@ def main():
     urls = listing_urls()
 
     xin = _url_yeu_cau()
+
+    if "--sua" in sys.argv:
+        tk = os.environ.get("FB_PAGE_TOKEN", "").strip()
+        if not tk:
+            print("THIẾU FB_PAGE_TOKEN.")
+            return 0
+        fb_chung.kiem_token(tk)
+        if not xin:
+            print("Cần --url <URL> đi kèm --sua.")
+            return 1
+        return sua_caption(tk, st, xin)
+
     if xin:
         if xin not in urls:
             print("KHÔNG THẤY tin này trong sitemap:", xin)

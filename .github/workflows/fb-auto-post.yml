@@ -14,6 +14,11 @@ on:
         description: 'Đăng ĐÚNG 1 tin này (dán link đầy đủ). Để trống = đăng tin mới nhất chưa đăng.'
         required: false
         default: ''
+      sua:
+        description: 'Chỉ SỬA lại chữ của bài đã đăng (không đăng bài mới). Phải điền ô url ở trên.'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: write
@@ -33,7 +38,7 @@ jobs:
       - name: Đăng tin mới lên Page
         env:
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-        run: python scripts/fb-auto-post.py ${{ inputs.url && format('--url {0}', inputs.url) || '' }}
+        run: python scripts/fb-auto-post.py ${{ inputs.url && format('--url {0}', inputs.url) || '' }} ${{ inputs.sua && '--sua' || '' }}
       - name: Ghi lại tin đã đăng
         run: |
           git config user.name "fb-poster-bot"
