@@ -61,22 +61,93 @@ trong `Product.image`. Xem mục **"ẢNH CŨNG PHẢI CHUẨN AEO/SEO/GEO"** b�
 - **TUYỆT ĐỐI KHÔNG động vào:** `js/main.js`, `css/`, `scripts/fb-auto-post.py`, `scripts/lam-video.py`, `.github/workflows/*`, các `docs/*quang-cao*`, `docs/*pixel*`, `docs/nhom-facebook-*`. Đụng vào = hỏng hệ thống ô kia.
 - **Ngoại lệ được phép (để tự lo FB):** ô đăng tin ĐƯỢC gỡ 1 dòng trong `data/fb-posted.json` + chạy lại Action `fb-auto-post.yml` để **đăng lại 1 tin cũ** (xem mục ⭐ FACEBOOK). Chỉ xoá ĐÚNG 1 URL của tin đó — **TUYỆT ĐỐI KHÔNG xoá cả file / nhiều dòng** (sẽ khiến robot đăng lại hàng loạt = spam khoá nick).
 
-## ⭐ FACEBOOK ĐÃ TỰ ĐỘNG — ĐỪNG SOẠN BÀI COPY TAY NỮA
-- Web ĐÃ CÓ **robot tự đăng Facebook** (GitHub Action `fb-auto-post.yml`). Mỗi tin MỚI khi lên `main` + có trong `sitemap.xml` là **tự đăng lên Page facebook.com/nambanvillas** trong vài phút: **đủ ảnh (album) + thông số + mô tả + hotline 0978 758 788 + link web**.
-- ⛔ **KHÔNG được nói "cháu chưa nối được Facebook".** KHÔNG soạn caption copy-paste tay cho chú. KHÔNG tự bịa số điện thoại cũ. Việc đăng FB là TỰ ĐỘNG, ô này không cần làm gì thêm.
-- Để robot đăng đúng, mỗi tin mới ô này CHỈ cần đảm bảo (vốn đã là quy trình chuẩn):
-  1. Có trang `/(dat-nen|nha-ban)/<slug>/index.html` với `og:title` + `og:image` (1.jpg).
-  2. Có ảnh gallery `images/listings/<slug>/N.jpg` (robot tự gom cả album).
-  3. Có bảng `<table class="specs-table">` + đoạn "Mô Tả" (robot rút làm caption đầy đủ).
-  4. **Đã thêm URL vào `sitemap.xml`** (BẮT BUỘC — robot đọc sitemap mới thấy tin).
-  5. Đã merge lên `main`.
-  → Xong 5 cái này là **TIN MỚI tự có bài FB trong vài phút — KHÔNG cần làm gì thêm, KHÔNG cần ô kia.**
+## ⭐ FACEBOOK ĐÃ TỰ ĐỘNG — ĐỪNG SOẠN CAPTION TAY
 
-**Đăng lại 1 tin CŨ lên FB (khi enrich/cập nhật tin đã đăng, muốn nó lên Page lại):** ô đăng tin TỰ làm được, không cần ô kia:
-  1. Mở `data/fb-posted.json`, tìm dòng đúng URL tin đó (ví dụ `"https://nambanvillas.vn/dat-nen/<slug>/": {...}`) → **xoá đúng 1 dòng entry đó** (giữ nguyên mọi dòng khác). Commit + merge `main`.
-  2. Chạy lại Action: qua GitHub MCP gọi `run_workflow` với `workflow_id: fb-auto-post.yml`, `ref: main` (hoặc mở https://github.com/doanquocduyet/nambanvillas/actions → "Tự đăng tin mới lên Facebook Page" → Run workflow).
-  3. Robot đăng lại tin đó (đủ album + thông số + số 0978 758 788), tự ghi lại vào `fb-posted.json`.
-  ⚠️ CHỈ xoá đúng 1 URL. Xoá nhiều/cả file = robot đăng lại hàng loạt → FB gắn cờ spam → khoá nick.
+Web có **robot tự đăng Facebook** (Action `fb-auto-post.yml`, 10h sáng mỗi ngày, tối đa 1 tin/ngày). ⛔ KHÔNG soạn caption copy-paste cho chú. KHÔNG bịa số điện thoại.
+
+### Điều quan trọng nhất phải hiểu
+**Ô này KHÔNG viết bài Facebook. Ô này viết TRANG WEB — robot rút bài Facebook TỪ TRANG ĐÓ.**
+
+Nên muốn bài FB đẹp thì phải viết trang web đúng chỗ. Robot lấy đúng 4 thứ:
+
+| Bài FB lấy từ | Chỗ trong trang |
+|---|---|
+| Dòng tiêu đề | `<h1 class="listing-title">` |
+| Khối `•` thông số | `<table class="specs-table">` — mỗi hàng thành 1 dòng `• Tên: Giá trị` |
+| Phần chữ | đoạn "Mô Tả" (`longdesc`), robot tự cắt thành khối ngắn |
+| Ảnh | `images/listings/<slug>/N.jpg` — 1 ảnh đăng đơn, nhiều ảnh đăng album |
+
+### 5 điều kiện để tin mới tự lên Page
+1. Trang `/(dat-nen|nha-ban)/<slug>/index.html` có `og:title` + `og:image` (**giữ `.jpg`**, Facebook kén WebP — mất ảnh preview là mất khách bấm).
+2. Có ảnh gallery `images/listings/<slug>/N.jpg`.
+3. Có `<table class="specs-table">` + đoạn "Mô Tả".
+4. **Đã thêm URL vào `sitemap.xml`** — robot đọc sitemap, thiếu là không thấy tin.
+5. Đã merge lên `main`.
+
+---
+
+### LUẬT BÀI FACEBOOK — viết trang web sao cho bài FB ra đúng
+
+**1 · LINK CHỈ NẰM Ở COMMENT, KHÔNG BAO GIỜ TRÊN BÀI**
+Robot tự thả link web vào comment đầu tiên. Hai lý do: Facebook bóp tầm với bài có link ra ngoài, và chủ web không muốn nhìn link trên bài.
+→ **Trong "Mô Tả" của trang TUYỆT ĐỐI không viết URL nào** (kể cả `nambanvillas.vn`). Script có chốt chặn `khong_duoc_co_link()`: caption dính `http://`, `https://`, `nambanvillas.vn` hay `www.` là **dừng, không đăng** — cả tin đó sẽ không bao giờ lên Page.
+
+**2 · ĐÚNG MỘT DÒNG LIÊN HỆ**
+Robot chỉ tự thêm dòng liên hệ khi mô tả CHƯA có hotline.
+→ Trong "Mô Tả" viết **đúng một** câu kết có `0978 758 788`, đặt ở **cuối cùng**. Ví dụ: *"Gọi 0978 758 788 để nhận sơ đồ, xem sổ và đi xem tận nơi."*
+→ Đừng rải số điện thoại 2–3 chỗ trong mô tả — bài FB sẽ ra hai câu liên hệ dính nhau, đọc rối. **Đã dính lỗi này thật.**
+
+**3 · MÔ TẢ VIẾT THÀNH CÂU NGẮN, KHÔNG VIẾT ĐOẠN DÀI LÊ THÊ**
+Robot cắt đoạn dài thành khối ~190 ký tự, cắt ở **ranh giới câu**. Câu nào dài quá thì để nguyên → ra một khối chữ đặc trên điện thoại.
+→ Viết câu **dưới 30 chữ**. Mỗi ý một câu. Chấm câu rõ ràng — dấu chấm là chỗ robot ngắt dòng.
+
+**4 · THỨ TỰ THÔNG TIN TRONG BẢNG THÔNG SỐ = THỨ TỰ NGƯỜI ĐỌC CẦN**
+FB không có bảng, mỗi hàng thành một dòng `•`. Người lướt chỉ đọc 3–4 dòng đầu.
+→ Xếp bảng theo thứ tự: **Diện tích · Giá · Thổ cư · Đơn giá · Đường · Đặc điểm · Khoảng cách**. Đừng để "Hướng" hay "Mã lô" lên đầu.
+→ Giá trị viết gọn, bỏ chữ thừa: `599 triệu` chứ không `Giá bán chỉ từ 599 triệu đồng`.
+
+**5 · ẢNH ĐẦU TIÊN LÀ ẢNH QUYẾT ĐỊNH**
+Robot lấy `1.jpg` làm ảnh chính. Trên feed người ta nhìn ảnh trước khi đọc chữ.
+→ `1.jpg` phải là **ảnh toàn cảnh lô đất/căn nhà đẹp nhất**, không phải ảnh sổ, không phải ảnh sơ đồ. Sổ/sơ đồ để `2.jpg` trở đi.
+
+**6 · KHÔNG EMOJI** — đúng nhận diện Villas. Vạch ngăn dùng `———`, robot tự thêm.
+
+---
+
+### AEO/SEO/GEO — bài FB cũng tính
+
+Bài Facebook không lên Google, nhưng **link ở comment thì có** và mọi thứ dưới đây đều làm khách bấm vào link đó:
+
+- **Neo mốc thật trong mô tả**: hồ Bãi Công · chùa Linh Ẩn · Thác Voi · chợ Nam Ban · ĐT.725 · 35–40 phút xuống Đà Lạt · Liên Khương 22km. Người địa phương đọc là biết ngay chỗ nào → bấm link.
+- **Số thật, đặt sớm**: diện tích, giá, thổ cư, đơn giá/m² phải có trong 4 dòng `•` đầu. Người mua lọc bằng số, không lọc bằng tính từ.
+- **Câu đầu của mô tả trả lời thẳng**: *cái gì · ở đâu · bao nhiêu*. Ví dụ: *"Lô đất trung tâm Nam Ban 146m², 100m² thổ cư, 599 triệu."*
+- **Nói cả điều bất lợi**: đường vào nhỏ, mùa mưa lầy, thổ cư cần đối chiếu sổ. Đúng định vị "đọc rủi ro, không bán giấc mơ" — và đây là thứ làm người ta tin mà gọi.
+- **Không tính từ rỗng**: "tuyệt đẹp", "lý tưởng", "cơ hội vàng" → bỏ hết.
+
+---
+
+### HAI NÚT Ô NÀY ĐƯỢC DÙNG
+
+Mở https://github.com/doanquocduyet/nambanvillas/actions/workflows/fb-auto-post.yml → **Run workflow**:
+
+| Muốn gì | Làm sao |
+|---|---|
+| Đăng đúng 1 tin (kể cả tin cũ) | ô **url** dán link tin → Run |
+| Sửa lại chữ của bài đã đăng | ô **url** dán link + **tick `sua`** → Run |
+| Đăng tin mới nhất chưa đăng | để trống hết → Run |
+
+**Sửa bài đã đăng thì dùng ô `sua`, ĐỪNG xoá bài trên Page rồi đăng lại** — xoá là mất like, mất comment, và dễ ra bài trùng.
+
+⚠️ **KHÔNG còn cần xoá dòng trong `data/fb-posted.json` nữa** (cách cũ). Dùng ô `url` ở trên. Xoá nhầm nhiều dòng là robot đăng lại hàng loạt → Facebook gắn cờ spam.
+
+### Kiểm sau khi chạy
+Mở log, nhìn 3 dòng:
+```
+Token: loại PAGE · KHÔNG HẾT HẠN
+ĐĂNG OK (2 ảnh): <url> -> <post_id>
+  · đã comment link: <url>
+```
+Thiếu dòng comment → token thiếu quyền `pages_manage_engagement`, xem `docs/fb-lam-lai-token.md`. Bài vẫn đăng, robot sẽ tự thử comment lại ở lần chạy sau.
 
 **BƯỚC 0 — NẠP DỰ ÁN (đọc trước khi làm gì):**
 1. `CLAUDE.md` — quy tắc bất biến (chú chỉ bấm/copy/paste; làm ra kết quả rồi báo NGẮN GỌN; không lan man).
