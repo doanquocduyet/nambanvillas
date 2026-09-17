@@ -83,7 +83,14 @@ for f, s in data.items():
     t = re.search(r"<title>(.*?)</title>", s, re.S)
     d = re.search(r'<meta name="description" content="([^"]*)"', s)
     if not t: L(f"[Thiếu <title>] {f}")
-    else: titles[t.group(1).strip()].append(f)
+    else:
+        tt = t.group(1).strip()
+        titles[tt].append(f)
+        # Google cắt title ở khoảng 60–65 ký tự tiếng Việt. Cắt mất đuôi thương
+        # hiệu thì không sao, nhưng title >100 ký tự là cắt mất cả GIÁ và THỔ CƯ
+        # — đúng hai thứ khiến người ta bấm vào. Dồn số quan trọng lên đầu.
+        if len(tt) > 100:
+            W(f"[Title {len(tt)} ký tự — Google cắt mất giá/thổ cư, dồn số lên đầu] {f}")
     if not d: L(f"[Thiếu meta description] {f}")
     else: descs[d.group(1).strip()].append(f)
 
