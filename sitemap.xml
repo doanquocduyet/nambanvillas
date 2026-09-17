@@ -25,7 +25,6 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-1065m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-gia-lam-12-lo/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-ht86-14-nen/3.webp</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-lo-130-98m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/tu-liem-255m2/1.jpg</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/cum-moi-nam-ban/</loc><lastmod>2026-09-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
@@ -71,6 +70,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/thung-lung-530m2/1.jpg</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen-nam-ban/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/nam-ban-aerial.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-gan-linh-an/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-dong-thanh-5100m2-58ty/1.jpg</image:loc></image:image>
@@ -404,7 +404,6 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-trung-tam-nam-ban-599tr/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-trung-tam-nam-ban-599tr/so-do.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-19-lo-nam-ban/1.jpg</image:loc></image:image>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-529tr/1.webp</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen/dong-thanh-nha-trang-1161m2/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-nha-trang-1161m2/1.jpg</image:loc></image:image>
@@ -1584,6 +1583,11 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-me-linh-thon-3-3865m2-26ty/so-do.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-1000m2-giap-rung-thong/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-2650m2/1.jpg</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/dat-nam-ban-view-panorama-332m2/</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/nam-ban-aerial.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/cum-nam-ban-panorama/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-gan-linh-an/1.jpg</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen/dat-2-lo-nam-ha-gan-linh-an/</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-gan-linh-an/1.webp</image:loc></image:image>
