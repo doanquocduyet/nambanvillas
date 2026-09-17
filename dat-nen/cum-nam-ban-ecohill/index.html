@@ -84,17 +84,23 @@
 
         <div class="listing-images">
           <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-nam-ban-ecohill/1.jpg" alt="Flycam khu Nam Ban Ecohill – 5 lô ven Đà Lạt, mặt tiền đường nhựa, view toàn cảnh" width="700" height="394" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
-          <div class="listing-thumbs">
-            <img class="active" src="/images/listings/cum-nam-ban-ecohill/1.jpg" onclick="swapMain(this)" alt="Flycam thực tế khu Nam Ban Ecohill – các lô mặt tiền đường nhựa 8m, view toàn cảnh Nam Ban" loading="lazy" width="1280" height="720" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/3.jpg" onclick="swapMain(this)" alt="Thực tế mặt tiền đường nhựa dự án Nam Ban Ecohill – trụ điện, view đồi núi thoáng" loading="lazy" width="1280" height="720" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/4.webp" onclick="swapMain(this)" alt="Thực tế đất Nam Ban Ecohill đã san dọn, máy xúc làm hạ tầng, view đồi núi và hồ" loading="lazy" width="960" height="540" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/5.jpg" onclick="swapMain(this)" alt="Thực tế view cao thoáng từ Nam Ban Ecohill nhìn ra thị trấn Nam Ban và dãy đồi núi" loading="lazy" width="1280" height="720" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/6.jpg" onclick="swapMain(this)" alt="Phối cảnh tổng thể Nam Ban Ecohill – bungalow mái dốc giữa vườn cây, đường nội khu, cổng khu (ảnh phối cảnh minh hoạ)" loading="lazy" width="1400" height="700" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/9.jpg" onclick="swapMain(this)" alt="Phối cảnh toàn khu Nam Ban Ecohill nhìn từ trên cao – cộng đồng nhà phố vườn và villa vườn giữa đồi chè (ảnh phối cảnh)" loading="lazy" width="1122" height="1402" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/10.jpg" onclick="swapMain(this)" alt="Phối cảnh Nam Ban Ecohill và tiện ích ngoại khu – chợ Gia Lâm 2km, chùa Linh Ẩn & Thác Voi 2,5km, Đà Lạt 27km, sân bay Liên Khương 17km (ảnh phối cảnh)" loading="lazy" width="1122" height="1402" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/7.jpg" onclick="swapMain(this)" alt="Quy hoạch – sơ đồ ráp block A–G Nam Ban Ecohill trên nền vệ tinh, phân lô đường nhựa, HLAT đường, hướng Bắc" loading="lazy" width="1400" height="700" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/8.webp" onclick="swapMain(this)" alt="Quy hoạch – sơ đồ tách thửa chi tiết Nam Ban Ecohill, 33 nền đánh số 1–33, diện tích từ ~130m², bám mặt tiền đường nhựa" loading="lazy" width="1300" height="1300" decoding="async">
-            <img src="/images/listings/cum-nam-ban-ecohill/11.jpg" onclick="swapMain(this)" alt="Thông tin tổng quan dự án Nam Ban Ecohill – 4,5ha, 133 nhà phố vườn & villa vườn, lộ trình 7 block A–G, tiện ích và khoảng cách" loading="lazy" width="1536" height="900" decoding="async">
+          <style>
+        .eco-gal{margin-top:10px}
+        .eco-gal-g{margin-top:15px}
+        .eco-gal-g:first-child{margin-top:8px}
+        .eco-gal-l{display:inline-flex;align-items:center;gap:7px;font-size:.7rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#8a978f;margin:0 0 7px}
+        .eco-gal-l::before{content:"";width:15px;height:2px;background:#C9A84C;border-radius:2px}
+        .eco-gal-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+        .eco-gal-row img{width:106px;height:74px;object-fit:cover;border-radius:10px;display:block;cursor:pointer;flex:0 0 auto;border:2px solid transparent;opacity:.8;transition:.15s}
+        .eco-gal-row img:hover{opacity:1}
+        .eco-gal-row img.active{border-color:#1A3D2B;opacity:1;box-shadow:0 4px 12px -4px rgba(26,61,43,.4)}
+        @media(max-width:520px){.eco-gal-row img{width:90px;height:64px}}
+        </style>
+          <div class="eco-gal">
+            <div class="eco-gal-g"><span class="eco-gal-l">Thực tế</span><div class="eco-gal-row"><img class="active" src="/images/listings/cum-nam-ban-ecohill/1.jpg" onclick="swapMain(this)" alt="Flycam thực tế khu Nam Ban Ecohill – các lô mặt tiền đường nhựa 8m, view toàn cảnh Nam Ban" loading="lazy" width="1280" height="720" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/3.jpg" onclick="swapMain(this)" alt="Thực tế mặt tiền đường nhựa dự án Nam Ban Ecohill – trụ điện, view đồi núi thoáng" loading="lazy" width="1280" height="720" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/4.webp" onclick="swapMain(this)" alt="Thực tế đất Nam Ban Ecohill đã san dọn, máy xúc làm hạ tầng, view đồi núi và hồ" loading="lazy" width="960" height="540" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/5.jpg" onclick="swapMain(this)" alt="Thực tế view cao thoáng từ Nam Ban Ecohill nhìn ra thị trấn Nam Ban và dãy đồi núi" loading="lazy" width="1280" height="720" decoding="async"></div></div>
+            <div class="eco-gal-g"><span class="eco-gal-l">Phối cảnh</span><div class="eco-gal-row"><img src="/images/listings/cum-nam-ban-ecohill/6.jpg" onclick="swapMain(this)" alt="Phối cảnh tổng thể Nam Ban Ecohill – bungalow mái dốc giữa vườn cây, đường nội khu, cổng khu (ảnh phối cảnh minh hoạ)" loading="lazy" width="1400" height="700" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/9.jpg" onclick="swapMain(this)" alt="Phối cảnh toàn khu Nam Ban Ecohill nhìn từ trên cao – cộng đồng nhà phố vườn và villa vườn giữa đồi chè (ảnh phối cảnh)" loading="lazy" width="1122" height="1402" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/10.jpg" onclick="swapMain(this)" alt="Phối cảnh Nam Ban Ecohill và tiện ích ngoại khu – chợ Gia Lâm 2km, chùa Linh Ẩn & Thác Voi 2,5km, Đà Lạt 27km, sân bay Liên Khương 17km (ảnh phối cảnh)" loading="lazy" width="1122" height="1402" decoding="async"></div></div>
+            <div class="eco-gal-g"><span class="eco-gal-l">Quy hoạch</span><div class="eco-gal-row"><img src="/images/listings/cum-nam-ban-ecohill/7.jpg" onclick="swapMain(this)" alt="Quy hoạch – sơ đồ ráp block A–G Nam Ban Ecohill trên nền vệ tinh, phân lô đường nhựa, HLAT đường, hướng Bắc" loading="lazy" width="1400" height="700" decoding="async"><img src="/images/listings/cum-nam-ban-ecohill/8.webp" onclick="swapMain(this)" alt="Quy hoạch – sơ đồ tách thửa chi tiết Nam Ban Ecohill, 33 nền đánh số 1–33, diện tích từ ~130m², bám mặt tiền đường nhựa" loading="lazy" width="1300" height="1300" decoding="async"></div></div>
+            <div class="eco-gal-g"><span class="eco-gal-l">Thông tin dự án</span><div class="eco-gal-row"><img src="/images/listings/cum-nam-ban-ecohill/11.jpg" onclick="swapMain(this)" alt="Thông tin tổng quan dự án Nam Ban Ecohill – 4,5ha, 133 nhà phố vườn & villa vườn, lộ trình 7 block A–G, tiện ích và khoảng cách" loading="lazy" width="1536" height="900" decoding="async"></div></div>
           </div>
         </div>
 
@@ -349,7 +355,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".eco-gal img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>
