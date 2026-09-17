@@ -1,0 +1,56 @@
+name: Đọc bài báo (lấy phần chữ để viết tin tuần)
+
+# Vì sao cần: phiên làm việc không ra được internet, mà mục Tin Cập Nhật Tuần
+# (docs/TIN-CAP-NHAT-TUAN.md) cần đọc bài báo gốc để VIẾT LẠI bằng giọng Villas.
+# Workflow này chỉ IN phần chữ ra log, không lưu gì vào repo, không copy lên web.
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Link bài báo cần đọc
+        required: true
+        type: string
+
+jobs:
+  doc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tải bài và bóc phần chữ
+        env:
+          URL: ${{ inputs.url }}
+        run: |
+          UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'
+          curl -sL --max-time 45 -A "$UA" -H 'Accept-Language: vi,en;q=0.9' "$URL" -o bai.html || true
+          python3 - <<'PY'
+          import re, html
+          s = open('bai.html', encoding='utf-8', errors='ignore').read()
+
+          def sach(x):
+              x = re.sub(r'<[^>]+>', ' ', x)
+              return re.sub(r'\s+', ' ', html.unescape(x)).strip()
+
+          t = re.findall(r'<title[^>]*>(.*?)</title>', s, re.S | re.I)
+          print("TIEU DE:", sach(t[0]) if t else "?")
+          d = re.findall(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)', s, re.I)
+          print("SAPO:", html.unescape(d[0]) if d else "?")
+          for k in ("article:published_time", "pubdate", "datePublished"):
+              m = re.findall(k + r'["\'][^>]*content=["\']([^"\']*)', s, re.I)
+              if m:
+                  print("NGAY DANG:", m[0]); break
+
+          # Bỏ script/style/nav rồi lấy các đoạn <p> đủ dài — đó là thân bài
+          than = re.sub(r'<(script|style|nav|header|footer|aside)\b.*?</\1>', ' ', s, flags=re.S | re.I)
+          doan = [sach(p) for p in re.findall(r'<p\b[^>]*>(.*?)</p>', than, re.S | re.I)]
+          doan = [p for p in doan if len(p) >= 60]
+
+          print("=====THAN BAI (%d doan)=====" % len(doan))
+          for i, p in enumerate(doan[:60], 1):
+              print("[%02d] %s" % (i, p))
+
+          # Số liệu hay dùng khi viết lại — gom sẵn cho dễ đối chiếu
+          chu = " ".join(doan)
+          so = re.findall(r'[\d.,]+\s*(?:tỷ|triệu|nghìn|%|ha|km|m2|m²|lượt|tấn|người|dự án|chuyến)', chu, re.I)
+          print("=====SO LIEU TRONG BAI=====")
+          print(" · ".join(sorted(set(so))[:60]))
+          PY
