@@ -125,6 +125,11 @@ trông coi đất ở xa · giữ đất an toàn từ xa · quản lý đất N
 3. **Canonical chỉ dùng khi 2 trang CÙNG INTENT trùng thật** (vd 5 bài bán cũ của Greenspace đã trả về tự trỏ; bài đời-sống Villas trùng Panorama). KHÔNG canonical khi đã khác intent (vd 3 trang giao dịch Villas vs bản nghiên cứu Panorama — để cả 2 sống).
 4. **Trùng nội bộ trong cùng 1 site = XÓA hẳn bản thừa + 301**, không để 2 URL cùng nội dung.
 
+**GHI CHÚ — "VIEW PANORAMA" CHO TIN RAO (cập nhật 17/9/2026, theo chỉ đạo anh Duyệt):**
+"View panorama / view toàn cảnh / săn mây" là **từ tả VIEW phổ thông** cho lô đất đang bán ở Nam Ban — người ta đăng RẤT NHIỀU, y như "view đẹp". Đây KHÔNG phải thương hiệu Panorama (nambanpanorama.com).
+→ **Villas CỨ đăng tin lô "view panorama" thoải mái, KHÔNG sợ đụng site Panorama, KHÔNG sợ tự cắn key.** Đó là key GIAO DỊCH (lô thật, giá thật, có sổ/giá cụ thể) — đúng sân Villas, đăng bao nhiêu tin lô cũng được.
+→ Chỉ còn giữ đúng 2 luật cứng khi làm tin "view panorama": (1) KHÔNG đặt thẻ `<a>` link sang site Panorama; (2) KHÔNG copy nội dung/tên khu/chữ của site Panorama. Ngoài 2 điều đó, đăng tự do.
+
 ═══════════════════════════════════════════════════════════════
 # PHẦN 7 — AEO (tương lai AI: ChatGPT / Claude / Gemini)
 ═══════════════════════════════════════════════════════════════

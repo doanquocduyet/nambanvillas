@@ -338,4 +338,7 @@ Không giải thích dài. Không liệt kê phương án không làm. Nhiều t
 - **Test đúng như production:** site dùng Vercel `cleanUrls:true` + `trailingSlash:true` → URL trang con CÓ `/` cuối (ví dụ `/nha-ban/moc-home-nam-ban/`). Canonical + og:url + sitemap phải khớp: đều có `/` cuối.
 - Bug đã gặp + đã sửa: trang listing thừa `</div>` đẩy `<aside>` ra ngoài grid → desktop rớt sidebar, mobile sai thứ tự. Luôn cân bằng thẻ theo template `dat-nen/dong-thanh-845m2`.
 
+### "VIEW PANORAMA" — CỨ ĐĂNG THOẢI MÁI (theo chỉ đạo anh Duyệt 17/9/2026)
+"View panorama / view toàn cảnh / săn mây" chỉ là **từ tả view** cho lô bán (như "view đẹp"), Nam Ban đăng rất nhiều. **KHÔNG phải** thương hiệu site Panorama. → Đăng tin lô "view panorama" bao nhiêu cũng được, không sợ đụng/tự cắn. Chỉ giữ 2 luật: **không** thẻ `<a>` link sang site Panorama, **không** copy nội dung/tên khu của Panorama. (Chi tiết: `docs/HIEN-PHAP-3-WEB.md` Phần 6, ghi chú view panorama.)
+
 Giờ cháu đọc 4 file ở BƯỚC 0, xác nhận đã nạp xong, rồi chờ chú thả tin đầu tiên.
