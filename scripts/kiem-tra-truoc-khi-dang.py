@@ -361,9 +361,27 @@ for r in redirects:
 # ── 8. Giọng thương hiệu: không emoji, không ngôi thứ nhất ────────────────
 NGOI_1 = re.compile(r"\b(mình|tôi|chúng tôi|chúng mình|chúng em)\b|(?<!trẻ )\bem\b")
 EMOJI = re.compile(r"[\U0001F000-\U0001FAFF\U00002B00-\U00002BFF]")
+
+# ĐÃ TỪNG DÍNH (nặng): "Nếu chú là người Hà Nội đang tìm về", "cháu gửi ngay",
+# "Cháu đang sống tại đây" — 11 chỗ lọt ra trang công khai.
+# "chú/cháu" là cách xưng hô RIÊNG giữa chủ web và trợ lý trong lúc trao đổi.
+# Web nói với KHÁCH LẠ: chủ thể là "Nam Ban Villas", khách là "bạn" hoặc "anh/chị".
+# Loại trừ: ghi chú · chú ý · chú trọng · chú thích · con cháu · chú rể.
+XUNG_HO_RIENG = re.compile(
+    r"(?<!ghi )(?<!Ghi )(?<!con )(?<!Con )\b[CcHh]?(chú|cháu|Chú|Cháu)\b"
+    r"(?!\s*(ý|Ý|trọng|thích|rể))")
+
 for f, s in data.items():
     if EMOJI.search(s):
         L(f"[Có emoji — luật thương hiệu cấm] {f}")
+    # Bẫy này chạy trên MỌI trang, kể cả tuỳ bút — không có ngoại lệ.
+    than_ch = s[s.find("<body"):]
+    than_ch = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", than_ch, flags=re.S)
+    than_ch = re.sub(r"<!--.*?-->", "", than_ch, flags=re.S)
+    chu_ch = re.sub(r"<[^>]+>", " ", than_ch)
+    for m in XUNG_HO_RIENG.finditer(chu_ch):
+        doan = re.sub(r"\s+", " ", chu_ch[max(0, m.start()-45):m.end()+45]).strip()
+        L(f"[Xưng hô chú/cháu — web phải viết \"Nam Ban Villas\"] {f}: …{doan}…")
     if any(k in f for k in TUY_BUT) or f in MIEN_TRU_NGOI_1:
         continue  # cố ý ngôi thứ nhất, đã duyệt
     than = s[s.find("<body"):]
