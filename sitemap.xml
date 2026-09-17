@@ -71,7 +71,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/thung-lung-530m2/1.jpg</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen-nam-ban/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
-    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-gan-linh-an/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-gan-linh-an/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-dong-thanh-5100m2-58ty/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-me-linh-thon-3-3865m2-26ty/1.jpg</image:loc></image:image>
@@ -517,10 +517,17 @@
   <url><loc>https://nambanvillas.vn/dich-vu/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/hoi-dap/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/lien-he/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nambanvillas.vn/cho-thue/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+  <url><loc>https://nambanvillas.vn/cho-thue/</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nam-ha-1200m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-2pn-169m2-nam-ban/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/villa-nam-ban-385m2/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-dong-thanh-146m2/1.webp</image:loc></image:image>
+  </url>
+  <url><loc>https://nambanvillas.vn/cho-thue/nha-vuon-nam-ha-1200m2/</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nam-ha-1200m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nam-ha-1200m2/2.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nam-ha-1200m2/3.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-2pn-169m2-nam-ban/1.webp</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/namban-notes/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/nha-ban-nam-ban/</loc><lastmod>2026-07-04</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
