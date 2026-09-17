@@ -94,6 +94,11 @@
 - Định vị: "Đọc rủi ro, không bán giấc mơ" — dám nói đừng mua.
 - **Giọng văn:** thẳng, số thật, không tính từ rỗng ("tuyệt đẹp", "lý tưởng"). Thân thiện qua sự RÕ RÀNG & CHÂN THÀNH, KHÔNG qua chữ sến/trẻ con ("chào bạn", "nhắn mình", "xem thử" → CẤM).
   - **[CẤM] Hạn chế tối đa xưng hô ngôi thứ nhất** (mình / tôi / em / chúng tôi / chúng mình). Cần nhắc chủ thể → viết **"Nam Ban Villas"** (ngôi thứ ba).
+  - **[CẤM TUYỆT ĐỐI] KHÔNG BAO GIỜ viết "chú" / "cháu" lên web.** Đây là cách xưng hô RIÊNG giữa chủ web và trợ lý trong lúc trao đổi — **không phải** cách web nói với khách lạ.
+    - Sai: *"Nếu chú là người Hà Nội…"* · *"Sơ đồ cháu gửi ngay"* · *"Cháu đang sống tại đây"*
+    - Đúng: chủ thể là **"Nam Ban Villas"**, khách là **"bạn"** hoặc **"anh/chị"**. Hoặc viết thẳng không cần đại từ.
+    - Lỗi này ĐÃ XẢY RA THẬT: 11 chỗ lọt ra trang công khai. Checker nay có bẫy `[Xưng hô chú/cháu]` chặn cứng, **chạy trên mọi trang, không có ngoại lệ** (kể cả tuỳ bút).
+    - Chỉ hợp lệ khi là danh từ: *ghi chú · chú ý · chú trọng · chú thích · con cháu*.
   - Vẫn giữ chất đẳng cấp, người lớn, đáng tin — thân thiện chứ không xuề xòa.
 - **Thẩm mỹ FRIENDLY LUXURY:** giữ xanh (#1A3D2B) + gold (#C9A84C) làm nhận diện, nhưng LÀM MỀM: bo góc tròn hơn (radius lớn), nền ấm, bóng đổ mềm, nhiều khoảng thở. Dễ chịu, dễ nhìn, không cứng/lạnh.
   - **Icon:** dùng ICON TUYẾN MẢNH (line SVG, stroke ~1.7) cho ấm & thân thiện. **VẪN KHÔNG DÙNG EMOJI** (emoji màu = kém sang). Icon mảnh THAY cho emoji.

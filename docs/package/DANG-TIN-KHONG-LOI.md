@@ -13,6 +13,31 @@
 
 ---
 
+## 0a. LỖI NẶNG NHẤT ĐÃ MẮC — XƯNG HÔ "CHÚ / CHÁU" TRÊN WEB
+
+**Đã xảy ra thật: 11 chỗ lọt ra trang công khai.** Ví dụ một tiêu đề đã lên production:
+
+> `<h3>3. Nếu chú là người Hà Nội đang tìm về</h3>`
+
+"Chú / cháu" là cách xưng hô **riêng giữa chủ web và trợ lý trong lúc trao đổi**. Nó tuyệt đối không phải cách một trang bất động sản nói với khách lạ vừa bấm vào từ Google. Người đọc không quen ai ở đây cả.
+
+| Sai | Đúng |
+|---|---|
+| Nếu **chú** là người Hà Nội… | **Người Hà Nội** đang tìm về Nam Ban |
+| Sơ đồ **cháu** gửi ngay | Sơ đồ **Nam Ban Villas** gửi ngay |
+| **Cháu** đang sống tại đây | **Nam Ban Villas** ở ngay tại Nam Ban |
+| Lọc theo khu **chú** quan tâm | Lọc theo khu **đang** quan tâm |
+
+**Luật:** chủ thể luôn là **"Nam Ban Villas"**, khách là **"bạn"** hoặc **"anh/chị"** — hoặc viết thẳng, không cần đại từ.
+
+Hợp lệ vì là danh từ, không phải xưng hô: *ghi chú · chú ý · chú trọng · chú thích · con cháu*.
+
+Checker có bẫy `[Xưng hô chú/cháu]` — **chặn cứng, chạy trên mọi trang, không ngoại lệ**, kể cả tuỳ bút.
+
+**Bài học rộng hơn:** mọi thứ viết trong lúc trao đổi với chủ web là NGÔN NGỮ NỘI BỘ. Trước khi đưa một câu lên trang, tự hỏi: *người lạ vừa bấm vào từ Google đọc câu này có thấy lạc không?*
+
+---
+
 ## 0. LUẬT VÀNG — 1 câu
 
 > **Dựng chuỗi → KIỂM TRONG BỘ NHỚ → mới GHI ra file → chạy script kiểm → mới push.**
