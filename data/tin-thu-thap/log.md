@@ -665,3 +665,10 @@
 - guland: HTTP 403
 - homedy: HTTP 403
 ### TỔNG: 10 tin thô (đã gộp trùng)
+
+## 2026-09-18
+- Chotot OK: 30 tin, 15 khớp Nam Ban
+- batdongsan: HTTP 403
+- guland: HTTP 403
+- homedy: HTTP 403
+### TỔNG: 14 tin thô (đã gộp trùng)
