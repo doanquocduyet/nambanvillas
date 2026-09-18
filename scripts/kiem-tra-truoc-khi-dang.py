@@ -242,9 +242,15 @@ for hub in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
         continue
     s_ = open(hub, encoding="utf-8").read()
     the = re.findall(r'<h3 class="sp-title"><a href="([^"]+)"', s_)
+    # Dòng "Hiển thị N" nói về lô ĐANG BÁN — đúng bằng số thẻ trừ thẻ data-ban="1".
+    # ĐÃ TỪNG DÍNH: dòng này ghi tổng số thẻ (gồm cả lô đã bán) trong khi nút lọc
+    # ghi số đang bán, nên bấm nút là số nhảy, người dùng tưởng lọc không chạy.
+    da_ban = len(re.findall(r'<article class="prop-card sp-row"[^>]*data-ban="1"', s_))
+    dang = len(the) - da_ban
     m = re.search(r"Hiển thị <strong[^>]*>(\d+)</strong>", s_)
-    if m and int(m.group(1)) != len(the):
-        L(f"[Số đếm sai] {hub} ghi {m.group(1)} tin nhưng có {len(the)} thẻ")
+    if m and int(m.group(1)) != dang:
+        L(f"[Số đếm sai] {hub} ghi {m.group(1)} nhưng có {dang} lô đang bán "
+          f"({len(the)} thẻ - {da_ban} đã bán)")
     for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s_, re.S):
         try:
             d = json.loads(b)
@@ -316,9 +322,12 @@ for f in pages:
 hub_nhan = "dat-nen-nam-ban/index.html"
 if os.path.exists(hub_nhan):
     s_ = open(hub_nhan, encoding="utf-8").read()
+    # ĐÃ BÁN = thẻ có data-ban="1" (badge nền đỏ + chữ đúng "Đã bán", hoặc
+    # dòng giá ghi "Đã bán"). ĐÃ TỪNG SAI: bắt chuỗi "Đã bán" ở bất cứ đâu trong
+    # thẻ, nên loại nhầm cụm ghi "Đã bán 8 · còn 10 nền" — cụm đó VẪN ĐANG BÁN.
     dem = Counter()
     for at, bd in re.findall(r'<article class="prop-card sp-row"([^>]*)>([\s\S]*?)</article>', s_):
-        if "Đã bán" in bd:
+        if 'data-ban="1"' in at:
             continue
         m = re.search(r'data-nhan="([^"]*)"', at)
         for x in (m.group(1).split() if m else []):
@@ -326,7 +335,7 @@ if os.path.exists(hub_nhan):
     dem_loc = Counter()
     dang_ban = 0
     for blk in re.findall(r'<article class="prop-card sp-row"([^>]*)>([\s\S]*?)</article>', s_):
-        if "Đã bán" in blk[1]:
+        if 'data-ban="1"' in blk[0]:
             continue
         dang_ban += 1
         m = re.search(r'data-loc="([^"]*)"', blk[0])
