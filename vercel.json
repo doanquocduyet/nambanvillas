@@ -3,6 +3,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/nha-ban/nha-vuon-tim-ven-da-lat-412m2/",
+      "destination": "/nha-ban-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/nha-ban/nha-vuon-tim-ven-da-lat-412m2",
+      "destination": "/nha-ban-nam-ban/",
+      "permanent": true
+    },
+    {
       "source": "/dat-nen/cum-nam-ban-topview",
       "destination": "/dat-nen/cum-nam-ban-dong-da-topview/",
       "permanent": true
