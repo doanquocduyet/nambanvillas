@@ -1243,6 +1243,9 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/hill-house-village/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-1018m2/1.jpg</image:loc></image:image>
   </url>
+  <url><loc>https://nambanvillas.vn/thi-truong/tin-lam-dong-co-phai-tin-nam-ban/</loc><lastmod>2026-09-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/articles/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025.webp</image:loc></image:image>
+  </url>
   <url><loc>https://nambanvillas.vn/thi-truong/nam-ban-lam-ha-50-nam-vung-kinh-te-moi/</loc><lastmod>2026-09-17</lastmod><changefreq>weekly</changefreq><priority>0.8</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/articles/nam-ban-co-gi.jpg</image:loc></image:image>
   </url>
@@ -1259,7 +1262,7 @@
   <url><loc>https://nambanvillas.vn/thi-truong/nam-ban-so-voi-noi-khac/</loc><lastmod>2026-09-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/articles/nam-ban-so-voi-noi-khac.webp</image:loc></image:image>
   </url>
-  <url><loc>https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/</loc><lastmod>2026-09-17</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/</loc><lastmod>2026-09-20</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://nambanvillas.vn/ve-nam-ban/dau-gia-dat-nam-ban-2026/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/articles/dau-gia-dat-nam-ban-2026.jpg</image:loc></image:image>
   </url>
