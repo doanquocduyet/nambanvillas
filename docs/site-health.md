@@ -1,12 +1,16 @@
 # Tự kiểm sức khỏe web — Nam Ban Villas
 
-> Cập nhật tự động: **14/09/2026 14:18** · (không cần Google Search Console)
+> Cập nhật tự động: **21/09/2026 14:23** · (không cần Google Search Console)
 
-- Tổng URL: **201**
-- ✅ Khỏe (200, không redirect, canonical khớp): **179**
+- Tổng URL: **216**
+- ✅ Khỏe (200, không redirect, canonical khớp): **193**
 - ↪️ Bị chuyển hướng: **0**
 - 🔀 Canonical lệch: **22**
-- ❌ Lỗi (404/không tải được): **0**
+- ❌ Lỗi (404/không tải được): **1**
+
+## ❌ Lỗi — SỬA NGAY (Google không index được)
+
+- `https://nambanvillas.vn/nha-ban/nha-nghi-duong-cam-ly-279m2/` — không kết nối: <urlopen error timed out>
 
 ## 🔀 Canonical lệch (dễ làm Google bối rối)
 
