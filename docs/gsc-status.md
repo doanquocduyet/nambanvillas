@@ -1,5 +1,5 @@
 # Báo cáo index Google Search Console — Nam Ban Villas
 
-> Cập nhật: 14/09/2026 12:49
+> Cập nhật: 21/09/2026 12:55
 
 ⚠️ **Chưa cấu hình.** Cần thêm secret `GSC_SA_JSON` và cấp quyền service account đọc Search Console. Xem hướng dẫn: `docs/gsc-auto-setup.md`.
