@@ -28,7 +28,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/cum-gia-lam-12-lo/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/cum-gia-lam-12-lo/1.jpg" fetchpriority="high" imagesrcset="/images/listings/cum-gia-lam-12-lo/1-480.jpg 480w, /images/listings/cum-gia-lam-12-lo/1-800.jpg 800w, /images/listings/cum-gia-lam-12-lo/1.jpg 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-gia-lam-12-lo/1.jpg" alt="Flycam khu Gia Lâm Nam Ban – khu dân cư hiện hữu ven đường DT725, rừng thông và homestay, thung lũng" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-gia-lam-12-lo/1.jpg" alt="Flycam khu Gia Lâm Nam Ban – khu dân cư hiện hữu ven đường DT725, rừng thông và homestay, thung lũng" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/cum-gia-lam-12-lo/1-480.jpg 480w, /images/listings/cum-gia-lam-12-lo/1-800.jpg 800w, /images/listings/cum-gia-lam-12-lo/1.jpg 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/cum-gia-lam-12-lo/1.jpg" onclick="swapMain(this)" alt="Flycam khu Gia Lâm Nam Ban ven đường DT725, khu dân cư và rừng thông" loading="lazy" width="1280" height="853" decoding="async">
             <img src="/images/listings/cum-gia-lam-12-lo/2.jpg" onclick="swapMain(this)" alt="Đường bê tông vào cụm 12 lô Gia Lâm Nam Ban, view đồi thông" loading="lazy" width="1280" height="853" decoding="async">
@@ -266,7 +266,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

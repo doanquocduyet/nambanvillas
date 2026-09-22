@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nha-vuon-nam-ban-261m2/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nha-vuon-nam-ban-261m2/1.webp" fetchpriority="high" imagesrcset="/images/listings/nha-vuon-nam-ban-261m2/1-480.webp 480w, /images/listings/nha-vuon-nam-ban-261m2/1-800.webp 800w, /images/listings/nha-vuon-nam-ban-261m2/1.webp 960w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -73,7 +73,7 @@
         </div>
         <p style="margin:6px 0 0;font-size:.85rem;color:#8a978f">Cập nhật 05/08/2026: bổ sung ảnh thực tế mới · view đồi thông.</p>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-nam-ban-261m2/1.webp" alt="Mặt tiền nhà vườn mới 2 tầng Nam Ban – tường kem ốp đá, ban công, cổng trắng, bồn hoa, view đồi" width="700" height="525" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-nam-ban-261m2/1.webp" alt="Mặt tiền nhà vườn mới 2 tầng Nam Ban – tường kem ốp đá, ban công, cổng trắng, bồn hoa, view đồi" width="700" height="525" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nha-vuon-nam-ban-261m2/1-480.webp 480w, /images/listings/nha-vuon-nam-ban-261m2/1-800.webp 800w, /images/listings/nha-vuon-nam-ban-261m2/1.webp 960w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/nha-vuon-nam-ban-261m2/1.webp" onclick="swapMain(this)" alt="Mặt tiền nhà vườn mới 2 tầng Nam Ban, view đồi" loading="lazy" width="960" height="720" decoding="async">
             <img src="/images/listings/nha-vuon-nam-ban-261m2/2.webp" onclick="swapMain(this)" alt="Phòng khách liền bếp và bàn ăn, sofa kem, gạch bóng" loading="lazy" width="720" height="960" decoding="async">
@@ -285,7 +285,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

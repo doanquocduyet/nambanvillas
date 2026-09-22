@@ -144,6 +144,29 @@ for f, s in data.items():
         if chu < 900:
             L(f"[Ảnh hero KHÔNG được loading=lazy — hại LCP] {f}")
 
+# ── 3b. srcset: file phải có thật, preload phải khớp, gallery phải xoá srcset ──
+# ĐÃ SUÝT DÍNH 3 lần khi làm srcset:
+#  1) sinh bản nhỏ đúng bằng width khai báo (700px) → điện thoại cần 780px nên
+#     trình duyệt vẫn chọn bản GỐC, làm xong mà không giảm được byte nào.
+#  2) gán chung sizes 1130px cho mọi hero → 14 ảnh CARD rộng 400px sẽ tải bản to.
+#  3) swapMain gán .src mà không xoá srcset → bấm thumbnail hiện SAI ảnh.
+for f, s in data.items():
+    for ss in re.findall(r'srcset="([^"]+)"', s):
+        for phan in ss.split(","):
+            p = phan.strip().split()[0]
+            if p.startswith("/images") and not os.path.exists(p.lstrip("/")):
+                L(f"[srcset trỏ file không tồn tại] {f} → {p}")
+    hero = re.search(r'<img\b[^>]*fetchpriority="high"[^>]*>', s)
+    if hero and "srcset=" in hero.group(0):
+        pl = re.search(r'<link rel="preload" as="image"[^>]*>', s)
+        if pl:
+            a = re.search(r'imagesrcset="([^"]+)"', pl.group(0))
+            b = re.search(r'srcset="([^"]+)"', hero.group(0))
+            if not a or a.group(1) != b.group(1):
+                L(f"[preload không khớp srcset — trình duyệt tải 2 ảnh] {f}")
+    if "function swapMain" in s and 'removeAttribute("srcset")' not in s:
+        L(f"[swapMain không xoá srcset — bấm thumbnail sẽ hiện sai ảnh] {f}")
+
 # ── 4. Liên kết nội bộ không được gãy ─────────────────────────────────────
 # ĐÃ TỪNG DÍNH: 2 trang trỏ tới /dat-nam-ban-tren-2-ty/ khi trang chưa tồn tại.
 BO_QUA = ("/images/", "/css/", "/js/")

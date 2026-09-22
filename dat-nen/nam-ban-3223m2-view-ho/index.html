@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nam-ban-3223m2-view-ho/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nam-ban-3223m2-view-ho/1.webp" fetchpriority="high" imagesrcset="/images/listings/nam-ban-3223m2-view-ho/1-480.webp 480w, /images/listings/nam-ban-3223m2-view-ho/1.webp 748w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -70,7 +70,7 @@
           <span class="listing-badge">Lô lớn · mặt tiền 54m</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nam-ban-3223m2-view-ho/1.webp" alt="Sơ đồ thửa 647 lô đất 3.223m² Nam Ban – vị trí 200m² đất ở, mặt tiền đường, thửa 648 và 339" width="700" height="620" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nam-ban-3223m2-view-ho/1.webp" alt="Sơ đồ thửa 647 lô đất 3.223m² Nam Ban – vị trí 200m² đất ở, mặt tiền đường, thửa 648 và 339" width="700" height="620" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nam-ban-3223m2-view-ho/1-480.webp 480w, /images/listings/nam-ban-3223m2-view-ho/1.webp 748w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/nam-ban-3223m2-view-ho/1.webp" onclick="swapMain(this)" alt="Sơ đồ thửa 647 (3.223m²) Nam Ban, vị trí phần đất ở 200m², mặt tiền đường" loading="lazy" width="748" height="663" decoding="async">
             <img src="/images/listings/nam-ban-3223m2-view-ho/2.webp" onclick="swapMain(this)" alt="Giấy chứng nhận quyền sử dụng đất thửa 647 xã Nam Ban – sổ riêng 3.223m², 200m² thổ cư (đã che thông tin cá nhân)" loading="lazy" width="1280" height="660" decoding="async">
@@ -276,7 +276,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

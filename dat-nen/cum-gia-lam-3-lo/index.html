@@ -28,7 +28,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/cum-gia-lam-3-lo/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/cum-gia-lam-3-lo/1.jpg" fetchpriority="high" imagesrcset="/images/listings/cum-gia-lam-3-lo/1-480.jpg 480w, /images/listings/cum-gia-lam-3-lo/1-800.jpg 800w, /images/listings/cum-gia-lam-3-lo/1.jpg 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-gia-lam-3-lo/1.jpg" alt="Flycam khu phân lô Gia Lâm 3 Nam Ban – các nền đã dọn, đường bê tông, villa và homestay hiện hữu, thung lũng" width="700" height="394" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-gia-lam-3-lo/1.jpg" alt="Flycam khu phân lô Gia Lâm 3 Nam Ban – các nền đã dọn, đường bê tông, villa và homestay hiện hữu, thung lũng" width="700" height="394" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/cum-gia-lam-3-lo/1-480.jpg 480w, /images/listings/cum-gia-lam-3-lo/1-800.jpg 800w, /images/listings/cum-gia-lam-3-lo/1.jpg 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/cum-gia-lam-3-lo/1.jpg" onclick="swapMain(this)" alt="Flycam cụm 3 lô Gia Lâm 3 Nam Ban, đường bê tông và khu dân cư hiện hữu" loading="lazy" width="1280" height="720" decoding="async">
             <img src="/images/listings/cum-gia-lam-3-lo/2.webp" onclick="swapMain(this)" alt="Đường bê tông rộng, đèn đường và cột điện tại cụm Gia Lâm 3 Nam Ban, view đồi núi" loading="lazy" width="1280" height="721" decoding="async">
@@ -255,7 +255,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>
