@@ -107,6 +107,18 @@ for f, s in data.items():
             L(f"[Canonical thiếu dấu / cuối] {f}: {can}")
         if HOST not in can and not f.startswith(CANONICAL_NGOAI_OK):
             L(f"[Trang giao dịch KHÔNG được canonical sang web khác] {f}: {can}")
+        if HOST not in can and f.startswith(CANONICAL_NGOAI_OK):
+            # ĐÃ TỪNG DÍNH (nặng): 2 HUB (thi-truong/, ve-nam-ban/ — 217 link vào mỗi hub)
+            # và 6 bài giao dịch canonical sang TRANG CHỦ Panorama / trang khác chủ đề.
+            # Hiến pháp §6.3: canonical ngoài CHỈ khi hai trang cùng intent trùng thật.
+            # Hub không bao giờ là bản trùng của một trang khác; đích là index/trang chủ
+            # thì chắc chắn không cùng intent với một bài cụ thể.
+            la_hub = f.count("/") == 1
+            dich_index = can.rstrip("/").endswith(("namban-index", "nambanpanorama.com", "/index"))
+            if la_hub:
+                L(f"[HUB không được canonical sang web khác — hub không phải bản trùng] {f}: {can}")
+            elif dich_index:
+                L(f"[Canonical ngoài trỏ trang chủ/index — không cùng intent] {f}: {can}")
 for k, v in titles.items():
     if len(v) > 1: L(f"[Trùng <title>] {k[:55]}… → {[x for x in v]}")
 for k, v in descs.items():
