@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cụm 6 Nền Ba Đình Nam Ban – Thổ Cư 100m²/Nền, Cạnh Colline D'Amour, Chỉ 2,5 Triệu/m², Từ 1,2 Tỷ | Nam Ban Villas</title>
+  <title>Cụm 6 Nền Ba Đình Nam Ban – 100m² Thổ Cư/Nền, 2,5 Triệu/m², Từ 1,2 Tỷ | Nam Ban Villas</title>
   <meta name="description" content="Cụm 6 nền đất phân lô Ba Đình, Nam Ban, Lâm Hà (ven Đà Lạt): mỗi nền 484–625m², sẵn 100m² thổ cư, đơn giá chỉ 2,5 triệu/m² (từ 1,2 tỷ/nền). Cạnh Colline D'Amour, cách đường nhựa chính Ba Đình 500m, đường bê tông tới đất, điện lưới. Hiện còn 5 nền. Gọi 0978 758 788.">
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
@@ -72,7 +72,7 @@
           <span class="listing-badge">6 nền · còn 5 · 100m² thổ cư/nền</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-6-nen-ba-dinh-nam-ban/1.webp" alt="Sơ đồ phân lô cụm 6 nền đất Ba Đình, Nam Ban ven Đà Lạt – diện tích từng nền 484–625m², thổ cư 100m², đơn giá 2,5 triệu/m²" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-6-nen-ba-dinh-nam-ban/1.webp" alt="Sơ đồ phân lô cụm 6 nền đất Ba Đình, Nam Ban ven Đà Lạt – diện tích từng nền 484–625m², thổ cư 100m², đơn giá 2,5 triệu/m²" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" srcset="/images/listings/cum-6-nen-ba-dinh-nam-ban/1-480.webp 480w, /images/listings/cum-6-nen-ba-dinh-nam-ban/1-800.webp 800w, /images/listings/cum-6-nen-ba-dinh-nam-ban/1.webp 902w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs"><img class="active" src="/images/listings/cum-6-nen-ba-dinh-nam-ban/1.webp" onclick="swapMain(this)" alt="Sơ đồ phân lô cụm 6 nền đất Ba Đình Nam Ban – 625, 510, 489, 484, 495, 510m², thổ cư 100m², 2,5 triệu/m² (ảnh flycam)" loading="lazy" width="1000" height="700"><img src="/images/listings/cum-6-nen-ba-dinh-nam-ban/2.webp" onclick="swapMain(this)" alt="Đường bê tông tới cụm đất Ba Đình Nam Ban – hai bên là vườn, view đồi thoáng, ven Đà Lạt" loading="lazy" width="1000" height="700"><img src="/images/listings/cum-6-nen-ba-dinh-nam-ban/3.webp" onclick="swapMain(this)" alt="Đường bê tông vào cụm 6 nền Ba Đình Nam Ban – điện lưới ven đường, thế đất cao thoáng" loading="lazy" width="1000" height="700"></div>
         </div>
         <div class="listing-specs-section">
@@ -175,7 +175,7 @@
 </footer>
 <script src="/js/main.js" defer></script>
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

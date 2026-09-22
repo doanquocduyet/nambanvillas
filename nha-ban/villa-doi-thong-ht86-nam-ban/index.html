@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" fetchpriority="high" imagesrcset="/images/listings/villa-doi-thong-ht86-nam-ban/9-480.jpg 480w, /images/listings/villa-doi-thong-ht86-nam-ban/9-800.jpg 800w, /images/listings/villa-doi-thong-ht86-nam-ban/9.jpg 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -71,7 +71,7 @@
           <span class="listing-badge">Villa · 3,8 tỷ/căn</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" alt="Villa nghỉ dưỡng 1 trệt 1 lầu đá ốp giữa đồi thông HT86 Nam Ban – kính lớn, ban công, sân vườn hoa" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" alt="Villa nghỉ dưỡng 1 trệt 1 lầu đá ốp giữa đồi thông HT86 Nam Ban – kính lớn, ban công, sân vườn hoa" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/villa-doi-thong-ht86-nam-ban/9-480.jpg 480w, /images/listings/villa-doi-thong-ht86-nam-ban/9-800.jpg 800w, /images/listings/villa-doi-thong-ht86-nam-ban/9.jpg 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/villa-doi-thong-ht86-nam-ban/9.jpg" onclick="swapMain(this)" alt="Villa HT86 Nam Ban giữa rừng thông – sân vườn hoa, lối đá, cảnh quan hoàn thiện" loading="lazy" width="1280" height="853" decoding="async"><img src="/images/listings/villa-doi-thong-ht86-nam-ban/11.webp" onclick="swapMain(this)" alt="Villa 2 tầng đá ốp giữa rừng thông HT86 Nam Ban – gable kính lớn, ban công, vườn hoa hồng" loading="lazy" width="960" height="640" decoding="async"><img src="/images/listings/villa-doi-thong-ht86-nam-ban/12.jpg" onclick="swapMain(this)" alt="Sân hiên mái bạt vàng và xích đu dưới tán thông trước villa HT86 Nam Ban, vườn hoa" loading="lazy" width="960" height="640" decoding="async"><img src="/images/listings/villa-doi-thong-ht86-nam-ban/13.jpg" onclick="swapMain(this)" alt="View rừng thông và chòi nghỉ từ ban công villa HT86 Nam Ban, vườn cẩm tú cầu" loading="lazy" width="1080" height="720" decoding="async"><img src="/images/listings/villa-doi-thong-ht86-nam-ban/14.jpg" onclick="swapMain(this)" alt="Villa 1 trệt 1 lầu HT86 Nam Ban giữa rừng thông – mặt kính lớn, cột đá tự nhiên, sân cỏ xanh" loading="lazy" width="810" height="1080" decoding="async"><img src="/images/listings/villa-doi-thong-ht86-nam-ban/15.jpg" onclick="swapMain(this)" alt="Villa HT86 Nam Ban nhìn từ cổng gỗ – rừng thông bao quanh, vườn hoa, khu dân cư nghỉ dưỡng" loading="lazy" width="810" height="1080" decoding="async">
             <img src="/images/listings/villa-doi-thong-ht86-nam-ban/10.jpg" onclick="swapMain(this)" alt="Vườn cẩm tú cầu trước villa HT86 Nam Ban, rừng thông và view đồi núi" loading="lazy" width="720" height="1280" decoding="async">
@@ -280,7 +280,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

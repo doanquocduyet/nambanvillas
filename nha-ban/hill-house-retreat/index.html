@@ -26,7 +26,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/hill-house-retreat/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/hill-house-retreat/1.webp" fetchpriority="high" imagesrcset="/images/listings/hill-house-retreat/1-480.webp 480w, /images/listings/hill-house-retreat/1-800.webp 800w, /images/listings/hill-house-retreat/1-1200.webp 1200w, /images/listings/hill-house-retreat/1.webp 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -77,7 +77,7 @@
           <span class="listing-badge" style="background:#8a2b2b;color:#fff">ĐÃ BÁN</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/hill-house-retreat/1.webp" alt="Hill House Retreat Nam Ban – biệt thự Bắc Âu 2 tầng mái dốc lên đèn ấm vàng giữa đồi thông ven Đà Lạt" width="700" height="525" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/hill-house-retreat/1.webp" alt="Hill House Retreat Nam Ban – biệt thự Bắc Âu 2 tầng mái dốc lên đèn ấm vàng giữa đồi thông ven Đà Lạt" width="700" height="525" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/hill-house-retreat/1-480.webp 480w, /images/listings/hill-house-retreat/1-800.webp 800w, /images/listings/hill-house-retreat/1-1200.webp 1200w, /images/listings/hill-house-retreat/1.webp 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs"><img src="/images/listings/hill-house-retreat/1.webp" alt="Hill House Retreat Nam Ban – biệt thự Bắc Âu 2 tầng lên đèn buổi tối, mặt tiền rộng" loading="lazy" onclick="swapMain(this)" class="active" width="1600" height="1200" decoding="async"><img src="/images/listings/hill-house-retreat/2.webp" alt="Hill House Retreat Nam Ban – lối đá sân vườn, cây anh đào đỏ, đèn dây ấm giữa đồi thông" loading="lazy" onclick="swapMain(this)" width="1536" height="2048" decoding="async"><img src="/images/listings/hill-house-retreat/3.webp" alt="Hill House Retreat Nam Ban – phòng khách lò sưởi đá, sofa da bò, đèn chùm đồng" loading="lazy" onclick="swapMain(this)" width="1536" height="2048" decoding="async"></div>
         </div>
         <div class="listing-specs-section">
@@ -274,7 +274,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
 })();
 </script>
 
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

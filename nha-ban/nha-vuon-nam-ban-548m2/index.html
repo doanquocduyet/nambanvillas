@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nha-vuon-nam-ban-548m2/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nha-vuon-nam-ban-548m2/1.webp" fetchpriority="high" imagesrcset="/images/listings/nha-vuon-nam-ban-548m2/1-480.webp 480w, /images/listings/nha-vuon-nam-ban-548m2/1-800.webp 800w, /images/listings/nha-vuon-nam-ban-548m2/1-1200.webp 1200w, /images/listings/nha-vuon-nam-ban-548m2/1.webp 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -71,7 +71,7 @@
           <span class="listing-badge">Nhà + vườn · dọn vào ở</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-nam-ban-548m2/1.webp" alt="Flycam toàn cảnh nhà vườn cây ăn trái Nam Ban – nhà 1 trệt mái xanh, sân lát gạch, vườn cây bao quanh" width="700" height="359" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-nam-ban-548m2/1.webp" alt="Flycam toàn cảnh nhà vườn cây ăn trái Nam Ban – nhà 1 trệt mái xanh, sân lát gạch, vườn cây bao quanh" width="700" height="359" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nha-vuon-nam-ban-548m2/1-480.webp 480w, /images/listings/nha-vuon-nam-ban-548m2/1-800.webp 800w, /images/listings/nha-vuon-nam-ban-548m2/1-1200.webp 1200w, /images/listings/nha-vuon-nam-ban-548m2/1.webp 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/nha-vuon-nam-ban-548m2/1.webp" onclick="swapMain(this)" alt="Flycam nhà vườn 548m² Nam Ban, vườn cây ăn trái bao quanh" loading="lazy" width="1280" height="656" decoding="async">
             <img src="/images/listings/nha-vuon-nam-ban-548m2/2.jpg" onclick="swapMain(this)" alt="Mặt tiền nhà 1 trệt kiến trúc cột, cửa vòm kính, sân gạch rộng" loading="lazy" width="1280" height="960" decoding="async">
@@ -276,7 +276,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

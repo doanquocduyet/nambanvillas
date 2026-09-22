@@ -75,7 +75,7 @@
           <span class="listing-badge">Sổ riêng đã tách · 212m² thổ cư</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg" alt="Lô đất 1.378m² Gia Lâm Nam Ban – mặt đất đã cải tạo phẳng, kế bên nhà dân tường gạch hàng rào trắng, có điện, đường đất đỏ, cây xanh quanh vườn" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg" alt="Lô đất 1.378m² Gia Lâm Nam Ban – mặt đất đã cải tạo phẳng, kế bên nhà dân tường gạch hàng rào trắng, có điện, đường đất đỏ, cây xanh quanh vườn" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" srcset="/images/listings/dat-gia-lam-nam-ban-1378m2/1-480.jpg 480w, /images/listings/dat-gia-lam-nam-ban-1378m2/1-800.jpg 800w, /images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg 1200w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs"><img class="active" src="/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg" onclick="swapMain(this)" alt="Lô đất 1.378m² Gia Lâm Nam Ban – đất đã cải tạo phẳng, kế nhà dân, có điện, khu dân cư ngoại ô Đà Lạt" loading="lazy" width="1000" height="700"><img src="/images/listings/dat-gia-lam-nam-ban-1378m2/so-do.webp" onclick="swapMain(this)" alt="Sơ đồ thửa 485 (1.378,5m²) Gia Lâm – mặt tiền đường bê tông, một phần hành lang đường bộ (HLAT ĐB), cuối thửa giáp suối (HLBV) có cầu bê tông" loading="lazy" width="1000" height="700"><img src="/images/listings/dat-gia-lam-nam-ban-1378m2/so.webp" onclick="swapMain(this)" alt="Trích sổ (GCN) thửa 485, tờ bản đồ 11-2024: diện tích 1.378,5m², đất ở nông thôn (ONT) 212m², đất trồng cây lâu năm (CLN) 1.166,5m², xã Gia Lâm, Lâm Hà" loading="lazy" width="1000" height="700"></div>
         </div>
         <div class="listing-specs-section">
@@ -179,7 +179,7 @@
 </footer>
 <script src="/js/main.js" defer></script>
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

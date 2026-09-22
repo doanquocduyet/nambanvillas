@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nha-nam-ban-160m2/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nha-nam-ban-160m2/1.webp" fetchpriority="high" imagesrcset="/images/listings/nha-nam-ban-160m2/1-480.webp 480w, /images/listings/nha-nam-ban-160m2/1.webp 732w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -71,7 +71,7 @@
           <span class="listing-badge">Nhà 3PN · full nội thất</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-nam-ban-160m2/1.webp" alt="Phòng khách rộng nhà 3PN Nam Ban – sofa xanh, đèn chùm sắt, cửa kính lớn ra ban công" width="700" height="1224" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-nam-ban-160m2/1.webp" alt="Phòng khách rộng nhà 3PN Nam Ban – sofa xanh, đèn chùm sắt, cửa kính lớn ra ban công" width="700" height="1224" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nha-nam-ban-160m2/1-480.webp 480w, /images/listings/nha-nam-ban-160m2/1.webp 732w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/nha-nam-ban-160m2/1.webp" onclick="swapMain(this)" alt="Phòng khách nhà Nam Ban, sofa xanh, đèn chùm" loading="lazy" width="732" height="1280" decoding="async">
             <img src="/images/listings/nha-nam-ban-160m2/2.webp" onclick="swapMain(this)" alt="Phòng khách nhìn ra sân và view đồi, cửa mở" loading="lazy" width="1276" height="956" decoding="async">
@@ -274,7 +274,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

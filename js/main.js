@@ -142,6 +142,9 @@ document.getElementById('contactForm')?.addEventListener('submit',function(e){
 window.swapMain=function(t){
   var m=document.getElementById('galMain');
   if(!m||!t)return;
+  // Ảnh hero có srcset (bản 640/960/gốc). Gán .src mà không xoá srcset thì
+  // trình duyệt VẪN dùng srcset cũ -> bấm thumbnail hiện sai ảnh.
+  m.removeAttribute('srcset'); m.removeAttribute('sizes');
   m.src=t.src;
   var wrap=t.parentNode;
   if(wrap){var ims=wrap.querySelectorAll('img');for(var i=0;i<ims.length;i++)ims[i].classList.remove('active');}
@@ -161,6 +164,7 @@ window.swapMain=function(t){
     if(i<0)i=thumbs.length-1;
     if(i>=thumbs.length)i=0;
     var t=thumbs[i];
+    main.removeAttribute('srcset'); main.removeAttribute('sizes');
     main.src=t.src;
     Array.prototype.forEach.call(thumbs,function(x){x.classList.remove('active');});
     t.classList.add('active');

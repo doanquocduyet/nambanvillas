@@ -26,7 +26,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nha-vuon-view-416m2/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nha-vuon-view-416m2/1.jpg" fetchpriority="high" imagesrcset="/images/listings/nha-vuon-view-416m2/1-480.jpg 480w, /images/listings/nha-vuon-view-416m2/1-800.jpg 800w, /images/listings/nha-vuon-view-416m2/1.jpg 980w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -70,7 +70,7 @@
           <span class="listing-badge">Nhà Bán</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-view-416m2/1.jpg" alt="Nhà sân vườn view đẹp ven Đà Lạt – sân cỏ rộng, chòi nghỉ mái ngói, xích đu, tiểu cảnh, view đồi núi" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-vuon-view-416m2/1.jpg" alt="Nhà sân vườn view đẹp ven Đà Lạt – sân cỏ rộng, chòi nghỉ mái ngói, xích đu, tiểu cảnh, view đồi núi" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nha-vuon-view-416m2/1-480.jpg 480w, /images/listings/nha-vuon-view-416m2/1-800.jpg 800w, /images/listings/nha-vuon-view-416m2/1.jpg 980w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/nha-vuon-view-416m2/1.jpg" onclick="swapMain(this)" alt="Sân vườn rộng có chòi nghỉ, xích đu và tiểu cảnh, view đồi núi ven Đà Lạt" loading="lazy" width="980" height="653" decoding="async">
             <img src="/images/listings/nha-vuon-view-416m2/2.jpg" onclick="swapMain(this)" alt="Phòng khách nhà mới – kệ tivi gỗ, sàn đá bóng, cửa kính mở ra sân vườn, bếp liền kề" loading="lazy" width="1280" height="853" decoding="async">
@@ -279,7 +279,7 @@ function closeLb(e){document.getElementById("lb").classList.remove("open");}
   ov.addEventListener('click',close);
 })();
 </script>
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{

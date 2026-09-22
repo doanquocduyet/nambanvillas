@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đất 1.000m² Giáp Rừng Thông Mê Linh – Giáp Cam Ly, Ven Đà Lạt, MT 22m, Có Cà Phê, 1,85 Tỷ | Nam Ban Villas</title>
+  <title>Đất 1.000m² Giáp Rừng Thông Mê Linh – Giáp Cam Ly, MT 22m, 1,85 Tỷ | Nam Ban Villas</title>
   <meta name="description" content="Lô đất 1.000m² giáp rừng thông tại Mê Linh (cũ), giáp khu vực Cam Ly – ven Đà Lạt. Mặt tiền 22m, thế đất dương, view thoáng, sẵn vườn cà phê. Cách Đà Lạt ~21km, sân bay Liên Khương ~25km. Hợp nhà vườn, second home. Giá 1,85 tỷ (thương lượng). Gọi 0978 758 788.">
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Mê Linh, giáp Cam Ly, Lâm Đồng">
@@ -76,7 +76,7 @@
           <span class="listing-badge">Giáp rừng thông · MT 22m</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/me-linh-1000m2-giap-rung-thong/1.jpg" alt="Đường bê tông vào lô đất 1.000m² giáp rừng thông Mê Linh, hai bên vườn cà phê, đồi thông phía trên, ven Đà Lạt" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/me-linh-1000m2-giap-rung-thong/1.jpg" alt="Đường bê tông vào lô đất 1.000m² giáp rừng thông Mê Linh, hai bên vườn cà phê, đồi thông phía trên, ven Đà Lạt" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" srcset="/images/listings/me-linh-1000m2-giap-rung-thong/1-480.jpg 480w, /images/listings/me-linh-1000m2-giap-rung-thong/1-800.jpg 800w, /images/listings/me-linh-1000m2-giap-rung-thong/1.jpg 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs"><img class="active" src="/images/listings/me-linh-1000m2-giap-rung-thong/1.jpg" onclick="swapMain(this)" alt="Đường bê tông vào lô đất 1.000m² giáp rừng thông Mê Linh – hai bên vườn cà phê, đồi thông phía trên" loading="lazy" width="1000" height="700"><img src="/images/listings/me-linh-1000m2-giap-rung-thong/2.jpg" onclick="swapMain(this)" alt="View từ lô đất nhìn xuống khu dân cư và thung lũng Mê Linh, đồi núi ven Đà Lạt" loading="lazy" width="1000" height="700"><img src="/images/listings/me-linh-1000m2-giap-rung-thong/3.jpg" onclick="swapMain(this)" alt="Thế đất cao thoáng nhìn ra thung lũng, vườn cà phê và núi đồi Mê Linh ven Đà Lạt" loading="lazy" width="1000" height="700"></div>
         </div>
         <div class="listing-specs-section">
@@ -180,7 +180,7 @@
 </footer>
 <script src="/js/main.js" defer></script>
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

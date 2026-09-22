@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khu Nam Ban Ecohill – Đợt Mới Tháng 9: 33 Nền, Bàn Giao Trọn Gói, Sổ Hồng, Từ 1,1 Tỷ | Nam Ban Villas</title>
+  <title>Nam Ban Ecohill – 33 Nền Đợt Tháng 9, Sổ Hồng, Bàn Giao Trọn Gói, Từ 1,1 Tỷ | Nam Ban Villas</title>
   <meta name="description" content="Dự án Nam Ban Ecohill 4,5ha (133 nhà phố vườn & villa vườn, block A–G) ven Đà Lạt, xã Nam Ban, Lâm Hà – đợt mới tháng 9/2026 ra 33 nền, chính sách bàn giao trọn gói: điện 3 pha, đèn năng lượng mặt trời, vỉa hè lát đá, hàng rào, cây xanh, béc tưới tự động, bao phí sang tên. Sổ hồng, mặt tiền đường nhựa, 100m² thổ cư/lô. Cách Đà Lạt 27km, Liên Khương ~23km. Từ 1,1 tỷ/lô. Có chính sách bungalow gỗ khai thác 70:30 hoặc bao tiêu 2,5 triệu/tháng. Gọi 0978 758 788.">
   <meta name="geo.region" content="VN-35">
   <meta name="geo.placename" content="Nam Ban, Lâm Hà, Lâm Đồng">
@@ -28,7 +28,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/cum-nam-ban-ecohill/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/cum-nam-ban-ecohill/1.jpg" fetchpriority="high" imagesrcset="/images/listings/cum-nam-ban-ecohill/1-480.jpg 480w, /images/listings/cum-nam-ban-ecohill/1-800.jpg 800w, /images/listings/cum-nam-ban-ecohill/1-1200.jpg 1200w, /images/listings/cum-nam-ban-ecohill/1.jpg 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -83,7 +83,7 @@
         </div>
 
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-nam-ban-ecohill/1.jpg" alt="Flycam khu Nam Ban Ecohill – 5 lô ven Đà Lạt, mặt tiền đường nhựa, view toàn cảnh" width="700" height="394" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-nam-ban-ecohill/1.jpg" alt="Flycam khu Nam Ban Ecohill – 5 lô ven Đà Lạt, mặt tiền đường nhựa, view toàn cảnh" width="700" height="394" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/cum-nam-ban-ecohill/1-480.jpg 480w, /images/listings/cum-nam-ban-ecohill/1-800.jpg 800w, /images/listings/cum-nam-ban-ecohill/1-1200.jpg 1200w, /images/listings/cum-nam-ban-ecohill/1.jpg 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/cum-nam-ban-ecohill/1.jpg" onclick="swapMain(this)" alt="Flycam thực tế khu Nam Ban Ecohill – các lô mặt tiền đường nhựa 8m, view toàn cảnh Nam Ban" loading="lazy" width="1280" height="720" decoding="async">
             <img src="/images/listings/cum-nam-ban-ecohill/3.jpg" onclick="swapMain(this)" alt="Thực tế mặt tiền đường nhựa dự án Nam Ban Ecohill – trụ điện, view đồi núi thoáng" loading="lazy" width="1280" height="720" decoding="async">
@@ -358,7 +358,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

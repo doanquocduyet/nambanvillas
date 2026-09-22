@@ -28,7 +28,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/cum-ht86-14-nen/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/cum-ht86-14-nen/1.webp" fetchpriority="high" imagesrcset="/images/listings/cum-ht86-14-nen/1-480.webp 480w, /images/listings/cum-ht86-14-nen/1-800.webp 800w, /images/listings/cum-ht86-14-nen/1.webp 1144w" imagesizes="(max-width: 1264px) 100vw, 1144px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -91,7 +91,7 @@
         <p style="margin:6px 0 0;font-size:.85rem;color:#8a978f">Cập nhật 30/07/2026: đã hạ mốc ranh giới rõ ràng · sổ hồng sẵn công chứng · giá từ 3,9 triệu/m².</p>
 
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-ht86-14-nen/1.webp" alt="Bản vẽ CAD phân lô cụm 14 nền khu biệt thự HT86 Nam Ban – số nền, diện tích từng nền và phần thổ cư 200m²" width="1144" height="809" fetchpriority="high" style="object-fit:contain;background:#111" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-ht86-14-nen/1.webp" alt="Bản vẽ CAD phân lô cụm 14 nền khu biệt thự HT86 Nam Ban – số nền, diện tích từng nền và phần thổ cư 200m²" width="1144" height="809" fetchpriority="high" style="object-fit:contain;background:#111" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/cum-ht86-14-nen/1-480.webp 480w, /images/listings/cum-ht86-14-nen/1-800.webp 800w, /images/listings/cum-ht86-14-nen/1.webp 1144w" sizes="(max-width: 1264px) 100vw, 1144px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/cum-ht86-14-nen/1.webp" onclick="swapMain(this)" alt="Bản vẽ CAD phân lô 14 nền HT86 Nam Ban – kích thước và diện tích từng nền" loading="lazy" width="1144" height="809" decoding="async">
             <img src="/images/listings/cum-ht86-14-nen/2.webp" onclick="swapMain(this)" alt="Sổ đỏ (Giấy chứng nhận) sơ đồ thửa đất khu HT86 Nam Ban – cấp đổi 29/7/2024, VP Đăng ký đất đai Lâm Đồng" loading="lazy" width="840" height="460" decoding="async">
@@ -280,7 +280,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

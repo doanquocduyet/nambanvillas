@@ -28,7 +28,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/cum-19-lo-nam-ban/1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/cum-19-lo-nam-ban/1.jpg" fetchpriority="high" imagesrcset="/images/listings/cum-19-lo-nam-ban/1-480.jpg 480w, /images/listings/cum-19-lo-nam-ban/1-800.jpg 800w, /images/listings/cum-19-lo-nam-ban/1.jpg 985w" imagesizes="(max-width: 1105px) 100vw, 985px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-19-lo-nam-ban/1.jpg" alt="Sơ đồ phân lô cụm 19 lô đất thị trấn Nam Ban – flycam đánh số 19 lô, đường vào, khu dân cư hiện hữu" width="1095" height="730" fetchpriority="high" style="object-fit:contain;background:#fff" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/cum-19-lo-nam-ban/1.jpg" alt="Sơ đồ phân lô cụm 19 lô đất thị trấn Nam Ban – flycam đánh số 19 lô, đường vào, khu dân cư hiện hữu" width="985" height="730" fetchpriority="high" style="object-fit:contain;background:#fff" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/cum-19-lo-nam-ban/1-480.jpg 480w, /images/listings/cum-19-lo-nam-ban/1-800.jpg 800w, /images/listings/cum-19-lo-nam-ban/1.jpg 985w" sizes="(max-width: 1105px) 100vw, 985px"></div>
           <div class="listing-thumbs">
             <img class="active" src="/images/listings/cum-19-lo-nam-ban/1.jpg" onclick="swapMain(this)" alt="Sơ đồ phân lô 19 lô Nam Ban – vị trí và số thứ tự từng lô nhìn từ flycam" loading="lazy" width="1095" height="730" decoding="async">
             <img src="/images/listings/cum-19-lo-nam-ban/2.jpg" onclick="swapMain(this)" alt="Đất cụm 19 lô Nam Ban nhìn thực tế – đường bê tông, view thung lũng và mây núi buổi sáng" loading="lazy" width="960" height="640" decoding="async">
@@ -256,7 +256,7 @@
 <script src="/js/main.js" defer></script>
 
 <script>
-function swapMain(t){document.getElementById("galMain").src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
+function swapMain(t){var g=document.getElementById("galMain");g.removeAttribute("srcset");g.removeAttribute("sizes");g.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}
 function openLb(src,alt){var o=document.getElementById("lb"),i=document.getElementById("lbImg");i.src=src;i.alt=alt||(document.querySelector('img[src="'+src+'"]')||{}).alt||document.title;o.classList.add("open");}
 function closeLb(e){document.getElementById("lb").classList.remove("open");}
 </script>

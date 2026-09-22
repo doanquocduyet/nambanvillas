@@ -27,7 +27,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/nha-me-linh-252m2/1.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/images/listings/nha-me-linh-252m2/1.webp" fetchpriority="high" imagesrcset="/images/listings/nha-me-linh-252m2/1-480.webp 480w, /images/listings/nha-me-linh-252m2/1-800.webp 800w, /images/listings/nha-me-linh-252m2/1-1200.webp 1200w, /images/listings/nha-me-linh-252m2/1.webp 1280w" imagesizes="(max-width: 820px) 100vw, 700px">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
@@ -77,7 +77,7 @@
           <span class="listing-badge">Nhà Bán</span>
         </div>
         <div class="listing-images">
-          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-me-linh-252m2/1.webp" alt="Nhà mới Mê Linh nhìn từ cổng — nhà mái lệch, cửa kính lớn lên đèn, bậc thang sân, tường rào trắng, đồi thông phía sau" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async"></div>
+          <div class="listing-img-main"><img id="galMain" src="/images/listings/nha-me-linh-252m2/1.webp" alt="Nhà mới Mê Linh nhìn từ cổng — nhà mái lệch, cửa kính lớn lên đèn, bậc thang sân, tường rào trắng, đồi thông phía sau" width="700" height="466" fetchpriority="high" onclick="openLb(this.src)" decoding="async" srcset="/images/listings/nha-me-linh-252m2/1-480.webp 480w, /images/listings/nha-me-linh-252m2/1-800.webp 800w, /images/listings/nha-me-linh-252m2/1-1200.webp 1200w, /images/listings/nha-me-linh-252m2/1.webp 1280w" sizes="(max-width: 820px) 100vw, 700px"></div>
           <div class="listing-thumbs"><img src="/images/listings/nha-me-linh-252m2/1.webp" alt="Nhà mới Mê Linh nhìn từ cổng — nhà mái lệch, cửa kính lớn, bậc thang sân, đồi thông phía sau" loading="lazy" onclick="swapMain(this)" class="active" width="1280" height="853" decoding="async"><img src="/images/listings/nha-me-linh-252m2/2.webp" alt="Phòng khách nhà Mê Linh — sofa da kem, cửa sổ tròn view đồi, quạt trần, thông sang bếp, sàn gạch bóng" loading="lazy" onclick="swapMain(this)" width="1280" height="960" decoding="async"><img src="/images/listings/nha-me-linh-252m2/3.webp" alt="Khu bếp và bàn ăn 6 ghế — bếp gỗ mặt đá, bếp từ, cửa kính lớn ra sân, view đồi" loading="lazy" onclick="swapMain(this)" width="1280" height="960" decoding="async"><img src="/images/listings/nha-me-linh-252m2/4.webp" alt="Phòng ngủ 1 — giường nệm, tủ áo gỗ, bàn trang điểm, cửa mở thông ra phòng khách" loading="lazy" onclick="swapMain(this)" width="1280" height="960" decoding="async"><img src="/images/listings/nha-me-linh-252m2/5.webp" alt="Phòng ngủ 2 có WC riêng — giường đôi, tủ kệ gỗ, cửa sổ đứng, chậu rửa và gương" loading="lazy" onclick="swapMain(this)" width="1280" height="960" decoding="async"></div>
         </div>
         <div class="listing-specs-section">
@@ -281,7 +281,7 @@ window.swapMain=window.swapMain||function(t){var m=document.getElementById('galM
 })();
 </script>
 
-<script>function swapMain(t){var m=document.getElementById("galMain");if(m)m.src=t.src;document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
+<script>function swapMain(t){var m=document.getElementById("galMain");if(m){m.removeAttribute("srcset");m.removeAttribute("sizes");m.src=t.src;}document.querySelectorAll(".listing-thumbs img").forEach(function(i){i.classList.remove("active")});t.classList.add("active");}</script>
 <script type="speculationrules">
 {
   "prerender": [{
