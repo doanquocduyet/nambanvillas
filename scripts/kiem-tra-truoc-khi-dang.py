@@ -422,6 +422,12 @@ XUNG_HO_RIENG = re.compile(
     r"(?<!ghi )(?<!Ghi )(?<!con )(?<!Con )\b[CcHh]?(chú|cháu|Chú|Cháu)\b"
     r"(?!\s*(ý|Ý|trọng|thích|rể))")
 
+# ĐÃ TỪNG DÍNH: "Bé phân tích 5 thay đổi lớn nhất", "Bé hỗ trợ kiểm tra quy
+# hoạch" — cùng loại lỗi với chú/cháu: trợ lý tự xưng trên trang công khai.
+# Chỉ bắt "Bé" đứng đầu mệnh đề + theo sau là ĐỘNG TỪ, để không đụng tên riêng
+# kiểu "Nhà hàng Minh Bé".
+XUNG_HO_BE = re.compile(r"(?:^|[.!?;]\s|\A)\s*Bé\s+(?=[a-zàâăđêôơư])")
+
 for f, s in data.items():
     if EMOJI.search(s):
         L(f"[Có emoji — luật thương hiệu cấm] {f}")
@@ -433,6 +439,9 @@ for f, s in data.items():
     for m in XUNG_HO_RIENG.finditer(chu_ch):
         doan = re.sub(r"\s+", " ", chu_ch[max(0, m.start()-45):m.end()+45]).strip()
         L(f"[Xưng hô chú/cháu — web phải viết \"Nam Ban Villas\"] {f}: …{doan}…")
+    for m in XUNG_HO_BE.finditer(chu_ch):
+        doan = re.sub(r"\s+", " ", chu_ch[m.start():m.end()+60]).strip()
+        L(f"[Trợ lý tự xưng \"Bé\" — web phải viết \"Nam Ban Villas\"] {f}: …{doan}…")
     if any(k in f for k in TUY_BUT) or f in MIEN_TRU_NGOI_1:
         continue  # cố ý ngôi thứ nhất, đã duyệt
     than = s[s.find("<body"):]
