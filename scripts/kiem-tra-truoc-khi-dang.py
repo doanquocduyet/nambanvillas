@@ -434,6 +434,7 @@ for f, s in data.items():
         L(f"[Có Offer nhưng thiếu priceCurrency VND] {f}")
     if "FAQPage" not in s:
         W(f"[Tin rao nên có FAQPage (AEO)] {f}")
+
     if url not in hub_urls[kind]:
         L(f"[Chưa thêm vào ItemList của hub {HUB[kind]}] {url}")
     if f'"item":"{HOST}/{kind}/"' in s:
@@ -442,6 +443,26 @@ for f, s in data.items():
     if og and "og-namban.jpg" in og.group(1):
         W(f"[og:image dùng ảnh chung — nên dùng ảnh của chính lô] {f}")
 
+
+# ── FAQ schema PHẢI hiện trên trang ─────────────────────────────────────────
+# ĐÃ TỪNG DÍNH (nặng): 174/194 trang có FAQPage trong schema nhưng KHÔNG có câu
+# hỏi nào hiện ra cho khách đọc. Google yêu cầu nội dung structured data phải
+# nhìn thấy được — vi phạm là mất rich result, nặng thì bị phạt thủ công.
+for f, s in data.items():
+    for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', s, re.S):
+        try:
+            j = json.loads(b)
+        except Exception:
+            continue
+        for n in cac_node(j):
+            if n.get("@type") != "FAQPage":
+                continue
+            than = re.sub(r"<script.*?</script>", "", s, flags=re.S)
+            chu = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", than))
+            an = [q.get("name", "") for q in n.get("mainEntity", [])
+                  if q.get("name", "")[:40] not in chu]
+            if an:
+                L(f"[FAQ schema có {len(an)} câu KHÔNG hiện trên trang — Google phạt] {f}: {an[0][:50]}")
 # ── 10. GEO ───────────────────────────────────────────────────────────────
 for f, s in data.items():
     g = re.search(r'<meta name="geo.region" content="([^"]+)"', s)
