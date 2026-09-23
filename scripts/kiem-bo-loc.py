@@ -214,6 +214,39 @@ for _d in CUM_CHU_DE:
     if _so < 2:
         L("[Khối 'Cùng chủ đề' chỉ có %d link — cần ít nhất 2] /%s/" % (_so, _d))
 
+
+# ── 12. Thanh nút nổi: mọi kiểu markup phải được CSS bao ───────────────────
+# ĐÃ TỪNG DÍNH, NẶNG NHẤT: 147 trang dùng markup cũ (svg con trực tiếp, bọc
+# .mnav-call-circle) trong khi CSS chỉ viết cho markup mới (.ic) -> nút "Gọi
+# ngay" là vòng tròn vàng RỖNG trên 147 trang. Bẫy: với mỗi nút nổi, svg phải
+# nằm trong một cấu trúc mà style.css CÓ luật đặt cỡ.
+_CO_LUAT = {
+    'ic':      '.mnav-item .ic svg{' in CSS,
+    'circle':  '.mnav-call>.mnav-call-circle>svg' in CSS,
+    'truc':    '.mnav-item>svg' in CSS,
+}
+for f in sorted(pages):
+    s = open(f, encoding="utf-8").read()
+    i = s.find('class="mobile-nav"')
+    if i < 0:
+        continue
+    bar = s[i:s.find("</nav>", i)]
+    for m in re.finditer(r'<(a|button)[^>]*class="([^"]*mnav-item[^"]*)"[^>]*>([\s\S]*?)</\1>', bar):
+        noi = m.group(3)
+        if "<svg" not in noi:
+            continue
+        if 'class="ic"' in noi:
+            kieu = 'ic'
+        elif 'mnav-call-circle' in noi:
+            kieu = 'circle'
+        elif re.match(r'\s*<svg', noi):   # svg là con đầu tiên, trực tiếp
+            kieu = 'truc'
+        else:
+            kieu = None
+        if kieu is None or not _CO_LUAT.get(kieu):
+            L("[Nút nổi có svg mà CSS không có luật đặt cỡ — sẽ rỗng hoặc vỡ] %s: %s"
+              % (duong(f), m.group(2)[:30]))
+            break
 # ── kết luận ───────────────────────────────────────────────────────────────
 print("KIỂM NÚT BẤM & BỘ LỌC — %d trang\n%s" % (len(pages), "=" * 62))
 if canh:

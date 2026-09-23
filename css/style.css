@@ -331,6 +331,26 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
   }
   .mnav-call .ic svg{width:26px;height:26px;stroke:#fff}
   .mnav-call::before{content:'';position:absolute;inset:0;border-radius:50%;animation:mnavPulse 2.6s ease-out infinite}
+
+  /* ── KIỂU MARKUP CŨ (147 trang lô/nhà/bài) ────────────────────────────
+     ĐÃ TỪNG DÍNH, NẶNG NHẤT TỪ TRƯỚC TỚI NAY: thanh nút nổi có HAI kiểu
+     markup. Kiểu mới (72 trang) bọc icon trong <span class="ic">, 3 nút
+     Zalo·Gọi·Menu. Kiểu cũ (147 trang) để <svg> làm con trực tiếp, bọc nút Gọi
+     bằng <span class="mnav-call-circle">, và có 5 nút (thêm Trang chủ, Tìm đất).
+     Luật ".mnav-item>span:not(.ic){display:none}" ẩn luôn .mnav-call-circle,
+     còn ".mnav-item .ic svg{...}" không chạm tới svg kiểu cũ nên icon mất cỡ.
+     Hậu quả: 147/219 trang — đúng nhóm trang Google đổ khách vào — nút "Gọi
+     ngay" là một vòng tròn vàng RỖNG. Đây là nút quan trọng nhất của cả web.
+     Sửa bằng CSS để kiểu cũ hiện Y HỆT kiểu mới (icon, 3 nút), không sửa
+     markup 147 trang. */
+  .mnav-item>.mnav-call-circle{display:flex;align-items:center;justify-content:center}
+  .mnav-item>svg,.mnav-call>.mnav-call-circle>svg{width:23px;height:23px;flex:0 0 auto}
+  .mnav-call>.mnav-call-circle>svg,.mnav-call>svg{width:26px;height:26px;stroke:#fff}
+  #mnavMenuBtn>svg{width:27px;height:27px}
+  .mnav-item[href*="zalo"]>svg{display:none}
+  /* kiểu cũ có 5 nút xếp dọc = che 1/3 màn hình; bỏ 2 nút Trang chủ / Tìm đất
+     cho khớp kiểu mới — hai đường đó đã có trong bảng Menu */
+  .mobile-nav>a.mnav-item[href="/"],.mobile-nav>a.mnav-item[href="/dat-nen-nam-ban/"]{display:none}
   @keyframes mnavPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,.5)}70%{box-shadow:0 0 0 12px rgba(201,168,76,0)}100%{box-shadow:0 0 0 0 rgba(201,168,76,0)}}
   @media(prefers-reduced-motion:reduce){.mnav-call::before{animation:none}}
 
@@ -346,6 +366,11 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
     padding:8px 16px calc(22px + env(safe-area-inset-bottom));
     transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);
     box-shadow:0 -12px 50px rgba(13,43,28,.24);
+    /* ĐÃ TỪNG DÍNH: bảng có 9 mục ~560px, không giới hạn cao, không cuộn -> trên
+       máy màn thấp (iPhone SE, Android nhỏ, xoay ngang) phần đầu bảng — Trang
+       chủ, Đất Nền — trượt lên KHỎI màn hình, không bấm tới. 100dvh trừ đúng
+       thanh trình duyệt di động. */
+    max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;
   }
   .mobile-sheet.open{transform:translateY(0)}
   .mobile-sheet-handle{width:38px;height:5px;background:#E2D9C8;border-radius:99px;margin:9px auto 6px}
