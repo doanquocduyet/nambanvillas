@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
   <link rel="preload" as="image" href="../images/listings/nha-nghi-duong-cam-ly-279m2/1.jpg" fetchpriority="high">
-  <link rel="stylesheet" href="../css/style.css?v=eaa62703">
+  <link rel="stylesheet" href="../css/style.css?v=bdb40392">
   <style>
     .prop-cta{display:none}
     .prop-card{position:relative;cursor:pointer}
@@ -98,9 +98,10 @@
 #nb-trong a{color:#1A3D2B;font-weight:700}
 @media(max-width:600px){.nb-khu{font-size:.82rem;padding:7px 13px}}
 </style>
-    <div class="nb-khus" role="group" aria-label="Lọc nhà theo khu"><button type="button" class="nb-khu nb-on" data-loc="">Tất cả <b>28</b></button><button type="button" class="nb-khu" data-loc="nam-ban">Nam Ban <b>21</b></button><button type="button" class="nb-khu" data-loc="me-linh">Mê Linh <b>2</b></button><button type="button" class="nb-khu" data-loc="gia-lam">Gia Lâm <b>3</b></button><button type="button" class="nb-khu" data-loc="nam-ha">Nam Hà <b>1</b></button><button type="button" class="nb-khu" data-loc="cam-ly">Giáp Cam Ly <b>1</b></button></div>
+    <div class="nb-khus" role="group" aria-label="Lọc nhà theo khu"><button type="button" class="nb-khu nb-on" data-loc="" aria-pressed="true">Tất cả <b>28</b></button><button type="button" class="nb-khu" data-loc="nam-ban" aria-pressed="false">Nam Ban <b>21</b></button><button type="button" class="nb-khu" data-loc="me-linh" aria-pressed="false">Mê Linh <b>2</b></button><button type="button" class="nb-khu" data-loc="gia-lam" aria-pressed="false">Gia Lâm <b>3</b></button><button type="button" class="nb-khu" data-loc="nam-ha" aria-pressed="false">Nam Hà <b>1</b></button><button type="button" class="nb-khu" data-loc="cam-ly" aria-pressed="false">Giáp Cam Ly <b>1</b></button></div>
     <p id="nb-trong" hidden>Khu này chưa có nhà nào đang bán. Gọi <a href="tel:0978758788">0978 758 788</a> để Nam Ban Villas tìm giúp — nhiều căn chưa kịp lên web.</p>
     <p style="color:#6B6B6B;margin-bottom:24px;font-size:.9rem">Hiển thị <strong style="color:#1A3D2B">28</strong> nhà đang bán · 5 căn đã bán giữ lại để tham khảo</p>
+    <h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:0 0 16px">Nhà bán Nam Ban đang bán — 28 tin</h2>
     <div class="prop-grid sp-sang sp-nhaban">
 
       <article class="prop-card sp-row" data-area="2734" data-price="4.1" data-loc="nam-ban">
@@ -581,13 +582,13 @@
       </div>
     </div>
     <div class="footer-links">
-      <h4>Bất động sản</h4>
+      <h2>Bất động sản</h2>
       <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>
       <a href="/nha-ban-nam-ban/">Nhà Bán Nam Ban</a>
       <a href="/ky-gui-ban-dat-nam-ban/">Ký gửi bán đất</a>
     </div>
     <div class="footer-links">
-      <h4>Thông tin</h4>
+      <h2>Thông tin</h2>
       <a href="/thi-truong/">Thị Trường BĐS</a>
       <a href="/ve-nam-ban/">Về Nam Ban</a>
       <a href="/hoi-dap/">Hỏi Đáp</a>
@@ -602,7 +603,7 @@
     </div>
   </div>
 </footer>
-<script src="../js/main.js?v=9cb0a75b" defer></script>
+<script src="../js/main.js?v=eee9a2f1" defer></script>
 <!-- MOBILE BOTTOM NAV (chỉ hiện trên điện thoại) -->
 <nav class="mobile-nav" aria-label="Điều hướng nhanh">
   <a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="mnav-item mnav-zalo">
@@ -662,7 +663,7 @@
       c.classList.toggle('nb-an',!ok);
       if(ok&&!daBan)hien++;
     });
-    nut.forEach(function(n){n.classList.toggle('nb-on',(n.getAttribute('data-loc')||'')===k);});
+    nut.forEach(function(n){var b=(n.getAttribute('data-loc')||'')===k;n.classList.toggle('nb-on',b);n.setAttribute('aria-pressed',b?'true':'false');});
     if(dem)dem.textContent=hien;
     if(trong)trong.hidden=hien>0;
     try{var u=new URL(location.href);
