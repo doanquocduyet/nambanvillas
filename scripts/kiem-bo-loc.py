@@ -147,6 +147,39 @@ for f in sorted(pages):
             if ("." + lop) not in CSS and ("." + lop) not in s:
                 L("[Lớp .%s dùng mà không có CSS ở đâu cả] %s" % (lop, d))
 
+
+# ── 9/10. Thanh đáy điện thoại + câu hỏi phải mở sẵn ──────────────────────
+for f in sorted(pages):
+    s = open(f, encoding="utf-8").read()
+    d = duong(f)
+
+    # (9) thanh đáy phải có Gọi, Zalo và nút Menu BẤM ĐƯỢC
+    # ĐÃ TỪNG DÍNH: 8 trang khu có nút Menu mang id lạ (menuBtn2) + display:none
+    # -> trên điện thoại không mở được menu từ thanh đáy.
+    i = s.find('class="mobile-nav"')
+    if i < 0:
+        L("[Không có thanh Gọi/Zalo dán đáy trên điện thoại] %s" % d)
+    else:
+        bar = s[i:s.find("</nav>", i)]
+        if "tel:0978758788" not in bar:
+            L("[Thanh đáy thiếu nút GỌI] %s" % d)
+        if "zalo.me" not in bar:
+            L("[Thanh đáy thiếu nút ZALO] %s" % d)
+        nut = [m.group(0) for m in re.finditer(r"<(?:button|a)[^>]*>", bar)
+               if ("mnavMenuBtn" in m.group(0) or "mnav-menu" in m.group(0))
+               and "display:none" not in m.group(0)
+               and not re.search(r"\shidden(?=[\s>])", m.group(0))]
+        if not nut:
+            L("[Thanh đáy không có nút Menu bấm được — khách phải cuộn ngược lên đầu] %s" % d)
+        elif 'id="mobileSheet"' not in s:
+            L("[Có nút Menu nhưng không có bảng menu để mở] %s" % d)
+
+    # (10) câu hỏi phải MỞ SẴN — luật chủ đặt: đáp án hiện thẳng trên trang cho
+    # Google và các bộ máy trả lời AI đọc, khách khỏi phải bấm.
+    dong = len(re.findall(r"<details(?![^>]*\bopen\b)", s))
+    if dong:
+        L("[%d câu hỏi còn đóng — phải mở sẵn để ăn SEO/AEO/GEO] %s" % (dong, d))
+
 # ── kết luận ───────────────────────────────────────────────────────────────
 print("KIỂM NÚT BẤM & BỘ LỌC — %d trang\n%s" % (len(pages), "=" * 62))
 if canh:

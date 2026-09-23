@@ -27,6 +27,28 @@ document.addEventListener('click',e=>{
   }
 });
 
+/* Nút Menu ở THANH ĐÁY điện thoại — gắn tại đây cho MỌI trang.
+   ĐÃ TỪNG DÍNH: mỗi trang tự viết đoạn JS mở menu riêng, nên 8 trang khu có nút
+   mang id lạ (menuBtn2) lại còn display:none -> trên điện thoại không mở được
+   menu từ thanh đáy, phải cuộn ngược lên đầu trang. Đưa vào đây thì trang nào
+   có nút cũng chạy, không phụ thuộc đoạn JS chép tay. */
+(function(){
+  var btn=document.getElementById('mnavMenuBtn');
+  if(!btn||!_sheet)return;
+  function dong(){_sheet.classList.remove('open');_sheetOv&&_sheetOv.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');}
+  btn.setAttribute('aria-controls','mobileSheet');
+  btn.setAttribute('aria-expanded','false');
+  btn.addEventListener('click',function(){
+    var mo=!_sheet.classList.contains('open');
+    _sheet.classList.toggle('open',mo);
+    _sheetOv&&_sheetOv.classList.toggle('open',mo);
+    btn.setAttribute('aria-expanded',mo?'true':'false');
+  });
+  _sheetOv&&_sheetOv.addEventListener('click',dong);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')dong();});
+})();
+
 // Hero search tabs
 document.querySelectorAll('.hstab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.hstab').forEach(x=>x.classList.remove('active'));
