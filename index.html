@@ -35,14 +35,14 @@
   <link rel="alternate" type="application/rss+xml" title="Nam Ban Villas — Tin mới" href="https://nambanvillas.vn/feed.xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="preload" as="image" href="/images/listings/'+(l.im||l.img+'/1.jpg')+'" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.css?v=10c39d5f">
+  <link rel="stylesheet" href="css/style.css?v=80235b39">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateAgent","@id":"https://nambanvillas.vn/#organization","name":"Nam Ban Villas","description":"Mua bán đất nền Nam Ban, nhà đất Nam Ban Lâm Đồng. Phân lô sổ đỏ, biệt thự nghỉ dưỡng cao nguyên.","url":"https://nambanvillas.vn","telephone":"+84978758788","address":{"@type":"PostalAddress","addressLocality":"Nam Ban","addressRegion":"Lâm Hà, Lâm Đồng","addressCountry":"VN"},"areaServed":"Nam Ban, Lâm Hà, Lâm Đồng","geo":{"@type":"GeoCoordinates","latitude":"11.8347","longitude":"108.2622"},"openingHours":"Mo-Su 07:00-21:00","priceRange":"$$","sameAs":["https://zalo.me/0978758788","https://www.facebook.com/nambanvillas","https://www.tiktok.com/@nambanvillas","https://maps.app.goo.gl/MgLN4AJX7gjRtZgw8"],"knowsAbout":["Đất nền Nam Ban","Đất vườn cà phê Nam Ban","Giá đất Lâm Hà Lâm Đồng","Pháp lý đất Nam Ban","Nhà vườn nghỉ dưỡng Nam Ban"]},{"@type":"WebSite","@id":"https://nambanvillas.vn/#website","name":"Nam Ban Villas","url":"https://nambanvillas.vn","description":"Mua bán đất nền và nhà đất tại Nam Ban, Lâm Hà, Lâm Đồng. Tư vấn miễn phí, pháp lý rõ ràng.","publisher":{"@id":"https://nambanvillas.vn/#organization"},"inLanguage":"vi","speakable":{"@type":"SpeakableSpecification","cssSelector":[".hero-title",".hero-sub"]},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://nambanvillas.vn/dat-nen-nam-ban/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
     <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LHGW9K1BDP');</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung</a>
 
 <!-- HEADER -->
 <header class="header" id="header">
@@ -70,6 +70,7 @@
     </div>
   </div>
 </header>
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -194,7 +195,7 @@
   if(dmCountEl)dmCountEl.textContent=LOTS.length;
   var ORDER={"u1000":0,"1000-2000":1,"2000-4000":2,"o4000":3};
   function card(l){
-    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" fetchpriority="high" decoding="async"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
+    return '<a class="dm-card" href="'+l.u+'"><img src="/images/listings/'+(l.im||l.img+'/1.jpg')+'" alt="'+l.n+'" width="92" height="92" loading="lazy" decoding="async"><div class="dm-cbody"><p class="dm-cname">'+l.n+'</p><span class="dm-cmeta"><span class="dm-cprice">'+l.pr+'</span></span></div></a>';
   }
   var box=document.getElementById('dealMatcher'); if(!box) return;
   // Featured mặc định (chọn lọc hôm nay)
@@ -279,7 +280,7 @@
 <!-- SPOTLIGHT: CỤM MỚI -->
 <section class="section" style="padding:30px 0 4px">
   <div class="container">
-    <a href="/cum-moi-nam-ban" style="display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#12301d,#1f4a2e);border-radius:18px;padding:22px 26px;text-decoration:none;box-shadow:0 14px 34px -16px rgba(26,61,43,.5);position:relative;overflow:hidden">
+    <a href="/cum-moi-nam-ban/" style="display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#12301d,#1f4a2e);border-radius:18px;padding:22px 26px;text-decoration:none;box-shadow:0 14px 34px -16px rgba(26,61,43,.5);position:relative;overflow:hidden">
       <span style="flex:0 0 auto;width:52px;height:52px;border-radius:14px;background:rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 21V9l9-6 9 6v12M3 21h18M3 21v-6h4v6M17 21v-6h4v6M10 13h4v8h-4z" stroke="#C9A84C" stroke-width="1.7" stroke-linejoin="round"/></svg>
       </span>
@@ -296,7 +297,7 @@
 <!-- SPOTLIGHT: CHẤM ĐIỂM LÔ ĐẤT -->
 <section class="section" style="padding:12px 0 4px">
   <div class="container">
-    <a href="/cham-diem-lo-dat" style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#ffffff,#FBF7EF);border:1.5px solid #E6DEC9;border-radius:14px;padding:13px 18px;text-decoration:none">
+    <a href="/cham-diem-lo-dat/" style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#ffffff,#FBF7EF);border:1.5px solid #E6DEC9;border-radius:14px;padding:13px 18px;text-decoration:none">
       <span style="flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:rgba(26,61,43,.08);display:flex;align-items:center;justify-content:center">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 4h6a1 1 0 011 1v1H8V5a1 1 0 011-1z" stroke="#1A3D2B" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 6H6a1 1 0 00-1 1v13a1 1 0 001 1h12a1 1 0 001-1V7a1 1 0 00-1-1h-2" stroke="#1A3D2B" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 13l2 2 4-4" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </span>
@@ -610,6 +611,7 @@
 </section>
 
 <!-- FOOTER -->
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
@@ -626,11 +628,11 @@
     <div class="footer-links">
       <h2>Bất động sản</h2>
       <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>
-      <a href="/cum-moi-nam-ban">Cụm Mới Nam Ban</a>
+      <a href="/cum-moi-nam-ban/">Cụm Mới Nam Ban</a>
       <a href="/nha-ban-nam-ban/">Nhà Bán Nam Ban</a>
       <a href="/cho-thue/">Cho thuê Nam Ban</a>
       <a href="/ky-gui-ban-dat-nam-ban/">Ký gửi bán đất</a>
-      <a href="/cham-diem-lo-dat">Chấm điểm lô đất trước khi mua/bán</a>
+      <a href="/cham-diem-lo-dat/">Chấm điểm lô đất trước khi mua/bán</a>
     </div>
     <div class="footer-links">
       <h2>Thông tin</h2>
@@ -677,14 +679,14 @@
   <a href="/cho-thue/">Cho Thuê</a>
   <a href="/ky-gui-ban-dat-nam-ban/">Ký Gửi Bán Đất</a>
   <a href="/nho-xem-dat-ho-nam-ban/">Nhờ Xem Đất Hộ</a>
-  <a href="/cum-moi-nam-ban">Cụm Mới</a>
-  <a href="/cham-diem-lo-dat">Chấm điểm lô đất</a>
+  <a href="/cum-moi-nam-ban/">Cụm Mới</a>
+  <a href="/cham-diem-lo-dat/">Chấm điểm lô đất</a>
   <a href="/ve-nam-ban/">Về Nam Ban</a>
   <a href="/thi-truong/">Thị Trường</a>
   <a href="/lien-he/">Liên Hệ</a>
 </div>
 <!-- Mobile sheet mở bằng hamburger ở header (xử lý trong js/main.js) -->
-<script src="js/main.js?v=0f2d7ef3" defer></script>
+<script src="js/main.js?v=99ec85fd" defer></script>
 
 <!-- SELL WIDGET -->
 <div class="sell-widget" id="sellWidget" style="display:none">

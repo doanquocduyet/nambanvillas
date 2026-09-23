@@ -24,7 +24,12 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-0.025em}
 h1,h2,h3{text-wrap:balance}
 p{text-wrap:pretty}
 ::selection{background:var(--gold);color:#1A2420}
-:focus-visible{outline:2.5px solid var(--green);outline-offset:2px;border-radius:4px}
+:focus-visible{outline:2.5px solid var(--green);outline-offset:2px;border-radius:4px;
+  /* ĐÃ TỪNG DÍNH (desk-3): viền focus xanh #1A3D2B trên nền xanh đậm (footer,
+     hero, dải CTA) = tương phản 1.00:1 -> người dùng bàn phím MẤT DẤU đang ở
+     đâu. WCAG 2.2 cần >=3:1. Vòng đôi: viền xanh + quầng trắng, nhìn thấy trên
+     mọi nền sáng lẫn tối, không cần biết phần tử nằm trong khối màu gì. */
+  box-shadow:0 0 0 5px #fff,0 0 0 7px var(--green)}
 input,select,textarea,button{accent-color:var(--green)}
 .listing-thumbs,.mobile-sheet{-webkit-overflow-scrolling:touch}
 @media(prefers-reduced-motion:reduce){
@@ -36,6 +41,12 @@ ul{list-style:none}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 .container{max-width:1180px;margin:0 auto;padding:0 24px}
 .section{padding:88px 0}
+
+/* Skip link — người dùng bàn phím/trình đọc màn hình nhảy thẳng vào nội dung,
+   khỏi phải Tab qua 7 mục menu ở mọi trang. Ẩn cho tới khi được focus. */
+.skip-link{position:absolute;left:12px;top:-60px;z-index:2000;background:var(--green);color:#fff;
+  padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;transition:top .15s}
+.skip-link:focus{top:12px}
 
 /* ===== HEADER ===== */
 .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,241,233,.97);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:all var(--trans)}
@@ -243,7 +254,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
  .hero-left .hs-tabs{margin-top:16px}
  .why-grid{grid-template-columns:1fr 1fr}
 }
-:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px;box-shadow:0 0 0 5px #fff,0 0 0 7px var(--green)}
 
 /* ===== QUIZ / MỤC ĐÍCH ===== */
 .quiz-section{background:var(--green-light)}
@@ -292,6 +303,13 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 /* ===== CONTACT PAGE UPGRADE ===== */
 .contact-page-intro{max-width:580px;margin-bottom:4px}
 @media(max-width:600px){}
+
+/* ĐÃ TỪNG DÍNH (form-1): ô tìm .92rem, ô chọn .88rem = dưới 16px -> iOS Safari
+   TỰ PHÓNG TO cả trang khi khách bấm vào ô lọc, xong không thu về. Trên điện
+   thoại mọi ô nhập phải >=16px. !important vì các ô này đặt cỡ bằng style inline. */
+@media(max-width:768px){
+  input,select,textarea,.kl-tim input,.kl-box select,#f-q,#f-area,#f-price{font-size:16px!important}
+}
 
 /* ===== MOBILE BOTTOM NAV ===== */
 .mobile-nav{display:none}

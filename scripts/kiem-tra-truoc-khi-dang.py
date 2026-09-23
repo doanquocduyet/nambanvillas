@@ -616,6 +616,19 @@ if _kq.returncode != 0:
         if _d.startswith("  X "):
             L("[Bộ lọc] " + _d[4:])
 
+# ── 16. preload ảnh phải trỏ ĐÚNG ảnh LCP (fetchpriority=high) ─────────────
+# ĐÃ TỪNG DÍNH (cwv-7): hub thêm tin mới lên đầu nhưng preload vẫn trỏ ảnh của
+# thẻ đầu CŨ -> tải ưu tiên cao một ảnh không phải LCP, làm chậm chính ảnh LCP.
+for _f, _s in data.items():
+    _b = _s[_s.find("<body"):]
+    _hi = re.search(r'<img\b[^>]*fetchpriority="high"[^>]*>', _b)
+    _pl = re.search(r'<link rel="preload" as="image"[^>]*href="([^"]+)"', _s)
+    if not _hi or not _pl:
+        continue
+    _src = re.search(r'src="([^"]+)"', _hi.group(0))
+    if _src and _src.group(1) != _pl.group(1):
+        L(f"[preload trỏ {_pl.group(1)[-40:]} nhưng ảnh LCP là {_src.group(1)[-40:]}] {_f}")
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:

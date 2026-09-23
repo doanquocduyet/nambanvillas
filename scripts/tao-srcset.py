@@ -102,10 +102,13 @@ def main():
         if not m:
             continue
         tg = m.group(0)
-        src = re.search(r'src="(/images/[^"]+)"', tg)
+        # ĐÃ TỪNG DÍNH (cwv-6): chỉ bắt src="/images/..." nên 12 trang dùng đường dẫn
+        # TƯƠNG ĐỐI (../images/, ../../images/) bị bỏ qua dù bản -480 đã có sẵn.
+        src = re.search(r'src="((?:\.\./)*/?images/[^"]+)"', tg)
         if not src:
             continue
-        p = src.group(1).lstrip("/")
+        tien_to = re.match(r'(?:\.\./)*/?', src.group(1)).group(0)   # giữ nguyên kiểu đường dẫn
+        p = src.group(1)[len(tien_to):]
         mw = re.search(r'width="(\d+)"', tg)
         rong = int(mw.group(1)) if mw else 1130
         if rong < RONG_TOI_THIEU:
@@ -113,7 +116,7 @@ def main():
         ban = sinh_ban_nho(p, rong)
         if len(ban) < 2:          # không có bản nhỏ nào → để nguyên
             continue
-        srcset = ", ".join("/%s %dw" % (x, w) for w, x in ban)
+        srcset = ", ".join("%s%s %dw" % (tien_to, x, w) for w, x in ban)
         sizes = sizes_theo_rong(rong)
         tg_moi = gan(tg, srcset, sizes)
         s2 = s.replace(tg, tg_moi, 1)
