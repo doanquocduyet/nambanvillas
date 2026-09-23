@@ -522,9 +522,9 @@ KHU_TRANG = {
     "gia-lam": "dat-gia-lam-nam-ban", "tu-liem": "dat-tu-liem-nam-ban",
     "ho-bai-cong": "dat-ho-bai-cong-nam-ban", "nam-ban": "dat-trung-tam-thi-tran-nam-ban",
 }
-# 3 lô chủ chưa xác nhận khu — cố ý chưa xếp vào trang khu nào
-CHUA_XAC_NHAN_KHU = {"/dat-nen/cum-ts-retreat/", "/dat-nen/cum-tam-xa-5-nen/",
-                     "/dat-nen/cum-thien-van-village/"}
+# Chủ đã xác nhận khu cho mọi lô (23/9/2026). Giữ tập rỗng để sau này có lô
+# treo thì bỏ vào đây thay vì tắt cả bẫy.
+CHUA_XAC_NHAN_KHU = set()
 _ban = {}
 for _f in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
     _s = data.get(_f, "")

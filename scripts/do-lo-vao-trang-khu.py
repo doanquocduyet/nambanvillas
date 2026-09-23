@@ -15,12 +15,15 @@ import re
 
 os.chdir("/home/user/nambanvillas")
 
-THEM_KHU = {"/dat-nen/nam-ban-3223m2-view-ho/": "gia-lam"}
-CHO_XAC_NHAN = {
-    "/dat-nen/cum-ts-retreat/":        "hub gán gia-lam, trang lô ghi 'khu vực Nam Ban – Mê Linh'",
-    "/dat-nen/cum-tam-xa-5-nen/":      "hub gán dong-thanh, trang lô chỉ ghi 'Khu Nhà Máy Nước Tầm Xá, Nam Ban'",
-    "/dat-nen/cum-thien-van-village/": "hub gán nam-ban, trang lô ghi 'Xã Đinh Văn, giáp xã Nam Hà cũ' — ngoài Nam Ban",
-}
+# Hub đã gán đủ khu cho mọi lô (nam-ban-3223m2-view-ho đã thêm gia-lam thẳng
+# vào data-loc trên hub), không cần vá trong script nữa.
+THEM_KHU = {}
+# Chủ đã xác nhận khu cho cả 3 lô từng treo (23/9/2026):
+#   cum-ts-retreat        -> Gia Lâm      (hub đã gán đúng)
+#   cum-tam-xa-5-nen      -> Đông Thanh   (hub đã gán đúng)
+#   cum-thien-van-village -> Nam Hà       (hub gán nam-ban, đã sửa thành nam-ha)
+# Không còn lô nào treo.
+CHO_XAC_NHAN = {}
 TRANG_KHU = {
     "dong-thanh":  "dat-dong-thanh-nam-ban",
     "me-linh":     "dat-me-linh-nam-ban",
