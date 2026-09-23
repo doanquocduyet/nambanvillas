@@ -530,3 +530,57 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .faq-hien summary::after{content:"+";color:var(--gold);font-weight:800;font-size:1.2rem;flex:0 0 auto}
 .faq-hien details[open] summary::after{content:"\2013"}
 .faq-hien p{margin:0;padding:0 18px 16px;color:#4b5a50;font-size:.94rem;line-height:1.75}
+
+/* ── Thẻ lô dạng hàng (.sp-sang) ─────────────────────────────────────────
+   ĐÃ TỪNG DÍNH (nặng): toàn bộ CSS này chỉ nằm INLINE trong 3 trang (trang chủ,
+   hub đất nền, hub nhà bán). 12 trang khác dùng đúng loại thẻ này — 7 trang khu,
+   3 trang theo tầm giá, 2 trang theo nhu cầu — KHÔNG có CSS, nên ~250 thẻ hiện
+   ra vỡ hẳn trên điện thoại: chữ tràn, các chip dính liền nhau, cột giá bị bóp
+   thành một dòng dọc. Nay đặt một bản DUY NHẤT ở đây, mọi trang dùng chung.
+   Bản này lấy từ trang chủ (mới nhất: grid-template-areas, ảnh phủ 2 hàng trên
+   điện thoại), cộng thêm .an-di của bộ lọc. */
+.sp-sang{display:flex!important;flex-direction:column;gap:14px;border:none!important;background:none!important}
+.sp-sang .sp-row.hidden{display:none!important}
+.sp-sang .sp-row{position:relative;display:grid!important;grid-template-columns:240px 1fr auto!important;grid-template-areas:"thumb mid right";gap:20px;align-items:center;background:#fff;border:1px solid #ECE5D8;border-radius:16px;padding:12px 22px 12px 12px;text-decoration:none;box-shadow:0 1px 2px rgba(26,61,43,.04);transition:box-shadow .3s ease,transform .3s ease,border-color .3s ease;overflow:hidden;cursor:pointer}
+.sp-sang .sp-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(180deg,var(--gold,#C9A84C),#b7963f);transition:width .3s ease;z-index:1}
+.sp-sang .sp-row:hover{box-shadow:0 16px 40px -16px rgba(26,61,43,.32);transform:translateY(-3px);border-color:#E4D9C4}
+.sp-sang .sp-row:hover::before{width:4px}
+.sp-sang .sp-thumb{grid-area:thumb;position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/2;display:block}
+.sp-sang .sp-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.sp-sang .sp-row:hover .sp-thumb img{transform:scale(1.07)}
+.sp-sang .sp-badge{position:absolute;top:8px;left:8px;background:var(--gold,#C9A84C);color:#fff;font-size:.64rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.sp-sang .sp-mid{grid-area:mid;min-width:0}
+.sp-sang .sp-title{font-size:1.05rem;font-weight:700;line-height:1.38;color:var(--green,#1A3D2B);margin:0;letter-spacing:-.005em}
+.sp-sang .sp-title a{color:inherit;text-decoration:none}
+.sp-sang .sp-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.sp-sang .sp-chips span{font-size:.76rem;color:#5a5a5a;background:var(--bg,#F7F3EE);padding:3px 10px;border-radius:20px}
+.sp-sang .sp-chips .sp-loc{background:#EDF3EE;color:var(--green,#1A3D2B);font-weight:600}
+.sp-sang .sp-right{grid-area:right;text-align:right;padding-left:20px;border-left:1px solid #ECE5D8;min-width:126px}
+.sp-sang .sp-price{font-weight:800;font-size:1.34rem;color:var(--green,#1A3D2B);letter-spacing:-.02em;line-height:1.1}
+.sp-sang .sp-price::before{content:"GIÁ BÁN";display:block;font-size:.58rem;font-weight:700;letter-spacing:.09em;color:var(--gold,#C9A84C);margin-bottom:3px}
+.sp-sang .sp-area{font-size:.76rem;color:#6B6B6B;margin-top:2px}
+.sp-sang .sp-go{margin-top:11px;display:inline-block;font-size:.7rem;font-weight:700;color:var(--green,#1A3D2B);border:1px solid #E0D6C2;padding:5px 13px;border-radius:20px;transition:background .25s,color .25s,border-color .25s}
+.sp-sang .sp-row:hover .sp-go{background:var(--gold,#C9A84C);color:#fff;border-color:var(--gold,#C9A84C)}
+.sp-sang .sp-feat{grid-template-columns:288px 1fr auto!important;border:1.5px solid var(--gold,#C9A84C);background:linear-gradient(180deg,#FFFDF6,#fff);box-shadow:0 6px 22px -10px rgba(201,168,76,.4)}
+.sp-sang .sp-feat .sp-title{font-size:1.18rem}
+.sp-sang .sp-feat .sp-price{font-size:1.55rem}
+.sp-sang .sp-feat .sp-right{min-width:150px}
+.sp-cta2{display:flex;gap:6px;margin-top:11px;justify-content:flex-end;flex-wrap:wrap}
+.sp-cta2 a{font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:20px;text-decoration:none;white-space:nowrap}
+.sp-cta2 .sp-call{background:var(--green,#1A3D2B);color:#fff}
+.sp-cta2 .sp-zalo{background:#EAF3EC;color:var(--green,#1A3D2B);border:1px solid #cfe3d4}
+@media(max-width:720px){
+ .sp-sang .sp-row,.sp-sang .sp-feat{grid-template-columns:34% 1fr!important;grid-template-areas:"thumb mid" "thumb right"!important;gap:6px 14px;align-items:start;padding:10px}
+ .sp-sang .sp-thumb{aspect-ratio:4/5}
+ .sp-sang .sp-title{font-size:.95rem}
+ .sp-sang .sp-feat .sp-title{font-size:1rem}
+ .sp-sang .sp-right{text-align:left;border-left:none;padding-left:0;min-width:0;align-self:end}
+ .sp-sang .sp-price,.sp-sang .sp-feat .sp-price{font-size:1.2rem}
+ .sp-sang .sp-price::before{margin-bottom:1px}
+ .sp-sang .sp-go{margin-top:8px}
+ .sp-cta2{justify-content:flex-start;margin-top:9px}
+ .sp-cta2 a{padding:7px 12px}
+}
+.sp-sang .sp-row.an-di{display:none!important}
+.sp-sang .cmp-btn{margin-top:10px;width:100%;padding:6px 12px;border-radius:20px;font-size:.74rem}
+@media(max-width:720px){.sp-sang .cmp-btn{width:auto;margin-top:8px}}
