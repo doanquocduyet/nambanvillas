@@ -124,12 +124,12 @@
 </style>
     <div class="lc-khoi">
       <span class="lc-tieu">1 &middot; Bạn muốn xem khu nào?</span>
-      <div class="lc-hang" role="group" aria-label="Lọc theo khu vực"><button type="button" class="lc-chip lc-on" data-loc="">Tất cả <b>116</b></button><button type="button" class="lc-chip" data-loc="nam-ban" data-trang="/dat-trung-tam-thi-tran-nam-ban/">Nam Ban trung tâm <b>69</b></button><button type="button" class="lc-chip" data-loc="dong-thanh" data-trang="/dat-dong-thanh-nam-ban/">Đông Thanh <b>26</b></button><button type="button" class="lc-chip" data-loc="me-linh" data-trang="/dat-me-linh-nam-ban/">Mê Linh <b>14</b></button><button type="button" class="lc-chip" data-loc="ho-bai-cong" data-trang="/dat-ho-bai-cong-nam-ban/">Hồ Bãi Công <b>10</b></button><button type="button" class="lc-chip" data-loc="gia-lam" data-trang="/dat-gia-lam-nam-ban/">Gia Lâm <b>12</b></button><button type="button" class="lc-chip" data-loc="tu-liem" data-trang="/dat-tu-liem-nam-ban/">Từ Liêm <b>4</b></button><button type="button" class="lc-chip" data-loc="nam-ha">Nam Hà <b>3</b></button></div>
+      <div class="lc-hang" role="group" aria-label="Lọc theo khu vực"><button type="button" class="lc-chip lc-on" aria-pressed="true" data-loc="">Tất cả <b>116</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="nam-ban" data-trang="/dat-trung-tam-thi-tran-nam-ban/">Nam Ban trung tâm <b>69</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="dong-thanh" data-trang="/dat-dong-thanh-nam-ban/">Đông Thanh <b>26</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="me-linh" data-trang="/dat-me-linh-nam-ban/">Mê Linh <b>14</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="ho-bai-cong" data-trang="/dat-ho-bai-cong-nam-ban/">Hồ Bãi Công <b>10</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="gia-lam" data-trang="/dat-gia-lam-nam-ban/">Gia Lâm <b>12</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="tu-liem" data-trang="/dat-tu-liem-nam-ban/">Từ Liêm <b>4</b></button><button type="button" class="lc-chip" aria-pressed="false" data-loc="nam-ha">Nam Hà <b>3</b></button></div>
       <p class="lc-rieng" id="lc-rieng-khu" hidden></p>
     </div>
     <div class="lc-khoi">
       <span class="lc-tieu">2 &middot; Lô có đặc điểm gì?</span>
-      <div class="lc-hang" role="group" aria-label="Lọc theo nhu cầu"><button type="button" class="lc-chip lc-on" data-nhan="">Tất cả <b>116</b></button><button type="button" class="lc-chip" data-nhan="view-dep" data-trang="/dat-view-ho-nam-ban/">View đẹp <b>34</b></button><button type="button" class="lc-chip" data-nhan="rung-thong">Giáp rừng thông <b>13</b></button><button type="button" class="lc-chip" data-nhan="vuon" data-trang="/dat-vuon-nam-ban/">Đất vườn cà phê, bơ <b>8</b></button><button type="button" class="lc-chip" data-nhan="lo-goc">Lô góc, 2 mặt tiền <b>10</b></button><button type="button" class="lc-chip" data-nhan="giap-suoi">Giáp suối <b>6</b></button></div>      <p class="lc-rieng" id="lc-rieng-nhu" hidden></p>
+      <div class="lc-hang" role="group" aria-label="Lọc theo nhu cầu"><button type="button" class="lc-chip lc-on" aria-pressed="true" data-nhan="">Tất cả <b>116</b></button><button type="button" class="lc-chip" aria-pressed="false" data-nhan="view-dep" data-trang="/dat-view-ho-nam-ban/">View đẹp <b>34</b></button><button type="button" class="lc-chip" aria-pressed="false" data-nhan="rung-thong">Giáp rừng thông <b>13</b></button><button type="button" class="lc-chip" aria-pressed="false" data-nhan="vuon" data-trang="/dat-vuon-nam-ban/">Đất vườn cà phê, bơ <b>8</b></button><button type="button" class="lc-chip" aria-pressed="false" data-nhan="lo-goc">Lô góc, 2 mặt tiền <b>10</b></button><button type="button" class="lc-chip" aria-pressed="false" data-nhan="giap-suoi">Giáp suối <b>6</b></button></div>      <p class="lc-rieng" id="lc-rieng-nhu" hidden></p>
     </div>
     <p style="margin:0 0 14px;font-size:.92rem;color:#5F6F63;line-height:1.6">Chưa biết tầm tiền này mua được gì? Đọc <a href="/dat-nam-ban-gia-re/" style="color:#1A3D2B;font-weight:700;text-decoration:underline;text-underline-offset:3px">đất Nam Ban giá rẻ có gì trong tầm 450 triệu đến 1 tỷ</a> — so sánh đơn giá thật theo từng tầm.</p>
     <form id="filterForm" onsubmit="return false" style="display:flex;gap:12px;flex-wrap:wrap;background:#F7F3EE;padding:16px;border-radius:12px">
@@ -161,7 +161,6 @@
       var chipKhu=document.querySelectorAll('.lc-chip[data-loc]');
       var chipNhu=document.querySelectorAll('.lc-chip[data-nhan]');
       function bochu(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();}
-      var countEl=document.querySelector('strong[style*="color:#1A3D2B"]')||document.querySelector('.prop-grid')&&document.querySelector('.prop-grid').previousElementSibling&&document.querySelector('.prop-grid').previousElementSibling.querySelector('strong');
       function run(){
         var lv=locChon,av=area.value,pv=price.value;
         var qv=q?bochu(q.value.trim()):'';
@@ -213,9 +212,13 @@
           n.addEventListener('click',function(){
             var v=n.getAttribute(dat)||'';
             if(dat_ten==='khu')locChon=v; else nhanChon=v;
-            ds.forEach(function(m){m.classList.toggle('lc-on',m===n);});
+            ds.forEach(function(m){var b=m===n;m.classList.toggle('lc-on',b);m.setAttribute('aria-pressed',b?'true':'false');});
             hienTrangRieng(v?n:null,oid);
             run();
+            try{var u=new URL(location.href);
+              if(locChon)u.searchParams.set('loc',locChon); else u.searchParams.delete('loc');
+              if(nhanChon)u.searchParams.set('nhan',nhanChon); else u.searchParams.delete('nhan');
+              history.replaceState(null,'',u);}catch(e){}
             var d=document.querySelector('.prop-card[data-area]:not(.an-di)');
             if(d)d.scrollIntoView({behavior:'smooth',block:'center'});
             if(window.gtag)gtag('event','loc_'+dat_ten,{gia_tri:v||'tat-ca'});
@@ -230,10 +233,10 @@
         var qq=sp.get('q'), qloc=sp.get('loc'), qnhan=sp.get('nhan'), can=false;
         if(qq&&q){q.value=qq;can=true;}
         if(qloc){var ck=document.querySelector('.lc-chip[data-loc="'+qloc.replace(/"/g,'')+'"]');
-          if(ck){locChon=qloc;chipKhu.forEach(function(m){m.classList.toggle('lc-on',m===ck);});
+          if(ck){locChon=qloc;chipKhu.forEach(function(m){var b=m===ck;m.classList.toggle('lc-on',b);m.setAttribute('aria-pressed',b?'true':'false');});
             hienTrangRieng(ck,'lc-rieng-khu');can=true;}}
         if(qnhan){var cn=document.querySelector('.lc-chip[data-nhan="'+qnhan.replace(/"/g,'')+'"]');
-          if(cn){nhanChon=qnhan;chipNhu.forEach(function(m){m.classList.toggle('lc-on',m===cn);});
+          if(cn){nhanChon=qnhan;chipNhu.forEach(function(m){var b=m===cn;m.classList.toggle('lc-on',b);m.setAttribute('aria-pressed',b?'true':'false');});
             hienTrangRieng(cn,'lc-rieng-nhu');can=true;}}
         if(!can)return;
         run();
