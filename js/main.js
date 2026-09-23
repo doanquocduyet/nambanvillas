@@ -300,10 +300,12 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   bar.innerHTML='<div class="container cmp-bar-inner"><div class="cmp-slots"></div><button type="button" class="cmp-go" disabled>So sánh</button><button type="button" class="cmp-clear" aria-label="Xoá hết">✕</button></div>';
   document.body.appendChild(bar);
   const slotsEl=bar.querySelector('.cmp-slots');
+  // cmp-1: báo cho CSS biết thanh So sánh đang mở để nâng cụm nút nổi lên
+  const _capNhatMo=()=>document.body.classList.toggle('cmp-mo',selected.length>0);
   const goBtn=bar.querySelector('.cmp-go');
   const clearBtn=bar.querySelector('.cmp-clear');
 
-  function renderBar(){
+  function renderBar(){_capNhatMo();
     if(!selected.length){bar.classList.remove('show');return;}
     bar.classList.add('show');
     let html='';

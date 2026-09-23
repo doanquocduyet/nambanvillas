@@ -629,6 +629,20 @@ for _f, _s in data.items():
     if _src and _src.group(1) != _pl.group(1):
         L(f"[preload trỏ {_pl.group(1)[-40:]} nhưng ảnh LCP là {_src.group(1)[-40:]}] {_f}")
 
+# ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
+# ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
+# ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.
+_lm = {m.group(1): m.group(2) for m in re.finditer(r"<loc>([^<]+)</loc>\s*<lastmod>([\d-]+)</lastmod>", sitemap)}
+for _f, _s in data.items():
+    _u = HOST + duong_dan(_f)
+    _dms = set(re.findall(r'"dateModified":\s*"([\d-]{10})', _s))
+    if not _dms or _u not in _lm:
+        continue
+    if len(_dms) > 1:
+        L(f"[Trang có {len(_dms)} dateModified khác nhau] {_f}: {sorted(_dms)}")
+    elif _lm[_u] not in _dms:
+        L(f"[dateModified {list(_dms)[0]} != sitemap lastmod {_lm[_u]}] {_f}")
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:
