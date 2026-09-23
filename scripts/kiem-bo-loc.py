@@ -247,6 +247,38 @@ for f in sorted(pages):
             L("[Nút nổi có svg mà CSS không có luật đặt cỡ — sẽ rỗng hoặc vỡ] %s: %s"
               % (duong(f), m.group(2)[:30]))
             break
+
+# ── 13. Số lô đang bán nói ở đâu cũng phải bằng số trên hub ────────────────
+# ĐÃ TỪNG DÍNH (aeo-2): cùng câu "có bao nhiêu lô đang bán" ra 5 con số khác
+# nhau (llms.txt 114, trang đi-một-vòng 93, CTA hub 94, hub thật 117). AI lấy
+# llms.txt làm nguồn -> trích sai. Nguồn đúng DUY NHẤT: đếm thẻ trên hub.
+def _dem_hub(f):
+    _s = open(f, encoding="utf-8").read()
+    if "prop-grid sp-sang" not in _s:
+        return None
+    _g = _s.split("prop-grid sp-sang")[1]
+    _t = re.findall(r'<article class="prop-card[^>]*>', _g)
+    return len([x for x in _t if 'data-ban="1"' not in x])
+_DAT = _dem_hub("dat-nen-nam-ban/index.html")
+_NHA = _dem_hub("nha-ban-nam-ban/index.html")
+if _DAT and _NHA:
+    _noi = [("llms.txt", open("llms.txt", encoding="utf-8").read())] + \
+           [(f, open(f, encoding="utf-8").read()) for f in
+            ("index.html", "di-mot-vong-nam-ban/index.html", "dat-nen-nam-ban/index.html")]
+    for _f, _s in _noi:
+        # số THEO KHU (khối .chang-so trên trang đi-một-vòng) là hợp lệ -> bỏ ra trước
+        _s = re.sub(r'<div class="chang-so">.*?</div>', "", _s, flags=re.S)
+        _t = re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[^>]*>.*?</\1>", "", _s, flags=re.S))
+        for _m in re.finditer(r"(\d{2,3})\s*lô(?: đất)?(?: và (\d{2,3}) nhà)? đang bán", _t):
+            if int(_m.group(1)) != _DAT:
+                L("[Số lô đang bán ghi %s, hub thật là %d] %s" % (_m.group(1), _DAT, _f))
+            if _m.group(2) and int(_m.group(2)) != _NHA:
+                L("[Số nhà đang bán ghi %s, hub thật là %d] %s" % (_m.group(2), _NHA, _f))
+        for _m in re.finditer(r"(\d{2,3}) lô và cụm|(\d{2,3}) căn nhà vườn", _t):
+            _v = int(_m.group(1) or _m.group(2))
+            if _m.group(1) and _v != _DAT: L("[llms.txt ghi %d lô, hub thật %d] %s" % (_v, _DAT, _f))
+            if _m.group(2) and _v != _NHA: L("[llms.txt ghi %d căn, hub thật %d] %s" % (_v, _NHA, _f))
+
 # ── kết luận ───────────────────────────────────────────────────────────────
 print("KIỂM NÚT BẤM & BỘ LỌC — %d trang\n%s" % (len(pages), "=" * 62))
 if canh:

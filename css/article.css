@@ -206,3 +206,6 @@
 /* h4 -> h2 (bỏ nhảy cóc bậc tiêu đề): ghi rõ cỡ chữ để không
    rơi về cỡ mặc định của h2. */
 .sidebar-card-head,.sidebar-related-head{font-size:.74rem;font-weight:700;letter-spacing:.08em}
+/* ĐÃ TỪNG DÍNH (desk-9): 31/157 nút "Gọi" chính trang lô vỡ 2 dòng trên máy tính
+   vì cột chỉ còn ~150px cho chữ. Chữ tự co, không gãy dòng. */
+.btn-listing-cta{white-space:nowrap;font-size:clamp(.82rem,1.1vw,.95rem);min-width:0}

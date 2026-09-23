@@ -39,6 +39,36 @@ CUM = {
     "ve-nam-ban/xa-nam-ban-sap-nhap": (
         "Xã Nam Ban sau sáp nhập gồm những xã nào?",
         "Từ 01/7/2025 theo Nghị quyết 202/2025/QH15"),
+    "thi-truong/bang-gia-dat-2026-nam-ban": (
+        "Bảng giá đất 2026 ảnh hưởng gì tới người mua đất Nam Ban?",
+        "Giá nhà nước khác giá thị trường ra sao, phải tính thêm khoản gì"),
+    "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026": (
+        "Quy hoạch Lâm Đồng điều chỉnh 2026 đổi những gì?",
+        "7 thay đổi lớn, Nam Ban lên đô thị loại III"),
+    "thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025": (
+        "Điều chỉnh quy hoạch tỉnh Lâm Đồng 2025 có gì đáng chú ý?",
+        "Mục tiêu 2030, mô hình 1–6–7–18–5, ý nghĩa với Lâm Hà"),
+    "ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026": (
+        "Nam Ban 2026–2030 sẽ thay đổi ra sao?",
+        "5 thay đổi định hình lại giá trị bất động sản"),
+    "thi-truong/dau-tu-dat-nam-ban": (
+        "Đầu tư đất Nam Ban có dòng tiền không?",
+        "Homestay, second home — con số thật, không hứa hẹn"),
+    "ve-nam-ban/tiem-nang-dau-tu-nam-ban": (
+        "Vì sao Nam Ban được gọi là viên ngọc ẩn?",
+        "So với Đà Lạt, Bảo Lộc: giá, quỹ đất, ai đang mua"),
+    "thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong": (
+        "Retreat cao nguyên có phải xu hướng thật?",
+        "3 phân khúc hưởng lợi, giá thuê 3–8 triệu/đêm"),
+    "thi-truong/nam-ban-so-voi-noi-khac": (
+        "Nam Ban, Bảo Lộc, Di Linh hay Đà Lạt — mua ở đâu?",
+        "Cùng 1–2 tỷ mua được gì ở mỗi nơi, nói cả mặt yếu"),
+    "thi-truong/song-o-nam-ban": (
+        "Sống ở Nam Ban thực tế tốn bao nhiêu?",
+        "Chi phí, trường học, internet, điện nước 2026"),
+    "thi-truong/nam-ban-lam-ha-50-nam-vung-kinh-te-moi": (
+        "Nam Ban có gốc gác gì với người Hà Nội?",
+        "50 năm vùng kinh tế mới — vì sao nhiều người Hà Nội tìm về"),
 }
 
 # Bài nào nên trỏ sang bài nào — chọn theo LIÊN QUAN THẬT, không nối bừa cả 6.
@@ -66,6 +96,48 @@ NOI = {
     "ve-nam-ban/xa-nam-ban-sap-nhap": [
         "thi-truong/dat-nam-ban-tang-gia-2025",
         "thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025",
+        "thi-truong/khi-hau-cuoc-song-nam-ban"],
+    # cụm QUY HOẠCH & GIÁ
+    "thi-truong/bang-gia-dat-2026-nam-ban": [
+        "thi-truong/dat-nam-ban-tang-gia-2025",
+        "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026",
+        "thi-truong/nam-ban-so-voi-noi-khac"],
+    "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026": [
+        "ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026",
+        "thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025",
+        "thi-truong/tuyen-tranh-nam-ban-khi-nao-hoan-thanh"],
+    "thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025": [
+        "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026",
+        "thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025",
+        "ve-nam-ban/xa-nam-ban-sap-nhap"],
+    "ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026": [
+        "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026",
+        "thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban",
+        "thi-truong/bang-gia-dat-2026-nam-ban"],
+    # cụm ĐẦU TƯ & SỐNG
+    "thi-truong/dau-tu-dat-nam-ban": [
+        "ve-nam-ban/tiem-nang-dau-tu-nam-ban",
+        "thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong",
+        "thi-truong/dat-nam-ban-tang-gia-2025"],
+    "ve-nam-ban/tiem-nang-dau-tu-nam-ban": [
+        "thi-truong/nam-ban-so-voi-noi-khac",
+        "thi-truong/dau-tu-dat-nam-ban",
+        "ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026"],
+    "thi-truong/nghi-duong-retreat-cao-nguyen-lam-dong": [
+        "thi-truong/dau-tu-dat-nam-ban",
+        "thi-truong/khi-hau-cuoc-song-nam-ban",
+        "thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban"],
+    "thi-truong/nam-ban-so-voi-noi-khac": [
+        "ve-nam-ban/tiem-nang-dau-tu-nam-ban",
+        "thi-truong/bang-gia-dat-2026-nam-ban",
+        "thi-truong/song-o-nam-ban"],
+    "thi-truong/song-o-nam-ban": [
+        "thi-truong/khi-hau-cuoc-song-nam-ban",
+        "thi-truong/nam-ban-lam-ha-50-nam-vung-kinh-te-moi",
+        "thi-truong/nam-ban-so-voi-noi-khac"],
+    "thi-truong/nam-ban-lam-ha-50-nam-vung-kinh-te-moi": [
+        "thi-truong/song-o-nam-ban",
+        "ve-nam-ban/xa-nam-ban-sap-nhap",
         "thi-truong/khi-hau-cuoc-song-nam-ban"],
 }
 
@@ -110,6 +182,10 @@ def main():
         m = re.search(r'\s*<div class="article-cta-box"', s)
         if not m:
             m = re.search(r'\s*<section class="faq-hien"', s)
+        if not m:   # bài không có khối CTA/FAQ chuẩn -> đặt cuối <main>
+            m = re.search(r'\s*</main>', s)
+        if not m:
+            m = re.search(r'\s*<footer', s)
         if not m:
             print("  KHÔNG tìm được chỗ chèn:", nguon)
             continue
