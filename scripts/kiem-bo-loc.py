@@ -180,6 +180,40 @@ for f in sorted(pages):
     if dong:
         L("[%d câu hỏi còn đóng — phải mở sẵn để ăn SEO/AEO/GEO] %s" % (dong, d))
 
+
+# ── 11. Bài cùng cụm chủ đề phải NỐI NHAU ─────────────────────────────────
+# LUẬT CHỦ CHỐT 23/9/2026: giữ riêng, không gộp, không 301. Đổi lại phải nối
+# thành cụm. ĐÃ ĐO TRƯỚC KHI NỐI: 6 bài cùng chủ đề, 0 bài nào trỏ sang bài nào;
+# bài quy hoạch chỉ có 1 link vào cả site -> Google thấy 6 trang yếu lẻ loi.
+CUM_CHU_DE = [
+    "thi-truong/tuyen-tranh-nam-ban-khi-nao-hoan-thanh",
+    "thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban",
+    "thi-truong/khi-hau-cuoc-song-nam-ban",
+    "thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025",
+    "thi-truong/dat-nam-ban-tang-gia-2025",
+    "ve-nam-ban/xa-nam-ban-sap-nhap",
+]
+import json as _js
+_vercel = _js.load(open("vercel.json", encoding="utf-8"))
+_nguon_rd = {r["source"].rstrip("/") for r in _vercel.get("redirects", [])}
+for _d in CUM_CHU_DE:
+    _f = _d + "/index.html"
+    if not os.path.exists(_f):
+        L("[Bài trong cụm chủ đề bị XOÁ — luật: giữ riêng, không gộp] /%s/" % _d)
+        continue
+    if ("/" + _d) in _nguon_rd:
+        L("[Bài trong cụm bị 301 sang nơi khác — luật: giữ riêng, không gộp] /%s/" % _d)
+    _s = open(_f, encoding="utf-8").read()
+    if 'class="cum-chu-de"' not in _s:
+        L("[Bài trong cụm không có khối 'Cùng chủ đề' — bài lẻ loi là bài yếu] /%s/"
+          " — chạy python3 scripts/noi-cum-chu-de.py" % _d)
+        continue
+    _n = len(re.findall(r'<nav class="cum-chu-de"[\s\S]*?</nav>', _s))
+    _link = re.findall(r'class="cum-chu-de"[\s\S]*?</nav>', _s)
+    _so = len(re.findall(r'<li><a href="/', _link[0])) if _link else 0
+    if _so < 2:
+        L("[Khối 'Cùng chủ đề' chỉ có %d link — cần ít nhất 2] /%s/" % (_so, _d))
+
 # ── kết luận ───────────────────────────────────────────────────────────────
 print("KIỂM NÚT BẤM & BỘ LỌC — %d trang\n%s" % (len(pages), "=" * 62))
 if canh:

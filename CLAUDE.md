@@ -83,6 +83,9 @@
 - Verify kết quả sau mỗi thay đổi trước khi push.
 - Gold (#C9A84C) chỉ dùng ở: mobile nav call button, Pain section numbers, Notes editorial border-left, hover on dark bg.
 - Popup: localStorage (không phải sessionStorage) — hiện đúng 1 lần trong đời user.
+- **[KHÔNG GỘP BÀI — CHỐT 23/9/2026]** Bài cùng chủ đề **GIỮ RIÊNG**, không gộp, không 301 sang nhau. Mỗi bài nhắm **một câu người ta search khác nhau** — "tuyến tránh khi nào xong" ≠ "sân bay ảnh hưởng gì" ≠ "giá bao nhiêu một mét". Gộp là mất một cửa vào Google. Đã đo: 28 bài, **0 cặp trùng từ khoá trên 30%** → không có chuyện tự cắn nhau.
+  - Đổi lại, giữ riêng **bắt buộc phải NỐI THÀNH CỤM**: cuối mỗi bài có khối `.cum-chu-de` trỏ sang 3 bài anh em, **chữ neo là CÂU HỎI bài đích trả lời** (cấm "xem thêm", "tại đây"). Bài lẻ loi mới là bài yếu — không phải bài ngắn.
+  - Thêm bài mới cùng cụm → chạy `python3 scripts/noi-cum-chu-de.py`. Checker mục 11 chặn nếu bài trong cụm không nối nhau.
 - **[NÉN ẢNH BẮT BUỘC]** Mọi ảnh MỚI trước khi commit phải chạy `python3 scripts/nen-anh.py <file/thư-mục>` (max 1600px, JPEG q82, chỉ ghi đè nếu nhỏ hơn thật). Ảnh từ điện thoại thường 3–5MB — không được đưa thẳng lên site. Ảnh cũ đã tối ưu sẵn, nén lại không lợi → chỉ nén ảnh mới.
 
 ---
