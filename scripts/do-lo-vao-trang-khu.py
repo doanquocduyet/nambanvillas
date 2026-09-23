@@ -31,6 +31,7 @@ TRANG_KHU = {
     "tu-liem":     "dat-tu-liem-nam-ban",
     "ho-bai-cong": "dat-ho-bai-cong-nam-ban",
     "nam-ban":     "dat-trung-tam-thi-tran-nam-ban",
+    "nam-ha":      "dat-nam-ha-nam-ban",
 }
 THE = re.compile(r'<article class="prop-card sp-row[^"]*"([^>]*)>([\s\S]*?)</article>')
 URL = re.compile(r'href="(/(?:dat-nen|nha-ban)/[a-z0-9-]+/)"')
@@ -100,7 +101,10 @@ def main():
 
         i = s.index('<div class="prop-grid sp-sang">')
         i = s.index(">", i) + 1
-        j = s.index("</div>", s.rindex("</article>"))
+        # Trang khu mới dựng có lưới RỖNG (chưa có </article> nào) — cắt từ
+        # ngay sau thẻ mở lưới tới </div> đóng lưới.
+        k = s.rfind("</article>")
+        j = s.index("</div>", k) if k > i else s.index("</div>", i)
 
         # 1) thẻ đang có trên trang: giữ nguyên thứ tự
         cu = []
