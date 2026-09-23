@@ -553,6 +553,23 @@ for _u, _locs in _ban.items():
             L(f"[Lô ĐÃ BÁN bị gỡ khỏi trang khu — luật: luôn để lại, chỉ ghi Đã bán] "
               f"/{_t}/ thiếu {_u}")
 
+# ── 12. CSS thẻ lô phải nằm ở style.css, không inline ─────────────────────
+# ĐÃ TỪNG DÍNH (nặng, khách chụp màn hình báo "sao xấu dữ"): toàn bộ layout
+# .sp-sang chỉ nằm INLINE trong 3 trang; 12 trang khác dùng đúng loại thẻ đó mà
+# không có CSS -> ~250 thẻ vỡ hẳn trên điện thoại. Nay CSS ở css/style.css.
+_css = open("css/style.css", encoding="utf-8").read()
+for _k in (".sp-sang .sp-row{", ".sp-sang .sp-thumb{", ".sp-sang .sp-chips span{",
+           ".sp-sang .sp-right{", ".sp-sang .sp-price{", ".sp-sang .sp-mid{"):
+    if _k not in _css:
+        L(f"[CSS thẻ lô biến mất khỏi style.css — mọi trang khu sẽ vỡ] thiếu {_k}")
+for _f, _s in data.items():
+    if "prop-grid sp-sang" not in _s:
+        continue
+    if "css/style.css" not in _s:
+        L(f"[Trang dùng thẻ .sp-sang nhưng KHÔNG nạp style.css] {_f}")
+    if ".sp-sang .sp-thumb{" in _s:
+        L(f"[CSS thẻ lô lại bị chép inline — sẽ lệch với style.css] {_f}")
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:
