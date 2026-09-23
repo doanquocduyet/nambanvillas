@@ -216,6 +216,29 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
+/* THƯ VIỆN ẢNH & LIGHTBOX — dùng được bằng BÀN PHÍM.
+   ĐÃ TỪNG DÍNH (desk-2): 700 ảnh trên 156 trang lô chỉ mở được bằng chuột
+   (onclick trên <img>, không tabindex, không role), lightbox không đóng được
+   bằng phím Esc. Người dùng bàn phím / trình đọc màn hình bị chặn hoàn toàn.
+   Gắn ở đây một lần cho mọi trang thay vì sửa 700 thẻ. */
+(function(){
+  var anh=document.querySelectorAll('img[onclick]');
+  if(!anh.length)return;
+  anh.forEach(function(i){
+    if(!i.hasAttribute('tabindex'))i.tabIndex=0;
+    if(!i.hasAttribute('role'))i.setAttribute('role','button');
+    i.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();i.click();}
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    var lb=document.getElementById('lb');
+    if(lb&&lb.classList.contains('open')){lb.classList.remove('open');
+      var g=document.getElementById('galMain');if(g)g.focus();}
+  });
+})();
+
 /* SO SÁNH LÔ — bật ở MỌI trang có nút So sánh.
    ĐÃ TỪNG DÍNH: chỗ này từng chặn theo đường dẫn, chỉ cho chạy ở 2 hub. Nhưng
    nút "+ So sánh" được in ra trên CẢ 6 TRANG KHU nữa -> 142 nút hiện lên mà bấm

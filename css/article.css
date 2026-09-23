@@ -42,7 +42,11 @@
 .listing-detail-grid{display:grid;grid-template-columns:1fr 340px;gap:0;max-width:1100px;margin:40px auto;padding:0 20px}
 .listing-main{padding-right:32px;min-width:0}
 .listing-sidebar{border-left:1px solid #E2DBD0;padding-left:28px;padding-top:4px;display:flex;flex-direction:column;min-width:0}
-.listing-sidebar .sidebar-related{order:-1;border-top:none;margin-top:0;padding-top:0;border-bottom:1px solid #E8E2D9;padding-bottom:20px;margin-bottom:20px}
+/* ĐÃ TỪNG DÍNH (desk-1): order:-1 đẩy 2 thẻ "Có Thể Bạn Quan Tâm" LÊN TRÊN thẻ
+   giá có nút Gọi/Zalo -> ở laptop 1366x768 / 1440x800, nút liên hệ của trang lô
+   nằm NGOÀI màn hình đầu, khách phải cuộn mới thấy. Thẻ giá + nút Gọi phải đứng
+   đầu cột phải trên máy tính. */
+.listing-sidebar .sidebar-related{order:1;border-top:none;margin-top:0;padding-top:0;border-bottom:1px solid #E8E2D9;padding-bottom:20px;margin-bottom:20px}
 .listing-sidebar .listing-price-card{order:0}
 .listing-sidebar .sidebar-card{order:1}
 /* ===== MOBILE: dàn lại thứ tự — giá + thông số + CTA ngay dưới ảnh ===== */

@@ -28,12 +28,13 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/plus-jakarta-sans@5/wght.css">
-  <link rel="stylesheet" href="../css/style.css?v=10c39d5f">
+  <link rel="stylesheet" href="../css/style.css?v=80235b39">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHGW9K1BDP"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LHGW9K1BDP');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"RealEstateAgent","@id":"https://nambanvillas.vn/#organization","name":"Nam Ban Villas","description":"Mua bán đất nền Nam Ban, nhà đất Nam Ban Lâm Đồng. Phân lô sổ đỏ, biệt thự nghỉ dưỡng cao nguyên.","url":"https://nambanvillas.vn","telephone":"+84978758788","address":{"@type":"PostalAddress","addressLocality":"Nam Ban","addressRegion":"Lâm Hà, Lâm Đồng","addressCountry":"VN"},"areaServed":"Nam Ban, Lâm Hà, Lâm Đồng","geo":{"@type":"GeoCoordinates","latitude":"11.8347","longitude":"108.2622"},"openingHours":"Mo-Su 07:00-21:00","priceRange":"$$","sameAs":["https://zalo.me/0978758788","https://www.facebook.com/nambanvillas","https://www.tiktok.com/@nambanvillas","https://maps.app.goo.gl/MgLN4AJX7gjRtZgw8"]},{"@type":"WebSite","@id":"https://nambanvillas.vn/#website","name":"Nam Ban Villas","url":"https://nambanvillas.vn","publisher":{"@id":"https://nambanvillas.vn/#organization"},"inLanguage":"vi"},{"@type":"ContactPage","@id":"https://nambanvillas.vn/lien-he/#webpage","url":"https://nambanvillas.vn/lien-he/","name":"Liên hệ Nam Ban Villas","description":"Hẹn một buổi cafe ở Nam Ban. Gọi hoặc nhắn Zalo 0978 758 788, trả lời 7 ngày/tuần 07:00–21:00.","isPartOf":{"@id":"https://nambanvillas.vn/#website"},"about":{"@id":"https://nambanvillas.vn/#organization"},"inLanguage":"vi","speakable":{"@type":"SpeakableSpecification","cssSelector":["h1"]},"mainEntity":{"@type":"ContactPoint","@id":"https://nambanvillas.vn/lien-he/#contact","telephone":"+84978758788","contactType":"sales","areaServed":"VN","availableLanguage":["vi"],"hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"07:00","closes":"21:00"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://nambanvillas.vn/"},{"@type":"ListItem","position":2,"name":"Liên Hệ","item":"https://nambanvillas.vn/lien-he/"}]}]}</script>
 </head>
 <body>
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung</a>
 <header class="header scrolled" id="header">
   <div class="container header-inner">
     <a href="/" class="logo"><img src="/images/logo.png" alt="Nam Ban Villas" width="41" height="52" style="display:block" decoding="async"><span class="logo-text">NamBan<strong>Villas</strong></span></a>
@@ -51,6 +52,7 @@
     </div>
   </div>
 </header>
+<main id="main">
 
 <div class="breadcrumb-bar" style="background:#F7F3EE;border-bottom:1px solid #E2DBD0;padding:10px 0">
   <div class="container">
@@ -124,9 +126,9 @@
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="https://nambanvillas.vn/lien-he/?sent=1">
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <input type="text" name="Tên" required placeholder="Tên của bạn">
-          <input type="tel" name="Số điện thoại" required placeholder="Số điện thoại">
-          <textarea name="Nhu cầu" rows="2" placeholder="Bạn đang tìm gì? (không bắt buộc)"></textarea>
+          <input type="text" name="Tên" required placeholder="Tên của bạn" autocomplete="name" aria-label="Tên của bạn">
+          <input type="tel" name="Số điện thoại" required placeholder="Số điện thoại" autocomplete="tel" inputmode="tel" aria-label="Số điện thoại">
+          <textarea name="Nhu cầu" rows="2" placeholder="Bạn đang tìm gì? (không bắt buộc)" aria-label="Bạn đang tìm gì"></textarea>
           <button type="submit">Gửi — nhận cuộc gọi lại</button>
         </form>
       </div>
@@ -136,6 +138,7 @@
   </div>
 </section>
 
+</main>
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
@@ -152,10 +155,10 @@
     <div class="footer-links">
       <h2>Bất động sản</h2>
       <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>
-      <a href="/cum-moi-nam-ban">Cụm Mới Nam Ban</a>
+      <a href="/cum-moi-nam-ban/">Cụm Mới Nam Ban</a>
       <a href="/nha-ban-nam-ban/">Nhà Bán Nam Ban</a>
       <a href="/ky-gui-ban-dat-nam-ban/">Ký gửi bán đất</a>
-      <a href="/cham-diem-lo-dat">Chấm điểm lô đất trước khi mua/bán</a>
+      <a href="/cham-diem-lo-dat/">Chấm điểm lô đất trước khi mua/bán</a>
     </div>
     <div class="footer-links">
       <h2>Thông tin</h2>
@@ -174,8 +177,7 @@
     </div>
   </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="../js/main.js?v=0f2d7ef3" defer></script>
+<script src="../js/main.js?v=99ec85fd" defer></script>
 <!-- MOBILE BOTTOM NAV (chỉ hiện trên điện thoại) -->
 <nav class="mobile-nav" aria-label="Điều hướng nhanh">
   <a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="mnav-item mnav-zalo">
