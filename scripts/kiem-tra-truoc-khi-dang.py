@@ -593,6 +593,29 @@ for _f, _s in data.items():
             L(f"[?v= cũ, không khớp nội dung file] {_f}: {_ten} ?v={_m.group(3)}"
               f" nhưng file đang là {_ts[_ten]} — chạy python3 scripts/dat-phien-ban-css.py")
 
+# ── 14. Bậc tiêu đề không được nhảy cóc ───────────────────────────────────
+# ĐÃ TỪNG DÍNH: 208/219 trang nhảy h2 -> h4 vì tiêu đề chân trang và thanh bên
+# để h4. Trình đọc màn hình và bộ trích dẫn của AI đọc trang theo cây tiêu đề,
+# nhảy bậc là cây gãy.
+for _f, _s in data.items():
+    _b = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", _s, flags=re.S)
+    _t = 0
+    for _m in re.finditer(r"<h([1-6])\b", _b):
+        _h = int(_m.group(1))
+        if _t and _h > _t + 1:
+            L(f"[Bậc tiêu đề nhảy cóc h{_t}->h{_h} — hại AEO & trình đọc màn hình] {_f}")
+            break
+        _t = _h
+
+# ── 15. Gọi luôn máy kiểm nút bấm & bộ lọc ────────────────────────────────
+# Một lệnh kiểm hết, để không bao giờ "quên chạy cái kia".
+import subprocess as _sp
+_kq = _sp.run([sys.executable, "scripts/kiem-bo-loc.py"], capture_output=True, text=True)
+if _kq.returncode != 0:
+    for _d in _kq.stdout.splitlines():
+        if _d.startswith("  X "):
+            L("[Bộ lọc] " + _d[4:])
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:

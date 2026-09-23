@@ -26,7 +26,7 @@
 .article-cta-box a:hover,.article-cta-box .btn-cta:hover{background:#24512f;transform:translateY(-1px)}
 /* Sidebar tư vấn card */
 .sidebar-card.sidebar-cta{background:#EEF3EC;border-color:#DCE6D8}
-.sidebar-cta h4{color:#8a978f}
+.sidebar-cta h2{color:#8a978f}
 .sidebar-cta p{font-size:.86rem;color:#5a6660;line-height:1.6;margin:0 0 14px}
 .sidebar-cta .btn-cta-sm,.sidebar-cta .btn-zalo-sm{display:block;text-align:center;padding:11px;border-radius:10px;font-weight:700;text-decoration:none;font-size:.9rem}
 .sidebar-cta .btn-cta-sm{background:#1A3D2B;color:#fff;margin-bottom:9px}
@@ -128,7 +128,7 @@
 .sidebar-spec-row span:first-child{color:#8a978f}
 .sidebar-spec-row span:last-child{font-weight:700;color:#1A3D2B;text-align:right}
 .sidebar-card{background:#fff;border:1px solid #EDE7DD;border-radius:16px;padding:18px 20px;margin-top:16px}
-.sidebar-card h4{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.sidebar-card h2{font-size:.74rem;font-weight:700;color:#8a978f;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 .sidebar-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
 .sidebar-links a{color:#2D2D2D;font-size:.88rem;text-decoration:none;border-bottom:1px solid #F0EBE2;padding-bottom:9px;display:block;transition:.15s;line-height:1.45}
 .sidebar-links a:hover{color:#1A3D2B}
@@ -144,7 +144,7 @@
 .related-card-title{font-size:.92rem;font-weight:700;color:#1A3D2B;line-height:1.4;margin:0}
 .related-card-cta{font-size:.82rem;color:#8a978f;margin-top:8px;font-weight:600}
 /* Quick contact form in sidebar */
-.mini-contact-form h4{margin-bottom:12px}
+.mini-contact-form h2{margin-bottom:12px}
 .quick-form{display:flex;flex-direction:column;gap:8px}
 .quick-form input{padding:10px 12px;border:2px solid #E2DBD0;border-radius:8px;font-family:inherit;font-size:.88rem;outline:none;transition:.15s}
 .quick-form input:focus{border-color:#1A3D2B}
@@ -199,3 +199,6 @@
 .verify{display:inline-flex;align-items:center;gap:7px;background:#eef4ef;color:#1A3D2B;font-weight:600;font-size:.84rem;padding:8px 12px;border-radius:999px}
 .verify svg{width:15px;height:15px;color:#2f7d4f;flex:0 0 auto}
 @media(max-width:600px){.verify{font-size:.8rem;padding:7px 10px}}
+/* h4 -> h2 (bỏ nhảy cóc bậc tiêu đề): ghi rõ cỡ chữ để không
+   rơi về cỡ mặc định của h2. */
+.sidebar-card-head,.sidebar-related-head{font-size:.74rem;font-weight:700;letter-spacing:.08em}

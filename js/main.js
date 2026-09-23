@@ -194,10 +194,12 @@ document.querySelectorAll('.related-card img').forEach(function(img){
   img.addEventListener('error',hide);
 });
 
-/* SO SÁNH LÔ — chỉ bật ở trang danh sách Đất Nền & Nhà Bán */
+/* SO SÁNH LÔ — bật ở MỌI trang có nút So sánh.
+   ĐÃ TỪNG DÍNH: chỗ này từng chặn theo đường dẫn, chỉ cho chạy ở 2 hub. Nhưng
+   nút "+ So sánh" được in ra trên CẢ 6 TRANG KHU nữa -> 142 nút hiện lên mà bấm
+   không ăn gì. Không cần chặn theo đường dẫn: dòng kiểm .cmp-btn ngay dưới đã
+   đủ để trang nào không có nút thì thôi. */
 (function(){
-  var p=location.pathname;
-  if(p.indexOf('/dat-nen-nam-ban')<0 && p.indexOf('/nha-ban-nam-ban')<0)return;
   const cards=document.querySelectorAll('.prop-card');
   if(!cards.length)return;
   if(!document.querySelector('.cmp-btn'))return;

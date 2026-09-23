@@ -150,7 +150,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
 .footer-brand p{font-size:.88rem;line-height:1.7;margin-bottom:4px}.footer .logo img{filter:brightness(0) invert(1)}
 .footer-links{display:flex;flex-direction:column;gap:4px}
-.footer-links h4{color:white;font-size:.9rem;font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-links h2{color:white;font-size:.9rem;font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.1)}
 .footer-links a{font-size:.88rem;padding:4px 0;transition:color var(--trans)}
 .footer-links a:hover{color:var(--gold)}
 #qrcode canvas,#qrcode img{border-radius:8px;border:3px solid white}
@@ -173,7 +173,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 @media(max-width:480px){.sell-widget{width:200px;right:12px;bottom:205px}.sell-widget-desc{display:none}}
 
 /* ===== MINI CONTACT FORM (listing sidebar) ===== */
-.mini-contact-form h4{color:var(--green);font-size:.95rem;font-weight:700;margin-bottom:12px}
+.mini-contact-form h2{color:var(--green);font-size:.95rem;font-weight:700;margin-bottom:12px}
 
 /* ===== TESTIMONIALS ===== */
 .qh-section{background:var(--bg)}
