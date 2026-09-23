@@ -570,6 +570,29 @@ for _f, _s in data.items():
     if ".sp-sang .sp-thumb{" in _s:
         L(f"[CSS thẻ lô lại bị chép inline — sẽ lệch với style.css] {_f}")
 
+# ── 13. CSS/JS phải đóng dấu phiên bản đúng ───────────────────────────────
+# ĐÃ TỪNG DÍNH (chủ chụp màn hình 2 lần, lần 2 y hệt lần 1): vercel.json cache
+# /css/* 24 tiếng + stale 7 ngày, tên file không đổi -> sửa CSS xong đẩy lên mà
+# khách cũ vẫn thấy bản CŨ, kéo-xuống-refresh cũng không ăn thua.
+# Chữa bằng ?v=<vân tay nội dung>. Bẫy này bắt khi quên chạy lại script.
+import hashlib as _hl
+_ts = {}
+for _p in ("css/style.css", "css/article.css", "js/main.js"):
+    if os.path.exists(_p):
+        _ts[_p] = _hl.sha1(open(_p, "rb").read()).hexdigest()[:8]
+_re_ts = re.compile(r'(?:href|src)="((?:\.\./)*/?(?:css/(?:style|article)\.css|js/main\.js))(\?v=([0-9a-f]+))?"')
+for _f, _s in data.items():
+    for _m in _re_ts.finditer(_s):
+        _ten = re.sub(r"^(?:\.\./)*/?", "", _m.group(1))
+        if _ten not in _ts:
+            continue
+        if not _m.group(2):
+            L(f"[CSS/JS thiếu ?v= — khách cũ sẽ thấy bản cũ tới 24h] {_f}: {_m.group(1)}"
+              " — chạy python3 scripts/dat-phien-ban-css.py")
+        elif _m.group(3) != _ts[_ten]:
+            L(f"[?v= cũ, không khớp nội dung file] {_f}: {_ten} ?v={_m.group(3)}"
+              f" nhưng file đang là {_ts[_ten]} — chạy python3 scripts/dat-phien-ban-css.py")
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:

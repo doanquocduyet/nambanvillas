@@ -569,18 +569,46 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .sp-cta2 a{font-size:.75rem;font-weight:700;padding:8px 14px;border-radius:20px;text-decoration:none;white-space:nowrap}
 .sp-cta2 .sp-call{background:var(--green,#1A3D2B);color:#fff}
 .sp-cta2 .sp-zalo{background:#EAF3EC;color:var(--green,#1A3D2B);border:1px solid #cfe3d4}
+/* ĐIỆN THOẠI — dựng theo lối các trang rao bất động sản lớn (batdongsan,
+   Chợ Tốt): ảnh nhỏ cố định bên trái, TIÊU ĐỀ CẮT ĐÚNG 2 DÒNG, GIÁ là thứ
+   to nhất và đứng ngay dưới tiêu đề, một dòng thông số gọn, còn lại giấu đi.
+   ĐÃ TỪNG DÍNH: tiêu đề dài 4 dòng + 4 chip xuống 3 dòng -> mỗi thẻ cao gần
+   nửa màn hình, khách cuộn 96 thẻ không nổi. */
 @media(max-width:720px){
- .sp-sang .sp-row,.sp-sang .sp-feat{grid-template-columns:34% 1fr!important;grid-template-areas:"thumb mid" "thumb right"!important;gap:6px 14px;align-items:start;padding:10px}
- .sp-sang .sp-thumb{aspect-ratio:4/5}
- .sp-sang .sp-title{font-size:.95rem}
- .sp-sang .sp-feat .sp-title{font-size:1rem}
- .sp-sang .sp-right{text-align:left;border-left:none;padding-left:0;min-width:0;align-self:end}
- .sp-sang .sp-price,.sp-sang .sp-feat .sp-price{font-size:1.2rem}
- .sp-sang .sp-price::before{margin-bottom:1px}
- .sp-sang .sp-go{margin-top:8px}
- .sp-cta2{justify-content:flex-start;margin-top:9px}
+ .sp-sang{gap:10px}
+ .sp-sang .sp-row,.sp-sang .sp-feat{grid-template-columns:118px 1fr!important;grid-template-areas:"thumb mid" "thumb right"!important;gap:4px 12px;align-items:start;padding:10px}
+ .sp-sang .sp-thumb{aspect-ratio:4/3;align-self:start}
+ .sp-sang .sp-badge{font-size:.58rem;padding:2px 8px;top:6px;left:6px}
+
+ /* tiêu đề: đúng 2 dòng, thừa thì cắt bằng dấu … */
+ .sp-sang .sp-title,.sp-sang .sp-feat .sp-title{font-size:.94rem;line-height:1.34;
+   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+ /* thông số: chỉ giữ 2 chip đầu, mỗi chip 1 dòng, thừa thì cắt */
+ .sp-sang .sp-chips{margin-top:5px;gap:4px;flex-direction:column;align-items:flex-start}
+ .sp-sang .sp-chips span{font-size:.72rem;padding:2px 8px;max-width:100%;
+   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .sp-sang .sp-chips span:nth-of-type(n+3){display:none}
+
+ /* giá: to nhất thẻ, diện tích nằm cùng dòng, bỏ nhãn "GIÁ BÁN" cho đỡ rối */
+ .sp-sang .sp-right{grid-area:right;text-align:left;border-left:none;padding-left:0;
+   min-width:0;align-self:start;margin-top:6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 9px}
+ .sp-sang .sp-price,.sp-sang .sp-feat .sp-price{font-size:1.22rem;line-height:1.15}
+ .sp-sang .sp-price::before{display:none}
+ .sp-sang .sp-area{margin-top:0;font-size:.78rem}
+ .sp-sang .sp-go{display:none}
+ .sp-cta2{justify-content:flex-start;margin-top:9px;flex-basis:100%}
  .sp-cta2 a{padding:7px 12px}
 }
+/* Màn hẹp: nút So sánh là tính năng dùng trên máy tính, trên điện thoại nó
+   chiếm nguyên một hàng mà gần như không ai bấm -> ẩn. */
+@media(max-width:560px){
+ .sp-sang .cmp-btn{display:none}
+ .sp-sang .sp-row,.sp-sang .sp-feat{grid-template-columns:104px 1fr!important}
+ .sp-sang .sp-title,.sp-sang .sp-feat .sp-title{font-size:.9rem}
+ .sp-sang .sp-price,.sp-sang .sp-feat .sp-price{font-size:1.14rem}
+}
+
 .sp-sang .sp-row.an-di{display:none!important}
 .sp-sang .cmp-btn{margin-top:10px;width:100%;padding:6px 12px;border-radius:20px;font-size:.74rem}
 @media(max-width:720px){.sp-sang .cmp-btn{width:auto;margin-top:8px}}
