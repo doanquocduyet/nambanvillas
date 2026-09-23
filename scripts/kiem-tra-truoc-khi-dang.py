@@ -513,6 +513,46 @@ for f, s in data.items():
     if g and g.group(1) != "VN-35":
         L(f"[geo.region phải là VN-35] {f}: {g.group(1)}")
 
+# ── 11. Lô ĐÃ BÁN phải còn nguyên trên trang khu ──────────────────────────
+# LUẬT CHỦ ĐẶT: lô/cụm/nhà đã bán KHÔNG BAO GIỜ GỠ — luôn để lại, chỉ mang nhãn
+# "Đã bán". Đó là bằng chứng giao dịch thật và là mốc giá để khách tự định giá
+# lô đang xem. ĐÃ TỪNG DÍNH: 4 lô đã bán bị gỡ khỏi 3 trang khu khi đổ đủ lô.
+KHU_TRANG = {
+    "dong-thanh": "dat-dong-thanh-nam-ban", "me-linh": "dat-me-linh-nam-ban",
+    "gia-lam": "dat-gia-lam-nam-ban", "tu-liem": "dat-tu-liem-nam-ban",
+    "ho-bai-cong": "dat-ho-bai-cong-nam-ban", "nam-ban": "dat-trung-tam-thi-tran-nam-ban",
+}
+# 3 lô chủ chưa xác nhận khu — cố ý chưa xếp vào trang khu nào
+CHUA_XAC_NHAN_KHU = {"/dat-nen/cum-ts-retreat/", "/dat-nen/cum-tam-xa-5-nen/",
+                     "/dat-nen/cum-thien-van-village/"}
+_ban = {}
+for _f in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
+    _s = data.get(_f, "")
+    for _m in re.finditer(r'<article class="prop-card sp-row[^"]*"([^>]*)>(.*?)</article>',
+                          _s, flags=re.S):
+        if 'data-ban="1"' not in _m.group(1):
+            continue
+        _u = re.search(r'href="(/(?:dat-nen|nha-ban)/[a-z0-9-]+/)"', _m.group(2))
+        _l = re.search(r'data-loc="([^"]*)"', _m.group(1))
+        if _u and _l:
+            _ban[_u.group(1)] = _l.group(1).split()
+# Phải tìm trong LƯỚI THẺ, không tìm cả trang: URL còn nằm trong ItemList thì
+# vẫn "có" trong file dù thẻ đã bị gỡ khỏi mắt khách.
+_the_khu = {}
+for _t in set(KHU_TRANG.values()):
+    _s = data.get(_t + "/index.html", "")
+    _the_khu[_t] = set(re.findall(
+        r'<article class="prop-card[^>]*>.*?href="(/(?:dat-nen|nha-ban)/[a-z0-9-]+/)"',
+        _s, flags=re.S))
+for _u, _locs in _ban.items():
+    if _u in CHUA_XAC_NHAN_KHU:
+        continue
+    for _k in _locs:
+        _t = KHU_TRANG.get(_k)
+        if _t and (_t + "/index.html") in data and _u not in _the_khu[_t]:
+            L(f"[Lô ĐÃ BÁN bị gỡ khỏi trang khu — luật: luôn để lại, chỉ ghi Đã bán] "
+              f"/{_t}/ thiếu {_u}")
+
 # ── kết luận ──────────────────────────────────────────────────────────────
 print()
 if canh_bao:

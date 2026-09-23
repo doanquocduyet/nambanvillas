@@ -99,21 +99,27 @@ def main():
         i = s.index(">", i) + 1
         j = s.index("</div>", s.rindex("</article>"))
 
-        # 1) thẻ đang có: giữ thứ tự, BỎ lô đã bán (trang khu nói "đang bán")
-        cu, go = [], []
+        # 1) thẻ đang có trên trang: giữ nguyên thứ tự
+        cu = []
         for m in THE.finditer(s[i:j]):
             u = URL.search(m.group(2))
-            if not u:
-                continue
-            (go if u.group(1) in da_ban else cu).append(u.group(1))
-        cu = list(dict.fromkeys(cu))
+            if u:
+                cu.append(u.group(1))
+        cu = [u for u in dict.fromkeys(cu) if u not in da_ban]
 
-        # 2) bổ sung mọi lô còn lại của khu
+        # 2) bổ sung mọi lô CÒN BÁN của khu
         them = [c for c in the
                 if khu in c["loc"] and not c["ban"]
                 and c["url"] not in CHO_XAC_NHAN and c["url"] not in cu]
 
-        thu_tu = cu + [c["url"] for c in them]
+        # 3) lô ĐÃ BÁN: KHÔNG gỡ bao giờ — để nguyên, chỉ mang nhãn "Đã bán".
+        #    Bằng chứng giao dịch thật; khách xem giá lô đã bán để tự định giá lô
+        #    đang xem. Xếp cuối để hàng mua được lên trước.
+        ban = [c for c in the
+               if khu in c["loc"] and c["ban"] and c["url"] not in CHO_XAC_NHAN]
+
+        thu_tu = cu + [c["url"] for c in them] + [c["url"] for c in ban]
+        so_ban = len(ban)
         html = []
         for k, u in enumerate(thu_tu):
             h = theo_url[u]["html"]
@@ -127,20 +133,23 @@ def main():
         s = s[:i] + "\n" + "\n".join(html) + "\n    " + s[j:]
 
         n = len(thu_tu)
-        n_dat = sum(1 for u in thu_tu if u.startswith("/dat-nen/"))
-        n_nha = n - n_dat
+        con = n - so_ban
+        n_dat = sum(1 for u in thu_tu[:con] if u.startswith("/dat-nen/"))
+        n_nha = con - n_dat
         cau = "%d lô đất" % n_dat + (" & %d nhà" % n_nha if n_nha else "") + " đang bán"
+        if so_ban:
+            cau += " · %d đã bán" % so_ban
 
-        s = re.sub(r"Dưới đây là \d+ lô", "Dưới đây là %d lô" % n, s)
-        s = re.sub(r"(<h2[^>]*>[^<]*?) — lô đang bán</h2>",
+        s = re.sub(r"Dưới đây là \d+ lô", "Dưới đây là %d lô" % con, s)
+        s = re.sub(r"(<h2[^>]*>[^<]*?) — (?:\d+ lô đất(?: & \d+ nhà)?|lô) đang bán(?: · \d+ đã bán)?</h2>",
                    lambda m: "%s — %s</h2>" % (m.group(1), cau), s, count=1)
 
         ten = {u: ten_lo(theo_url[u]["html"]) for u in thu_tu}
         s, n_sua = sua_itemlist(s, thu_tu, ten)
 
         open(f, "w", encoding="utf-8").write(s)
-        print("  /%s/  %d thẻ (%d đất + %d nhà) | thêm %d | gỡ %d đã bán | ItemList sửa %d"
-              % (thu_muc, n, n_dat, n_nha, len(them), len(go), n_sua))
+        print("  /%s/  %d thẻ = %d đang bán (%d đất + %d nhà) + %d đã bán | thêm mới %d"
+              % (thu_muc, n, con, n_dat, n_nha, so_ban, len(them)))
 
     print("\nGiữ lại chờ chủ xác nhận (%d lô, vẫn nằm trên hub chính):" % len(CHO_XAC_NHAN))
     for u, ly in CHO_XAC_NHAN.items():
