@@ -39,6 +39,9 @@ CUM = {
     "ve-nam-ban/xa-nam-ban-sap-nhap": (
         "Xã Nam Ban sau sáp nhập gồm những xã nào?",
         "Từ 01/7/2025 theo Nghị quyết 202/2025/QH15"),
+    "thi-truong/gia-dat-nam-ban-hom-nay": (
+        "Giá đất Nam Ban hôm nay bao nhiêu một m²?",
+        "Tính từ lô thật đang rao, theo loại và theo 7 khu, cập nhật mỗi thứ Hai"),
     "thi-truong/bang-gia-dat-2026-nam-ban": (
         "Bảng giá đất 2026 ảnh hưởng gì tới người mua đất Nam Ban?",
         "Giá nhà nước khác giá thị trường ra sao, phải tính thêm khoản gì"),
@@ -90,18 +93,22 @@ NOI = {
         "ve-nam-ban/xa-nam-ban-sap-nhap",
         "thi-truong/dat-nam-ban-tang-gia-2025"],
     "thi-truong/dat-nam-ban-tang-gia-2025": [
-        "ve-nam-ban/xa-nam-ban-sap-nhap",
+        "thi-truong/gia-dat-nam-ban-hom-nay",
         "thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025",
         "thi-truong/tuyen-tranh-nam-ban-khi-nao-hoan-thanh"],
+    "thi-truong/gia-dat-nam-ban-hom-nay": [
+        "thi-truong/dat-nam-ban-tang-gia-2025",
+        "thi-truong/bang-gia-dat-2026-nam-ban",
+        "thi-truong/nam-ban-so-voi-noi-khac"],
     "ve-nam-ban/xa-nam-ban-sap-nhap": [
         "thi-truong/dat-nam-ban-tang-gia-2025",
         "thi-truong/nhung-thay-doi-quan-trong-quy-hoach-lam-dong-2025",
         "thi-truong/khi-hau-cuoc-song-nam-ban"],
     # cụm QUY HOẠCH & GIÁ
     "thi-truong/bang-gia-dat-2026-nam-ban": [
+        "thi-truong/gia-dat-nam-ban-hom-nay",
         "thi-truong/dat-nam-ban-tang-gia-2025",
-        "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026",
-        "thi-truong/nam-ban-so-voi-noi-khac"],
+        "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026"],
     "thi-truong/lam-dong-quy-hoach-dieu-chinh-2026": [
         "ve-nam-ban/nhung-thay-doi-quan-trong-nam-ban-2026",
         "thi-truong/quy-hoach-tinh-lam-dong-dieu-chinh-2025",
@@ -128,8 +135,8 @@ NOI = {
         "thi-truong/khi-hau-cuoc-song-nam-ban",
         "thi-truong/san-bay-lien-khuong-mo-rong-anh-huong-nam-ban"],
     "thi-truong/nam-ban-so-voi-noi-khac": [
+        "thi-truong/gia-dat-nam-ban-hom-nay",
         "ve-nam-ban/tiem-nang-dau-tu-nam-ban",
-        "thi-truong/bang-gia-dat-2026-nam-ban",
         "thi-truong/song-o-nam-ban"],
     "thi-truong/song-o-nam-ban": [
         "thi-truong/khi-hau-cuoc-song-nam-ban",
