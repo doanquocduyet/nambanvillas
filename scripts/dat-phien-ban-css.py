@@ -43,7 +43,8 @@ def main():
         r'((?:href|src)=")((?:\.\./)*/?(?:css/(?:style|article)\.css|js/main\.js))(\?v=[0-9a-f]+)?(")')
 
     n_trang = n_sua = 0
-    for f in sorted(glob.glob("**/index.html", recursive=True)):
+    # ĐÃ TỪNG DÍNH (css404-1): chỉ quét **/index.html nên 404.html ở gốc mãi không có ?v=
+    for f in sorted(glob.glob("**/*.html", recursive=True)):
         if f.startswith(("node_modules", "docs")):
             continue
         s = open(f, encoding="utf-8").read()

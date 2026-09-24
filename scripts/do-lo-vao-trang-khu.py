@@ -112,7 +112,12 @@ def main():
             u = URL.search(m.group(2))
             if u:
                 cu.append(u.group(1))
-        cu = [u for u in dict.fromkeys(cu) if u not in da_ban]
+        # Thẻ mà hub đã gỡ (vd lô đăng trùng 2 URL, gộp canonical) thì trang khu
+        # cũng bỏ — hub là nguồn sự thật duy nhất.
+        for u in dict.fromkeys(cu):
+            if u not in theo_url:
+                print("  bỏ thẻ không còn trên hub:", thu_muc, u)
+        cu = [u for u in dict.fromkeys(cu) if u not in da_ban and u in theo_url]
 
         # 2) bổ sung mọi lô CÒN BÁN của khu
         them = [c for c in the

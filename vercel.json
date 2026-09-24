@@ -386,6 +386,16 @@
       "source": "/dat-nen/nam-ban-ecohill-350m2/",
       "destination": "/dat-nen/cum-nam-ban-ecohill/",
       "permanent": true
+    },
+    {
+      "source": "/dat-nen/ho-bai-cong-mat-ho-950m2",
+      "destination": "/dat-nen/dat-mat-ho-bai-cong-950m2/",
+      "permanent": true
+    },
+    {
+      "source": "/dat-nen/ho-bai-cong-mat-ho-950m2/",
+      "destination": "/dat-nen/dat-mat-ho-bai-cong-950m2/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -411,6 +421,10 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.facebook.com https://api.rss2json.com; form-action 'self' https://formsubmit.co; frame-src https://www.google.com https://maps.google.com https://www.youtube.com https://www.facebook.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
         }
       ]
     },
@@ -428,12 +442,12 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     },
     {
-      "source": "/(sitemap.xml|feed.xml|llms.txt|robots.txt)",
+      "source": "/(sitemap.xml|sitemap_index.xml|feed.xml|llms.txt|robots.txt)",
       "headers": [
         {
           "key": "Cache-Control",
