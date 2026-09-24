@@ -1074,8 +1074,8 @@ def cap_nhat_ngop(ngay, kq):
     s = re.sub(r'<link rel="preload" as="image"[^>]*>', lambda m: pl, s, count=1)
     s = faq_html(s, "ngop-so", "Tháng %d/%d có %d lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá: %s. Rẻ nhất từ %s. Bảng trên trang ghi nguyên lời chủ và đơn giá so với trung vị."
                  % (d.month, d.year, len(lo), "; ".join("%s (%s)" % (H.escape(x["ten"], quote=False), tien(x["ty"]) if x["ty"] > 0 else "giá liên hệ") for x in lo), tien(re_nhat["ty"])))
-    td = "Đất Nam Ban Ngộp, Bán Gấp T%d/%d — Chủ Cần Tiền, Hạ Giá Thật, Từ %s" % (d.month, d.year, tien(re_nhat["ty"]).title())
-    mt = ("Đất Nam Ban ngộp, bán gấp T%d/%d: %d lô chủ cần tiền, đã hạ giá, từ %s. Có nguyên lời chủ và đơn giá so với thị trường. Gọi 0978 758 788."
+    td = "Đất Nam Ban Ngộp, Bán Gấp T%d/%d — Chủ Cần Tiền, Từ %s, Có So Giá Thị Trường" % (d.month, d.year, tien(re_nhat["ty"]).title())
+    mt = ("Đất Nam Ban ngộp, bán gấp T%d/%d: %d lô chủ cần bán nhanh, từ %s. Có nguyên lời chủ và đơn giá so với thị trường. Gọi 0978 758 788."
           % (d.month, d.year, len(lo), tien(re_nhat["ty"])))
     s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(td, quote=False), s, count=1)
     for k, v in (('<meta name="description" content="', mt), ('<meta property="og:description" content="', mt),
