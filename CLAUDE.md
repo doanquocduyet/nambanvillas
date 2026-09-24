@@ -104,6 +104,7 @@
     - Đúng: chủ thể là **"Nam Ban Villas"**, khách là **"bạn"** hoặc **"anh/chị"**. Hoặc viết thẳng không cần đại từ.
     - Lỗi này ĐÃ XẢY RA THẬT: 11 chỗ lọt ra trang công khai. Checker nay có bẫy `[Xưng hô chú/cháu]` chặn cứng, **chạy trên mọi trang, không có ngoại lệ** (kể cả tuỳ bút).
     - Chỉ hợp lệ khi là danh từ: *ghi chú · chú ý · chú trọng · chú thích · con cháu*.
+  - **[CẤM — CHỐT 24/9/2026] KHÔNG BAO GIỜ để khách đọc thấy chữ máy móc:** script, tự động, auto, bot, AI, nhập tay, thuật toán, "hệ thống tự…". Nam Ban Villas là **một đội ngũ**: viết "đội ngũ Nam Ban Villas tổng hợp mỗi thứ Hai…", hoặc "chúng tôi" khi thật cần. Kể cả thành ngữ "không tự động nghĩa là" → "không mặc nhiên". Ngoại lệ: "béc tưới tự động" (tiện ích của lô). Checker mục 20 chặn (thân trang, title, meta, alt, JSON-LD, llms.txt).
   - Vẫn giữ chất đẳng cấp, người lớn, đáng tin — thân thiện chứ không xuề xòa.
 - **Thẩm mỹ FRIENDLY LUXURY:** giữ xanh (#1A3D2B) + gold (#C9A84C) làm nhận diện, nhưng LÀM MỀM: bo góc tròn hơn (radius lớn), nền ấm, bóng đổ mềm, nhiều khoảng thở. Dễ chịu, dễ nhìn, không cứng/lạnh.
   - **Icon:** dùng ICON TUYẾN MẢNH (line SVG, stroke ~1.7) cho ấm & thân thiện. **VẪN KHÔNG DÙNG EMOJI** (emoji màu = kém sang). Icon mảnh THAY cho emoji.
