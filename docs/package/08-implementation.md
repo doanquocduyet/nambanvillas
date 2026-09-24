@@ -29,7 +29,7 @@
 - **`daily-listings.yml`** cron `7 0 * * *` (=7h07 VN): `scripts/daily-listings.mjs` gọi Claude API (`claude-sonnet-5`, tool `web_search_20250305` max 5) → chọn 1–2 tin theo `FORM-DANG-TIN.md` (lọc ≥4/7 dữ kiện + blocklist từ rác) → viết lại bỏ SĐT/ảnh → chèn `thi-truong/tin-rao-dat-nam-ban-moi/index.html` giữa marker `<!-- DAILY-DIGEST:START/END -->`, giữ 20 mục (`<!-- DAY:YYYY-MM-DD -->`), cập nhật dateModified + article-cat; market-note mỗi ≥3 ngày (state `data/tin-rao-state.json`). **Cần secret `ANTHROPIC_API_KEY`** để bật. **Fail-safe**: thiếu key/API lỗi/không tin chất lượng → `process.exit(0)`, KHÔNG commit rác. Commit `git add ...index.html state feed.xml`, `[skip ci]`.
 - **`weekly-update.yml`** cron thứ 2: `scripts/build-feed.mjs` rebuild `feed.xml` từ HTML self-canonical (bỏ trang canonical off-domain, dùng URL nội bộ). Trước từng chạy `update-news.mjs` ghi news.json rỗng → đã gỡ (automation chết).
 - **`indexnow.yml`** on push HTML/sitemap lên main: sleep 90s chờ Vercel rồi submit URL đổi cho Bing/IndexNow (env INDEXNOW_KEY + HOST).
-- Trang `gia-dat-nam-ban-hom-nay` có marker `<!-- WEEKLY-PRICE:START/END -->` (chưa nối script — có thể thêm cron Chủ nhật tổng hợp tin tuần).
+- Trang `gia-dat-nam-ban-hom-nay` có marker `<!-- WEEKLY-PRICE:START/END -->`, do `scripts/cap-nhat-gia-hom-nay.py` điền. Chạy bằng `.github/workflows/gia-tuan.yml`: ngay khi hub Đất Nền/Nhà Bán đổi + mỗi thứ Hai 8h30. Mỗi tuần 1 ô, không xoá ô cũ. (Từng đứng im 2/7 → 24/9/2026 vì chưa nối; đã tính bù 31/8–21/9 từ lịch sử git.)
 
 ## 5. WORKFLOW GIT (bài học kỹ thuật)
 - CẤM DOTALL `.*?` sửa HTML/CSS → str_replace/JSON parser/sed chuỗi cố định.
