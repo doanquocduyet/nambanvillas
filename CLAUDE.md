@@ -87,6 +87,7 @@
   - Đổi lại, giữ riêng **bắt buộc phải NỐI THÀNH CỤM**: cuối mỗi bài có khối `.cum-chu-de` trỏ sang 3 bài anh em, **chữ neo là CÂU HỎI bài đích trả lời** (cấm "xem thêm", "tại đây"). Bài lẻ loi mới là bài yếu — không phải bài ngắn.
   - Thêm bài mới cùng cụm → chạy `python3 scripts/noi-cum-chu-de.py`. Checker mục 11 chặn nếu bài trong cụm không nối nhau.
 - **[LÂM HÀ LUÔN KÈM NAM BAN — CHỐT 24/9/2026]** Chữ "Lâm Hà" ở bất kỳ đâu (thân bài, title, mô tả, schema, llms.txt) PHẢI có "Nam Ban" ngay bên cạnh: "Nam Ban, Lâm Hà" · "Nam Ban Lâm Hà" · "giá đất Lâm Hà Nam Ban". Khu trong xã Nam Ban (Mê Linh, Đông Thanh, Gia Lâm…) viết "Mê Linh, Nam Ban, Lâm Hà". Xã khác (Nam Hà, Đinh Văn) viết "Nam Hà (giáp Nam Ban), Lâm Hà" — KHÔNG ghi là thuộc Nam Ban. Sửa hàng loạt: `python3 scripts/lam-ha-kem-nam-ban.py`; checker mục 18 chặn.
+- **[TRANG ĐANG TOP — KHÔNG ĐỤNG TITLE/H1/URL — CHỐT 24/9/2026]** Trang đang có thứ hạng (vd `/dat-nam-ban-gia-re/` top 4 "giá đất nam ban", trang chủ, hub Đất Nền): KHÔNG đổi URL, KHÔNG viết lại title/H1. Chỉ được: sửa số sai, thêm nội dung/FAQ bên dưới, chỉnh mô tả. Title/H1 do script sinh chỉ đổi theo THÁNG, không đưa ngày hay số lô tuần vào (checker mục 19 chặn).
 - **[NÉN ẢNH BẮT BUỘC]** Mọi ảnh MỚI trước khi commit phải chạy `python3 scripts/nen-anh.py <file/thư-mục>` (max 1600px, JPEG q82, chỉ ghi đè nếu nhỏ hơn thật). Ảnh từ điện thoại thường 3–5MB — không được đưa thẳng lên site. Ảnh cũ đã tối ưu sẵn, nén lại không lợi → chỉ nén ảnh mới.
 
 ---
