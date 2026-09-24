@@ -823,7 +823,7 @@ def cap_nhat_300tr(ngay):
 # nằm TRÊN chính lô (không tính "xung quanh vườn cà phê", "view đồi cà phê"). Đăng lô vườn mới: gắn nhãn.
 VUON_CAY = [
     dict(slug="ban-vuon-ca-phe-nam-ban", nhan="ca-phe", ten="vườn cà phê",
-         td="Bán Vườn Cà Phê Nam Ban T%d/%d — Vườn Đang Thu Hoạch, Từ %s",
+         td="Bán Vườn Cà Phê Nam Ban T%d/%d — Vườn Thật Trên Đất, Từ %s",
          mt="Bán vườn cà phê (cafe) Nam Ban T%d/%d: %d lô có vườn cà phê thật trên đất, từ %s%s. Đưa đi xem vườn miễn phí. Gọi 0978 758 788."),
     dict(slug="ban-vuon-bo-nam-ban", nhan="bo", ten="vườn bơ",
          td="Mua Bán Vườn Bơ Nam Ban T%d/%d — Lô Có Cây Bơ Thật, Từ %s",
