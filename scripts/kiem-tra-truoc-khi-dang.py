@@ -507,6 +507,16 @@ for f, s in data.items():
                   if q.get("name", "")[:40] not in chu]
             if an:
                 L(f"[FAQ schema có {len(an)} câu KHÔNG hiện trên trang — Google phạt] {f}: {an[0][:50]}")
+# ── 9c. Mô tả meta không được cụt giữa câu ────────────────────────────────
+# ĐÃ TỪNG DÍNH: lượt rút mô tả về ≤160 ký tự (#516) cắt theo số ký tự nên đứt
+# giữa ngoặc — "lô 577m² (ngang. Từ 699 triệu…", "nở hậu (trước 10m. Giá…".
+# Google hiện nguyên câu cụt đó dưới kết quả tìm kiếm. Rút ngắn = viết lại câu,
+# không cắt. Dấu hiệu dễ bắt nhất: ngoặc mở không có ngoặc đóng.
+for f, s in data.items():
+    m = re.search(r'<meta name="description" content="([^"]*)"', s)
+    if m and m.group(1).count("(") != m.group(1).count(")"):
+        L(f"[Mô tả meta bị cắt cụt (ngoặc không đóng) — viết lại câu, đừng cắt] {f}")
+
 # ── 10. GEO ───────────────────────────────────────────────────────────────
 for f, s in data.items():
     g = re.search(r'<meta name="geo.region" content="([^"]+)"', s)

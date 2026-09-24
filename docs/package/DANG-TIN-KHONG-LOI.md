@@ -218,6 +218,16 @@ Actions → **"Kiểm chuỗi chuyển hướng & 404 (live)"** → Run workflow
 
 ---
 
+## 13b. MÔ TẢ META BỊ CẮT CỤT (đã dính 25/9/2026)
+
+Lượt rút mô tả về ≤160 ký tự cắt theo số ký tự → 4 trang hiện câu cụt dưới kết quả Google: "lô 577m² (ngang. Từ 699 triệu…", "(78m² CLN nằm trong hành lang đường. Giá…", "nở hậu (trước 10m. Giá…", biệt thự "còn 2 căn: 1 căn full nội thất 4,2 tỷ. Từ 3,9 tỷ/lô" (mất căn thứ hai, nhà mà ghi "/lô").
+
+- Rút ngắn = **viết lại câu cho đủ ý**, giữ giá + `Gọi 0978 758 788.` — không cắt.
+- Nhà thì ghi "/căn", không ghi "/lô".
+- Checker **9c** chặn mô tả có ngoặc mở không đóng.
+
+---
+
 ## 14. MẪU BÁO CÁO (ngắn, không giải thích dài)
 
 ```
