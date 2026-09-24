@@ -638,6 +638,18 @@ if _kq.returncode != 0:
         if _d.startswith("  "):
             L("[Lâm Hà thiếu Nam Ban bên cạnh — chạy python3 scripts/lam-ha-kem-nam-ban.py]" + _d)
 
+# ── 19. Trang đang có thứ hạng: title + H1 do script sinh chỉ được đổi theo THÁNG ──
+# (24/9/2026) Chủ web: "đang top search, làm lung tung là tụt". Script tuần từng đưa ngày
+# (24/9/2026) và số lô vào title/H1 -> đổi mỗi tuần. Số tuần chỉ được nằm ở mô tả/thân trang.
+for _f in ("thi-truong/gia-dat-nam-ban-hom-nay/index.html", "gia-dat-lam-ha/index.html", "dat-nam-ban-gia-re/index.html"):
+    if not os.path.exists(_f):
+        continue
+    _s = open(_f, encoding="utf-8").read()
+    for _tag, _p in (("title", r"<title>(.*?)</title>"), ("H1", r"<h1[^>]*>(.*?)</h1>")):
+        _m = re.search(_p, _s, re.S)
+        if _m and (re.search(r"\b\d{1,2}/\d{1,2}/\d{4}\b", _m.group(1)) or re.search(r"\d+\s+Lô", _m.group(1))):
+            L("[%s đổi theo tuần (có ngày hoặc số lô) — chỉ được đổi theo tháng] %s" % (_tag, _f))
+
 # ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
 # ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
 # ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.

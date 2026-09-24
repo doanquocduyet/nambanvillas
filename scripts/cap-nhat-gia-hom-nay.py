@@ -385,7 +385,7 @@ THAN_LAM_HA = """<main id="main">
     <div class="container">
       <div class="article-header">
         <p class="article-cat">Giá thị trường · Cập nhật: %(ngay)s</p>
-        <h1 class="article-title">Giá Đất Lâm Hà Nam Ban Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ %(tong)d Lô Thật Đang Rao</h1>
+        <h1 class="article-title">Giá Đất Lâm Hà Nam Ban Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ Lô Thật Đang Rao</h1>
         <p class="article-lead">Giá đất Lâm Hà Nam Ban không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật mỗi thứ Hai.</p>
       </div>
 
@@ -463,7 +463,7 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
     khu_re, khu_dat = min(khu, key=lambda x: x["tv"]), max(khu, key=lambda x: x["tv"])
     vuon = "%s–%s" % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"])) if "vuon" in kq else "–"
 
-    tieu_de = "Giá Đất Lâm Hà Nam Ban T%d/%d: %s–%s Triệu/m² Theo Xã, Theo Khu (Lô Thật)" % (d.month, d.year, so(t["lo"]), so(t["hi"]))
+    tieu_de = "Giá Đất Lâm Hà Nam Ban T%d/%d: Theo Xã, Theo Khu, Tính Từ Lô Thật" % (d.month, d.year)
     mo_ta = ("Giá đất Lâm Hà Nam Ban T%d/%d: đất nền thổ cư %s–%s triệu/m², xã Nam Ban và Nam Hà, %d lô dưới 1 tỷ, rẻ nhất %s. Gọi 0978 758 788."
              % (d.month, d.year, so(t["lo"]), so(t["hi"]), duoi1, tien(re_nhat["ty"])))
     cau = ("Giá đất Lâm Hà Nam Ban tháng %d/%d, tính từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, "
@@ -606,7 +606,9 @@ def main():
     s = open(TRANG, encoding="utf-8").read()
     t = kq["tho"]
     cau = cau_tra_loi(ngay, kq, khu, tong)
-    tieu_de = "Giá Đất Nam Ban Hôm Nay %s: %s–%s Triệu/m² (Từ %d Lô Thật)" % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), tong)
+    # TIÊU ĐỀ + H1 ỔN ĐỊNH (chỉ đổi theo THÁNG): trang đang có thứ hạng mà title đổi mỗi tuần thì
+    # Google phải đánh giá lại liên tục. Số tuần nằm ở mô tả + khối Trả lời nhanh + bảng.
+    tieu_de = "Giá Đất Nam Ban Hôm Nay T%d/%d — Tính Từ Lô Thật, Cập Nhật Mỗi Thứ Hai" % (datetime.date.fromisoformat(ngay).month, datetime.date.fromisoformat(ngay).year)
     mo_ta = ("Giá đất Nam Ban hôm nay %s: đất nền thổ cư %s–%s triệu/m² (trung vị %s), theo 7 khu, tính từ %d lô đang rao. "
              "Cập nhật mỗi thứ Hai. Gọi 0978 758 788." % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
 
@@ -648,7 +650,7 @@ def main():
     s = re.sub(r'<meta property="og:description" content="[^"]*"', '<meta property="og:description" content="%s"' % H.escape(mo_ta, quote=True), s, count=1)
     s = re.sub(r'<meta name="twitter:title" content="[^"]*"', '<meta name="twitter:title" content="%s"' % H.escape(tieu_de, quote=True), s, count=1)
     s = re.sub(r'<h1 class="article-title">[^<]*</h1>',
-               '<h1 class="article-title">Giá Đất Nam Ban Hôm Nay (%s) — Tính Từ %d Lô Thật Đang Rao, Cập Nhật Mỗi Thứ Hai</h1>' % (ngay_vn(ngay), tong), s, count=1)
+               '<h1 class="article-title">Giá Đất Nam Ban Hôm Nay — Tính Từ Lô Thật Đang Rao, Cập Nhật Mỗi Thứ Hai</h1>', s, count=1)
     s = re.sub(r"Cập nhật tuần: \d+/\d+/\d+", "Cập nhật tuần: %s" % ngay_vn(ngay), s)
     s = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"', '"dateModified":"%s"' % ngay, s)
     s = sua_schema(s, ngay, tieu_de, mo_ta, cau, kq, tong)
