@@ -92,7 +92,10 @@ def doc_lo():
             continue
         nhan = (re.search(r'data-nhan="([^"]*)"', at) or [None, ""])[1]
         loc = (re.search(r'data-loc="([^"]*)"', at) or [None, ""])[1]
-        ra.append(dict(area=area, ty=price, m2=price * 1000 / area, nhan=nhan, loc=loc.split()))
+        u = re.search(r'href="(/dat-nen/[^"]+/)"', s[m.end():m.end() + 600])
+        t = re.search(r'<h3 class="sp-title"><a[^>]*>([^<]*)', s[m.end():m.end() + 1500])
+        ra.append(dict(area=area, ty=price, m2=price * 1000 / area, nhan=nhan, loc=loc.split(),
+                       url=u.group(1) if u else "", ten=H.unescape(t.group(1)) if t else ""))
     return ra
 
 
@@ -222,7 +225,7 @@ def thay_khoi(s, mo, dong, moi):
 
 def faq_html(s, key, tra_loi):
     """Thay phần <p>…</p> của <details data-faq=key> — chỉ trong 1 thẻ, không nuốt khối."""
-    i = s.index('<details open data-faq="%s">' % key)
+    i = s.index('data-faq="%s">' % key)          # mọi kiểu <details … data-faq="key">
     a = s.index("<p>", i) + 3
     b = s.index("</p>", a)
     return s[:a] + tra_loi + s[b:]
@@ -294,6 +297,72 @@ def dataset(ngay, mo_ta, kq, tong):
             "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nambanvillas.vn/data/gia-tuan.json"}}
 
 
+GIA_RE = "dat-nam-ban-gia-re/index.html"
+URL_GIA_RE = "https://nambanvillas.vn/dat-nam-ban-gia-re/"
+
+
+def cap_nhat_gia_re(ngay, lo, kq, khu):
+    """Trang /dat-nam-ban-gia-re/ đang top 4 "giá đất nam ban": giữ số sống, tháng trong title,
+    khối 'Giá đất Nam Ban hiện tại' + 2 FAQ số thật, FAQPage sinh lại từ HTML."""
+    if not os.path.exists(GIA_RE):
+        return
+    s = open(GIA_RE, encoding="utf-8").read()
+    t = kq["tho"]
+    d = datetime.date.fromisoformat(ngay)
+    co_gia = [x for x in lo if x["ty"] > 0]
+    re_nhat = min(co_gia, key=lambda x: x["ty"])
+    duoi_1ty = sum(1 for x in co_gia if x["ty"] < 1)
+    duoi_700 = sum(1 for x in co_gia if x["ty"] < 0.7)
+    khu_re = min(khu, key=lambda x: x["tv"])
+    khu_dat = max(khu, key=lambda x: x["tv"])
+    khoi = ('<!-- GIA-RE-SO:START -->\n'
+            '  <h2>Giá đất Nam Ban hiện tại bao nhiêu một m²?</h2>\n'
+            '  <p>Tính ngày %s từ %d lô đang rao trên Nam Ban Villas: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, trung vị %s triệu/m². '
+            'Khu rẻ nhất là %s (trung vị %s), đắt nhất là %s (%s). Với 500 triệu, ở mức trung vị mua được khoảng %d m².</p>\n'
+            '  <p>Bên Nam Ban Villas đang có <strong>%d lô dưới 1 tỷ</strong> (trong đó %d lô dưới 700 triệu); rẻ nhất từ <strong>%s</strong>: '
+            '<a href="%s">%s</a>. Số này đổi theo tuần — bảng đầy đủ theo loại và theo 7 khu ở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>.</p>\n'
+            '  <!-- GIA-RE-SO:END -->'
+            % (ngay_vn(ngay), len(lo), so(t["lo"]), so(t["hi"]), so(t["tv"]), khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"]),
+               round(500 / t["tv"]), duoi_1ty, duoi_700, tien(re_nhat["ty"]), re_nhat["url"], H.escape(re_nhat["ten"], quote=False)))
+    s = thay_khoi(s, "<!-- GIA-RE-SO:START -->", "<!-- GIA-RE-SO:END -->", khoi)
+    s = faq_html(s, "re-nhat", "Trong các tin đang rao trên thị trường có lô quanh mức 390–450 triệu, ví dụ 450 triệu cho 163m². "
+                 "Bên Nam Ban Villas ngày %s có lô từ %s (%s), và %d lô dưới 700 triệu. Giá và cấu hình đổi theo thời điểm; giá trên tin rao không phải giá giao dịch."
+                 % (ngay_vn(ngay), tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False), duoi_700))
+    s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao: đất nền có thổ cư %s–%s triệu/m² (trung vị %s); đất vườn, lô lớn %s–%s triệu/m². "
+                 "Khu rẻ nhất %s trung vị %s, khu đắt nhất %s trung vị %s. Cập nhật mỗi thứ Hai ở trang giá đất Nam Ban hôm nay."
+                 % (ngay_vn(ngay), len(lo), so(t["lo"]), so(t["hi"]), so(t["tv"]),
+                    so(kq["vuon"]["lo"]) if "vuon" in kq else "", so(kq["vuon"]["hi"]) if "vuon" in kq else "",
+                    khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"])))
+    s = re.sub(r"T\d{1,2}/\d{4}", "T%d/%d" % (d.month, d.year), s)     # tháng trong title/og
+    # mô tả hiện trên Google: chứa đúng cụm "Giá đất Nam Ban" + số m² + lô rẻ nhất + hotline (≤160 ký tự)
+    mo_ta = ("Giá đất Nam Ban T%d/%d: đất nền thổ cư %s–%s triệu/m². Đất giá rẻ từ %s, %d lô dưới 1 tỷ, sổ riêng. Gọi 0978 758 788."
+             % (d.month, d.year, so(t["lo"]), so(t["hi"]), tien(re_nhat["ty"]), duoi_1ty))
+    for k in ('<meta name="description" content="', '<meta property="og:description" content="', '<meta name="twitter:description" content="'):
+        if k in s:
+            i = s.index(k) + len(k)
+            s = s[:i] + H.escape(mo_ta, quote=True) + s[s.index('"', i):]
+    s = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"', '"dateModified":"%s"' % ngay, s)
+
+    def fix(m):
+        g = json.loads(m.group(1))
+        for n in g["@graph"]:
+            if n.get("@type") == "FAQPage":
+                ra = []
+                for mm in re.finditer(r'<details open class="gr-faq"[^>]*><summary>(.*?)</summary><p>(.*?)</p>', s, re.S):
+                    ra.append({"@type": "Question", "name": H.unescape(re.sub(r"<[^>]+>", "", mm.group(1))).strip(),
+                               "acceptedAnswer": {"@type": "Answer", "text": H.unescape(re.sub(r"<[^>]+>", "", mm.group(2))).strip()}})
+                n["mainEntity"] = ra
+            if n.get("@type") == "WebPage":
+                n["speakable"] = {"@type": "SpeakableSpecification", "cssSelector": [".gr-h1", ".gr-nhanh"]}
+        return '<script type="application/ld+json">' + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>"
+    s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, count=1, flags=re.S)
+    open(GIA_RE, "w", encoding="utf-8").write(s)
+    sm = open("sitemap.xml", encoding="utf-8").read()
+    sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL_GIA_RE), r"\g<1>" + ngay, sm)
+    open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    print("  giá rẻ: %d lô dưới 1 tỷ, rẻ nhất %s" % (duoi_1ty, tien(re_nhat["ty"])))
+
+
 def main():
     ngay = datetime.date.today().isoformat()
     lo = doc_lo()
@@ -337,6 +406,14 @@ def main():
                      % (ngay_vn(ngay), "; ".join("%s (%s triệu/m², từ %s/lô)" % (k["ten"], so(k["tv"]), tien(k["re_nhat"])) for k in khu_re),
                         tien(min(x["ty"] for x in lo))))
 
+    if '<details open data-faq="500tr">' in s:
+        s = faq_html(s, "500tr", "Ở đơn giá trung vị %s triệu/m² (ngày %s), 500 triệu tương đương khoảng %d m² đất nền có thổ cư; "
+                     "chọn khu rẻ như %s thì được khoảng %d m², chọn khu đắt như %s thì chỉ khoảng %d m². "
+                     "Thực tế còn tuỳ phần thổ cư và đường vào của từng lô — xem danh sách <a href=\"/dat-nam-ban-duoi-1-ty/\">đất Nam Ban dưới 1 tỷ</a>."
+                     % (so(t["tv"]), ngay_vn(ngay), round(500 / t["tv"]),
+                        min(khu, key=lambda x: x["tv"])["ten"], round(500 / min(khu, key=lambda x: x["tv"])["tv"]),
+                        max(khu, key=lambda x: x["tv"])["ten"], round(500 / max(khu, key=lambda x: x["tv"])["tv"])))
+
     # 5) tiêu đề, mô tả, H1, nhãn ngày
     s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(tieu_de, quote=False), s, count=1)
     s = re.sub(r'<meta name="description" content="[^"]*"', '<meta name="description" content="%s"' % H.escape(mo_ta, quote=True), s, count=1)
@@ -353,6 +430,7 @@ def main():
     sm = open("sitemap.xml", encoding="utf-8").read()
     sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL), r"\g<1>" + ngay, sm)
     open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    cap_nhat_gia_re(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     for k, v in kq.items():
         print("  %-5s %3d lô  %s – %s  trung vị %s" % (k, v["n"], so(v["lo"]), so(v["hi"]), so(v["tv"])))
     print("  khu:", ", ".join("%s %s" % (t["ten"], so(t["tv"])) for t in khu))
