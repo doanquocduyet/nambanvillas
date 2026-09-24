@@ -342,3 +342,9 @@ Không giải thích dài. Không liệt kê phương án không làm. Nhiều t
 "View panorama / view toàn cảnh / săn mây" chỉ là **từ tả view** cho lô bán (như "view đẹp"), Nam Ban đăng rất nhiều. **KHÔNG phải** thương hiệu site Panorama. → Đăng tin lô "view panorama" bao nhiêu cũng được, không sợ đụng/tự cắn. Chỉ giữ 2 luật: **không** thẻ `<a>` link sang site Panorama, **không** copy nội dung/tên khu của Panorama. (Chi tiết: `docs/HIEN-PHAP-3-WEB.md` Phần 6, ghi chú view panorama.)
 
 Giờ cháu đọc 4 file ở BƯỚC 0, xác nhận đã nạp xong, rồi chờ chú thả tin đầu tiên.
+
+## Nhãn cây trồng trên thẻ hub (25/9/2026)
+- Lô có **vườn cà phê nằm TRÊN chính lô** → thêm `ca-phe` vào `data-nhan` của thẻ trên `dat-nen-nam-ban/index.html`. Lô có **cây bơ trên đất** → thêm `bo`.
+- KHÔNG gắn khi chỉ "xung quanh là vườn cà phê", "view đồi cà phê" — gắn sai là khách tới xem thấy đất trống, mất uy tín.
+- Gắn xong, khi merge lên main các trang `/ban-vuon-ca-phe-nam-ban/` và `/ban-vuon-bo-nam-ban/` tự nhận lô (Actions `gia-tuan.yml`).
+
