@@ -760,3 +760,22 @@ grep -rn "sắp \|dự kiến \|sẽ sớm \|đang triển khai" --include=*.htm
 - [ ] Mỗi lỗi đã sửa có thành một phép kiểm tự động chưa?
 - [ ] Đã **thử phá** để chắc phép kiểm đó kêu thật chưa?
 - [ ] Phép kiểm có chạy tự động trước mỗi lần đăng không?
+
+---
+
+## Bổ sung 24/9/2026 — đợt kiểm tay 42 mục còn lại
+
+| # | Lỗi | Cách kiểm | Cách sửa |
+|---|-----|-----------|----------|
+| 29 | Hub cuộn 122 thẻ lô không có một nút Gọi; trang lô đọc xong khối rủi ro hết nút; mục to nhất menu điện thoại trỏ /lien-he/ | `python3 scripts/kiem-bo-loc.py` (bẫy 14) | `python3 scripts/them-nut-goi.py` — nút Gọi từng thẻ (icon tròn trên điện thoại), khối Gọi sau rủi ro, giữa bài, đầu 8 trang dịch vụ, mục cuối sheet = `tel:` |
+| 30 | Trang chủ nói "tuyến tránh đang thi công", "100% sổ hồng" trong khi bài/lô nói ngược lại; ROI 8–12%, lấp đầy 60–70%, 40–60% không nguồn | grep số % + "100%" + "đang thi công" toàn site, đối chiếu bài gốc | Gỡ số hoặc gắn số thật từ danh mục (villa 385m² cho thuê 12 triệu/tháng) |
+| 31 | Một lô đăng 2 URL (trùng từng thông số) — tự tranh hạng, khách nghi khan hiếm giả | quét trang lô khớp (giá, diện tích, mặt tiền) | 301 URL cũ → URL mới trong vercel.json, gỡ khỏi hub/khu/sitemap, đổi mọi link nội bộ, chỉnh số đếm; `do-lo-vao-trang-khu.py` nay bỏ thẻ không còn trên hub |
+| 32 | Trang "giá hôm nay, cập nhật hàng tuần" đứng im 83 ngày | so `dateModified` với lời hứa tần suất trong title | `scripts/cap-nhat-gia-hom-nay.py` + Routine thứ Hai; số lấy từ data-area/data-price hub, không điền tay |
+| 33 | Chữ trắng trên vàng 2.29:1, #8a978f 3.04:1 (527 chỗ), `.sec-label` opacity .85 kéo xuống 3.5:1 | tính WCAG (không đoán) | Chữ tối #1A2420 trên vàng; #8a978f→#5F6E66; bỏ opacity, đổi màu thật |
+| 34 | Sheet menu / thanh so sánh ẩn bằng transform/opacity → Tab vẫn dừng vào link vô hình; không aria-expanded; Esc không đóng bảng | grep `aria-expanded`, đọc CSS lúc đóng | `visibility:hidden` + transition delay; aria-expanded 2 nút; Esc + trả focus |
+| 35 | Hero nền CSS không có srcset → điện thoại tải bản 152KB cho khung 390px | ls kích thước ảnh + grep `url(` | @media đổi background-image theo bề rộng; preload có `media=` cho trang chủ |
+| 36 | Mô tả meta 176 trang >160 ký tự, giá + hotline nằm sau chỗ Google cắt; nút "Gọi tư vấn" yếu; thiếu "trả lời trong ngày, không ràng buộc" | script đo độ dài | Cắt ở ranh câu 80–130 ký tự + giá lấy từ **schema** (không bắt chữ — đã suýt ghi giá thuê thành giá bán) + "Gọi 0978 758 788." |
+| 37 | 404.html không có `?v=` vì script chỉ quét `**/index.html`; cache css/js 1 ngày dù đã có vân tay; thiếu CSP | grep href style.css toàn HTML | glob `**/*.html`; `max-age=31536000, immutable`; CSP liệt kê đúng tên miền đang dùng |
+
+**Bài học thêm:** (1) số trong mô tả/tiêu đề phải lấy từ dữ liệu có cấu trúc, không regex chữ; (2) mỗi lời hứa tần suất ("hàng tuần", "hôm nay") phải có script + Routine đứng sau, không thì đừng hứa; (3) nút liên hệ đặt theo **khoảnh khắc khách tin nhất** (sau rủi ro, sau phân tích), không chỉ đầu/cuối trang.
+
