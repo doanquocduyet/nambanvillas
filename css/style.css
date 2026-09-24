@@ -709,3 +709,11 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
  .sp-sang .sp-goi svg{width:18px;height:18px}
  .sp-sang .sp-right{padding-right:48px}
 }
+
+/* ── Khối "Trả lời nhanh" (cap-nhat-gia-hom-nay.py) — AEO: câu 40–60 chữ AI/Google trích thẳng */
+.tra-loi-nhanh{background:linear-gradient(180deg,#FFFDF6,#F7F3EE);border:1.5px solid var(--gold);border-radius:18px;padding:20px 22px;margin:0 0 26px}
+.tra-loi-nhanh-nhan{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8A6100;margin:0 0 8px}
+.tra-loi-nhanh-cau{font-size:1.08rem;line-height:1.6;color:#1f2b25;margin:0 0 16px}
+.tra-loi-nhanh-cau strong{color:var(--green);font-size:1.18rem}
+.tra-loi-nhanh .goi-nhanh-nut{flex-wrap:wrap}
+@media(max-width:560px){.tra-loi-nhanh{padding:16px}.tra-loi-nhanh-cau{font-size:1rem}.tra-loi-nhanh .goi-nhanh-nut a{flex:1 1 100%}}
