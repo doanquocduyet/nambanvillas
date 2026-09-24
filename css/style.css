@@ -717,3 +717,8 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .tra-loi-nhanh-cau strong{color:var(--green);font-size:1.18rem}
 .tra-loi-nhanh .goi-nhanh-nut{flex-wrap:wrap}
 @media(max-width:560px){.tra-loi-nhanh{padding:16px}.tra-loi-nhanh-cau{font-size:1rem}.tra-loi-nhanh .goi-nhanh-nut a{flex:1 1 100%}}
+/* Câu "Xem đất Nam Ban" dưới Sản Phẩm Nổi Bật (cap-nhat-gia-hom-nay.py điền số) — trang chủ top 1 "xem đất nam ban" */
+.xem-dat{margin:-6px 0 22px;font-size:.98rem;line-height:1.6;color:#33413a;max-width:820px}
+.xem-dat strong{color:var(--green)}
+.xem-dat a{color:var(--green);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){.xem-dat{font-size:.92rem;margin:-4px 0 16px}}

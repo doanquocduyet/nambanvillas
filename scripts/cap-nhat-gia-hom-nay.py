@@ -590,6 +590,41 @@ def cap_nhat_meta_hub(ngay):
         open(f, "w", encoding="utf-8").write(s)
         print("  hub %s: %d, từ %s" % (loai, n, re_))
 
+
+def cap_nhat_trang_chu(ngay):
+    """Trang chủ đang TOP 1 "xem đất nam ban" (24/9/2026). LUẬT: KHÔNG đụng title/H1/URL.
+    Chỉ đặt: meta/og description + câu "Xem đất Nam Ban" dưới Sản Phẩm Nổi Bật, số lấy từ 2 hub."""
+    dem = {}
+    for f, k in (("dat-nen-nam-ban/index.html", "dat"), ("nha-ban-nam-ban/index.html", "nha")):
+        s = open(f, encoding="utf-8").read()
+        g = s[s.index("prop-grid sp-sang"):]
+        the = [x for x in re.findall(r'<article class="prop-card[^>]*>', g) if 'data-ban="1"' not in x]
+        gia = [float(x) for t_ in the for x in re.findall(r'data-price="([\d.]+)"', t_) if float(x) > 0]
+        dem[k] = (len(the), min(gia))
+    re_ = tien(min(dem["dat"][1], dem["nha"][1]))
+    mt = ("Mua bán đất Nam Ban, nhà đất Nam Ban Lâm Hà: %d lô đất và %d nhà thật đang bán, từ %s. "
+          "Đưa đi xem đất tận nơi miễn phí. Gọi 0978 758 788." % (dem["dat"][0], dem["nha"][0], re_))
+    cau = ('<!-- XEM-DAT:START -->\n    <p class="xem-dat"><strong>Xem đất Nam Ban tận nơi:</strong> %d lô đất và %d nhà đang bán, từ %s. '
+           'Nam Ban Villas đưa đi xem miễn phí, đối chiếu sổ thật tại chỗ. Ở xa thì <a href="/nho-xem-dat-ho-nam-ban/">nhờ xem đất hộ</a>, '
+           'nhận ảnh và video trong ngày.</p>\n    <!-- XEM-DAT:END -->' % (dem["dat"][0], dem["nha"][0], re_))
+    f = "index.html"
+    s = open(f, encoding="utf-8").read()
+    s = thay_khoi(s, "<!-- XEM-DAT:START -->", "<!-- XEM-DAT:END -->", cau)
+    for k in ('<meta name="description" content="', '<meta property="og:description" content="', '<meta name="twitter:description" content="'):
+        if k in s:
+            i = s.index(k) + len(k)
+            s = s[:i] + H.escape(mt, quote=True) + s[s.index('"', i):]
+
+    def fix(m):
+        g = json.loads(m.group(1))
+        for nd in g.get("@graph", []):
+            if nd.get("@type") == "WebPage" and nd.get("@id", "").endswith("/#webpage"):
+                nd["description"] = mt
+        return '<script type="application/ld+json">' + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>"
+    s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, count=1, flags=re.S)
+    open(f, "w", encoding="utf-8").write(s)
+    print("  trang chủ: %d lô, %d nhà, từ %s" % (dem["dat"][0], dem["nha"][0], re_))
+
 def main():
     ngay = datetime.date.today().isoformat()
     lo = doc_lo()
@@ -662,6 +697,7 @@ def main():
     cap_nhat_gia_re(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     lam_trang_lam_ha(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     cap_nhat_meta_hub(ngay)
+    cap_nhat_trang_chu(ngay)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
     tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
     if tt:
