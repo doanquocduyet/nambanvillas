@@ -279,6 +279,28 @@ if _DAT and _NHA:
             if _m.group(1) and _v != _DAT: L("[llms.txt ghi %d lô, hub thật %d] %s" % (_v, _DAT, _f))
             if _m.group(2) and _v != _NHA: L("[llms.txt ghi %d căn, hub thật %d] %s" % (_v, _NHA, _f))
 
+# ── 14. Nút Gọi phải ở đúng chỗ khách nóng nhất (them-nut-goi.py) ───────────
+# ĐÃ TỪNG DÍNH (cta-3/6/8): hub cuộn 122 thẻ không có nút Gọi; trang lô đọc xong
+# khối rủi ro thì hết nút; mục to nhất menu điện thoại là "Liên Hệ" chứ không gọi.
+for _f in pages:
+    _s = open(_f, encoding="utf-8").read()
+    _n_right = _s.count('<div class="sp-right">')
+    _n_goi = _s.count('class="sp-goi"') + _s.count('class="sp-cta2"')   # thẻ có cặp Gọi/Zalo riêng cũng tính
+    if _n_right and _n_goi < _n_right:
+        L("[%d/%d thẻ lô thiếu nút Gọi — chạy python3 scripts/them-nut-goi.py] %s" % (_n_right - _n_goi, _n_right, _f))
+    if 'class="mobile-sheet"' in _s:
+        _m = re.search(r'class="mobile-sheet"[\s\S]*?\n\s*</div>', _s)   # sheet đóng bằng </div> đứng riêng dòng
+        _links = re.findall(r'<a href="([^"]+)"', _m.group(0)) if _m else []
+        if not _links or not _links[-1].startswith("tel:"):
+            L("[Mục cuối menu điện thoại (nút to nhất) phải là tel:, đang là %s] %s" % (_links[-1] if _links else "trống", _f))
+    if _f.startswith(("dat-nen/", "nha-ban/", "cho-thue/")) and 'class="listing-cta-row"' in _s:
+        if 'class="risk-block"' in _s and 'goi-sau-rui-ro' not in _s:
+            L("[Trang lô thiếu khối Gọi sau khối rủi ro] %s" % _f)
+        if 'class="btn-listing-cta">Gọi tư vấn</a>' in _s:
+            L("[Chữ nút yếu 'Gọi tư vấn' — dùng 'Gọi xem sổ + giá'] %s" % _f)
+    if "speculationrules" not in _s:
+        L("[Thiếu <script type=speculationrules> — chuyển trang chậm hơn 200 trang kia] %s" % _f)
+
 # ── kết luận ───────────────────────────────────────────────────────────────
 print("KIỂM NÚT BẤM & BỘ LỌC — %d trang\n%s" % (len(pages), "=" * 62))
 if canh:

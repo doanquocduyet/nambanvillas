@@ -88,7 +88,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ===== LISTINGS ===== */
 .listings{background:var(--bg2)}
 .sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:16px;flex-wrap:wrap}
-.sec-label{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;opacity:.85}
+.sec-label{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .sec-title{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;line-height:1.14;color:var(--green);letter-spacing:-.03em}
 /* Primary section (Listings) — anchor of the page, larger & more editorial */
 .listings .sec-title{font-size:clamp(1.9rem,4vw,3rem);font-weight:800}
@@ -148,7 +148,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 a.pain-cta{font-size:.8rem;font-weight:700;color:var(--green);text-decoration:none;margin-top:2px;display:inline-block;opacity:.85}
 a.pain-cta:hover{opacity:1;text-decoration:underline}
 .btn{display:inline-block;padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:700;text-decoration:none;text-align:center;transition:all .2s;cursor:pointer}
-.btn-gold{background:var(--gold);color:white}
+.btn-gold{background:var(--gold);color:#1A2420}
 .btn-gold:hover{background:#b8943b;transform:translateY(-1px)}
 .btn-outline-light{border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);background:transparent}
 .btn-outline-light:hover{background:rgba(255,255,255,.1)}
@@ -172,13 +172,13 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 /* ===== SELL WIDGET (fixed bottom-right) ===== */
 .sell-widget{position:fixed;bottom:210px;right:24px;width:244px;background:var(--green);color:white;border-radius:16px;padding:20px;box-shadow:0 8px 32px rgba(0,0,0,.28);z-index:997;animation:slideInRight .4s ease}
 @keyframes slideInRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-.sell-widget-close{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.15);border:none;color:white;width:22px;height:22px;border-radius:50%;font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background var(--trans)}
+.sell-widget-close{position:absolute;top:10px;right:12px;background:rgba(255,255,255,.15);border:none;color:white;width:28px;height:28px;border-radius:50%;font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background var(--trans)}
 .sell-widget-close:hover{background:rgba(255,255,255,.3)}
 .sell-widget-title{font-size:.95rem;font-weight:800;line-height:1.35;margin-bottom:8px;letter-spacing:-.01em}
 .sell-widget-desc{font-size:.75rem;opacity:.78;line-height:1.5;margin-bottom:14px}
 .sell-widget-actions{display:flex;flex-direction:column;gap:8px}
 .sell-widget-btn{display:block;text-align:center;padding:9px 14px;border-radius:8px;font-weight:700;font-size:.82rem;transition:all var(--trans)}
-.sell-widget-btn-primary{background:var(--gold);color:white}
+.sell-widget-btn-primary{background:var(--gold);color:#1A2420}
 .sell-widget-btn-primary:hover{background:#b8943b}
 @media(max-width:768px){.sell-widget{width:220px;right:16px;bottom:220px}}
 @media(max-width:480px){.sell-widget{width:200px;right:12px;bottom:205px}.sell-widget-desc{display:none}}
@@ -206,6 +206,11 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .news-loading .spinner{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
 .page-hero{background:linear-gradient(158deg,rgba(11,34,20,.9),rgba(20,55,33,.8) 55%,rgba(11,34,20,.92)),url('/images/nam-ban-aerial.jpg') center/cover no-repeat;color:white;padding:120px 0 60px}
+/* hero-1: nền CSS không có srcset -> chọn bản nhỏ theo bề rộng màn (480/800/1200/gốc).
+   Điện thoại từng tải bản 152KB cho khung 390px — gấp 7,5 lần cần thiết, đúng ảnh LCP. */
+@media(max-width:640px){.page-hero,.hero-bg.hero-anh{background-image:linear-gradient(158deg,rgba(11,34,20,.9),rgba(20,55,33,.8) 55%,rgba(11,34,20,.92)),url('/images/nam-ban-aerial-480.jpg')!important}}
+@media(min-width:641px) and (max-width:1024px){.page-hero,.hero-bg.hero-anh{background-image:linear-gradient(158deg,rgba(11,34,20,.9),rgba(20,55,33,.8) 55%,rgba(11,34,20,.92)),url('/images/nam-ban-aerial-800.jpg')!important}}
+@media(min-width:1025px) and (max-width:1600px){.page-hero,.hero-bg.hero-anh{background-image:linear-gradient(158deg,rgba(11,34,20,.9),rgba(20,55,33,.8) 55%,rgba(11,34,20,.92)),url('/images/nam-ban-aerial-1200.jpg')!important}}
 .page-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:10px}
 .page-hero p{opacity:.8;font-size:1rem;max-width:540px}
 .breadcrumb{display:flex;gap:8px;align-items:center;font-size:.82rem;margin-bottom:16px;opacity:.65}
@@ -388,14 +393,14 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
   /* Menu sheet trượt lên từ dưới */
   .mobile-sheet-overlay{
     display:block;position:fixed;inset:0;z-index:1005;background:rgba(13,43,28,.5);
-    opacity:0;pointer-events:none;transition:opacity .25s;
+    opacity:0;pointer-events:none;visibility:hidden;transition:opacity .25s,visibility 0s .25s;
   }
-  .mobile-sheet-overlay.open{opacity:1;pointer-events:auto}
+  .mobile-sheet-overlay.open{opacity:1;pointer-events:auto;visibility:visible;transition-delay:0s}
   .mobile-sheet{
     display:block;position:fixed;left:0;right:0;bottom:0;z-index:1006;
     background:linear-gradient(180deg,#fff,#FBF7F0);border-radius:30px 30px 0 0;
     padding:8px 16px calc(22px + env(safe-area-inset-bottom));
-    transform:translateY(100%);transition:transform .32s cubic-bezier(.32,.72,0,1);
+    transform:translateY(100%);visibility:hidden;transition:transform .32s cubic-bezier(.32,.72,0,1),visibility 0s .32s;
     box-shadow:0 -12px 50px rgba(13,43,28,.24);
     /* ĐÃ TỪNG DÍNH: bảng có 9 mục ~560px, không giới hạn cao, không cuộn -> trên
        máy màn thấp (iPhone SE, Android nhỏ, xoay ngang) phần đầu bảng — Trang
@@ -403,9 +408,9 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
        thanh trình duyệt di động. */
     max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;
   }
-  .mobile-sheet.open{transform:translateY(0)}
+  .mobile-sheet.open{transform:translateY(0);visibility:visible;transition-delay:0s}
   .mobile-sheet-handle{width:38px;height:5px;background:#E2D9C8;border-radius:99px;margin:9px auto 6px}
-  .mobile-sheet-title{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B7AD98;margin:0 0 12px}
+  .mobile-sheet-title{text-align:center;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7C725F;margin:0 0 12px}
   .mobile-sheet a{
     display:flex;align-items:center;justify-content:space-between;
     padding:15px 16px;font-size:1.04rem;font-weight:600;color:var(--green);
@@ -454,8 +459,8 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .cmp-btn.active .cmp-plus{display:none}
 
 /* Thanh so sánh dưới màn hình */
-.cmp-bar{position:fixed;left:0;right:0;bottom:0;z-index:1003;background:white;border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(26,61,43,.13);transform:translateY(115%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
-.cmp-bar.show{transform:translateY(0)}
+.cmp-bar{position:fixed;left:0;right:0;bottom:0;z-index:1003;background:white;border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(26,61,43,.13);transform:translateY(115%);visibility:hidden;transition:transform .3s cubic-bezier(.4,0,.2,1),visibility 0s .3s;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+.cmp-bar.show{transform:translateY(0);visibility:visible;transition-delay:0s}
 .cmp-bar-inner{display:flex;align-items:center;gap:12px}
 .cmp-slots{display:flex;gap:10px;flex:1;min-width:0}
 .cmp-slot{display:flex;align-items:center;gap:9px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:6px 10px 6px 6px;flex:1;max-width:230px;min-width:0;position:relative}
@@ -463,7 +468,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .cmp-slot-info{min-width:0}
 .cmp-slot-price{font-size:.85rem;font-weight:800;color:var(--green);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cmp-slot-title{font-size:.74rem;color:var(--muted);white-space:nowrap}
-.cmp-slot-x{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;background:var(--green);color:white;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid white;cursor:pointer;padding:0}
+.cmp-slot-x{position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;background:var(--green);color:white;font-size:11px;line-height:1;display:flex;align-items:center;justify-content:center;border:2px solid white;cursor:pointer;padding:0}
 .cmp-slot-empty{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;font-style:italic;border-style:dashed;background:transparent}
 .cmp-go{background:var(--green);color:white;border:none;padding:12px 24px;border-radius:8px;font-weight:700;font-size:.9rem;font-family:inherit;cursor:pointer;flex-shrink:0;transition:background var(--trans)}
 .cmp-go:hover:not(:disabled){background:var(--green2)}
@@ -472,8 +477,8 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .cmp-clear:hover{color:var(--text)}
 
 /* Modal so sánh */
-.cmp-modal-ov{position:fixed;inset:0;z-index:1100;background:rgba(13,43,28,.55);opacity:0;pointer-events:none;transition:opacity .25s;display:flex;align-items:flex-end;justify-content:center}
-.cmp-modal-ov.show{opacity:1;pointer-events:auto}
+.cmp-modal-ov{position:fixed;inset:0;z-index:1100;background:rgba(13,43,28,.55);opacity:0;pointer-events:none;visibility:hidden;transition:opacity .25s,visibility 0s .25s;display:flex;align-items:flex-end;justify-content:center}
+.cmp-modal-ov.show{opacity:1;pointer-events:auto;visibility:visible;transition-delay:0s}
 .cmp-modal{background:white;width:100%;max-width:720px;border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto;padding:24px 22px calc(24px + env(safe-area-inset-bottom));position:relative;transform:translateY(40px);transition:transform .3s}
 .cmp-modal-ov.show .cmp-modal{transform:translateY(0)}
 .cmp-modal-close{position:absolute;top:16px;right:16px;width:30px;height:30px;border-radius:50%;background:var(--bg);border:none;color:var(--text);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
@@ -604,7 +609,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .sp-sang .sp-thumb{grid-area:thumb;position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/2;display:block}
 .sp-sang .sp-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .sp-sang .sp-row:hover .sp-thumb img{transform:scale(1.07)}
-.sp-sang .sp-badge{position:absolute;top:8px;left:8px;background:var(--gold,#C9A84C);color:#fff;font-size:.64rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.sp-sang .sp-badge{position:absolute;top:8px;left:8px;background:var(--gold,#C9A84C);color:#1A2420;font-size:.64rem;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.03em;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 .sp-sang .sp-mid{grid-area:mid;min-width:0}
 .sp-sang .sp-title{font-size:1.05rem;font-weight:700;line-height:1.38;color:var(--green,#1A3D2B);margin:0;letter-spacing:-.005em}
 .sp-sang .sp-title a{color:inherit;text-decoration:none}
@@ -616,7 +621,7 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 .sp-sang .sp-price::before{content:"GIÁ BÁN";display:block;font-size:.58rem;font-weight:700;letter-spacing:.09em;color:var(--gold,#C9A84C);margin-bottom:3px}
 .sp-sang .sp-area{font-size:.76rem;color:#6B6B6B;margin-top:2px}
 .sp-sang .sp-go{margin-top:11px;display:inline-block;font-size:.7rem;font-weight:700;color:var(--green,#1A3D2B);border:1px solid #E0D6C2;padding:5px 13px;border-radius:20px;transition:background .25s,color .25s,border-color .25s}
-.sp-sang .sp-row:hover .sp-go{background:var(--gold,#C9A84C);color:#fff;border-color:var(--gold,#C9A84C)}
+.sp-sang .sp-row:hover .sp-go{background:var(--gold,#C9A84C);color:#1A2420;border-color:var(--gold,#C9A84C)}
 .sp-sang .sp-feat{grid-template-columns:288px 1fr auto!important;border:1.5px solid var(--gold,#C9A84C);background:linear-gradient(180deg,#FFFDF6,#fff);box-shadow:0 6px 22px -10px rgba(201,168,76,.4)}
 .sp-sang .sp-feat .sp-title{font-size:1.18rem}
 .sp-sang .sp-feat .sp-price{font-size:1.55rem}
@@ -672,10 +677,35 @@ a.pain-cta:hover{opacity:1;text-decoration:underline}
 /* Khối "Cùng chủ đề" — nối các bài cùng cụm lại với nhau. Chữ neo là CÂU HỎI
    bài đích trả lời, để Google và bộ máy trả lời AI hiểu bài kia nói về gì. */
 .cum-chu-de{max-width:780px;margin:32px auto 0;padding:20px 22px;background:#F7F3EE;border-radius:14px}
-.cum-chu-de h2{font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#8a978f;margin:0 0 12px}
+.cum-chu-de h2{font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#5F6E66;margin:0 0 12px}
 .cum-chu-de ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
 .cum-chu-de li{display:flex;flex-direction:column;gap:2px}
 .cum-chu-de a{color:var(--green,#1A3D2B);font-weight:700;font-size:.97rem;text-decoration:none;line-height:1.4}
 .cum-chu-de a:hover{text-decoration:underline;text-underline-offset:3px}
 .cum-chu-de span{color:#6B6B6B;font-size:.85rem;line-height:1.5}
 @media(max-width:560px){.cum-chu-de{margin-inline:0;padding:16px 18px}}
+
+/* ── Khối GỌI/ZALO dùng chung (them-nut-goi.py) ────────────────────────────
+   Đặt ở chỗ khách đang nóng nhất: giữa bài, sau khối rủi ro, đầu trang dịch vụ,
+   xen giữa danh sách lô. 1 câu + 2 nút, chữ nút nói rõ bấm xong được gì. */
+.goi-nhanh{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;background:#EEF3EC;border:1px solid #DCE6D8;border-radius:16px;padding:18px 22px;margin:28px 0}
+.goi-nhanh p{margin:0;font-size:.95rem;color:#2f3d35;line-height:1.5;flex:1 1 260px}
+.goi-nhanh p strong{color:var(--green)}
+.goi-nhanh-nut{display:flex;gap:10px;flex:0 0 auto}
+.goi-nhanh-nut a{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:10px 18px;border-radius:12px;font-weight:800;font-size:.92rem;text-decoration:none;white-space:nowrap;transition:transform .15s,box-shadow .2s}
+.goi-nhanh-nut a:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(26,61,43,.5)}
+.goi-nhanh-goi{background:var(--green);color:#fff}
+.goi-nhanh-zalo{background:#fff;color:var(--green);border:1.5px solid var(--green)}
+.sp-sang>.goi-nhanh{margin:4px 0}
+.container>.goi-nhanh{margin:20px 0 28px}
+@media(max-width:560px){.goi-nhanh{padding:16px}.goi-nhanh-nut{width:100%}.goi-nhanh-nut a{flex:1;padding:12px 10px;font-size:.88rem}}
+/* Nút Gọi trên TỪNG thẻ lô — cta-3: hub cuộn 122 thẻ không có nút nào */
+.sp-sang .sp-goi{position:relative;z-index:2;display:inline-flex;align-items:center;gap:5px;margin-top:8px;min-height:32px;padding:6px 12px;border-radius:20px;background:var(--green,#1A3D2B);color:#fff;font-size:.74rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.sp-sang .sp-goi:hover{background:var(--green2,#24512f)}
+/* Điện thoại: nút tròn chỉ icon ở góc dưới phải thẻ (chữ ẩn, aria-label vẫn đọc);
+   .sp-right chừa 46px bên phải để giá không chui dưới nút. */
+@media(max-width:720px){
+ .sp-sang .sp-goi{position:absolute;right:10px;bottom:10px;margin:0;width:40px;height:40px;padding:0;border-radius:50%;justify-content:center;font-size:0;gap:0;box-shadow:0 4px 12px -4px rgba(26,61,43,.5)}
+ .sp-sang .sp-goi svg{width:18px;height:18px}
+ .sp-sang .sp-right{padding-right:48px}
+}
