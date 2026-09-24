@@ -8,12 +8,12 @@ vấn thương mại nóng nhất — vào thấy số cũ 3 tháng là mất ti
 
 Số ở đây KHÔNG bịa: lấy data-area / data-price / data-loc của các thẻ lô CÒN BÁN
 trên hub dat-nen-nam-ban/ (cùng nguồn với bộ lọc), quy ra triệu/m², lấy P10–P90
-(bỏ 10% hai đầu để lô ngoại lệ không kéo lệch) + trung vị. Lịch sử tuần lưu
+(bỏ 10% hai đầu để lô ngoại lệ không kéo lệch) + giá trung bình. Lịch sử tuần lưu
 data/gia-tuan.json để điền cột "So tuần trước". GIỮ TOÀN BỘ các tuần trên trang, không bao giờ xoá.
 
 Script SỞ HỮU các khối sau trên trang (đừng sửa tay, chạy lại là mất):
   <!-- TRA-LOI-NHANH -->  câu trả lời 40–60 chữ ngay đầu bài (AEO/GEO: AI trích thẳng)
-  <!-- WEEKLY-PRICE -->   bảng tuần (P10–P90 · trung vị · so tuần trước)
+  <!-- WEEKLY-PRICE -->   bảng tuần (P10–P90 · giá trung bình · so tuần trước)
   <!-- GIA-KHU -->        bảng theo khu (7 khu, link sang trang khu)
   <details data-faq="m2"> / data-faq="re">  2 câu FAQ có số (schema FAQPage sinh lại từ HTML)
   <title>, meta description, og/twitter title, H1, .article-cat, JSON-LD (Article/Dataset/WebPage)
@@ -99,8 +99,17 @@ def doc_lo():
     return ra
 
 
+def trung_binh(v):
+    """GIÁ TRUNG BÌNH khách hiểu được (chủ web 25/9/2026: "trung vị", "giá trung bình" không ai nói).
+    Trung bình cộng các lô SAU KHI bỏ 10% rẻ nhất và 10% đắt nhất -> lô bất thường không kéo lệch,
+    và gọi là "trung bình" là đúng nghĩa đen."""
+    lo_, hi_ = q(v, .1), q(v, .9)
+    giua = [x for x in v if lo_ <= x <= hi_] or list(v)
+    return sum(giua) / len(giua)
+
+
 def thong_ke(v):
-    return dict(n=len(v), lo=round(q(v, .1), 2), tv=round(statistics.median(v), 2), hi=round(q(v, .9), 2))
+    return dict(n=len(v), lo=round(q(v, .1), 2), tv=round(trung_binh(v), 2), hi=round(q(v, .9), 2))
 
 
 def tinh(lo):
@@ -129,8 +138,8 @@ def so_sanh(moi, cu):
         return "— (tuần đầu tính từ lô thật)"
     d = moi["tv"] - cu["tv"]
     if abs(d) < 0.05:
-        return "Đi ngang (trung vị %s)" % so(cu["tv"])
-    return "%s %s triệu/m² so với trung vị tuần trước (%s)" % ("Tăng" if d > 0 else "Giảm", so(abs(d)), so(cu["tv"]))
+        return "Đi ngang (giá trung bình %s)" % so(cu["tv"])
+    return "%s %s triệu/m² so với giá trung bình tuần trước (%s)" % ("Tăng" if d > 0 else "Giảm", so(abs(d)), so(cu["tv"]))
 
 
 def khoang_tuan(iso):
@@ -148,7 +157,7 @@ def bang_tuan(ngay, kq, cu, tong):
             continue
         v = kq[k]
         tr.append('            <tr><td style="%s">%s <span style="color:#6B6B6B;font-size:.8rem">(%d lô)</span></td>'
-                  '<td style="%s"><strong>%s – %s</strong> · trung vị %s</td><td style="%s">%s</td></tr>'
+                  '<td style="%s"><strong>%s – %s</strong> · giá trung bình %s</td><td style="%s">%s</td></tr>'
                   % (TD, TEN[k], v["n"], TD, so(v["lo"]), so(v["hi"]), so(v["tv"]), TD, so_sanh(v, (cu or {}).get(k))))
     return '''        <!-- WEEK:%s -->
         <h2>Tuần %s · cập nhật %s</h2>
@@ -158,7 +167,7 @@ def bang_tuan(ngay, kq, cu, tong):
           <thead>
             <tr style="background:#F2F6F3;text-align:left">
               <th scope="col" style="%s">Loại đất</th>
-              <th scope="col" style="%s">Giá rao (triệu/m², khoảng 10%%–90%%)</th>
+              <th scope="col" style="%s">Giá rao (triệu/m², khoảng giá phổ biến)</th>
               <th scope="col" style="%s">So tuần trước</th>
             </tr>
           </thead>
@@ -167,7 +176,7 @@ def bang_tuan(ngay, kq, cu, tong):
           </tbody>
         </table>
         </div>
-        <p style="font-size:.9rem;color:#3D3D3D"><strong>Cách tính:</strong> từ %d lô đang rao trên Nam Ban Villas ngày %s (cùng dữ liệu với bộ lọc trang Đất Nền), quy ra triệu/m² theo giá rao cả lô; bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch. Giá chốt thật thường thấp hơn giá rao.</p>
+        <p style="font-size:.9rem;color:#3D3D3D"><strong>Cách tính:</strong> từ %d lô đang rao trên Nam Ban Villas ngày %s (cùng dữ liệu với bộ lọc trang Đất Nền), quy ra triệu/m² theo giá rao cả lô; bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch. <strong>Giá trung bình</strong> là trung bình cộng các lô còn lại sau khi bỏ hai đầu đó. Giá chốt thật thường thấp hơn giá rao.</p>
 
 ''' % (ngay, khoang_tuan(ngay), ngay_vn(ngay), ngay_vn(ngay), TH, TH, TH, "\n".join(tr), tong, ngay_vn(ngay))
 
@@ -180,15 +189,15 @@ def bang_khu(ngay, khu):
                   % (TD, t["link"], t["ten"], t["n"], TD, so(t["lo"]), so(t["hi"]), TD, so(t["tv"]), TD, tien(t["re_nhat"])))
     return '''<!-- GIA-KHU:START -->
         <h2>Giá đất Nam Ban theo khu — khu nào rẻ, khu nào đắt?</h2>
-        <p>Cùng một xã Nam Ban nhưng đơn giá giữa các khu chênh nhau 2–3 lần. Bảng dưới tính từ chính các lô đang rao ngày %s: bấm tên khu để xem từng lô, sổ và giá.</p>
+        <p>Cùng một xã Nam Ban nhưng đơn giá trung bình các khu chênh nhau 2–3 lần. Bảng dưới tính từ chính các lô đang rao ngày %s: bấm tên khu để xem từng lô, sổ và giá.</p>
         <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
-          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban theo khu, ngày %s — triệu đồng/m² (khoảng 10%%–90%%)</caption>
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban theo khu, ngày %s — triệu đồng/m² (khoảng giá phổ biến)</caption>
           <thead>
             <tr style="background:#F2F6F3;text-align:left">
               <th scope="col" style="%s">Khu</th>
               <th scope="col" style="%s">Giá rao (triệu/m²)</th>
-              <th scope="col" style="%s">Trung vị</th>
+              <th scope="col" style="%s">Giá trung bình</th>
               <th scope="col" style="%s">Lô rẻ nhất</th>
             </tr>
           </thead>
@@ -205,12 +214,12 @@ def cau_tra_loi(ngay, kq, khu, tong):
     t = kq["tho"]
     re_nhat = min(khu, key=lambda x: x["tv"]) if khu else None
     dat_nhat = max(khu, key=lambda x: x["tv"]) if khu else None
-    cau = ('Giá đất Nam Ban hôm nay (%s): đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, trung vị %s triệu/m², '
-           'tính từ %d lô đang rao trên Nam Ban Villas.' % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
+    cau = ('Giá đất Nam Ban hôm nay (%s): đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, giá trung bình %s triệu/m², '
+           'tính từ %d lô đang rao trên Nam Ban Villas (giá trung bình tính sau khi bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất).' % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
     if "vuon" in kq:
         cau += ' Đất vườn, lô lớn %s–%s triệu/m².' % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"]))
     if re_nhat and dat_nhat and re_nhat is not dat_nhat:
-        cau += ' Rẻ nhất: %s (trung vị %s); cao nhất: %s (%s).' % (re_nhat["ten"], so(re_nhat["tv"]), dat_nhat["ten"], so(dat_nhat["tv"]))
+        cau += ' Rẻ nhất: %s (giá trung bình %s); cao nhất: %s (%s).' % (re_nhat["ten"], so(re_nhat["tv"]), dat_nhat["ten"], so(dat_nhat["tv"]))
     cau += ' Giá chốt thường thấp hơn giá rao.'
     return cau
 
@@ -293,14 +302,14 @@ def dataset(ngay, mo_ta, kq, tong):
         if k in kq:
             bien.append({"@type": "PropertyValue", "name": TEN[k], "unitText": "triệu đồng/m²",
                          "minValue": kq[k]["lo"], "maxValue": kq[k]["hi"], "value": kq[k]["tv"],
-                         "description": "Khoảng 10%%–90%% và trung vị từ %d lô đang rao" % kq[k]["n"]})
+                         "description": "Khoảng giá phổ biến và giá trung bình từ %d lô đang rao" % kq[k]["n"]})
     return {"@type": "Dataset", "@id": URL + "#dataset", "name": "Giá rao đất Nam Ban theo tuần (triệu đồng/m²)",
             "description": mo_ta, "url": URL, "inLanguage": "vi", "license": "https://creativecommons.org/licenses/by/4.0/",
             "creator": {"@id": "https://nambanvillas.vn/#organization"}, "dateModified": ngay,
             "temporalCoverage": "2026-07-02/" + ngay, "isAccessibleForFree": True,
             "spatialCoverage": {"@type": "Place", "name": "Nam Ban, Lâm Hà, Lâm Đồng",
                                 "geo": {"@type": "GeoCoordinates", "latitude": 11.8347, "longitude": 108.2622}},
-            "measurementTechnique": "Quy giá rao cả lô ra triệu đồng/m² từ %d lô đang rao trên Nam Ban Villas; lấy khoảng 10%%–90%% và trung vị" % tong,
+            "measurementTechnique": "Quy giá rao cả lô ra triệu đồng/m² từ %d lô đang rao trên Nam Ban Villas; lấy khoảng giá phổ biến và giá trung bình" % tong,
             "variableMeasured": bien,
             "distribution": {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nambanvillas.vn/data/gia-tuan.json"}}
 
@@ -325,8 +334,8 @@ def cap_nhat_gia_re(ngay, lo, kq, khu):
     khu_dat = max(khu, key=lambda x: x["tv"])
     khoi = ('<!-- GIA-RE-SO:START -->\n'
             '  <h2>Giá đất Nam Ban hiện tại bao nhiêu một m²?</h2>\n'
-            '  <p>Tính ngày %s từ %d lô đang rao trên Nam Ban Villas: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, trung vị %s triệu/m². '
-            'Khu rẻ nhất là %s (trung vị %s), đắt nhất là %s (%s). Với 500 triệu, ở mức trung vị mua được khoảng %d m².</p>\n'
+            '  <p>Tính ngày %s từ %d lô đang rao trên Nam Ban Villas: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, giá trung bình %s triệu/m². '
+            'Khu rẻ nhất là %s (giá trung bình %s), đắt nhất là %s (%s). Với 500 triệu, ở mức giá trung bình mua được khoảng %d m².</p>\n'
             '  <p>Bên Nam Ban Villas đang có <strong>%d lô dưới 1 tỷ</strong> (trong đó %d lô dưới 700 triệu); rẻ nhất từ <strong>%s</strong>: '
             '<a href="%s">%s</a>. Số này đổi theo tuần — bảng đầy đủ theo loại và theo 7 khu ở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>.</p>\n'
             '  <!-- GIA-RE-SO:END -->'
@@ -336,8 +345,8 @@ def cap_nhat_gia_re(ngay, lo, kq, khu):
     s = faq_html(s, "re-nhat", "Trong các tin đang rao trên thị trường có lô quanh mức 390–450 triệu, ví dụ 450 triệu cho 163m². "
                  "Bên Nam Ban Villas ngày %s có lô từ %s (%s), và %d lô dưới 700 triệu. Giá và cấu hình đổi theo thời điểm; giá trên tin rao không phải giá giao dịch."
                  % (ngay_vn(ngay), tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False), duoi_700))
-    s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao: đất nền có thổ cư %s–%s triệu/m² (trung vị %s); đất vườn, lô lớn %s–%s triệu/m². "
-                 "Khu rẻ nhất %s trung vị %s, khu đắt nhất %s trung vị %s. Cập nhật mỗi thứ Hai ở trang giá đất Nam Ban hôm nay."
+    s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao: đất nền có thổ cư %s–%s triệu/m² (giá trung bình %s); đất vườn, lô lớn %s–%s triệu/m². "
+                 "Khu rẻ nhất %s giá trung bình %s, khu đắt nhất %s giá trung bình %s. Cập nhật mỗi thứ Hai ở trang giá đất Nam Ban hôm nay."
                  % (ngay_vn(ngay), len(lo), so(t["lo"]), so(t["hi"]), so(t["tv"]),
                     so(kq["vuon"]["lo"]) if "vuon" in kq else "", so(kq["vuon"]["hi"]) if "vuon" in kq else "",
                     khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"])))
@@ -410,7 +419,7 @@ THAN_LAM_HA = """<main id="main">
         <h2>Giá đất Nam Ban Lâm Hà theo xã</h2>
         <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
-          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban Lâm Hà theo xã, ngày %(ngay)s — triệu đồng/m² (khoảng 10%%–90%%)</caption>
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban Lâm Hà theo xã, ngày %(ngay)s — triệu đồng/m² (khoảng giá phổ biến)</caption>
           <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Xã</th><th scope="col" style="%(th)s">Giá rao (triệu/m²)</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
           <tbody>
 %(hang_xa)s
@@ -419,11 +428,11 @@ THAN_LAM_HA = """<main id="main">
         </div>
 
         <h2>Khu nào ở Nam Ban, Lâm Hà rẻ nhất, khu nào đắt nhất?</h2>
-        <p>Xếp từ khu có đơn giá trung vị thấp nhất lên cao nhất. Bấm tên khu để xem toàn bộ lô, bấm giá để mở lô rẻ nhất khu đó.</p>
+        <p>Xếp từ khu có giá trung bình thấp nhất lên cao nhất. Bấm tên khu để xem toàn bộ lô, bấm giá để mở lô rẻ nhất khu đó.</p>
         <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
-          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Đơn giá trung vị theo khu, ngày %(ngay)s</caption>
-          <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Khu</th><th scope="col" style="%(th)s">Trung vị</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá trung bình theo khu, ngày %(ngay)s</caption>
+          <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Khu</th><th scope="col" style="%(th)s">Giá trung bình</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
           <tbody>
 %(hang_khu)s
           </tbody>
@@ -431,13 +440,13 @@ THAN_LAM_HA = """<main id="main">
         </div>
 
         <h2>Giá đất Nam Ban Lâm Hà theo loại đất</h2>
-        <p><strong>Đất nền có thổ cư</strong> (dưới 3.000m²): %(tho)s triệu/m², trung vị %(tho_tv)s. <strong>Đất vườn và lô lớn</strong> từ 3.000m²: %(vuon)s triệu/m². <strong>Đất view hồ, view đẹp</strong>: %(ho)s triệu/m². Tính từ %(tong)d lô, bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch.</p>
+        <p><strong>Đất nền có thổ cư</strong> (dưới 3.000m²): %(tho)s triệu/m², giá trung bình %(tho_tv)s. <strong>Đất vườn và lô lớn</strong> từ 3.000m²: %(vuon)s triệu/m². <strong>Đất view hồ, view đẹp</strong>: %(ho)s triệu/m². Tính từ %(tong)d lô, bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch.</p>
         <p>Muốn xem so sánh theo từng tuần thì mở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>. Ngân sách nhẹ thì đọc <a href="/dat-nam-ban-gia-re/">đất Nam Ban giá rẻ có gì trong tầm 450 triệu–1 tỷ</a>. Lô lớn tính theo sào ở <a href="/dat-vuon-nam-ban/">đất vườn, đất sào Nam Ban giá rẻ</a>.</p>
 
         <div class="goi-nhanh goi-giua-bai"><p>Đang nhắm một lô ở Nam Ban, Lâm Hà? Gọi hỏi thẳng giá chốt, sổ và quy hoạch của lô đó — <strong>trả lời trong ngày, không ràng buộc</strong>.</p><div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div></div>
 
         <h2>Giá này lấy từ đâu?</h2>
-        <p>Mỗi thứ Hai, đội ngũ Nam Ban Villas tổng hợp diện tích và giá rao của mọi lô còn bán trên trang <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>, quy ra triệu đồng/m² rồi tính khoảng 10%%–90%% và trung vị. Số nào cũng đối chiếu được với lô thật đang rao. Dữ liệu các tuần lưu công khai ở <a href="/data/gia-tuan.json">gia-tuan.json</a>. Giá nhà nước dùng tính thuế là chuyện khác, xem <a href="/thi-truong/bang-gia-dat-2026-nam-ban/">bảng giá đất 2026 ảnh hưởng gì tới người mua</a>.</p>
+        <p>Mỗi thứ Hai, đội ngũ Nam Ban Villas tổng hợp diện tích và giá rao của mọi lô còn bán trên trang <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>, quy ra triệu đồng/m² rồi tính khoảng giá phổ biến và giá trung bình. Số nào cũng đối chiếu được với lô thật đang rao. Dữ liệu các tuần lưu công khai ở <a href="/data/gia-tuan.json">gia-tuan.json</a>. Giá nhà nước dùng tính thuế là chuyện khác, xem <a href="/thi-truong/bang-gia-dat-2026-nam-ban/">bảng giá đất 2026 ảnh hưởng gì tới người mua</a>.</p>
       </div>
     </div>
   </div>
@@ -475,12 +484,12 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
     mo_ta = ("Giá đất Nam Ban Lâm Hà T%d/%d: đất nền thổ cư %s–%s triệu/m², xã Nam Ban và Nam Hà, %d lô dưới 1 tỷ, rẻ nhất %s. Gọi 0978 758 788."
              % (d.month, d.year, so(t["lo"]), so(t["hi"]), duoi1, tien(re_nhat["ty"])))
     cau = ("Giá đất Nam Ban Lâm Hà tháng %d/%d, tính từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, "
-           "trung vị %s triệu/m²; đất vườn, lô lớn %s triệu/m². Có %d lô dưới 1 tỷ, rẻ nhất từ %s."
+           "giá trung bình %s triệu/m²; đất vườn, lô lớn %s triệu/m². Có %d lô dưới 1 tỷ, rẻ nhất từ %s."
            % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon, duoi1, tien(re_nhat["ty"])))
 
     hang_xa = "\n".join("            <tr>%s%s%s%s</tr>" % (
         _td('<a href="%s" style="color:#1A3D2B;font-weight:600">%s</a> <span style="color:#6B6B6B;font-size:.8rem">(%d lô)</span>' % (x["link"], x["ten"], x["n"])),
-        _td("<strong>%s – %s</strong> · trung vị %s" % (so(x["lo"]), so(x["hi"]), so(x["tv"]))),
+        _td("<strong>%s – %s</strong> · giá trung bình %s" % (so(x["lo"]), so(x["hi"]), so(x["tv"]))),
         _td("%d lô" % x["duoi1"]),
         _td('<a href="%s">từ %s</a>' % (x["re"]["url"], tien(x["re"]["ty"])))) for x in xa)
     hang = []
@@ -496,18 +505,18 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
 
     faq = [
         ("Giá đất Nam Ban Lâm Hà bao nhiêu một m²?",
-         "Tính tháng %d/%d từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư %s–%s triệu/m², trung vị %s triệu/m²; đất vườn và lô lớn %s triệu/m². "
+         "Tính tháng %d/%d từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư %s–%s triệu/m², giá trung bình %s triệu/m²; đất vườn và lô lớn %s triệu/m². "
          "Đây là giá rao; giá chốt thường thấp hơn sau thương lượng." % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon)),
         ("Huyện Lâm Hà (Nam Ban) còn không sau sáp nhập?",
          "Từ 01/7/2025 cả nước bỏ cấp huyện. Theo Nghị quyết 202/2025/QH15, xã Nam Ban mới gồm thị trấn Nam Ban cũ, xã Đông Thanh, xã Mê Linh và xã Gia Lâm. "
          "Người mua vẫn quen gọi cả vùng là Nam Ban, Lâm Hà; trên giấy tờ mới ghi tên xã và tỉnh Lâm Đồng."),
         ("Mua đất Nam Ban, Lâm Hà dưới 1 tỷ ở khu nào?",
-         "Tháng %d/%d có %d lô dưới 1 tỷ. Đơn giá trung vị mềm nhất ở %s (%s triệu/m²), cao nhất ở %s (%s triệu/m²). Lô rẻ nhất hiện từ %s."
+         "Tháng %d/%d có %d lô dưới 1 tỷ. Giá trung bình mềm nhất ở %s (%s triệu/m²), cao nhất ở %s (%s triệu/m²). Lô rẻ nhất hiện từ %s."
          % (d.month, d.year, duoi1, khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"]), tien(re_nhat["ty"]))),
     ]
     if len(xa) == 2:
         faq.append(("Giá đất Nam Hà so với Nam Ban thế nào?",
-                    "Theo lô đang rao tháng %d/%d, trung vị xã Nam Ban %s triệu/m² (%d lô), xã Nam Hà %s triệu/m² (%d lô). Lô rẻ nhất xã Nam Ban từ %s, xã Nam Hà từ %s."
+                    "Theo lô đang rao tháng %d/%d, giá trung bình xã Nam Ban %s triệu/m² (%d lô), xã Nam Hà %s triệu/m² (%d lô). Lô rẻ nhất xã Nam Ban từ %s, xã Nam Hà từ %s."
                     % (d.month, d.year, so(xa[0]["tv"]), xa[0]["n"], so(xa[1]["tv"]), xa[1]["n"], tien(xa[0]["re"]["ty"]), tien(xa[1]["re"]["ty"]))))
     faq.append(("Giá trên trang này có phải bảng giá nhà nước không?",
                 "Không. Bảng giá đất tỉnh Lâm Đồng là giá nhà nước dùng tính thuế, phí sang tên và bồi thường, thường thấp hơn giá rao nhiều lần. "
@@ -677,7 +686,7 @@ def cap_nhat_dat_vuon(ngay):
     tu1den2 = [x for x in co_gia if 1 <= x["ty"] < 2]
     tren2 = [x for x in co_gia if x["ty"] >= 2]
     tr_sao = [x["ty"] * 1e6 / x["area"] for x in sao]          # triệu đồng / 1.000m² (1 sào)
-    sao_lo, sao_tv, sao_hi = (q(tr_sao, .1), statistics.median(tr_sao), q(tr_sao, .9)) if len(tr_sao) >= 3 else (0, 0, 0)
+    sao_lo, sao_tv, sao_hi = (q(tr_sao, .1), trung_binh(tr_sao), q(tr_sao, .9)) if len(tr_sao) >= 3 else (0, 0, 0)
     ts = lambda tr: tien(tr / 1000)          # triệu/sào -> "553 triệu" / "1,53 tỷ"
     sao_re = min(sao, key=lambda x: x["ty"] * 1e6 / x["area"]) if sao else None
 
@@ -687,7 +696,7 @@ def cap_nhat_dat_vuon(ngay):
     cau = ("Đất vườn, đất sào Nam Ban giá rẻ tháng %d/%d: rẻ nhất từ <strong>%s</strong>, có %d lô dưới 1 tỷ trong %d lô vườn và lô từ 1.000m² đang bán"
            % (d.month, d.year, tien(re_nhat["ty"]), len(duoi1), len(lo)))
     if sao_tv:
-        cau += "; lô từ 1.000m² trở lên giá phổ biến <strong>%s–%s/sào</strong> (1 sào = 1.000m²), trung vị %s/sào." % (ts(sao_lo), ts(sao_hi), ts(sao_tv))
+        cau += "; lô từ 1.000m² trở lên giá phổ biến <strong>%s–%s/sào</strong> (1 sào = 1.000m²), giá trung bình %s/sào." % (ts(sao_lo), ts(sao_hi), ts(sao_tv))
     else:
         cau += "."
     bang = ""
@@ -741,7 +750,7 @@ def cap_nhat_dat_vuon(ngay):
                  "danh sách xếp từ rẻ nhất ở trên trang." % (d.month, d.year, tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False), len(duoi1)))
     if sao_tv and sao_re:
         s = faq_html(s, "sao", "Ở Lâm Đồng, 1 sào tính 1.000m². Theo %d lô từ 1.000m² trở lên đang bán tháng %d/%d, giá phổ biến %s–%s/sào, "
-                     "trung vị %s/sào. Lô rẻ nhất theo sào hiện khoảng %s/sào (%s). Lô có sẵn thổ cư, mặt đường nhựa thì cao hơn."
+                     "giá trung bình %s/sào. Lô rẻ nhất theo sào hiện khoảng %s/sào (%s). Lô có sẵn thổ cư, mặt đường nhựa thì cao hơn."
                      % (len(sao), d.month, d.year, ts(sao_lo), ts(sao_hi), ts(sao_tv), ts(sao_re["ty"] * 1e6 / sao_re["area"]), H.escape(sao_re["ten"], quote=False)))
 
     td = "Đất Vườn, Đất Sào Nam Ban Giá Rẻ T%d/%d — Lô Vườn Cây, Lô Lớn Từ 1.000m²" % (d.month, d.year)
@@ -981,7 +990,7 @@ def cap_nhat_ban_vuon(ngay):
 
 # ── TRANG /dat-nam-ban-ngop-ban-gap/ — từ khoá "đất nam ban ngộp", "bán gấp" (25/9/2026) ──
 # Lô vào trang CHỈ KHI thẻ hub có nhãn "ngop": chính chủ nói rõ bán gấp / cần tiền / hạ giá (đã đọc trang lô;
-# từng bắt nhầm "phía dưới giáp suối" thành "dưới giá"). Mỗi lô trích NGUYÊN lời chủ + so đơn giá với trung vị.
+# từng bắt nhầm "phía dưới giáp suối" thành "dưới giá"). Mỗi lô trích NGUYÊN lời chủ + so đơn giá với giá trung bình.
 NGOP = "dat-nam-ban-ngop-ban-gap/index.html"
 URL_NGOP = "https://nambanvillas.vn/dat-nam-ban-ngop-ban-gap/"
 _LOI_CHU = re.compile(r"[^.;!?|]*(bán gấp|cần tiền|kẹt tiền|bán nhanh|hạ giá|ngộp|bán lỗ)[^.;!?|]*", re.I)
@@ -1027,7 +1036,7 @@ def cap_nhat_ngop(ngay, kq):
             if tv and x["area"] < 1000:
                 ch = (m2 - tv) / tv * 100
                 duoi_tv += ch < 0
-                dg = "%s tr/m² (%s%d%% so với trung vị)" % (so(m2), "−" if ch < 0 else "+", abs(round(ch)))
+                dg = "%s tr/m² (%s%d%% so với giá trung bình)" % (so(m2), "−" if ch < 0 else "+", abs(round(ch)))
             else:
                 dg = "%s/sào (lô lớn, không so với đất nền)" % tien(x["ty"] * 1000 / x["area"])
         hang.append('<tr><td style="%s">%s</td><td style="%s"><strong>%s</strong></td><td style="%s">%s</td><td style="%s">%s</td></tr>' % (
@@ -1036,7 +1045,7 @@ def cap_nhat_ngop(ngay, kq):
     cau = ("Đất Nam Ban ngộp, bán gấp tháng %d/%d: %d lô chính chủ nói rõ cần bán nhanh hoặc đã hạ giá, rẻ nhất từ <strong>%s</strong>."
            % (d.month, d.year, len(lo), tien(re_nhat["ty"])))
     if tv:
-        cau += " Trung vị đất nền có thổ cư đang là %s triệu/m² — mỗi lô bên dưới ghi rõ cao hay thấp hơn mốc này." % so(tv)
+        cau += " Giá trung bình đất nền có thổ cư đang là %s triệu/m² — mỗi lô bên dưới ghi rõ cao hay thấp hơn mốc này." % so(tv)
     H2 = '<h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:%s">%s</h2>'
     khoi = '''<!-- VUON-SO:START -->
     <div id="tra-loi-nhanh" class="tra-loi-nhanh">
@@ -1049,7 +1058,7 @@ def cap_nhat_ngop(ngay, kq):
     %s
     <div style="overflow-x:auto">
     <table style="width:100%%;border-collapse:collapse;font-size:.9rem;margin:0 0 26px">
-      <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Lô ngộp, bán gấp đang rao ngày %s — giá, đơn giá so với trung vị, và nguyên lời chủ đất</caption>
+      <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Lô ngộp, bán gấp đang rao ngày %s — giá, đơn giá so với giá trung bình, và nguyên lời chủ đất</caption>
       <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%s">Lô</th><th scope="col" style="%s">Giá</th><th scope="col" style="%s">Đơn giá</th><th scope="col" style="%s">Chủ nói</th></tr></thead>
       <tbody>%s</tbody>
     </table>
@@ -1072,7 +1081,7 @@ def cap_nhat_ngop(ngay, kq):
     pl = '<link rel="preload" as="image" href="%s" fetchpriority="high"%s%s>' % (
         src, (' imagesrcset="%s"' % ss.group(1)) if ss else "", (' imagesizes="%s"' % sz.group(1)) if sz and ss else "")
     s = re.sub(r'<link rel="preload" as="image"[^>]*>', lambda m: pl, s, count=1)
-    s = faq_html(s, "ngop-so", "Tháng %d/%d có %d lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá: %s. Rẻ nhất từ %s. Bảng trên trang ghi nguyên lời chủ và đơn giá so với trung vị."
+    s = faq_html(s, "ngop-so", "Tháng %d/%d có %d lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá: %s. Rẻ nhất từ %s. Bảng trên trang ghi nguyên lời chủ và đơn giá so với giá trung bình."
                  % (d.month, d.year, len(lo), "; ".join("%s (%s)" % (H.escape(x["ten"], quote=False), tien(x["ty"]) if x["ty"] > 0 else "giá liên hệ") for x in lo), tien(re_nhat["ty"])))
     td = "Đất Nam Ban Ngộp, Bán Gấp T%d/%d — Chủ Cần Tiền, Từ %s, Có So Giá Thị Trường" % (d.month, d.year, tien(re_nhat["ty"]).title())
     mt = ("Đất Nam Ban ngộp, bán gấp T%d/%d: %d lô chủ cần bán nhanh, từ %s. Có nguyên lời chủ và đơn giá so với thị trường. Gọi 0978 758 788."
@@ -1111,7 +1120,7 @@ def cap_nhat_ngop(ngay, kq):
         sm = sm.replace("</urlset>", "  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>\n</urlset>" % (URL_NGOP, ngay))
     sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL_NGOP), r"\g<1>" + ngay, sm)
     open("sitemap.xml", "w", encoding="utf-8").write(sm)
-    print("  ngộp: %d lô, từ %s, %d lô dưới trung vị" % (len(lo), tien(re_nhat["ty"]), duoi_tv))
+    print("  ngộp: %d lô, từ %s, %d lô dưới giá trung bình" % (len(lo), tien(re_nhat["ty"]), duoi_tv))
 
 
 def main():
@@ -1137,7 +1146,7 @@ def main():
     # TIÊU ĐỀ + H1 ỔN ĐỊNH (chỉ đổi theo THÁNG): trang đang có thứ hạng mà title đổi mỗi tuần thì
     # Google phải đánh giá lại liên tục. Số tuần nằm ở mô tả + khối Trả lời nhanh + bảng.
     tieu_de = "Giá Đất Nam Ban Hôm Nay T%d/%d — Tính Từ Lô Thật, Cập Nhật Mỗi Thứ Hai" % (datetime.date.fromisoformat(ngay).month, datetime.date.fromisoformat(ngay).year)
-    mo_ta = ("Giá đất Nam Ban hôm nay %s: đất nền thổ cư %s–%s triệu/m² (trung vị %s), theo 7 khu, tính từ %d lô đang rao. "
+    mo_ta = ("Giá đất Nam Ban hôm nay %s: đất nền thổ cư %s–%s triệu/m² (giá trung bình %s), theo 7 khu, tính từ %d lô đang rao. "
              "Cập nhật mỗi thứ Hai. Gọi 0978 758 788." % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
 
     # 1) khối trả lời nhanh · 2) bảng tuần · 3) bảng khu
@@ -1158,19 +1167,19 @@ def main():
 
     # 4) FAQ có số sống
     khu_re = sorted(khu, key=lambda x: x["tv"])[:3]
-    s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao trên Nam Ban Villas: đất nền có thổ cư %s–%s triệu/m² (trung vị %s)%s%s. "
+    s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao trên Nam Ban Villas: đất nền có thổ cư %s–%s triệu/m² (giá trung bình %s)%s%s. "
                  "Đây là giá rao, giá chốt thực tế thường thấp hơn 5–15%%."
                  % (ngay_vn(ngay), tong, so(t["lo"]), so(t["hi"]), so(t["tv"]),
                     ", đất vườn và lô lớn %s–%s triệu/m²" % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"])) if "vuon" in kq else "",
                     ", đất view hồ và view đẹp %s–%s triệu/m²" % (so(kq["ho"]["lo"]), so(kq["ho"]["hi"])) if "ho" in kq else ""))
     if khu_re:
-        s = faq_html(s, "re", "Theo lô đang rao ngày %s, đơn giá trung vị thấp nhất ở %s. Lô rẻ nhất toàn xã hiện từ %s. "
+        s = faq_html(s, "re", "Theo lô đang rao ngày %s, giá trung bình thấp nhất ở %s. Lô rẻ nhất toàn xã hiện từ %s. "
                      "Lô trung tâm, view hồ và đất vườn diện tích lớn cao hơn mặt bằng chung."
                      % (ngay_vn(ngay), "; ".join("%s (%s triệu/m², từ %s/lô)" % (k["ten"], so(k["tv"]), tien(k["re_nhat"])) for k in khu_re),
                         tien(min(x["ty"] for x in lo))))
 
     if '<details open data-faq="500tr">' in s:
-        s = faq_html(s, "500tr", "Ở đơn giá trung vị %s triệu/m² (ngày %s), 500 triệu tương đương khoảng %d m² đất nền có thổ cư; "
+        s = faq_html(s, "500tr", "Ở giá trung bình %s triệu/m² (ngày %s), 500 triệu tương đương khoảng %d m² đất nền có thổ cư; "
                      "chọn khu rẻ như %s thì được khoảng %d m², chọn khu đắt như %s thì chỉ khoảng %d m². "
                      "Thực tế còn tuỳ phần thổ cư và đường vào của từng lô — xem danh sách <a href=\"/dat-nam-ban-duoi-1-ty/\">đất Nam Ban dưới 1 tỷ</a>."
                      % (so(t["tv"]), ngay_vn(ngay), round(500 / t["tv"]),
@@ -1209,7 +1218,7 @@ def main():
         s2 = re.sub(r'(<meta (?:name="description"|property="og:description") content="[^"]*?)từ [\d.,]+ (?:triệu|tỷ)', lambda m: m.group(1) + "từ " + tien(min(x["ty"] for x in tt)), s2)
         open(f, "w", encoding="utf-8").write(s2)
     for k, v in kq.items():
-        print("  %-5s %3d lô  %s – %s  trung vị %s" % (k, v["n"], so(v["lo"]), so(v["hi"]), so(v["tv"])))
+        print("  %-5s %3d lô  %s – %s  giá trung bình %s" % (k, v["n"], so(v["lo"]), so(v["hi"]), so(v["tv"])))
     print("  khu:", ", ".join("%s %s" % (t["ten"], so(t["tv"])) for t in khu))
     print("Đã cập nhật %s (%s)" % (TRANG, ngay))
     return 0

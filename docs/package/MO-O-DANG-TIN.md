@@ -7,6 +7,97 @@
 Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.vn. Làm đúng như sau, KHÔNG hỏi lại những gì đã có trong repo:
 
 
+## 🆕 CẬP NHẬT 24–25/9/2026 — ĐỌC TRƯỚC MỌI THỨ KHÁC (luật mới, đè lên phần cũ nếu vênh)
+
+Mục tiêu mỗi tin: **đủ chỗ (không thiếu) · đúng chỗ (không dư) · một URL (không trùng) · số thật (không bịa)** → khách bấm **Gọi / Zalo 0978 758 788**.
+
+### A. Đăng 1 tin = chạm ĐÚNG những chỗ này
+
+| Loại tin | Trang chi tiết | Thẻ trên hub | Tự vào thêm (sau khi merge) |
+|---|---|---|---|
+| Lô lẻ | `/dat-nen/<slug>/` | `dat-nen-nam-ban/` | trang khu (theo `data-loc`), trang giá, trang vườn / ngộp nếu có nhãn |
+| Cụm (nhiều nền cùng khu) | `/dat-nen/cum-<slug>/` | `dat-nen-nam-ban/` + card `cum-moi-nam-ban/` | như lô lẻ |
+| Nhà | `/nha-ban/<slug>/` | `nha-ban-nam-ban/` | trang giá, trang vườn nếu có nhãn |
+| Cho thuê | `/cho-thue/<slug>/` | `cho-thue/` | đọc `DANG-TIN-CHO-THUE.md` |
+| Tin rao thị trường (không phải hàng Villas) | khối ngày trong `/thi-truong/tin-rao-dat-nam-ban-moi/` | — | đọc `FORM-DANG-TIN.md` |
+
+**KHÔNG làm ở ô này:** trang theo từ khoá mới, trang khu mới, sửa title/H1 trang đang top (trang chủ, `/dat-nen-nam-ban/`, `/dat-nam-ban-gia-re/`), CSS/JS, vercel.json → việc của ô web.
+
+### B. Thẻ hub — 4 thuộc tính nuôi bộ lọc VÀ mọi trang giá (sai 1 số là sai khắp nơi)
+
+- `data-price` = **tỷ đồng, KHỚP giá hiển thị trên thẻ** (bẫy 13c chặn). Cụm/"2 lô" = giá lô **rẻ nhất**. Chưa có giá = `0` (không đoán).
+- `data-area` = m² thật (cụm = diện tích nền điển hình; không cộng dồn).
+- `data-loc` = khu, chọn trong: `nam-ban` (trung tâm) · `dong-thanh` · `me-linh` · `gia-lam` · `ho-bai-cong` · `tu-liem` · `nam-ha`. Sai khu = lô lọt sang trang khu khác = mất uy tín.
+- `data-nhan` = nhãn, chỉ dùng các nhãn có sẵn, **gắn khi đúng, không gắn cho đẹp**:
+
+| Nhãn | Gắn khi | Trang tự nhận |
+|---|---|---|
+| `duoi-700` | giá dưới 700 triệu | bộ lọc hub |
+| `lo-goc` · `giap-suoi` · `rung-thong` · `view-dep` · `vuon` | đúng như tên, thấy được trên ảnh/sổ | bộ lọc hub, `/dat-vuon-nam-ban/` (`vuon` hoặc ≥1.000m²) |
+| `ca-phe` · `bo` · `cay-an-trai` · `vuon-hoa` | cây/vườn nằm **TRÊN chính lô** | `/ban-vuon-nam-ban/` |
+| `ngop` | chính chủ nói rõ **bán gấp / cần tiền / hạ giá** — ghi nguyên câu đó vào mô tả lô | `/dat-nam-ban-ngop-ban-gap/` (trích nguyên câu, so với giá trung bình) |
+
+CẤM gắn `ca-phe` khi chỉ "xung quanh là vườn cà phê", "view đồi cà phê". CẤM gắn `ngop` chỉ vì giá thấp. KHÔNG có nhãn "cây lâu năm" — CLN là loại đất trên sổ, không phải cây đang có.
+
+### C. Chữ trên trang — luật cứng (checker chặn)
+
+1. **"Lâm Hà" luôn có "Nam Ban" ngay cạnh, Nam Ban đứng trước:** "Mê Linh, Nam Ban, Lâm Hà". Xã khác: "Nam Hà (giáp Nam Ban), Lâm Hà" — KHÔNG ghi Nam Hà thuộc Nam Ban (chưa có văn bản sáp nhập). Sửa hàng loạt: `python3 scripts/lam-ha-kem-nam-ban.py`.
+2. **Không chữ máy móc:** script, tự động, auto, bot, AI, nhập tay, thuật toán. Viết "đội ngũ Nam Ban Villas". (Ngoại lệ: "béc tưới tự động" là tiện ích của lô.)
+3. **Không "chú/cháu", hạn chế ngôi thứ nhất** — chủ thể là "Nam Ban Villas", khách là "bạn"/"anh chị".
+4. **Không tính từ rỗng:** "rất hấp dẫn", "lý tưởng", "tuyệt đẹp", "hàng đầu" → thay bằng số (giá/sào, m², km).
+5. **Pháp lý nói thật:** sổ riêng hay **sổ chung** ghi rõ; không bao giờ "100% sổ hồng". Lời chủ ghi "theo chủ đất". Không hứa lợi nhuận/ROI không nguồn.
+6. **Số trong title/mô tả phải là số thật của lô** (giá, m², thổ cư).
+
+### D. Title · mô tả · H1
+
+- **Title ≤ 60 ký tự, KHÔNG đuôi "| Nam Ban Villas":** `[Loại] [m²] [Khu] Nam Ban – [thổ cư/điểm mạnh] – [GIÁ]`. VD: `Đất 500m² Trung Tâm Nam Ban – 326m² Thổ Cư, 950 Triệu`.
+- **H1 = title** (không đuôi thương hiệu).
+- **Mô tả ≤ 160 ký tự**, thứ tự: loại + khu → diện tích/thổ cư → **GIÁ** → `Gọi 0978 758 788.`
+- Không đưa ngày tháng vào title/H1.
+
+### E. Không trùng — kiểm TRƯỚC khi tạo URL
+
+- Tìm lô cùng **diện tích + giá + khu** trong `dat-nen/`, `nha-ban/` (grep số m² và giá). Có rồi → **cập nhật trang cũ**, không mở URL mới.
+- Lỡ trùng → giữ 1 trang, trang kia 301 sang (ô web thêm vào vercel.json), gỡ khỏi hub/khu/sitemap, sửa số đếm.
+- Cùng 1 lô không bao giờ có 2 thẻ trên hub.
+
+### F. Không bao giờ xoá
+
+- Lô/nhà/cụm **đã bán**: thêm `data-ban="1"` lên thẻ + nhãn `<span class="sp-badge" style="background:#8a2b2b">Đã bán</span>`; trang chi tiết giữ nguyên, `availability` → `SoldOut`. KHÔNG xoá trang, KHÔNG gỡ thẻ.
+- Tin rao theo ngày, bảng giá tuần, mục Cập Nhật Thị Trường: giữ hết (bẫy 21 chặn nếu số khối giảm).
+
+### G. Thứ tự lệnh mỗi lần đăng
+
+```bash
+python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …   # cắt 3:2, nén, xoá GPS
+python3 scripts/tao-webp.py
+python3 scripts/tao-srcset.py                             # bản 480/800 cho ảnh hero
+python3 scripts/sitemap-anh.py
+python3 scripts/do-lo-vao-trang-khu.py                    # đổ thẻ hub sang 7 trang khu (đúng data-loc)
+python3 scripts/them-nut-goi.py                           # nút Gọi trên thẻ, sau khối rủi ro, menu
+python3 scripts/lam-ha-kem-nam-ban.py                     # luật Lâm Hà kèm Nam Ban
+python3 scripts/kiem-tra-truoc-khi-dang.py                # PHẢI in "SẠCH" mới push
+```
+
+**KHÔNG tự chạy** `cap-nhat-gia-hom-nay.py` — sau khi merge, GitHub Actions `gia-tuan.yml` tự tính lại (theo giờ Việt Nam) và cập nhật: `/thi-truong/gia-dat-nam-ban-hom-nay/` · `/dat-nam-ban-gia-re/` (cả mục 300 triệu) · `/gia-dat-lam-ha/` · `/dat-vuon-nam-ban/` · `/ban-vuon-nam-ban/` · `/dat-nam-ban-ngop-ban-gap/` · title + mô tả 2 hub · mô tả trang chủ + câu "Xem đất Nam Ban tận nơi" · mô tả trang thị trấn.
+
+### H. Checklist 12 dòng trước khi báo xong
+
+1. Trang chi tiết có title ≤60, H1, mô tả ≤160 có giá + hotline.
+2. Thẻ hub đủ 4 thuộc tính, `data-price` khớp giá hiển thị.
+3. Nhãn đúng luật mục B (vườn/ngộp chỉ khi có thật).
+4. Không trùng lô cũ (mục E).
+5. Ảnh: đủ 4 lệnh, alt neo mốc thật, hero `fetchpriority="high"`.
+6. Schema: `Product` + `Offer` (giá, `availability`) · `FAQPage` ≥3 câu khớp chữ hiện · `BreadcrumbList`.
+7. Khối điểm mạnh / "điều cần quan tâm" tối đa 3 gạch.
+8. Nút Gọi + Zalo trong thẻ giá, sau khối rủi ro (chạy `them-nut-goi.py`).
+9. Sitemap có URL (dấu `/` cuối), ≥1 link trỏ tới trang.
+10. Chữ: Lâm Hà kèm Nam Ban · không chữ máy móc · không tính từ rỗng · sổ nói thật.
+11. Lô đã bán: đổi nhãn, KHÔNG xoá.
+12. `kiem-tra-truoc-khi-dang.py` = SẠCH → PR → merge → báo chú kèm link `👉 https://nambanvillas.vn/...`.
+
+---
+
 ## ✅ CHECKLIST KHÔNG BỎ SÓT (đọc trước tiên, mỗi lần đăng)
 
 > Đủ 8 dòng này là 1 tin đăng không lỗi. Thiếu dòng nào = mất khách hoặc CI chặn.
@@ -347,6 +438,6 @@ Giờ cháu đọc 4 file ở BƯỚC 0, xác nhận đã nạp xong, rồi ch�
 - Lô có **vườn cà phê nằm TRÊN chính lô** → thêm `ca-phe` vào `data-nhan` của thẻ trên `dat-nen-nam-ban/index.html`. Lô có **cây bơ trên đất** → thêm `bo`. Cây ăn trái → `cay-an-trai`. Vườn hoa trên đất → `vuon-hoa`. KHÔNG có nhãn cây lâu năm (CLN là loại đất trên sổ).
 - KHÔNG gắn khi chỉ "xung quanh là vườn cà phê", "view đồi cà phê" — gắn sai là khách tới xem thấy đất trống, mất uy tín.
 - Gắn xong, khi merge lên main trang `/ban-vuon-nam-ban/` tự nhận lô (Actions `gia-tuan.yml`).
-- Lô chính chủ nói rõ **bán gấp / cần tiền / hạ giá** (ghi được nguyên câu vào mô tả lô) → thêm `ngop` vào `data-nhan`. Trang `/dat-nam-ban-ngop-ban-gap/` tự nhận, trích nguyên câu đó, so đơn giá với trung vị. KHÔNG gắn chỉ vì giá thấp.
+- Lô chính chủ nói rõ **bán gấp / cần tiền / hạ giá** (ghi được nguyên câu vào mô tả lô) → thêm `ngop` vào `data-nhan`. Trang `/dat-nam-ban-ngop-ban-gap/` tự nhận, trích nguyên câu đó, so đơn giá với giá trung bình. KHÔNG gắn chỉ vì giá thấp.
 - `data-price` trên thẻ PHẢI khớp giá hiển thị (bẫy 13c trong `kiem-bo-loc.py`) — nó nuôi bộ lọc và mọi trang giá.
 
