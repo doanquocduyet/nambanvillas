@@ -189,7 +189,7 @@
     },
     {
       "source": "/ban-dat-thi-tran-nam-ban",
-      "destination": "/dat-nen-nam-ban/",
+      "destination": "/dat-trung-tam-thi-tran-nam-ban/",
       "permanent": true
     },
     {
@@ -369,7 +369,7 @@
     },
     {
       "source": "/ban-dat-thi-tran-nam-ban/",
-      "destination": "/dat-nen-nam-ban/",
+      "destination": "/dat-trung-tam-thi-tran-nam-ban/",
       "permanent": true
     },
     {
@@ -395,6 +395,16 @@
     {
       "source": "/dat-nen/ho-bai-cong-mat-ho-950m2/",
       "destination": "/dat-nen/dat-mat-ho-bai-cong-950m2/",
+      "permanent": true
+    },
+    {
+      "source": "/gia-dat-lam-ha-lam-dong",
+      "destination": "/gia-dat-lam-ha/",
+      "permanent": true
+    },
+    {
+      "source": "/gia-dat-lam-ha-lam-dong/",
+      "destination": "/gia-dat-lam-ha/",
       "permanent": true
     }
   ],

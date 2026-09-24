@@ -779,3 +779,9 @@ grep -rn "sắp \|dự kiến \|sẽ sớm \|đang triển khai" --include=*.htm
 
 **Bài học thêm:** (1) số trong mô tả/tiêu đề phải lấy từ dữ liệu có cấu trúc, không regex chữ; (2) mỗi lời hứa tần suất ("hàng tuần", "hôm nay") phải có script + Routine đứng sau, không thì đừng hứa; (3) nút liên hệ đặt theo **khoảnh khắc khách tin nhất** (sau rủi ro, sau phân tích), không chỉ đầu/cuối trang.
 
+| 38 | Hub Đất Nền ghi "94 lô, từ 480 triệu" ở `<title>`, mô tả, og, twitter, schema — thật là 116 lô, từ 368 triệu | bẫy 13b trong `kiem-bo-loc.py` (soi `<head>`, bẫy 13 cũ chỉ soi thân trang) | `cap-nhat-gia-hom-nay.py` đặt lại title/mô tả 2 hub mỗi thứ Hai |
+| 39 | FAQ tự viết "Đà Lạt chênh 5–10 lần" — không nguồn, mâu thuẫn bài so sánh (50–150 triệu/m²) | đối chiếu mọi số mới với bài gốc trên site trước khi viết | Dẫn đúng số bài so sánh, không tự suy tỷ lệ |
+| 40 | `/ban-dat-thi-tran-nam-ban` 301 về hub chung thay vì trang thị trấn | đọc `vercel.json` theo từ khoá | 301 về `/dat-trung-tam-thi-tran-nam-ban/` |
+
+**Bài học:** số trong `<head>` (title, mô tả, og) là thứ Google hiện ra — phải do script sinh từ dữ liệu, không gõ tay.
+
