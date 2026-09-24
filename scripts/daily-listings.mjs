@@ -12,7 +12,7 @@ const STATE = path.join(ROOT, 'data', 'tin-rao-state.json');
 const KEY = process.env.ANTHROPIC_API_KEY;
 const YT_KEY = process.env.YOUTUBE_API_KEY;   // tùy chọn — có thì quét thêm YouTube
 const MODEL = process.env.CLAUDE_MODEL || 'claude-sonnet-5';
-const MAX_DAYS = 20; // giữ tối đa 20 mục ngày gần nhất
+// CHỦ WEB (24/9/2026): KHÔNG BAO GIỜ xoá tin rao cũ. Tin cũ kèm ngày tháng = dữ liệu index quý nhất.
 
 if (!KEY) { console.error('Thiếu ANTHROPIC_API_KEY — bỏ qua.'); process.exit(0); }
 
@@ -126,7 +126,7 @@ if (data.marketNote) {
   block += `        <p style="background:#F0F4F1;border-radius:8px;padding:12px 16px;font-size:.92rem;color:#3D3D3D"><strong style="color:#1A3D2B">Quan sát thị trường:</strong> ${esc(data.marketNote)}</p>\n`;
 }
 
-// ---- Chèn vào trang giữa 2 marker, giữ tối đa MAX_DAYS mục ----
+// ---- Chèn vào trang giữa 2 marker, GIỮ TOÀN BỘ ngày cũ ----
 let html = readFileSync(PAGE, 'utf8');
 const START = '<!-- DAILY-DIGEST:START';
 const END = '<!-- DAILY-DIGEST:END -->';
@@ -140,9 +140,9 @@ const tail = html.slice(ei);
 // Nếu đã có mục hôm nay → thay thế, tránh trùng
 mid = mid.replace(new RegExp(`\\s*<!-- DAY:${iso} -->[\\s\\S]*?(?=<!-- DAY:|$)`), '\n');
 
-// Trim: giữ MAX_DAYS block gần nhất
+// KHÔNG cắt: giữ mọi ngày cũ (chủ web chốt 24/9/2026)
 const days = mid.split(/(?=<!-- DAY:)/).filter(s => s.includes('<!-- DAY:'));
-const kept = days.slice(0, MAX_DAYS - 1).join('');
+const kept = days.join('');
 mid = '\n' + block + '\n' + kept;
 
 // Cập nhật dateModified + article-cat

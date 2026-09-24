@@ -4,7 +4,7 @@
 ## ĐÍCH ĐĂNG
 - Repo: **doanquocduyet/nambanvillas**, branch dev **claude/dreamy-ritchie-xBezi** → PR + squash merge `main` (Vercel auto-deploy).
 - File: **`thi-truong/tin-rao-dat-nam-ban-moi/index.html`**
-- Chèn khối ngày MỚI ngay **dưới dòng** `<!-- DAILY-DIGEST:START ...`, mới nhất lên đầu. Giữ tối đa 20 mục (`<!-- DAY:YYYY-MM-DD -->`). Nếu đã có mục cùng ngày → thay, không thêm trùng.
+- Chèn khối ngày MỚI ngay **dưới dòng** `<!-- DAILY-DIGEST:START ...`, mới nhất lên đầu. GIỮ TOÀN BỘ mục ngày cũ, KHÔNG xoá (`<!-- DAY:YYYY-MM-DD -->`). Nếu đã có mục cùng ngày → thay, không thêm trùng.
 - Sau khi chèn: sửa `"dateModified":"YYYY-MM-DD"` và dòng `<p class="article-cat">Quan sát thị trường · Cập nhật D/M/YYYY` sang ngày mới.
 
 ## LỌC (chỉ đăng tin CHẤT)

@@ -56,8 +56,8 @@ Chèn 1 dòng (đặt cạnh các URL /dat-nen/):
 
 ## LUẬT GIỮ TRANG SẠCH
 
-- **Tối đa 4 card** trong "Cụm đang mở". Có cụm thứ 5 → xoá card cụm CŨ NHẤT (hoặc cụm đã bán hết).
-- **Cụm bán hết → gỡ card** khỏi trang Cụm Mới (trang chi tiết có thể giữ hoặc ghi "đã bán").
+- **KHÔNG BAO GIỜ xoá card** (chủ web chốt 24/9/2026). Cụm mới lên đầu, cụm cũ tụt xuống.
+- **Cụm bán hết → GIỮ card, gắn nhãn "Đã bán"** (cả trên trang Cụm Mới lẫn trang chi tiết). Lô/cụm đã bán là bằng chứng giao dịch thật.
 - **KHÔNG** đưa lô lẻ vào trang Cụm Mới — chỉ card cụm.
 - Số liệu (số nền, m², giá) phải THẬT, khớp với trang chi tiết cụm.
 - Kỹ thuật: dùng `str_replace` khớp chính xác, KHÔNG regex DOTALL (luật CLAUDE.md).
@@ -75,7 +75,7 @@ Chèn 1 dòng (đặt cạnh các URL /dat-nen/):
 
 **HUB `/cum-moi-nam-ban/` — cập nhật MỖI lần có cụm mới/bán hết:**
 - **ItemList schema** phải liệt kê ĐÚNG các cụm đang mở (tên có số nền + khu + đặc điểm + giá). Đừng để cũ.
-- Card "Cụm đang mở" khớp ItemList (tối đa 4). Cụm mới lên đầu.
+- Card "Cụm đang mở" khớp ItemList. Cụm mới lên đầu, không xoá card cũ.
 - Title/H1/meta có `đất phân lô Nam Ban` + giá gốc + sổ riêng/thổ cư. FAQPage có câu "giá đất phân lô Nam Ban bao nhiêu?" + "có sổ riêng/thổ cư không?" (trả lời thẳng — AEO).
 - Đoạn "Giá đất phân lô Nam Ban đang mở" phải cập nhật dải giá thật theo cụm hiện có.
 
@@ -94,4 +94,4 @@ Chèn 1 dòng (đặt cạnh các URL /dat-nen/):
 
 ## TÓM TẮT 1 DÒNG
 Có cụm mới → (1) trang `/dat-nen/cum-<slug>/` (title+schema+link ngược hub) + (2) nén ảnh + (3) chèn card vào
-`cum-moi-nam-ban/index.html` dưới "Cụm đang mở" + **cập nhật ItemList + dải giá của hub** + (4) thêm sitemap. Tối đa 4 card.
+`cum-moi-nam-ban/index.html` dưới "Cụm đang mở" + **cập nhật ItemList + dải giá của hub** + (4) thêm sitemap. Không xoá card cũ.
