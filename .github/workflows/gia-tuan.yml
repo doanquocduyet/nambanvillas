@@ -1,0 +1,49 @@
+name: Giá đất tính lại từ lô thật (liên tục)
+
+# Chủ web (24/9/2026): "cập nhật liên tục". Trang giá hôm nay từng đứng im 83 ngày vì
+# chưa từng có việc nào chạy nó. Nay tính lại:
+#   - NGAY mỗi khi danh sách lô đổi (đăng lô mới / lô đã bán) trên hub Đất Nền, Nhà Bán
+#   - mỗi thứ Hai 8h30 sáng giờ Việt Nam (01:30 UTC), kể cả tuần không có lô mới
+# Mỗi tuần 1 ô: trong tuần thì làm mới ô tuần đó, sang tuần thì thêm ô mới. KHÔNG xoá ô cũ.
+on:
+  push:
+    branches: [main]
+    paths: ['dat-nen-nam-ban/index.html', 'nha-ban-nam-ban/index.html']
+  schedule:
+    - cron: '30 1 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: gia-tuan
+  cancel-in-progress: false
+
+jobs:
+  tinh-gia:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TZ: Asia/Ho_Chi_Minh
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Tính lại giá từ lô thật
+        run: python3 scripts/cap-nhat-gia-hom-nay.py
+      - name: Kiểm tra toàn site (lỗi thì dừng, không đẩy)
+        run: python3 scripts/kiem-tra-truoc-khi-dang.py
+      - name: Đẩy lên main nếu có thay đổi
+        run: |
+          git config user.name "Nam Ban Villas"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --staged --quiet && { echo "Không đổi gì."; exit 0; }
+          git commit -m "Giá đất tính lại từ lô thật $(date +'%d/%m/%Y')"
+          for i in 1 2 3; do
+            git pull --rebase --autostash -q origin main && git push && exit 0
+            sleep 5
+          done
+          exit 1

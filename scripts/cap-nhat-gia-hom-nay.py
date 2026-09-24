@@ -79,7 +79,7 @@ def ngay_vn(iso):
 def doc_lo():
     s = open(HUB, encoding="utf-8").read()
     ra = []
-    for m in re.finditer(r'<article class="prop-card sp-row[^"]*"([^>]*)>', s):
+    for m in re.finditer(r'<article class="prop-card(?: [^"]*)?"([^>]*)>', s):
         at = m.group(1)
         if 'data-ban="1"' in at:
             continue
@@ -133,6 +133,14 @@ def so_sanh(moi, cu):
     return "%s %s triệu/m² so với trung vị tuần trước (%s)" % ("Tăng" if d > 0 else "Giảm", so(abs(d)), so(cu["tv"]))
 
 
+def khoang_tuan(iso):
+    """2026-09-24 -> '21/9–27/9/2026' (thứ Hai – Chủ nhật của tuần đó)."""
+    d = datetime.date.fromisoformat(iso)
+    t2 = d - datetime.timedelta(days=d.weekday())
+    cn = t2 + datetime.timedelta(days=6)
+    return "%d/%d–%d/%d/%d" % (t2.day, t2.month, cn.day, cn.month, cn.year)
+
+
 def bang_tuan(ngay, kq, cu, tong):
     tr = []
     for k in ("tho", "vuon", "ho"):
@@ -143,7 +151,7 @@ def bang_tuan(ngay, kq, cu, tong):
                   '<td style="%s"><strong>%s – %s</strong> · trung vị %s</td><td style="%s">%s</td></tr>'
                   % (TD, TEN[k], v["n"], TD, so(v["lo"]), so(v["hi"]), so(v["tv"]), TD, so_sanh(v, (cu or {}).get(k))))
     return '''        <!-- WEEK:%s -->
-        <h2>Tuần %s</h2>
+        <h2>Tuần %s · cập nhật %s</h2>
         <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin-bottom:8px">
           <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban theo loại, tuần %s — triệu đồng/m²</caption>
@@ -161,7 +169,7 @@ def bang_tuan(ngay, kq, cu, tong):
         </div>
         <p style="font-size:.9rem;color:#3D3D3D"><strong>Cách tính:</strong> từ %d lô đang rao trên Nam Ban Villas ngày %s (cùng dữ liệu với bộ lọc trang Đất Nền), quy ra triệu/m² theo giá rao cả lô; bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch. Giá chốt thật thường thấp hơn giá rao.</p>
 
-''' % (ngay, ngay_vn(ngay), ngay_vn(ngay), TH, TH, TH, "\n".join(tr), tong, ngay_vn(ngay))
+''' % (ngay, khoang_tuan(ngay), ngay_vn(ngay), ngay_vn(ngay), TH, TH, TH, "\n".join(tr), tong, ngay_vn(ngay))
 
 
 def bang_khu(ngay, khu):
@@ -816,7 +824,9 @@ def main():
     khu = tinh_khu(lo)
     tong = len(lo)
     ls = json.load(open(LICH_SU, encoding="utf-8")) if os.path.exists(LICH_SU) else {}
-    truoc = [k for k in sorted(ls) if k < ngay]
+    # "So tuần trước" = lần tính gần nhất thuộc TUẦN TRƯỚC (không so với hôm qua khi chạy nhiều lần/tuần)
+    _tuan = lambda iso: datetime.date.fromisoformat(iso).isocalendar()[:2]
+    truoc = [k for k in sorted(ls) if _tuan(k) < _tuan(ngay)]
     cu = ls[truoc[-1]] if truoc else None
     ls[ngay] = dict(kq, khu={t["link"]: {k: t[k] for k in ("n", "lo", "tv", "hi")} for t in khu}, tong=tong)
     os.makedirs("data", exist_ok=True)
@@ -838,7 +848,12 @@ def main():
     j = s.index("        <!-- WEEKLY-PRICE:END -->")
     tuan = re.split(r"(?=        <!-- WEEK:)", s[i:j])
     # CHỦ WEB (24/9/2026): KHÔNG BAO GIỜ xoá tuần cũ — lịch sử có ngày tháng là dữ liệu quý nhất cho Google/AI.
-    tuan = [x for x in tuan if x.strip() and ("<!-- WEEK:%s -->" % ngay) not in x]
+    # cùng tuần -> làm mới ô tuần đó (số tươi hơn, KHÔNG phải xoá lịch sử); khác tuần -> ô mới, ô cũ giữ nguyên
+    def _cung_tuan(x):
+        m_ = re.search(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", x)
+        return bool(m_) and _tuan(m_.group(1)) == _tuan(ngay) and m_.group(1) >= max(
+            re.findall(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", s[i:j]) or [ngay])
+    tuan = [x for x in tuan if x.strip() and not _cung_tuan(x)]
     s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong) + "".join(tuan) + s[j:]
     s = thay_khoi(s, "<!-- GIA-KHU:START -->", "<!-- GIA-KHU:END -->", bang_khu(ngay, khu))
 
