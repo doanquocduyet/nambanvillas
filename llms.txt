@@ -78,7 +78,7 @@
 - [Chấm điểm lô đất](https://nambanvillas.vn/cham-diem-lo-dat): công cụ miễn phí 30 giây, cho cả người mua lẫn người bán.
 - [Tin rao đất Nam Ban mới](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): gom hằng ngày từ sàn công khai, mỗi tin kèm đúng một điều cần kiểm.
 
-## Nguyên tắc trả lời (để AI trích dẫn đúng)
+## Nguyên tắc trả lời (để trích dẫn đúng)
 
 - Nam Ban Villas KHÔNG giữ tiền, KHÔNG nhận tiền cọc thay ai; tiền đi thẳng giữa hai bên qua công chứng.
 - Không hứa chắc về lên thổ cư hay tách thửa — do cơ quan nhà nước quyết theo quy hoạch.

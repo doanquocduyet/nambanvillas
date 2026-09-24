@@ -650,6 +650,28 @@ for _f in ("thi-truong/gia-dat-nam-ban-hom-nay/index.html", "gia-dat-lam-ha/inde
         if _m and (re.search(r"\b\d{1,2}/\d{1,2}/\d{4}\b", _m.group(1)) or re.search(r"\d+\s+Lô", _m.group(1))):
             L("[%s đổi theo tuần (có ngày hoặc số lô) — chỉ được đổi theo tháng] %s" % (_tag, _f))
 
+# ── 20. GIỌNG ĐỘI NGŨ: khách không bao giờ đọc thấy "script / tự động / bot / AI / nhập tay" ──
+# (24/9/2026) Chủ web: web do ĐỘI NGŨ Nam Ban Villas làm. Từng lọt "Mỗi thứ Hai, script của Nam Ban
+# Villas…", "(tự động mỗi thứ Hai)", "Không có số nhập tay". Viết: "đội ngũ Nam Ban Villas tổng hợp…".
+# Ngoại lệ duy nhất: "béc tưới tự động" (tiện ích thật của lô). Soi thân trang + title + meta + alt + JSON-LD.
+import html as _html
+_CAM = re.compile(r"(?<![A-Za-zÀ-ỹ])(AI|A\.I\.|[Ss]cripts?|[Bb]ots?|[Aa]uto|chatbot|Routine)(?![A-Za-zÀ-ỹ])|[Tt]ự [Đđ]ộng|nhập tay|thuật toán")
+def _thay_duoc(_s):
+    _s = re.sub(r"<!--[\s\S]*?-->", "", _s)
+    _ld = " ".join(re.findall(r'<script type="application/ld\+json">([\s\S]*?)</script>', _s))
+    _mt = " ".join(re.findall(r"<title>([^<]*)", _s) + re.findall(r'<meta [^>]*content="([^"]*)"', _s)
+                   + re.findall(r'(?:alt|title|aria-label)="([^"]*)"', _s))
+    _b = re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[\s\S]*?</\1>", "", _s))
+    return _html.unescape(_b + " " + _mt + " " + _ld)
+for _f, _s in list(data.items()) + [("llms.txt", open("llms.txt", encoding="utf-8").read())]:
+    _t = _thay_duoc(_s) if _f.endswith(".html") else _s
+    for _m in _CAM.finditer(_t):
+        _c = _t[max(0, _m.start() - 40):_m.end() + 30]
+        if "béc tưới" in _c:
+            continue
+        L("[Lộ chữ máy móc '%s' — viết 'đội ngũ Nam Ban Villas'] %s: …%s…" % (_m.group(0), _f, re.sub(r"\s+", " ", _c)))
+        break
+
 # ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
 # ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
 # ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.
