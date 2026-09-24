@@ -18,7 +18,7 @@
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Mua đất Nam Ban bao nhiêu tiền? Giá từng loại 2026](https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-bao-nhieu/): Giá thực tế đất nền, đất vườn, đất view — kèm lô đang bán và giá cụ thể.
-- [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật mỗi thứ Hai](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá/m² (10%–90% + trung vị) theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json.
+- [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật mỗi thứ Hai](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá/m² (10%–90% + giá trung bình) theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json.
 - [Giá đất Nam Ban Lâm Hà theo xã, theo khu](https://nambanvillas.vn/gia-dat-lam-ha/): Giá rao đất xã Nam Ban (gồm thị trấn Nam Ban cũ, Đông Thanh, Mê Linh, Gia Lâm) và xã Nam Hà, tính từ lô thật mỗi thứ Hai; khu rẻ nhất, lô rẻ nhất, số lô dưới 1 tỷ.
 - [Tin rao đất Nam Ban mới — cập nhật hàng ngày](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): Tổng hợp tin rao và tín hiệu thị trường mới mỗi ngày, kèm link nguồn.
 - [Hỏi Đáp Mua Đất Nam Ban](https://nambanvillas.vn/hoi-dap/): 30 câu hỏi thường gặp về pháp lý, giá cả, quy hoạch, thủ tục, cuộc sống — nguồn trả lời nhanh và chính xác.
@@ -37,7 +37,7 @@
 - [Đất trung tâm thị trấn Nam Ban](https://nambanvillas.vn/dat-trung-tam-thi-tran-nam-ban/): Lô gần chợ, chùa Linh Ẩn, ĐT725.
 - [Đất quanh hồ Bãi Công](https://nambanvillas.vn/dat-ho-bai-cong-nam-ban/): Lô mặt hồ, giáp hồ, view hồ.
 - [Đất view hồ & săn mây Nam Ban](https://nambanvillas.vn/dat-view-ho-nam-ban/): Lô có view thật, đã kiểm tại chỗ.
-- [Đất Nam Ban ngộp, bán gấp](https://nambanvillas.vn/dat-nam-ban-ngop-ban-gap/): Chỉ lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá; mỗi lô kèm nguyên lời chủ và đơn giá so với trung vị (có lô "hạ giá" mà vẫn cao hơn trung vị — ghi thẳng).
+- [Đất Nam Ban ngộp, bán gấp](https://nambanvillas.vn/dat-nam-ban-ngop-ban-gap/): Chỉ lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá; mỗi lô kèm nguyên lời chủ và đơn giá so với giá trung bình (có lô "hạ giá" mà vẫn cao hơn giá trung bình — ghi thẳng).
 - [Bán vườn Nam Ban](https://nambanvillas.vn/ban-vuon-nam-ban/): Mọi loại vườn đang bán — vườn cà phê, vườn bơ, vườn cây ăn trái, nhà và đất có vườn hoa. Chỉ tính cây nằm trên chính lô; ghi rõ đất trồng cây lâu năm (CLN) là loại đất trên sổ, không phải vườn có sẵn cây.
 - [Đất vườn, đất sào Nam Ban giá rẻ](https://nambanvillas.vn/dat-vuon-nam-ban/): Lô vườn cây (cà phê, bơ) và lô lớn từ 1.000m² (1 sào) đang bán, xếp từ rẻ nhất; giá theo sào và theo tầm tiền, cập nhật mỗi thứ Hai.
 - [Đất khu Gia Lâm Nam Ban](https://nambanvillas.vn/dat-gia-lam-nam-ban/): Gần chợ, dân cư hiện hữu đông.

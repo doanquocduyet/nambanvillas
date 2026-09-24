@@ -3,13 +3,13 @@
   "tho": {
    "n": 65,
    "lo": 1.67,
-   "tv": 2.79,
+   "tv": 2.96,
    "hi": 4.64
   },
   "vuon": {
    "n": 6,
    "lo": 1.25,
-   "tv": 1.54,
+   "tv": 1.58,
    "hi": 1.9
   },
   "khu": {
@@ -22,13 +22,13 @@
    "/dat-dong-thanh-nam-ban/": {
     "n": 13,
     "lo": 1.66,
-    "tv": 2.24,
+    "tv": 2.43,
     "hi": 4.62
    },
    "/dat-me-linh-nam-ban/": {
     "n": 9,
     "lo": 1.34,
-    "tv": 2.44,
+    "tv": 2.7,
     "hi": 4.57
    }
   },
@@ -39,50 +39,50 @@
   "tho": {
    "n": 90,
    "lo": 1.65,
-   "tv": 2.76,
+   "tv": 2.91,
    "hi": 4.55
   },
   "vuon": {
    "n": 6,
    "lo": 1.25,
-   "tv": 1.54,
+   "tv": 1.58,
    "hi": 1.9
   },
   "ho": {
    "n": 9,
    "lo": 2.12,
-   "tv": 3.16,
+   "tv": 3.15,
    "hi": 4.18
   },
   "khu": {
    "/dat-trung-tam-thi-tran-nam-ban/": {
     "n": 57,
     "lo": 1.52,
-    "tv": 2.79,
+    "tv": 2.89,
     "hi": 4.51
    },
    "/dat-dong-thanh-nam-ban/": {
     "n": 22,
     "lo": 1.54,
-    "tv": 2.24,
+    "tv": 2.39,
     "hi": 4.68
    },
    "/dat-me-linh-nam-ban/": {
     "n": 11,
     "lo": 1.58,
-    "tv": 2.6,
+    "tv": 2.86,
     "hi": 4.23
    },
    "/dat-gia-lam-nam-ban/": {
     "n": 6,
     "lo": 2.12,
-    "tv": 3.45,
+    "tv": 3.35,
     "hi": 3.98
    },
    "/dat-ho-bai-cong-nam-ban/": {
     "n": 9,
     "lo": 2.12,
-    "tv": 3.16,
+    "tv": 3.15,
     "hi": 4.18
    },
    "/dat-tu-liem-nam-ban/": {
@@ -99,56 +99,56 @@
   "tho": {
    "n": 97,
    "lo": 1.52,
-   "tv": 2.74,
+   "tv": 2.86,
    "hi": 4.51
   },
   "vuon": {
    "n": 15,
    "lo": 0.59,
-   "tv": 1.49,
+   "tv": 1.33,
    "hi": 1.96
   },
   "ho": {
    "n": 36,
    "lo": 1.52,
-   "tv": 2.79,
+   "tv": 2.85,
    "hi": 4.61
   },
   "khu": {
    "/dat-trung-tam-thi-tran-nam-ban/": {
     "n": 69,
     "lo": 1.07,
-    "tv": 2.65,
+    "tv": 2.68,
     "hi": 4.4
    },
    "/dat-dong-thanh-nam-ban/": {
     "n": 27,
     "lo": 1.42,
-    "tv": 2.23,
+    "tv": 2.26,
     "hi": 4.35
    },
    "/dat-me-linh-nam-ban/": {
     "n": 13,
     "lo": 0.86,
-    "tv": 2.44,
+    "tv": 2.59,
     "hi": 4.18
    },
    "/dat-gia-lam-nam-ban/": {
     "n": 9,
     "lo": 0.71,
-    "tv": 2.59,
+    "tv": 2.42,
     "hi": 3.93
    },
    "/dat-ho-bai-cong-nam-ban/": {
     "n": 10,
     "lo": 2.22,
-    "tv": 3.16,
+    "tv": 3.23,
     "hi": 4.14
    },
    "/dat-tu-liem-nam-ban/": {
     "n": 5,
     "lo": 2.32,
-    "tv": 3.25,
+    "tv": 3.32,
     "hi": 3.62
    }
   },
@@ -159,50 +159,50 @@
   "tho": {
    "n": 96,
    "lo": 1.42,
-   "tv": 2.61,
+   "tv": 2.8,
    "hi": 4.51
   },
   "vuon": {
    "n": 17,
    "lo": 0.62,
-   "tv": 1.49,
+   "tv": 1.34,
    "hi": 1.92
   },
   "ho": {
    "n": 40,
    "lo": 1.52,
-   "tv": 2.79,
+   "tv": 2.89,
    "hi": 4.68
   },
   "khu": {
    "/dat-trung-tam-thi-tran-nam-ban/": {
     "n": 67,
     "lo": 1.06,
-    "tv": 2.49,
+    "tv": 2.64,
     "hi": 4.42
    },
    "/dat-dong-thanh-nam-ban/": {
     "n": 26,
     "lo": 1.42,
-    "tv": 2.18,
+    "tv": 2.26,
     "hi": 4.42
    },
    "/dat-me-linh-nam-ban/": {
     "n": 13,
     "lo": 0.86,
-    "tv": 2.44,
+    "tv": 2.59,
     "hi": 4.15
    },
    "/dat-gia-lam-nam-ban/": {
     "n": 11,
     "lo": 0.75,
-    "tv": 1.66,
+    "tv": 2.18,
     "hi": 3.9
    },
    "/dat-ho-bai-cong-nam-ban/": {
     "n": 10,
     "lo": 2.22,
-    "tv": 3.16,
+    "tv": 3.23,
     "hi": 4.14
    },
    "/dat-tu-liem-nam-ban/": {
@@ -225,50 +225,50 @@
   "tho": {
    "n": 96,
    "lo": 1.42,
-   "tv": 2.61,
-   "hi": 4.56
+   "tv": 2.83,
+   "hi": 4.59
   },
   "vuon": {
    "n": 18,
    "lo": 0.52,
-   "tv": 1.35,
+   "tv": 1.28,
    "hi": 1.9
   },
   "ho": {
    "n": 39,
    "lo": 1.51,
-   "tv": 2.79,
+   "tv": 2.9,
    "hi": 4.68
   },
   "khu": {
    "/dat-trung-tam-thi-tran-nam-ban/": {
     "n": 66,
     "lo": 1.05,
-    "tv": 2.48,
+    "tv": 2.63,
     "hi": 4.43
    },
    "/dat-dong-thanh-nam-ban/": {
     "n": 26,
     "lo": 1.42,
-    "tv": 2.18,
+    "tv": 2.26,
     "hi": 4.42
    },
    "/dat-me-linh-nam-ban/": {
     "n": 14,
     "lo": 0.53,
-    "tv": 2.29,
-    "hi": 4.13
+    "tv": 2.4,
+    "hi": 4.42
    },
    "/dat-gia-lam-nam-ban/": {
     "n": 12,
     "lo": 0.79,
-    "tv": 1.7,
-    "hi": 3.87
+    "tv": 2.07,
+    "hi": 3.86
    },
    "/dat-ho-bai-cong-nam-ban/": {
     "n": 9,
     "lo": 2.12,
-    "tv": 3.16,
+    "tv": 3.24,
     "hi": 4.18
    },
    "/dat-tu-liem-nam-ban/": {
@@ -284,56 +284,57 @@
     "hi": 5.59
    }
   },
-  "tong": 114
+  "tong": 114,
+  "nguon": "git be5d13b"
  },
  "2026-09-25": {
   "tho": {
    "n": 96,
    "lo": 1.42,
-   "tv": 2.61,
+   "tv": 2.83,
    "hi": 4.59
   },
   "vuon": {
    "n": 18,
    "lo": 0.52,
-   "tv": 1.35,
+   "tv": 1.28,
    "hi": 1.9
   },
   "ho": {
    "n": 39,
    "lo": 1.51,
-   "tv": 2.79,
+   "tv": 2.9,
    "hi": 4.68
   },
   "khu": {
    "/dat-trung-tam-thi-tran-nam-ban/": {
     "n": 66,
     "lo": 1.05,
-    "tv": 2.48,
+    "tv": 2.63,
     "hi": 4.43
    },
    "/dat-dong-thanh-nam-ban/": {
     "n": 26,
     "lo": 1.42,
-    "tv": 2.18,
+    "tv": 2.26,
     "hi": 4.42
    },
    "/dat-me-linh-nam-ban/": {
     "n": 14,
     "lo": 0.53,
-    "tv": 2.29,
+    "tv": 2.4,
     "hi": 4.42
    },
    "/dat-gia-lam-nam-ban/": {
     "n": 12,
     "lo": 0.79,
-    "tv": 1.7,
+    "tv": 2.07,
     "hi": 3.86
    },
    "/dat-ho-bai-cong-nam-ban/": {
     "n": 9,
     "lo": 2.12,
-    "tv": 3.16,
+    "tv": 3.24,
     "hi": 4.18
    },
    "/dat-tu-liem-nam-ban/": {
