@@ -96,7 +96,7 @@ Mỗi tin = 1 dòng `<li>`, gồm 3 phần theo đúng thứ tự:
 <p style="background:#F0F4F1;border-radius:8px;padding:12px 16px;font-size:.92rem;color:#3D3D3D"><strong style="color:#1A3D2B">Quan sát thị trường:</strong> … <a href="URL" target="_blank" rel="nofollow noopener">Nguồn</a></p>
 ```
 
-Sau khi chèn: cập nhật `"dateModified"` và dòng `article-cat` sang ngày mới; giữ tối đa 20 mục ngày gần nhất.
+Sau khi chèn: cập nhật `"dateModified"` và dòng `article-cat` sang ngày mới; GIỮ TOÀN BỘ mục ngày cũ, KHÔNG xoá.
 
 ---
 

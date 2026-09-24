@@ -173,7 +173,7 @@ Thiếu dòng comment → token thiếu quyền `pages_manage_engagement`, xem `
 **KỸ THUẬT (khắc cứng):**
 - CẤM regex DOTALL `.*?` để xoá/sửa khối HTML. Dùng str_replace khớp CHÍNH XÁC, DUY NHẤT.
 - Verify JSON-LD hợp lệ + 0 placeholder + link không hỏng TRƯỚC khi push.
-- Tin mới nhất lên đầu, giữ tối đa 20 mục ngày; cập nhật `dateModified`.
+- Tin mới nhất lên đầu, GIỮ TOÀN BỘ mục ngày cũ, KHÔNG xoá; cập nhật `dateModified`.
 
 ---
 

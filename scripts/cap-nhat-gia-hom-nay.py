@@ -9,7 +9,7 @@ vấn thương mại nóng nhất — vào thấy số cũ 3 tháng là mất ti
 Số ở đây KHÔNG bịa: lấy data-area / data-price / data-loc của các thẻ lô CÒN BÁN
 trên hub dat-nen-nam-ban/ (cùng nguồn với bộ lọc), quy ra triệu/m², lấy P10–P90
 (bỏ 10% hai đầu để lô ngoại lệ không kéo lệch) + trung vị. Lịch sử tuần lưu
-data/gia-tuan.json để điền cột "So tuần trước". Giữ tối đa 8 tuần trên trang.
+data/gia-tuan.json để điền cột "So tuần trước". GIỮ TOÀN BỘ các tuần trên trang, không bao giờ xoá.
 
 Script SỞ HỮU các khối sau trên trang (đừng sửa tay, chạy lại là mất):
   <!-- TRA-LOI-NHANH -->  câu trả lời 40–60 chữ ngay đầu bài (AEO/GEO: AI trích thẳng)
@@ -837,7 +837,8 @@ def main():
     i = s.index("\n", i) + 1
     j = s.index("        <!-- WEEKLY-PRICE:END -->")
     tuan = re.split(r"(?=        <!-- WEEK:)", s[i:j])
-    tuan = [x for x in tuan if x.strip() and ("<!-- WEEK:%s -->" % ngay) not in x][:7]
+    # CHỦ WEB (24/9/2026): KHÔNG BAO GIỜ xoá tuần cũ — lịch sử có ngày tháng là dữ liệu quý nhất cho Google/AI.
+    tuan = [x for x in tuan if x.strip() and ("<!-- WEEK:%s -->" % ngay) not in x]
     s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong) + "".join(tuan) + s[j:]
     s = thay_khoi(s, "<!-- GIA-KHU:START -->", "<!-- GIA-KHU:END -->", bang_khu(ngay, khu))
 

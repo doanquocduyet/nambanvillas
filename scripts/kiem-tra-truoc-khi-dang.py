@@ -672,6 +672,20 @@ for _f, _s in list(data.items()) + [("llms.txt", open("llms.txt", encoding="utf-
         L("[Lộ chữ máy móc '%s' — viết 'đội ngũ Nam Ban Villas'] %s: …%s…" % (_m.group(0), _f, re.sub(r"\s+", " ", _c)))
         break
 
+# ── 21. KHÔNG BAO GIỜ TỰ XOÁ TIN (chủ web chốt 24/9/2026) ────────────────────
+# Tin rao theo ngày, bảng giá theo tuần, mục Cập Nhật Thị Trường: số khối trên nhánh này
+# KHÔNG được ít hơn trên main. Từng mất bảng giá tuần 2/7/2026 khi làm lại trang.
+for _f, _p in (("thi-truong/tin-rao-dat-nam-ban-moi/index.html", r"<!-- DAY:\d{4}-\d{2}-\d{2} -->"),
+               ("thi-truong/gia-dat-nam-ban-hom-nay/index.html", r"<!-- WEEK:\d{4}-\d{2}-\d{2} -->"),
+               ("thi-truong/index.html", r'<h3 class="mkt-h">')):
+    _cu = _sp.run(["git", "show", "origin/main:" + _f], capture_output=True, text=True)
+    if _cu.returncode != 0 or not os.path.exists(_f):
+        continue          # CI clone nông / chưa có main: bỏ qua, không báo nhầm
+    _n_cu = len(re.findall(_p, _cu.stdout))
+    _n_moi = len(re.findall(_p, open(_f, encoding="utf-8").read()))
+    if _n_moi < _n_cu:
+        L("[Mất tin cũ: %d -> %d khối — KHÔNG BAO GIỜ xoá tin có ngày tháng] %s" % (_n_cu, _n_moi, _f))
+
 # ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
 # ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
 # ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.

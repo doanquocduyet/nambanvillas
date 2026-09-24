@@ -17,7 +17,7 @@
 1. **Tìm tin mới** (WebSearch) trong ~7 ngày gần nhất về các chủ đề trên. Chọn 1–3 tin đáng.
    Đối chiếu để không trùng mục đã có trong ô (đọc các `<h3 class="mkt-h">` hiện có).
 2. **Viết mỗi mục** theo mẫu HTML dưới — 2–3 câu tóm ý + 1 dòng "Với đất Nam Ban:" (nghĩa là gì với người mua Nam Ban).
-3. **Chèn** các mục mới NGAY DƯỚI dòng `<!-- MARKET-DIGEST:START ... -->` (mục mới lên đầu). Cập nhật ngày trong `.mkt-date`. **Giữ tối đa 8 mục** — xoá bớt mục cũ nhất phía dưới nếu quá.
+3. **Chèn** các mục mới NGAY DƯỚI dòng `<!-- MARKET-DIGEST:START ... -->` (mục mới lên đầu). Cập nhật ngày trong `.mkt-date`. **GIỮ TOÀN BỘ mục cũ — KHÔNG BAO GIỜ xoá** (chủ web chốt 24/9/2026: tin cũ kèm ngày tháng là dữ liệu index quý nhất).
 4. Cập nhật dòng `.mkt-src` cuối ô: đổi ngày "(đến D/M/2026)".
 5. Cập nhật `lastmod` của `thi-truong/` trong `sitemap.xml` sang ngày hôm nay.
 6. Verify JSON-LD còn hợp lệ, không có ngôi thứ nhất trong ô. Commit + PR + merge vào main (deploy).

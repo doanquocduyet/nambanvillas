@@ -33,7 +33,7 @@ farmstay/nghỉ dưỡng cao nguyên.** Ưu tiên tin ăn nhập trực tiếp v
 ### 5) Gắn lên trang Thị Trường
 - Thêm 1 card vào lưới "Phân Tích & Quy Hoạch" (đầu lưới).
 - Cập nhật mục **"Tin Liên Quan"** (`thi-truong/index.html`): đưa bài mới lên **số 01**,
-  giữ tối đa 3 bài, bài cũ nhất tụt xuống/gỡ. Tất cả link là **nội bộ `/thi-truong/...`**.
+  bài cũ tụt xuống, KHÔNG gỡ bài nào (chủ web chốt 24/9/2026). Tất cả link là **nội bộ `/thi-truong/...`**.
 
 ### 6) Sitemap + feed
 - Thêm URL bài vào `sitemap.xml` (changefreq weekly).
