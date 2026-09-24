@@ -290,6 +290,31 @@ for _f, _n, _dv in (("dat-nen-nam-ban/index.html", _DAT, "Lô"), ("nha-ban-nam-b
         if int(_m.group(1)) != _n:
             L("[<head> hub ghi %s %s, thật là %d — chạy scripts/cap-nhat-gia-hom-nay.py] %s" % (_m.group(1), _dv.lower(), _n, _f))
 
+# ── 13c. Giá hiển thị trên thẻ lô phải khớp data-price (25/9/2026) ────────────
+# ĐÃ TỪNG DÍNH: thẻ ghi "990 tr/lô" nhưng data-price="0.9"; cụm ghi "Từ 1,108 tỷ" nhưng 1.167.
+# data-price nuôi bộ lọc + mọi trang giá (hôm nay, giá rẻ, Lâm Hà, vườn, ngộp) -> sai 1 chỗ lan khắp nơi.
+def _gia_the(_t):
+    _t = _t.lower().replace("từ", "").strip()
+    if re.search(r"/m²|/1\.000|/sào|/tháng|/đêm|tr/m|–|-|hơn|chưa tới|dưới|trên|liên hệ", _t):
+        return None                      # khoảng giá / đơn giá / mơ hồ: bỏ qua
+    _m = re.search(r"([\d.,]+)\s*tỷ\s*(\d{1,3})?", _t)
+    if _m:
+        _v = float(_m.group(1).replace(",", "."))
+        if _m.group(2):
+            _v += int(_m.group(2)) / (10 ** len(_m.group(2)))
+        return _v
+    _m = re.search(r"([\d.]+)\s*(tr|triệu)", _t)
+    return float(_m.group(1).replace(".", "")) / 1000 if _m else None
+for _f in ("dat-nen-nam-ban/index.html", "nha-ban-nam-ban/index.html"):
+    _s = open(_f, encoding="utf-8").read()
+    for _m in re.finditer(r'<article class="prop-card(?: [^"]*)?"([^>]*)>([\s\S]*?)</article>', _s):
+        _dp = float((re.search(r'data-price="([\d.]+)"', _m.group(1)) or [0, 0])[1])
+        _sp = re.search(r'<div class="sp-price">([^<]*)', _m.group(2))
+        _v = _gia_the(_sp.group(1)) if _sp else None
+        if _v and _dp and abs(_v - _dp) / max(_v, _dp) > 0.02:
+            _u = re.search(r'href="(/[^"]+/)"', _m.group(2)).group(1)
+            L("[Thẻ ghi giá '%s' nhưng data-price=%s] %s %s" % (_sp.group(1).strip(), _dp, _f, _u))
+
 # ── 14. Nút Gọi phải ở đúng chỗ khách nóng nhất (them-nut-goi.py) ───────────
 # ĐÃ TỪNG DÍNH (cta-3/6/8): hub cuộn 122 thẻ không có nút Gọi; trang lô đọc xong
 # khối rủi ro thì hết nút; mục to nhất menu điện thoại là "Liên Hệ" chứ không gọi.
