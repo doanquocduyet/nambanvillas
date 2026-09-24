@@ -86,6 +86,7 @@
 - **[KHÔNG GỘP BÀI — CHỐT 23/9/2026]** Bài cùng chủ đề **GIỮ RIÊNG**, không gộp, không 301 sang nhau. Mỗi bài nhắm **một câu người ta search khác nhau** — "tuyến tránh khi nào xong" ≠ "sân bay ảnh hưởng gì" ≠ "giá bao nhiêu một mét". Gộp là mất một cửa vào Google. Đã đo: 28 bài, **0 cặp trùng từ khoá trên 30%** → không có chuyện tự cắn nhau.
   - Đổi lại, giữ riêng **bắt buộc phải NỐI THÀNH CỤM**: cuối mỗi bài có khối `.cum-chu-de` trỏ sang 3 bài anh em, **chữ neo là CÂU HỎI bài đích trả lời** (cấm "xem thêm", "tại đây"). Bài lẻ loi mới là bài yếu — không phải bài ngắn.
   - Thêm bài mới cùng cụm → chạy `python3 scripts/noi-cum-chu-de.py`. Checker mục 11 chặn nếu bài trong cụm không nối nhau.
+- **[LÂM HÀ LUÔN KÈM NAM BAN — CHỐT 24/9/2026]** Chữ "Lâm Hà" ở bất kỳ đâu (thân bài, title, mô tả, schema, llms.txt) PHẢI có "Nam Ban" ngay bên cạnh: "Nam Ban, Lâm Hà" · "Nam Ban Lâm Hà" · "giá đất Lâm Hà Nam Ban". Khu trong xã Nam Ban (Mê Linh, Đông Thanh, Gia Lâm…) viết "Mê Linh, Nam Ban, Lâm Hà". Xã khác (Nam Hà, Đinh Văn) viết "Nam Hà (giáp Nam Ban), Lâm Hà" — KHÔNG ghi là thuộc Nam Ban. Sửa hàng loạt: `python3 scripts/lam-ha-kem-nam-ban.py`; checker mục 18 chặn.
 - **[NÉN ẢNH BẮT BUỘC]** Mọi ảnh MỚI trước khi commit phải chạy `python3 scripts/nen-anh.py <file/thư-mục>` (max 1600px, JPEG q82, chỉ ghi đè nếu nhỏ hơn thật). Ảnh từ điện thoại thường 3–5MB — không được đưa thẳng lên site. Ảnh cũ đã tối ưu sẵn, nén lại không lợi → chỉ nén ảnh mới.
 
 ---

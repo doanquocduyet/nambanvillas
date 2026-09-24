@@ -629,6 +629,15 @@ for _f, _s in data.items():
     if _src and _src.group(1) != _pl.group(1):
         L(f"[preload trỏ {_pl.group(1)[-40:]} nhưng ảnh LCP là {_src.group(1)[-40:]}] {_f}")
 
+# ── 18. LUẬT CHỦ WEB: "Lâm Hà" luôn có "Nam Ban" ngay bên cạnh ─────────────
+# (24/9/2026) Lâm Hà đứng một mình kéo Google/AI hiểu sang cả vùng rộng, loãng thực
+# thể Nam Ban. Sửa: python3 scripts/lam-ha-kem-nam-ban.py (tất định, chạy lại được).
+_kq = _sp.run([sys.executable, "scripts/lam-ha-kem-nam-ban.py", "--kiem"], capture_output=True, text=True)
+if _kq.returncode != 0:
+    for _d in _kq.stdout.splitlines():
+        if _d.startswith("  "):
+            L("[Lâm Hà thiếu Nam Ban bên cạnh — chạy python3 scripts/lam-ha-kem-nam-ban.py]" + _d)
+
 # ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
 # ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
 # ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.
