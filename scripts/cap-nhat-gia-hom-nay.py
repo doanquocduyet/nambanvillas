@@ -818,135 +818,165 @@ def cap_nhat_300tr(ngay):
     print("  300tr: %d lô ≤300tr, %d lô <400tr, rẻ nhất %s" % (len(duoi300), len(duoi400), tien(lo[0]["ty"])))
 
 
-# ── 2 TRANG THEO CÂY TRỒNG — "bán vườn cà phê nam ban", "mua/bán vườn bơ nam ban" (25/9/2026) ──
-# Lô được vào trang CHỈ KHI thẻ hub có nhãn data-nhan "ca-phe" / "bo" — đã đọc từng trang lô, vườn/cây
-# nằm TRÊN chính lô (không tính "xung quanh vườn cà phê", "view đồi cà phê"). Đăng lô vườn mới: gắn nhãn.
-VUON_CAY = [
-    dict(slug="ban-vuon-ca-phe-nam-ban", nhan="ca-phe", ten="vườn cà phê",
-         td="Bán Vườn Cà Phê Nam Ban T%d/%d — Vườn Thật Trên Đất, Từ %s",
-         mt="Bán vườn cà phê (cafe) Nam Ban T%d/%d: %d lô có vườn cà phê thật trên đất, từ %s%s. Đưa đi xem vườn miễn phí. Gọi 0978 758 788."),
-    dict(slug="ban-vuon-bo-nam-ban", nhan="bo", ten="vườn bơ",
-         td="Mua Bán Vườn Bơ Nam Ban T%d/%d — Lô Có Cây Bơ Thật, Từ %s",
-         mt="Mua bán vườn bơ Nam Ban T%d/%d: %d lô có cây bơ thật trên đất, từ %s%s. Đưa đi xem tận nơi miễn phí. Gọi 0978 758 788."),
+# ── TRANG /ban-vuon-nam-ban/ — mọi loại vườn trên 1 trang (chủ web chốt 25/9/2026: gộp, để riêng lủng củng) ──
+# Lô vào trang CHỈ KHI thẻ hub có nhãn trong data-nhan: ca-phe · bo · cay-an-trai · vuon-hoa — đã đọc từng
+# trang lô, cây nằm TRÊN chính lô (không tính "xung quanh vườn cà phê", "view đồi cà phê", "gần đồi chè").
+# KHÔNG có nhãn "cây lâu năm": CLN là loại đất trên sổ, không phải cây đang có trên đất.
+BAN_VUON = "ban-vuon-nam-ban/index.html"
+URL_BAN_VUON = "https://nambanvillas.vn/ban-vuon-nam-ban/"
+LOAI_VUON = [  # (nhãn, neo, H2, tên ngắn)
+    ("ca-phe", "vuon-ca-phe", "Bán vườn cà phê Nam Ban", "vườn cà phê"),
+    ("bo", "vuon-bo", "Bán vườn bơ Nam Ban", "vườn bơ"),
+    ("cay-an-trai", "vuon-cay-an-trai", "Vườn cây ăn trái Nam Ban", "vườn cây ăn trái"),
+    ("vuon-hoa", "vuon-hoa", "Nhà, đất có vườn hoa ở Nam Ban", "vườn hoa"),
 ]
 
 
-def cap_nhat_vuon_cay(ngay):
+def cap_nhat_ban_vuon(ngay):
+    if not os.path.exists(BAN_VUON):
+        return
     d = datetime.date.fromisoformat(ngay)
+    nhan_ok = {x[0] for x in LOAI_VUON}
+    lo = _the_hub(HUB, lambda x: nhan_ok & set(x["nhan"].split())) + \
+        _the_hub("nha-ban-nam-ban/index.html", lambda x: nhan_ok & set(x["nhan"].split()))
+    lo = sorted(lo, key=lambda x: (x["ty"] <= 0, x["ty"]))
+    co_gia = [x for x in lo if x["ty"] > 0]
+    if not co_gia:
+        return
     nhieu_lo = lambda t: bool(re.match(r"\s*(Cụm|\d+\s*(lô|nền))", t, re.I) or re.search(r"\b\d+\s*(lô|nền)\b", t, re.I))
-    for c in VUON_CAY:
-        f = c["slug"] + "/index.html"
-        if not os.path.exists(f):
-            continue
-        lo = _the_hub(HUB, lambda x: c["nhan"] in x["nhan"].split())
-        lo = sorted(lo, key=lambda x: (x["ty"] <= 0, x["ty"]))
-        co_gia = [x for x in lo if x["ty"] > 0]
-        if not co_gia:
-            continue
-        re_nhat = co_gia[0]
-        duoi1 = [x for x in co_gia if x["ty"] < 1]
-        tu1den3 = [x for x in co_gia if 1 <= x["ty"] < 3]
-        tren3 = [x for x in co_gia if x["ty"] >= 3]
-        sao = [x for x in co_gia if x["area"] >= 1000 and not nhieu_lo(x["ten"])]
-        tr_sao = sorted(x["ty"] * 1e6 / x["area"] for x in sao)            # triệu / sào (1.000m²)
-        ts = lambda tr: tien(tr / 1000)
-        sao_txt = (", %s–%s/sào" % (ts(tr_sao[0]), ts(tr_sao[-1]))) if len(tr_sao) >= 2 else ""
+    ts = lambda tr: tien(tr / 1000)
+    re_nhat = co_gia[0]
+    duoi1 = [x for x in co_gia if x["ty"] < 1]
+    tu1den3 = [x for x in co_gia if 1 <= x["ty"] < 3]
+    tren3 = [x for x in co_gia if x["ty"] >= 3]
+    theo = {k: [x for x in lo if k in x["nhan"].split()] for k, *_ in LOAI_VUON}      # cả lô chưa ghi giá
+    gia_ = lambda x: tien(x["ty"]) if x["ty"] > 0 else "giá liên hệ"
+    cf_sao = sorted(x["ty"] * 1e6 / x["area"] for x in theo["ca-phe"] if x["area"] >= 1000 and not nhieu_lo(x["ten"]))
 
-        def lk(x):
-            return '<a href="%s">%s</a>' % (x["url"], H.escape(x["ten"], quote=False))
+    def lk(x):
+        return '<a href="%s">%s</a>' % (x["url"], H.escape(x["ten"], quote=False))
 
-        cau = ("%s Nam Ban tháng %d/%d: %d lô có %s thật trên đất đang bán, rẻ nhất từ <strong>%s</strong>"
-               % (c["ten"][0].upper() + c["ten"][1:], d.month, d.year, len(lo), c["ten"], tien(re_nhat["ty"])))
-        if len(tr_sao) >= 2:
-            cau += "; lô từ 1.000m² trở lên giá <strong>%s–%s/sào</strong> (1 sào = 1.000m²)" % (ts(tr_sao[0]), ts(tr_sao[-1]))
-        cau += "."
-        bang = ""
-        for ten, v in (("Dưới 1 tỷ", duoi1), ("1–3 tỷ", tu1den3), ("Từ 3 tỷ", tren3)):
-            if v:
-                bang += '<tr><td style="%s"><strong>%s</strong></td><td style="%s">%d lô</td><td style="%s">%s — %s</td></tr>' % (
-                    TD, ten, TD, len(v), TD, tien(v[0]["ty"]), lk(v[0]))
-        khoi = '''<!-- VUON-SO:START -->
+    dem = ", ".join("%d lô %s" % (len(theo[k]), ten) for k, _, _, ten in LOAI_VUON if theo[k])
+    cau = ("Vườn Nam Ban đang bán tháng %d/%d: %d lô có cây thật trên đất (%s), rẻ nhất từ <strong>%s</strong>"
+           % (d.month, d.year, len(lo), dem, tien(re_nhat["ty"])))
+    if len(cf_sao) >= 2:
+        cau += "; vườn cà phê từ 1.000m² giá <strong>%s–%s/sào</strong>" % (ts(cf_sao[0]), ts(cf_sao[-1]))
+    cau += "."
+    bang = ""
+    for ten, v in (("Dưới 1 tỷ", duoi1), ("1–3 tỷ", tu1den3), ("Từ 3 tỷ", tren3)):
+        if v:
+            bang += '<tr><td style="%s"><strong>%s</strong></td><td style="%s">%d lô</td><td style="%s">%s — %s</td></tr>' % (
+                TD, ten, TD, len(v), TD, tien(v[0]["ty"]), lk(v[0]))
+    H2 = '<h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:%s">%s</h2>'
+    khoi = '''<!-- VUON-SO:START -->
     <div id="tra-loi-nhanh" class="tra-loi-nhanh">
       <p class="tra-loi-nhanh-nhan">Trả lời nhanh</p>
       <p class="tra-loi-nhanh-cau">%s</p>
-      <div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788 hỏi %s</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div>
+      <div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788 hỏi vườn</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div>
     </div>
-    <h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:0 0 12px">Giá %s Nam Ban theo tầm tiền</h2>
+    %s
     <div style="overflow-x:auto">
     <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:0 0 26px">
-      <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Lô có %s thật trên đất, đang bán ngày %s — lô rẻ nhất từng tầm</caption>
+      <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Vườn có cây thật trên đất, đang bán ngày %s — lô rẻ nhất từng tầm tiền</caption>
       <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%s">Tầm tiền</th><th scope="col" style="%s">Số lô</th><th scope="col" style="%s">Rẻ nhất</th></tr></thead>
       <tbody>%s</tbody>
     </table>
     </div>
-    <!-- VUON-SO:END -->''' % (cau, c["ten"], c["ten"], c["ten"], ngay_vn(ngay), TH, TH, TH, bang)
+    <!-- VUON-SO:END -->''' % (cau, H2 % ("0 0 12px", "Vườn Nam Ban đang bán giá bao nhiêu?"), ngay_vn(ngay), TH, TH, TH, bang)
 
-        s = open(f, encoding="utf-8").read()
-        s = thay_khoi(s, "<!-- VUON-SO:START -->", "<!-- VUON-SO:END -->", khoi)
-        the = []
-        for k, x in enumerate(lo):
-            h = x["html"].replace('<article class="prop-card sp-row sp-feat"', '<article class="prop-card sp-row"')
-            h = h.replace(' loading="lazy"', ' fetchpriority="high"', 1) if k == 0 else h.replace(' fetchpriority="high"', ' loading="lazy"')
-            the.append("      " + h)
-        s = thay_khoi(s, "<!-- VUON-THE:START -->", "<!-- VUON-THE:END -->",
-                      "<!-- VUON-THE:START -->\n" + "\n\n".join(the) + "\n<!-- VUON-THE:END -->")
-        s = re.sub(r'<h2 style="font-size:clamp\(1.15rem,2.6vw,1.5rem\);color:#1A3D2B;letter-spacing:-.015em;margin:0 0 18px">[^<]*</h2>',
-                   lambda m: '<h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:0 0 18px">%s Nam Ban đang bán — xếp từ giá rẻ nhất</h2>' % (c["ten"][0].upper() + c["ten"][1:]), s, count=1)
-        img = re.search(r'<img [^>]*>', the[0]).group(0)
-        src = re.search(r'src="([^"]+)"', img).group(1)
-        ss = re.search(r'srcset="([^"]+)"', img)
-        sz = re.search(r'sizes="([^"]+)"', img)
-        pl = '<link rel="preload" as="image" href="%s" fetchpriority="high"%s%s>' % (
-            src, (' imagesrcset="%s"' % ss.group(1)) if ss else "", (' imagesizes="%s"' % sz.group(1)) if sz and ss else "")
-        s = re.sub(r'<link rel="preload" as="image"[^>]*>', lambda m: pl, s, count=1)
+    muc = ["<!-- VUON-LOAI:START -->"]
+    for k, neo, h2, ten in LOAI_VUON:
+        v = theo[k]
+        muc.append('    <section id="%s" style="scroll-margin-top:90px">' % neo)
+        muc.append("    " + H2 % ("26px 0 8px", h2))
+        if not v:
+            muc.append('    <p style="line-height:1.7;color:#33413a">Tháng %d/%d Nam Ban Villas chưa có lô %s đang bán. Gọi <a href="tel:0978758788">0978 758 788</a> để được báo khi có.</p>' % (d.month, d.year, ten))
+        else:
+            them = ""
+            if k == "ca-phe" and len(cf_sao) >= 2:
+                them = " Lô từ 1.000m² trở lên giá %s–%s/sào (1 sào = 1.000m²)." % (ts(cf_sao[0]), ts(cf_sao[-1]))
+            if k == "vuon-hoa":
+                them = " Đây là sân vườn trồng hoa của nhà hoặc lô; hiện chưa có trại hoa hay nhà kính trồng hoa kinh doanh."
+            vg = [x for x in v if x["ty"] > 0]
+            khoang = (" từ %s đến %s" % (tien(vg[0]["ty"]), tien(vg[-1]["ty"]))) if len(vg) >= 2 else ((" giá %s" % tien(vg[0]["ty"])) if vg else "")
+            muc.append('    <p style="line-height:1.7;color:#33413a">%d lô có %s thật trên đất%s.%s</p>' % (len(v), ten, khoang, them))
+            muc.append('    <ul style="line-height:1.8;color:#33413a;padding-left:20px;margin:0 0 8px">' + "".join(
+                "<li>%s — %s</li>" % (lk(x), gia_(x)) for x in v) + "</ul>")
+        muc.append("    </section>")
+    muc.append("    <!-- VUON-LOAI:END -->")
 
-        s = faq_html(s, "cay-gia", "Tháng %d/%d có %d lô có %s thật trên đất: %d lô dưới 1 tỷ, %d lô 1–3 tỷ, %d lô từ 3 tỷ. Rẻ nhất từ %s (%s). "
-                     "Giá từng lô còn tuỳ diện tích, phần thổ cư, đường vào và tuổi vườn."
-                     % (d.month, d.year, len(lo), c["ten"], len(duoi1), len(tu1den3), len(tren3), tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False)))
-        if 'data-faq="cay-sao"' in s and len(tr_sao) >= 2:
-            s = faq_html(s, "cay-sao", "Ở Lâm Đồng, 1 sào tính 1.000m². Theo %d lô %s từ 1.000m² trở lên đang bán tháng %d/%d, giá từ %s đến %s mỗi sào. "
-                         "Vườn có sẵn thổ cư, mặt đường nhựa hoặc gần trung tâm thì cao hơn." % (len(sao), c["ten"], d.month, d.year, ts(tr_sao[0]), ts(tr_sao[-1])))
+    s = open(BAN_VUON, encoding="utf-8").read()
+    s = thay_khoi(s, "<!-- VUON-SO:START -->", "<!-- VUON-SO:END -->", khoi)
+    s = thay_khoi(s, "<!-- VUON-LOAI:START -->", "<!-- VUON-LOAI:END -->", "\n".join(muc))
+    the = []
+    for i, x in enumerate(lo):
+        h = x["html"].replace('<article class="prop-card sp-row sp-feat"', '<article class="prop-card sp-row"')
+        h = h.replace(' loading="lazy"', ' fetchpriority="high"', 1) if i == 0 else h.replace(' fetchpriority="high"', ' loading="lazy"')
+        the.append("      " + h)
+    s = thay_khoi(s, "<!-- VUON-THE:START -->", "<!-- VUON-THE:END -->", "<!-- VUON-THE:START -->\n" + "\n\n".join(the) + "\n<!-- VUON-THE:END -->")
+    img = re.search(r'<img [^>]*>', the[0]).group(0)
+    src = re.search(r'src="([^"]+)"', img).group(1)
+    ss = re.search(r'srcset="([^"]+)"', img)
+    sz = re.search(r'sizes="([^"]+)"', img)
+    pl = '<link rel="preload" as="image" href="%s" fetchpriority="high"%s%s>' % (
+        src, (' imagesrcset="%s"' % ss.group(1)) if ss else "", (' imagesizes="%s"' % sz.group(1)) if sz and ss else "")
+    s = re.sub(r'<link rel="preload" as="image"[^>]*>', lambda m: pl, s, count=1)
 
-        td = c["td"] % (d.month, d.year, tien(re_nhat["ty"]).title())
-        mt = c["mt"] % (d.month, d.year, len(lo), tien(re_nhat["ty"]), sao_txt)
-        s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(td, quote=False), s, count=1)
-        for k, v in (('<meta name="description" content="', mt), ('<meta property="og:description" content="', mt),
-                     ('<meta name="twitter:description" content="', mt), ('<meta property="og:title" content="', td),
-                     ('<meta name="twitter:title" content="', td)):
-            if k in s:
-                i = s.index(k) + len(k)
-                s = s[:i] + H.escape(v, quote=True) + s[s.index('"', i):]
-        url = "https://nambanvillas.vn/%s/" % c["slug"]
+    s = faq_html(s, "cay-gia", "Tháng %d/%d có %d lô vườn có cây thật trên đất: %d lô dưới 1 tỷ, %d lô 1–3 tỷ, %d lô từ 3 tỷ. Rẻ nhất từ %s (%s). "
+                 "Giá từng lô còn tuỳ diện tích, phần thổ cư, đường vào và tuổi vườn."
+                 % (d.month, d.year, len(lo), len(duoi1), len(tu1den3), len(tren3), tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False)))
+    if len(cf_sao) >= 2:
+        s = faq_html(s, "cay-sao", "Ở Lâm Đồng, 1 sào tính 1.000m². Theo %d lô vườn cà phê từ 1.000m² trở lên đang bán tháng %d/%d, giá từ %s đến %s mỗi sào. "
+                     "Vườn có sẵn thổ cư, mặt đường nhựa hoặc gần trung tâm thì cao hơn." % (len(cf_sao), d.month, d.year, ts(cf_sao[0]), ts(cf_sao[-1])))
+    s = faq_html(s, "hoa-kinh", "Tháng %d/%d có %d lô nhà hoặc đất có vườn hoa (sân vườn trồng hoa, không phải trại hoa kinh doanh). "
+                 "Chưa có lô nào có nhà kính trên đất; các lô ghi nhà kính đều là nhà kính của khu xung quanh. Gọi 0978 758 788 để được báo khi có."
+                 % (d.month, d.year, len(theo["vuon-hoa"])))
 
-        def fix(m):
-            g = json.loads(m.group(1))
-            for nd in g.get("@graph", []):
-                t_ = nd.get("@type")
-                if t_ == "CollectionPage":
-                    nd.update(name=td, description=mt, dateModified=ngay, url=url)
-                    nd["speakable"] = {"@type": "SpeakableSpecification", "cssSelector": ["#tra-loi-nhanh", "h1"]}
-                elif t_ == "ItemList":
-                    nd["numberOfItems"] = len(lo)
-                    nd["name"] = td
-                    nd["itemListOrder"] = "https://schema.org/ItemListOrderAscending"
-                    nd["itemListElement"] = [{"@type": "ListItem", "position": i + 1, "url": "https://nambanvillas.vn" + x["url"], "name": x["ten"]} for i, x in enumerate(lo)]
-                elif t_ == "FAQPage":
-                    sec = s[s.index('<section class="faq-hien"'):]
-                    sec = sec[:sec.index("</section>")]
-                    nd["mainEntity"] = [{"@type": "Question", "name": H.unescape(re.sub(r"<[^>]+>", "", a_)).strip(),
-                                         "acceptedAnswer": {"@type": "Answer", "text": H.unescape(re.sub(r"<[^>]+>", "", b_)).strip()}}
-                                        for a_, b_ in re.findall(r"<summary>(.*?)</summary>\s*<p>(.*?)</p>", sec, re.S)]
-                if "dateModified" in nd:
-                    nd["dateModified"] = ngay
-            return '<script type="application/ld+json">' + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>"
-        s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, flags=re.S)
-        open(f, "w", encoding="utf-8").write(s)
-        sm = open("sitemap.xml", encoding="utf-8").read()
-        if url not in sm:
-            sm = sm.replace("</urlset>", "  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>\n</urlset>" % (url, ngay))
-        sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(url), r"\g<1>" + ngay, sm)
-        open("sitemap.xml", "w", encoding="utf-8").write(sm)
-        print("  %s: %d lô, từ %s%s" % (c["slug"], len(lo), tien(re_nhat["ty"]), sao_txt))
+    loai_co = [ten for k, _, _, ten in LOAI_VUON if theo[k]]
+    td = "Bán Vườn Nam Ban T%d/%d — Vườn Cà Phê, Bơ, Cây Ăn Trái, Từ %s" % (d.month, d.year, tien(re_nhat["ty"]).title())
+    mt = ("Bán vườn Nam Ban T%d/%d: %d lô có cây thật trên đất — %s. Từ %s%s. Gọi 0978 758 788."
+          % (d.month, d.year, len(lo), ", ".join(x.replace("vườn ", "") for x in loai_co), tien(re_nhat["ty"]),
+             (", cà phê %s–%s/sào" % (ts(cf_sao[0]), ts(cf_sao[-1]))) if len(cf_sao) >= 2 else ""))
+    s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(td, quote=False), s, count=1)
+    for k, v in (('<meta name="description" content="', mt), ('<meta property="og:description" content="', mt),
+                 ('<meta name="twitter:description" content="', mt), ('<meta property="og:title" content="', td),
+                 ('<meta name="twitter:title" content="', td)):
+        if k in s:
+            i = s.index(k) + len(k)
+            s = s[:i] + H.escape(v, quote=True) + s[s.index('"', i):]
+
+    def fix(m):
+        g = json.loads(m.group(1))
+        for nd in g.get("@graph", []):
+            t_ = nd.get("@type")
+            if t_ == "CollectionPage":
+                nd.update(name=td, description=mt, dateModified=ngay, url=URL_BAN_VUON)
+                nd["speakable"] = {"@type": "SpeakableSpecification", "cssSelector": ["#tra-loi-nhanh", "h1"]}
+            elif t_ == "ItemList":
+                nd.update(numberOfItems=len(lo), name=td, itemListOrder="https://schema.org/ItemListOrderAscending")
+                nd["itemListElement"] = [{"@type": "ListItem", "position": i + 1, "url": "https://nambanvillas.vn" + x["url"], "name": x["ten"]} for i, x in enumerate(lo)]
+            elif t_ == "FAQPage":
+                sec = s[s.index('<section class="faq-hien"'):]
+                sec = sec[:sec.index("</section>")]
+                nd["mainEntity"] = [{"@type": "Question", "name": H.unescape(re.sub(r"<[^>]+>", "", a_)).strip(),
+                                     "acceptedAnswer": {"@type": "Answer", "text": H.unescape(re.sub(r"<[^>]+>", "", b_)).strip()}}
+                                    for a_, b_ in re.findall(r"<summary>(.*?)</summary>\s*<p>(.*?)</p>", sec, re.S)]
+            if "dateModified" in nd:
+                nd["dateModified"] = ngay
+        return '<script type="application/ld+json">' + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>"
+    s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, flags=re.S)
+    open(BAN_VUON, "w", encoding="utf-8").write(s)
+    sm = open("sitemap.xml", encoding="utf-8").read()
+    for cu in ("https://nambanvillas.vn/ban-vuon-ca-phe-nam-ban/", "https://nambanvillas.vn/ban-vuon-bo-nam-ban/"):
+        if cu in sm:
+            i = sm.index("  <url><loc>%s</loc>" % cu); j = sm.index("</url>\n", i) + len("</url>\n"); sm = sm[:i] + sm[j:]
+    if URL_BAN_VUON not in sm:
+        sm = sm.replace("</urlset>", "  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>\n</urlset>" % (URL_BAN_VUON, ngay))
+    sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL_BAN_VUON), r"\g<1>" + ngay, sm)
+    open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    print("  bán vườn: %d lô, từ %s (%s)" % (len(lo), tien(re_nhat["ty"]), dem))
+
+
 
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
@@ -1033,7 +1063,7 @@ def main():
     cap_nhat_meta_hub(ngay)
     cap_nhat_trang_chu(ngay)
     cap_nhat_dat_vuon(ngay)
-    cap_nhat_vuon_cay(ngay)
+    cap_nhat_ban_vuon(ngay)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
     tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
     if tt:

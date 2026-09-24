@@ -406,6 +406,26 @@
       "source": "/gia-dat-lam-ha-lam-dong/",
       "destination": "/gia-dat-lam-ha/",
       "permanent": true
+    },
+    {
+      "source": "/ban-vuon-ca-phe-nam-ban",
+      "destination": "/ban-vuon-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/ban-vuon-ca-phe-nam-ban/",
+      "destination": "/ban-vuon-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/ban-vuon-bo-nam-ban",
+      "destination": "/ban-vuon-nam-ban/",
+      "permanent": true
+    },
+    {
+      "source": "/ban-vuon-bo-nam-ban/",
+      "destination": "/ban-vuon-nam-ban/",
+      "permanent": true
     }
   ],
   "headers": [
