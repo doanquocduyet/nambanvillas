@@ -53,6 +53,7 @@ CẤM gắn `ca-phe` khi chỉ "xung quanh là vườn cà phê", "view đồi c
 - **Title ≤ 60 ký tự, KHÔNG đuôi "| Nam Ban Villas":** `[Loại] [m²] [Khu] Nam Ban – [thổ cư/điểm mạnh] – [GIÁ]`. VD: `Đất 500m² Trung Tâm Nam Ban – 326m² Thổ Cư, 950 Triệu`.
 - **H1 = title** (không đuôi thương hiệu).
 - **Mô tả ≤ 160 ký tự**, thứ tự: loại + khu → diện tích/thổ cư → **GIÁ** → `Gọi 0978 758 788.`
+- **Mô tả dài quá thì VIẾT LẠI câu, KHÔNG cắt theo số ký tự.** Đã từng dính: cắt máy móc ra "lô 577m² (ngang. Từ 699 triệu…" — Google hiện nguyên câu cụt. Checker mục 9c chặn mô tả có ngoặc mở không đóng.
 - Không đưa ngày tháng vào title/H1.
 
 ### E. Không trùng — kiểm TRƯỚC khi tạo URL
