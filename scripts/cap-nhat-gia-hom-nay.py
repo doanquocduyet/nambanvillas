@@ -376,7 +376,7 @@ THAN_LAM_HA = """<main id="main">
       <nav class="breadcrumb" aria-label="Đường dẫn">
         <a href="/">Trang chủ</a><span class="bc-sep">›</span>
         <a href="/thi-truong/">Thị Trường</a><span class="bc-sep">›</span>
-        <span>Giá Đất Lâm Hà Nam Ban</span>
+        <span>Giá Đất Nam Ban Lâm Hà</span>
       </nav>
     </div>
   </div>
@@ -385,8 +385,8 @@ THAN_LAM_HA = """<main id="main">
     <div class="container">
       <div class="article-header">
         <p class="article-cat">Giá thị trường · Cập nhật: %(ngay)s</p>
-        <h1 class="article-title">Giá Đất Lâm Hà Nam Ban Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ Lô Thật Đang Rao</h1>
-        <p class="article-lead">Giá đất Lâm Hà Nam Ban không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật mỗi thứ Hai.</p>
+        <h1 class="article-title">Giá Đất Nam Ban Lâm Hà Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ Lô Thật Đang Rao</h1>
+        <p class="article-lead">Giá đất Nam Ban Lâm Hà không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật mỗi thứ Hai.</p>
       </div>
 
       <div class="article-body">
@@ -399,10 +399,10 @@ THAN_LAM_HA = """<main id="main">
         <h2>Lâm Hà, Nam Ban bây giờ gồm những xã nào?</h2>
         <p>Từ 01/7/2025 cả nước bỏ cấp huyện, nên "huyện Lâm Hà" (vùng Nam Ban) không còn trên giấy tờ mới. Theo Nghị quyết 202/2025/QH15, <strong>xã Nam Ban</strong> mới gồm thị trấn Nam Ban cũ, xã Đông Thanh, xã Mê Linh và xã Gia Lâm. <strong>Xã Nam Hà</strong> nằm liền kề. Người mua vẫn gọi cả vùng là Nam Ban, Lâm Hà, nên trang này dùng tên đó. Chi tiết ở bài <a href="/ve-nam-ban/xa-nam-ban-sap-nhap/">xã Nam Ban sau sáp nhập gồm những xã nào</a>.</p>
 
-        <h2>Giá đất Lâm Hà Nam Ban theo xã</h2>
+        <h2>Giá đất Nam Ban Lâm Hà theo xã</h2>
         <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
-          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Lâm Hà Nam Ban theo xã, ngày %(ngay)s — triệu đồng/m² (khoảng 10%%–90%%)</caption>
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban Lâm Hà theo xã, ngày %(ngay)s — triệu đồng/m² (khoảng 10%%–90%%)</caption>
           <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Xã</th><th scope="col" style="%(th)s">Giá rao (triệu/m²)</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
           <tbody>
 %(hang_xa)s
@@ -422,7 +422,7 @@ THAN_LAM_HA = """<main id="main">
         </table>
         </div>
 
-        <h2>Giá đất Lâm Hà Nam Ban theo loại đất</h2>
+        <h2>Giá đất Nam Ban Lâm Hà theo loại đất</h2>
         <p><strong>Đất nền có thổ cư</strong> (dưới 3.000m²): %(tho)s triệu/m², trung vị %(tho_tv)s. <strong>Đất vườn và lô lớn</strong> từ 3.000m²: %(vuon)s triệu/m². <strong>Đất view hồ, view đẹp</strong>: %(ho)s triệu/m². Tính từ %(tong)d lô, bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch.</p>
         <p>Muốn xem so sánh theo từng tuần thì mở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>. Ngân sách nhẹ thì đọc <a href="/dat-nam-ban-gia-re/">đất Nam Ban giá rẻ có gì trong tầm 450 triệu–1 tỷ</a>. Lô lớn tính theo sào ở <a href="/dat-vuon-nam-ban/">đất vườn, đất sào Nam Ban giá rẻ</a>.</p>
 
@@ -435,7 +435,7 @@ THAN_LAM_HA = """<main id="main">
   </div>
 
 <section class="faq-hien" aria-label="Câu hỏi thường gặp">
-  <h2>Câu hỏi thường gặp về giá đất Lâm Hà Nam Ban</h2>
+  <h2>Câu hỏi thường gặp về giá đất Nam Ban Lâm Hà</h2>
 %(faq)s
 </section>
 """
@@ -463,10 +463,10 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
     khu_re, khu_dat = min(khu, key=lambda x: x["tv"]), max(khu, key=lambda x: x["tv"])
     vuon = "%s–%s" % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"])) if "vuon" in kq else "–"
 
-    tieu_de = "Giá Đất Lâm Hà Nam Ban T%d/%d: Theo Xã, Theo Khu, Tính Từ Lô Thật" % (d.month, d.year)
-    mo_ta = ("Giá đất Lâm Hà Nam Ban T%d/%d: đất nền thổ cư %s–%s triệu/m², xã Nam Ban và Nam Hà, %d lô dưới 1 tỷ, rẻ nhất %s. Gọi 0978 758 788."
+    tieu_de = "Giá Đất Nam Ban Lâm Hà T%d/%d: Theo Xã, Theo Khu, Tính Từ Lô Thật" % (d.month, d.year)
+    mo_ta = ("Giá đất Nam Ban Lâm Hà T%d/%d: đất nền thổ cư %s–%s triệu/m², xã Nam Ban và Nam Hà, %d lô dưới 1 tỷ, rẻ nhất %s. Gọi 0978 758 788."
              % (d.month, d.year, so(t["lo"]), so(t["hi"]), duoi1, tien(re_nhat["ty"])))
-    cau = ("Giá đất Lâm Hà Nam Ban tháng %d/%d, tính từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, "
+    cau = ("Giá đất Nam Ban Lâm Hà tháng %d/%d, tính từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, "
            "trung vị %s triệu/m²; đất vườn, lô lớn %s triệu/m². Có %d lô dưới 1 tỷ, rẻ nhất từ %s."
            % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon, duoi1, tien(re_nhat["ty"])))
 
@@ -487,7 +487,7 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
             _td('<a href="%s" title="%s">từ %s</a>' % (r["url"], H.escape(r["ten"], quote=True), tien(r["ty"])))))
 
     faq = [
-        ("Giá đất Lâm Hà Nam Ban bao nhiêu một m²?",
+        ("Giá đất Nam Ban Lâm Hà bao nhiêu một m²?",
          "Tính tháng %d/%d từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư %s–%s triệu/m², trung vị %s triệu/m²; đất vườn và lô lớn %s triệu/m². "
          "Đây là giá rao; giá chốt thường thấp hơn sau thương lượng." % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon)),
         ("Huyện Lâm Hà (Nam Ban) còn không sau sáp nhập?",
@@ -517,7 +517,7 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://nambanvillas.vn/"},
             {"@type": "ListItem", "position": 2, "name": "Thị Trường", "item": "https://nambanvillas.vn/thi-truong/"},
-            {"@type": "ListItem", "position": 3, "name": "Giá Đất Lâm Hà Nam Ban", "item": URL_LH}]},
+            {"@type": "ListItem", "position": 3, "name": "Giá Đất Nam Ban Lâm Hà", "item": URL_LH}]},
         {"@type": "FAQPage", "@id": URL_LH + "#faq", "isPartOf": {"@id": URL_LH + "#webpage"},
          "mainEntity": [{"@type": "Question", "name": q_, "acceptedAnswer": {"@type": "Answer", "text": a_}} for q_, a_ in faq]}]}
 
@@ -527,7 +527,7 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
     head = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(tieu_de, quote=False), head)
     for k, v in (('<meta name="description" content="', mo_ta), ('<meta property="og:description" content="', mo_ta),
                  ('<meta property="og:title" content="', tieu_de), ('<meta name="twitter:title" content="', tieu_de),
-                 ('<meta name="keywords" content="', "giá đất lâm hà nam ban, giá đất nam ban lâm hà 2026, giá đất nam ban lâm hà lâm đồng, đất nam ban lâm hà dưới 1 tỷ, giá đất nam hà nam ban lâm hà")):
+                 ('<meta name="keywords" content="', "giá đất nam ban lâm hà, giá đất nam ban lâm hà 2026, giá đất nam ban lâm hà lâm đồng, đất nam ban lâm hà dưới 1 tỷ, giá đất nam hà nam ban lâm hà")):
         if k in head:
             i = head.index(k) + len(k)
             head = head[:i] + H.escape(v, quote=True) + head[head.index('"', i):]
