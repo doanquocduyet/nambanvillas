@@ -424,7 +424,7 @@ THAN_LAM_HA = """<main id="main">
 
         <h2>Giá đất Lâm Hà Nam Ban theo loại đất</h2>
         <p><strong>Đất nền có thổ cư</strong> (dưới 3.000m²): %(tho)s triệu/m², trung vị %(tho_tv)s. <strong>Đất vườn và lô lớn</strong> từ 3.000m²: %(vuon)s triệu/m². <strong>Đất view hồ, view đẹp</strong>: %(ho)s triệu/m². Tính từ %(tong)d lô, bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch.</p>
-        <p>Muốn xem so sánh theo từng tuần thì mở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>. Ngân sách nhẹ thì đọc <a href="/dat-nam-ban-gia-re/">đất Nam Ban giá rẻ có gì trong tầm 450 triệu–1 tỷ</a>.</p>
+        <p>Muốn xem so sánh theo từng tuần thì mở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>. Ngân sách nhẹ thì đọc <a href="/dat-nam-ban-gia-re/">đất Nam Ban giá rẻ có gì trong tầm 450 triệu–1 tỷ</a>. Lô lớn tính theo sào ở <a href="/dat-vuon-nam-ban/">đất vườn, đất sào Nam Ban giá rẻ</a>.</p>
 
         <div class="goi-nhanh goi-giua-bai"><p>Đang nhắm một lô ở Nam Ban, Lâm Hà? Gọi hỏi thẳng giá chốt, sổ và quy hoạch của lô đó — <strong>trả lời trong ngày, không ràng buộc</strong>.</p><div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div></div>
 
@@ -625,6 +625,190 @@ def cap_nhat_trang_chu(ngay):
     open(f, "w", encoding="utf-8").write(s)
     print("  trang chủ: %d lô, %d nhà, từ %s" % (dem["dat"][0], dem["nha"][0], re_))
 
+
+# ── TRANG /dat-vuon-nam-ban/ — từ khoá "đất vườn nam ban giá rẻ" + "đất sào nam ban giá rẻ" ──
+# 1 URL cho cả 2 ý định (cùng người mua: lô lớn, vườn cây, tính giá theo sào) — không mở trang mới
+# để khỏi cắn trang /dat-nam-ban-gia-re/ đang top. Thẻ lô chép NGUYÊN từ hub (nguồn sự thật).
+DAT_VUON = "dat-vuon-nam-ban/index.html"
+URL_VUON = "https://nambanvillas.vn/dat-vuon-nam-ban/"
+
+
+def _the_hub(f, chon):
+    s = open(f, encoding="utf-8").read()
+    ra = []
+    for m in re.finditer(r'<article class="prop-card sp-row[^"]*"([^>]*)>([\s\S]*?)</article>', s):
+        at, body = m.group(1), m.group(2)
+        if 'data-ban="1"' in at:
+            continue
+        u = re.search(r'href="(/(?:dat-nen|nha-ban)/[^"]+/)"', body)
+        t = re.search(r'<h3 class="sp-title"><a[^>]*>([^<]*)', body)
+        a = float((re.search(r'data-area="([\d.]+)"', at) or [0, 0])[1])
+        p = float((re.search(r'data-price="([\d.]+)"', at) or [0, 0])[1])
+        nhan = (re.search(r'data-nhan="([^"]*)"', at) or [0, ""])[1]
+        x = dict(html=m.group(0), url=u.group(1) if u else "", ten=H.unescape(t.group(1)) if t else "", area=a, ty=p, nhan=nhan)
+        if x["url"] and chon(x):
+            ra.append(x)
+    return ra
+
+
+def cap_nhat_dat_vuon(ngay):
+    d = datetime.date.fromisoformat(ngay)
+    lo = _the_hub(HUB, lambda x: "vuon" in x["nhan"] or x["area"] >= 1000) + \
+        _the_hub("nha-ban-nam-ban/index.html", lambda x: re.search(r"[Nn]hà [Vv]ườn", x["ten"]))
+    seen, uniq = set(), []
+    for x in lo:
+        if x["url"] not in seen:
+            seen.add(x["url"]); uniq.append(x)
+    lo = sorted(uniq, key=lambda x: (x["ty"] <= 0, x["ty"]))
+    co_gia = [x for x in lo if x["ty"] > 0]
+    # giá/sào chỉ tính trên thẻ MỘT lô (thẻ cụm/"2 lô": giá lô rẻ nhất + diện tích lô lớn nhất -> méo)
+    nhieu_lo = lambda t: bool(re.match(r"\s*(Cụm|\d+\s*(lô|nền))", t, re.I) or re.search(r"\b\d+\s*(lô|nền)\b", t, re.I))
+    sao = [x for x in co_gia if x["area"] >= 1000 and not nhieu_lo(x["ten"])]
+    re_nhat = co_gia[0]
+    duoi1 = [x for x in co_gia if x["ty"] < 1]
+    tu1den2 = [x for x in co_gia if 1 <= x["ty"] < 2]
+    tren2 = [x for x in co_gia if x["ty"] >= 2]
+    tr_sao = [x["ty"] * 1e6 / x["area"] for x in sao]          # triệu đồng / 1.000m² (1 sào)
+    sao_lo, sao_tv, sao_hi = (q(tr_sao, .1), statistics.median(tr_sao), q(tr_sao, .9)) if len(tr_sao) >= 3 else (0, 0, 0)
+    ts = lambda tr: tien(tr / 1000)          # triệu/sào -> "553 triệu" / "1,53 tỷ"
+    sao_re = min(sao, key=lambda x: x["ty"] * 1e6 / x["area"]) if sao else None
+
+    def lk(x):
+        return '<a href="%s">%s</a>' % (x["url"], H.escape(x["ten"], quote=False))
+
+    cau = ("Đất vườn, đất sào Nam Ban giá rẻ tháng %d/%d: rẻ nhất từ <strong>%s</strong>, có %d lô dưới 1 tỷ trong %d lô vườn và lô từ 1.000m² đang bán"
+           % (d.month, d.year, tien(re_nhat["ty"]), len(duoi1), len(lo)))
+    if sao_tv:
+        cau += "; lô từ 1.000m² trở lên giá phổ biến <strong>%s–%s/sào</strong> (1 sào = 1.000m²), trung vị %s/sào." % (ts(sao_lo), ts(sao_hi), ts(sao_tv))
+    else:
+        cau += "."
+    bang = ""
+    for ten, v in (("Dưới 1 tỷ", duoi1), ("1–2 tỷ", tu1den2), ("Trên 2 tỷ", tren2)):
+        if v:
+            bang += '<tr><td style="%s"><strong>%s</strong></td><td style="%s">%d lô</td><td style="%s">%s — %s</td></tr>' % (
+                TD, ten, TD, len(v), TD, tien(v[0]["ty"]), lk(v[0]))
+    khoi = '''<!-- VUON-SO:START -->
+    <div id="tra-loi-nhanh" class="tra-loi-nhanh">
+      <p class="tra-loi-nhanh-nhan">Trả lời nhanh</p>
+      <p class="tra-loi-nhanh-cau">%s</p>
+      <div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788 hỏi lô vườn</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div>
+    </div>
+    <h2 style="font-size:clamp(1.15rem,2.6vw,1.5rem);color:#1A3D2B;letter-spacing:-.015em;margin:0 0 12px">Đất vườn Nam Ban giá rẻ theo tầm tiền</h2>
+    <div style="overflow-x:auto">
+    <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:0 0 26px">
+      <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Lô vườn, lô sào đang bán ngày %s — lô rẻ nhất từng tầm</caption>
+      <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%s">Tầm tiền</th><th scope="col" style="%s">Số lô</th><th scope="col" style="%s">Rẻ nhất</th></tr></thead>
+      <tbody>%s</tbody>
+    </table>
+    </div>
+    <!-- VUON-SO:END -->''' % (cau, ngay_vn(ngay), TH, TH, TH, bang)
+
+    s = open(DAT_VUON, encoding="utf-8").read()
+    s = thay_khoi(s, "<!-- VUON-SO:START -->", "<!-- VUON-SO:END -->", khoi)
+    # thẻ: chép nguyên từ hub, ảnh đầu = LCP
+    the = []
+    for k, x in enumerate(lo):
+        h = x["html"].replace('<article class="prop-card sp-row sp-feat"', '<article class="prop-card sp-row"')
+        if k == 0:
+            h = h.replace(' loading="lazy"', ' fetchpriority="high"', 1)
+        else:
+            h = h.replace(' fetchpriority="high"', ' loading="lazy"')
+        the.append("      " + h)
+    s = thay_khoi(s, "<!-- VUON-THE:START -->", "<!-- VUON-THE:END -->",
+                  "<!-- VUON-THE:START -->\n" + "\n\n".join(the) + "\n<!-- VUON-THE:END -->")
+    # preload = ảnh thẻ đầu
+    img = re.search(r'<img [^>]*>', the[0]).group(0)
+    src = re.search(r'src="([^"]+)"', img).group(1)
+    ss = re.search(r'srcset="([^"]+)"', img)
+    sz = re.search(r'sizes="([^"]+)"', img)
+    pl = '<link rel="preload" as="image" href="%s" fetchpriority="high"%s%s>' % (
+        src, (' imagesrcset="%s"' % ss.group(1)) if ss else "", (' imagesizes="%s"' % sz.group(1)) if sz and ss else "")
+    s = re.sub(r'<link rel="preload" as="image"[^>]*>', lambda m: pl, s, count=1)
+
+    # FAQ số sống
+    s = faq_html(s, "vuon-gia", "Tháng %d/%d có %d lô vườn và lô từ 1.000m² đang bán: %d lô dưới 1 tỷ, %d lô 1–2 tỷ, %d lô trên 2 tỷ. Rẻ nhất từ %s; "
+                 "lô từ 1.000m² trở lên phổ biến %s–%s/sào. Giá từng lô còn tuỳ phần thổ cư, đường vào và tuổi vườn."
+                 % (d.month, d.year, len(lo), len(duoi1), len(tu1den2), len(tren2), tien(re_nhat["ty"]), ts(sao_lo), ts(sao_hi)))
+    s = faq_html(s, "vuon-re", "Tính tháng %d/%d, lô vườn rẻ nhất Nam Ban Villas đang có là %s (%s). Có %d lô vườn dưới 1 tỷ; "
+                 "danh sách xếp từ rẻ nhất ở trên trang." % (d.month, d.year, tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False), len(duoi1)))
+    if sao_tv and sao_re:
+        s = faq_html(s, "sao", "Ở Lâm Đồng, 1 sào tính 1.000m². Theo %d lô từ 1.000m² trở lên đang bán tháng %d/%d, giá phổ biến %s–%s/sào, "
+                     "trung vị %s/sào. Lô rẻ nhất theo sào hiện khoảng %s/sào (%s). Lô có sẵn thổ cư, mặt đường nhựa thì cao hơn."
+                     % (len(sao), d.month, d.year, ts(sao_lo), ts(sao_hi), ts(sao_tv), ts(sao_re["ty"] * 1e6 / sao_re["area"]), H.escape(sao_re["ten"], quote=False)))
+
+    td = "Đất Vườn, Đất Sào Nam Ban Giá Rẻ T%d/%d — Lô Vườn Cây, Lô Lớn Từ 1.000m²" % (d.month, d.year)
+    mt = ("Đất vườn, đất sào Nam Ban giá rẻ T%d/%d: %d lô vườn và lô lớn đang bán, từ %s%s. Gọi 0978 758 788."
+          % (d.month, d.year, len(lo), tien(re_nhat["ty"]), (", phổ biến %s–%s/sào" % (ts(sao_lo), ts(sao_hi))) if sao_tv else ""))
+    s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(td, quote=False), s, count=1)
+    for k, v in (('<meta name="description" content="', mt), ('<meta property="og:description" content="', mt),
+                 ('<meta name="twitter:description" content="', mt), ('<meta property="og:title" content="', td),
+                 ('<meta name="twitter:title" content="', td)):
+        if k in s:
+            i = s.index(k) + len(k)
+            s = s[:i] + H.escape(v, quote=True) + s[s.index('"', i):]
+
+    def fix(m):
+        g = json.loads(m.group(1))
+        for nd in g.get("@graph", []):
+            t_ = nd.get("@type")
+            if t_ == "CollectionPage":
+                nd.update(name=td, description=mt, dateModified=ngay)
+            elif t_ == "ItemList":
+                nd["numberOfItems"] = len(lo)
+                nd["itemListOrder"] = "https://schema.org/ItemListOrderAscending"
+                nd["itemListElement"] = [{"@type": "ListItem", "position": i + 1, "url": "https://nambanvillas.vn" + x["url"], "name": x["ten"]}
+                                         for i, x in enumerate(lo)]
+            elif t_ == "FAQPage":
+                sec = s[s.index('<section class="faq-hien"'):]
+                sec = sec[:sec.index("</section>")]
+                nd["mainEntity"] = [{"@type": "Question", "name": H.unescape(re.sub(r"<[^>]+>", "", a_)).strip(),
+                                     "acceptedAnswer": {"@type": "Answer", "text": H.unescape(re.sub(r"<[^>]+>", "", b_)).strip()}}
+                                    for a_, b_ in re.findall(r"<summary>(.*?)</summary>\s*<p>(.*?)</p>", sec, re.S)]
+            if "dateModified" in nd:
+                nd["dateModified"] = ngay
+        return '<script type="application/ld+json">' + json.dumps(g, ensure_ascii=False, separators=(",", ":")) + "</script>"
+    s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, flags=re.S)
+    open(DAT_VUON, "w", encoding="utf-8").write(s)
+    sm = open("sitemap.xml", encoding="utf-8").read()
+    sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL_VUON), r"\g<1>" + ngay, sm)
+    open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    print("  đất vườn: %d lô, từ %s, %d dưới 1 tỷ, sào %s–%s (tv %s)" % (len(lo), tien(re_nhat["ty"]), len(duoi1), ts(sao_lo), ts(sao_hi), ts(sao_tv)))
+
+
+def cap_nhat_300tr(ngay):
+    """Từ khoá "đất nam ban 300tr" (24/9/2026). Nói THẬT: Nam Ban Villas có lô 300 triệu hay không,
+    lô gần nhất bao nhiêu, và tin rao 300 triệu thường thiếu gì. Không dựng trang riêng — mục nằm
+    trong /dat-nam-ban-gia-re/ (đang top 4, title KHÔNG đổi)."""
+    lo = sorted([x for x in doc_lo() if x["ty"] > 0], key=lambda x: x["ty"])
+    d = datetime.date.fromisoformat(ngay)
+    duoi300 = [x for x in lo if x["ty"] <= 0.3]
+    duoi400 = [x for x in lo if x["ty"] < 0.4]
+    duoi500 = [x for x in lo if x["ty"] < 0.5]
+    gan = lo[:3]
+    # CHỈ ghi giá: thẻ nhiều lô (cụm, "2 lô") có data-price = lô rẻ nhất nhưng data-area = lô lớn nhất -> ghép 2 số là sai
+    ds = "; ".join('<a href="%s">%s</a> (từ %s)' % (x["url"], H.escape(x["ten"], quote=False), tien(x["ty"])) for x in gan)
+    if duoi300:
+        mo = "Có. Tháng %d/%d Nam Ban Villas có %d lô từ 300 triệu trở xuống." % (d.month, d.year, len(duoi300))
+    else:
+        mo = ("Tháng %d/%d, Nam Ban Villas chưa có lô nào 300 triệu. Lô rẻ nhất đang bán là %s; có %d lô dưới 400 triệu và %d lô dưới 500 triệu."
+              % (d.month, d.year, tien(lo[0]["ty"]), len(duoi400), len(duoi500)))
+    khoi = ('<!-- GIA-300:START -->\n'
+            '  <h2>Có 300 triệu mua được đất Nam Ban không?</h2>\n'
+            '  <p>%s Ba lô gần mức 300 triệu nhất: %s.</p>\n'
+            '  <p>Tin rao "đất Nam Ban 300 triệu" trên mạng thường rơi vào một trong mấy trường hợp: lô nhỏ trong hẻm sâu, đường đất; '
+            'lô chưa có thổ cư nên không xây được nhà; sổ chung hoặc chưa tách thửa; hoặc giá 300 triệu là giá một mét ngang, không phải cả lô. '
+            'Trước khi cọc lô 300 triệu, hỏi đủ bốn thứ: sổ riêng hay chung, bao nhiêu m² thổ cư, đường vào rộng bao nhiêu, và thửa có dính quy hoạch không.</p>\n'
+            '  <p>Có sẵn 300–400 triệu thì gọi <a href="tel:0978758788">0978 758 788</a> báo ngân sách: Nam Ban Villas báo ngay khi có lô đúng tầm, '
+            'và nói thẳng nếu tầm tiền đó chưa có lô sổ riêng, có thổ cư.</p>\n'
+            '  <!-- GIA-300:END -->' % (mo, ds))
+    f = GIA_RE
+    s = open(f, encoding="utf-8").read()
+    s = thay_khoi(s, "<!-- GIA-300:START -->", "<!-- GIA-300:END -->", khoi)
+    s = faq_html(s, "300tr", "%s Tin rao 300 triệu thường là lô hẻm sâu, chưa có thổ cư, sổ chung, hoặc giá tính theo mét ngang; "
+                 "hỏi rõ sổ, thổ cư, đường vào và quy hoạch trước khi cọc." % mo)
+    open(f, "w", encoding="utf-8").write(s)
+    print("  300tr: %d lô ≤300tr, %d lô <400tr, rẻ nhất %s" % (len(duoi300), len(duoi400), tien(lo[0]["ty"])))
+
 def main():
     ngay = datetime.date.today().isoformat()
     lo = doc_lo()
@@ -694,10 +878,12 @@ def main():
     sm = open("sitemap.xml", encoding="utf-8").read()
     sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL), r"\g<1>" + ngay, sm)
     open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    cap_nhat_300tr(ngay)
     cap_nhat_gia_re(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     lam_trang_lam_ha(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     cap_nhat_meta_hub(ngay)
     cap_nhat_trang_chu(ngay)
+    cap_nhat_dat_vuon(ngay)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
     tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
     if tt:
