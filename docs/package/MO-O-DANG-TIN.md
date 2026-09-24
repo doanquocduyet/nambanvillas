@@ -347,4 +347,6 @@ Giờ cháu đọc 4 file ở BƯỚC 0, xác nhận đã nạp xong, rồi ch�
 - Lô có **vườn cà phê nằm TRÊN chính lô** → thêm `ca-phe` vào `data-nhan` của thẻ trên `dat-nen-nam-ban/index.html`. Lô có **cây bơ trên đất** → thêm `bo`. Cây ăn trái → `cay-an-trai`. Vườn hoa trên đất → `vuon-hoa`. KHÔNG có nhãn cây lâu năm (CLN là loại đất trên sổ).
 - KHÔNG gắn khi chỉ "xung quanh là vườn cà phê", "view đồi cà phê" — gắn sai là khách tới xem thấy đất trống, mất uy tín.
 - Gắn xong, khi merge lên main trang `/ban-vuon-nam-ban/` tự nhận lô (Actions `gia-tuan.yml`).
+- Lô chính chủ nói rõ **bán gấp / cần tiền / hạ giá** (ghi được nguyên câu vào mô tả lô) → thêm `ngop` vào `data-nhan`. Trang `/dat-nam-ban-ngop-ban-gap/` tự nhận, trích nguyên câu đó, so đơn giá với trung vị. KHÔNG gắn chỉ vì giá thấp.
+- `data-price` trên thẻ PHẢI khớp giá hiển thị (bẫy 13c trong `kiem-bo-loc.py`) — nó nuôi bộ lọc và mọi trang giá.
 
