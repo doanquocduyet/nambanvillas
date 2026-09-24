@@ -363,6 +363,233 @@ def cap_nhat_gia_re(ngay, lo, kq, khu):
     print("  giá rẻ: %d lô dưới 1 tỷ, rẻ nhất %s" % (duoi_1ty, tien(re_nhat["ty"])))
 
 
+# ── TRANG /gia-dat-lam-ha/ — từ khoá "giá đất Lâm Hà" (Google gợi ý dưới "giá đất nam ban") ──
+# Sinh TRỌN trang mỗi tuần từ cùng dữ liệu lô. Phạm vi nói thật: chỉ xã Nam Ban (gồm thị trấn
+# Nam Ban cũ, Đông Thanh, Mê Linh, Gia Lâm — NQ 202/2025/QH15) và xã Nam Hà, nơi có lô thật.
+LAM_HA = "gia-dat-lam-ha/index.html"
+URL_LH = "https://nambanvillas.vn/gia-dat-lam-ha/"
+XA_NAM_BAN = {"nam-ban", "dong-thanh", "me-linh", "gia-lam", "ho-bai-cong", "tu-liem"}
+
+THAN_LAM_HA = """<main id="main">
+  <div class="breadcrumb-bar">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Đường dẫn">
+        <a href="/">Trang chủ</a><span class="bc-sep">›</span>
+        <a href="/thi-truong/">Thị Trường</a><span class="bc-sep">›</span>
+        <span>Giá Đất Lâm Hà</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="article-wrap">
+    <div class="container">
+      <div class="article-header">
+        <p class="article-cat">Giá thị trường · Cập nhật: %(ngay)s</p>
+        <h1 class="article-title">Giá Đất Lâm Hà Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ %(tong)d Lô Thật Đang Rao</h1>
+        <p class="article-lead">Giá đất Lâm Hà không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật mỗi thứ Hai.</p>
+      </div>
+
+      <div class="article-body">
+        <div id="tra-loi-nhanh" class="tra-loi-nhanh">
+          <p class="tra-loi-nhanh-nhan">Trả lời nhanh</p>
+          <p class="tra-loi-nhanh-cau">%(cau)s</p>
+          <div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788 hỏi lô cụ thể</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div>
+        </div>
+
+        <h2>Lâm Hà bây giờ gồm những xã nào?</h2>
+        <p>Từ 01/7/2025 cả nước bỏ cấp huyện, nên "huyện Lâm Hà" không còn trên giấy tờ mới. Theo Nghị quyết 202/2025/QH15, <strong>xã Nam Ban</strong> mới gồm thị trấn Nam Ban cũ, xã Đông Thanh, xã Mê Linh và xã Gia Lâm. <strong>Xã Nam Hà</strong> nằm liền kề. Người mua vẫn gọi cả vùng là Lâm Hà, nên trang này dùng tên đó. Chi tiết ở bài <a href="/ve-nam-ban/xa-nam-ban-sap-nhap/">xã Nam Ban sau sáp nhập gồm những xã nào</a>.</p>
+
+        <h2>Giá đất Lâm Hà theo xã</h2>
+        <div style="overflow-x:auto">
+        <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Lâm Hà theo xã, ngày %(ngay)s — triệu đồng/m² (khoảng 10%%–90%%)</caption>
+          <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Xã</th><th scope="col" style="%(th)s">Giá rao (triệu/m²)</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
+          <tbody>
+%(hang_xa)s
+          </tbody>
+        </table>
+        </div>
+
+        <h2>Khu nào ở Lâm Hà rẻ nhất, khu nào đắt nhất?</h2>
+        <p>Xếp từ khu có đơn giá trung vị thấp nhất lên cao nhất. Bấm tên khu để xem toàn bộ lô, bấm giá để mở lô rẻ nhất khu đó.</p>
+        <div style="overflow-x:auto">
+        <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin:14px 0 8px">
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Đơn giá trung vị theo khu, ngày %(ngay)s</caption>
+          <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%(th)s">Khu</th><th scope="col" style="%(th)s">Trung vị</th><th scope="col" style="%(th)s">Lô dưới 1 tỷ</th><th scope="col" style="%(th)s">Lô rẻ nhất</th></tr></thead>
+          <tbody>
+%(hang_khu)s
+          </tbody>
+        </table>
+        </div>
+
+        <h2>Giá đất Lâm Hà theo loại đất</h2>
+        <p><strong>Đất nền có thổ cư</strong> (dưới 3.000m²): %(tho)s triệu/m², trung vị %(tho_tv)s. <strong>Đất vườn và lô lớn</strong> từ 3.000m²: %(vuon)s triệu/m². <strong>Đất view hồ, view đẹp</strong>: %(ho)s triệu/m². Tính từ %(tong)d lô, bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch.</p>
+        <p>Muốn xem so sánh theo từng tuần thì mở <a href="/thi-truong/gia-dat-nam-ban-hom-nay/">giá đất Nam Ban hôm nay</a>. Ngân sách nhẹ thì đọc <a href="/dat-nam-ban-gia-re/">đất Nam Ban giá rẻ có gì trong tầm 450 triệu–1 tỷ</a>.</p>
+
+        <div class="goi-nhanh goi-giua-bai"><p>Đang nhắm một lô ở Lâm Hà? Gọi hỏi thẳng giá chốt, sổ và quy hoạch của lô đó — <strong>trả lời trong ngày, không ràng buộc</strong>.</p><div class="goi-nhanh-nut"><a href="tel:0978758788" class="goi-nhanh-goi">Gọi 0978 758 788</a><a href="https://zalo.me/0978758788" target="_blank" rel="noopener" class="goi-nhanh-zalo">Nhắn Zalo</a></div></div>
+
+        <h2>Giá này lấy từ đâu?</h2>
+        <p>Mỗi thứ Hai, script của Nam Ban Villas đọc diện tích và giá rao của mọi lô còn bán trên trang <a href="/dat-nen-nam-ban/">Đất Nền Nam Ban</a>, quy ra triệu đồng/m² rồi tính khoảng 10%%–90%% và trung vị. Không có số nhập tay. Dữ liệu các tuần lưu công khai ở <a href="/data/gia-tuan.json">gia-tuan.json</a>. Giá nhà nước dùng tính thuế là chuyện khác, xem <a href="/thi-truong/bang-gia-dat-2026-nam-ban/">bảng giá đất 2026 ảnh hưởng gì tới người mua</a>.</p>
+      </div>
+    </div>
+  </div>
+
+<section class="faq-hien" aria-label="Câu hỏi thường gặp">
+  <h2>Câu hỏi thường gặp về giá đất Lâm Hà</h2>
+%(faq)s
+</section>
+"""
+
+
+def _td(x):
+    return '<td style="%s">%s</td>' % (TD, x)
+
+
+def lam_trang_lam_ha(ngay, lo, kq, khu):
+    nguon = open(TRANG, encoding="utf-8").read()
+    t = kq["tho"]
+    d = datetime.date.fromisoformat(ngay)
+    xa = []
+    for ten, link, dk in (("Xã Nam Ban", "/dat-nen-nam-ban/", lambda x: XA_NAM_BAN & set(x["loc"])),
+                          ("Xã Nam Hà", "/dat-nam-ha-nam-ban/", lambda x: "nam-ha" in x["loc"])):
+        v = [x for x in lo if dk(x)]
+        if len(v) >= 3:
+            st = thong_ke([x["m2"] for x in v])
+            st.update(ten=ten, link=link, re=min(v, key=lambda x: x["ty"]), duoi1=sum(1 for x in v if x["ty"] < 1))
+            xa.append(st)
+    tong = len(lo)
+    duoi1 = sum(1 for x in lo if x["ty"] < 1)
+    re_nhat = min(lo, key=lambda x: x["ty"])
+    khu_re, khu_dat = min(khu, key=lambda x: x["tv"]), max(khu, key=lambda x: x["tv"])
+    vuon = "%s–%s" % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"])) if "vuon" in kq else "–"
+
+    tieu_de = "Giá Đất Lâm Hà T%d/%d: %s–%s Triệu/m² Theo Xã, Theo Khu (Lô Thật)" % (d.month, d.year, so(t["lo"]), so(t["hi"]))
+    mo_ta = ("Giá đất Lâm Hà T%d/%d: đất nền thổ cư %s–%s triệu/m², xã Nam Ban và Nam Hà, %d lô dưới 1 tỷ, rẻ nhất %s. Gọi 0978 758 788."
+             % (d.month, d.year, so(t["lo"]), so(t["hi"]), duoi1, tien(re_nhat["ty"])))
+    cau = ("Giá đất Lâm Hà tháng %d/%d, tính từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư <strong>%s–%s triệu/m²</strong>, "
+           "trung vị %s triệu/m²; đất vườn, lô lớn %s triệu/m². Có %d lô dưới 1 tỷ, rẻ nhất từ %s."
+           % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon, duoi1, tien(re_nhat["ty"])))
+
+    hang_xa = "\n".join("            <tr>%s%s%s%s</tr>" % (
+        _td('<a href="%s" style="color:#1A3D2B;font-weight:600">%s</a> <span style="color:#6B6B6B;font-size:.8rem">(%d lô)</span>' % (x["link"], x["ten"], x["n"])),
+        _td("<strong>%s – %s</strong> · trung vị %s" % (so(x["lo"]), so(x["hi"]), so(x["tv"]))),
+        _td("%d lô" % x["duoi1"]),
+        _td('<a href="%s">từ %s</a>' % (x["re"]["url"], tien(x["re"]["ty"])))) for x in xa)
+    hang = []
+    for k in sorted(khu, key=lambda x: x["tv"]):
+        key = [a[0] for a in KHU if a[2] == k["link"]][0]
+        v = [x for x in lo if key in x["loc"]]
+        r = min(v, key=lambda x: x["ty"])
+        hang.append("            <tr>%s%s%s%s</tr>" % (
+            _td('<a href="%s" style="color:#1A3D2B;font-weight:600">%s</a>' % (k["link"], k["ten"])),
+            _td("%s triệu/m²" % so(k["tv"])),
+            _td("%d lô" % sum(1 for x in v if x["ty"] < 1)),
+            _td('<a href="%s" title="%s">từ %s</a>' % (r["url"], H.escape(r["ten"], quote=True), tien(r["ty"])))))
+
+    faq = [
+        ("Giá đất Lâm Hà bao nhiêu một m²?",
+         "Tính tháng %d/%d từ %d lô đang rao ở xã Nam Ban và xã Nam Hà: đất nền có thổ cư %s–%s triệu/m², trung vị %s triệu/m²; đất vườn và lô lớn %s triệu/m². "
+         "Đây là giá rao; giá chốt thường thấp hơn sau thương lượng." % (d.month, d.year, tong, so(t["lo"]), so(t["hi"]), so(t["tv"]), vuon)),
+        ("Huyện Lâm Hà còn không sau sáp nhập?",
+         "Từ 01/7/2025 cả nước bỏ cấp huyện. Theo Nghị quyết 202/2025/QH15, xã Nam Ban mới gồm thị trấn Nam Ban cũ, xã Đông Thanh, xã Mê Linh và xã Gia Lâm. "
+         "Người mua vẫn quen gọi cả vùng là Lâm Hà; trên giấy tờ mới ghi tên xã và tỉnh Lâm Đồng."),
+        ("Mua đất Lâm Hà dưới 1 tỷ ở khu nào?",
+         "Tháng %d/%d có %d lô dưới 1 tỷ. Đơn giá trung vị mềm nhất ở %s (%s triệu/m²), cao nhất ở %s (%s triệu/m²). Lô rẻ nhất hiện từ %s."
+         % (d.month, d.year, duoi1, khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"]), tien(re_nhat["ty"]))),
+    ]
+    if len(xa) == 2:
+        faq.append(("Giá đất Nam Hà so với Nam Ban thế nào?",
+                    "Theo lô đang rao tháng %d/%d, trung vị xã Nam Ban %s triệu/m² (%d lô), xã Nam Hà %s triệu/m² (%d lô). Lô rẻ nhất xã Nam Ban từ %s, xã Nam Hà từ %s."
+                    % (d.month, d.year, so(xa[0]["tv"]), xa[0]["n"], so(xa[1]["tv"]), xa[1]["n"], tien(xa[0]["re"]["ty"]), tien(xa[1]["re"]["ty"]))))
+    faq.append(("Giá trên trang này có phải bảng giá nhà nước không?",
+                "Không. Bảng giá đất tỉnh Lâm Đồng là giá nhà nước dùng tính thuế, phí sang tên và bồi thường, thường thấp hơn giá rao nhiều lần. "
+                "Trang này là giá rao của lô thật đang bán, dùng để biết mua được với giá nào."))
+
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebPage", "@id": URL_LH + "#webpage", "url": URL_LH, "name": tieu_de, "description": mo_ta, "inLanguage": "vi",
+         "isPartOf": {"@id": "https://nambanvillas.vn/#website"}, "publisher": {"@id": "https://nambanvillas.vn/#organization"},
+         "datePublished": "2026-09-24", "dateModified": ngay,
+         "about": {"@type": "Place", "name": "Lâm Hà, Lâm Đồng",
+                   "containsPlace": [{"@type": "Place", "name": "Xã Nam Ban"}, {"@type": "Place", "name": "Xã Nam Hà"}]},
+         "primaryImageOfPage": {"@type": "ImageObject", "url": "https://nambanvillas.vn/images/og-namban.jpg"},
+         "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["#tra-loi-nhanh", ".article-title"]},
+         "isBasedOn": {"@id": URL + "#dataset"}},
+        {"@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://nambanvillas.vn/"},
+            {"@type": "ListItem", "position": 2, "name": "Thị Trường", "item": "https://nambanvillas.vn/thi-truong/"},
+            {"@type": "ListItem", "position": 3, "name": "Giá Đất Lâm Hà", "item": URL_LH}]},
+        {"@type": "FAQPage", "@id": URL_LH + "#faq", "isPartOf": {"@id": URL_LH + "#webpage"},
+         "mainEntity": [{"@type": "Question", "name": q_, "acceptedAnswer": {"@type": "Answer", "text": a_}} for q_, a_ in faq]}]}
+
+    head = nguon[:nguon.index("<body")]
+    head = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', "", head, flags=re.S)
+    head = head.replace("../../css/", "/css/")
+    head = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(tieu_de, quote=False), head)
+    for k, v in (('<meta name="description" content="', mo_ta), ('<meta property="og:description" content="', mo_ta),
+                 ('<meta property="og:title" content="', tieu_de), ('<meta name="twitter:title" content="', tieu_de),
+                 ('<meta name="keywords" content="', "giá đất lâm hà, giá đất lâm hà 2026, giá đất lâm hà lâm đồng, giá đất nam ban lâm hà, đất lâm hà dưới 1 tỷ, giá đất nam hà lâm hà")):
+        if k in head:
+            i = head.index(k) + len(k)
+            head = head[:i] + H.escape(v, quote=True) + head[head.index('"', i):]
+    head = head.replace(URL, URL_LH).replace('<meta property="og:type" content="article">', '<meta property="og:type" content="website">')
+    head = head.replace("</head>", '  <script type="application/ld+json">%s</script>\n</head>' % json.dumps(ld, ensure_ascii=False, separators=(",", ":")))
+
+    chrome_tren = nguon[nguon.index("<body"):nguon.index("<main")]
+    chrome_duoi = nguon[nguon.index("</main>"):].replace("../../js/", "/js/")
+    than = THAN_LAM_HA % dict(
+        ngay=ngay_vn(ngay), thang="%d/%d" % (d.month, d.year), tong=tong, cau=cau, th=TH, hang_xa=hang_xa, hang_khu="\n".join(hang),
+        tho="%s–%s" % (so(t["lo"]), so(t["hi"])), tho_tv=so(t["tv"]), vuon=vuon,
+        ho="%s–%s" % (so(kq["ho"]["lo"]), so(kq["ho"]["hi"])) if "ho" in kq else "–",
+        faq="\n".join("  <details open><summary>%s</summary><p>%s</p></details>" % (q_, a_) for q_, a_ in faq))
+    os.makedirs("gia-dat-lam-ha", exist_ok=True)
+    open(LAM_HA, "w", encoding="utf-8").write(head + chrome_tren + than + chrome_duoi)
+
+    sm = open("sitemap.xml", encoding="utf-8").read()
+    if URL_LH not in sm:
+        sm = sm.replace("</urlset>", "  <url><loc>%s</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>\n</urlset>" % (URL_LH, ngay))
+    sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL_LH), r"\g<1>" + ngay, sm)
+    open("sitemap.xml", "w", encoding="utf-8").write(sm)
+    print("  Lâm Hà: %s" % ", ".join("%s %s" % (x["ten"], so(x["tv"])) for x in xa))
+
+
+
+def cap_nhat_meta_hub(ngay):
+    """ĐÃ TỪNG DÍNH: hub Đất Nền ghi '94 lô, từ 480 triệu' ở title + mô tả + og + schema suốt nhiều tuần
+    trong khi thật là 116 lô, từ 368 triệu (bẫy cũ chỉ soi thân trang). Nay script tuần đặt lại."""
+    d = datetime.date.fromisoformat(ngay)
+    for f, loai in (("dat-nen-nam-ban/index.html", "dat"), ("nha-ban-nam-ban/index.html", "nha")):
+        s = open(f, encoding="utf-8").read()
+        g = s[s.index("prop-grid sp-sang"):]
+        the = [x for x in re.findall(r'<article class="prop-card[^>]*>', g) if 'data-ban="1"' not in x]
+        gia = [float(x) for t_ in the for x in re.findall(r'data-price="([\d.]+)"', t_) if float(x) > 0]
+        n, re_ = len(the), tien(min(gia))
+        if loai == "dat":
+            td = "Mua Bán Đất Nền Nam Ban Tháng %d/%d – %d Lô Sổ Đỏ Chính Chủ, Từ %s" % (d.month, d.year, n, re_.title())
+            mt = ("Mua bán đất Nam Ban (thị trấn Nam Ban cũ, Lâm Hà, Lâm Đồng): %d lô thật chính chủ, từ %s, sẵn thổ cư, "
+                  "đã kiểm pháp lý, quy hoạch trước khi đăng. Gọi 0978 758 788." % (n, re_))
+        else:
+            td = "Nhà Bán Nam Ban Tháng %d/%d – %d Căn Nhà Vườn, Biệt Thự, Từ %s" % (d.month, d.year, n, re_.title())
+            mt = ("Mua nhà vườn, biệt thự nghỉ dưỡng Nam Ban (thị trấn Nam Ban cũ, Lâm Hà): %d căn thật đang bán, từ %s, "
+                  "sổ riêng hay sổ chung ghi rõ từng căn. Gọi 0978 758 788." % (n, re_))
+        s = re.sub(r"<title>[^<]*</title>", "<title>%s</title>" % H.escape(td, quote=False), s, count=1)
+        for k, v in (('<meta name="description" content="', mt), ('<meta property="og:description" content="', mt),
+                     ('<meta name="twitter:description" content="', mt), ('<meta property="og:title" content="', td),
+                     ('<meta name="twitter:title" content="', td)):
+            if k in s:
+                i = s.index(k) + len(k)
+                s = s[:i] + H.escape(v, quote=True) + s[s.index('"', i):]
+
+        def fix(m):
+            gj = json.loads(m.group(1))
+            for nd in gj.get("@graph", [gj]):
+                if nd.get("@type") in ("CollectionPage", "WebPage") and "description" in nd:
+                    nd["description"] = mt
+                    nd["name"] = td
+            return '<script type="application/ld+json">' + json.dumps(gj, ensure_ascii=False, separators=(",", ":")) + "</script>"
+        s = re.sub(r'<script type="application/ld\+json">(.*?)</script>', fix, s, flags=re.S)
+        open(f, "w", encoding="utf-8").write(s)
+        print("  hub %s: %d, từ %s" % (loai, n, re_))
+
 def main():
     ngay = datetime.date.today().isoformat()
     lo = doc_lo()
@@ -431,6 +658,15 @@ def main():
     sm = re.sub(r"(<loc>%s</loc><lastmod>)\d{4}-\d{2}-\d{2}" % re.escape(URL), r"\g<1>" + ngay, sm)
     open("sitemap.xml", "w", encoding="utf-8").write(sm)
     cap_nhat_gia_re(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
+    lam_trang_lam_ha(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
+    cap_nhat_meta_hub(ngay)
+    # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
+    tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
+    if tt:
+        f = "dat-trung-tam-thi-tran-nam-ban/index.html"
+        s2 = open(f, encoding="utf-8").read()
+        s2 = re.sub(r'(<meta (?:name="description"|property="og:description") content="[^"]*?)từ [\d.,]+ (?:triệu|tỷ)', lambda m: m.group(1) + "từ " + tien(min(x["ty"] for x in tt)), s2)
+        open(f, "w", encoding="utf-8").write(s2)
     for k, v in kq.items():
         print("  %-5s %3d lô  %s – %s  trung vị %s" % (k, v["n"], so(v["lo"]), so(v["hi"]), so(v["tv"])))
     print("  khu:", ", ".join("%s %s" % (t["ten"], so(t["tv"])) for t in khu))

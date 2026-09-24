@@ -279,6 +279,17 @@ if _DAT and _NHA:
             if _m.group(1) and _v != _DAT: L("[llms.txt ghi %d lô, hub thật %d] %s" % (_v, _DAT, _f))
             if _m.group(2) and _v != _NHA: L("[llms.txt ghi %d căn, hub thật %d] %s" % (_v, _NHA, _f))
 
+# 13b. ĐÃ TỪNG DÍNH: title + mô tả hub ghi "94 Lô, từ 480 triệu" khi thật là 116 lô, từ 368 triệu.
+#      Đoạn 13 bỏ qua <head> (chỉ đọc chữ thân trang) nên không bắt được. Chạy scripts/cap-nhat-gia-hom-nay.py để sửa.
+for _f, _n, _dv in (("dat-nen-nam-ban/index.html", _DAT, "Lô"), ("nha-ban-nam-ban/index.html", _NHA, "Căn")):
+    if not _n:
+        continue
+    _h = open(_f, encoding="utf-8").read()
+    _h = _h[:_h.index("<body")]
+    for _m in re.finditer(r'(?:<title>|content=")[^<"]*?(\d{2,3}) (?:%s|%s)' % (_dv, _dv.lower()), _h):
+        if int(_m.group(1)) != _n:
+            L("[<head> hub ghi %s %s, thật là %d — chạy scripts/cap-nhat-gia-hom-nay.py] %s" % (_m.group(1), _dv.lower(), _n, _f))
+
 # ── 14. Nút Gọi phải ở đúng chỗ khách nóng nhất (them-nut-goi.py) ───────────
 # ĐÃ TỪNG DÍNH (cta-3/6/8): hub cuộn 122 thẻ không có nút Gọi; trang lô đọc xong
 # khối rủi ro thì hết nút; mục to nhất menu điện thoại là "Liên Hệ" chứ không gọi.
