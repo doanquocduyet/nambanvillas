@@ -15,7 +15,7 @@ hệt nhau, nên FAQ hiển thị và FAQPage schema không bao giờ lệch):
         "Mê Linh Lâm Hà"   -> "Mê Linh Nam Ban Lâm Hà"
   - Xã KHÁC giáp Nam Ban (Nam Hà, Đinh Văn…): KHÔNG được ghi là thuộc Nam Ban ->
         "Nam Hà, Lâm Hà"   -> "Nam Hà (giáp Nam Ban), Lâm Hà"
-  - "đất Lâm Hà" / "Giá đất Lâm Hà" -> "đất Lâm Hà Nam Ban" (giữ cụm từ khoá liền mạch)
+  - "đất Lâm Hà" / "Giá đất Lâm Hà" -> "đất Nam Ban Lâm Hà" (thứ tự chủ web chốt)
   - "huyện Lâm Hà" -> "huyện Lâm Hà (vùng Nam Ban)"
   - còn lại: "Lâm Hà" -> "Nam Ban, Lâm Hà"
 Bỏ qua chỗ đã có "Nam Ban" sát bên (chỉ cách nhau dấu phẩy, chấm giữa, gạch, ngoặc,
@@ -60,7 +60,7 @@ def viet_lai(s):
         if re.search(r"[Hh]uyện\s$", truoc):
             moi = "Lâm Hà (vùng Nam Ban)"
         elif re.search(r"[Đđ]ất\s$", truoc):
-            moi = "Lâm Hà Nam Ban"
+            moi = "Nam Ban Lâm Hà"          # chủ web chốt thứ tự "giá đất Nam Ban Lâm Hà" (24/9/2026)
         else:
             moi = "Nam Ban, Lâm Hà"
         out.append(s[pos:a])
