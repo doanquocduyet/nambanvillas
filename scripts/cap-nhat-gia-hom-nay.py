@@ -1379,6 +1379,18 @@ def main():
         return bool(m_) and _tuan(m_.group(1)) == _tuan(ngay) and m_.group(1) <= ngay
     tuan = [x for x in tuan if x.strip() and not _cung_tuan(x)]
     tuan = [tong_hop_len_dau(x) for x in tuan]           # tuần đã qua: tổng hợp lên đầu
+    # Tuần CHỈ có tin rao công khai mà chưa có ô (vd tin bổ sung từ đầu năm): dựng ô từ chính các tin đó.
+    # Không bao giờ xoá ô cũ; ô mới xếp đúng thứ tự ngày.
+    co = {_tuan(m) for m in re.findall(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", "".join(tuan))} | {_tuan(ngay)}
+    _tin = doc_tin_rao()
+    theo_tuan = {}
+    for k in _tin:
+        if k < ngay and _tuan(k) not in co:
+            theo_tuan.setdefault(_tuan(k), []).append(k)
+    for wk, ks in theo_tuan.items():
+        cuoi = max(ks)                                     # ngày tin cuối trong tuần = ngày "cập nhật" của ô
+        tuan.append(tong_hop_len_dau(bang_tuan_tu_tin(cuoi, [x for k in ks for x in _tin[k]])))
+    tuan.sort(key=lambda x: re.search(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", x).group(1), reverse=True)
     s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong, khoi_tin_tuan(ngay, _the_hub(HUB, lambda x: True))) + "".join(tuan) + s[j:]
     s = thay_khoi(s, "<!-- GIA-KHU:START -->", "<!-- GIA-KHU:END -->", bang_khu(ngay, khu))
 
