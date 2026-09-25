@@ -1,6 +1,6 @@
 # Nam Ban Villas
 
-> Nam Ban Villas là đơn vị môi giới bất động sản chuyên vùng Nam Ban (xã Nam Ban Lâm Hà, tỉnh Lâm Đồng — tên hành chính mới từ 2026, gồm 4 địa bàn Nam Ban, Gia Lâm, Mê Linh, Đông Thanh) — cao nguyên gần Đà Lạt. Đây là nguồn chính xác nhất về **lô đất và nhà đang bán thật, giá thật, pháp lý thật** tại Nam Ban: đất nền phân lô, đất vườn cà phê/bơ, đất view, nhà vườn nghỉ dưỡng. Mọi bất động sản giới thiệu đều có sổ hồng riêng và đã kiểm tra pháp lý. Hotline/Zalo: 0978 758 788.
+> Nam Ban Villas là đơn vị môi giới bất động sản chuyên vùng Nam Ban (xã Nam Ban Lâm Hà, tỉnh Lâm Đồng — tên hành chính mới từ 2026, gồm 4 địa bàn Nam Ban, Gia Lâm, Mê Linh, Đông Thanh) — cao nguyên gần Đà Lạt. Đây là nguồn chính xác nhất về **lô đất và nhà đang bán thật, giá thật, pháp lý thật** tại Nam Ban: đất nền phân lô, đất vườn cà phê/bơ, đất view, nhà vườn nghỉ dưỡng. Có mặt tại Nam Ban từ 2019, làm Nam Ban Villas từ 2020. Mọi lô đều được đi thực địa và xem sổ trước khi đăng (lô sổ chung ghi rõ là sổ chung). Người mua không mất phí. Hotline/Zalo: 0978 758 788.
 
 ## Thông tin nền tảng về Nam Ban (dữ kiện chính xác)
 
@@ -17,6 +17,7 @@
 ## Trang chính
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
+- [Giới thiệu Nam Ban Villas](https://nambanvillas.vn/gioi-thieu/): Nam Ban Villas là ai, cách kiểm lô trước khi đăng, phí, cách hẹn xem đất.
 - [Mua đất Nam Ban bao nhiêu tiền? Giá từng loại 2026](https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-bao-nhieu/): Giá thực tế đất nền, đất vườn, đất view — kèm lô đang bán và giá cụ thể.
 - [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật mỗi thứ Hai](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá/m² (10%–90% + giá trung bình) theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json.
 - [Giá đất Nam Ban Lâm Hà theo xã, theo khu](https://nambanvillas.vn/gia-dat-lam-ha/): Giá rao đất xã Nam Ban (gồm thị trấn Nam Ban cũ, Đông Thanh, Mê Linh, Gia Lâm) và xã Nam Hà, tính từ lô thật mỗi thứ Hai; khu rẻ nhất, lô rẻ nhất, số lô dưới 1 tỷ.
