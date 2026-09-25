@@ -2,4 +2,9 @@
 *.pdf
 docs/
 scripts/
-data/
+data/*
+!data/gia-tuan.json
+
+# Tài liệu/code nội bộ không lên web (bàn giao GreenSpace 25/9)
+CLAUDE.md
+.github/
