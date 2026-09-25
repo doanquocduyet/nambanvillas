@@ -45,7 +45,7 @@
 ### [CẤM] KHÔNG TỰ CHỤP ẢNH / RENDER PREVIEW ĐỂ KIỂM — TỐN TIME + TOKEN
 - **KHÔNG** dùng Playwright/screenshot để "vẽ" xem thử. Kiểm giao diện bằng **đọc code + logic responsive** (breakpoint, flex/grid, đơn vị relative) — cháu đủ giỏi để tự tin không cần ảnh.
 - "Check cả 2 màn hình" = rà @media + cấu trúc trong đầu, KHÔNG phải chụp hình.
-- Muốn xem thật → dùng **link preview Vercel** trong PR comment (miễn phí, không tốn token của cháu).
+- Muốn xem thật → xem web live sau merge (preview nhánh `claude/*` đã tắt để giữ lượt deploy).
 - Chỉ chụp ảnh khi CHÚ YÊU CẦU rõ, hoặc khi nghi có bug hiển thị không thể suy ra từ code.
 
 ---
@@ -123,8 +123,13 @@
 - **Dự án Vercel chính (DUY NHẤT được giữ):** `nambanvillas` — slug: `duyet-s-projects`
 - **Chỉ 1 project Vercel nối repo** — nếu phát hiện có 2–3 project cùng nối: báo ngay, đây là vấn đề nghiêm trọng (quota build + SEO duplicate content).
 - **Quota build Vercel free:** 100 lượt/ngày — mỗi push tốn 1 lượt. Không push thừa.
+- **[ĐÃ CHẠM TRẦN 25/9/2026 — CHỐT]** Vercel từ chối deploy (`Deployment rate limited — retry in 24 hours`, xem status commit trên GitHub) → code đã merge nhưng web live KHÔNG đổi. Nguyên nhân: đẩy đồng bộ nhánh sau mỗi merge + nhiều PR nhỏ + bot đẩy main. Luật từ nay:
+  - Nhánh `claude/*` **không tạo preview** (`vercel.json` → `git.deploymentEnabled`): chỉ merge vào main mới tốn 1 lượt. Muốn xem trước thì xem trực tiếp file trong PR.
+  - **KHÔNG** `git push -f` đồng bộ nhánh sau khi merge (mỗi lần = 1 lượt thừa). Sau merge chỉ `git reset --hard origin/main` tại máy.
+  - **Gom việc**: nhiều sửa nhỏ cùng lúc → 1 PR. Không merge từng chữ.
+  - Sau mỗi merge kiểm status Vercel của commit main (`https://api.github.com/repos/doanquocduyet/nambanvillas/commits/<sha>/status`). `failure` + "rate limited" → báo chủ web ngay, đừng báo "đã lên web".
 - **Deploy production = merge PR vào `main`** — cháu dùng GitHub MCP tự merge, không cần chú vào GitHub.
-- **Xem bản demo (preview):** link preview có sẵn trong PR comment do Vercel bot đăng tự động sau mỗi push.
+- **Xem bản demo (preview):** nhánh `claude/*` đã TẮT preview từ 25/9/2026 để giữ lượt deploy. Kiểm bằng đọc code + checker; sau merge xem thẳng web live.
 - **Khi cần chú Delete project Vercel thừa:** link trực tiếp dạng `https://vercel.com/duyet-s-projects/[tên-project]/settings` → kéo xuống cuối → Delete Project → gõ tên project xác nhận.
 
 ---
