@@ -150,7 +150,7 @@ def khoang_tuan(iso):
     return "%d/%d–%d/%d/%d" % (t2.day, t2.month, cn.day, cn.month, cn.year)
 
 
-def bang_tuan(ngay, kq, cu, tong):
+def bang_tuan(ngay, kq, cu, tong, tin_html=""):
     tr = []
     for k in ("tho", "vuon", "ho"):
         if k not in kq:
@@ -161,7 +161,7 @@ def bang_tuan(ngay, kq, cu, tong):
                   % (TD, TEN[k], v["n"], TD, so(v["lo"]), so(v["hi"]), so(v["tv"]), TD, so_sanh(v, (cu or {}).get(k))))
     return '''        <!-- WEEK:%s -->
         <h2>Tuần %s · cập nhật %s</h2>
-        <div style="overflow-x:auto">
+%s        <div style="overflow-x:auto">
         <table style="width:100%%;border-collapse:collapse;font-size:.92rem;margin-bottom:8px">
           <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban theo loại, tuần %s — triệu đồng/m²</caption>
           <thead>
@@ -178,7 +178,7 @@ def bang_tuan(ngay, kq, cu, tong):
         </div>
         <p style="font-size:.9rem;color:#3D3D3D"><strong>Cách tính:</strong> từ %d lô đang rao trên Nam Ban Villas ngày %s (cùng dữ liệu với bộ lọc trang Đất Nền), quy ra triệu/m² theo giá rao cả lô; bỏ 10%% lô rẻ nhất và 10%% lô đắt nhất để lô ngoại lệ không kéo lệch. <strong>Giá trung bình</strong> là trung bình cộng các lô còn lại sau khi bỏ hai đầu đó. Giá chốt thật thường thấp hơn giá rao.</p>
 
-''' % (ngay, khoang_tuan(ngay), ngay_vn(ngay), ngay_vn(ngay), TH, TH, TH, "\n".join(tr), tong, ngay_vn(ngay))
+''' % (ngay, khoang_tuan(ngay), ngay_vn(ngay), tin_html, ngay_vn(ngay), TH, TH, TH, "\n".join(tr), tong, ngay_vn(ngay))
 
 
 def bang_khu(ngay, khu):
@@ -686,7 +686,7 @@ URL_VUON = "https://nambanvillas.vn/dat-vuon-nam-ban/"
 def _the_hub(f, chon):
     s = open(f, encoding="utf-8").read()
     ra = []
-    for m in re.finditer(r'<article class="prop-card sp-row[^"]*"([^>]*)>([\s\S]*?)</article>', s):
+    for m in re.finditer(r'<article class="prop-card(?: [^"]*)?"([^>]*)>([\s\S]*?)</article>', s):   # cả thẻ kiểu cũ (trước 9/2026)
         at, body = m.group(1), m.group(2)
         if 'data-ban="1"' in at:
             continue
@@ -1176,6 +1176,119 @@ def cap_nhat_deal_trang_chu():
     open(f, "w", encoding="utf-8").write(s)
     print("  deal trang chủ: %d lô" % len(lo))
 
+
+# ── TIN TRƯỚC, TỔNG HỢP SAU (chủ web 25/9/2026: "bắt buộc phải có tin, tổng hợp là cái cuối cùng") ──
+# Mỗi ô tuần: (1) tin rao công khai trong tuần — lấy từ /thi-truong/tin-rao-dat-nam-ban-moi/ (giữ nguyên chữ)
+# (2) lô mới lên Nam Ban Villas trong tuần — so danh sách hub với cuối tuần trước (lịch sử git) (3) bảng tổng hợp.
+TIN_RAO = "thi-truong/tin-rao-dat-nam-ban-moi/index.html"
+
+
+def _so_vn(t):
+    t = t.strip().lower().replace(" ", "")
+    m = re.match(r"([\d.,]+)(tỷ|triệu)", t)
+    if not m:
+        return 0
+    n = m.group(1)
+    if "," in n:                                   # 1,2 tỷ / 1.200,5
+        v = float(n.replace(".", "").replace(",", "."))
+    elif n.count(".") == 1 and len(n.split(".")[1]) != 3:   # 1.42 tỷ (chấm thập phân)
+        v = float(n)
+    else:                                          # 1.200 triệu (chấm nghìn)
+        v = float(n.replace(".", ""))
+    return v if m.group(2) == "tỷ" else v / 1000
+
+
+def doc_tin_rao():
+    """{ngày: [ {ten, specs, gia(tỷ), dt(m²), dg(tr/m²)} ]} từ trang tin rao theo ngày."""
+    if not os.path.exists(TIN_RAO):
+        return {}
+    s = open(TIN_RAO, encoding="utf-8").read()
+    ra = {}
+    for m in re.finditer(r"<!-- DAY:(\d{4}-\d{2}-\d{2}) -->", s):
+        a = m.end()
+        b = s.find("<!-- DAY:", a)
+        b = b if b > 0 else s.find("DAILY-DIGEST:END", a)
+        tin = []
+        for li in re.finditer(r'<li class="tin-item">([\s\S]*?)</li>', s[a:b]):
+            t = li.group(1)
+            ten = re.search(r'<p class="tin-title">([\s\S]*?)</p>', t)
+            sp = [H.unescape(re.sub(r"<[^>]+>", "", x)).strip() for x in re.findall(r"<span>([\s\S]*?)</span>", (re.search(r'<p class="tin-specs">([\s\S]*?)</p>', t) or [0, ""])[1] if re.search(r'<p class="tin-specs">', t) else "")]
+            dt = next((float(x.replace(".", "").replace("m²", "").replace(",", ".")) for x in sp if re.fullmatch(r"[\d.,]+m²", x)), 0)
+            gia = next((_so_vn(x) for x in sp if re.fullmatch(r"[\d.,]+\s*(tỷ|triệu)", x, re.I)), 0)
+            _dg = [re.search(r"(\d+(?:[.,]\d+)?)", x) for x in sp if x.endswith("triệu/m²")]
+            dg = (float(_dg[0].group(1).replace(",", ".")) if _dg and _dg[0] else 0) or (gia * 1000 / dt if gia and dt else 0)
+            tin.append(dict(ten=H.unescape(re.sub(r"<[^>]+>", "", ten.group(1))).strip() if ten else "", specs=sp, gia=gia, dt=dt, dg=dg))
+        ra[m.group(1)] = tin
+    return ra
+
+
+def _hub_luc(ngay_cuoi):
+    """Danh sách lô trên hub lúc cuối ngày `ngay_cuoi` (lịch sử git). Không có git/lịch sử -> None."""
+    global HUB
+    import subprocess
+    import tempfile
+    try:
+        c = subprocess.run(["git", "log", "--format=%h", "--before=%s 23:59" % ngay_cuoi, "-1", "--", HUB], capture_output=True, text=True).stdout.strip()
+        if not c:
+            return None
+        html = subprocess.run(["git", "show", "%s:%s" % (c, HUB)], capture_output=True, text=True).stdout
+    except Exception:
+        return None
+    f = tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8")
+    f.write(html)
+    f.close()
+    goc = HUB
+    HUB = f.name
+    try:
+        return _the_hub(HUB, lambda x: True)
+    finally:
+        HUB = goc
+
+
+def khoi_tin_tuan(ngay, lo_hien_tai=None, den=None):
+    """HTML phần TIN của ô tuần chứa `ngay`: tin rao công khai + lô mới lên Villas. Đặt TRƯỚC bảng tổng hợp."""
+    d = datetime.date.fromisoformat(ngay)
+    t2 = d - datetime.timedelta(days=d.weekday())
+    cn_truoc = (t2 - datetime.timedelta(days=1)).isoformat()
+    tin = doc_tin_rao()
+    den = den or ngay                                   # tuần đã qua: lấy tin tới hết Chủ nhật
+    tin_tuan = [(k, x) for k in sorted(tin, reverse=True) if t2.isoformat() <= k <= den for x in tin[k]]
+    moi = []
+    cu = _hub_luc(cn_truoc)
+    nay = lo_hien_tai if lo_hien_tai is not None else _hub_luc(den)
+    if cu is not None and nay is not None:
+        da_co = {x["url"] for x in cu}
+        moi = [x for x in nay if x["url"] not in da_co]
+    ra = []
+    if tin_tuan:
+        ra.append('        <h3 style="font-size:1.02rem;color:#1A3D2B;margin:14px 0 8px">Tin rao công khai trong tuần (%d tin)</h3>' % len(tin_tuan))
+        ra.append('        <ul style="list-style:none;padding:0;margin:0 0 14px">' + "".join(
+            '<li style="padding:8px 0;border-bottom:1px solid #ECEAE4;font-size:.9rem;line-height:1.5"><strong>%s</strong><br><span style="color:#5F6E66;font-size:.84rem">%s · rao ngày %s</span></li>'
+            % (H.escape(x["ten"], quote=False), H.escape(" · ".join(x["specs"]), quote=False), ngay_vn(k)) for k, x in tin_tuan) + "</ul>")
+    if moi:
+        ra.append('        <h3 style="font-size:1.02rem;color:#1A3D2B;margin:14px 0 8px">Lô mới lên Nam Ban Villas trong tuần (%d lô)</h3>' % len(moi))
+        ra.append('        <ul style="list-style:none;padding:0;margin:0 0 14px">' + "".join(
+            '<li style="padding:8px 0;border-bottom:1px solid #ECEAE4;font-size:.9rem;line-height:1.5"><a href="%s" style="color:#1A3D2B;font-weight:600">%s</a><br><span style="color:#5F6E66;font-size:.84rem">%s%s</span></li>'
+            % (x["url"], H.escape(x["ten"], quote=False), tien(x["ty"]) if x["ty"] > 0 else "giá liên hệ",
+               (" · %s m² · %s triệu/m²" % (("%d" % x["area"]), so(x["ty"] * 1000 / x["area"]))) if x["ty"] > 0 and x["area"] > 0 else "") for x in moi) + "</ul>")
+    if not ra:
+        ra.append('        <p style="font-size:.9rem;color:#5F6E66">Tuần này chưa có tin rao mới; bảng dưới tính từ các lô đang rao.</p>')
+    ra.append('        <h3 style="font-size:1.02rem;color:#1A3D2B;margin:18px 0 8px">Tổng hợp tuần</h3>')
+    return "\n".join(ra) + "\n"
+
+
+def bang_tuan_tu_tin(ngay, tin_tuan):
+    """Ô cho tuần CHỈ có tin rao (chưa có danh mục lô để tính): tổng hợp từ chính các tin đó."""
+    dg = sorted(x["dg"] for x in tin_tuan if x["dg"] > 0 and not re.match(r"\s*(nhà|villa|biệt thự)", x["ten"], re.I))   # giá nhà làm lệch đơn giá đất
+    if dg:
+        tb = sum(dg) / len(dg)
+        tong = ('Tổng hợp từ %d tin có đơn giá: từ <strong>%s</strong> đến <strong>%s triệu/m²</strong>, trung bình %s triệu/m². '
+                'Đây là giá rao trên tin công khai, chưa đối chiếu sổ; giá chốt thường thấp hơn.' % (len(dg), so(dg[0]), so(dg[-1]), so(tb)))
+    else:
+        tong = "Các tin tuần này không ghi đủ giá và diện tích để tính đơn giá."
+    return ('        <!-- WEEK:%s -->\n        <h2>Tuần %s · cập nhật %s</h2>\n%s        <p style="font-size:.9rem;color:#3D3D3D">%s</p>\n\n'
+            % (ngay, khoang_tuan(ngay), ngay_vn(ngay), khoi_tin_tuan(ngay, den=ngay), tong))
+
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
     from zoneinfo import ZoneInfo
@@ -1215,7 +1328,7 @@ def main():
         return bool(m_) and _tuan(m_.group(1)) == _tuan(ngay) and m_.group(1) >= max(
             re.findall(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", s[i:j]) or [ngay])
     tuan = [x for x in tuan if x.strip() and not _cung_tuan(x)]
-    s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong) + "".join(tuan) + s[j:]
+    s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong, khoi_tin_tuan(ngay, _the_hub(HUB, lambda x: True))) + "".join(tuan) + s[j:]
     s = thay_khoi(s, "<!-- GIA-KHU:START -->", "<!-- GIA-KHU:END -->", bang_khu(ngay, khu))
 
     # 4) FAQ có số sống

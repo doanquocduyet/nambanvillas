@@ -34,7 +34,9 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add thi-truong/tin-rao-dat-nam-ban-moi/index.html data/tin-rao-state.json feed.xml
+          # data/tin-rao-state.json chỉ có khi đã thu được tin (cần ANTHROPIC_API_KEY) — thiếu file thì bỏ qua, không làm đỏ cả lần chạy
+          git add thi-truong/tin-rao-dat-nam-ban-moi/index.html feed.xml
+          [ -f data/tin-rao-state.json ] && git add data/tin-rao-state.json || true
           git diff --staged --quiet || git commit -m "chore: tin rao Nam Ban $(date +'%Y-%m-%d') [skip ci]"
           # Máy khác có thể vừa đẩy — kéo về rồi đẩy, tránh bị chặn
           git pull --rebase --autostash -q origin main || true
