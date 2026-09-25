@@ -1399,11 +1399,25 @@ def cap_nhat_dataset(ngay, tong):
         "temporalCoverage": "%s/%s" % (dau, ngay),
         "dateModified": ngay,
         "variableMeasured": ["Khoảng giá phổ biến (triệu đồng/m²)", "Giá trung bình (triệu đồng/m²)", "Số lô đang rao"],
-        "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nambanvillas.vn/data/gia-tuan.json"}],
+        "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nambanvillas.vn/data/gia-tuan.json"},
+                         {"@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://nambanvillas.vn/data/gia-dat-nam-ban.csv"}],
     })
     d["@graph"] = g
     s = s[:m.start(1)] + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + s[m.end(1):]
     open(f, "w", encoding="utf-8").write(s)
+    # CSV cùng số liệu (AI và người đọc bảng tính trích thẳng)
+    import csv
+    ten_khu = {l: t for _, t, l in KHU}
+    with open("data/gia-dat-nam-ban.csv", "w", encoding="utf-8", newline="") as fo:
+        w = csv.writer(fo)
+        w.writerow(["ngay", "nhom", "so_lo", "gia_thap_trieu_m2", "gia_trung_binh_trieu_m2", "gia_cao_trieu_m2"])
+        for k in sorted(ls):
+            for nhom in ("tho", "vuon", "ho"):
+                v = ls[k].get(nhom)
+                if v:
+                    w.writerow([k, TEN[nhom], v["n"], v["lo"], v["tv"], v["hi"]])
+            for link, v in (ls[k].get("khu") or {}).items():
+                w.writerow([k, ten_khu.get(link, link), v["n"], v["lo"], v["tv"], v["hi"]])
 
 
 def tao_llms_full(ngay, lo, kq, khu, tong):

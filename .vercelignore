@@ -4,6 +4,7 @@ docs/
 scripts/
 data/*
 !data/gia-tuan.json
+!data/gia-dat-nam-ban.csv
 
 # Tài liệu/code nội bộ không lên web (bàn giao GreenSpace 25/9)
 CLAUDE.md
