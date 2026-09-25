@@ -196,6 +196,7 @@
 /* ===== TIN RAO — thẻ tối ưu AEO/UX ===== */
 .tin-list{list-style:none;padding:0;margin:0 0 8px}
 .tin-item{border-top:1px solid #ECEAE4;padding:14px 0}
+.tin-list{content-visibility:auto;contain-intrinsic-size:auto 900px}
 .tin-item:first-child{border-top:none}
 .tin-title{font-size:1rem;font-weight:700;color:#1A3D2B;margin:0 0 7px;line-height:1.4}
 .tin-specs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 7px}

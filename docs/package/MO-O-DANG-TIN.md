@@ -10,6 +10,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 ## 🆕 CẬP NHẬT 24–25/9/2026 — ĐỌC TRƯỚC MỌI THỨ KHÁC (luật mới, đè lên phần cũ nếu vênh)
 
 - 25/9/2026: trang Giá Đất Hôm Nay — mỗi tuần hiện TIN RAO + LÔ MỚI trước, TỔNG HỢP TUẦN cuối cùng. Lô mới đăng lên hub tự vào danh sách tuần đó.
+- 25/9/2026: `cap-nhat-gia-hom-nay.py` giờ làm mới thêm: `llms-full.txt` (giá theo loại/khu + toàn bộ lô đang bán + hỏi đáp, cho AI trích), khai báo Dataset bảng giá tuần, cụm 5 trang giá nối hai chiều (khối `CUM-GIA`). Đăng lô đúng thẻ hub là các chỗ này tự đúng. Trang mới: JSON-LD phải có `author` = `{"@id":"https://nambanvillas.vn/#organization"}` + `dateModified`; `<head>` có link RSS `/feed.xml`.
 - 25/9/2026: **MỌI ảnh lên web phải có dấu © Nam Ban Villas TRONG FILE** (EXIF+XMP, như Panorama). 5 script sinh ảnh (`prep-anh` · `nen-anh` · `tao-webp` · `tao-srcset` · `xoa-dau-do`) tự đóng; ảnh chép thẳng vào `images/` thì chạy `python3 scripts/dong-dau-anh.py` — checker mục 22 chặn ảnh thiếu dấu. Đọc mục "© TRONG FILE ẢNH" bên dưới.
 - 25/9/2026: trang mới `/dinh-gia-dat-nam-ban/` (key "định giá đất nam ban") — bảng giá tham chiếu theo loại + khu, `cap-nhat-gia-hom-nay.py` tự làm mới từ lô hub (khối `<!-- DINH-GIA -->`). Đăng lô đúng `data-loc`/`data-price` là trang tự đúng số.
 - 25/9/2026: tuần ĐÃ QUA thì Tổng hợp tuần lên ngay dưới tiêu đề tuần, tin rao ở dưới; tuần đang chạy giữ tin trước, tổng hợp cuối. Đội ngũ không sửa tay — script tự đảo khi sang tuần.
