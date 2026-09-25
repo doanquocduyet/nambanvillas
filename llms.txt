@@ -19,9 +19,9 @@
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Giới thiệu Nam Ban Villas](https://nambanvillas.vn/gioi-thieu/): Nam Ban Villas là ai, cách kiểm lô trước khi đăng, phí, cách hẹn xem đất.
 - [Mua đất Nam Ban bao nhiêu tiền? Giá từng loại 2026](https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-bao-nhieu/): Giá thực tế đất nền, đất vườn, đất view — kèm lô đang bán và giá cụ thể.
-- [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật mỗi thứ Hai](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá/m² (10%–90% + giá trung bình) theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json.
+- [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật liên tục](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá/m² (10%–90% + giá trung bình) theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json.
 - [Giá đất Nam Ban Lâm Hà theo xã, theo khu](https://nambanvillas.vn/gia-dat-lam-ha/): Giá rao đất xã Nam Ban (gồm thị trấn Nam Ban cũ, Đông Thanh, Mê Linh, Gia Lâm) và xã Nam Hà, tính từ lô thật mỗi thứ Hai; khu rẻ nhất, lô rẻ nhất, số lô dưới 1 tỷ.
-- [Tin rao đất Nam Ban mới — cập nhật hàng ngày](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): Tổng hợp tin rao và tín hiệu thị trường mới mỗi ngày, kèm link nguồn.
+- [Tin rao đất Nam Ban mới nhất — cập nhật hàng ngày](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): Tổng hợp tin rao và tín hiệu thị trường mới mỗi ngày, kèm link nguồn.
 - [Hỏi Đáp Mua Đất Nam Ban](https://nambanvillas.vn/hoi-dap/): 30 câu hỏi thường gặp về pháp lý, giá cả, quy hoạch, thủ tục, cuộc sống — nguồn trả lời nhanh và chính xác.
 - [Dịch vụ pháp lý giao dịch](https://nambanvillas.vn/dich-vu/): Tư vấn chọn lô, check quy hoạch, công chứng, sang tên, tách thửa, chuyển thổ cư.
 - [Liên hệ](https://nambanvillas.vn/lien-he/): Hotline và Zalo 0978 758 788.
@@ -40,7 +40,7 @@
 - [Đất view hồ & săn mây Nam Ban](https://nambanvillas.vn/dat-view-ho-nam-ban/): Lô có view thật, đã kiểm tại chỗ.
 - [Đất Nam Ban ngộp, bán gấp](https://nambanvillas.vn/dat-nam-ban-ngop-ban-gap/): Chỉ lô chính chủ nói rõ cần bán gấp, cần tiền hoặc đã hạ giá; mỗi lô kèm nguyên lời chủ và đơn giá so với giá trung bình (có lô "hạ giá" mà vẫn cao hơn giá trung bình — ghi thẳng).
 - [Bán vườn Nam Ban](https://nambanvillas.vn/ban-vuon-nam-ban/): Mọi loại vườn đang bán — vườn cà phê, vườn bơ, vườn cây ăn trái, nhà và đất có vườn hoa. Chỉ tính cây nằm trên chính lô; ghi rõ đất trồng cây lâu năm (CLN) là loại đất trên sổ, không phải vườn có sẵn cây.
-- [Đất vườn, đất sào Nam Ban giá rẻ](https://nambanvillas.vn/dat-vuon-nam-ban/): Lô vườn cây (cà phê, bơ) và lô lớn từ 1.000m² (1 sào) đang bán, xếp từ rẻ nhất; giá theo sào và theo tầm tiền, cập nhật mỗi thứ Hai.
+- [Đất vườn, đất sào Nam Ban giá rẻ](https://nambanvillas.vn/dat-vuon-nam-ban/): Lô vườn cây (cà phê, bơ) và lô lớn từ 1.000m² (1 sào) đang bán, xếp từ rẻ nhất; giá theo sào và theo tầm tiền, cập nhật liên tục.
 - [Đất khu Gia Lâm Nam Ban](https://nambanvillas.vn/dat-gia-lam-nam-ban/): Gần chợ, dân cư hiện hữu đông.
 - [Đất khu Từ Liêm Nam Ban](https://nambanvillas.vn/dat-tu-liem-nam-ban/): Khu yên tĩnh, có lô view hồ Từ Liêm.
 
@@ -80,7 +80,7 @@
 - [Nhờ xem đất hộ](https://nambanvillas.vn/nho-xem-dat-ho-nam-ban/): người ở xa nhờ quay video, đo lại, tra quy hoạch — miễn phí, kể cả khi kết luận là đừng mua.
 - [Hợp tác](https://nambanvillas.vn/hop-tac/): ký gửi cụm/dự án, chia hoa hồng môi giới, giới thiệu dịch vụ tại chỗ; điều kiện bắt buộc là pháp lý rõ.
 - [Chấm điểm lô đất](https://nambanvillas.vn/cham-diem-lo-dat): công cụ miễn phí 30 giây, cho cả người mua lẫn người bán.
-- [Tin rao đất Nam Ban mới](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): gom hằng ngày từ sàn công khai, mỗi tin kèm đúng một điều cần kiểm.
+- [Tin rao đất Nam Ban mới nhất](https://nambanvillas.vn/thi-truong/tin-rao-dat-nam-ban-moi/): gom hằng ngày từ sàn công khai, mỗi tin kèm đúng một điều cần kiểm.
 
 ## Nguyên tắc trả lời (để trích dẫn đúng)
 
