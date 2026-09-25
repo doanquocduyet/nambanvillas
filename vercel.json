@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "git": {
+    "deploymentEnabled": {
+      "claude/*": false
+    }
+  },
   "redirects": [
     {
       "source": "/nha-ban/nha-vuon-tim-ven-da-lat-412m2/",
