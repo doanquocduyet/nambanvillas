@@ -68,7 +68,14 @@ ltabs.forEach(t=>t.addEventListener('click',()=>{
   ltabs.forEach(x=>x.classList.remove('active'));
   t.classList.add('active');
   const f=t.dataset.type;
-  cards.forEach(c=>c.classList.toggle('hidden',f==='deal'?c.dataset.deal!=='1':(f!=='all'&&c.dataset.type!==f)));
+  // thẻ data-chi-deal (lô chủ cần bán nhanh) chỉ hiện ở nút Deal
+  cards.forEach(c=>c.classList.toggle('hidden',f==='deal'?c.dataset.deal!=='1':(c.dataset.chiDeal==='1'||(f!=='all'&&c.dataset.type!==f))));
+  const va=t.closest('section')&&t.closest('section').querySelector('.view-all-btn');
+  if(va){
+    if(!va.dataset.goc){va.dataset.goc=va.getAttribute('href');va.dataset.gocText=va.textContent;}
+    if(f==='deal'){va.href='/dat-nam-ban-ngop-ban-gap/';va.textContent='Xem tất cả lô chủ cần bán nhanh →';}
+    else{va.href=va.dataset.goc;va.textContent=va.dataset.gocText;}
+  }
 }));
 
 // QR Code – Zalo

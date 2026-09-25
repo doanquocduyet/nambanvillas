@@ -35,7 +35,7 @@ Mục tiêu mỗi tin: **đủ chỗ (không thiếu) · đúng chỗ (không d�
 | `duoi-700` | giá dưới 700 triệu | bộ lọc hub |
 | `lo-goc` · `giap-suoi` · `rung-thong` · `view-dep` · `vuon` | đúng như tên, thấy được trên ảnh/sổ | bộ lọc hub, `/dat-vuon-nam-ban/` (`vuon` hoặc ≥1.000m²) |
 | `ca-phe` · `bo` · `cay-an-trai` · `vuon-hoa` | cây/vườn nằm **TRÊN chính lô** | `/ban-vuon-nam-ban/` |
-| `ngop` | chính chủ nói rõ **bán gấp / cần tiền / hạ giá** — ghi nguyên câu đó vào mô tả lô | `/dat-nam-ban-ngop-ban-gap/` (trích nguyên câu, so với giá trung bình) |
+| `ngop` | chính chủ nói rõ **bán gấp / cần tiền / hạ giá** — ghi nguyên câu đó vào mô tả lô | `/dat-nam-ban-ngop-ban-gap/` (trích nguyên câu, so với giá trung bình) + nút **"Deal tốt · chủ cần bán nhanh"** trên trang chủ |
 
 CẤM gắn `ca-phe` khi chỉ "xung quanh là vườn cà phê", "view đồi cà phê". CẤM gắn `ngop` chỉ vì giá thấp. KHÔNG có nhãn "cây lâu năm" — CLN là loại đất trên sổ, không phải cây đang có.
 
@@ -80,7 +80,7 @@ python3 scripts/lam-ha-kem-nam-ban.py                     # luật Lâm Hà kèm
 python3 scripts/kiem-tra-truoc-khi-dang.py                # PHẢI in "SẠCH" mới push
 ```
 
-**KHÔNG tự chạy** `cap-nhat-gia-hom-nay.py` — sau khi merge, GitHub Actions `gia-tuan.yml` tự tính lại (theo giờ Việt Nam) và cập nhật: `/thi-truong/gia-dat-nam-ban-hom-nay/` · `/dat-nam-ban-gia-re/` (cả mục 300 triệu) · `/gia-dat-lam-ha/` · `/dat-vuon-nam-ban/` · `/ban-vuon-nam-ban/` · `/dat-nam-ban-ngop-ban-gap/` · title + mô tả 2 hub · mô tả trang chủ + câu "Xem đất Nam Ban tận nơi" · mô tả trang thị trấn.
+**KHÔNG tự chạy** `cap-nhat-gia-hom-nay.py` — sau khi merge, GitHub Actions `gia-tuan.yml` tự tính lại (theo giờ Việt Nam) và cập nhật: `/thi-truong/gia-dat-nam-ban-hom-nay/` · `/dat-nam-ban-gia-re/` (cả mục 300 triệu) · `/gia-dat-lam-ha/` · `/dat-vuon-nam-ban/` · `/ban-vuon-nam-ban/` · `/dat-nam-ban-ngop-ban-gap/` · title + mô tả 2 hub · nút Deal trang chủ (lô `ngop`) · bảng tuần theo xã trang Lâm Hà · mô tả trang chủ + câu "Xem đất Nam Ban tận nơi" · mô tả trang thị trấn.
 
 ### H. Checklist 12 dòng trước khi báo xong
 
