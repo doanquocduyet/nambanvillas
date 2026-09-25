@@ -4,7 +4,7 @@
 prep-anh.py — Cắt gọt + nén ảnh tin/lô đất Nam Ban Villas cho web.
 
 Làm tự động:
-  1. Auto-xoay theo EXIF rồi XÓA SẠCH EXIF (bỏ cả GPS toạ độ — bảo mật vị trí).
+  1. Auto-xoay theo EXIF rồi XÓA SẠCH EXIF (bỏ cả GPS toạ độ — bảo mật vị trí), sau đó đóng dấu © Nam Ban Villas (dong-dau-anh.py).
   2. Smart-crop theo tỉ lệ đích: giữ vùng nhiều "chi tiết" nhất (gradient-energy),
      KHÔNG cắt cụt chủ thể như center-crop mù.
   3. Resize cạnh dài về mức web + sharpen nhẹ cho nét.
@@ -28,6 +28,13 @@ try:
     from PIL import Image, ImageOps, ImageFilter
 except ImportError:
     sys.exit("Thiếu Pillow. Chạy: pip3 install Pillow")
+
+
+def _dong_dau(p):
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("dong_dau_anh", os.path.join(os.path.dirname(os.path.abspath(__file__)), "dong-dau-anh.py"))
+    dd = importlib.util.module_from_spec(sp); sp.loader.exec_module(dd)
+    dd.dong_dau(p)
 
 
 def parse_ratio(s):
@@ -150,6 +157,7 @@ def main():
         img = img.filter(ImageFilter.UnsharpMask(radius=1.0, percent=60, threshold=2))  # nét nhẹ
         dst = os.path.join(outdir, f"{n}.jpg")
         q, size = encode_to_target(img, dst, args.kb)
+        _dong_dau(dst)                        # dấu © Nam Ban Villas trong file (EXIF/XMP), không có GPS
         w, h = img.size
         print(f"  {os.path.basename(src)} -> {dst}  {w}x{h}  q{q}  {size//1024}KB")
         n += 1
