@@ -308,7 +308,7 @@ def dataset(ngay, mo_ta, kq, tong):
             bien.append({"@type": "PropertyValue", "name": TEN[k], "unitText": "triệu đồng/m²",
                          "minValue": kq[k]["lo"], "maxValue": kq[k]["hi"], "value": kq[k]["tv"],
                          "description": "Khoảng giá phổ biến và giá trung bình từ %d lô đang rao" % kq[k]["n"]})
-    return {"@type": "Dataset", "@id": URL + "#dataset", "name": "Giá rao đất Nam Ban theo tuần (triệu đồng/m²)",
+    return {"@type": "Dataset", "@id": URL + "#dataset", "name": "Giá rao các lô đang bán trên Nam Ban Villas theo tuần (triệu đồng/m²)",
             "description": mo_ta, "url": URL, "inLanguage": "vi", "license": "https://creativecommons.org/licenses/by/4.0/",
             "creator": {"@id": "https://nambanvillas.vn/#organization"}, "dateModified": ngay,
             "temporalCoverage": "2026-07-02/" + ngay, "isAccessibleForFree": True,
@@ -1387,7 +1387,7 @@ def cap_nhat_dataset(ngay, tong):
     dau = min(ls) if ls else ngay
     g.append({
         "@type": "Dataset", "@id": ID,
-        "name": "Giá rao đất Nam Ban theo tuần (triệu đồng/m²)",
+        "name": "Giá rao các lô đang bán trên Nam Ban Villas theo tuần (triệu đồng/m²)",
         "description": "Khoảng giá phổ biến và giá trung bình (bỏ 10%% lô rẻ nhất và 10%% đắt nhất) theo loại đất và theo 7 khu của Nam Ban, Lâm Hà, Lâm Đồng, tính từ %d lô đang rao trên Nam Ban Villas; kèm tổng hợp tin rao công khai mỗi tuần." % tong,
         "url": "https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/",
         "creator": {"@id": "https://nambanvillas.vn/#organization"},
