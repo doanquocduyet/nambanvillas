@@ -10,7 +10,7 @@ Script này bắt lại ĐÚNG những lỗi đã từng xảy ra thật trên s
 "đã từng dính" để hiểu vì sao phải kiểm). Máy kiểm thay vì trông vào trí nhớ.
 Không cần mạng — chỉ đọc file trong repo.
 """
-import glob, json, os, re, sys
+import datetime, glob, json, os, re, sys
 from collections import Counter, defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -693,6 +693,10 @@ for _f, _p in (("thi-truong/tin-rao-dat-nam-ban-moi/index.html", r"<!-- DAY:\d{4
         continue          # CI clone nông / chưa có main: bỏ qua, không báo nhầm
     _n_cu = len(re.findall(_p, _cu.stdout))
     _n_moi = len(re.findall(_p, open(_f, encoding="utf-8").read()))
+    if "WEEK" in _p:      # bảng tuần: MỖI TUẦN 1 Ô — chạy lại trong tuần làm mới ô đó, nên đếm theo TUẦN, không theo ô
+        _w = lambda t: len({datetime.date.fromisoformat(d).isocalendar()[:2]
+                            for d in re.findall(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", t)})
+        _n_cu, _n_moi = _w(_cu.stdout), _w(open(_f, encoding="utf-8").read())
     if _n_moi < _n_cu:
         L("[Mất tin cũ: %d -> %d khối — KHÔNG BAO GIỜ xoá tin có ngày tháng] %s" % (_n_cu, _n_moi, _f))
 
