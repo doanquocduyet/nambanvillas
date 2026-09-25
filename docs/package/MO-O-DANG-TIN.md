@@ -9,6 +9,8 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 
 ## 🆕 CẬP NHẬT 24–25/9/2026 — ĐỌC TRƯỚC MỌI THỨ KHÁC (luật mới, đè lên phần cũ nếu vênh)
 
+- 25/9/2026: trang Giá Đất Hôm Nay — mỗi tuần hiện TIN RAO + LÔ MỚI trước, TỔNG HỢP TUẦN cuối cùng. Lô mới đăng lên hub tự vào danh sách tuần đó.
+
 Mục tiêu mỗi tin: **đủ chỗ (không thiếu) · đúng chỗ (không dư) · một URL (không trùng) · số thật (không bịa)** → khách bấm **Gọi / Zalo 0978 758 788**.
 
 ### A. Đăng 1 tin = chạm ĐÚNG những chỗ này
