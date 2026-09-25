@@ -427,6 +427,7 @@ THAN_LAM_HA = """<main id="main">
         </table>
         </div>
 
+%(bang_tuan_lh)s
         <h2>Khu nào ở Nam Ban, Lâm Hà rẻ nhất, khu nào đắt nhất?</h2>
         <p>Xếp từ khu có giá trung bình thấp nhất lên cao nhất. Bấm tên khu để xem toàn bộ lô, bấm giá để mở lô rẻ nhất khu đó.</p>
         <div style="overflow-x:auto">
@@ -478,6 +479,25 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
     duoi1 = sum(1 for x in lo if x["ty"] < 1)
     re_nhat = min(lo, key=lambda x: x["ty"])
     khu_re, khu_dat = min(khu, key=lambda x: x["tv"]), max(khu, key=lambda x: x["tv"])
+    # lịch sử theo xã -> bảng "qua từng tuần" (chủ web 25/9/2026: có ô theo tuần như trang giá hôm nay)
+    ls = json.load(open(LICH_SU, encoding="utf-8")) if os.path.exists(LICH_SU) else {}
+    ls.setdefault(ngay, {})["xa"] = {x["ten"]: {k: x[k] for k in ("n", "lo", "tv", "hi")} for x in xa}
+    json.dump(dict(sorted(ls.items())), open(LICH_SU, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    _tuan = lambda iso: datetime.date.fromisoformat(iso).isocalendar()[:2]
+    moi_tuan = {}
+    for k in sorted(ls):
+        if "xa" in ls[k] and "tho" in ls[k]:
+            moi_tuan[_tuan(k)] = k                      # lần cập nhật cuối của mỗi tuần
+    hang_tuan = []
+    for k in sorted(moi_tuan.values(), reverse=True):
+        e = ls[k]
+        nb, nh = e["xa"].get("Xã Nam Ban"), e["xa"].get("Xã Nam Hà")
+        hang_tuan.append("            <tr>%s%s%s%s%s</tr>" % (
+            _td("Tuần %s<br><span style=\"color:#6B6B6B;font-size:.8rem\">cập nhật %s</span>" % (khoang_tuan(k), ngay_vn(k))),
+            _td("%s – %s" % (so(e["tho"]["lo"]), so(e["tho"]["hi"]))),
+            _td(so(e["tho"]["tv"])),
+            _td(("%s <span style=\"color:#6B6B6B;font-size:.8rem\">(%d lô)</span>" % (so(nb["tv"]), nb["n"])) if nb else "—"),
+            _td(("%s <span style=\"color:#6B6B6B;font-size:.8rem\">(%d lô)</span>" % (so(nh["tv"]), nh["n"])) if nh else "—")))
     vuon = "%s–%s" % (so(kq["vuon"]["lo"]), so(kq["vuon"]["hi"])) if "vuon" in kq else "–"
 
     tieu_de = "Giá Đất Nam Ban Lâm Hà T%d/%d: Theo Xã, Theo Khu, Tính Từ Lô Thật" % (d.month, d.year)
@@ -553,11 +573,24 @@ def lam_trang_lam_ha(ngay, lo, kq, khu):
 
     chrome_tren = nguon[nguon.index("<body"):nguon.index("<main")]
     chrome_duoi = nguon[nguon.index("</main>"):].replace("../../js/", "/js/")
+    bang_tuan_lh = ("""        <h2>Giá đất Nam Ban Lâm Hà qua từng tuần</h2>
+        <p>Mỗi tuần một dòng, dòng mới nhất ở trên. Số đất nền có thổ cư tính chung cả vùng; hai cột sau là giá trung bình từng xã (triệu đồng/m²).</p>
+        <div style="overflow-x:auto">
+        <table style="width:100%%;border-collapse:collapse;font-size:.9rem;margin:14px 0 8px">
+          <caption style="text-align:left;font-size:.82rem;color:#5F6E66;padding:0 0 8px">Giá rao đất Nam Ban Lâm Hà theo tuần — triệu đồng/m²</caption>
+          <thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%s">Tuần</th><th scope="col" style="%s">Đất nền có thổ cư (khoảng giá phổ biến)</th><th scope="col" style="%s">Giá trung bình</th><th scope="col" style="%s">Xã Nam Ban</th><th scope="col" style="%s">Xã Nam Hà</th></tr></thead>
+          <tbody>
+%s
+          </tbody>
+        </table>
+        </div>
+""" % (TH, TH, TH, TH, TH, "\n".join(hang_tuan))) if hang_tuan else ""
     than = THAN_LAM_HA % dict(
         ngay=ngay_vn(ngay), thang="%d/%d" % (d.month, d.year), tong=tong, cau=cau, th=TH, hang_xa=hang_xa, hang_khu="\n".join(hang),
         tho="%s–%s" % (so(t["lo"]), so(t["hi"])), tho_tv=so(t["tv"]), vuon=vuon,
         ho="%s–%s" % (so(kq["ho"]["lo"]), so(kq["ho"]["hi"])) if "ho" in kq else "–",
-        faq="\n".join("  <details open><summary>%s</summary><p>%s</p></details>" % (q_, a_) for q_, a_ in faq))
+        faq="\n".join("  <details open><summary>%s</summary><p>%s</p></details>" % (q_, a_) for q_, a_ in faq),
+        bang_tuan_lh=bang_tuan_lh)
     os.makedirs("gia-dat-lam-ha", exist_ok=True)
     open(LAM_HA, "w", encoding="utf-8").write(head + chrome_tren + than + chrome_duoi)
 
@@ -1123,6 +1156,26 @@ def cap_nhat_ngop(ngay, kq):
     print("  ngộp: %d lô, từ %s, %d lô dưới giá trung bình" % (len(lo), tien(re_nhat["ty"]), duoi_tv))
 
 
+
+def cap_nhat_deal_trang_chu():
+    """Nút "Deal tốt · chủ cần bán nhanh" trang chủ (chủ web chốt 25/9/2026): thẻ = lô nhãn `ngop` trên hub,
+    chép nguyên thẻ hub, ẩn sẵn (data-chi-deal) — chỉ hiện khi bấm nút. KHÔNG đụng title/H1 trang chủ."""
+    lo = _the_hub(HUB, lambda x: "ngop" in x["nhan"].split()) + \
+        _the_hub("nha-ban-nam-ban/index.html", lambda x: "ngop" in x["nhan"].split())
+    lo = sorted(lo, key=lambda x: (x["ty"] <= 0, x["ty"]))
+    the = []
+    for x in lo:
+        h = x["html"].replace('<article class="prop-card sp-row sp-feat"', '<article class="prop-card sp-row"')
+        h = h.replace("../images/", "images/").replace(' fetchpriority="high"', ' loading="lazy"')
+        loai = "nha-ban" if x["url"].startswith("/nha-ban/") else "dat-nen"
+        h = h.replace('<article class="prop-card sp-row"', '<article class="prop-card sp-row hidden" data-chi-deal="1" data-deal="1" data-type="%s"' % loai, 1)
+        the.append("      " + h)
+    f = "index.html"
+    s = open(f, encoding="utf-8").read()
+    s = thay_khoi(s, "<!-- DEAL:START -->", "<!-- DEAL:END -->", "<!-- DEAL:START -->\n" + "\n\n".join(the) + "\n      <!-- DEAL:END -->")
+    open(f, "w", encoding="utf-8").write(s)
+    print("  deal trang chủ: %d lô" % len(lo))
+
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
     from zoneinfo import ZoneInfo
@@ -1207,6 +1260,7 @@ def main():
     lam_trang_lam_ha(ngay, [x for x in lo if x["ty"] > 0], kq, khu)
     cap_nhat_meta_hub(ngay)
     cap_nhat_trang_chu(ngay)
+    cap_nhat_deal_trang_chu()
     cap_nhat_dat_vuon(ngay)
     cap_nhat_ban_vuon(ngay)
     cap_nhat_ngop(ngay, kq)
