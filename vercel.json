@@ -426,6 +426,16 @@
       "source": "/ban-vuon-bo-nam-ban/",
       "destination": "/ban-vuon-nam-ban/",
       "permanent": true
+    },
+    {
+      "source": "/dat-nen/nam-ban-770m2-3-mat-tien",
+      "destination": "/dat-nen/dong-thanh-770m2/",
+      "permanent": true
+    },
+    {
+      "source": "/dat-nen/nam-ban-770m2-3-mat-tien/",
+      "destination": "/dat-nen/dong-thanh-770m2/",
+      "permanent": true
     }
   ],
   "headers": [
