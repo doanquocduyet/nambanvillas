@@ -1314,6 +1314,32 @@ def tong_hop_len_dau(khoi):
             + tin.rstrip("\n") + "\n\n")
 
 
+def cap_nhat_dinh_gia(ngay, kq, khu, tong):
+    """Trang /dinh-gia-dat-nam-ban/: bảng giá tham chiếu để ước giá một lô — cùng số với Giá đất hôm nay."""
+    f = "dinh-gia-dat-nam-ban/index.html"
+    if not os.path.exists(f):
+        return
+    s = open(f, encoding="utf-8").read()
+    mo, dong = "<!-- DINH-GIA:START -->", "<!-- DINH-GIA:END -->"
+    if mo not in s:
+        return
+    tr = []
+    for k in ("tho", "vuon", "ho"):
+        if k in kq:
+            v = kq[k]
+            tr.append('<tr><td style="%s">%s</td><td style="%s"><strong>%s – %s</strong></td><td style="%s">%s</td></tr>'
+                      % (TD, TEN[k], TD, so(v["lo"]), so(v["hi"]), TD, so(v["tv"])))
+    for t in khu:
+        tr.append('<tr><td style="%s"><a href="%s" style="color:#1A3D2B;font-weight:600">%s</a></td><td style="%s"><strong>%s – %s</strong></td><td style="%s">%s</td></tr>'
+                  % (TD, t["link"], t["ten"], TD, so(t["lo"]), so(t["hi"]), TD, so(t["tv"])))
+    moi = (mo + '\n        <p style="font-size:.9rem;color:#5F6E66;margin:0 0 8px">Tính ngày %s từ %d lô đang rao trên Nam Ban Villas, đơn vị triệu đồng/m². Đội ngũ Nam Ban Villas làm mới mỗi thứ Hai.</p>\n'
+           '        <div style="overflow-x:auto"><table style="width:100%%;border-collapse:collapse;font-size:.92rem">'
+           '<thead><tr style="background:#F2F6F3;text-align:left"><th scope="col" style="%s">Loại đất / khu</th><th scope="col" style="%s">Khoảng giá phổ biến</th><th scope="col" style="%s">Giá trung bình</th></tr></thead>'
+           '<tbody>%s</tbody></table></div>\n        ' % (ngay_vn(ngay), tong, TH, TH, TH, "".join(tr)) + dong)
+    s = thay_khoi(s, mo, dong, moi)
+    open(f, "w", encoding="utf-8").write(s)
+
+
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
     from zoneinfo import ZoneInfo
@@ -1402,6 +1428,7 @@ def main():
     cap_nhat_dat_vuon(ngay)
     cap_nhat_ban_vuon(ngay)
     cap_nhat_ngop(ngay, kq)
+    cap_nhat_dinh_gia(ngay, kq, khu, tong)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
     tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
     if tt:
