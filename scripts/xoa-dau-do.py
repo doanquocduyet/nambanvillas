@@ -15,6 +15,7 @@ Dùng:
   python3 scripts/xoa-dau-do.py input.jpg output.jpg --thresh 40 --dilate 3
 """
 import argparse
+import os
 import sys
 
 try:
@@ -92,6 +93,9 @@ def main():
     mask = dilate(mask, w, h, args.dilate)
     img = inpaint(img, mask, w, h)
     img.save(args.dst, "JPEG", quality=92)
+    import importlib.util as _ilu                    # dấu © Nam Ban Villas trong file
+    _sp = _ilu.spec_from_file_location("dong_dau_anh", os.path.join(os.path.dirname(os.path.abspath(__file__)), "dong-dau-anh.py"))
+    _dd = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_dd); _dd.dong_dau(args.dst)
     print(f"Xoá {n} pixel đỏ (dilate {args.dilate}) -> {args.dst}  {w}x{h}")
 
 

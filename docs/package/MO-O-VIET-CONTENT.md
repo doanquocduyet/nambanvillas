@@ -34,7 +34,7 @@ Chào cháu. Ô này chuyên **VIẾT CONTENT / BÀI SEO** cho web nambanvillas.
 ## KỸ THUẬT (khắc cứng)
 - Template: copy khung 1 bài `/thi-truong/…` sẵn có (vd `thi-truong/dau-tu-dat-nam-ban/index.html` — đã có Article + FAQ + breadcrumb), thay nội dung. Dùng `/css/style.css` + `/css/article.css`, path gốc `/css/…`, `/js/…`.
 - **CẤM regex DOTALL** `.*?` để xoá/sửa khối HTML — dùng str_replace khớp CHÍNH XÁC.
-- **CẤM trỏ link/nhúng ảnh của web khác**; ảnh chỉ dùng ảnh của web (nén `python3 scripts/nen-anh.py` nếu thêm ảnh mới).
+- **CẤM trỏ link/nhúng ảnh của web khác**; ảnh chỉ dùng ảnh của web (nén `python3 scripts/nen-anh.py` — tự đóng dấu © trong file — nếu thêm ảnh mới).
 - Verify trước push: JSON-LD hợp lệ · 0 placeholder · link nội bộ không hỏng · canonical không đụng bài cũ.
 - **KHÔNG tạo bài trùng chủ đề đã có** trong `/thi-truong/` (đã có ~20 bài: bảng giá, đầu tư, kinh nghiệm mua, quy hoạch Lâm Đồng, sân bay Liên Khương, khí hậu/sống ở Nam Ban…). Trùng thì NÂNG CẤP bài cũ thay vì tạo mới.
 

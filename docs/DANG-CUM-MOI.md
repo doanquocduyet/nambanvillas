@@ -21,7 +21,7 @@ breadcrumb, canonical, schema). Copy 1 trang cụm cũ rồi sửa số liệu.
 ```
 python3 scripts/nen-anh.py images/listings/cum-<slug>/
 ```
-Ảnh điện thoại 3–5MB không được đưa thẳng lên.
+Ảnh điện thoại 3–5MB không được đưa thẳng lên. `nen-anh.py` nén xong tự đóng dấu © Nam Ban Villas vào file (EXIF/XMP); bản vẽ phân lô chép thẳng vào thì chạy thêm `python3 scripts/dong-dau-anh.py` — checker mục 22 chặn ảnh thiếu dấu.
 
 ### 3) Gắn card vào trang Cụm Mới — `cum-moi-nam-ban/index.html`
 Đây là NƠI ĐĂNG chính để khách thấy cụm. Tìm dòng:

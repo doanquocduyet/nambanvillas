@@ -22,7 +22,7 @@ farmstay/nghỉ dưỡng cao nguyên.** Ưu tiên tin ăn nhập trực tiếp v
 
 ### 3) Ảnh của Nam Ban Villas
 - Dùng ảnh trong `images/` (ảnh thật Nam Ban) hoặc ảnh chú cung cấp. **KHÔNG hotlink ảnh web khác.**
-- Ảnh mới → nén: `python3 scripts/nen-anh.py images/articles/<slug>.jpg`
+- Ảnh mới → nén: `python3 scripts/nen-anh.py images/articles/<slug>.jpg` (tự đóng dấu © Nam Ban Villas vào file; ảnh đã nhỏ chép thẳng vào thì `python3 scripts/dong-dau-anh.py images/articles/<slug>.jpg`)
 
 ### 4) Tạo trang bài nội bộ
 `thi-truong/<slug>/index.html` — theo mẫu bài thị trường đã có (copy 1 bài cũ rồi sửa):

@@ -10,7 +10,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 ## 🆕 CẬP NHẬT 24–25/9/2026 — ĐỌC TRƯỚC MỌI THỨ KHÁC (luật mới, đè lên phần cũ nếu vênh)
 
 - 25/9/2026: trang Giá Đất Hôm Nay — mỗi tuần hiện TIN RAO + LÔ MỚI trước, TỔNG HỢP TUẦN cuối cùng. Lô mới đăng lên hub tự vào danh sách tuần đó.
-- 25/9/2026: ảnh lô phải có dấu © trong file — `nen-anh.py`/`prep-anh.py` tự làm; ảnh chép tay vào `images/` thì chạy `python3 scripts/dong-dau-anh.py` trước khi push (checker 22 chặn).
+- 25/9/2026: **MỌI ảnh lên web phải có dấu © Nam Ban Villas TRONG FILE** (EXIF+XMP, như Panorama). 5 script sinh ảnh (`prep-anh` · `nen-anh` · `tao-webp` · `tao-srcset` · `xoa-dau-do`) tự đóng; ảnh chép thẳng vào `images/` thì chạy `python3 scripts/dong-dau-anh.py` — checker mục 22 chặn ảnh thiếu dấu. Đọc mục "© TRONG FILE ẢNH" bên dưới.
 - 25/9/2026: trang mới `/dinh-gia-dat-nam-ban/` (key "định giá đất nam ban") — bảng giá tham chiếu theo loại + khu, `cap-nhat-gia-hom-nay.py` tự làm mới từ lô hub (khối `<!-- DINH-GIA -->`). Đăng lô đúng `data-loc`/`data-price` là trang tự đúng số.
 - 25/9/2026: tuần ĐÃ QUA thì Tổng hợp tuần lên ngay dưới tiêu đề tuần, tin rao ở dưới; tuần đang chạy giữ tin trước, tổng hợp cuối. Đội ngũ không sửa tay — script tự đảo khi sang tuần.
 
@@ -75,7 +75,7 @@ CẤM gắn `ca-phe` khi chỉ "xung quanh là vườn cà phê", "view đồi c
 ### G. Thứ tự lệnh mỗi lần đăng
 
 ```bash
-python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …   # cắt 3:2, nén, xoá GPS
+python3 scripts/prep-anh.py <slug> anh1.jpg anh2.jpg …   # cắt 3:2, nén, xoá GPS, đóng dấu ©
 python3 scripts/tao-webp.py
 python3 scripts/tao-srcset.py                             # bản 480/800 cho ảnh hero
 python3 scripts/sitemap-anh.py
@@ -93,7 +93,7 @@ python3 scripts/kiem-tra-truoc-khi-dang.py                # PHẢI in "SẠCH" m
 2. Thẻ hub đủ 4 thuộc tính, `data-price` khớp giá hiển thị.
 3. Nhãn đúng luật mục B (vườn/ngộp chỉ khi có thật).
 4. Không trùng lô cũ (mục E).
-5. Ảnh: đủ 4 lệnh, alt neo mốc thật, hero `fetchpriority="high"`.
+5. Ảnh: đủ 4 lệnh, alt neo mốc thật, hero `fetchpriority="high"`, **mọi ảnh có dấu ©** (`python3 scripts/dong-dau-anh.py --kiem` = 0 ảnh thiếu).
 6. Schema: `Product` + `Offer` (giá, `availability`) · `FAQPage` ≥3 câu khớp chữ hiện · `BreadcrumbList`.
 7. Khối điểm mạnh / "điều cần quan tâm" tối đa 3 gạch.
 8. Nút Gọi + Zalo trong thẻ giá, sau khối rủi ro (chạy `them-nut-goi.py`).
@@ -289,6 +289,30 @@ Thiếu dòng comment → token thiếu quyền `pages_manage_engagement`, xem `
 - Nén TOÀN BỘ site cho nhẹ: `python3 scripts/nen-anh.py images` — chạy sau mỗi đợt thêm ảnh.
 - `prep-anh.py` (cắt gọt) đã nén sẵn ~150KB; `nen-anh.py` là script nén chuẩn duy nhất (theo `docs/DANG-CUM-MOI.md` + CLAUDE.md).
 
+## © TRONG FILE ẢNH — MỖI ẢNH LÊN WEB PHẢI MANG DẤU (chú dặn 25/9/2026 — bất biến)
+
+**Vì sao:** ảnh bị lấy đăng lại nơi khác vẫn mang chủ trong file; Google Hình ảnh / Lens / AI đọc IPTC-XMP để biết ảnh của ai. Web Panorama đã làm, Villas làm y hệt.
+
+**Dấu gồm gì (ẩn trong file, khách không thấy):** EXIF `Copyright` = `(c) <năm> Nam Ban Villas - nambanvillas.vn`, `Artist` = `Nam Ban Villas`; XMP `dc:rights` = `© <năm> Nam Ban Villas — nambanvillas.vn`, `dc:creator`, `xmpRights:Marked=True`, `xmpRights:WebStatement=https://nambanvillas.vn/`, điều khoản dùng, `plus:Licensor`, liên hệ 0978 758 788. **Không bao giờ có GPS** (vẫn xoá sạch toạ độ như trước).
+
+**Ô đăng tin phải làm gì:** gần như không làm gì thêm — 5 script sinh ảnh đã tự đóng dấu ngay sau khi ghi file:
+
+| Script | Việc | Tự đóng dấu |
+|---|---|---|
+| `prep-anh.py` | cắt/nén ảnh chú thả | có |
+| `nen-anh.py` | nén ảnh mới | có |
+| `tao-webp.py` | sinh .webp | có |
+| `tao-srcset.py` | sinh bản 480/800 | có |
+| `xoa-dau-do.py` | xoá dấu đỏ trên sổ | có |
+
+Chỉ 2 trường hợp phải chạy tay `python3 scripts/dong-dau-anh.py` (đóng cho cả `images/`, bỏ qua ảnh đã có dấu, 1 giây):
+1. Ảnh chép thẳng vào `images/` không qua script nào (ảnh sổ/bản vẽ đã sẵn nhỏ, ảnh bài viết, og-image, logo…).
+2. Ảnh được mở bằng công cụ khác rồi ghi đè (Pillow/`convert`/app chỉnh ảnh) — ghi đè là mất dấu.
+
+**Kiểm:** `python3 scripts/dong-dau-anh.py --kiem` → phải in `0/N ảnh chưa có dấu`. `kiem-tra-truoc-khi-dang.py` mục 22 chặn cứng — có ảnh thiếu dấu là KHÔNG push được.
+
+**Cấm:** không tự ghi dấu bằng cách nén lại ảnh (mất chất lượng); không đổi chữ trong dấu; không thêm GPS/tên người/địa chỉ nhà vào metadata.
+
 ## ẢNH CŨNG PHẢI CHUẨN AEO/SEO/GEO — KHÔNG CHỈ BÀI VIẾT (chú dặn — bất biến)
 
 > **Hiểu cho đúng:** mỗi khi chú đính kèm bài + ảnh để đăng, ô đăng tin phải tối ưu
@@ -352,6 +376,7 @@ Bỏ qua `tao-webp.py` hoặc `sitemap-anh.py` là **lỗi**, script kiểm tra 
 - Sổ đỏ/sổ hồng: **che số sổ, số thửa nhạy cảm, tên chủ, CCCD, chữ ký, số điện thoại môi giới khác** trước khi đăng. Không hỏi, đây là mặc định.
 - Số điện thoại xuất hiện trên ảnh (biển bảng, tờ rơi): thay bằng hotline 0978 758 788 hoặc xoá.
 - **Cấm tuyệt đối** lấy ảnh của web khác hoặc hotlink ảnh web khác. Chỉ dùng ảnh của Nam Ban Villas.
+- Ảnh của Nam Ban Villas thì **phải mang dấu © trong file** (mục "© TRONG FILE ẢNH") — ảnh không dấu là ảnh chưa xong.
 
 ### 8. Tự kiểm trước khi push — 6 câu
 
@@ -361,6 +386,7 @@ Bỏ qua `tao-webp.py` hoặc `sitemap-anh.py` là **lỗi**, script kiểm tra 
 4. `Product.image` khai **đủ** số ảnh chưa?
 5. `sitemap.xml` đã có đủ ảnh của tin mới chưa?
 6. `kiem-tra-truoc-khi-dang.py` báo **SẠCH** chưa?
+7. `python3 scripts/dong-dau-anh.py --kiem` = `0/N ảnh chưa có dấu` chưa?
 
 Chỉ cần 1 câu trả lời "chưa" → **không push**.
 

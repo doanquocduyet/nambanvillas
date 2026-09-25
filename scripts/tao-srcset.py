@@ -24,6 +24,10 @@ import re
 import sys
 
 from PIL import Image
+import importlib.util as _ilu
+_sp = _ilu.spec_from_file_location("dong_dau_anh", os.path.join(os.path.dirname(os.path.abspath(__file__)), "dong-dau-anh.py"))
+_dd = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_dd)
+dong_dau = _dd.dong_dau          # dấu © Nam Ban Villas trong file (EXIF/XMP) — mọi ảnh sinh ra phải có
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -74,6 +78,7 @@ def sinh_ban_nho(p, rong_hien_thi):
                 nho.save(out, "WEBP", quality=80, method=6)
             else:
                 nho.save(out, "JPEG", quality=78, optimize=True, progressive=True)
+            dong_dau(out)
             if os.path.getsize(out) >= os.path.getsize(p):
                 os.remove(out)      # bản nhỏ không nhẹ hơn thì giữ làm gì
                 continue

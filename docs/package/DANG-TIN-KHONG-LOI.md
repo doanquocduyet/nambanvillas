@@ -69,7 +69,8 @@ Script kiểm 10 nhóm (mục 3–12 dưới đây). **CI cũng chạy nó** m�
 1. **Xác nhận khu THẬT** trước khi đặt slug (Nam Ban / Đông Thanh / Mê Linh / Gia Lâm /
    Từ Liêm / Bãi Công / Chi Lăng…). Đặt sai khu = phải đổi tên + thêm redirect, rất tốn công.
 2. **Nén ảnh**: `python3 scripts/nen-anh.py images/listings/<slug>/`
-   (ảnh điện thoại 3–5MB không được đưa thẳng lên site).
+   (ảnh điện thoại 3–5MB không được đưa thẳng lên site). Nén xong script tự đóng dấu © trong file;
+   ảnh chép thẳng vào `images/` thì `python3 scripts/dong-dau-anh.py` (checker mục 22 chặn ảnh thiếu dấu).
 3. **Dựng trang chi tiết** theo `docs/FORM-DANG-TIN.md` + mục 3–12 dưới.
 4. **Nối dây** (mục 6) — bước hay quên nhất.
 5. **Chạy script kiểm** (mục 1).
