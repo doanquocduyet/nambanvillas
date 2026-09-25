@@ -1,0 +1,214 @@
+# Nam Ban Villas — dữ liệu đầy đủ (cập nhật 25/9/2026)
+
+> Bản đầy đủ của https://nambanvillas.vn/llms.txt. Số liệu tính từ lô thật đang rao trên nambanvillas.vn; đội ngũ Nam Ban Villas làm mới liên tục. Hotline/Zalo 0978 758 788.
+
+## Giá đất Nam Ban hôm nay (25/9/2026, 113 lô đang rao)
+
+- Đất nền có thổ cư (dưới 3.000m²): 1,4–4,6 triệu/m², giá trung bình 2,8 triệu/m² (95 lô)
+- Đất vườn / lô lớn từ 3.000m²: 0,5–1,9 triệu/m², giá trung bình 1,3 triệu/m² (18 lô)
+- Đất view hồ / view đẹp: 1,5–4,7 triệu/m², giá trung bình 2,9 triệu/m² (39 lô)
+
+Giá trung bình = trung bình cộng sau khi bỏ 10% lô rẻ nhất và 10% lô đắt nhất. Đây là giá rao; giá chốt thường thấp hơn 5–15%. Nguồn: https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/ · dữ liệu JSON: https://nambanvillas.vn/data/gia-tuan.json
+
+## Giá theo khu (triệu đồng/m²)
+
+- Trung tâm Nam Ban (thị trấn cũ): 1,0–4,4, giá trung bình 2,6, lô rẻ nhất 397 triệu (65 lô) — https://nambanvillas.vn/dat-trung-tam-thi-tran-nam-ban/
+- Đông Thanh: 1,4–4,4, giá trung bình 2,3, lô rẻ nhất 368 triệu (26 lô) — https://nambanvillas.vn/dat-dong-thanh-nam-ban/
+- Mê Linh: 0,5–4,4, giá trung bình 2,4, lô rẻ nhất 439 triệu (14 lô) — https://nambanvillas.vn/dat-me-linh-nam-ban/
+- Gia Lâm: 0,8–3,9, giá trung bình 2,1, lô rẻ nhất 599 triệu (12 lô) — https://nambanvillas.vn/dat-gia-lam-nam-ban/
+- Hồ Bãi Công: 2,1–4,2, giá trung bình 3,2, lô rẻ nhất 397 triệu (9 lô) — https://nambanvillas.vn/dat-ho-bai-cong-nam-ban/
+- Từ Liêm: 2,2–3,6, giá trung bình 3,4, lô rẻ nhất 650 triệu (4 lô) — https://nambanvillas.vn/dat-tu-liem-nam-ban/
+- Nam Hà (giáp Nam Ban): 0,8–5,6, giá trung bình 1,9, lô rẻ nhất 420 triệu (4 lô) — https://nambanvillas.vn/dat-nam-ha-nam-ban/
+
+## Lô đất đang bán (rẻ nhất trước)
+
+- Nam Ban Cloudy Hill – 39 nền đất sổ riêng Đông Thanh, sẵn thổ cư, từ 368tr — 368 triệu, 265 m², 1,4 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-cloudy-hill/
+- Cụm 13 nền F0 gần hồ Bãi Công Nam Ban – thổ cư 82–123m²/nền, sổ riêng, 3,2tr/m² — 397 triệu, 318 m², 1,2 triệu/m² — https://nambanvillas.vn/dat-nen/cum-bai-cong-13-nen/
+- 2 lô đất Nam Hà gần chùa Linh Ẩn – 321m² & lô góc 770m², sẵn thổ cư — 420 triệu, 770 m², 0,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2-lo-nam-ha-gan-linh-an/
+- Cụm 22 lô Nam Ban – Mê Linh, sổ ONT riêng, dãy A 5,3tr & dãy B 4,4tr/m² — 439 triệu, 150 m², 2,9 triệu/m² — https://nambanvillas.vn/dat-nen/cum-me-linh-nam-ban-22-lo/
+- Cụm 9 nền Nam Ban gần Hồ Bãi Công – ngang 5m, full thổ cư, sổ riêng từng thửa — 439 triệu, 98 m², 4,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-439tr/
+- Cụm 58 nền Little Creek Nam Ban ven suối Cam Ly – sổ hồng riêng, đường nhựa, đèn năng lượng — 450 triệu, 130 m², 3,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-little-creek-nam-ban/
+- Cụm 5 lô F0 Đông Thanh Nam Ban – 110m²/lô, 78m² thổ cư, MT 5m, đường bê tông — 450 triệu, 110 m², 4,1 triệu/m² — https://nambanvillas.vn/dat-nen/cum-dong-thanh-5-lo-450tr/
+- Đất 166m² trung tâm Nam Ban – 80m² thổ cư, sổ hồng riêng, cách Đà Lạt 26km — 480 triệu, 166 m², 2,9 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-166m2-480tr/
+- Đất Nam Hà ven Đà Lạt 240m²/lô – 100m² thổ cư, sổ riêng — 550 triệu, 240 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/dat-nam-ha-240m2-550tr/
+- Đất Đông Thanh 538m² – 200m² thổ cư, mặt tiền ~18,7m, sổ riêng — 550 triệu, 200 m², 2,8 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-538m2-550tr/
+- Khu Nam Ban – Đống Đa Topview – 31 Nền View Đồi Núi, Sổ Tách Thửa Riêng — 550 triệu, 150 m², 3,7 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-dong-da-topview/
+- Đất nền gần The Nest Village Nam Ban – 120m² có 100m² thổ cư, 550tr — 550 triệu, 120 m², 4,6 triệu/m² — https://nambanvillas.vn/dat-nen/cum-gan-the-nest-village-nam-ban/
+- Lô 232m² Nam Ban – 77m² thổ cư, view đồi thông núi Voi, sổ hồng riêng — 570 triệu, 232 m², 2,5 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-232m2/
+- 2 lô 130m² sát Phố Thông Villas – Cách chợ Gia Lâm 1.5km, công chứng ngay — 570 triệu, 130 m², 4,4 triệu/m² — https://nambanvillas.vn/dat-nen/pho-thong-villas-130m2/
+- Đất Trung Tâm Nam Ban 146m² – 100m² Thổ Cư, Gần Chùa Linh Ẩn — 599 triệu, 146 m², 4,1 triệu/m² — https://nambanvillas.vn/dat-nen/dat-trung-tam-nam-ban-599tr/
+- Cụm 12 lô F0 Gia Lâm Nam Ban – thổ cư 75–96m²/nền, đường bê tông, cách DT725 100m — 599 triệu, 361 m², 1,7 triệu/m² — https://nambanvillas.vn/dat-nen/cum-gia-lam-12-lo/
+- Cụm 14 nền Mê Linh sát Đà Lạt – sổ riêng, sẵn thổ cư, view đẹp — 600 triệu, 101 m², 5,9 triệu/m² — https://nambanvillas.vn/dat-nen/cum-me-linh-14-nen/
+- Khu Trắc Bách Diệp Đông Thanh Nam Ban – 25 nền view tượng Phật, sổ riêng — 602 triệu, 655 m², 0,9 triệu/m² — https://nambanvillas.vn/dat-nen/cum-trac-bach-diep-dong-thanh/
+- HT86 Gia Lâm Nam Ban – đất nghỉ dưỡng sổ riêng, khu biệt thự hiện hữu — 650 triệu, 200 m², 3,2 triệu/m² — https://nambanvillas.vn/dat-nen/cum-ht86-gia-lam/
+- Cụm 18 lô F0 Chi Lăng Nam Ban – 5×27m, ~75m² thổ cư/nền, sổ sẵn công chứng — 650 triệu, 135 m², 4,8 triệu/m² — https://nambanvillas.vn/dat-nen/cum-chi-lang-18-lo/
+- Lô 277m² trung tâm Nam Ban – 91m² thổ cư, ngang 7,5m, gần trung tâm — 650 triệu, 277 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-277m2/
+- Cụm 18 nền view hồ Từ Liêm – Nam Ban, đất view đẹp, sẵn thổ cư — 650 triệu, 200 m², 3,2 triệu/m² — https://nambanvillas.vn/dat-nen/cum-tu-liem-13-nen/
+- Cụm 19 lô trung tâm Nam Ban – 112m² thổ cư/lô, cách ĐT725 200m — 675 triệu, 132 m², 5,1 triệu/m² — https://nambanvillas.vn/dat-nen/cum-19-lo-nam-ban/
+- Đất lô góc 2 mặt tiền Đông Thanh – 272m² thổ cư, chỉ 680 triệu — 680 triệu, 272 m², 2,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-goc-dong-thanh-272m2/
+- Đất trung tâm Nam Ban 393m² – 200m² thổ cư, ngang 10m, cạnh đồi thông — 690 triệu, 393 m², 1,8 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-393m2/
+- Cụm 6 lô đất TT Nam Ban ven Đà Lạt – 91m² thổ cư/lô, triền dương — 690 triệu, 277 m², 2,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-6-lo-nam-ban-giap-da-lat/
+- 2 lô đất Nam Hà ven Đà Lạt – 498m² & 577m², sẵn 80–90m² thổ cư, sổ riêng — 699 triệu, 498 m², 1,4 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2-lo-nam-ha-tu-699tr/
+- Khu Nam Ban Ecolodge – 26 nền khu nhà trắng Đông Thanh, view cao thoáng, thổ cư riêng, đường bê tông 2 mặt — 700 triệu, 200 m², 3,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-ecolodge/
+- Cụm 7 lô Đông Thanh – view hồ, ngay cổng chào, sẵn thổ cư — 720 triệu, 313 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/cum-dong-thanh-7-lo/
+- Cụm 14 nền Nam Ban gần hồ Bãi Công – F0, sẵn thổ cư, MĐ chính 3,7tr/m² · phụ 3,3tr/m² · sỉ 3,1tr/m² — 760 triệu, 200 m², 3,8 triệu/m² — https://nambanvillas.vn/dat-nen/cum-14-nen-nam-ban-ho-bai-cong/
+- 2 lô đất TT Nam Ban ven Đà Lạt – 100m² thổ cư/lô, view thung lũng — 770 triệu, 386 m², 2,0 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2-lo-tt-nam-ban-giap-da-lat/
+- Cụm 12 lô F0 Mê Linh ven Đà Lạt – 300m²/lô, 100m² thổ cư, sổ riêng — 779 triệu, 300 m², 2,6 triệu/m² — https://nambanvillas.vn/dat-nen/cum-me-linh-15-lo/
+- Khu Nam Ban – Bãi Công Lake View – 37 nền ngay hồ Bãi Công, 2 nền mặt hồ — 840 triệu, 360 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-bai-cong-lake-view/
+- Đất 396m² Mê Linh giáp rừng thông – ngang 8m, sẵn 80m² thổ cư, sổ riêng — 849 triệu, 396 m², 2,1 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-396m2-rung-thong/
+- Lô ~495m² Nam Ban nở hậu 12m – 200m² thổ cư, chủ bao thuế phí — 850 triệu, 495 m², 1,7 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-495m2-no-hau-850tr/
+- Đất Đông Thanh 320–330m² – Gần Chùa Linh Ẩn (Thiền Viện Linh Ẩn), Thác Voi, sổ hồng riêng — 850 triệu, 325 m², 2,6 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-320m2/
+- Đất 495m² Đông Thanh Nam Ban – nở hậu 12m, 200m² thổ cư, sổ hồng — 890 triệu, 495 m², 1,8 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-495m2/
+- Đất 225m² Nam Ban mặt tiền 12m – 95m² thổ cư, trục đường liên xã, sổ hồng riêng — 890 triệu, 225 m², 4,0 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-225m2-mat-tien-12m/
+- Đất 1.200m² trung tâm Nam Ban gần Ba Đình – 400m² thổ cư, 2 sổ (mua cả hoặc nửa lô) — 899 triệu, 1200 m², 0,7 triệu/m² — https://nambanvillas.vn/dat-nen/dat-600m2-gan-ba-dinh-899tr/
+- Khu Nam Ban Panorama – đất view toàn cảnh trung tâm Nam Ban, sát đường nhựa Hà Bắc, 130–300m² — 900 triệu, 130 m², 6,9 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-panorama/
+- Đất 530m² view thung lũng sương mờ – Gần rừng thông, hồ bãi công — 900 triệu, 530 m², 1,7 triệu/m² — https://nambanvillas.vn/dat-nen/thung-lung-530m2/
+- 2 lô đất view hồ Từ Liêm Nam Ban – 255 & 274m², 950 triệu/lô — 950 triệu, 274 m², 3,5 triệu/m² — https://nambanvillas.vn/dat-nen/tu-liem-2-lo-view-ho-950tr/
+- Khu Đông Thanh LakeView Retreat – 25 nền view trọn vẹn hồ Đông Thanh, gần thác 7 tầng — 950 triệu, 200 m², 4,8 triệu/m² — https://nambanvillas.vn/dat-nen/cum-dong-thanh-lakeview-retreat/
+- Đất 500m² trung tâm Nam Ban – 326m² thổ cư, đường bê tông, sẵn giếng khoan — 950 triệu, 500 m², 1,9 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-500m2/
+- Lô 255m² Từ Liêm – 100m² thổ cư, hướng Tây Nam, cách tỉnh lộ 725 ~1km — 950 triệu, 255 m², 3,7 triệu/m² — https://nambanvillas.vn/dat-nen/tu-liem-255m2/
+- 2 Lô Mê Linh Nam Ban Lâm Hà – MT đường nhựa, mỗi lô 215m² (100m² thổ cư), gần Đồi Chè Mê Linh — 990 triệu, 215 m², 4,6 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2-lo-me-linh-mat-tien-nhua/
+- Cụm 5 lô view mây Nam Ban – trên 1.000m²/lô, sẵn 80–100m² thổ cư — 990 triệu, 1000 m², 1,0 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-5-lo-view-may/
+- Lô 243m² trung tâm Nam Ban – 80m² đất ở đô thị, view săn mây, sổ riêng — 999 triệu, 243 m², 4,1 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-243m2/
+- Đất gần 800m² ven Đà Lạt – giáp ranh TP Đà Lạt, giữa khu homestay/villa — 1,05 tỷ, 800 m², 1,3 triệu/m² — https://nambanvillas.vn/dat-nen/dat-gan-800m2-ven-da-lat/
+- Lô 511m² Nam Ban – 14,5x35m, 100m² thổ cư, sổ hồng riêng công chứng ngay — 1,09 tỷ, 511 m², 2,1 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-511m2/
+- Khu Nam Ban Ecohill – đợt mới 33 nền, bàn giao trọn gói, 100m² thổ cư/lô, sổ hồng — 1,1 tỷ, 474 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-ecohill/
+- Đất 2.900m² Suối Đá Mê Linh – mặt tiền 40m, đường bê tông, giáp Đà Lạt — 1,1 tỷ, 2900 m², 0,4 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-2900m2-suoi-da/
+- Khu nghỉ dưỡng TS Retreat Nam Ban – đất nền & nhà nghỉ dưỡng ven Đà Lạt — 1,11 tỷ, 320 m², 3,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-ts-retreat/
+- Cụm 5 nền F0 Tầm Xá Nam Ban – sổ sẵn, có đất ở, công chứng trong ngày — 1,15 tỷ, 352 m², 3,3 triệu/m² — https://nambanvillas.vn/dat-nen/cum-tam-xa-5-nen/
+- Lô 2 mặt tiền 345m² – Khu đang phát triển, nhiều nhà đầu tư quan tâm — 1,15 tỷ, 345 m², 3,3 triệu/m² — https://nambanvillas.vn/dat-nen/hai-mat-tien-345m2/
+- Cụm 13 nền F0 khu biệt thự HT86 Nam Ban – đã hạ mốc ranh, 200m² thổ cư/nền, sổ hồng — 1,17 tỷ, 300 m², 3,9 triệu/m² — https://nambanvillas.vn/dat-nen/cum-ht86-14-nen/
+- Cụm 6 nền Ba Đình Nam Ban – thổ cư 100m²/nền, cạnh Colline D'Amour, chỉ 2,5 triệu/m² — 1,2 tỷ, 484 m², 2,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-6-nen-ba-dinh-nam-ban/
+- Lô 300m² Mê Linh – sẵn thổ cư, mặt tiền 15m nở hậu 16m, view đồi thông — 1,2 tỷ, 300 m², 4,0 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-300m2/
+- Lô 535m² Đông Thanh – 100m² thổ cư, mặt tiền 11m, view rừng thông núi Voi — 1,2 tỷ, 535 m², 2,2 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-535m2/
+- Đất 700m² view Hồ Từ Liêm – Cách hồ 300m, mặt tiền 10m — 1,2 tỷ, 700 m², 1,7 triệu/m² — https://nambanvillas.vn/dat-nen/ho-tu-liem-700m2/
+- Khu Suối Mây Garden Nam Ban – 9 Nền Biệt Thự, 200m² Thổ Cư — 1,25 tỷ, 555 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/cum-suoi-may-garden/
+- Đất 650m² view suối thông Mê Linh – Bao quanh đồi thông, cách Đà Lạt ~25km — 1,25 tỷ, 650 m², 1,9 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-suoi-thong-650m2/
+- Lô góc 474m² mặt tiền đường nhựa 8m Nam Ban – 111m² thổ cư — 1,3 tỷ, 474 m², 2,7 triệu/m² — https://nambanvillas.vn/dat-nen/lo-goc-474m2-nam-ban/
+- Nam Ban – Đông Thanh Golden View – Khu ~7.000m², Có Nhà, Lô 900m² 1,3 Tỷ — 1,3 tỷ, 900 m², 1,4 triệu/m² — https://nambanvillas.vn/dat-nen/cum-dong-thanh-golden-view/
+- Đất Đông Thanh Nam Ban 887m² – 150m² thổ cư, view săn mây, sổ riêng — 1,35 tỷ, 887 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-887m2-san-may/
+- 2 Lô Đất Sát Hồ Bãi Công Nam Ban – 289 & 329m², Đường Bê Tông — 1,35 tỷ, 329 m², 4,1 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2-lo-sat-ho-bai-cong/
+- Đất 579m² trung tâm Nam Ban – 150m² thổ cư, view đồi — 1,35 tỷ, 579 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/dat-579m2-trung-tam-nam-ban/
+- Cụm 3 lô F0 Gia Lâm 3 Nam Ban – thổ cư lớn 254–259m²/lô, MT 12m, đường bê tông 6m — 1,35 tỷ, 332 m², 4,1 triệu/m² — https://nambanvillas.vn/dat-nen/cum-gia-lam-3-lo/
+- Lô Góc 2 Mặt Tiền 500m² Gần Hồ Bãi Công – 200m² Thổ Cư — 1,4 tỷ, 500 m², 2,8 triệu/m² — https://nambanvillas.vn/dat-nen/lo-goc-500m2-bai-cong-nam-ban/
+- Đất lô góc 2 mặt tiền 668m² Đông Thanh Nam Ban – 315m² thổ cư, đường bê tông, sổ riêng — 1,49 tỷ, 668 m², 2,2 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-668m2-lo-goc/
+- Cụm 7 nền giáp rừng thông ven Đà Lạt – hơn 360m² thổ cư/lô, đường bê tông 7m — 1,5 tỷ, 360 m², 4,2 triệu/m² — https://nambanvillas.vn/dat-nen/cum-7-nen-giap-rung-thong-nam-ban/
+- Lô 3 mặt tiền 770m² Đông Thanh – 200m² thổ cư, sát hồ Thanh Trì — 1,5 tỷ, 770 m², 1,9 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-770m2/
+- Đất Nam Ban view panorama săn mây 332m² – 225m² thổ cư, ngang 13m — 1,55 tỷ, 332 m², 4,7 triệu/m² — https://nambanvillas.vn/dat-nen/dat-nam-ban-view-panorama-332m2/
+- Đất 400m² trung tâm Mê Linh – 150m² thổ cư, cách Đà Lạt 1,5km — 1,55 tỷ, 400 m², 3,9 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-400m2-trung-tam/
+- Cụm 5 lô đất mặt hồ Đông Thanh Nam Ban – lô lớn, sổ riêng, có thổ cư — 1,55 tỷ, 1021 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/cum-5-lo-mat-ho-dong-thanh/
+- Đất Gia Lâm Nam Ban 1.378m² – 212m² thổ cư, mặt tiền bê tông, sổ riêng — 1,6 tỷ, 1378 m², 1,2 triệu/m² — https://nambanvillas.vn/dat-nen/dat-gia-lam-nam-ban-1378m2/
+- Lô 504m² view núi đối diện Nam Ban Villas – 100m² thổ cư, hướng đông — 1,6 tỷ, 504 m², 3,2 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-504m2/
+- Lô 380m² TT Nam Ban – 311m² đất ở, sổ hồng riêng, cách Đà Lạt ~22km — 1,6 tỷ, 380 m², 4,2 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-380m2/
+- Lô 653m² Nam Ban (Gia Lâm) – 300m² thổ cư, mặt tiền 19m, sổ riêng — 1,69 tỷ, 653 m², 2,6 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-653m2/
+- Lô 845m² Đông Thanh – View sương mây, mặt tiền 12m, tặng thiết kế 50tr — 1,8 tỷ, 845 m², 2,1 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-845m2/
+- Đất 1.000m² giáp rừng thông Mê Linh (giáp Cam Ly) – MT 22m, có cà phê — 1,85 tỷ, 1000 m², 1,9 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-1000m2-giap-rung-thong/
+- Lô 1 – Đất 700m² giáp Hồ Bãi Công, mặt tiền 12m — 1,95 tỷ, 700 m², 2,8 triệu/m² — https://nambanvillas.vn/dat-nen/ho-bai-cong-lot1/
+- Thiên Vân Village Nam Ban (Thiên Vân Villas) – dự án nghỉ dưỡng 4ha, 72 nền, 5 phân khu, sổ hồng riêng — 2,1 tỷ, 300 m², 7,0 triệu/m² — https://nambanvillas.vn/dat-nen/cum-thien-van-village/
+- Đất Đồi Nhà Trắng Đông Thanh 1.161m² – 400m² Thổ Cư, View 360° — 2,2 tỷ, 1161 m², 1,9 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-nha-trang-1161m2/
+- Đất MT đường nhựa Ba Đình Nam Ban – 550m², gần chùa Linh Ẩn — 2,5 tỷ, 550 m², 4,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-mt-ba-dinh-nam-ban-550m2/
+- Lô 1006m² Nam Ban view săn mây & suối – 200m² thổ cư, sổ đỏ — 2,5 tỷ, 1006 m², 2,5 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-1006m2/
+- Đất Mê Linh Thôn 3 – 3.865m² vườn cà phê, MT đường bê tông, sổ riêng — 2,6 tỷ, 3865 m², 0,7 triệu/m² — https://nambanvillas.vn/dat-nen/dat-me-linh-thon-3-3865m2-26ty/
+- Lô 1.065m² Mê Linh kế Nacasoo Hill – 210m² thổ cư, MT 20,5m — 2,6 tỷ, 1065 m², 2,4 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-1065m2/
+- Đất 5 sào Gia Lâm – Nam Ban – view Phật Bà & Thác Voi — 2,7 tỷ, 5000 m², 0,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-5sao-gia-lam-nam-ban-27ty/
+- Lô 1.037m² Nam Ban – 920m² thổ cư, mặt đường 30m, gần chùa Linh Ẩn (Thiền Viện Linh Ẩn) 2km — 2,75 tỷ, 1037 m², 2,7 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-1037m2/
+- Đất 1.000m² tựa đồi thông ven Đà Lạt – mặt tiền 20m, đường bê tông ô tô tới đất — 2,8 tỷ, 1000 m², 2,8 triệu/m² — https://nambanvillas.vn/dat-nen/dat-1000m2-doi-thong-nam-ban/
+- Đất 1.770m² Đông Thanh Nam Ban – MT 24m, 200m² thổ cư, sau có suối, sổ riêng — 2,8 tỷ, 1770 m², 1,6 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-1770m2/
+- Đất 2.700m² 2 mặt giáp suối – Bằng phẳng, full thổ cư, gần trung tâm — 2,95 tỷ, 2700 m², 1,1 triệu/m² — https://nambanvillas.vn/dat-nen/giap-suoi-2700m2/
+- Đất mặt hồ Bãi Công – 950m², 250m² thổ cư, view hồ trực diện — 3 tỷ, 950 m², 3,2 triệu/m² — https://nambanvillas.vn/dat-nen/dat-mat-ho-bai-cong-950m2/
+- Lô 2 – Đất 950m² giáp Hồ Bãi Công, mặt tiền 15m nở hậu 22m, view đồi thông — 3,5 tỷ, 950 m², 3,7 triệu/m² — https://nambanvillas.vn/dat-nen/ho-bai-cong-lot2/
+- Lô Đông Thanh ~1.657m² – Mặt tiền 60m, 2 sổ riêng, 400m² đất ở/thửa — 3,8 tỷ, 1657 m², 2,3 triệu/m² — https://nambanvillas.vn/dat-nen/dong-thanh-1657m2/
+- Lô 2.650m² Mê Linh ven Đà Lạt – 2 mặt đường, 400m² đất ở, hợp phân lô — 4,2 tỷ, 2650 m², 1,6 triệu/m² — https://nambanvillas.vn/dat-nen/me-linh-2650m2/
+- Quỹ đất 6.700m² – 2 lô 96m mặt tiền Nam Ban, ~2.375m² đất xây dựng — 5 tỷ, 6726 m², 0,7 triệu/m² — https://nambanvillas.vn/dat-nen/quy-2-lo-6700m2-nam-ban/
+- Đất 2.810m² 2 mặt tiền trung tâm Nam Ban – 200m² thổ cư, vườn cà phê, cách chợ 1,5km — 5,1 tỷ, 2810 m², 1,8 triệu/m² — https://nambanvillas.vn/dat-nen/lo-2mt-trung-tam-nam-ban-2810m2/
+- Đất 3.583m² Trung Hà – mặt tiền 87m, hướng Đông Nam, cách nhựa 1,2km — 5,5 tỷ, 3583 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/trung-ha-3583m2/
+- Lô đất 3.223m² mặt tiền 54m view hồ Nam Ban – 200m² thổ cư, cách ĐT725 150m, sổ riêng — 5,6 tỷ, 3223 m², 1,7 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-3223m2-view-ho/
+- Siêu phẩm 3.700m² mặt tiền 61m – Phù hợp phân lô, homestay, nghỉ dưỡng — 5,7 tỷ, 3700 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/sieu-pham-3700m2/
+- Đất Đông Thanh Nam Ban 5.100m² – 400m² thổ cư, sẵn nhà cấp 4, ao & cây ăn trái — 5,8 tỷ, 5100 m², 1,1 triệu/m² — https://nambanvillas.vn/dat-nen/dat-dong-thanh-5100m2-58ty/
+- Đất 5.000m² giáp rừng thông Nam Ban – kế khu biệt thự HT86 Gia Lâm — 6 tỷ, 4977 m², 1,2 triệu/m² — https://nambanvillas.vn/dat-nen/dat-5000m2-giap-thong-ht86/
+- Đất đồi 2 mặt tiền Đông Thanh Nam Ban 3.700m² – 800m² thổ cư, view trọn Nam Ban — 7,5 tỷ, 3700 m², 2,0 triệu/m² — https://nambanvillas.vn/dat-nen/dat-2mt-dong-thanh-3700m2/
+- Bán sỉ Nam Ban Đông Thanh Skyview – 15 lô, 225–282m², view thung lũng đẹp — 8,8 tỷ, 200 m², 44,0 triệu/m² — https://nambanvillas.vn/dat-nen/cum-nam-ban-skyview/
+- Đất ~5.900m² Chi Lăng Nam Ban – 100m² thổ cư, cà phê bơ, view đồi núi — 8,8 tỷ, 5900 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-5900m2/
+- Đất 4.352m² trung tâm Nam Ban – cách chùa Linh Ẩn 2km, view săn mây, hợp biệt thự/homestay — 9 tỷ, 4352 m², 2,1 triệu/m² — https://nambanvillas.vn/dat-nen/dat-4352m2-trung-tam-nam-ban/
+- Đất vườn cà phê Mê Linh 24.511m² – Thôn 1, có nhà cấp 4, sẵn 400m² thổ cư — 11,5 tỷ, 24511 m², 0,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-vuon-ca-phe-me-linh-24511m2/
+- Đất lớn 1,7ha Nam Ban ven Đà Lạt – mặt tiền 140m, quy hoạch thổ cư — 17 tỷ, 17000 m², 1,0 triệu/m² — https://nambanvillas.vn/dat-nen/nam-ban-1-7ha/
+- Bán sỉ khu Đông Thanh Top View – 39 nền, hạ tầng đường & nước xong, view siêu cao — 19 tỷ, 200 m², 95,0 triệu/m² — https://nambanvillas.vn/dat-nen/cum-dong-thanh-top-view/
+- Đất 8ha mặt tiền đường nhựa Hà Bắc – Buôn Chuối Nam Ban, gần đồi trà, 36 tỷ — 36 tỷ, 80000 m², 0,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-8ha-buon-chuoi-ha-bac/
+- Đất 2,9 hecta (29.044m²) Gia Lâm Nam Ban – view toàn cảnh săn mây, 2 mặt tiền, sổ riêng — 43,5 tỷ, 29000 m², 1,5 triệu/m² — https://nambanvillas.vn/dat-nen/dat-29-hecta-gia-lam-nam-ban/
+
+## Câu hỏi thường gặp
+
+### Nam Ban cách Đà Lạt bao xa?
+Nam Ban cách trung tâm Đà Lạt khoảng ~25km theo đèo Tà Nung, đi xe mất 35–40 phút. Cách sân bay Liên Khương chỉ ~22km — gần hơn cả Đà Lạt. Nhiều người Sài Gòn bay lên Liên Khương, thuê xe chạy thêm 30 phút là tới.
+
+### Khí hậu Nam Ban như thế nào?
+Nam Ban nằm ở độ cao khoảng 850–1.000m so với mực nước biển. Nhiệt độ trung bình 18–23°C quanh năm, buổi sáng thường dưới 20°C. Mùa mưa từ tháng 5 đến tháng 11, mùa khô từ tháng 12 đến tháng 4. Khí hậu tương tự Đà Lạt nhưng ít sương mù hơn vào ban ngày.
+
+### Đất tại Nam Ban có sổ hồng riêng không?
+Đa số đất thổ cư và đất vườn tại Nam Ban đã có sổ hồng riêng từng lô. Tuy nhiên cần kiểm tra từng lô cụ thể vì một số đất nông nghiệp chưa chuyển đổi mục đích sử dụng. Nam Ban Villas chỉ giới thiệu các lô đã có sổ hồng đầy đủ.
+
+### Giá đất tại Nam Ban hiện tại khoảng bao nhiêu?
+Năm 2025–2026, giá đất thổ cư tại Nam Ban dao động từ 3–8 triệu đồng/m² tùy vị trí và view. Đất mặt tiền đường lớn hoặc view hồ có thể 10–15 triệu/m². Đất vườn nông nghiệp rẻ hơn, 500 nghìn – 2 triệu/m². Giá đã tăng 30–50% so với năm 2023.
+
+### Mua đất Nam Ban để ở lâu dài hay chỉ cuối tuần?
+Cả hai đều hợp lý nhưng trải nghiệm khác nhau. Ở lâu dài cần chuẩn bị tâm lý thích nghi với nhịp sống chậm, thiếu tiện ích đô thị (không có siêu thị lớn, bệnh viện gần nhất ở Đà Lạt). Dùng cuối tuần hoặc đầu tư cho thuê nghỉ dưỡng thì phù hợp ngay — thị trường cho thuê homestay và villa đang phát triển mạnh.
+
+### Đất Nam Ban có bị ảnh hưởng bởi quy hoạch không?
+Theo điều chỉnh quy hoạch tỉnh Lâm Đồng 2025, Nam Ban được định hướng phát triển du lịch sinh thái và nghỉ dưỡng. Một số khu vực ven hồ Bãi Công và Thác Voi nằm trong vùng bảo vệ cảnh quan. Người mua cần kiểm tra quy hoạch thực tế tại địa phương trước khi mua, đặc biệt đất tiếp giáp rừng hoặc suối.
+
+### Thủ tục mua đất tại Nam Ban như thế nào?
+Thủ tục giống mua đất ở các địa phương khác: (1) Kiểm tra pháp lý, quy hoạch tại UBND xã; (2) Đặt cọc qua hợp đồng công chứng; (3) Ký hợp đồng chuyển nhượng tại phòng công chứng; (4) Nộp thuế thu nhập cá nhân (2% giá trị) và lệ phí trước bạ (0.5%); (5) Đăng ký sang tên tại Văn phòng Đăng ký đất đai Nam Ban, Lâm Hà.
+
+### Người nước ngoài có thể mua đất ở Nam Ban không?
+Người nước ngoài không được sở hữu đất tại Việt Nam theo luật hiện hành. Người nước ngoài có thể mua nhà gắn liền với đất, sở hữu trong thời hạn 50 năm (gia hạn được). Một số trường hợp mua qua công ty có vốn nước ngoài thành lập tại Việt Nam — cần tư vấn pháp lý cụ thể.
+
+### Nam Ban có internet và sóng di động không?
+Trung tâm Nam Ban và các khu dân cư chính có đầy đủ 4G của Viettel, Vinaphone, Mobifone và cáp quang FTTH. Một số khu vực ven rừng, đồi cao hoặc thung lũng sâu sóng yếu hơn — cần kiểm tra thực tế tại vị trí lô đất cụ thể.
+
+### Trường học và bệnh viện gần Nam Ban ở đâu?
+Tại Nam Ban có trường mầm non, tiểu học và THCS. Trường THPT gần nhất ở trung tâm Nam Ban hoặc Đinh Văn (8km). Bệnh viện đa khoa gần nhất là Bệnh viện II Lâm Đồng ở Đà Lạt (~25km). Trung tâm y tế Nam Ban, Lâm Hà ở Đinh Văn cách khoảng 15km.
+
+### Chợ và siêu thị ở Nam Ban có không?
+Nam Ban có chợ truyền thống họp sáng hàng ngày, đủ rau củ quả, thực phẩm tươi sống. Không có siêu thị lớn — cần lên Đà Lạt (Big C, Co.opmart) hoặc Bảo Lộc cho hàng hóa đặc biệt. Nhiều người dân địa phương mua sắm định kỳ 1–2 lần/tuần ở Đà Lạt.
+
+### Có thể xây homestay hay villa cho thuê trên đất Nam Ban không?
+Được, nhưng cần đất thổ cư (ONT) hoặc đất thương mại dịch vụ (TDV). Đất nông nghiệp cần chuyển đổi mục đích trước khi xây dựng kinh doanh. Thị trường homestay và villa nghỉ dưỡng ở Nam Ban đang tăng trưởng, đặc biệt các lô gần hồ, suối hoặc đồi thông.
+
+### Đất Nam Ban có bị ngập lụt không?
+Nam Ban ít bị ngập lụt vì địa hình đồi núi thoát nước tốt. Tuy nhiên một số vùng trũng ven suối hoặc thung lũng thấp có thể ngập nhẹ vào mùa mưa lớn. Các lô đất ven suối cần kiểm tra cao độ nền so với mực nước mùa mưa trước khi mua.
+
+### Nam Ban có phù hợp để trồng cà phê hoặc canh tác không?
+Rất phù hợp. Nam Ban là vùng trồng cà phê arabica nổi tiếng, đặc biệt giống Yellow Bourbon. Đất đỏ bazan, khí hậu mát mẻ, độ cao 850–1.000m là điều kiện thuận lợi. Ngoài cà phê còn có dâu tằm, rau củ ôn đới, hoa cắt cành. Nhiều lô đất vườn đang có thu hoạch cà phê ổn định.
+
+### Tuyến đường tránh Nam Ban có ảnh hưởng đến giá đất không?
+Tính đến tháng 9/2026, tuyến tránh Nam Ban chưa được phê duyệt và chưa khởi công — dự án mới ở bước đề xuất trong điều chỉnh quy hoạch giao thông tỉnh Lâm Đồng, chưa có mốc thông xe chính thức. Vì hướng tuyến chưa duyệt nên chưa xác định được lô nào thực sự hưởng lợi. Đừng mua một lô chỉ vì tuyến tránh.
+
+### Sân bay Liên Khương nâng cấp có lợi gì cho Nam Ban?
+Sân bay Liên Khương được nâng công suất từ 2,5 lên 5 triệu hành khách/năm theo quy hoạch cảng hàng không quốc gia đến 2030, đường băng cải tạo để đón máy bay thân rộng. Nam Ban chỉ cách ~22km — gần hơn Đà Lạt (30km). Khi sân bay mở thêm đường bay, lượng du khách đến Lâm Đồng tăng sẽ kéo nhu cầu nghỉ dưỡng tại Nam Ban lên đáng kể.
+
+### Nam Ban Villas là ai? Có đáng tin không?
+Nam Ban Villas là thương hiệu nhà đất chỉ làm ở xã Nam Ban, Lâm Hà, Lâm Đồng — có mặt tại Nam Ban từ 2019, làm Nam Ban Villas từ 2020. Lô nào cũng đi thực địa và xem sổ trước khi đăng; người mua không mất phí, phí chỉ thu từ phía chủ đất. Liên hệ trực tiếp qua 0978 758 788 để được tư vấn cụ thể từng lô đất.
+
+### Đặt cọc bao nhiêu để giữ lô đất?
+Thông thường đặt cọc 10–30% giá trị lô đất, tùy thỏa thuận với chủ đất. Hợp đồng đặt cọc nên được công chứng để bảo vệ cả hai bên. Thời hạn đặt cọc thường 30–60 ngày để hoàn tất thủ tục sang tên.
+
+### Đất ở Nam Ban có thể thế chấp vay ngân hàng không?
+Đất có sổ hồng riêng hoàn toàn có thể thế chấp tại ngân hàng. Các ngân hàng thường cho vay 50–70% giá trị thẩm định (thấp hơn giá thị trường). Agribank và các ngân hàng có chi nhánh tại Nam Ban, Lâm Hà thường am hiểu định giá đất khu vực này hơn.
+
+### Môi trường sống ở Nam Ban có an toàn không?
+Nam Ban là vùng nông thôn miền núi yên bình, tỷ lệ tội phạm thấp. Cộng đồng dân cư chủ yếu là người Kinh và đồng bào dân tộc bản địa sinh sống lâu đời. Môi trường tự nhiên trong lành, không khí sạch, không tiếng ồn. Phù hợp cho gia đình có trẻ nhỏ hoặc người muốn sống chậm.
+
+### Mùa nào thích hợp để đến xem đất ở Nam Ban?
+Mùa khô (tháng 12 – tháng 4) thuận lợi nhất — đường đồi không trơn, view đẹp, thời tiết mát mẻ dễ chịu. Mùa mưa (tháng 5 – 11) có thể đánh giá được mức thoát nước và khả năng ngập của lô đất — một thông tin quan trọng nếu bạn muốn xây dựng.
+
+### Có thể ở thử Nam Ban trước khi mua đất không?
+Được, và đây là cách tốt nhất để quyết định. Nam Ban có nhiều homestay và villa cho thuê ngắn hạn, giá từ 500 nghìn đến 3 triệu đồng/đêm tùy loại. Ở thử 2–3 đêm sẽ giúp bạn trải nghiệm thực tế khí hậu, cuộc sống và nhịp sinh hoạt trước khi đưa ra quyết định lớn.
+
+### Xã Nam Ban sáp nhập từ khi nào, gồm những xã nào?
+Từ 01/07/2025 theo Nghị quyết 202/2025/QH15 của Quốc hội, xã Nam Ban Lâm Hà được thành lập trên cơ sở sáp nhập trung tâm Nam Ban với các xã Đông Thanh, Mê Linh và Gia Lâm. Việc này không ảnh hưởng đến quyền sở hữu đất đã có sổ hồng — sổ cũ vẫn nguyên giá trị pháp lý, chỉ điều chỉnh địa danh hành chính khi làm thủ tục sang tên.
+
+### Người Sài Gòn có nhiều người mua đất ở Nam Ban không?
+Ngày càng nhiều. Từ 2023–2025, lượng người mua từ TP.HCM tăng rõ rệt, chủ yếu là thế hệ 8X–9X có tích lũy, muốn có chỗ nghỉ cuối tuần hoặc đầu tư dài hạn. Lý do chính: giá thấp hơn Đà Lạt nhiều lần, không khí tương đương, bay vào Liên Khương tiện hơn về Đà Lạt.
+
+### Nếu muốn hỏi thêm thì liên hệ ai?
+Liên hệ Nam Ban Villas qua hotline 0978 758 788 (gọi hoặc nhắn Zalo). Nam Ban Villas tư vấn miễn phí, không tạo áp lực, và có thể sắp xếp xem đất thực địa theo lịch của bạn.

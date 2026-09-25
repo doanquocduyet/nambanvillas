@@ -1340,6 +1340,100 @@ def cap_nhat_dinh_gia(ngay, kq, khu, tong):
     open(f, "w", encoding="utf-8").write(s)
 
 
+CUM_GIA = [
+    ("/thi-truong/gia-dat-nam-ban-hom-nay/", "Giá đất Nam Ban hôm nay bao nhiêu một mét?", "Tính từ lô thật đang rao, theo loại đất và từng tuần"),
+    ("/gia-dat-lam-ha/", "Giá đất Nam Ban Lâm Hà khu nào rẻ, khu nào đắt?", "So từng xã, từng khu, lô rẻ nhất mỗi khu"),
+    ("/dinh-gia-dat-nam-ban/", "Lô đất Nam Ban của bạn đáng bao nhiêu?", "Ước giá miễn phí, cần chứng thư thì kết nối công ty thẩm định"),
+    ("/dat-nam-ban-gia-re/", "Mua đất Nam Ban giá rẻ ở đâu?", "Lô rẻ nhất đang bán, lô dưới 1 tỷ, lô 300 triệu"),
+    ("/dat-nam-ban-ngop-ban-gap/", "Đất Nam Ban ngộp, bán gấp có thật rẻ không?", "Lô chủ nói rõ cần bán nhanh, so với giá trung bình"),
+]
+
+
+def noi_cum_gia():
+    """Nối 5 trang giá thành cụm hai chiều; chữ neo là câu hỏi trang đích trả lời. Chạy lại không nhân đôi."""
+    mo, dong = "<!-- CUM-GIA:START -->", "<!-- CUM-GIA:END -->"
+    for url, _, _ in CUM_GIA:
+        f = url.strip("/") + "/index.html"
+        if not os.path.exists(f):
+            continue
+        s = open(f, encoding="utf-8").read()
+        li = "".join('<li><a href="%s">%s</a><span>%s</span></li>' % (u, h, m) for u, h, m in CUM_GIA if u != url)
+        khoi = (mo + '\n<nav class="cum-chu-de" aria-label="Giá đất Nam Ban theo câu hỏi">\n  <h2>Giá đất Nam Ban — hỏi theo nhu cầu</h2>\n  <ul>'
+                + li + '</ul>\n</nav>\n' + dong)
+        if mo in s:
+            s = thay_khoi(s, mo, dong, khoi)
+        else:
+            k = s.find('<section class="faq-hien"')
+            if k == -1:
+                k = s.find("</main>")
+            if k == -1:
+                continue
+            s = s[:k] + khoi + "\n\n" + s[k:]
+        open(f, "w", encoding="utf-8").write(s)
+
+
+def cap_nhat_dataset(ngay, tong):
+    """Khai báo bảng giá tuần là Dataset (dữ liệu gốc) trong JSON-LD trang Giá đất hôm nay."""
+    f = TRANG
+    s = open(f, encoding="utf-8").read()
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)
+    if not m:
+        return
+    d = json.loads(m.group(1))
+    g = d.get("@graph", [])
+    ID = "https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/#dataset"
+    g = [n for n in g if not (isinstance(n, dict) and n.get("@id") == ID)]
+    ls = json.load(open(LICH_SU, encoding="utf-8")) if os.path.exists(LICH_SU) else {}
+    dau = min(ls) if ls else ngay
+    g.append({
+        "@type": "Dataset", "@id": ID,
+        "name": "Giá rao đất Nam Ban theo tuần (triệu đồng/m²)",
+        "description": "Khoảng giá phổ biến và giá trung bình (bỏ 10%% lô rẻ nhất và 10%% đắt nhất) theo loại đất và theo 7 khu của Nam Ban, Lâm Hà, Lâm Đồng, tính từ %d lô đang rao trên Nam Ban Villas; kèm tổng hợp tin rao công khai mỗi tuần." % tong,
+        "url": "https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/",
+        "creator": {"@id": "https://nambanvillas.vn/#organization"},
+        "publisher": {"@id": "https://nambanvillas.vn/#organization"},
+        "license": "https://nambanvillas.vn/gioi-thieu/",
+        "isAccessibleForFree": True, "inLanguage": "vi",
+        "keywords": ["giá đất Nam Ban", "giá đất Nam Ban Lâm Hà", "giá đất Nam Ban hôm nay", "giá đất theo tuần"],
+        "spatialCoverage": {"@type": "Place", "name": "Nam Ban, Lâm Hà, Lâm Đồng", "geo": {"@type": "GeoCoordinates", "latitude": 11.8347, "longitude": 108.2622}},
+        "temporalCoverage": "%s/%s" % (dau, ngay),
+        "dateModified": ngay,
+        "variableMeasured": ["Khoảng giá phổ biến (triệu đồng/m²)", "Giá trung bình (triệu đồng/m²)", "Số lô đang rao"],
+        "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://nambanvillas.vn/data/gia-tuan.json"}],
+    })
+    d["@graph"] = g
+    s = s[:m.start(1)] + json.dumps(d, ensure_ascii=False, separators=(",", ":")) + s[m.end(1):]
+    open(f, "w", encoding="utf-8").write(s)
+
+
+def tao_llms_full(ngay, lo, kq, khu, tong):
+    """llms-full.txt: bản đầy đủ cho AI trích dẫn — giá sống, theo khu, lô đang bán, hỏi đáp."""
+    ra = ["# Nam Ban Villas — dữ liệu đầy đủ (cập nhật %s)" % ngay_vn(ngay), "",
+          "> Bản đầy đủ của https://nambanvillas.vn/llms.txt. Số liệu tính từ lô thật đang rao trên nambanvillas.vn; đội ngũ Nam Ban Villas làm mới liên tục. Hotline/Zalo 0978 758 788.", "",
+          "## Giá đất Nam Ban hôm nay (%s, %d lô đang rao)" % (ngay_vn(ngay), tong), ""]
+    for k in ("tho", "vuon", "ho"):
+        if k in kq:
+            v = kq[k]
+            ra.append("- %s: %s–%s triệu/m², giá trung bình %s triệu/m² (%d lô)" % (TEN[k], so(v["lo"]), so(v["hi"]), so(v["tv"]), v["n"]))
+    ra += ["", "Giá trung bình = trung bình cộng sau khi bỏ 10% lô rẻ nhất và 10% lô đắt nhất. Đây là giá rao; giá chốt thường thấp hơn 5–15%. Nguồn: https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/ · dữ liệu JSON: https://nambanvillas.vn/data/gia-tuan.json", "",
+           "## Giá theo khu (triệu đồng/m²)", ""]
+    for t in khu:
+        ra.append("- %s: %s–%s, giá trung bình %s, lô rẻ nhất %s (%d lô) — https://nambanvillas.vn%s" % (t["ten"], so(t["lo"]), so(t["hi"]), so(t["tv"]), tien(t["re_nhat"]), t["n"], t["link"]))
+    ra += ["", "## Lô đất đang bán (rẻ nhất trước)", ""]
+    for x in sorted([x for x in lo if x["url"]], key=lambda x: x["ty"]):
+        ra.append("- %s — %s, %s m², %s triệu/m² — https://nambanvillas.vn%s" % (x["ten"] or "Lô đất Nam Ban", tien(x["ty"]), "%d" % x["area"], so(x["m2"]), x["url"]))
+    ra += ["", "## Câu hỏi thường gặp", ""]
+    s = open("hoi-dap/index.html", encoding="utf-8").read() if os.path.exists("hoi-dap/index.html") else ""
+    m = re.search(r'"@type":"FAQPage".*?"mainEntity":(\[.*?\])\s*,\s*"@id"', s, re.S)
+    if m:
+        try:
+            for q_ in json.loads(m.group(1)):
+                ra += ["### " + q_["name"], q_["acceptedAnswer"]["text"], ""]
+        except ValueError:
+            pass
+    open("llms-full.txt", "w", encoding="utf-8").write("\n".join(ra).rstrip() + "\n")
+
+
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
     from zoneinfo import ZoneInfo
@@ -1441,6 +1535,9 @@ def main():
     cap_nhat_ban_vuon(ngay)
     cap_nhat_ngop(ngay, kq)
     cap_nhat_dinh_gia(ngay, kq, khu, tong)
+    noi_cum_gia()
+    cap_nhat_dataset(ngay, tong)
+    tao_llms_full(ngay, lo, kq, khu, tong)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
     tt = [x for x in lo if x["ty"] > 0 and "nam-ban" in x["loc"]]
     if tt:
