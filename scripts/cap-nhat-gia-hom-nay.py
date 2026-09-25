@@ -351,7 +351,7 @@ def cap_nhat_gia_re(ngay, lo, kq, khu):
                  "Bên Nam Ban Villas ngày %s có lô từ %s (%s), và %d lô dưới 700 triệu. Giá và cấu hình đổi theo thời điểm; giá trên tin rao không phải giá giao dịch."
                  % (ngay_vn(ngay), tien(re_nhat["ty"]), H.escape(re_nhat["ten"], quote=False), duoi_700))
     s = faq_html(s, "m2", "Tính ngày %s từ %d lô đang rao: đất nền có thổ cư %s–%s triệu/m² (giá trung bình %s); đất vườn, lô lớn %s–%s triệu/m². "
-                 "Khu rẻ nhất %s giá trung bình %s, khu đắt nhất %s giá trung bình %s. Cập nhật mỗi thứ Hai ở trang giá đất Nam Ban hôm nay."
+                 "Khu rẻ nhất %s giá trung bình %s, khu đắt nhất %s giá trung bình %s. Cập nhật liên tục ở trang giá đất Nam Ban hôm nay."
                  % (ngay_vn(ngay), len(lo), so(t["lo"]), so(t["hi"]), so(t["tv"]),
                     so(kq["vuon"]["lo"]) if "vuon" in kq else "", so(kq["vuon"]["hi"]) if "vuon" in kq else "",
                     khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"])))
@@ -408,7 +408,7 @@ THAN_LAM_HA = """<main id="main">
       <div class="article-header">
         <p class="article-cat">Giá thị trường · Cập nhật: %(ngay)s</p>
         <h1 class="article-title">Giá Đất Nam Ban Lâm Hà Tháng %(thang)s — Theo Xã, Theo Khu, Tính Từ Lô Thật Đang Rao</h1>
-        <p class="article-lead">Giá đất Nam Ban Lâm Hà không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật mỗi thứ Hai.</p>
+        <p class="article-lead">Giá đất Nam Ban Lâm Hà không có một con số chung: cùng vùng nhưng khu này có thể gấp đôi khu kia. Trang này tính thẳng từ các lô đang rao ở xã Nam Ban và xã Nam Hà, cập nhật liên tục.</p>
       </div>
 
       <div class="article-body">
@@ -1362,9 +1362,9 @@ def main():
     cau = cau_tra_loi(ngay, kq, khu, tong)
     # TIÊU ĐỀ + H1 ỔN ĐỊNH (chỉ đổi theo THÁNG): trang đang có thứ hạng mà title đổi mỗi tuần thì
     # Google phải đánh giá lại liên tục. Số tuần nằm ở mô tả + khối Trả lời nhanh + bảng.
-    tieu_de = "Giá Đất Nam Ban Hôm Nay T%d/%d — Tính Từ Lô Thật, Cập Nhật Mỗi Thứ Hai" % (datetime.date.fromisoformat(ngay).month, datetime.date.fromisoformat(ngay).year)
+    tieu_de = "Giá Đất Nam Ban Hôm Nay T%d/%d — Tính Từ Lô Thật, Cập Nhật Liên Tục" % (datetime.date.fromisoformat(ngay).month, datetime.date.fromisoformat(ngay).year)
     mo_ta = ("Giá đất Nam Ban hôm nay %s: đất nền thổ cư %s–%s triệu/m² (giá trung bình %s), theo 7 khu, tính từ %d lô đang rao. "
-             "Cập nhật mỗi thứ Hai. Gọi 0978 758 788." % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
+             "Cập nhật liên tục. Gọi 0978 758 788." % (ngay_vn(ngay), so(t["lo"]), so(t["hi"]), so(t["tv"]), tong))
 
     # 1) khối trả lời nhanh · 2) bảng tuần · 3) bảng khu
     s = thay_khoi(s, "<!-- TRA-LOI-NHANH:START -->", "<!-- TRA-LOI-NHANH:END -->", khoi_tra_loi(cau))
@@ -1422,7 +1422,7 @@ def main():
     s = re.sub(r'<meta property="og:description" content="[^"]*"', '<meta property="og:description" content="%s"' % H.escape(mo_ta, quote=True), s, count=1)
     s = re.sub(r'<meta name="twitter:title" content="[^"]*"', '<meta name="twitter:title" content="%s"' % H.escape(tieu_de, quote=True), s, count=1)
     s = re.sub(r'<h1 class="article-title">[^<]*</h1>',
-               '<h1 class="article-title">Giá Đất Nam Ban Hôm Nay — Tính Từ Lô Thật Đang Rao, Cập Nhật Mỗi Thứ Hai</h1>', s, count=1)
+               '<h1 class="article-title">Giá Đất Nam Ban Hôm Nay — Tính Từ Lô Thật Đang Rao, Cập Nhật Liên Tục</h1>', s, count=1)
     s = re.sub(r"Cập nhật tuần: \d+/\d+/\d+", "Cập nhật tuần: %s" % ngay_vn(ngay), s)
     s = re.sub(r'"dateModified":"\d{4}-\d{2}-\d{2}"', '"dateModified":"%s"' % ngay, s)
     s = sua_schema(s, ngay, tieu_de, mo_ta, cau, kq, tong)
