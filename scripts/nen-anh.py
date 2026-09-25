@@ -9,7 +9,7 @@ Cách dùng:
 
 Quy tắc an toàn:
   - Giảm kích thước tối đa 1600px chiều rộng (đủ cho mọi vị trí hiển thị).
-  - JPEG quality 82, progressive, xoá metadata.
+  - JPEG quality 82, progressive, xoá metadata cũ (GPS…) rồi đóng dấu © Nam Ban Villas (dong-dau-anh.py).
   - CHỈ ghi đè nếu file mới NHỎ HƠN thật (không làm ảnh gốc đã tối ưu bị phình/xấu).
   - Xoay ảnh theo EXIF để không bị nằm ngang.
 """
@@ -71,6 +71,11 @@ def main():
             print(f"  LỖI {p}: {e}")
     print(f"\nNén {n}/{len(files)} ảnh · {tb/1024/1024:.2f}MB -> {ta/1024/1024:.2f}MB "
           f"(giảm {100*(tb-ta)/tb:.0f}%)" if tb else "Không có gì để nén")
+    # Đóng dấu bản quyền EXIF/XMP vào file (nén xong là mất metadata cũ, nên đóng lại ở đây)
+    import importlib.util
+    sp = importlib.util.spec_from_file_location("dong_dau_anh", os.path.join(os.path.dirname(__file__), "dong-dau-anh.py"))
+    dd = importlib.util.module_from_spec(sp); sp.loader.exec_module(dd)
+    print(f"Đóng dấu bản quyền {sum(1 for p in files if dd.dong_dau(p))} ảnh.")
 
 if __name__ == '__main__':
     main()

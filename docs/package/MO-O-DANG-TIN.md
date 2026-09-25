@@ -10,6 +10,7 @@ Chào cháu. Ô này chuyên ĐĂNG TIN RAO đất Nam Ban cho web nambanvillas.
 ## 🆕 CẬP NHẬT 24–25/9/2026 — ĐỌC TRƯỚC MỌI THỨ KHÁC (luật mới, đè lên phần cũ nếu vênh)
 
 - 25/9/2026: trang Giá Đất Hôm Nay — mỗi tuần hiện TIN RAO + LÔ MỚI trước, TỔNG HỢP TUẦN cuối cùng. Lô mới đăng lên hub tự vào danh sách tuần đó.
+- 25/9/2026: ảnh lô phải có dấu © trong file — `nen-anh.py`/`prep-anh.py` tự làm; ảnh chép tay vào `images/` thì chạy `python3 scripts/dong-dau-anh.py` trước khi push (checker 22 chặn).
 - 25/9/2026: trang mới `/dinh-gia-dat-nam-ban/` (key "định giá đất nam ban") — bảng giá tham chiếu theo loại + khu, `cap-nhat-gia-hom-nay.py` tự làm mới từ lô hub (khối `<!-- DINH-GIA -->`). Đăng lô đúng `data-loc`/`data-price` là trang tự đúng số.
 - 25/9/2026: tuần ĐÃ QUA thì Tổng hợp tuần lên ngay dưới tiêu đề tuần, tin rao ở dưới; tuần đang chạy giữ tin trước, tổng hợp cuối. Đội ngũ không sửa tay — script tự đảo khi sang tuần.
 

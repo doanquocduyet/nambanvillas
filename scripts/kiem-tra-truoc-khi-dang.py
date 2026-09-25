@@ -700,6 +700,18 @@ for _f, _p in (("thi-truong/tin-rao-dat-nam-ban-moi/index.html", r"<!-- DAY:\d{4
     if _n_moi < _n_cu:
         L("[Mất tin cũ: %d -> %d khối — KHÔNG BAO GIỜ xoá tin có ngày tháng] %s" % (_n_cu, _n_moi, _f))
 
+# ── 22. ẢNH PHẢI CÓ DẤU BẢN QUYỀN TRONG FILE (EXIF/XMP) — chủ web chốt 25/9/2026 ─────
+# Ảnh mới đi qua nen-anh.py / prep-anh.py là có dấu; ảnh chép thẳng vào images/ thì không → chặn.
+try:
+    import importlib.util as _ilu
+    _sp = _ilu.spec_from_file_location("dong_dau_anh", "scripts/dong-dau-anh.py")
+    _dd = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_dd)
+    _thieu = [f for f in _dd.gom(["images"]) if not _dd.co_dau(f)]
+    if _thieu:
+        L("[%d ảnh chưa có dấu © trong file — chạy: python3 scripts/dong-dau-anh.py] %s" % (len(_thieu), " ".join(_thieu[:3])))
+except Exception as _e:
+    L("[Không kiểm được dấu ảnh: %s]" % _e)
+
 # ── 17. dateModified trong trang phải == lastmod trong sitemap ─────────────
 # ĐÃ TỪNG DÍNH (aeo-8/schema-7): 65 trang lệch hai chiều, 12 bài lệch tới 97
 # ngày — hai tín hiệu "mới" tự chọi nhau, Google không tin cái nào.
