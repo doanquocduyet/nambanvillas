@@ -12,6 +12,10 @@ Chạy: python3 scripts/tao-webp.py            (chỉ tạo ảnh còn thiếu)
 """
 import os, sys, glob
 from PIL import Image
+import importlib.util as _ilu
+_sp = _ilu.spec_from_file_location("dong_dau_anh", os.path.join(os.path.dirname(os.path.abspath(__file__)), "dong-dau-anh.py"))
+_dd = _ilu.module_from_spec(_sp); _sp.loader.exec_module(_dd)
+dong_dau = _dd.dong_dau          # dấu © Nam Ban Villas trong file (EXIF/XMP) — mọi ảnh sinh ra phải có
 
 CHAT_LUONG = 82
 lam_lai = "--lam-lai" in sys.argv
@@ -27,6 +31,7 @@ for f in sorted(glob.glob("images/**/*.jpg", recursive=True)):
     if im.mode not in ("RGB", "L"):
         im = im.convert("RGB")
     im.save(w, "WEBP", quality=CHAT_LUONG, method=5)
+    dong_dau(w)
     a, b = os.path.getsize(f), os.path.getsize(w)
     # WebP to hơn JPEG thì giữ JPEG, xoá webp đi cho khỏi rác
     if b >= a:

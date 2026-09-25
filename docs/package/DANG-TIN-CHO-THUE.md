@@ -185,7 +185,7 @@ Cụ thể trong trang:
 
 ## 9 · CHECKLIST 10 DÒNG CHO MỘT TIN THUÊ
 
-1. Ảnh: `prep-anh.py` (ảnh dọc thêm `--ratio keep`) → `tao-webp.py` → `sitemap-anh.py`
+1. Ảnh: `prep-anh.py` (ảnh dọc thêm `--ratio keep`) → `tao-webp.py` → `sitemap-anh.py` — các script tự đóng dấu © Nam Ban Villas vào file; `dong-dau-anh.py --kiem` = 0 thiếu
 2. Ảnh không lộ số nhà, GPS, biển số, người ở trong
 3. Thẻ `<img>` trỏ `.webp`, đủ `alt`/`width`/`height`; hero `fetchpriority="high"` và **không** lazy; còn lại lazy
 4. Đoạn mở đầu trả lời thẳng: **giá · trạng thái · điều kiện thuê**
