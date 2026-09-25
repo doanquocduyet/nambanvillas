@@ -64,6 +64,11 @@ def so(x):
     return ("%.1f" % x).replace(".", ",")
 
 
+def so2(x):
+    """Đơn giá dưới 1 triệu/m² (đất sào) giữ 2 số lẻ: 0.143 -> '0,14' thay vì '0,1'."""
+    return ("%.2f" % x).rstrip("0").rstrip(".").replace(".", ",") if x < 1 else so(x)
+
+
 def tien(ty):
     """0.599 -> '599 triệu' · 1.5 -> '1,5 tỷ'"""
     if ty >= 1:
@@ -1283,11 +1288,31 @@ def bang_tuan_tu_tin(ngay, tin_tuan):
     if dg:
         tb = sum(dg) / len(dg)
         tong = ('Tổng hợp từ %d tin có đơn giá: từ <strong>%s</strong> đến <strong>%s triệu/m²</strong>, trung bình %s triệu/m². '
-                'Đây là giá rao trên tin công khai, chưa đối chiếu sổ; giá chốt thường thấp hơn.' % (len(dg), so(dg[0]), so(dg[-1]), so(tb)))
+                'Đây là giá rao trên tin công khai, chưa đối chiếu sổ; giá chốt thường thấp hơn.' % (len(dg), so2(dg[0]), so2(dg[-1]), so2(tb)))
     else:
         tong = "Các tin tuần này không ghi đủ giá và diện tích để tính đơn giá."
     return ('        <!-- WEEK:%s -->\n        <h2>Tuần %s · cập nhật %s</h2>\n%s        <p style="font-size:.9rem;color:#3D3D3D">%s</p>\n\n'
             % (ngay, khoang_tuan(ngay), ngay_vn(ngay), khoi_tin_tuan(ngay, den=ngay), tong))
+
+TONG_H3 = '        <h3 style="font-size:1.02rem;color:#1A3D2B;margin:18px 0 8px">Tổng hợp tuần</h3>'
+
+
+def tong_hop_len_dau(khoi):
+    """Tuần ĐÃ QUA: đưa mục Tổng hợp tuần lên ngay dưới tiêu đề tuần, tin rao xuống dưới (chủ web chốt 25/9/2026:
+    xem lại tuần cũ thì đọc nhanh tổng hợp, ai cần chi tiết lướt xuống tin). Tuần đang chạy giữ tin trước, tổng hợp cuối."""
+    h2 = khoi.find("</h2>\n")
+    k = khoi.find(TONG_H3)
+    if h2 == -1 or k == -1:
+        return khoi
+    dau = h2 + len("</h2>\n")
+    tin = khoi[dau:k]
+    if not tin.strip():                                  # đã đưa lên rồi
+        return khoi
+    tong = khoi[k:].rstrip("\n") + "\n"
+    tin = tin.replace("; bảng dưới tính từ các lô đang rao.", ".")
+    return (khoi[:dau] + tong.replace("margin:18px 0 8px\">Tổng hợp tuần", "margin:14px 0 8px\">Tổng hợp tuần", 1)
+            + tin.rstrip("\n") + "\n\n")
+
 
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
@@ -1325,9 +1350,9 @@ def main():
     # cùng tuần -> làm mới ô tuần đó (số tươi hơn, KHÔNG phải xoá lịch sử); khác tuần -> ô mới, ô cũ giữ nguyên
     def _cung_tuan(x):
         m_ = re.search(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", x)
-        return bool(m_) and _tuan(m_.group(1)) == _tuan(ngay) and m_.group(1) >= max(
-            re.findall(r"<!-- WEEK:(\d{4}-\d{2}-\d{2}) -->", s[i:j]) or [ngay])
+        return bool(m_) and _tuan(m_.group(1)) == _tuan(ngay) and m_.group(1) <= ngay
     tuan = [x for x in tuan if x.strip() and not _cung_tuan(x)]
+    tuan = [tong_hop_len_dau(x) for x in tuan]           # tuần đã qua: tổng hợp lên đầu
     s = s[:i] + "\n" + bang_tuan(ngay, kq, cu, tong, khoi_tin_tuan(ngay, _the_hub(HUB, lambda x: True))) + "".join(tuan) + s[j:]
     s = thay_khoi(s, "<!-- GIA-KHU:START -->", "<!-- GIA-KHU:END -->", bang_khu(ngay, khu))
 
