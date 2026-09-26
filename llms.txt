@@ -26,6 +26,11 @@
 - [Xây nhà vườn Nam Ban 2026: giấy phép, giá xây](https://nambanvillas.vn/thi-truong/xay-nha-vuon-nam-ban-giay-phep-chi-phi/): Luật Xây dựng 2025 miễn phép trừ khu có quy hoạch xã; giá xây Lâm Đồng 3,8–6 triệu/m².
 - [Đất Nam Ban lên thổ cư giá bao nhiêu](https://nambanvillas.vn/thi-truong/dat-nam-ban-len-tho-cu-gia-bao-nhieu/): cách tính 2026 (NQ 254/2025/QH15: 30%/50%/100% chênh lệch), bảng giá đất ở xã Nam Ban theo đoạn đường (NQ 82/2025/NQ-HĐND), ví dụ 100m² khoảng 24–30 triệu.
 - [Mua đất Nam Hà khi có tin sáp nhập Nam Ban](https://nambanvillas.vn/thi-truong/nam-ha-sap-nhap-nam-ban/): đợt 2025 Nam Hà nhập Phi Tô thành xã Nam Hà (Nghị quyết 1671/NQ-UBTVQH15), xã Nam Ban gồm thị trấn Nam Ban, Đông Thanh, Mê Linh, Gia Lâm; thông tin địa phương về đợt sắp xếp tới; mua đất Nam Hà cần kiểm gì.
+- [Trông coi đất Nam Ban](https://nambanvillas.vn/thi-truong/trong-coi-dat-nam-ban/)
+- [Thuê người làm vườn Nam Ban: công nhật, lương tháng](https://nambanvillas.vn/thi-truong/thue-nguoi-lam-vuon-nam-ban/)
+- [Trồng cà phê Nam Ban giá bao nhiêu](https://nambanvillas.vn/thi-truong/chi-phi-trong-ca-phe-nam-ban/)
+- [Trồng bơ 034 Nam Ban giá bao nhiêu](https://nambanvillas.vn/thi-truong/trong-bo-034-nam-ban/)
+- [Làm vườn hoa, nhà kính Nam Ban giá bao nhiêu](https://nambanvillas.vn/thi-truong/lam-vuon-hoa-nha-kinh-nam-ban/)
 - [Giới thiệu Nam Ban Villas](https://nambanvillas.vn/gioi-thieu/): Nam Ban Villas là ai, cách kiểm lô trước khi đăng, phí, cách hẹn xem đất.
 - [Mua đất Nam Ban bao nhiêu tiền? Giá từng loại 2026](https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-bao-nhieu/): Giá thực tế đất nền, đất vườn, đất view — kèm lô đang bán và giá cụ thể.
 - [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật liên tục](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá phổ biến/m² + giá trung bình theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json, bảng CSV tại /data/gia-dat-nam-ban.csv.
