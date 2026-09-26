@@ -18,9 +18,9 @@
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Dữ liệu đầy đủ (llms-full.txt)](https://nambanvillas.vn/llms-full.txt): giá hôm nay theo loại đất và 7 khu, toàn bộ lô đang bán kèm giá, câu hỏi thường gặp — làm mới cùng bảng giá.
-- [Chi phí làm hạ tầng đất Nam Ban 2026](https://nambanvillas.vn/thi-truong/chi-phi-lam-ha-tang-dat-nam-ban/): cột điện bê tông 2,4–3 triệu/cây, đèn năng lượng mặt trời 1–3 triệu, đường bê tông 300–800 nghìn/m², ví dụ lô vườn 64–155 triệu.
-- [Phí đo đạc, cắm mốc đất Nam Ban 2026: 250–400 nghìn mỗi mốc](https://nambanvillas.vn/thi-truong/phi-do-dac-cam-moc-dat-nam-ban/): cọc sắt hay bê tông, vì sao giá chênh, khi nào nên đo lại.
-- [San lấp mặt bằng đất đồi Nam Ban 2026: 400–800 nghìn mỗi giờ máy](https://nambanvillas.vn/thi-truong/chi-phi-san-lap-mat-bang-dat-nam-ban/): xe múc, xe lu, xe ben, ví dụ san nền nhà.
+- [Mua lô đất Nam Ban đã có hạ tầng hay tự làm](https://nambanvillas.vn/thi-truong/chi-phi-lam-ha-tang-dat-nam-ban/): cột điện bê tông 2,4–3 triệu/cây, đèn năng lượng mặt trời 1–3 triệu, đường bê tông 300–800 nghìn/m², ví dụ lô vườn 64–155 triệu.
+- [Dịch vụ đo đạc, cắm mốc trước khi mua đất Nam Ban](https://nambanvillas.vn/thi-truong/phi-do-dac-cam-moc-dat-nam-ban/): cọc sắt hay bê tông, vì sao giá chênh, khi nào nên đo lại.
+- [Dịch vụ san lấp mặt bằng Nam Ban: xe múc, xe lu 400–800 nghìn/giờ](https://nambanvillas.vn/thi-truong/chi-phi-san-lap-mat-bang-dat-nam-ban/): xe múc, xe lu, xe ben, ví dụ san nền nhà.
 - [Tách thửa Nam Ban, Lâm Hà 2026: tối thiểu 100m², điều kiện, chi phí](https://nambanvillas.vn/thi-truong/tach-thua-nam-ban-lam-ha-2026/): QĐ 54/2026/QĐ-UBND: đất ở tại xã tối thiểu 100m² mặt tiền 5m, đất nông nghiệp 1.000m², phải giáp đường công cộng.
 - [Chi phí sang tên đất Nam Ban 2026](https://nambanvillas.vn/thi-truong/chi-phi-sang-ten-dat-nam-ban/): thuế TNCN 2%, trước bạ 0,5% theo bảng giá đất, phí công chứng theo bậc, ví dụ lô 700 triệu khoảng 15,65 triệu.
 - [Xây nhà vườn Nam Ban 2026: giấy phép, giá xây](https://nambanvillas.vn/thi-truong/xay-nha-vuon-nam-ban-giay-phep-chi-phi/): Luật Xây dựng 2025 miễn phép trừ khu có quy hoạch xã; giá xây Lâm Đồng 3,8–6 triệu/m².
