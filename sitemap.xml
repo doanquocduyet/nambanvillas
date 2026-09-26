@@ -80,6 +80,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/thung-lung-530m2/1.jpg</image:loc></image:image>
   </url>
   <url><loc>https://nambanvillas.vn/dat-nen-nam-ban/</loc><lastmod>2026-09-12</lastmod><changefreq>weekly</changefreq><priority>0.95</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-giap-suoi-da-nam-ban/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-dong-thanh-314m2-200tc/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-vuon-ca-phe-me-linh-24511m2/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-2-lo-nam-ha-tu-699tr/1.webp</image:loc></image:image>
@@ -1372,6 +1373,12 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-668m2-lo-goc/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-887m2-san-may/1.webp</image:loc></image:image>
   </url>
+  <url><loc>https://nambanvillas.vn/dat-nen/dat-600m2-giap-suoi-da-nam-ban/</loc><lastmod>2026-09-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-giap-suoi-da-nam-ban/1.webp</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-600m2-giap-suoi-da-nam-ban/2.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/giap-suoi-2700m2/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-go-giap-suoi-603m2/1.jpg</image:loc></image:image>
+  </url>
   <url><loc>https://nambanvillas.vn/dat-nen/giap-suoi-2700m2/</loc><lastmod>2026-07-02</lastmod><changefreq>monthly</changefreq><priority>0.85</priority>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/giap-suoi-2700m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/giap-suoi-2700m2/2.jpg</image:loc></image:image>
@@ -1651,6 +1658,7 @@
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-gia-lam-nam-ban-1378m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nghi-duong-250m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/me-linh-1000m2-giap-rung-thong/1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://nambanvillas.vn/images/listings/nha-vuon-nam-ban-250m2-mt-nhua/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dong-thanh-nha-trang-1161m2/1.jpg</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/nam-ban-1006m2/1.webp</image:loc></image:image>
     <image:image><image:loc>https://nambanvillas.vn/images/listings/dat-me-linh-thon-3-3865m2-26ty/1.jpg</image:loc></image:image>
