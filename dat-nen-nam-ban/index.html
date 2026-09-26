@@ -185,10 +185,14 @@
           if(av==='u500'&&a>=500)ok=false;
           if(av==='500-1000'&&(a<500||a>1000))ok=false;
           if(av==='o1000'&&a<=1000)ok=false;
+          // Lô 'giá liên hệ' (data-price=0): giống trang khu — không ẩn ở mọi mức giá (không giấu hàng thật),
+          // thay vì chỉ lọt vào 'Dưới 700 triệu' như trước (khách tưởng lô rẻ).
+          if(p>0){
           if(pv==='u0.7'&&p>=0.7)ok=false;
           if(pv==='0.7-1'&&(p<0.7||p>=1))ok=false;
           if(pv==='1-2'&&(p<1||p>=2))ok=false;
           if(pv==='o2'&&p<2)ok=false;
+          }
           if(ok&&qw.length){for(var i=0;i<qw.length;i++){if(c._txt.indexOf(qw[i])===-1){ok=false;break;}}}
           if(ok&&nhanChon){var nd=(c.getAttribute('data-nhan')||'').split(/\s+/);if(nd.indexOf(nhanChon)===-1)ok=false;}
           c.classList.toggle('an-di',!ok);
