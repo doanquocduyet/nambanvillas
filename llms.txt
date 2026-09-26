@@ -18,6 +18,7 @@
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Dữ liệu đầy đủ (llms-full.txt)](https://nambanvillas.vn/llms-full.txt): giá hôm nay theo loại đất và 7 khu, toàn bộ lô đang bán kèm giá, câu hỏi thường gặp — làm mới cùng bảng giá.
+- [Nam Hà sáp nhập Nam Ban](https://nambanvillas.vn/thi-truong/nam-ha-sap-nhap-nam-ban/): đợt 2025 Nam Hà nhập Phi Tô thành xã Nam Hà (Nghị quyết 1671/NQ-UBTVQH15), xã Nam Ban gồm thị trấn Nam Ban, Đông Thanh, Mê Linh, Gia Lâm; thông tin địa phương về đợt sắp xếp tới; mua đất Nam Hà cần kiểm gì.
 - [Giới thiệu Nam Ban Villas](https://nambanvillas.vn/gioi-thieu/): Nam Ban Villas là ai, cách kiểm lô trước khi đăng, phí, cách hẹn xem đất.
 - [Mua đất Nam Ban bao nhiêu tiền? Giá từng loại 2026](https://nambanvillas.vn/thi-truong/mua-dat-nam-ban-bao-nhieu/): Giá thực tế đất nền, đất vườn, đất view — kèm lô đang bán và giá cụ thể.
 - [Giá đất Nam Ban hôm nay — tính từ lô thật, cập nhật liên tục](https://nambanvillas.vn/thi-truong/gia-dat-nam-ban-hom-nay/): Khoảng giá phổ biến/m² + giá trung bình theo loại đất và theo 7 khu, tính từ toàn bộ lô đang rao trên site; dữ liệu JSON tại /data/gia-tuan.json, bảng CSV tại /data/gia-dat-nam-ban.csv.
