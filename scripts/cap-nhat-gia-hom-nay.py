@@ -357,7 +357,7 @@ def cap_nhat_gia_re(ngay, lo, kq, khu):
                     khu_re["ten"], so(khu_re["tv"]), khu_dat["ten"], so(khu_dat["tv"])))
     s = re.sub(r"T\d{1,2}/\d{4}", "T%d/%d" % (d.month, d.year), s)     # tháng trong title/og
     # mô tả hiện trên Google: chứa đúng cụm "Giá đất Nam Ban" + số m² + lô rẻ nhất + hotline (≤160 ký tự)
-    mo_ta = ("Giá đất Nam Ban T%d/%d: đất nền thổ cư %s–%s triệu/m². Đất giá rẻ từ %s, %d lô dưới 1 tỷ, sổ riêng. Gọi 0978 758 788."
+    mo_ta = ("Bán đất Nam Ban giá rẻ T%d/%d: đất nền thổ cư %s–%s triệu/m², lô rẻ nhất từ %s, %d lô dưới 1 tỷ, sổ riêng. Gọi 0978 758 788."
              % (d.month, d.year, so(t["lo"]), so(t["hi"]), tien(re_nhat["ty"]), duoi_1ty))
     for k in ('<meta name="description" content="', '<meta property="og:description" content="', '<meta name="twitter:description" content="'):
         if k in s:
@@ -1448,6 +1448,30 @@ def tao_llms_full(ngay, lo, kq, khu, tong):
     open("llms-full.txt", "w", encoding="utf-8").write("\n".join(ra).rstrip() + "\n")
 
 
+def cap_nhat_re_nhat(lo):
+    """Trang giá rẻ: khối 'Bán đất Nam Ban giá rẻ đang có' — 10 lô rẻ nhất đang bán, làm mới cùng bảng giá."""
+    f = "dat-nam-ban-gia-re/index.html"
+    if not os.path.exists(f):
+        return
+    s = open(f, encoding="utf-8").read()
+    mo, dong = "<!-- RE-NHAT:START -->", "<!-- RE-NHAT:END -->"
+    ds = sorted([x for x in lo if x["url"] and x["ty"] > 0], key=lambda x: x["ty"])[:10]
+    li = "".join('<li style="padding:10px 0;border-bottom:1px solid #ECEAE4"><a href="%s" style="color:#1A3D2B;font-weight:700">%s</a><br><span style="color:#5F6E66;font-size:.88rem">%s · %d m² · %s triệu/m²</span></li>'
+                 % (x["url"], H.escape(x["ten"] or "Lô đất Nam Ban", quote=False), tien(x["ty"]), x["area"], so(x["m2"])) for x in ds)
+    khoi = (mo + '\n  <h2>Bán đất Nam Ban giá rẻ: 10 lô rẻ nhất đang có</h2>\n'
+            '  <p>Xếp từ rẻ nhất, toàn lô đang bán thật trên Nam Ban Villas, đã đi thực địa và xem sổ. Danh sách làm mới mỗi khi có lô mới.</p>\n'
+            '  <ul style="list-style:none;padding:0;margin:0 0 14px">' + li + '</ul>\n'
+            '  <p><a href="tel:0978758788" style="color:#1A3D2B;font-weight:700">Gọi 0978 758 788</a> để xem sổ và hẹn đi xem lô.</p>\n' + dong)
+    if mo in s:
+        s = thay_khoi(s, mo, dong, khoi)
+    else:
+        k = s.find("  <h2>Có 300 triệu mua được đất Nam Ban không?</h2>")
+        if k == -1:
+            return
+        s = s[:k] + khoi + "\n\n" + s[k:]
+    open(f, "w", encoding="utf-8").write(s)
+
+
 def main():
     # Luôn theo giờ Việt Nam: máy chạy theo giờ quốc tế từng ghi "cập nhật 24/9" sau khi web đã là 25/9
     from zoneinfo import ZoneInfo
@@ -1550,6 +1574,7 @@ def main():
     cap_nhat_ngop(ngay, kq)
     cap_nhat_dinh_gia(ngay, kq, khu, tong)
     noi_cum_gia()
+    cap_nhat_re_nhat(lo)
     cap_nhat_dataset(ngay, tong)
     tao_llms_full(ngay, lo, kq, khu, tong)
     # mô tả trang thị trấn: "từ X triệu" = lô rẻ nhất khu trung tâm (đã từng ghi 480 khi thật là 397)
