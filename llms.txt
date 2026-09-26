@@ -18,6 +18,9 @@
 
 - [Trang chủ Nam Ban Villas](https://nambanvillas.vn/): Tổng quan mua bán đất nền và nhà tại Nam Ban.
 - [Dữ liệu đầy đủ (llms-full.txt)](https://nambanvillas.vn/llms-full.txt): giá hôm nay theo loại đất và 7 khu, toàn bộ lô đang bán kèm giá, câu hỏi thường gặp — làm mới cùng bảng giá.
+- [Tách thửa Nam Ban, Lâm Hà 2026: tối thiểu 100m², điều kiện, chi phí](https://nambanvillas.vn/thi-truong/tach-thua-nam-ban-lam-ha-2026/): QĐ 54/2026/QĐ-UBND: đất ở tại xã tối thiểu 100m² mặt tiền 5m, đất nông nghiệp 1.000m², phải giáp đường công cộng.
+- [Chi phí sang tên đất Nam Ban 2026](https://nambanvillas.vn/thi-truong/chi-phi-sang-ten-dat-nam-ban/): thuế TNCN 2%, trước bạ 0,5% theo bảng giá đất, phí công chứng theo bậc, ví dụ lô 700 triệu khoảng 15,65 triệu.
+- [Xây nhà vườn Nam Ban 2026: giấy phép, giá xây](https://nambanvillas.vn/thi-truong/xay-nha-vuon-nam-ban-giay-phep-chi-phi/): Luật Xây dựng 2025 miễn phép trừ khu có quy hoạch xã; giá xây Lâm Đồng 3,8–6 triệu/m².
 - [Đất Nam Ban lên thổ cư giá bao nhiêu](https://nambanvillas.vn/thi-truong/dat-nam-ban-len-tho-cu-gia-bao-nhieu/): cách tính 2026 (NQ 254/2025/QH15: 30%/50%/100% chênh lệch), bảng giá đất ở xã Nam Ban theo đoạn đường (NQ 82/2025/NQ-HĐND), ví dụ 100m² khoảng 24–30 triệu.
 - [Mua đất Nam Hà khi có tin sáp nhập Nam Ban](https://nambanvillas.vn/thi-truong/nam-ha-sap-nhap-nam-ban/): đợt 2025 Nam Hà nhập Phi Tô thành xã Nam Hà (Nghị quyết 1671/NQ-UBTVQH15), xã Nam Ban gồm thị trấn Nam Ban, Đông Thanh, Mê Linh, Gia Lâm; thông tin địa phương về đợt sắp xếp tới; mua đất Nam Hà cần kiểm gì.
 - [Giới thiệu Nam Ban Villas](https://nambanvillas.vn/gioi-thieu/): Nam Ban Villas là ai, cách kiểm lô trước khi đăng, phí, cách hẹn xem đất.
